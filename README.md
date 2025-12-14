@@ -1,5 +1,5 @@
 <p align="center">
-<img width="450" src="https://github.com/metalama/Metalama/raw/master/images/metalama-by-postsharp.svg" alt="Metalama logo" />
+<img width="450" src="https://raw.githubusercontent.com/metalama/Metalama/HEAD/images/metalama.svg" alt="Metalama logo" />
 </p>
 
 # Metalama Plugin for Claude Code
