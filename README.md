@@ -1,4 +1,10 @@
+<p align="center">
+<img width="450" src="https://github.com/metalama/Metalama/raw/master/images/metalama-by-postsharp.svg" alt="Metalama logo" />
+</p>
+
 # Metalama Plugin for Claude Code
+
+> **Note:** This repository is entirely generated from the [Metalama.Documentation](https://github.com/metalama/Metalama.Documentation) repository. Do not edit files here directly.
 
 This repository contains the Metalama plugin for [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview), providing comprehensive documentation for aspect-oriented programming with Metalama.
 
