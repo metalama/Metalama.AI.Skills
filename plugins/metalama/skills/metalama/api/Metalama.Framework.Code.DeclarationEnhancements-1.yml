@@ -1,0 +1,1206 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1
+  commentId: T:Metalama.Framework.Code.DeclarationEnhancements`1
+  id: DeclarationEnhancements`1
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  - Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+  - Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+  - Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+  - Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect(System.Type)
+  - Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+  langs:
+  - csharp
+  - vb
+  name: DeclarationEnhancements<T>
+  nameWithType: DeclarationEnhancements<T>
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Provides access to aspects, options, and annotations applied to a declaration. This allows querying
+
+    metadata added by aspects and accessing hierarchical configuration.
+  remarks: >-
+    <p>
+        Access this API through the <xref href="Metalama.Framework.Code.DeclarationExtensions.Enhancements%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> extension method on any <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref>.
+        It provides methods to:
+        </p>
+    <ul><li>Query aspects applied to the declaration via <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.GetAspects%60%601" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.GetAspectInstances" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.HasAspect%60%601" data-throw-if-not-resolved="false"></xref></li><li>Retrieve hierarchical options using <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.GetOptions%60%601" data-throw-if-not-resolved="false"></xref></li><li>Access annotations added by aspects using <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.GetAnnotations%60%601" data-throw-if-not-resolved="false"></xref></li></ul>
+
+    <p>
+      <b>Important limitation:</b> Aspect queries only return aspects that have already been applied or are currently being applied.
+        You can query aspects ordered before the current aspect, or instances of the current aspect applied in a parent class,
+        but you cannot query aspects ordered after the current one.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct DeclarationEnhancements<T> where T : class, IDeclaration
+    typeParameters:
+    - id: T
+      description: The type of declaration.
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure DeclarationEnhancements(Of T As {Class, IDeclaration})
+  seealso:
+  - linkId: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+    commentId: M:Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+  - linkId: Metalama.Framework.Aspects.IAspectInstance
+    commentId: T:Metalama.Framework.Aspects.IAspectInstance
+  - linkId: Metalama.Framework.Options.IHierarchicalOptions`1
+    commentId: T:Metalama.Framework.Options.IHierarchicalOptions`1
+  - linkId: Metalama.Framework.Code.IAnnotation`1
+    commentId: T:Metalama.Framework.Code.IAnnotation`1
+  - linkType: HRef
+    linkId: '@exposing-options'
+    altText: '@exposing-options'
+  - linkType: HRef
+    linkId: '@sharing-state-with-advice'
+    altText: '@sharing-state-with-advice'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  nameWithType.vb: DeclarationEnhancements(Of T)
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T)
+  name.vb: DeclarationEnhancements(Of T)
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+  id: GetAspects``1
+  parent: Metalama.Framework.Code.DeclarationEnhancements`1
+  langs:
+  - csharp
+  - vb
+  name: GetAspects<TAspect>()
+  nameWithType: DeclarationEnhancements<T>.GetAspects<TAspect>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAspects<TAspect>()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the set of instances of a specified type of aspects that have been applied to the current declaration.
+  remarks: >-
+    You can call this method only for aspects that have been already been applied or are being applied, i.e. you can query aspects
+
+    that are applied before the current aspect, or you can query instances of the current aspects applied in a parent class.
+  example: []
+  syntax:
+    content: 'public IEnumerable<TAspect> GetAspects<TAspect>() where TAspect : IAspect<T>'
+    typeParameters:
+    - id: TAspect
+      description: The exact type of aspects.
+    return:
+      type: System.Collections.Generic.IEnumerable{{TAspect}}
+      description: The set of aspects of exact type <code class="typeparamref">TAspect</code> applied on the current <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.Declaration" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetAspects(Of TAspect As IAspect(Of T))() As IEnumerable(Of TAspect)
+  overload: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects*
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAspects(Of TAspect)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAspects(Of TAspect)()
+  name.vb: GetAspects(Of TAspect)()
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect(System.Type)
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect(System.Type)
+  id: HasAspect(System.Type)
+  parent: Metalama.Framework.Code.DeclarationEnhancements`1
+  langs:
+  - csharp
+  - vb
+  name: HasAspect(Type)
+  nameWithType: DeclarationEnhancements<T>.HasAspect(Type)
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.HasAspect(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines if the current declaration has at least one aspect of the given type.
+  remarks: >-
+    You can call this method only for aspects that have been already been applied or are being applied, i.e. you can query aspects
+
+    that are applied before the current aspect, or you can query instances of the current aspects applied in a parent class.
+  example: []
+  syntax:
+    content: public bool HasAspect(Type aspectType)
+    parameters:
+    - id: aspectType
+      type: System.Type
+      description: The exact type of aspect to check for.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the declaration has at least one aspect of the specified type; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function HasAspect(aspectType As Type) As Boolean
+  overload: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect*
+  nameWithType.vb: DeclarationEnhancements(Of T).HasAspect(Type)
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).HasAspect(System.Type)
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+  id: GetAspectInstances
+  parent: Metalama.Framework.Code.DeclarationEnhancements`1
+  langs:
+  - csharp
+  - vb
+  name: GetAspectInstances()
+  nameWithType: DeclarationEnhancements<T>.GetAspectInstances()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAspectInstances()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the set of aspects (represented by their <xref href="Metalama.Framework.Aspects.IAspectInstance" data-throw-if-not-resolved="false"></xref>) that have been applied to the current declaration.
+  remarks: >-
+    This method will only return aspects that have been already been applied or are being applied, i.e. you can query aspects
+
+    that are applied before the current aspect, or you can query instances of the current aspects applied in a parent class.
+  example: []
+  syntax:
+    content: public IEnumerable<IAspectInstance> GetAspectInstances()
+    return:
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectInstance}
+      description: The set of aspect instances applied on the current <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.Declaration" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetAspectInstances() As IEnumerable(Of IAspectInstance)
+  overload: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances*
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAspectInstances()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAspectInstances()
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+  id: HasAspect``1
+  parent: Metalama.Framework.Code.DeclarationEnhancements`1
+  langs:
+  - csharp
+  - vb
+  name: HasAspect<TAspect>()
+  nameWithType: DeclarationEnhancements<T>.HasAspect<TAspect>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.HasAspect<TAspect>()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines if the current declaration has at least one aspect of the given type.
+  remarks: >-
+    You can call this method only for aspects that have been already been applied or are being applied, i.e. you can query aspects
+
+    that are applied before the current aspect, or you can query instances of the current aspects applied in a parent class.
+  example: []
+  syntax:
+    content: 'public bool HasAspect<TAspect>() where TAspect : IAspect<T>'
+    typeParameters:
+    - id: TAspect
+      description: The exact type of aspect to check for.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the declaration has at least one aspect of the specified type; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function HasAspect(Of TAspect As IAspect(Of T))() As Boolean
+  overload: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect*
+  nameWithType.vb: DeclarationEnhancements(Of T).HasAspect(Of TAspect)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).HasAspect(Of TAspect)()
+  name.vb: HasAspect(Of TAspect)()
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+  id: GetOptions``1
+  parent: Metalama.Framework.Code.DeclarationEnhancements`1
+  langs:
+  - csharp
+  - vb
+  name: GetOptions<TOptions>()
+  nameWithType: DeclarationEnhancements<T>.GetOptions<TOptions>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetOptions<TOptions>()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the options effective for the current declarations. Options provided by aspects through the <xref href="Metalama.Framework.Options.IHierarchicalOptionsProvider" data-throw-if-not-resolved="false"></xref> are available only when and after the given
+
+    aspect instance has been initialized; options provided by other means are available immediately.
+  example: []
+  syntax:
+    content: 'public TOptions GetOptions<TOptions>() where TOptions : class, IHierarchicalOptions<T>, new()'
+    typeParameters:
+    - id: TOptions
+      description: The type of options.
+    return:
+      type: '{TOptions}'
+      description: The effective options for the current declaration.
+    content.vb: Public Function GetOptions(Of TOptions As {Class, IHierarchicalOptions(Of T), New})() As TOptions
+  overload: Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions*
+  seealso:
+  - linkType: HRef
+    linkId: '@exposing-options'
+    altText: '@exposing-options'
+  nameWithType.vb: DeclarationEnhancements(Of T).GetOptions(Of TOptions)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetOptions(Of TOptions)()
+  name.vb: GetOptions(Of TOptions)()
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  id: GetAnnotations``1
+  parent: Metalama.Framework.Code.DeclarationEnhancements`1
+  langs:
+  - csharp
+  - vb
+  name: GetAnnotations<TAnnotation>()
+  nameWithType: DeclarationEnhancements<T>.GetAnnotations<TAnnotation>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAnnotations<TAnnotation>()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the list of annotations of a given type on the current declaration.
+  remarks: >-
+    <p>
+        Annotations are added by aspects via <xref href="Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation%60%601(Metalama.Framework.Aspects.IAdviser%7b%60%600%7d%2cMetalama.Framework.Code.IAnnotation%7b%60%600%7d%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>
+        and can be used for inter-aspect communication within a project.
+        </p>
+    <p>
+        Only annotations added by aspects that have already executed are visible. Annotations from aspects
+        ordered after the current one are not accessible.
+        </p>
+    <p>
+      <b>Design-time limitation:</b> At design time, Metalama performs partial compilations that only include
+        the inheritance closure of modified files. Aspects targeting declarations outside this scope do not execute,
+        so their annotations are unavailable.
+        </p>
+  example: []
+  syntax:
+    content: 'public IEnumerable<TAnnotation> GetAnnotations<TAnnotation>() where TAnnotation : class, IAnnotation<T>'
+    typeParameters:
+    - id: TAnnotation
+      description: The type of annotations to retrieve.
+    return:
+      type: System.Collections.Generic.IEnumerable{{TAnnotation}}
+      description: The list of annotations of type <code class="typeparamref">TAnnotation</code> on the current declaration.
+    content.vb: Public Function GetAnnotations(Of TAnnotation As {Class, IAnnotation(Of T)})() As IEnumerable(Of TAnnotation)
+  overload: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations*
+  seealso:
+  - linkId: Metalama.Framework.Code.IAnnotation`1
+    commentId: T:Metalama.Framework.Code.IAnnotation`1
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+  - linkType: HRef
+    linkId: '@sharing-state-with-advice'
+    altText: '@sharing-state-with-advice'
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAnnotations(Of TAnnotation)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAnnotations(Of TAnnotation)()
+  name.vb: GetAnnotations(Of TAnnotation)()
+references:
+- uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+  commentId: M:Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationExtensions.Enhancements.html#Metalama_Framework_Code_DeclarationExtensions_Enhancements__1___0_
+  name: Enhancements<T>(T)
+  nameWithType: DeclarationExtensions.Enhancements<T>(T)
+  fullName: Metalama.Framework.Code.DeclarationExtensions.Enhancements<T>(T)
+  nameWithType.vb: DeclarationExtensions.Enhancements(Of T)(T)
+  fullName.vb: Metalama.Framework.Code.DeclarationExtensions.Enhancements(Of T)(T)
+  name.vb: Enhancements(Of T)(T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+    name: Enhancements
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.Enhancements.html#Metalama_Framework_Code_DeclarationExtensions_Enhancements__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+    name: Enhancements
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.Enhancements.html#Metalama_Framework_Code_DeclarationExtensions_Enhancements__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspectInstance
+  commentId: T:Metalama.Framework.Aspects.IAspectInstance
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectInstance.html
+  name: IAspectInstance
+  nameWithType: IAspectInstance
+  fullName: Metalama.Framework.Aspects.IAspectInstance
+- uid: Metalama.Framework.Options.IHierarchicalOptions`1
+  commentId: T:Metalama.Framework.Options.IHierarchicalOptions`1
+  isExternal: true
+  href: Metalama.Framework.Options.IHierarchicalOptions-1.html
+  name: IHierarchicalOptions<T>
+  nameWithType: IHierarchicalOptions<T>
+  fullName: Metalama.Framework.Options.IHierarchicalOptions<T>
+  nameWithType.vb: IHierarchicalOptions(Of T)
+  fullName.vb: Metalama.Framework.Options.IHierarchicalOptions(Of T)
+  name.vb: IHierarchicalOptions(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IHierarchicalOptions`1
+    name: IHierarchicalOptions
+    isExternal: true
+    href: Metalama.Framework.Options.IHierarchicalOptions-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Options.IHierarchicalOptions`1
+    name: IHierarchicalOptions
+    isExternal: true
+    href: Metalama.Framework.Options.IHierarchicalOptions-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.IAnnotation`1
+  commentId: T:Metalama.Framework.Code.IAnnotation`1
+  isExternal: true
+  href: Metalama.Framework.Code.IAnnotation-1.html
+  name: IAnnotation<T>
+  nameWithType: IAnnotation<T>
+  fullName: Metalama.Framework.Code.IAnnotation<T>
+  nameWithType.vb: IAnnotation(Of T)
+  fullName.vb: Metalama.Framework.Code.IAnnotation(Of T)
+  name.vb: IAnnotation(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspects.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspects__1
+  name: GetAspects<TAspect>()
+  nameWithType: DeclarationEnhancements<T>.GetAspects<TAspect>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAspects<TAspect>()
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAspects(Of TAspect)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAspects(Of TAspect)()
+  name.vb: GetAspects(Of TAspect)()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+    name: GetAspects
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspects.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspects__1
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects``1
+    name: GetAspects
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspects.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspects__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspectInstances.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspectInstances
+  name: GetAspectInstances()
+  nameWithType: DeclarationEnhancements<T>.GetAspectInstances()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAspectInstances()
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAspectInstances()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAspectInstances()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+    name: GetAspectInstances
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspectInstances.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspectInstances
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+    name: GetAspectInstances
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspectInstances.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspectInstances
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.HasAspect.html#Metalama_Framework_Code_DeclarationEnhancements_1_HasAspect__1
+  name: HasAspect<TAspect>()
+  nameWithType: DeclarationEnhancements<T>.HasAspect<TAspect>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.HasAspect<TAspect>()
+  nameWithType.vb: DeclarationEnhancements(Of T).HasAspect(Of TAspect)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).HasAspect(Of TAspect)()
+  name.vb: HasAspect(Of TAspect)()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+    name: HasAspect
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.HasAspect.html#Metalama_Framework_Code_DeclarationEnhancements_1_HasAspect__1
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect``1
+    name: HasAspect
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.HasAspect.html#Metalama_Framework_Code_DeclarationEnhancements_1_HasAspect__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetOptions.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetOptions__1
+  name: GetOptions<TOptions>()
+  nameWithType: DeclarationEnhancements<T>.GetOptions<TOptions>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetOptions<TOptions>()
+  nameWithType.vb: DeclarationEnhancements(Of T).GetOptions(Of TOptions)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetOptions(Of TOptions)()
+  name.vb: GetOptions(Of TOptions)()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+    name: GetOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetOptions.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetOptions__1
+  - name: <
+  - name: TOptions
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions``1
+    name: GetOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetOptions.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetOptions__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  name: GetAnnotations<TAnnotation>()
+  nameWithType: DeclarationEnhancements<T>.GetAnnotations<TAnnotation>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAnnotations<TAnnotation>()
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAnnotations(Of TAnnotation)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAnnotations(Of TAnnotation)()
+  name.vb: GetAnnotations(Of TAnnotation)()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+    name: GetAnnotations
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  - name: <
+  - name: TAnnotation
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+    name: GetAnnotations
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnnotation
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.Declaration
+  commentId: P:Metalama.Framework.Code.DeclarationEnhancements`1.Declaration
+  isExternal: true
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects*
+  commentId: Overload:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspects.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspects__1
+  name: GetAspects
+  nameWithType: DeclarationEnhancements<T>.GetAspects
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAspects
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAspects
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAspects
+- uid: System.Collections.Generic.IEnumerable{{TAspect}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TAspect>
+  nameWithType: IEnumerable<TAspect>
+  fullName: System.Collections.Generic.IEnumerable<TAspect>
+  nameWithType.vb: IEnumerable(Of TAspect)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TAspect)
+  name.vb: IEnumerable(Of TAspect)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TAspect
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect*
+  commentId: Overload:Metalama.Framework.Code.DeclarationEnhancements`1.HasAspect
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.HasAspect.html#Metalama_Framework_Code_DeclarationEnhancements_1_HasAspect_System_Type_
+  name: HasAspect
+  nameWithType: DeclarationEnhancements<T>.HasAspect
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.HasAspect
+  nameWithType.vb: DeclarationEnhancements(Of T).HasAspect
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).HasAspect
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances*
+  commentId: Overload:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAspectInstances.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAspectInstances
+  name: GetAspectInstances
+  nameWithType: DeclarationEnhancements<T>.GetAspectInstances
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAspectInstances
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAspectInstances
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAspectInstances
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectInstance}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IAspectInstance>
+  nameWithType: IEnumerable<IAspectInstance>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Aspects.IAspectInstance>
+  nameWithType.vb: IEnumerable(Of IAspectInstance)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Aspects.IAspectInstance)
+  name.vb: IEnumerable(Of IAspectInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.IAspectInstance
+    name: IAspectInstance
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectInstance
+    name: IAspectInstance
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectInstance.html
+  - name: )
+- uid: Metalama.Framework.Options.IHierarchicalOptionsProvider
+  commentId: T:Metalama.Framework.Options.IHierarchicalOptionsProvider
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IHierarchicalOptionsProvider.html
+  name: IHierarchicalOptionsProvider
+  nameWithType: IHierarchicalOptionsProvider
+  fullName: Metalama.Framework.Options.IHierarchicalOptionsProvider
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions*
+  commentId: Overload:Metalama.Framework.Code.DeclarationEnhancements`1.GetOptions
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetOptions.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetOptions__1
+  name: GetOptions
+  nameWithType: DeclarationEnhancements<T>.GetOptions
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetOptions
+  nameWithType.vb: DeclarationEnhancements(Of T).GetOptions
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetOptions
+- uid: '{TOptions}'
+  commentId: '!:TOptions'
+  definition: TOptions
+  name: TOptions
+  nameWithType: TOptions
+  fullName: TOptions
+- uid: Metalama.Framework.Options
+  commentId: N:Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Options
+  nameWithType: Metalama.Framework.Options
+  fullName: Metalama.Framework.Options
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+- uid: TOptions
+  name: TOptions
+  nameWithType: TOptions
+  fullName: TOptions
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation.html#Metalama_Framework_Aspects_AdviserExtensions_AddAnnotation__1_Metalama_Framework_Aspects_IAdviser___0__Metalama_Framework_Code_IAnnotation___0__System_Boolean_
+  name: AddAnnotation<TDeclaration>(IAdviser<TDeclaration>, IAnnotation<TDeclaration>, bool)
+  nameWithType: AdviserExtensions.AddAnnotation<TDeclaration>(IAdviser<TDeclaration>, IAnnotation<TDeclaration>, bool)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation<TDeclaration>(Metalama.Framework.Aspects.IAdviser<TDeclaration>, Metalama.Framework.Code.IAnnotation<TDeclaration>, bool)
+  nameWithType.vb: AdviserExtensions.AddAnnotation(Of TDeclaration)(IAdviser(Of TDeclaration), IAnnotation(Of TDeclaration), Boolean)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation(Of TDeclaration)(Metalama.Framework.Aspects.IAdviser(Of TDeclaration), Metalama.Framework.Code.IAnnotation(Of TDeclaration), Boolean)
+  name.vb: AddAnnotation(Of TDeclaration)(IAdviser(Of TDeclaration), IAnnotation(Of TDeclaration), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+    name: AddAnnotation
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation.html#Metalama_Framework_Aspects_AdviserExtensions_AddAnnotation__1_Metalama_Framework_Aspects_IAdviser___0__Metalama_Framework_Code_IAnnotation___0__System_Boolean_
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+    name: AddAnnotation
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation.html#Metalama_Framework_Aspects_AdviserExtensions_AddAnnotation__1_Metalama_Framework_Aspects_IAdviser___0__Metalama_Framework_Code_IAnnotation___0__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations*
+  commentId: Overload:Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  name: GetAnnotations
+  nameWithType: DeclarationEnhancements<T>.GetAnnotations
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAnnotations
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAnnotations
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAnnotations
+- uid: System.Collections.Generic.IEnumerable{{TAnnotation}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TAnnotation>
+  nameWithType: IEnumerable<TAnnotation>
+  fullName: System.Collections.Generic.IEnumerable<TAnnotation>
+  nameWithType.vb: IEnumerable(Of TAnnotation)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TAnnotation)
+  name.vb: IEnumerable(Of TAnnotation)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TAnnotation
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnnotation
+  - name: )
+memberLayout: SeparatePages

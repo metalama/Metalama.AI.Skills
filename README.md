@@ -4,8 +4,6 @@
 
 # Metalama Plugin for Claude Code
 
-> **Note:** This repository is entirely generated from the [Metalama.Documentation](https://github.com/metalama/Metalama.Documentation) repository. Do not edit files here directly.
-
 This repository contains the Metalama plugin for [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview), providing comprehensive documentation for aspect-oriented programming with Metalama.
 
 ## Installation
@@ -61,3 +59,7 @@ To update to the latest version:
 - [Metalama Documentation](https://doc.metalama.net)
 - [Metalama GitHub](https://github.com/metalama/Metalama)
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview)
+
+---
+
+> **Note:** This repository is entirely generated from the [Metalama.Documentation](https://github.com/metalama/Metalama.Documentation) repository. Do not edit files here directly.

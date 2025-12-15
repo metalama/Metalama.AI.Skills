@@ -1,0 +1,1200 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  id: DefaultParameterPullStrategy
+  parent: Metalama.Extensions.DependencyInjection.Implementation
+  children:
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType
+  langs:
+  - csharp
+  - vb
+  name: DefaultParameterPullStrategy
+  nameWithType: DefaultParameterPullStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  type: Class
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: >-
+    The default implementation of <xref href="Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy" data-throw-if-not-resolved="false"></xref> that handles constructor parameter introduction
+
+    and propagation for dependency injection.
+  remarks: >-
+    <p>
+
+    This class is responsible for determining whether an existing constructor parameter can satisfy a dependency,
+
+    and if not, specifying how to create a new parameter. It also handles parameter propagation to derived classes
+
+    via the <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> interface.
+
+    </p>
+
+    <p>
+
+    For most use cases, you can use this default implementation. Override the virtual methods if you need custom
+
+    behavior for parameter matching or creation.
+
+    </p>
+  example: []
+  syntax:
+    content: 'public class DefaultParameterPullStrategy : IParameterPullStrategy, IPullStrategy, ICompileTimeSerializable'
+    content.vb: Public Class DefaultParameterPullStrategy Implements IParameterPullStrategy, IPullStrategy, ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Extensions.DependencyInjection.Implementation.IDependencyPullStrategy
+    commentId: T:Metalama.Extensions.DependencyInjection.Implementation.IDependencyPullStrategy
+  - linkId: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyPullStrategy
+    commentId: T:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyPullStrategy
+  - linkId: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy
+    commentId: T:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy
+  - linkType: HRef
+    linkId: '@dependency-injection'
+    altText: '@dependency-injection'
+  inheritance:
+  - System.Object
+  implements:
+  - Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy
+  - Metalama.Framework.Advising.IPullStrategy
+  - Metalama.Framework.Serialization.ICompileTimeSerializable
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy}},System.Boolean)
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)
+  id: '#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)'
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: DefaultParameterPullStrategy(IRef<IType>, string)
+  nameWithType: DefaultParameterPullStrategy.DefaultParameterPullStrategy(IRef<IType>, string)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DefaultParameterPullStrategy(Metalama.Framework.Code.IRef<Metalama.Framework.Code.IType>, string)
+  type: Constructor
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: Initializes a new instance of the <xref href="Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public DefaultParameterPullStrategy(IRef<IType> parameterType, string dependencyName)
+    parameters:
+    - id: parameterType
+      type: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType}
+      description: A reference to the type of the constructor parameter.
+    - id: dependencyName
+      type: System.String
+      description: The name of the dependency, used to derive the parameter name.
+    content.vb: Public Sub New(parameterType As IRef(Of IType), dependencyName As String)
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor*
+  nameWithType.vb: DefaultParameterPullStrategy.New(IRef(Of IType), String)
+  fullName.vb: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.New(Metalama.Framework.Code.IRef(Of Metalama.Framework.Code.IType), String)
+  name.vb: New(IRef(Of IType), String)
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  id: GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: GetExistingParameter(IConstructor)
+  nameWithType: DefaultParameterPullStrategy.GetExistingParameter(IConstructor)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: Gets an existing parameter that satisfies the dependency, if any.
+  example: []
+  syntax:
+    content: public virtual IParameter? GetExistingParameter(IConstructor constructor)
+    parameters:
+    - id: constructor
+      type: Metalama.Framework.Code.IConstructor
+      description: The constructor in which the dependency is required.
+    return:
+      type: Metalama.Framework.Code.IParameter
+      description: A parameter satisfying the dependency, or <code>null</code>.
+    content.vb: Public Overridable Function GetExistingParameter(constructor As IConstructor) As IParameter
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter*
+  implements:
+  - Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  id: GetNewParameter(Metalama.Framework.Code.IConstructor)
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: GetNewParameter(IConstructor)
+  nameWithType: DefaultParameterPullStrategy.GetNewParameter(IConstructor)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: >-
+    Gets a <xref href="Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification" data-throw-if-not-resolved="false"></xref> object specifying how to create a parameter.
+
+    This method is called if <xref href="Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)" data-throw-if-not-resolved="false"></xref> returns <code>null</code>.
+  example: []
+  syntax:
+    content: public virtual ParameterSpecification GetNewParameter(IConstructor constructor)
+    parameters:
+    - id: constructor
+      type: Metalama.Framework.Code.IConstructor
+      description: The constructor in which the parameter must be added.
+    return:
+      type: Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification
+      description: A <xref href="Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Overridable Function GetNewParameter(constructor As IConstructor) As ParameterSpecification
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter*
+  implements:
+  - Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  id: GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: GetPullAction(IParameter, IHasParameters)
+  nameWithType: DefaultParameterPullStrategy.GetPullAction(IParameter, IHasParameters)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter, Metalama.Framework.Code.IHasParameters)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: >-
+    Gets the <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that specifies how to obtain the value for an introduced parameter
+
+    when it needs to be passed from a child constructor to the constructor where it was introduced.
+  example: []
+  syntax:
+    content: public virtual PullAction GetPullAction(IParameter pulledParameter, IHasParameters targetMember)
+    parameters:
+    - id: pulledParameter
+      type: Metalama.Framework.Code.IParameter
+      description: The parameter that was introduced in the parent constructor and needs to be passed a value.
+    - id: targetMember
+      type: Metalama.Framework.Code.IHasParameters
+      description: The child constructor or method that needs to provide a value for <code class="paramref">pulledParameter</code>.
+    return:
+      type: Metalama.Framework.Advising.PullAction
+      description: A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that specifies how the child constructor should obtain the value for the introduced parameter.
+    content.vb: Public Overridable Function GetPullAction(pulledParameter As IParameter, targetMember As IHasParameters) As PullAction
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction*
+  implements:
+  - Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType
+  commentId: P:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType
+  id: ParameterType
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: ParameterType
+  nameWithType: DefaultParameterPullStrategy.ParameterType
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType
+  type: Property
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: Gets the type of the constructor parameter.
+  example: []
+  syntax:
+    content: public IRef<IType> ParameterType { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType}
+    content.vb: Public ReadOnly Property ParameterType As IRef(Of IType)
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType*
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
+  commentId: P:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
+  id: DependencyName
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: DependencyName
+  nameWithType: DefaultParameterPullStrategy.DependencyName
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
+  type: Property
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: Gets the name of the dependency, which is used to derive the name of the constructor parameter.
+  example: []
+  syntax:
+    content: public string DependencyName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DependencyName As String
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName*
+references:
+- uid: Metalama.Extensions.DependencyInjection.Implementation.IDependencyPullStrategy
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.IDependencyPullStrategy
+  parent: Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.IDependencyPullStrategy.html
+  name: IDependencyPullStrategy
+  nameWithType: IDependencyPullStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.IDependencyPullStrategy
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyPullStrategy
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyPullStrategy
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyPullStrategy.html
+  name: DefaultDependencyPullStrategy
+  nameWithType: DefaultDependencyPullStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyPullStrategy
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy
+  parent: Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy.html
+  name: DefaultDependencyInjectionStrategy
+  nameWithType: DefaultDependencyInjectionStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy
+- uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy
+  parent: Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.html
+  name: IParameterPullStrategy
+  nameWithType: IParameterPullStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy
+- uid: Metalama.Framework.Advising.IPullStrategy
+  commentId: T:Metalama.Framework.Advising.IPullStrategy
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IPullStrategy.html
+  name: IPullStrategy
+  nameWithType: IPullStrategy
+  fullName: Metalama.Framework.Advising.IPullStrategy
+- uid: Metalama.Extensions.DependencyInjection.Implementation
+  commentId: N:Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Extensions.DependencyInjection.Implementation
+  nameWithType: Metalama.Extensions.DependencyInjection.Implementation
+  fullName: Metalama.Extensions.DependencyInjection.Implementation
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection.Implementation
+    name: Implementation
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection.Implementation
+    name: Implementation
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Metalama.Framework.Serialization.ICompileTimeSerializable
+  commentId: T:Metalama.Framework.Serialization.ICompileTimeSerializable
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.ICompileTimeSerializable.html
+  name: ICompileTimeSerializable
+  nameWithType: ICompileTimeSerializable
+  fullName: Metalama.Framework.Serialization.ICompileTimeSerializable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<DefaultParameterPullStrategy>(DefaultParameterPullStrategy, Func<DefaultParameterPullStrategy, IEnumerable<DefaultParameterPullStrategy>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<DefaultParameterPullStrategy>(DefaultParameterPullStrategy, Func<DefaultParameterPullStrategy, IEnumerable<DefaultParameterPullStrategy>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy>(Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy, System.Func<Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy, System.Collections.Generic.IEnumerable<Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of DefaultParameterPullStrategy)(DefaultParameterPullStrategy, Func(Of DefaultParameterPullStrategy, IEnumerable(Of DefaultParameterPullStrategy)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy)(Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy, System.Func(Of Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy, System.Collections.Generic.IEnumerable(Of Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of DefaultParameterPullStrategy)(DefaultParameterPullStrategy, Func(Of DefaultParameterPullStrategy, IEnumerable(Of DefaultParameterPullStrategy)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy,System.Func{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy,System.Func{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: )
+  - name: (
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+    name: DefaultParameterPullStrategy
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Serialization
+  commentId: N:Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Serialization
+  nameWithType: Metalama.Framework.Serialization
+  fullName: Metalama.Framework.Serialization
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.html
+  name: DefaultParameterPullStrategy
+  nameWithType: DefaultParameterPullStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.-ctor.html#Metalama_Extensions_DependencyInjection_Implementation_DefaultParameterPullStrategy__ctor_Metalama_Framework_Code_IRef_Metalama_Framework_Code_IType__System_String_
+  name: DefaultParameterPullStrategy
+  nameWithType: DefaultParameterPullStrategy.DefaultParameterPullStrategy
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DefaultParameterPullStrategy
+  nameWithType.vb: DefaultParameterPullStrategy.New
+  fullName.vb: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.New
+  name.vb: New
+- uid: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType}
+  commentId: T:Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType}
+  parent: Metalama.Framework.Code
+  definition: Metalama.Framework.Code.IRef`1
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<IType>
+  nameWithType: IRef<IType>
+  fullName: Metalama.Framework.Code.IRef<Metalama.Framework.Code.IType>
+  nameWithType.vb: IRef(Of IType)
+  fullName.vb: Metalama.Framework.Code.IRef(Of Metalama.Framework.Code.IType)
+  name.vb: IRef(Of IType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Code.IRef`1
+  commentId: T:Metalama.Framework.Code.IRef`1
+  isExternal: true
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<T>
+  nameWithType: IRef<T>
+  fullName: Metalama.Framework.Code.IRef<T>
+  nameWithType.vb: IRef(Of T)
+  fullName.vb: Metalama.Framework.Code.IRef(Of T)
+  name.vb: IRef(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter.html#Metalama_Extensions_DependencyInjection_Implementation_DefaultParameterPullStrategy_GetExistingParameter_Metalama_Framework_Code_IConstructor_
+  name: GetExistingParameter
+  nameWithType: DefaultParameterPullStrategy.GetExistingParameter
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter
+- uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  parent: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter.html#Metalama_Extensions_DependencyInjection_Implementation_IParameterPullStrategy_GetExistingParameter_Metalama_Framework_Code_IConstructor_
+  name: GetExistingParameter(IConstructor)
+  nameWithType: IParameterPullStrategy.GetExistingParameter(IConstructor)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+  spec.csharp:
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+    name: GetExistingParameter
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter.html#Metalama_Extensions_DependencyInjection_Implementation_IParameterPullStrategy_GetExistingParameter_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
+    name: GetExistingParameter
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetExistingParameter.html#Metalama_Extensions_DependencyInjection_Implementation_IParameterPullStrategy_GetExistingParameter_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+  - name: )
+- uid: Metalama.Framework.Code.IConstructor
+  commentId: T:Metalama.Framework.Code.IConstructor
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IConstructor.html
+  name: IConstructor
+  nameWithType: IConstructor
+  fullName: Metalama.Framework.Code.IConstructor
+- uid: Metalama.Framework.Code.IParameter
+  commentId: T:Metalama.Framework.Code.IParameter
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IParameter.html
+  name: IParameter
+  nameWithType: IParameter
+  fullName: Metalama.Framework.Code.IParameter
+- uid: Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification
+  parent: Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification.html
+  name: ParameterSpecification
+  nameWithType: ParameterSpecification
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.ParameterSpecification
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter.html#Metalama_Extensions_DependencyInjection_Implementation_DefaultParameterPullStrategy_GetNewParameter_Metalama_Framework_Code_IConstructor_
+  name: GetNewParameter
+  nameWithType: DefaultParameterPullStrategy.GetNewParameter
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetNewParameter
+- uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  parent: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter.html#Metalama_Extensions_DependencyInjection_Implementation_IParameterPullStrategy_GetNewParameter_Metalama_Framework_Code_IConstructor_
+  name: GetNewParameter(IConstructor)
+  nameWithType: IParameterPullStrategy.GetNewParameter(IConstructor)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+  spec.csharp:
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+    name: GetNewParameter
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter.html#Metalama_Extensions_DependencyInjection_Implementation_IParameterPullStrategy_GetNewParameter_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter(Metalama.Framework.Code.IConstructor)
+    name: GetNewParameter
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IParameterPullStrategy.GetNewParameter.html#Metalama_Extensions_DependencyInjection_Implementation_IParameterPullStrategy_GetNewParameter_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+  - name: )
+- uid: Metalama.Framework.Advising.PullAction
+  commentId: T:Metalama.Framework.Advising.PullAction
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.html
+  name: PullAction
+  nameWithType: PullAction
+  fullName: Metalama.Framework.Advising.PullAction
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction.html#Metalama_Extensions_DependencyInjection_Implementation_DefaultParameterPullStrategy_GetPullAction_Metalama_Framework_Code_IParameter_Metalama_Framework_Code_IHasParameters_
+  name: GetPullAction
+  nameWithType: DefaultParameterPullStrategy.GetPullAction
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetPullAction
+- uid: Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  commentId: M:Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  parent: Metalama.Framework.Advising.IPullStrategy
+  isExternal: true
+  name: GetPullAction(IParameter, IHasParameters)
+  nameWithType: IPullStrategy.GetPullAction(IParameter, IHasParameters)
+  fullName: Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter, Metalama.Framework.Code.IHasParameters)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+    name: GetPullAction
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IHasParameters
+    name: IHasParameters
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+    name: GetPullAction
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IHasParameters
+    name: IHasParameters
+    isExternal: true
+  - name: )
+- uid: Metalama.Framework.Code.IHasParameters
+  commentId: T:Metalama.Framework.Code.IHasParameters
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IHasParameters.html
+  name: IHasParameters
+  nameWithType: IHasParameters
+  fullName: Metalama.Framework.Code.IHasParameters
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType.html#Metalama_Extensions_DependencyInjection_Implementation_DefaultParameterPullStrategy_ParameterType
+  name: ParameterType
+  nameWithType: DefaultParameterPullStrategy.ParameterType
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName.html#Metalama_Extensions_DependencyInjection_Implementation_DefaultParameterPullStrategy_DependencyName
+  name: DependencyName
+  nameWithType: DefaultParameterPullStrategy.DependencyName
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
+memberLayout: SeparatePages

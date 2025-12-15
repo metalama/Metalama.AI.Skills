@@ -1,0 +1,1534 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  id: CacheKeyBuilder
+  parent: Metalama.Patterns.Caching.Formatters
+  children:
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor(Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder,System.Type,System.Object)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod(Flashtrace.Formatters.UnsafeStringBuilder,System.Reflection.MethodInfo)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder,System.Object)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType(Flashtrace.Formatters.UnsafeStringBuilder,System.Type)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(System.Boolean)
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+  langs:
+  - csharp
+  - vb
+  name: CacheKeyBuilder
+  nameWithType: CacheKeyBuilder
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  type: Class
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Default implementation of <xref href="Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder" data-throw-if-not-resolved="false"></xref> that builds cache item keys and dependency keys.
+  remarks: >-
+    <p>This class generates cache keys by combining method signature information with formatted argument values.
+
+    The format includes the declaring type, method name, generic arguments, and parameter values.</p>
+
+    <p>To customize key generation, either derive from this class and override the virtual methods,
+
+    or implement <xref href="Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder" data-throw-if-not-resolved="false"></xref> directly. Register custom implementations using
+
+    <xref href="Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func%7bFlashtrace.Formatters.IFormatterRepository%2cMetalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions%2cMetalama.Patterns.Caching.Formatters.ICacheKeyBuilder%7d)" data-throw-if-not-resolved="false"></xref>.</p>
+  example: []
+  syntax:
+    content: 'public class CacheKeyBuilder : IDisposable, ICacheKeyBuilder'
+    content.vb: Public Class CacheKeyBuilder Implements IDisposable, ICacheKeyBuilder
+  seealso:
+  - linkId: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+    commentId: T:Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+  - linkId: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+    commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+  - linkType: HRef
+    linkId: '@caching-keys'
+    altText: '@caching-keys'
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  - Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder}},System.Boolean)
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor(Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor(Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
+  id: '#ctor(Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)'
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: CacheKeyBuilder(IFormatterRepository, CacheKeyBuilderOptions)
+  nameWithType: CacheKeyBuilder.CacheKeyBuilder(IFormatterRepository, CacheKeyBuilderOptions)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CacheKeyBuilder(Flashtrace.Formatters.IFormatterRepository, Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
+  type: Constructor
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: >-
+    Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder" data-throw-if-not-resolved="false"></xref> class specifying the maximal key size 
+
+    and optionally a <xref href="Flashtrace.Formatters.IFormatterRepository" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public CacheKeyBuilder(IFormatterRepository formatterRepository, CacheKeyBuilderOptions options)
+    parameters:
+    - id: formatterRepository
+      type: Flashtrace.Formatters.IFormatterRepository
+      description: The <xref href="Flashtrace.Formatters.IFormatterRepository" data-throw-if-not-resolved="false"></xref> from which to obtain formatters.
+    - id: options
+      type: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+    content.vb: Public Sub New(formatterRepository As IFormatterRepository, options As CacheKeyBuilderOptions)
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor*
+  nameWithType.vb: CacheKeyBuilder.New(IFormatterRepository, CacheKeyBuilderOptions)
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.New(Flashtrace.Formatters.IFormatterRepository, Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
+  name.vb: New(IFormatterRepository, CacheKeyBuilderOptions)
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  id: BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: BuildMethodKey(CachedMethodMetadata, object?, IList<object?>)
+  nameWithType: CacheKeyBuilder.BuildMethodKey(CachedMethodMetadata, object?, IList<object?>)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata, object?, System.Collections.Generic.IList<object?>)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Builds a cache key for a given method call.
+  example: []
+  syntax:
+    content: public virtual string BuildMethodKey(CachedMethodMetadata metadata, object? instance, IList<object?> arguments)
+    parameters:
+    - id: metadata
+      type: Metalama.Patterns.Caching.CachedMethodMetadata
+      description: The <xref href="Metalama.Patterns.Caching.CachedMethodMetadata" data-throw-if-not-resolved="false"></xref> representing the method.
+    - id: instance
+      type: System.Object
+      description: The <code>this</code> instance of the method call, or <code>null</code> if the method is static.
+    - id: arguments
+      type: System.Collections.Generic.IList{System.Object}
+      description: The arguments passed to the method call.
+    return:
+      type: System.String
+      description: A string uniquely representing the method call.
+    content.vb: Public Overridable Function BuildMethodKey(metadata As CachedMethodMetadata, instance As Object, arguments As IList(Of Object)) As String
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey*
+  implements:
+  - Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  nameWithType.vb: CacheKeyBuilder.BuildMethodKey(CachedMethodMetadata, Object, IList(Of Object))
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata, Object, System.Collections.Generic.IList(Of Object))
+  name.vb: BuildMethodKey(CachedMethodMetadata, Object, IList(Of Object))
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
+  id: BuildDependencyKey(System.Object)
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: BuildDependencyKey(object)
+  nameWithType: CacheKeyBuilder.BuildDependencyKey(object)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(object)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Builds a dependency key for a given object.
+  example: []
+  syntax:
+    content: public virtual string BuildDependencyKey(object o)
+    parameters:
+    - id: o
+      type: System.Object
+      description: An object.
+    return:
+      type: System.String
+      description: A dependency key that uniquely represents <code class="paramref">o</code>.
+    content.vb: Public Overridable Function BuildDependencyKey(o As Object) As String
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey*
+  implements:
+  - Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(System.Object)
+  nameWithType.vb: CacheKeyBuilder.BuildDependencyKey(Object)
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(Object)
+  name.vb: BuildDependencyKey(Object)
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod(Flashtrace.Formatters.UnsafeStringBuilder,System.Reflection.MethodInfo)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod(Flashtrace.Formatters.UnsafeStringBuilder,System.Reflection.MethodInfo)
+  id: AppendMethod(Flashtrace.Formatters.UnsafeStringBuilder,System.Reflection.MethodInfo)
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: AppendMethod(UnsafeStringBuilder, MethodInfo)
+  nameWithType: CacheKeyBuilder.AppendMethod(UnsafeStringBuilder, MethodInfo)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod(Flashtrace.Formatters.UnsafeStringBuilder, System.Reflection.MethodInfo)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Appends the method name and generic arguments to an <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected virtual void AppendMethod(UnsafeStringBuilder stringBuilder, MethodInfo method)
+    parameters:
+    - id: stringBuilder
+      type: Flashtrace.Formatters.UnsafeStringBuilder
+      description: An <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: method
+      type: System.Reflection.MethodInfo
+      description: A <xref href="System.Reflection.MethodInfo" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Protected Overridable Sub AppendMethod(stringBuilder As UnsafeStringBuilder, method As MethodInfo)
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod*
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder,System.Type,System.Object)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder,System.Type,System.Object)
+  id: AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder,System.Type,System.Object)
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: AppendArgument(UnsafeStringBuilder, Type, object?)
+  nameWithType: CacheKeyBuilder.AppendArgument(UnsafeStringBuilder, Type, object?)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder, System.Type, object?)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: >-
+    Appends a method argument to an <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>. To avoid ambiguities between different overloads of the same method, the default implementation appends
+
+    both the parameter type and the value key.
+  example: []
+  syntax:
+    content: protected virtual void AppendArgument(UnsafeStringBuilder stringBuilder, Type parameterType, object? parameterValue)
+    parameters:
+    - id: stringBuilder
+      type: Flashtrace.Formatters.UnsafeStringBuilder
+      description: An <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: parameterType
+      type: System.Type
+      description: The type of the parameter.
+    - id: parameterValue
+      type: System.Object
+      description: The value assigned to the parameter (can be <code>null</code>).
+    content.vb: Protected Overridable Sub AppendArgument(stringBuilder As UnsafeStringBuilder, parameterType As Type, parameterValue As Object)
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument*
+  nameWithType.vb: CacheKeyBuilder.AppendArgument(UnsafeStringBuilder, Type, Object)
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder, System.Type, Object)
+  name.vb: AppendArgument(UnsafeStringBuilder, Type, Object)
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType(Flashtrace.Formatters.UnsafeStringBuilder,System.Type)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType(Flashtrace.Formatters.UnsafeStringBuilder,System.Type)
+  id: AppendType(Flashtrace.Formatters.UnsafeStringBuilder,System.Type)
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: AppendType(UnsafeStringBuilder, Type)
+  nameWithType: CacheKeyBuilder.AppendType(UnsafeStringBuilder, Type)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType(Flashtrace.Formatters.UnsafeStringBuilder, System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Appends a <xref href="System.Type" data-throw-if-not-resolved="false"></xref> name to an <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected virtual void AppendType(UnsafeStringBuilder stringBuilder, Type type)
+    parameters:
+    - id: stringBuilder
+      type: Flashtrace.Formatters.UnsafeStringBuilder
+      description: An <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: type
+      type: System.Type
+      description: A <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Protected Overridable Sub AppendType(stringBuilder As UnsafeStringBuilder, type As Type)
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType*
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder,System.Object)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder,System.Object)
+  id: AppendObject(Flashtrace.Formatters.UnsafeStringBuilder,System.Object)
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: AppendObject(UnsafeStringBuilder, object)
+  nameWithType: CacheKeyBuilder.AppendObject(UnsafeStringBuilder, object)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder, object)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Appends a string representing an <xref href="System.Object" data-throw-if-not-resolved="false"></xref> to an <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected virtual void AppendObject(UnsafeStringBuilder stringBuilder, object o)
+    parameters:
+    - id: stringBuilder
+      type: Flashtrace.Formatters.UnsafeStringBuilder
+      description: An <xref href="Flashtrace.Formatters.UnsafeStringBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: o
+      type: System.Object
+      description: An <xref href="System.Object" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Protected Overridable Sub AppendObject(stringBuilder As UnsafeStringBuilder, o As Object)
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject*
+  nameWithType.vb: CacheKeyBuilder.AppendObject(UnsafeStringBuilder, Object)
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder, Object)
+  name.vb: AppendObject(UnsafeStringBuilder, Object)
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(System.Boolean)
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: CacheKeyBuilder.Dispose(bool)
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(bool)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Disposes the current object.
+  example: []
+  syntax:
+    content: protected virtual void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: <code>true</code> if the <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose" data-throw-if-not-resolved="false"></xref> method has been called, <code>false</code> if the object is being finalized by the garbage collector.
+    content.vb: Protected Overridable Sub Dispose(disposing As Boolean)
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose*
+  nameWithType.vb: CacheKeyBuilder.Dispose(Boolean)
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+  id: Dispose
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CacheKeyBuilder.Dispose()
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose()
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
+  id: Formatters
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: Formatters
+  nameWithType: CacheKeyBuilder.Formatters
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Gets the formatters used to build the caching key.
+  example: []
+  syntax:
+    content: public IFormatterRepository Formatters { get; }
+    parameters: []
+    return:
+      type: Flashtrace.Formatters.IFormatterRepository
+    content.vb: Public ReadOnly Property Formatters As IFormatterRepository
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters*
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
+  id: IgnoredParameterSentinel
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: IgnoredParameterSentinel
+  nameWithType: CacheKeyBuilder.IgnoredParameterSentinel
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Gets a sentinel object that means that the parameter is not a part of the cache key, and should be ignored.
+  example: []
+  syntax:
+    content: protected object IgnoredParameterSentinel { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Protected ReadOnly Property IgnoredParameterSentinel As Object
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel*
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+  id: MaxKeySize
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  langs:
+  - csharp
+  - vb
+  name: MaxKeySize
+  nameWithType: CacheKeyBuilder.MaxKeySize
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: Gets the maximal number of characters in cache keys.
+  example: []
+  syntax:
+    content: public int MaxKeySize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxKeySize As Integer
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize*
+references:
+- uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+  commentId: T:Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+  parent: Metalama.Patterns.Caching.Formatters
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.html
+  name: ICacheKeyBuilder
+  nameWithType: ICacheKeyBuilder
+  fullName: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+  commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+  parent: Metalama.Patterns.Caching.Formatters
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.html
+  name: CacheKeyBuilderOptions
+  nameWithType: CacheKeyBuilderOptions
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+- uid: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func{Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions,Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder})
+  commentId: M:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func{Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions,Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder})
+  isExternal: true
+  href: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder.html#Metalama_Patterns_Caching_Building_ICachingServiceBuilder_WithKeyBuilder_System_Func_Flashtrace_Formatters_IFormatterRepository_Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder__
+  name: WithKeyBuilder(Func<IFormatterRepository, CacheKeyBuilderOptions, ICacheKeyBuilder>)
+  nameWithType: ICachingServiceBuilder.WithKeyBuilder(Func<IFormatterRepository, CacheKeyBuilderOptions, ICacheKeyBuilder>)
+  fullName: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func<Flashtrace.Formatters.IFormatterRepository, Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions, Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder>)
+  nameWithType.vb: ICachingServiceBuilder.WithKeyBuilder(Func(Of IFormatterRepository, CacheKeyBuilderOptions, ICacheKeyBuilder))
+  fullName.vb: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func(Of Flashtrace.Formatters.IFormatterRepository, Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions, Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder))
+  name.vb: WithKeyBuilder(Func(Of IFormatterRepository, CacheKeyBuilderOptions, ICacheKeyBuilder))
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func{Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions,Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder})
+    name: WithKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder.html#Metalama_Patterns_Caching_Building_ICachingServiceBuilder_WithKeyBuilder_System_Func_Flashtrace_Formatters_IFormatterRepository_Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder__
+  - name: (
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: Flashtrace.Formatters.IFormatterRepository
+    name: IFormatterRepository
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+    name: CacheKeyBuilderOptions
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+    name: ICacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func{Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions,Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder})
+    name: WithKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder.html#Metalama_Patterns_Caching_Building_ICachingServiceBuilder_WithKeyBuilder_System_Func_Flashtrace_Formatters_IFormatterRepository_Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder__
+  - name: (
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Flashtrace.Formatters.IFormatterRepository
+    name: IFormatterRepository
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+    name: CacheKeyBuilderOptions
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+    name: ICacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.html
+  - name: )
+  - name: )
+- uid: Metalama.Patterns.Caching.Formatters
+  commentId: N:Metalama.Patterns.Caching.Formatters
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching.Formatters
+  nameWithType: Metalama.Patterns.Caching.Formatters
+  fullName: Metalama.Patterns.Caching.Formatters
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Formatters
+    name: Formatters
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Formatters
+    name: Formatters
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<CacheKeyBuilder>(CacheKeyBuilder, Func<CacheKeyBuilder, IEnumerable<CacheKeyBuilder>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<CacheKeyBuilder>(CacheKeyBuilder, Func<CacheKeyBuilder, IEnumerable<CacheKeyBuilder>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Patterns.Caching.Formatters.CacheKeyBuilder>(Metalama.Patterns.Caching.Formatters.CacheKeyBuilder, System.Func<Metalama.Patterns.Caching.Formatters.CacheKeyBuilder, System.Collections.Generic.IEnumerable<Metalama.Patterns.Caching.Formatters.CacheKeyBuilder>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of CacheKeyBuilder)(CacheKeyBuilder, Func(Of CacheKeyBuilder, IEnumerable(Of CacheKeyBuilder)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Patterns.Caching.Formatters.CacheKeyBuilder)(Metalama.Patterns.Caching.Formatters.CacheKeyBuilder, System.Func(Of Metalama.Patterns.Caching.Formatters.CacheKeyBuilder, System.Collections.Generic.IEnumerable(Of Metalama.Patterns.Caching.Formatters.CacheKeyBuilder)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of CacheKeyBuilder)(CacheKeyBuilder, Func(Of CacheKeyBuilder, IEnumerable(Of CacheKeyBuilder)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Formatters.CacheKeyBuilder,System.Func{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Formatters.CacheKeyBuilder,System.Func{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Formatters.CacheKeyBuilder}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+    name: CacheKeyBuilder
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.html
+  name: CacheKeyBuilder
+  nameWithType: CacheKeyBuilder
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
+- uid: Flashtrace.Formatters.IFormatterRepository
+  commentId: T:Flashtrace.Formatters.IFormatterRepository
+  parent: Flashtrace.Formatters
+  isExternal: true
+  href: Flashtrace.Formatters.IFormatterRepository.html
+  name: IFormatterRepository
+  nameWithType: IFormatterRepository
+  fullName: Flashtrace.Formatters.IFormatterRepository
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.-ctor.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder__ctor_Flashtrace_Formatters_IFormatterRepository_Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_
+  name: CacheKeyBuilder
+  nameWithType: CacheKeyBuilder.CacheKeyBuilder
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CacheKeyBuilder
+  nameWithType.vb: CacheKeyBuilder.New
+  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.New
+  name.vb: New
+- uid: Flashtrace.Formatters
+  commentId: N:Flashtrace.Formatters
+  isExternal: true
+  href: Flashtrace.html
+  name: Flashtrace.Formatters
+  nameWithType: Flashtrace.Formatters
+  fullName: Flashtrace.Formatters
+  spec.csharp:
+  - uid: Flashtrace
+    name: Flashtrace
+    isExternal: true
+    href: Flashtrace.html
+  - name: .
+  - uid: Flashtrace.Formatters
+    name: Formatters
+    isExternal: true
+    href: Flashtrace.Formatters.html
+  spec.vb:
+  - uid: Flashtrace
+    name: Flashtrace
+    isExternal: true
+    href: Flashtrace.html
+  - name: .
+  - uid: Flashtrace.Formatters
+    name: Formatters
+    isExternal: true
+    href: Flashtrace.Formatters.html
+- uid: Metalama.Patterns.Caching.CachedMethodMetadata
+  commentId: T:Metalama.Patterns.Caching.CachedMethodMetadata
+  parent: Metalama.Patterns.Caching
+  isExternal: true
+  href: Metalama.Patterns.Caching.CachedMethodMetadata.html
+  name: CachedMethodMetadata
+  nameWithType: CachedMethodMetadata
+  fullName: Metalama.Patterns.Caching.CachedMethodMetadata
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
+  name: BuildMethodKey
+  nameWithType: CacheKeyBuilder.BuildMethodKey
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey
+- uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  commentId: M:Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+  parent: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
+  name: BuildMethodKey(CachedMethodMetadata, object, IList<object>)
+  nameWithType: ICacheKeyBuilder.BuildMethodKey(CachedMethodMetadata, object, IList<object>)
+  fullName: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata, object, System.Collections.Generic.IList<object>)
+  nameWithType.vb: ICacheKeyBuilder.BuildMethodKey(CachedMethodMetadata, Object, IList(Of Object))
+  fullName.vb: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata, Object, System.Collections.Generic.IList(Of Object))
+  name.vb: BuildMethodKey(CachedMethodMetadata, Object, IList(Of Object))
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+    name: BuildMethodKey
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
+  - name: (
+  - uid: Metalama.Patterns.Caching.CachedMethodMetadata
+    name: CachedMethodMetadata
+    isExternal: true
+    href: Metalama.Patterns.Caching.CachedMethodMetadata.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
+    name: BuildMethodKey
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
+  - name: (
+  - uid: Metalama.Patterns.Caching.CachedMethodMetadata
+    name: CachedMethodMetadata
+    isExternal: true
+    href: Metalama.Patterns.Caching.CachedMethodMetadata.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IList{System.Object}
+  commentId: T:System.Collections.Generic.IList{System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<object>
+  nameWithType: IList<object>
+  fullName: System.Collections.Generic.IList<object>
+  nameWithType.vb: IList(Of Object)
+  fullName.vb: System.Collections.Generic.IList(Of Object)
+  name.vb: IList(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Patterns.Caching
+  commentId: N:Metalama.Patterns.Caching
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching
+  nameWithType: Metalama.Patterns.Caching
+  fullName: Metalama.Patterns.Caching
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildDependencyKey_System_Object_
+  name: BuildDependencyKey
+  nameWithType: CacheKeyBuilder.BuildDependencyKey
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey
+- uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(System.Object)
+  commentId: M:Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(System.Object)
+  parent: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder_BuildDependencyKey_System_Object_
+  name: BuildDependencyKey(object)
+  nameWithType: ICacheKeyBuilder.BuildDependencyKey(object)
+  fullName: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(object)
+  nameWithType.vb: ICacheKeyBuilder.BuildDependencyKey(Object)
+  fullName.vb: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(Object)
+  name.vb: BuildDependencyKey(Object)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(System.Object)
+    name: BuildDependencyKey
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder_BuildDependencyKey_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey(System.Object)
+    name: BuildDependencyKey
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_ICacheKeyBuilder_BuildDependencyKey_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Flashtrace.Formatters.UnsafeStringBuilder
+  commentId: T:Flashtrace.Formatters.UnsafeStringBuilder
+  parent: Flashtrace.Formatters
+  isExternal: true
+  href: Flashtrace.Formatters.UnsafeStringBuilder.html
+  name: UnsafeStringBuilder
+  nameWithType: UnsafeStringBuilder
+  fullName: Flashtrace.Formatters.UnsafeStringBuilder
+- uid: System.Reflection.MethodInfo
+  commentId: T:System.Reflection.MethodInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: System.Reflection.MethodInfo
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_AppendMethod_Flashtrace_Formatters_UnsafeStringBuilder_System_Reflection_MethodInfo_
+  name: AppendMethod
+  nameWithType: CacheKeyBuilder.AppendMethod
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_AppendArgument_Flashtrace_Formatters_UnsafeStringBuilder_System_Type_System_Object_
+  name: AppendArgument
+  nameWithType: CacheKeyBuilder.AppendArgument
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_AppendType_Flashtrace_Formatters_UnsafeStringBuilder_System_Type_
+  name: AppendType
+  nameWithType: CacheKeyBuilder.AppendType
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_AppendObject_Flashtrace_Formatters_UnsafeStringBuilder_System_Object_
+  name: AppendObject
+  nameWithType: CacheKeyBuilder.AppendObject
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_Dispose
+  name: Dispose()
+  nameWithType: CacheKeyBuilder.Dispose()
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose()
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+    name: Dispose
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+    name: Dispose
+    isExternal: true
+    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_Dispose
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: CacheKeyBuilder.Dispose
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_Formatters
+  name: Formatters
+  nameWithType: CacheKeyBuilder.Formatters
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_IgnoredParameterSentinel
+  name: IgnoredParameterSentinel
+  nameWithType: CacheKeyBuilder.IgnoredParameterSentinel
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_MaxKeySize
+  name: MaxKeySize
+  nameWithType: CacheKeyBuilder.MaxKeySize
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+memberLayout: SeparatePages

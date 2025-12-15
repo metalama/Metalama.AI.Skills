@@ -1,0 +1,295 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Options.ApplyChangesAxis
+  commentId: T:Metalama.Framework.Options.ApplyChangesAxis
+  id: ApplyChangesAxis
+  parent: Metalama.Framework.Options
+  children:
+  - Metalama.Framework.Options.ApplyChangesAxis.Aspect
+  - Metalama.Framework.Options.ApplyChangesAxis.BaseDeclaration
+  - Metalama.Framework.Options.ApplyChangesAxis.ContainingDeclaration
+  - Metalama.Framework.Options.ApplyChangesAxis.SameDeclaration
+  - Metalama.Framework.Options.ApplyChangesAxis.TargetDeclaration
+  langs:
+  - csharp
+  - vb
+  name: ApplyChangesAxis
+  nameWithType: ApplyChangesAxis
+  fullName: Metalama.Framework.Options.ApplyChangesAxis
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Enumerates the axes along which two option layers can be merged by the <xref href="Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object%2cMetalama.Framework.Options.ApplyChangesContext%40)" data-throw-if-not-resolved="false"></xref> method.
+
+    Understanding these axes is important when customizing how options are inherited and merged across different declaration levels.
+  remarks: >-
+    <p>
+        When options are resolved for a declaration, Metalama merges options from multiple sources in a specific order. Each merging step
+        occurs along one of these axes, which determines the precedence and priority of the options being combined.
+        </p>
+    <p>
+        The general priority order (from lowest to highest precedence) is: default options, namespace options, base type/member options,
+        containing type options, and finally options on the target declaration itself. Options provided by aspects have the highest priority.
+        </p>
+    <p>
+        Aspect authors can disable inheritance along specific axes by using the <xref href="Metalama.Framework.Options.HierarchicalOptionsAttribute" data-throw-if-not-resolved="false"></xref> on their
+        option class.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum ApplyChangesAxis
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum ApplyChangesAxis
+  seealso:
+  - linkId: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+    commentId: M:Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+  - linkId: Metalama.Framework.Options.HierarchicalOptionsAttribute
+    commentId: T:Metalama.Framework.Options.HierarchicalOptionsAttribute
+  - linkType: HRef
+    linkId: '@configuration-custom-merge'
+    altText: '@configuration-custom-merge'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Options.ApplyChangesAxis.SameDeclaration
+  commentId: F:Metalama.Framework.Options.ApplyChangesAxis.SameDeclaration
+  id: SameDeclaration
+  parent: Metalama.Framework.Options.ApplyChangesAxis
+  langs:
+  - csharp
+  - vb
+  name: SameDeclaration
+  nameWithType: ApplyChangesAxis.SameDeclaration
+  fullName: Metalama.Framework.Options.ApplyChangesAxis.SameDeclaration
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Indicates that options from multiple sources (custom attributes, fabrics, aspects) are being merged for the same declaration.
+
+    This axis is used when combining options defined at the same declaration level before inheritance rules apply.
+  example: []
+  syntax:
+    content: SameDeclaration = 0
+    return:
+      type: Metalama.Framework.Options.ApplyChangesAxis
+- uid: Metalama.Framework.Options.ApplyChangesAxis.ContainingDeclaration
+  commentId: F:Metalama.Framework.Options.ApplyChangesAxis.ContainingDeclaration
+  id: ContainingDeclaration
+  parent: Metalama.Framework.Options.ApplyChangesAxis
+  langs:
+  - csharp
+  - vb
+  name: ContainingDeclaration
+  nameWithType: ApplyChangesAxis.ContainingDeclaration
+  fullName: Metalama.Framework.Options.ApplyChangesAxis.ContainingDeclaration
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Indicates that options from a containing declaration (such as a declaring type) are being applied to a nested declaration (such as a member).
+
+    This also applies when namespace-level options override default project options. For instance, type-level options on the declaring
+
+    type of an <code>override</code> method override method-level options inherited from the <code>base</code> method.
+  example: []
+  syntax:
+    content: ContainingDeclaration = 1
+    return:
+      type: Metalama.Framework.Options.ApplyChangesAxis
+- uid: Metalama.Framework.Options.ApplyChangesAxis.BaseDeclaration
+  commentId: F:Metalama.Framework.Options.ApplyChangesAxis.BaseDeclaration
+  id: BaseDeclaration
+  parent: Metalama.Framework.Options.ApplyChangesAxis
+  langs:
+  - csharp
+  - vb
+  name: BaseDeclaration
+  nameWithType: ApplyChangesAxis.BaseDeclaration
+  fullName: Metalama.Framework.Options.ApplyChangesAxis.BaseDeclaration
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Indicates that options from a base type or overridden member are being applied to a derived type or overriding member.
+
+    Options along this axis have lower priority than namespace-level options and default options from the base project.
+  example: []
+  syntax:
+    content: BaseDeclaration = 2
+    return:
+      type: Metalama.Framework.Options.ApplyChangesAxis
+- uid: Metalama.Framework.Options.ApplyChangesAxis.TargetDeclaration
+  commentId: F:Metalama.Framework.Options.ApplyChangesAxis.TargetDeclaration
+  id: TargetDeclaration
+  parent: Metalama.Framework.Options.ApplyChangesAxis
+  langs:
+  - csharp
+  - vb
+  name: TargetDeclaration
+  nameWithType: ApplyChangesAxis.TargetDeclaration
+  fullName: Metalama.Framework.Options.ApplyChangesAxis.TargetDeclaration
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Indicates that options directly applied to the target declaration are overriding options inherited from containing
+
+    declarations, base declarations, or default options. This axis represents the final application of declaration-specific options.
+  example: []
+  syntax:
+    content: TargetDeclaration = 3
+    return:
+      type: Metalama.Framework.Options.ApplyChangesAxis
+- uid: Metalama.Framework.Options.ApplyChangesAxis.Aspect
+  commentId: F:Metalama.Framework.Options.ApplyChangesAxis.Aspect
+  id: Aspect
+  parent: Metalama.Framework.Options.ApplyChangesAxis
+  langs:
+  - csharp
+  - vb
+  name: Aspect
+  nameWithType: ApplyChangesAxis.Aspect
+  fullName: Metalama.Framework.Options.ApplyChangesAxis.Aspect
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Indicates that options provided by an aspect instance (via <xref href="Metalama.Framework.Options.IHierarchicalOptionsProvider" data-throw-if-not-resolved="false"></xref>) are being applied.
+
+    Options along this axis have the highest priority and override all other options.
+  example: []
+  syntax:
+    content: Aspect = 4
+    return:
+      type: Metalama.Framework.Options.ApplyChangesAxis
+references:
+- uid: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IIncrementalObject
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalObject.ApplyChanges.html#Metalama_Framework_Options_IIncrementalObject_ApplyChanges_System_Object_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges(object, in ApplyChangesContext)
+  nameWithType: IIncrementalObject.ApplyChanges(object, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(object, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IIncrementalObject.ApplyChanges(Object, ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(Object, Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(Object, ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalObject.ApplyChanges.html#Metalama_Framework_Options_IIncrementalObject_ApplyChanges_System_Object_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalObject.ApplyChanges.html#Metalama_Framework_Options_IIncrementalObject_ApplyChanges_System_Object_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options.HierarchicalOptionsAttribute
+  commentId: T:Metalama.Framework.Options.HierarchicalOptionsAttribute
+  isExternal: true
+  href: Metalama.Framework.Options.HierarchicalOptionsAttribute.html
+  name: HierarchicalOptionsAttribute
+  nameWithType: HierarchicalOptionsAttribute
+  fullName: Metalama.Framework.Options.HierarchicalOptionsAttribute
+- uid: Metalama.Framework.Options
+  commentId: N:Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Options
+  nameWithType: Metalama.Framework.Options
+  fullName: Metalama.Framework.Options
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+- uid: Metalama.Framework.Options.IIncrementalObject
+  commentId: T:Metalama.Framework.Options.IIncrementalObject
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalObject.html
+  name: IIncrementalObject
+  nameWithType: IIncrementalObject
+  fullName: Metalama.Framework.Options.IIncrementalObject
+- uid: Metalama.Framework.Options.ApplyChangesAxis
+  commentId: T:Metalama.Framework.Options.ApplyChangesAxis
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.ApplyChangesAxis.html
+  name: ApplyChangesAxis
+  nameWithType: ApplyChangesAxis
+  fullName: Metalama.Framework.Options.ApplyChangesAxis
+- uid: Metalama.Framework.Options.IHierarchicalOptionsProvider
+  commentId: T:Metalama.Framework.Options.IHierarchicalOptionsProvider
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IHierarchicalOptionsProvider.html
+  name: IHierarchicalOptionsProvider
+  nameWithType: IHierarchicalOptionsProvider
+  fullName: Metalama.Framework.Options.IHierarchicalOptionsProvider
+memberLayout: SeparatePages

@@ -1,0 +1,1040 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  commentId: T:Metalama.Framework.Serialization.ReferenceTypeSerializer
+  id: ReferenceTypeSerializer
+  parent: Metalama.Framework.Serialization
+  children:
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer.#ctor
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert(System.Object,System.Type)
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject(System.Object,Metalama.Framework.Serialization.IArgumentsWriter,Metalama.Framework.Serialization.IArgumentsWriter)
+  langs:
+  - csharp
+  - vb
+  name: ReferenceTypeSerializer
+  nameWithType: ReferenceTypeSerializer
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Serialization
+  summary: Base class for serializers of reference types that use a two-phase deserialization process.
+  example: []
+  syntax:
+    content: 'public abstract class ReferenceTypeSerializer : ISerializer'
+    content.vb: Public MustInherit Class ReferenceTypeSerializer Implements ISerializer
+  seealso:
+  - linkId: Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+    commentId: T:Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+  - linkId: Metalama.Framework.Serialization.ValueTypeSerializer`1
+    commentId: T:Metalama.Framework.Serialization.ValueTypeSerializer`1
+  - linkId: Metalama.Framework.Serialization.ISerializer
+    commentId: T:Metalama.Framework.Serialization.ISerializer
+  - linkType: HRef
+    linkId: '@serialization'
+    altText: '@serialization'
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+  implements:
+  - Metalama.Framework.Serialization.ISerializer
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Serialization.ReferenceTypeSerializer.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Serialization.ReferenceTypeSerializer,System.Collections.Generic.IEnumerable{Metalama.Framework.Serialization.ReferenceTypeSerializer}},System.Boolean)
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  id: CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  langs:
+  - csharp
+  - vb
+  name: CreateInstance(Type, IArgumentsReader)
+  nameWithType: ReferenceTypeSerializer.CreateInstance(Type, IArgumentsReader)
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type, Metalama.Framework.Serialization.IArgumentsReader)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Serialization
+  summary: Creates an instance of the given type.
+  example: []
+  syntax:
+    content: public abstract object CreateInstance(Type type, IArgumentsReader constructorArguments)
+    parameters:
+    - id: type
+      type: System.Type
+      description: Type of the instance to be created.
+    - id: constructorArguments
+      type: Metalama.Framework.Serialization.IArgumentsReader
+      description: Gives access to arguments required to create the instance.
+    return:
+      type: System.Object
+      description: An instance of type <code class="paramref">type</code> initialized using <code class="paramref">constructorArguments</code>.
+    content.vb: Public MustOverride Function CreateInstance(type As Type, constructorArguments As IArgumentsReader) As Object
+  overload: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance*
+  implements:
+  - Metalama.Framework.Serialization.ISerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject(System.Object,Metalama.Framework.Serialization.IArgumentsWriter,Metalama.Framework.Serialization.IArgumentsWriter)
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject(System.Object,Metalama.Framework.Serialization.IArgumentsWriter,Metalama.Framework.Serialization.IArgumentsWriter)
+  id: SerializeObject(System.Object,Metalama.Framework.Serialization.IArgumentsWriter,Metalama.Framework.Serialization.IArgumentsWriter)
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  langs:
+  - csharp
+  - vb
+  name: SerializeObject(object, IArgumentsWriter, IArgumentsWriter)
+  nameWithType: ReferenceTypeSerializer.SerializeObject(object, IArgumentsWriter, IArgumentsWriter)
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject(object, Metalama.Framework.Serialization.IArgumentsWriter, Metalama.Framework.Serialization.IArgumentsWriter)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Serialization
+  summary: Serializes an object.
+  example: []
+  syntax:
+    content: public abstract void SerializeObject(object obj, IArgumentsWriter constructorArguments, IArgumentsWriter initializationArguments)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to serialize.
+    - id: constructorArguments
+      type: Metalama.Framework.Serialization.IArgumentsWriter
+      description: Gives access to arguments that will be passed to the <xref href="Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type%2cMetalama.Framework.Serialization.IArgumentsReader)" data-throw-if-not-resolved="false"></xref> method during deserialization.
+    - id: initializationArguments
+      type: Metalama.Framework.Serialization.IArgumentsWriter
+      description: Gives access to arguments that will be passed to the <xref href="Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object%2cMetalama.Framework.Serialization.IArgumentsReader)" data-throw-if-not-resolved="false"></xref> method during deserialization.
+    content.vb: Public MustOverride Sub SerializeObject(obj As Object, constructorArguments As IArgumentsWriter, initializationArguments As IArgumentsWriter)
+  overload: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject*
+  nameWithType.vb: ReferenceTypeSerializer.SerializeObject(Object, IArgumentsWriter, IArgumentsWriter)
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject(Object, Metalama.Framework.Serialization.IArgumentsWriter, Metalama.Framework.Serialization.IArgumentsWriter)
+  name.vb: SerializeObject(Object, IArgumentsWriter, IArgumentsWriter)
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+  id: DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  langs:
+  - csharp
+  - vb
+  name: DeserializeFields(object, IArgumentsReader)
+  nameWithType: ReferenceTypeSerializer.DeserializeFields(object, IArgumentsReader)
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(object, Metalama.Framework.Serialization.IArgumentsReader)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Serialization
+  summary: Completes the second phase of deserialization by setting fields and other properties.
+  example: []
+  syntax:
+    content: public abstract void DeserializeFields(object obj, IArgumentsReader initializationArguments)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object being deserialized.
+    - id: initializationArguments
+      type: Metalama.Framework.Serialization.IArgumentsReader
+      description: Gives access to field values.
+    content.vb: Public MustOverride Sub DeserializeFields(obj As Object, initializationArguments As IArgumentsReader)
+  overload: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields*
+  nameWithType.vb: ReferenceTypeSerializer.DeserializeFields(Object, IArgumentsReader)
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(Object, Metalama.Framework.Serialization.IArgumentsReader)
+  name.vb: DeserializeFields(Object, IArgumentsReader)
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert(System.Object,System.Type)
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert(System.Object,System.Type)
+  id: Convert(System.Object,System.Type)
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  langs:
+  - csharp
+  - vb
+  name: Convert(object, Type)
+  nameWithType: ReferenceTypeSerializer.Convert(object, Type)
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert(object, System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Serialization
+  summary: Converts a deserialized value to a target type.
+  example: []
+  syntax:
+    content: public virtual object Convert(object value, Type targetType)
+    parameters:
+    - id: value
+      type: System.Object
+      description: The value to convert.
+    - id: targetType
+      type: System.Type
+      description: The target type to convert to.
+    return:
+      type: System.Object
+      description: The converted value.
+    content.vb: Public Overridable Function Convert(value As Object, targetType As Type) As Object
+  overload: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert*
+  implements:
+  - Metalama.Framework.Serialization.ISerializer.Convert(System.Object,System.Type)
+  nameWithType.vb: ReferenceTypeSerializer.Convert(Object, Type)
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert(Object, System.Type)
+  name.vb: Convert(Object, Type)
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.#ctor
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.#ctor
+  id: '#ctor'
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  langs:
+  - csharp
+  - vb
+  name: ReferenceTypeSerializer()
+  nameWithType: ReferenceTypeSerializer.ReferenceTypeSerializer()
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.ReferenceTypeSerializer()
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Serialization
+  syntax:
+    content: protected ReferenceTypeSerializer()
+    content.vb: Protected Sub New()
+  overload: Metalama.Framework.Serialization.ReferenceTypeSerializer.#ctor*
+  nameWithType.vb: ReferenceTypeSerializer.New()
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer.New()
+  name.vb: New()
+references:
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+  commentId: T:Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer-1.html
+  name: ReferenceTypeSerializer<T>
+  nameWithType: ReferenceTypeSerializer<T>
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer<T>
+  nameWithType.vb: ReferenceTypeSerializer(Of T)
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer(Of T)
+  name.vb: ReferenceTypeSerializer(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer`1
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Serialization.ValueTypeSerializer`1
+  commentId: T:Metalama.Framework.Serialization.ValueTypeSerializer`1
+  isExternal: true
+  href: Metalama.Framework.Serialization.ValueTypeSerializer-1.html
+  name: ValueTypeSerializer<T>
+  nameWithType: ValueTypeSerializer<T>
+  fullName: Metalama.Framework.Serialization.ValueTypeSerializer<T>
+  nameWithType.vb: ValueTypeSerializer(Of T)
+  fullName.vb: Metalama.Framework.Serialization.ValueTypeSerializer(Of T)
+  name.vb: ValueTypeSerializer(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Serialization.ValueTypeSerializer`1
+    name: ValueTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ValueTypeSerializer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Serialization.ValueTypeSerializer`1
+    name: ValueTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ValueTypeSerializer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Serialization.ISerializer
+  commentId: T:Metalama.Framework.Serialization.ISerializer
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.ISerializer.html
+  name: ISerializer
+  nameWithType: ISerializer
+  fullName: Metalama.Framework.Serialization.ISerializer
+- uid: Metalama.Framework.Serialization
+  commentId: N:Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Serialization
+  nameWithType: Metalama.Framework.Serialization
+  fullName: Metalama.Framework.Serialization
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Serialization.ReferenceTypeSerializer,System.Collections.Generic.IEnumerable{Metalama.Framework.Serialization.ReferenceTypeSerializer}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<ReferenceTypeSerializer>(ReferenceTypeSerializer, Func<ReferenceTypeSerializer, IEnumerable<ReferenceTypeSerializer>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<ReferenceTypeSerializer>(ReferenceTypeSerializer, Func<ReferenceTypeSerializer, IEnumerable<ReferenceTypeSerializer>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Serialization.ReferenceTypeSerializer>(Metalama.Framework.Serialization.ReferenceTypeSerializer, System.Func<Metalama.Framework.Serialization.ReferenceTypeSerializer, System.Collections.Generic.IEnumerable<Metalama.Framework.Serialization.ReferenceTypeSerializer>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of ReferenceTypeSerializer)(ReferenceTypeSerializer, Func(Of ReferenceTypeSerializer, IEnumerable(Of ReferenceTypeSerializer)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Serialization.ReferenceTypeSerializer)(Metalama.Framework.Serialization.ReferenceTypeSerializer, System.Func(Of Metalama.Framework.Serialization.ReferenceTypeSerializer, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Serialization.ReferenceTypeSerializer)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of ReferenceTypeSerializer)(ReferenceTypeSerializer, Func(Of ReferenceTypeSerializer, IEnumerable(Of ReferenceTypeSerializer)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Serialization.ReferenceTypeSerializer,System.Func{Metalama.Framework.Serialization.ReferenceTypeSerializer,System.Collections.Generic.IEnumerable{Metalama.Framework.Serialization.ReferenceTypeSerializer}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Serialization.ReferenceTypeSerializer,System.Func{Metalama.Framework.Serialization.ReferenceTypeSerializer,System.Collections.Generic.IEnumerable{Metalama.Framework.Serialization.ReferenceTypeSerializer}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+    name: ReferenceTypeSerializer
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance*
+  commentId: Overload:Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  name: CreateInstance
+  nameWithType: ReferenceTypeSerializer.CreateInstance
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance
+- uid: Metalama.Framework.Serialization.ISerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  commentId: M:Metalama.Framework.Serialization.ISerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  parent: Metalama.Framework.Serialization.ISerializer
+  isExternal: true
+  href: Metalama.Framework.Serialization.ISerializer.CreateInstance.html#Metalama_Framework_Serialization_ISerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  name: CreateInstance(Type, IArgumentsReader)
+  nameWithType: ISerializer.CreateInstance(Type, IArgumentsReader)
+  fullName: Metalama.Framework.Serialization.ISerializer.CreateInstance(System.Type, Metalama.Framework.Serialization.IArgumentsReader)
+  spec.csharp:
+  - uid: Metalama.Framework.Serialization.ISerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+    name: CreateInstance
+    isExternal: true
+    href: Metalama.Framework.Serialization.ISerializer.CreateInstance.html#Metalama_Framework_Serialization_ISerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Serialization.IArgumentsReader
+    name: IArgumentsReader
+    isExternal: true
+    href: Metalama.Framework.Serialization.IArgumentsReader.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Serialization.ISerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+    name: CreateInstance
+    isExternal: true
+    href: Metalama.Framework.Serialization.ISerializer.CreateInstance.html#Metalama_Framework_Serialization_ISerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Serialization.IArgumentsReader
+    name: IArgumentsReader
+    isExternal: true
+    href: Metalama.Framework.Serialization.IArgumentsReader.html
+  - name: )
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Metalama.Framework.Serialization.IArgumentsReader
+  commentId: T:Metalama.Framework.Serialization.IArgumentsReader
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.IArgumentsReader.html
+  name: IArgumentsReader
+  nameWithType: IArgumentsReader
+  fullName: Metalama.Framework.Serialization.IArgumentsReader
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  name: CreateInstance(Type, IArgumentsReader)
+  nameWithType: ReferenceTypeSerializer.CreateInstance(Type, IArgumentsReader)
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type, Metalama.Framework.Serialization.IArgumentsReader)
+  spec.csharp:
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+    name: CreateInstance
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Serialization.IArgumentsReader
+    name: IArgumentsReader
+    isExternal: true
+    href: Metalama.Framework.Serialization.IArgumentsReader.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance(System.Type,Metalama.Framework.Serialization.IArgumentsReader)
+    name: CreateInstance
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.CreateInstance.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_CreateInstance_System_Type_Metalama_Framework_Serialization_IArgumentsReader_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Serialization.IArgumentsReader
+    name: IArgumentsReader
+    isExternal: true
+    href: Metalama.Framework.Serialization.IArgumentsReader.html
+  - name: )
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+  commentId: M:Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+  parent: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_DeserializeFields_System_Object_Metalama_Framework_Serialization_IArgumentsReader_
+  name: DeserializeFields(object, IArgumentsReader)
+  nameWithType: ReferenceTypeSerializer.DeserializeFields(object, IArgumentsReader)
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(object, Metalama.Framework.Serialization.IArgumentsReader)
+  nameWithType.vb: ReferenceTypeSerializer.DeserializeFields(Object, IArgumentsReader)
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(Object, Metalama.Framework.Serialization.IArgumentsReader)
+  name.vb: DeserializeFields(Object, IArgumentsReader)
+  spec.csharp:
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+    name: DeserializeFields
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_DeserializeFields_System_Object_Metalama_Framework_Serialization_IArgumentsReader_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Serialization.IArgumentsReader
+    name: IArgumentsReader
+    isExternal: true
+    href: Metalama.Framework.Serialization.IArgumentsReader.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields(System.Object,Metalama.Framework.Serialization.IArgumentsReader)
+    name: DeserializeFields
+    isExternal: true
+    href: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_DeserializeFields_System_Object_Metalama_Framework_Serialization_IArgumentsReader_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Serialization.IArgumentsReader
+    name: IArgumentsReader
+    isExternal: true
+    href: Metalama.Framework.Serialization.IArgumentsReader.html
+  - name: )
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject*
+  commentId: Overload:Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_SerializeObject_System_Object_Metalama_Framework_Serialization_IArgumentsWriter_Metalama_Framework_Serialization_IArgumentsWriter_
+  name: SerializeObject
+  nameWithType: ReferenceTypeSerializer.SerializeObject
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.SerializeObject
+- uid: Metalama.Framework.Serialization.IArgumentsWriter
+  commentId: T:Metalama.Framework.Serialization.IArgumentsWriter
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.IArgumentsWriter.html
+  name: IArgumentsWriter
+  nameWithType: IArgumentsWriter
+  fullName: Metalama.Framework.Serialization.IArgumentsWriter
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer
+  commentId: T:Metalama.Framework.Serialization.ReferenceTypeSerializer
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.html
+  name: ReferenceTypeSerializer
+  nameWithType: ReferenceTypeSerializer
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields*
+  commentId: Overload:Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_DeserializeFields_System_Object_Metalama_Framework_Serialization_IArgumentsReader_
+  name: DeserializeFields
+  nameWithType: ReferenceTypeSerializer.DeserializeFields
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.DeserializeFields
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert*
+  commentId: Overload:Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert.html#Metalama_Framework_Serialization_ReferenceTypeSerializer_Convert_System_Object_System_Type_
+  name: Convert
+  nameWithType: ReferenceTypeSerializer.Convert
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.Convert
+- uid: Metalama.Framework.Serialization.ISerializer.Convert(System.Object,System.Type)
+  commentId: M:Metalama.Framework.Serialization.ISerializer.Convert(System.Object,System.Type)
+  parent: Metalama.Framework.Serialization.ISerializer
+  isExternal: true
+  href: Metalama.Framework.Serialization.ISerializer.Convert.html#Metalama_Framework_Serialization_ISerializer_Convert_System_Object_System_Type_
+  name: Convert(object, Type)
+  nameWithType: ISerializer.Convert(object, Type)
+  fullName: Metalama.Framework.Serialization.ISerializer.Convert(object, System.Type)
+  nameWithType.vb: ISerializer.Convert(Object, Type)
+  fullName.vb: Metalama.Framework.Serialization.ISerializer.Convert(Object, System.Type)
+  name.vb: Convert(Object, Type)
+  spec.csharp:
+  - uid: Metalama.Framework.Serialization.ISerializer.Convert(System.Object,System.Type)
+    name: Convert
+    isExternal: true
+    href: Metalama.Framework.Serialization.ISerializer.Convert.html#Metalama_Framework_Serialization_ISerializer_Convert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Serialization.ISerializer.Convert(System.Object,System.Type)
+    name: Convert
+    isExternal: true
+    href: Metalama.Framework.Serialization.ISerializer.Convert.html#Metalama_Framework_Serialization_ISerializer_Convert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Metalama.Framework.Serialization.ReferenceTypeSerializer.#ctor*
+  commentId: Overload:Metalama.Framework.Serialization.ReferenceTypeSerializer.#ctor
+  isExternal: true
+  href: Metalama.Framework.Serialization.ReferenceTypeSerializer.-ctor.html#Metalama_Framework_Serialization_ReferenceTypeSerializer__ctor
+  name: ReferenceTypeSerializer
+  nameWithType: ReferenceTypeSerializer.ReferenceTypeSerializer
+  fullName: Metalama.Framework.Serialization.ReferenceTypeSerializer.ReferenceTypeSerializer
+  nameWithType.vb: ReferenceTypeSerializer.New
+  fullName.vb: Metalama.Framework.Serialization.ReferenceTypeSerializer.New
+  name.vb: New
+memberLayout: SeparatePages

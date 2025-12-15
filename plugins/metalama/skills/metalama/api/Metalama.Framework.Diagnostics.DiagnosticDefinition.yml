@@ -1,0 +1,1109 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+  commentId: T:Metalama.Framework.Diagnostics.DiagnosticDefinition
+  id: DiagnosticDefinition
+  parent: Metalama.Framework.Diagnostics
+  children:
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String)
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  langs:
+  - csharp
+  - vb
+  name: DiagnosticDefinition
+  nameWithType: DiagnosticDefinition
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Defines a diagnostic that does not accept any parameters. For diagnostics with parameters, use <xref href="Metalama.Framework.Diagnostics.DiagnosticDefinition%601" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+         Diagnostic definitions must be declared as static fields in compile-time classes (such as aspect classes,
+         fabric classes, or other compile-time helper classes) and include a unique ID, severity level, and message
+         format string. The aspect framework requires diagnostics to be defined this way to ensure they can be
+         properly detected by static analysis of the code.
+         </p>
+    <p>
+         This class implements both <xref href="Metalama.Framework.Diagnostics.IDiagnosticDefinition" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Diagnostics.IDiagnostic" data-throw-if-not-resolved="false"></xref>, which means
+         instances can be used directly with <xref href="Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report(Metalama.Framework.Diagnostics.IDiagnostic)" data-throw-if-not-resolved="false"></xref> without needing
+         to call <code>WithArguments</code>.
+         </p>
+  example:
+  - >-
+    <pre><code class="lang-csharp">private static readonly DiagnosticDefinition _missingFieldError = new(
+        "MY001",
+        Severity.Error,
+        "The type must have a field named '_logger'.");
+
+    // In BuildAspect:
+
+    builder.Diagnostics.Report(_missingFieldError);</code></pre>
+  syntax:
+    content: 'public sealed class DiagnosticDefinition : DiagnosticDefinition<None>, IDiagnosticDefinition, IDiagnostic'
+    content.vb: Public NotInheritable Class DiagnosticDefinition Inherits DiagnosticDefinition(Of None) Implements IDiagnosticDefinition, IDiagnostic
+  seealso:
+  - linkId: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+    commentId: T:Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+  - linkId: Metalama.Framework.Diagnostics.IDiagnosticDefinition
+    commentId: T:Metalama.Framework.Diagnostics.IDiagnosticDefinition
+  - linkId: Metalama.Framework.Diagnostics.IDiagnostic
+    commentId: T:Metalama.Framework.Diagnostics.IDiagnostic
+  - linkId: Metalama.Framework.Diagnostics.Severity
+    commentId: T:Metalama.Framework.Diagnostics.Severity
+  - linkType: HRef
+    linkId: '@diagnostics'
+    altText: '@diagnostics'
+  inheritance:
+  - System.Object
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  implements:
+  - Metalama.Framework.Diagnostics.IDiagnosticDefinition
+  - Metalama.Framework.Diagnostics.IDiagnostic
+  inheritedMembers:
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.WithArguments(Metalama.Framework.None)
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.ToString
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Severity
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Id
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.MessageFormat
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Category
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Title
+  - System.Object.GetType
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Diagnostics.DiagnosticDefinition,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.DiagnosticDefinition}},System.Boolean)
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String)
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String)
+  id: '#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String)'
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition
+  langs:
+  - csharp
+  - vb
+  name: DiagnosticDefinition(string, Severity, string, string?, string?)
+  nameWithType: DiagnosticDefinition.DiagnosticDefinition(string, Severity, string, string?, string?)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition.DiagnosticDefinition(string, Metalama.Framework.Diagnostics.Severity, string, string?, string?)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  syntax:
+    content: public DiagnosticDefinition(string id, Severity severity, string messageFormat, string? title = null, string? category = null)
+    parameters:
+    - id: id
+      type: System.String
+    - id: severity
+      type: Metalama.Framework.Diagnostics.Severity
+    - id: messageFormat
+      type: System.String
+    - id: title
+      type: System.String
+    - id: category
+      type: System.String
+    content.vb: Public Sub New(id As String, severity As Severity, messageFormat As String, title As String = Nothing, category As String = Nothing)
+  overload: Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor*
+  nameWithType.vb: DiagnosticDefinition.New(String, Severity, String, String, String)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition.New(String, Metalama.Framework.Diagnostics.Severity, String, String, String)
+  name.vb: New(String, Severity, String, String, String)
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  id: WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition
+  langs:
+  - csharp
+  - vb
+  name: WithExtensions(ImmutableArray<IDiagnosticExtension>)
+  nameWithType: DiagnosticDefinition.WithExtensions(ImmutableArray<IDiagnosticExtension>)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray<Metalama.Framework.Diagnostics.IDiagnosticExtension>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  example: []
+  syntax:
+    content: public IDiagnostic WithExtensions(ImmutableArray<IDiagnosticExtension> extensions)
+    parameters:
+    - id: extensions
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension}
+    return:
+      type: Metalama.Framework.Diagnostics.IDiagnostic
+    content.vb: Public Function WithExtensions(extensions As ImmutableArray(Of IDiagnosticExtension)) As IDiagnostic
+  overload: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions*
+  implements:
+  - Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  nameWithType.vb: DiagnosticDefinition.WithExtensions(ImmutableArray(Of IDiagnosticExtension))
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Diagnostics.IDiagnosticExtension))
+  name.vb: WithExtensions(ImmutableArray(Of IDiagnosticExtension))
+references:
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+  commentId: T:Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.html
+  name: DiagnosticDefinition<T>
+  nameWithType: DiagnosticDefinition<T>
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>
+  nameWithType.vb: DiagnosticDefinition(Of T)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T)
+  name.vb: DiagnosticDefinition(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Diagnostics.IDiagnosticDefinition
+  commentId: T:Metalama.Framework.Diagnostics.IDiagnosticDefinition
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.IDiagnosticDefinition.html
+  name: IDiagnosticDefinition
+  nameWithType: IDiagnosticDefinition
+  fullName: Metalama.Framework.Diagnostics.IDiagnosticDefinition
+- uid: Metalama.Framework.Diagnostics.IDiagnostic
+  commentId: T:Metalama.Framework.Diagnostics.IDiagnostic
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  name: IDiagnostic
+  nameWithType: IDiagnostic
+  fullName: Metalama.Framework.Diagnostics.IDiagnostic
+- uid: Metalama.Framework.Diagnostics.Severity
+  commentId: T:Metalama.Framework.Diagnostics.Severity
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.Severity.html
+  name: Severity
+  nameWithType: Severity
+  fullName: Metalama.Framework.Diagnostics.Severity
+- uid: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report(Metalama.Framework.Diagnostics.IDiagnostic)
+  commentId: M:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report(Metalama.Framework.Diagnostics.IDiagnostic)
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report.html#Metalama_Framework_Diagnostics_ScopedDiagnosticSink_Report_Metalama_Framework_Diagnostics_IDiagnostic_
+  name: Report(IDiagnostic)
+  nameWithType: ScopedDiagnosticSink.Report(IDiagnostic)
+  fullName: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report(Metalama.Framework.Diagnostics.IDiagnostic)
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report(Metalama.Framework.Diagnostics.IDiagnostic)
+    name: Report
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report.html#Metalama_Framework_Diagnostics_ScopedDiagnosticSink_Report_Metalama_Framework_Diagnostics_IDiagnostic_
+  - name: (
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic
+    name: IDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report(Metalama.Framework.Diagnostics.IDiagnostic)
+    name: Report
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report.html#Metalama_Framework_Diagnostics_ScopedDiagnosticSink_Report_Metalama_Framework_Diagnostics_IDiagnostic_
+  - name: (
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic
+    name: IDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  - name: )
+- uid: Metalama.Framework.Diagnostics
+  commentId: N:Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Diagnostics
+  nameWithType: Metalama.Framework.Diagnostics
+  fullName: Metalama.Framework.Diagnostics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  commentId: T:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  parent: Metalama.Framework.Diagnostics
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.html
+  name: DiagnosticDefinition<None>
+  nameWithType: DiagnosticDefinition<None>
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>
+  nameWithType.vb: DiagnosticDefinition(Of None)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None)
+  name.vb: DiagnosticDefinition(Of None)
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.html
+  - name: <
+  - uid: Metalama.Framework.None
+    name: None
+    isExternal: true
+    href: Metalama.Framework.None.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.None
+    name: None
+    isExternal: true
+    href: Metalama.Framework.None.html
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.WithArguments(Metalama.Framework.None)
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.WithArguments(Metalama.Framework.None)
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.WithArguments.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_WithArguments__0_
+  name: WithArguments(None)
+  nameWithType: DiagnosticDefinition<None>.WithArguments(None)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.WithArguments(Metalama.Framework.None)
+  nameWithType.vb: DiagnosticDefinition(Of None).WithArguments(None)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).WithArguments(Metalama.Framework.None)
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.WithArguments(Metalama.Framework.None)
+    name: WithArguments
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.WithArguments.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_WithArguments__0_
+  - name: (
+  - uid: Metalama.Framework.None
+    name: None
+    isExternal: true
+    href: Metalama.Framework.None.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.WithArguments(Metalama.Framework.None)
+    name: WithArguments
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.WithArguments.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_WithArguments__0_
+  - name: (
+  - uid: Metalama.Framework.None
+    name: None
+    isExternal: true
+    href: Metalama.Framework.None.html
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.ToString
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.ToString
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.ToString
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.ToString.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_ToString
+  name: ToString()
+  nameWithType: DiagnosticDefinition<None>.ToString()
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.ToString()
+  nameWithType.vb: DiagnosticDefinition(Of None).ToString()
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).ToString()
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.ToString
+    name: ToString
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.ToString.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.ToString
+    name: ToString
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.ToString.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_ToString
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Severity
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Severity
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Severity
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Severity.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Severity
+  name: Severity
+  nameWithType: DiagnosticDefinition<None>.Severity
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.Severity
+  nameWithType.vb: DiagnosticDefinition(Of None).Severity
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).Severity
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Id
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Id
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Id
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Id.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Id
+  name: Id
+  nameWithType: DiagnosticDefinition<None>.Id
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.Id
+  nameWithType.vb: DiagnosticDefinition(Of None).Id
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).Id
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.MessageFormat
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.MessageFormat
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.MessageFormat
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.MessageFormat.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_MessageFormat
+  name: MessageFormat
+  nameWithType: DiagnosticDefinition<None>.MessageFormat
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.MessageFormat
+  nameWithType.vb: DiagnosticDefinition(Of None).MessageFormat
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).MessageFormat
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Category
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Category
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Category
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Category.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Category
+  name: Category
+  nameWithType: DiagnosticDefinition<None>.Category
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.Category
+  nameWithType.vb: DiagnosticDefinition(Of None).Category
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).Category
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Title
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Title
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}
+  definition: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Title
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Title.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Title
+  name: Title
+  nameWithType: DiagnosticDefinition<None>.Title
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<Metalama.Framework.None>.Title
+  nameWithType.vb: DiagnosticDefinition(Of None).Title
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of Metalama.Framework.None).Title
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Diagnostics.DiagnosticDefinition,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.DiagnosticDefinition}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<DiagnosticDefinition>(DiagnosticDefinition, Func<DiagnosticDefinition, IEnumerable<DiagnosticDefinition>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<DiagnosticDefinition>(DiagnosticDefinition, Func<DiagnosticDefinition, IEnumerable<DiagnosticDefinition>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Diagnostics.DiagnosticDefinition>(Metalama.Framework.Diagnostics.DiagnosticDefinition, System.Func<Metalama.Framework.Diagnostics.DiagnosticDefinition, System.Collections.Generic.IEnumerable<Metalama.Framework.Diagnostics.DiagnosticDefinition>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of DiagnosticDefinition)(DiagnosticDefinition, Func(Of DiagnosticDefinition, IEnumerable(Of DiagnosticDefinition)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Diagnostics.DiagnosticDefinition)(Metalama.Framework.Diagnostics.DiagnosticDefinition, System.Func(Of Metalama.Framework.Diagnostics.DiagnosticDefinition, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Diagnostics.DiagnosticDefinition)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of DiagnosticDefinition)(DiagnosticDefinition, Func(Of DiagnosticDefinition, IEnumerable(Of DiagnosticDefinition)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Diagnostics.DiagnosticDefinition,System.Func{Metalama.Framework.Diagnostics.DiagnosticDefinition,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.DiagnosticDefinition}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Diagnostics.DiagnosticDefinition,System.Func{Metalama.Framework.Diagnostics.DiagnosticDefinition,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.DiagnosticDefinition}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition
+    name: DiagnosticDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.WithArguments.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_WithArguments__0_
+  name: WithArguments(T)
+  nameWithType: DiagnosticDefinition<T>.WithArguments(T)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.WithArguments(T)
+  nameWithType.vb: DiagnosticDefinition(Of T).WithArguments(T)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).WithArguments(T)
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
+    name: WithArguments
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.WithArguments.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_WithArguments__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
+    name: WithArguments
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.WithArguments.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_WithArguments__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.ToString
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.ToString
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.ToString.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_ToString
+  name: ToString()
+  nameWithType: DiagnosticDefinition<T>.ToString()
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.ToString()
+  nameWithType.vb: DiagnosticDefinition(Of T).ToString()
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).ToString()
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.ToString
+    name: ToString
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.ToString.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.ToString
+    name: ToString
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.ToString.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_ToString
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Severity
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Severity
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Severity.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Severity
+  name: Severity
+  nameWithType: DiagnosticDefinition<T>.Severity
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.Severity
+  nameWithType.vb: DiagnosticDefinition(Of T).Severity
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).Severity
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Id
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Id
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Id.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Id
+  name: Id
+  nameWithType: DiagnosticDefinition<T>.Id
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.Id
+  nameWithType.vb: DiagnosticDefinition(Of T).Id
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).Id
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.MessageFormat
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.MessageFormat
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.MessageFormat.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_MessageFormat
+  name: MessageFormat
+  nameWithType: DiagnosticDefinition<T>.MessageFormat
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.MessageFormat
+  nameWithType.vb: DiagnosticDefinition(Of T).MessageFormat
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).MessageFormat
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Category
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Category
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Category.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Category
+  name: Category
+  nameWithType: DiagnosticDefinition<T>.Category
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.Category
+  nameWithType.vb: DiagnosticDefinition(Of T).Category
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).Category
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Title
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Title
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition-1.Title.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_1_Title
+  name: Title
+  nameWithType: DiagnosticDefinition<T>.Title
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.Title
+  nameWithType.vb: DiagnosticDefinition(Of T).Title
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).Title
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor*
+  commentId: Overload:Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition.-ctor.html#Metalama_Framework_Diagnostics_DiagnosticDefinition__ctor_System_String_Metalama_Framework_Diagnostics_Severity_System_String_System_String_System_String_
+  name: DiagnosticDefinition
+  nameWithType: DiagnosticDefinition.DiagnosticDefinition
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition.DiagnosticDefinition
+  nameWithType.vb: DiagnosticDefinition.New
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions*
+  commentId: Overload:Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions.html#Metalama_Framework_Diagnostics_DiagnosticDefinition_WithExtensions_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Diagnostics_IDiagnosticExtension__
+  name: WithExtensions
+  nameWithType: DiagnosticDefinition.WithExtensions
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions
+- uid: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  commentId: M:Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+  parent: Metalama.Framework.Diagnostics.IDiagnostic
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions.html#Metalama_Framework_Diagnostics_IDiagnostic_WithExtensions_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Diagnostics_IDiagnosticExtension__
+  name: WithExtensions(ImmutableArray<IDiagnosticExtension>)
+  nameWithType: IDiagnostic.WithExtensions(ImmutableArray<IDiagnosticExtension>)
+  fullName: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray<Metalama.Framework.Diagnostics.IDiagnosticExtension>)
+  nameWithType.vb: IDiagnostic.WithExtensions(ImmutableArray(Of IDiagnosticExtension))
+  fullName.vb: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Diagnostics.IDiagnosticExtension))
+  name.vb: WithExtensions(ImmutableArray(Of IDiagnosticExtension))
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+    name: WithExtensions
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions.html#Metalama_Framework_Diagnostics_IDiagnostic_WithExtensions_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Diagnostics_IDiagnosticExtension__
+  - name: (
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.IDiagnosticExtension
+    name: IDiagnosticExtension
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnosticExtension.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
+    name: WithExtensions
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.WithExtensions.html#Metalama_Framework_Diagnostics_IDiagnostic_WithExtensions_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Diagnostics_IDiagnosticExtension__
+  - name: (
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.IDiagnosticExtension
+    name: IDiagnosticExtension
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnosticExtension.html
+  - name: )
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension}
+  commentId: T:System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<IDiagnosticExtension>
+  nameWithType: ImmutableArray<IDiagnosticExtension>
+  fullName: System.Collections.Immutable.ImmutableArray<Metalama.Framework.Diagnostics.IDiagnosticExtension>
+  nameWithType.vb: ImmutableArray(Of IDiagnosticExtension)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Diagnostics.IDiagnosticExtension)
+  name.vb: ImmutableArray(Of IDiagnosticExtension)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.IDiagnosticExtension
+    name: IDiagnosticExtension
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnosticExtension.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.IDiagnosticExtension
+    name: IDiagnosticExtension
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnosticExtension.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+memberLayout: SeparatePages

@@ -1,0 +1,782 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  commentId: T:Metalama.Framework.Code.Invokers.IConstructorInvoker
+  id: IConstructorInvoker
+  parent: Metalama.Framework.Code.Invokers
+  children:
+  - Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  - Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  - Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Object[])
+  - Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  - Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+  langs:
+  - csharp
+  - vb
+  name: IConstructorInvoker
+  nameWithType: IConstructorInvoker
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Allows generating run-time code that invokes a constructor when you have its compile-time <xref href="Metalama.Framework.Code.IConstructor" data-throw-if-not-resolved="false"></xref> representation.
+  remarks: >-
+    <p>
+        Invokers are APIs that allow you to generate run-time code from compile-time declarations. When you have an <xref href="Metalama.Framework.Code.IConstructor" data-throw-if-not-resolved="false"></xref>
+        object (a compile-time representation of a constructor), you can use its invoker methods to create <xref href="Metalama.Framework.Code.IObjectCreationExpression" data-throw-if-not-resolved="false"></xref>
+        objects that represent object instantiation. These expressions can then be used in templates and will be expanded into actual C# code.
+        </p>
+    <p>
+        The <xref href="Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object%5b%5d)" data-throw-if-not-resolved="false"></xref> method returns a <code>dynamic</code> value that can be used directly in template code, while
+        <xref href="Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression" data-throw-if-not-resolved="false"></xref> and its overloads return an <xref href="Metalama.Framework.Code.IObjectCreationExpression" data-throw-if-not-resolved="false"></xref> for use in compile-time APIs.
+        </p>
+    <p>
+        Unlike other invokers, constructors do not support <code>WithObject</code> or <code>WithOptions</code> since they always create new instances
+        and do not have implementation layers or nullability concerns in the same way as member access.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public interface IConstructorInvoker
+    content.vb: >-
+      <CompileTime>
+
+      Public Interface IConstructorInvoker
+  seealso:
+  - linkId: Metalama.Framework.Code.IConstructor
+    commentId: T:Metalama.Framework.Code.IConstructor
+  - linkId: Metalama.Framework.Code.IExpression
+    commentId: T:Metalama.Framework.Code.IExpression
+  - linkId: Metalama.Framework.Code.IObjectCreationExpression
+    commentId: T:Metalama.Framework.Code.IObjectCreationExpression
+  - linkType: HRef
+    linkId: '@invokers'
+    altText: '@invokers'
+  - linkType: HRef
+    linkId: '@dynamic-typing'
+    altText: '@dynamic-typing'
+  extensionMethods:
+  - Metalama.Framework.Code.Invokers.IConstructorInvoker.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.Invokers.IConstructorInvoker,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.Invokers.IConstructorInvoker}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+  id: Invoke(System.Object[])
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  langs:
+  - csharp
+  - vb
+  name: Invoke(params dynamic?[])
+  nameWithType: IConstructorInvoker.Invoke(params dynamic?[])
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(params dynamic?[])
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Generates run-time code that invokes the current constructor with a given list of arguments.
+  example: []
+  syntax:
+    content: dynamic? Invoke(params dynamic?[] args)
+    parameters:
+    - id: args
+      type: dynamic[]
+      description: >-
+        A list of run-time C# expressions to be passed to the constructor. If the compile-time type
+                    of any expression is <code>dynamic</code>, it must be explicitly cast to <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: dynamic
+    content.vb: Function Invoke(ParamArray args As Object()) As Object
+  overload: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke*
+  nameWithType.vb: IConstructorInvoker.Invoke(ParamArray Object())
+  fullName.vb: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(ParamArray Object())
+  name.vb: Invoke(ParamArray Object())
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  id: Invoke(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  langs:
+  - csharp
+  - vb
+  name: Invoke(IEnumerable<IExpression>)
+  nameWithType: IConstructorInvoker.Invoke(IEnumerable<IExpression>)
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IExpression>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Generates run-time code that invokes the current constructor with a given list of argument expressions.
+  remarks: A compile-time dynamic object that represents the method invocation expression.
+  example: []
+  syntax:
+    content: dynamic? Invoke(IEnumerable<IExpression> args)
+    parameters:
+    - id: args
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression}
+      description: The list of compile-time <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> objects passed to the method as arguments.
+    return:
+      type: dynamic
+    content.vb: Function Invoke(args As IEnumerable(Of IExpression)) As Object
+  overload: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke*
+  nameWithType.vb: IConstructorInvoker.Invoke(IEnumerable(Of IExpression))
+  fullName.vb: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IExpression))
+  name.vb: Invoke(IEnumerable(Of IExpression))
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  id: CreateInvokeExpression
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  langs:
+  - csharp
+  - vb
+  name: CreateInvokeExpression()
+  nameWithType: IConstructorInvoker.CreateInvokeExpression()
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Creates an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> that represents the invocation of constructor without arguments.
+  example: []
+  syntax:
+    content: IObjectCreationExpression CreateInvokeExpression()
+    return:
+      type: Metalama.Framework.Code.IObjectCreationExpression
+      description: An <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Function CreateInvokeExpression() As IObjectCreationExpression
+  overload: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression*
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  id: CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  langs:
+  - csharp
+  - vb
+  name: CreateInvokeExpression(params IEnumerable<IExpression>)
+  nameWithType: IConstructorInvoker.CreateInvokeExpression(params IEnumerable<IExpression>)
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(params System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IExpression>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Creates an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> that represents the invocation of constructor, where arguments are represented by <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IObjectCreationExpression CreateInvokeExpression(params IEnumerable<IExpression> args)
+    parameters:
+    - id: args
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression}
+      description: The list of compile-time <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> objects passed to the method as arguments.
+    return:
+      type: Metalama.Framework.Code.IObjectCreationExpression
+      description: An <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> that represents the method invocation.
+    content.vb: Function CreateInvokeExpression(args As IEnumerable(Of IExpression)) As IObjectCreationExpression
+  overload: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression*
+  nameWithType.vb: IConstructorInvoker.CreateInvokeExpression(IEnumerable(Of IExpression))
+  fullName.vb: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IExpression))
+  name.vb: CreateInvokeExpression(IEnumerable(Of IExpression))
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Object[])
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(System.Object[])
+  id: CreateInvokeExpression(System.Object[])
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  langs:
+  - csharp
+  - vb
+  name: CreateInvokeExpression(params dynamic?[])
+  nameWithType: IConstructorInvoker.CreateInvokeExpression(params dynamic?[])
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(params dynamic?[])
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Creates an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> that represents the invocation of constructor, where arguments are passed as C# expressions.
+  example: []
+  syntax:
+    content: IObjectCreationExpression CreateInvokeExpression(params dynamic?[] args)
+    parameters:
+    - id: args
+      type: dynamic[]
+      description: >-
+        The list of run-time C# expressions passed to the method.  If the compile-time type
+                    of any expression is <code>dynamic</code>, it must be explicitly cast to <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: Metalama.Framework.Code.IObjectCreationExpression
+      description: An <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> that represents the method invocation.
+    content.vb: Function CreateInvokeExpression(ParamArray args As Object()) As IObjectCreationExpression
+  overload: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression*
+  nameWithType.vb: IConstructorInvoker.CreateInvokeExpression(ParamArray Object())
+  fullName.vb: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression(ParamArray Object())
+  name.vb: CreateInvokeExpression(ParamArray Object())
+references:
+- uid: Metalama.Framework.Code.IConstructor
+  commentId: T:Metalama.Framework.Code.IConstructor
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IConstructor.html
+  name: IConstructor
+  nameWithType: IConstructor
+  fullName: Metalama.Framework.Code.IConstructor
+- uid: Metalama.Framework.Code.IExpression
+  commentId: T:Metalama.Framework.Code.IExpression
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.html
+  name: IExpression
+  nameWithType: IExpression
+  fullName: Metalama.Framework.Code.IExpression
+- uid: Metalama.Framework.Code.IObjectCreationExpression
+  commentId: T:Metalama.Framework.Code.IObjectCreationExpression
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IObjectCreationExpression.html
+  name: IObjectCreationExpression
+  nameWithType: IObjectCreationExpression
+  fullName: Metalama.Framework.Code.IObjectCreationExpression
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_Invoke_System_Object___
+  name: Invoke(params dynamic[])
+  nameWithType: IConstructorInvoker.Invoke(params dynamic[])
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(params dynamic[])
+  nameWithType.vb: IConstructorInvoker.Invoke(ParamArray Object())
+  fullName.vb: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(ParamArray Object())
+  name.vb: Invoke(ParamArray Object())
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+    name: Invoke
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_Invoke_System_Object___
+  - name: (
+  - name: params
+  - name: " "
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke(System.Object[])
+    name: Invoke
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_Invoke_System_Object___
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - name: Object
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  name: CreateInvokeExpression()
+  nameWithType: IConstructorInvoker.CreateInvokeExpression()
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+    name: CreateInvokeExpression
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+    name: CreateInvokeExpression
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.Invokers
+  commentId: N:Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Invokers
+  nameWithType: Metalama.Framework.Code.Invokers
+  fullName: Metalama.Framework.Code.Invokers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Invokers
+    name: Invokers
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Invokers
+    name: Invokers
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.html
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.Invokers.IConstructorInvoker,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.Invokers.IConstructorInvoker}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IConstructorInvoker>(IConstructorInvoker, Func<IConstructorInvoker, IEnumerable<IConstructorInvoker>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IConstructorInvoker>(IConstructorInvoker, Func<IConstructorInvoker, IEnumerable<IConstructorInvoker>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Code.Invokers.IConstructorInvoker>(Metalama.Framework.Code.Invokers.IConstructorInvoker, System.Func<Metalama.Framework.Code.Invokers.IConstructorInvoker, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.Invokers.IConstructorInvoker>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IConstructorInvoker)(IConstructorInvoker, Func(Of IConstructorInvoker, IEnumerable(Of IConstructorInvoker)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Code.Invokers.IConstructorInvoker)(Metalama.Framework.Code.Invokers.IConstructorInvoker, System.Func(Of Metalama.Framework.Code.Invokers.IConstructorInvoker, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.Invokers.IConstructorInvoker)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IConstructorInvoker)(IConstructorInvoker, Func(Of IConstructorInvoker, IEnumerable(Of IConstructorInvoker)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.Invokers.IConstructorInvoker,System.Func{Metalama.Framework.Code.Invokers.IConstructorInvoker,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.Invokers.IConstructorInvoker}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.Invokers.IConstructorInvoker,System.Func{Metalama.Framework.Code.Invokers.IConstructorInvoker,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.Invokers.IConstructorInvoker}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    name: IConstructorInvoker
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  commentId: T:Metalama.Framework.Code.Invokers.IConstructorInvoker
+  parent: Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  name: IConstructorInvoker
+  nameWithType: IConstructorInvoker
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke*
+  commentId: Overload:Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_Invoke_System_Object___
+  name: Invoke
+  nameWithType: IConstructorInvoker.Invoke
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke
+- uid: dynamic[]
+  isExternal: true
+  name: dynamic[]
+  nameWithType: dynamic[]
+  fullName: dynamic[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: Object
+  - name: (
+  - name: )
+- uid: dynamic
+  commentId: T:System.Object
+  isExternal: true
+  name: dynamic
+  nameWithType: dynamic
+  fullName: dynamic
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IExpression>
+  nameWithType: IEnumerable<IExpression>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IExpression>
+  nameWithType.vb: IEnumerable(Of IExpression)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IExpression)
+  name.vb: IEnumerable(Of IExpression)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression*
+  commentId: Overload:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  name: CreateInvokeExpression
+  nameWithType: IConstructorInvoker.CreateInvokeExpression
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+memberLayout: SeparatePages

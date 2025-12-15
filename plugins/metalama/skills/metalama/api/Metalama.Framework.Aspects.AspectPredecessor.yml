@@ -1,0 +1,542 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.AspectPredecessor
+  commentId: T:Metalama.Framework.Aspects.AspectPredecessor
+  id: AspectPredecessor
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.AspectPredecessor.Instance
+  - Metalama.Framework.Aspects.AspectPredecessor.Kind
+  - Metalama.Framework.Aspects.AspectPredecessor.ToString
+  langs:
+  - csharp
+  - vb
+  name: AspectPredecessor
+  nameWithType: AspectPredecessor
+  fullName: Metalama.Framework.Aspects.AspectPredecessor
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Represents one link in the causality chain that led to an aspect being applied. Each predecessor describes
+
+    what caused an aspect instance to be created (e.g., a custom attribute, a fabric, a parent aspect, or inheritance).
+  remarks: >-
+    <p>
+        Aspect predecessors form a chain that tracks the provenance of aspect instances. This is primarily useful for:
+        </p>
+    <ul><li>
+          <b>Parent-child communication:</b> Child aspects can access parent aspect state via <xref href="Metalama.Framework.Aspects.IAspectPredecessor.Predecessors" data-throw-if-not-resolved="false"></xref></li><li>
+          <b>Introspection:</b> Analyzing aspect composition and dependencies programmatically using the <code>Metalama.Framework.Introspection</code> namespace</li></ul>
+    <p>
+        Use the <xref href="Metalama.Framework.Aspects.AspectPredecessor.Kind" data-throw-if-not-resolved="false"></xref> property to determine the type of predecessor, then cast <xref href="Metalama.Framework.Aspects.AspectPredecessor.Instance" data-throw-if-not-resolved="false"></xref> to the
+        appropriate type: <xref href="Metalama.Framework.Aspects.IAspectInstance" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Fabrics.IFabricInstance" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Framework.Code.IAttribute" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct AspectPredecessor
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure AspectPredecessor
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IAspectPredecessor
+    commentId: T:Metalama.Framework.Aspects.IAspectPredecessor
+  - linkId: Metalama.Framework.Aspects.AspectPredecessorKind
+    commentId: T:Metalama.Framework.Aspects.AspectPredecessorKind
+  - linkId: Metalama.Framework.Aspects.IAspectInstance
+    commentId: T:Metalama.Framework.Aspects.IAspectInstance
+  - linkId: Metalama.Framework.Aspects.IAspectState
+    commentId: T:Metalama.Framework.Aspects.IAspectState
+  - linkType: HRef
+    linkId: '@child-aspects'
+    altText: '@child-aspects'
+  - linkType: HRef
+    linkId: '@introspection'
+    altText: '@introspection'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.AspectPredecessor.ToString
+  commentId: M:Metalama.Framework.Aspects.AspectPredecessor.ToString
+  id: ToString
+  parent: Metalama.Framework.Aspects.AspectPredecessor
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: AspectPredecessor.ToString()
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.ToString()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Metalama.Framework.Aspects.AspectPredecessor.ToString*
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Kind
+  commentId: P:Metalama.Framework.Aspects.AspectPredecessor.Kind
+  id: Kind
+  parent: Metalama.Framework.Aspects.AspectPredecessor
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: AspectPredecessor.Kind
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Kind
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the kind of relationship represented by the current <xref href="Metalama.Framework.Aspects.AspectPredecessor" data-throw-if-not-resolved="false"></xref>, and the kind of object
+
+    present in the <xref href="Metalama.Framework.Aspects.AspectPredecessor.Instance" data-throw-if-not-resolved="false"></xref> property.
+  example: []
+  syntax:
+    content: public AspectPredecessorKind Kind { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Aspects.AspectPredecessorKind
+    content.vb: Public ReadOnly Property Kind As AspectPredecessorKind
+  overload: Metalama.Framework.Aspects.AspectPredecessor.Kind*
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Instance
+  commentId: P:Metalama.Framework.Aspects.AspectPredecessor.Instance
+  id: Instance
+  parent: Metalama.Framework.Aspects.AspectPredecessor
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: AspectPredecessor.Instance
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Instance
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the object that created the aspect instance. It can be an <xref href="Metalama.Framework.Aspects.IAspectInstance" data-throw-if-not-resolved="false"></xref>, an <xref href="Metalama.Framework.Fabrics.IFabricInstance" data-throw-if-not-resolved="false"></xref>, or an <xref href="Metalama.Framework.Code.IAttribute" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IAspectPredecessor Instance { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Aspects.IAspectPredecessor
+    content.vb: Public ReadOnly Property Instance As IAspectPredecessor
+  overload: Metalama.Framework.Aspects.AspectPredecessor.Instance*
+references:
+- uid: Metalama.Framework.Aspects.IAspectPredecessor
+  commentId: T:Metalama.Framework.Aspects.IAspectPredecessor
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  name: IAspectPredecessor
+  nameWithType: IAspectPredecessor
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor
+- uid: Metalama.Framework.Aspects.AspectPredecessorKind
+  commentId: T:Metalama.Framework.Aspects.AspectPredecessorKind
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessorKind.html
+  name: AspectPredecessorKind
+  nameWithType: AspectPredecessorKind
+  fullName: Metalama.Framework.Aspects.AspectPredecessorKind
+- uid: Metalama.Framework.Aspects.IAspectInstance
+  commentId: T:Metalama.Framework.Aspects.IAspectInstance
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectInstance.html
+  name: IAspectInstance
+  nameWithType: IAspectInstance
+  fullName: Metalama.Framework.Aspects.IAspectInstance
+- uid: Metalama.Framework.Aspects.IAspectState
+  commentId: T:Metalama.Framework.Aspects.IAspectState
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectState.html
+  name: IAspectState
+  nameWithType: IAspectState
+  fullName: Metalama.Framework.Aspects.IAspectState
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors.html#Metalama_Framework_Aspects_IAspectPredecessor_Predecessors
+  name: Predecessors
+  nameWithType: IAspectPredecessor.Predecessors
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Kind
+  commentId: P:Metalama.Framework.Aspects.AspectPredecessor.Kind
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.Kind.html#Metalama_Framework_Aspects_AspectPredecessor_Kind
+  name: Kind
+  nameWithType: AspectPredecessor.Kind
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Kind
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Instance
+  commentId: P:Metalama.Framework.Aspects.AspectPredecessor.Instance
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.Instance.html#Metalama_Framework_Aspects_AspectPredecessor_Instance
+  name: Instance
+  nameWithType: AspectPredecessor.Instance
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Instance
+- uid: Metalama.Framework.Fabrics.IFabricInstance
+  commentId: T:Metalama.Framework.Fabrics.IFabricInstance
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IFabricInstance.html
+  name: IFabricInstance
+  nameWithType: IFabricInstance
+  fullName: Metalama.Framework.Fabrics.IFabricInstance
+- uid: Metalama.Framework.Code.IAttribute
+  commentId: T:Metalama.Framework.Code.IAttribute
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Metalama.Framework.Code.IAttribute
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectPredecessor.ToString*
+  commentId: Overload:Metalama.Framework.Aspects.AspectPredecessor.ToString
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.ToString.html#Metalama_Framework_Aspects_AspectPredecessor_ToString
+  name: ToString
+  nameWithType: AspectPredecessor.ToString
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Aspects.AspectPredecessor
+  commentId: T:Metalama.Framework.Aspects.AspectPredecessor
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.html
+  name: AspectPredecessor
+  nameWithType: AspectPredecessor
+  fullName: Metalama.Framework.Aspects.AspectPredecessor
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Kind*
+  commentId: Overload:Metalama.Framework.Aspects.AspectPredecessor.Kind
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.Kind.html#Metalama_Framework_Aspects_AspectPredecessor_Kind
+  name: Kind
+  nameWithType: AspectPredecessor.Kind
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Kind
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Instance*
+  commentId: Overload:Metalama.Framework.Aspects.AspectPredecessor.Instance
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.Instance.html#Metalama_Framework_Aspects_AspectPredecessor_Instance
+  name: Instance
+  nameWithType: AspectPredecessor.Instance
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Instance
+memberLayout: SeparatePages

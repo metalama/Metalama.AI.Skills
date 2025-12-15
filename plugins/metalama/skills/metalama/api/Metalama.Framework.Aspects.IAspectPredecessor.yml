@@ -1,0 +1,855 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.IAspectPredecessor
+  commentId: T:Metalama.Framework.Aspects.IAspectPredecessor
+  id: IAspectPredecessor
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  - Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  - Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration
+  langs:
+  - csharp
+  - vb
+  name: IAspectPredecessor
+  nameWithType: IAspectPredecessor
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Base interface for objects that can cause aspects to be added to a compilation, such as aspect instances and fabric instances.
+
+    This interface tracks the chain of causality that led to an aspect being applied, accessible through the <xref href="Metalama.Framework.Aspects.IAspectPredecessor.Predecessors" data-throw-if-not-resolved="false"></xref> property.
+  remarks: >-
+    <p>
+        This interface is implemented by <xref href="Metalama.Framework.Aspects.IAspectInstance" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Fabrics.IFabricInstance" data-throw-if-not-resolved="false"></xref>, and <xref href="Metalama.Framework.Code.IAttribute" data-throw-if-not-resolved="false"></xref>,
+        establishing a unified model for tracking what caused aspects to be added to declarations.
+        </p>
+    <p>
+        The primary use case for predecessors when building aspects is to access the state of parent aspects through <xref href="Metalama.Framework.Aspects.IAspectState" data-throw-if-not-resolved="false"></xref>.
+        When a parent aspect creates child aspects, the child aspects can query their <xref href="Metalama.Framework.Aspects.IAspectPredecessor.Predecessors" data-throw-if-not-resolved="false"></xref> to find the parent aspect instance
+        and access its state, enabling communication and data sharing between parent and child aspects in the aspect composition hierarchy.
+        </p>
+    <p>
+        Predecessors also serve secondary purposes for debugging, introspection, and understanding aspect composition and provenance.
+        </p>
+    <p>
+        For example:
+        </p>
+    <ul><li>When a fabric adds an aspect to a type, that fabric instance becomes a predecessor of the aspect instance.</li><li>When an aspect creates child aspects, the parent aspect instance becomes a predecessor of the child aspect instances, allowing children to access parent state.</li><li>When a custom attribute that is also an aspect (e.g., a class implementing <xref href="Metalama.Framework.Aspects.IAspect" data-throw-if-not-resolved="false"></xref>) is applied to a declaration, the attribute becomes a predecessor.</li></ul>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IAspectPredecessor
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IAspectPredecessor
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IAspectInstance
+    commentId: T:Metalama.Framework.Aspects.IAspectInstance
+  - linkId: Metalama.Framework.Aspects.IAspectState
+    commentId: T:Metalama.Framework.Aspects.IAspectState
+  - linkId: Metalama.Framework.Fabrics.IFabricInstance
+    commentId: T:Metalama.Framework.Fabrics.IFabricInstance
+  - linkId: Metalama.Framework.Code.IAttribute
+    commentId: T:Metalama.Framework.Code.IAttribute
+  - linkType: HRef
+    linkId: '@child-aspects'
+    altText: '@child-aspects'
+  - linkType: HRef
+    linkId: '@introspection'
+    altText: '@introspection'
+  - linkType: HRef
+    linkId: '@same-type-multiple-instances'
+    altText: '@same-type-multiple-instances'
+  extensionMethods:
+  - Metalama.Framework.Aspects.IAspectPredecessor.Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots
+  - Metalama.Framework.Aspects.IAspectPredecessor.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.IAspectPredecessor,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectPredecessor}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  id: PredecessorDegree
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  langs:
+  - csharp
+  - vb
+  name: PredecessorDegree
+  nameWithType: IAspectPredecessor.PredecessorDegree
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the depth in the predecessor chain, indicating how many levels of indirection exist between
+
+    the root cause and this predecessor. A value of <code>0</code> means this is the root cause (e.g., a custom
+
+    attribute or fabric that directly applied the aspect).
+  remarks: >-
+    <p>
+        For example: If a fabric (degree 0) adds aspect A, which then adds child aspect B (degree 1),
+        which adds child aspect C (degree 2), then C's <xref href="Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree" data-throw-if-not-resolved="false"></xref> is 2.
+        </p>
+    <p>
+        This property is primarily used for debugging and introspection to understand the chain of causality.
+        </p>
+  example: []
+  syntax:
+    content: int PredecessorDegree { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property PredecessorDegree As Integer
+  overload: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree*
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration
+  id: TargetDeclaration
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  langs:
+  - csharp
+  - vb
+  name: TargetDeclaration
+  nameWithType: IAspectPredecessor.TargetDeclaration
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the declaration to which the aspect or fabric is applied.
+  example: []
+  syntax:
+    content: IRef<IDeclaration> TargetDeclaration { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IDeclaration}
+    content.vb: ReadOnly Property TargetDeclaration As IRef(Of IDeclaration)
+  overload: Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration*
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  id: Predecessors
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  langs:
+  - csharp
+  - vb
+  name: Predecessors
+  nameWithType: IAspectPredecessor.Predecessors
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the list of objects that have caused the current aspect instance (but not any instance in the <xref href="Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances" data-throw-if-not-resolved="false"></xref> list)
+
+    to be created. The ordering of this list is undetermined and should not be relied upon.
+  remarks: >-
+    <p>
+        An aspect can have multiple predecessors when it's applied through multiple mechanisms simultaneously
+        (e.g., both inherited from a base class and added by a fabric). The order of predecessors in this array
+        is implementation-defined and may vary between builds.
+        </p>
+    <p>
+        To find a specific predecessor type, iterate through the array and check each <xref href="Metalama.Framework.Aspects.AspectPredecessor.Kind" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: ImmutableArray<AspectPredecessor> Predecessors { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Aspects.AspectPredecessor}
+    content.vb: ReadOnly Property Predecessors As ImmutableArray(Of AspectPredecessor)
+  overload: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors*
+  seealso:
+  - linkType: HRef
+    linkId: '@child-aspects'
+    altText: '@child-aspects'
+references:
+- uid: Metalama.Framework.Aspects.IAspectInstance
+  commentId: T:Metalama.Framework.Aspects.IAspectInstance
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectInstance.html
+  name: IAspectInstance
+  nameWithType: IAspectInstance
+  fullName: Metalama.Framework.Aspects.IAspectInstance
+- uid: Metalama.Framework.Aspects.IAspectState
+  commentId: T:Metalama.Framework.Aspects.IAspectState
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectState.html
+  name: IAspectState
+  nameWithType: IAspectState
+  fullName: Metalama.Framework.Aspects.IAspectState
+- uid: Metalama.Framework.Fabrics.IFabricInstance
+  commentId: T:Metalama.Framework.Fabrics.IFabricInstance
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IFabricInstance.html
+  name: IFabricInstance
+  nameWithType: IFabricInstance
+  fullName: Metalama.Framework.Fabrics.IFabricInstance
+- uid: Metalama.Framework.Code.IAttribute
+  commentId: T:Metalama.Framework.Code.IAttribute
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Metalama.Framework.Code.IAttribute
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors.html#Metalama_Framework_Aspects_IAspectPredecessor_Predecessors
+  name: Predecessors
+  nameWithType: IAspectPredecessor.Predecessors
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+- uid: Metalama.Framework.Aspects.IAspect
+  commentId: T:Metalama.Framework.Aspects.IAspect
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect.html
+  name: IAspect
+  nameWithType: IAspect
+  fullName: Metalama.Framework.Aspects.IAspect
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots
+  commentId: M:Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+  parent: Metalama.Framework.Aspects.AspectPredecessorExtensions
+  definition: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+  href: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots.html#Metalama_Framework_Aspects_AspectPredecessorExtensions_GetRoots_Metalama_Framework_Aspects_IAspectPredecessor_
+  name: GetRoots(IAspectPredecessor)
+  nameWithType: AspectPredecessorExtensions.GetRoots(IAspectPredecessor)
+  fullName: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+    name: GetRoots
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots.html#Metalama_Framework_Aspects_AspectPredecessorExtensions_GetRoots_Metalama_Framework_Aspects_IAspectPredecessor_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+    name: GetRoots
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots.html#Metalama_Framework_Aspects_AspectPredecessorExtensions_GetRoots_Metalama_Framework_Aspects_IAspectPredecessor_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.IAspectPredecessor,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectPredecessor}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IAspectPredecessor>(IAspectPredecessor, Func<IAspectPredecessor, IEnumerable<IAspectPredecessor>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IAspectPredecessor>(IAspectPredecessor, Func<IAspectPredecessor, IEnumerable<IAspectPredecessor>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Aspects.IAspectPredecessor>(Metalama.Framework.Aspects.IAspectPredecessor, System.Func<Metalama.Framework.Aspects.IAspectPredecessor, System.Collections.Generic.IEnumerable<Metalama.Framework.Aspects.IAspectPredecessor>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IAspectPredecessor)(IAspectPredecessor, Func(Of IAspectPredecessor, IEnumerable(Of IAspectPredecessor)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Aspects.IAspectPredecessor)(Metalama.Framework.Aspects.IAspectPredecessor, System.Func(Of Metalama.Framework.Aspects.IAspectPredecessor, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Aspects.IAspectPredecessor)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IAspectPredecessor)(IAspectPredecessor, Func(Of IAspectPredecessor, IEnumerable(Of IAspectPredecessor)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.IAspectPredecessor,System.Func{Metalama.Framework.Aspects.IAspectPredecessor,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectPredecessor}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.IAspectPredecessor,System.Func{Metalama.Framework.Aspects.IAspectPredecessor,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IAspectPredecessor}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Aspects.IAspectPredecessor
+  commentId: T:Metalama.Framework.Aspects.IAspectPredecessor
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  name: IAspectPredecessor
+  nameWithType: IAspectPredecessor
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor
+- uid: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+  commentId: M:Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots.html#Metalama_Framework_Aspects_AspectPredecessorExtensions_GetRoots_Metalama_Framework_Aspects_IAspectPredecessor_
+  name: GetRoots(IAspectPredecessor)
+  nameWithType: AspectPredecessorExtensions.GetRoots(IAspectPredecessor)
+  fullName: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+    name: GetRoots
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots.html#Metalama_Framework_Aspects_AspectPredecessorExtensions_GetRoots_Metalama_Framework_Aspects_IAspectPredecessor_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots(Metalama.Framework.Aspects.IAspectPredecessor)
+    name: GetRoots
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectPredecessorExtensions.GetRoots.html#Metalama_Framework_Aspects_AspectPredecessorExtensions_GetRoots_Metalama_Framework_Aspects_IAspectPredecessor_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectPredecessor
+    name: IAspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectPredecessorExtensions
+  commentId: T:Metalama.Framework.Aspects.AspectPredecessorExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessorExtensions.html
+  name: AspectPredecessorExtensions
+  nameWithType: AspectPredecessorExtensions
+  fullName: Metalama.Framework.Aspects.AspectPredecessorExtensions
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree.html#Metalama_Framework_Aspects_IAspectPredecessor_PredecessorDegree
+  name: PredecessorDegree
+  nameWithType: IAspectPredecessor.PredecessorDegree
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree*
+  commentId: Overload:Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree.html#Metalama_Framework_Aspects_IAspectPredecessor_PredecessorDegree
+  name: PredecessorDegree
+  nameWithType: IAspectPredecessor.PredecessorDegree
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.PredecessorDegree
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration*
+  commentId: Overload:Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration.html#Metalama_Framework_Aspects_IAspectPredecessor_TargetDeclaration
+  name: TargetDeclaration
+  nameWithType: IAspectPredecessor.TargetDeclaration
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.TargetDeclaration
+- uid: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IDeclaration}
+  commentId: T:Metalama.Framework.Code.IRef{Metalama.Framework.Code.IDeclaration}
+  parent: Metalama.Framework.Code
+  definition: Metalama.Framework.Code.IRef`1
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<IDeclaration>
+  nameWithType: IRef<IDeclaration>
+  fullName: Metalama.Framework.Code.IRef<Metalama.Framework.Code.IDeclaration>
+  nameWithType.vb: IRef(Of IDeclaration)
+  fullName.vb: Metalama.Framework.Code.IRef(Of Metalama.Framework.Code.IDeclaration)
+  name.vb: IRef(Of IDeclaration)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+- uid: Metalama.Framework.Code.IRef`1
+  commentId: T:Metalama.Framework.Code.IRef`1
+  isExternal: true
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<T>
+  nameWithType: IRef<T>
+  fullName: Metalama.Framework.Code.IRef<T>
+  nameWithType.vb: IRef(Of T)
+  fullName.vb: Metalama.Framework.Code.IRef(Of T)
+  name.vb: IRef(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+  commentId: P:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances.html#Metalama_Framework_Aspects_IAspectInstance_SecondaryInstances
+  name: SecondaryInstances
+  nameWithType: IAspectInstance.SecondaryInstances
+  fullName: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+- uid: Metalama.Framework.Aspects.AspectPredecessor.Kind
+  commentId: P:Metalama.Framework.Aspects.AspectPredecessor.Kind
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectPredecessor.Kind.html#Metalama_Framework_Aspects_AspectPredecessor_Kind
+  name: Kind
+  nameWithType: AspectPredecessor.Kind
+  fullName: Metalama.Framework.Aspects.AspectPredecessor.Kind
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors*
+  commentId: Overload:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors.html#Metalama_Framework_Aspects_IAspectPredecessor_Predecessors
+  name: Predecessors
+  nameWithType: IAspectPredecessor.Predecessors
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+- uid: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Aspects.AspectPredecessor}
+  commentId: T:System.Collections.Immutable.ImmutableArray{Metalama.Framework.Aspects.AspectPredecessor}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<AspectPredecessor>
+  nameWithType: ImmutableArray<AspectPredecessor>
+  fullName: System.Collections.Immutable.ImmutableArray<Metalama.Framework.Aspects.AspectPredecessor>
+  nameWithType.vb: ImmutableArray(Of AspectPredecessor)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Aspects.AspectPredecessor)
+  name.vb: ImmutableArray(Of AspectPredecessor)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.AspectPredecessor
+    name: AspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectPredecessor.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.AspectPredecessor
+    name: AspectPredecessor
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectPredecessor.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+memberLayout: SeparatePages

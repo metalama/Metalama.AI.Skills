@@ -1,0 +1,1039 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  commentId: T:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  id: JsonCachingSerializer
+  parent: Metalama.Patterns.Caching.Serializers
+  children:
+  - Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.#ctor(System.Text.Json.JsonSerializerOptions)
+  - Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize(System.IO.BinaryReader)
+  - Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  - Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+  - Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+  langs:
+  - csharp
+  - vb
+  name: JsonCachingSerializer
+  nameWithType: JsonCachingSerializer
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  type: Class
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Serializers
+  summary: An implementation of <xref href="Metalama.Patterns.Caching.Serializers.ICachingSerializer" data-throw-if-not-resolved="false"></xref> based on <xref href="System.Text.Json.JsonSerializer" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>This serializer stores the assembly-qualified type name along with the JSON payload,
+
+    allowing for polymorphic deserialization of cached values.</p>
+
+    <p>To customize type name resolution (for example, for type forwarding scenarios),
+
+    override the <xref href="Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)" data-throw-if-not-resolved="false"></xref> methods.</p>
+  example: []
+  syntax:
+    content: 'public class JsonCachingSerializer : ICachingSerializer'
+    content.vb: Public Class JsonCachingSerializer Implements ICachingSerializer
+  seealso:
+  - linkId: Metalama.Patterns.Caching.Serializers.ICachingSerializer
+    commentId: T:Metalama.Patterns.Caching.Serializers.ICachingSerializer
+  inheritance:
+  - System.Object
+  implements:
+  - Metalama.Patterns.Caching.Serializers.ICachingSerializer
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer}},System.Boolean)
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.#ctor(System.Text.Json.JsonSerializerOptions)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.#ctor(System.Text.Json.JsonSerializerOptions)
+  id: '#ctor(System.Text.Json.JsonSerializerOptions)'
+  parent: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  langs:
+  - csharp
+  - vb
+  name: JsonCachingSerializer(JsonSerializerOptions?)
+  nameWithType: JsonCachingSerializer.JsonCachingSerializer(JsonSerializerOptions?)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.JsonCachingSerializer(System.Text.Json.JsonSerializerOptions?)
+  type: Constructor
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Serializers
+  summary: Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Serializers.JsonCachingSerializer" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public JsonCachingSerializer(JsonSerializerOptions? options = null)
+    parameters:
+    - id: options
+      type: System.Text.Json.JsonSerializerOptions
+      description: >-
+        Optional <xref href="System.Text.Json.JsonSerializerOptions" data-throw-if-not-resolved="false"></xref> to customize JSON serialization.
+                    If <code>null</code>, default options are used.
+    content.vb: Public Sub New(options As JsonSerializerOptions = Nothing)
+  overload: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.#ctor*
+  nameWithType.vb: JsonCachingSerializer.New(JsonSerializerOptions)
+  fullName.vb: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.New(System.Text.Json.JsonSerializerOptions)
+  name.vb: New(JsonSerializerOptions)
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+  id: Serialize(System.Object,System.IO.BinaryWriter)
+  parent: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  langs:
+  - csharp
+  - vb
+  name: Serialize(object?, BinaryWriter)
+  nameWithType: JsonCachingSerializer.Serialize(object?, BinaryWriter)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize(object?, System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Serializers
+  summary: Serializes an object into a byte array.
+  example: []
+  syntax:
+    content: public void Serialize(object? value, BinaryWriter writer)
+    parameters:
+    - id: value
+      type: System.Object
+      description: The object to serialize.
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ''
+    content.vb: Public Sub Serialize(value As Object, writer As BinaryWriter)
+  overload: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize*
+  implements:
+  - Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+  nameWithType.vb: JsonCachingSerializer.Serialize(Object, BinaryWriter)
+  fullName.vb: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize(Object, System.IO.BinaryWriter)
+  name.vb: Serialize(Object, BinaryWriter)
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  id: GetTypeName(System.Type)
+  parent: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  langs:
+  - csharp
+  - vb
+  name: GetTypeName(Type)
+  nameWithType: JsonCachingSerializer.GetTypeName(Type)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Serializers
+  summary: Gets the type name to store in the serialized data. Override to customize type name mapping.
+  example: []
+  syntax:
+    content: protected virtual string GetTypeName(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type to get the name for.
+    return:
+      type: System.String
+      description: The type name string to store. By default, returns the assembly-qualified name.
+    content.vb: Protected Overridable Function GetTypeName(type As Type) As String
+  overload: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName*
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+  id: ResolveTypeName(System.String)
+  parent: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  langs:
+  - csharp
+  - vb
+  name: ResolveTypeName(string)
+  nameWithType: JsonCachingSerializer.ResolveTypeName(string)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(string)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Serializers
+  summary: Resolves a type name from the serialized data back to a <xref href="System.Type" data-throw-if-not-resolved="false"></xref>. Override to customize type resolution.
+  example: []
+  syntax:
+    content: protected virtual Type ResolveTypeName(string assemblyQualifiedTypeName)
+    parameters:
+    - id: assemblyQualifiedTypeName
+      type: System.String
+      description: The type name from the serialized data.
+    return:
+      type: System.Type
+      description: The resolved <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Protected Overridable Function ResolveTypeName(assemblyQualifiedTypeName As String) As Type
+  overload: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName*
+  nameWithType.vb: JsonCachingSerializer.ResolveTypeName(String)
+  fullName.vb: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(String)
+  name.vb: ResolveTypeName(String)
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize(System.IO.BinaryReader)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize(System.IO.BinaryReader)
+  id: Deserialize(System.IO.BinaryReader)
+  parent: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  langs:
+  - csharp
+  - vb
+  name: Deserialize(BinaryReader)
+  nameWithType: JsonCachingSerializer.Deserialize(BinaryReader)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize(System.IO.BinaryReader)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Serializers
+  summary: Deserializes a byte array into an object.
+  example: []
+  syntax:
+    content: public object? Deserialize(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ''
+    return:
+      type: System.Object
+    content.vb: Public Function Deserialize(reader As BinaryReader) As Object
+  overload: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize*
+  implements:
+  - Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize(System.IO.BinaryReader)
+references:
+- uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer
+  commentId: T:Metalama.Patterns.Caching.Serializers.ICachingSerializer
+  parent: Metalama.Patterns.Caching.Serializers
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.html
+  name: ICachingSerializer
+  nameWithType: ICachingSerializer
+  fullName: Metalama.Patterns.Caching.Serializers.ICachingSerializer
+- uid: System.Text.Json.JsonSerializer
+  commentId: T:System.Text.Json.JsonSerializer
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializer
+  name: JsonSerializer
+  nameWithType: JsonSerializer
+  fullName: System.Text.Json.JsonSerializer
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_GetTypeName_System_Type_
+  name: GetTypeName(Type)
+  nameWithType: JsonCachingSerializer.GetTypeName(Type)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+    name: GetTypeName
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_GetTypeName_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)
+    name: GetTypeName
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_GetTypeName_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+  commentId: M:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_ResolveTypeName_System_String_
+  name: ResolveTypeName(string)
+  nameWithType: JsonCachingSerializer.ResolveTypeName(string)
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(string)
+  nameWithType.vb: JsonCachingSerializer.ResolveTypeName(String)
+  fullName.vb: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(String)
+  name.vb: ResolveTypeName(String)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+    name: ResolveTypeName
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_ResolveTypeName_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)
+    name: ResolveTypeName
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_ResolveTypeName_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Patterns.Caching.Serializers
+  commentId: N:Metalama.Patterns.Caching.Serializers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching.Serializers
+  nameWithType: Metalama.Patterns.Caching.Serializers
+  fullName: Metalama.Patterns.Caching.Serializers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Serializers
+    name: Serializers
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Serializers
+    name: Serializers
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<JsonCachingSerializer>(JsonCachingSerializer, Func<JsonCachingSerializer, IEnumerable<JsonCachingSerializer>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<JsonCachingSerializer>(JsonCachingSerializer, Func<JsonCachingSerializer, IEnumerable<JsonCachingSerializer>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Patterns.Caching.Serializers.JsonCachingSerializer>(Metalama.Patterns.Caching.Serializers.JsonCachingSerializer, System.Func<Metalama.Patterns.Caching.Serializers.JsonCachingSerializer, System.Collections.Generic.IEnumerable<Metalama.Patterns.Caching.Serializers.JsonCachingSerializer>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of JsonCachingSerializer)(JsonCachingSerializer, Func(Of JsonCachingSerializer, IEnumerable(Of JsonCachingSerializer)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Patterns.Caching.Serializers.JsonCachingSerializer)(Metalama.Patterns.Caching.Serializers.JsonCachingSerializer, System.Func(Of Metalama.Patterns.Caching.Serializers.JsonCachingSerializer, System.Collections.Generic.IEnumerable(Of Metalama.Patterns.Caching.Serializers.JsonCachingSerializer)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of JsonCachingSerializer)(JsonCachingSerializer, Func(Of JsonCachingSerializer, IEnumerable(Of JsonCachingSerializer)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Serializers.JsonCachingSerializer,System.Func{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Serializers.JsonCachingSerializer,System.Func{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Serializers.JsonCachingSerializer}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+    name: JsonCachingSerializer
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  commentId: T:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.html
+  name: JsonCachingSerializer
+  nameWithType: JsonCachingSerializer
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer
+- uid: System.Text.Json.JsonSerializerOptions
+  commentId: T:System.Text.Json.JsonSerializerOptions
+  parent: System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions
+  name: JsonSerializerOptions
+  nameWithType: JsonSerializerOptions
+  fullName: System.Text.Json.JsonSerializerOptions
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.#ctor*
+  commentId: Overload:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.#ctor
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.-ctor.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer__ctor_System_Text_Json_JsonSerializerOptions_
+  name: JsonCachingSerializer
+  nameWithType: JsonCachingSerializer.JsonCachingSerializer
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.JsonCachingSerializer
+  nameWithType.vb: JsonCachingSerializer.New
+  fullName.vb: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.New
+  name.vb: New
+- uid: System.Text.Json
+  commentId: N:System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json
+  nameWithType: System.Text.Json
+  fullName: System.Text.Json
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize*
+  commentId: Overload:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_Serialize_System_Object_System_IO_BinaryWriter_
+  name: Serialize
+  nameWithType: JsonCachingSerializer.Serialize
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Serialize
+- uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+  commentId: M:Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+  parent: Metalama.Patterns.Caching.Serializers.ICachingSerializer
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize.html#Metalama_Patterns_Caching_Serializers_ICachingSerializer_Serialize_System_Object_System_IO_BinaryWriter_
+  name: Serialize(object, BinaryWriter)
+  nameWithType: ICachingSerializer.Serialize(object, BinaryWriter)
+  fullName: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(object, System.IO.BinaryWriter)
+  nameWithType.vb: ICachingSerializer.Serialize(Object, BinaryWriter)
+  fullName.vb: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(Object, System.IO.BinaryWriter)
+  name.vb: Serialize(Object, BinaryWriter)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+    name: Serialize
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize.html#Metalama_Patterns_Caching_Serializers_ICachingSerializer_Serialize_System_Object_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize(System.Object,System.IO.BinaryWriter)
+    name: Serialize
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Serialize.html#Metalama_Patterns_Caching_Serializers_ICachingSerializer_Serialize_System_Object_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName*
+  commentId: Overload:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_GetTypeName_System_Type_
+  name: GetTypeName
+  nameWithType: JsonCachingSerializer.GetTypeName
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName*
+  commentId: Overload:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_ResolveTypeName_System_String_
+  name: ResolveTypeName
+  nameWithType: JsonCachingSerializer.ResolveTypeName
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName
+- uid: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize*
+  commentId: Overload:Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize.html#Metalama_Patterns_Caching_Serializers_JsonCachingSerializer_Deserialize_System_IO_BinaryReader_
+  name: Deserialize
+  nameWithType: JsonCachingSerializer.Deserialize
+  fullName: Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.Deserialize
+- uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize(System.IO.BinaryReader)
+  commentId: M:Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize(System.IO.BinaryReader)
+  parent: Metalama.Patterns.Caching.Serializers.ICachingSerializer
+  isExternal: true
+  href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize.html#Metalama_Patterns_Caching_Serializers_ICachingSerializer_Deserialize_System_IO_BinaryReader_
+  name: Deserialize(BinaryReader)
+  nameWithType: ICachingSerializer.Deserialize(BinaryReader)
+  fullName: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize(System.IO.BinaryReader)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize(System.IO.BinaryReader)
+    name: Deserialize
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize.html#Metalama_Patterns_Caching_Serializers_ICachingSerializer_Deserialize_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize(System.IO.BinaryReader)
+    name: Deserialize
+    isExternal: true
+    href: Metalama.Patterns.Caching.Serializers.ICachingSerializer.Deserialize.html#Metalama_Patterns_Caching_Serializers_ICachingSerializer_Deserialize_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+memberLayout: SeparatePages

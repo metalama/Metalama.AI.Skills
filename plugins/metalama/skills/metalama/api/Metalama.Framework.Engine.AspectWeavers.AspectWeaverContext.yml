@@ -1,0 +1,1841 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  id: AspectWeaverContext
+  parent: Metalama.Framework.Engine.AspectWeavers
+  children:
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions``1(Microsoft.CodeAnalysis.ISymbol)
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic)
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider
+  langs:
+  - csharp
+  - vb
+  name: AspectWeaverContext
+  nameWithType: AspectWeaverContext
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  type: Class
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Provides context and services for <xref href="Metalama.Framework.Engine.AspectWeavers.IAspectWeaver" data-throw-if-not-resolved="false"></xref> implementations to transform Roslyn compilations.
+  remarks: >-
+    <p>
+        This context is passed to <xref href="Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)" data-throw-if-not-resolved="false"></xref> and provides:
+        </p>
+    <ul><li>
+          <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances" data-throw-if-not-resolved="false"></xref>: The aspect instances to process (keyed by target <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref>).</li><li>
+          <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation" data-throw-if-not-resolved="false"></xref>: The current <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> to read and modify.</li><li>Helper methods like <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> for common transformation patterns.</li><li>
+          <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation" data-throw-if-not-resolved="false"></xref>: The annotation to apply to generated syntax nodes.</li></ul>
+    <p>
+      <b>Formatting:</b> Your weaver does not need to format output code. Metalama handles formatting at the end of the pipeline.
+        However, your weaver must annotate generated nodes using methods from <xref href="Metalama.Framework.Engine.Formatting.FormattingAnnotations" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public sealed class AspectWeaverContext
+    content.vb: >-
+      <CompileTime>
+
+      Public NotInheritable Class AspectWeaverContext
+  seealso:
+  - linkId: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  - linkId: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    commentId: T:Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  - linkId: Metalama.Framework.Engine.Formatting.FormattingAnnotations
+    commentId: T:Metalama.Framework.Engine.Formatting.FormattingAnnotations
+  - linkType: HRef
+    linkId: '@aspect-weavers'
+    altText: '@aspect-weavers'
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions``1(Microsoft.CodeAnalysis.ISymbol)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions``1(Microsoft.CodeAnalysis.ISymbol)
+  id: GetOptions``1(Microsoft.CodeAnalysis.ISymbol)
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: GetOptions<T>(ISymbol)
+  nameWithType: AspectWeaverContext.GetOptions<T>(ISymbol)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions<T>(Microsoft.CodeAnalysis.ISymbol)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: 'public T GetOptions<T>(ISymbol symbol) where T : IHierarchicalOptions, new()'
+    parameters:
+    - id: symbol
+      type: Microsoft.CodeAnalysis.ISymbol
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetOptions(Of T As {IHierarchicalOptions, New})(symbol As ISymbol) As T
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions*
+  nameWithType.vb: AspectWeaverContext.GetOptions(Of T)(ISymbol)
+  fullName.vb: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions(Of T)(Microsoft.CodeAnalysis.ISymbol)
+  name.vb: GetOptions(Of T)(ISymbol)
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  id: RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: RewriteSyntaxTreesAsync(CSharpSyntaxRewriter, CancellationToken)
+  nameWithType: AspectWeaverContext.RewriteSyntaxTreesAsync(CSharpSyntaxRewriter, CancellationToken)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public Task RewriteSyntaxTreesAsync(CSharpSyntaxRewriter rewriter, CancellationToken cancellationToken = default)
+    parameters:
+    - id: rewriter
+      type: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RewriteSyntaxTreesAsync(rewriter As CSharpSyntaxRewriter, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},System.Threading.CancellationToken)
+  id: RewriteSyntaxTreesAsync(System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: RewriteSyntaxTreesAsync(Func<SyntaxNode, CSharpSyntaxRewriter>, CancellationToken)
+  nameWithType: AspectWeaverContext.RewriteSyntaxTreesAsync(Func<SyntaxNode, CSharpSyntaxRewriter>, CancellationToken)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(System.Func<Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter>, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public Task RewriteSyntaxTreesAsync(Func<SyntaxNode, CSharpSyntaxRewriter> rewriterFactory, CancellationToken cancellationToken = default)
+    parameters:
+    - id: rewriterFactory
+      type: System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter}
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RewriteSyntaxTreesAsync(rewriterFactory As Func(Of SyntaxNode, CSharpSyntaxRewriter), cancellationToken As CancellationToken = Nothing) As Task
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*
+  nameWithType.vb: AspectWeaverContext.RewriteSyntaxTreesAsync(Func(Of SyntaxNode, CSharpSyntaxRewriter), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(System.Func(Of Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter), System.Threading.CancellationToken)
+  name.vb: RewriteSyntaxTreesAsync(Func(Of SyntaxNode, CSharpSyntaxRewriter), CancellationToken)
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  id: RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: RewriteAspectTargetsAsync(CSharpSyntaxRewriter, CancellationToken)
+  nameWithType: AspectWeaverContext.RewriteAspectTargetsAsync(CSharpSyntaxRewriter, CancellationToken)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public Task RewriteAspectTargetsAsync(CSharpSyntaxRewriter rewriter, CancellationToken cancellationToken = default)
+    parameters:
+    - id: rewriter
+      type: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RewriteAspectTargetsAsync(rewriter As CSharpSyntaxRewriter, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic)
+  id: ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic)
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: ReportDiagnostic(Diagnostic)
+  nameWithType: AspectWeaverContext.ReportDiagnostic(Diagnostic)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public void ReportDiagnostic(Diagnostic diagnostic)
+    parameters:
+    - id: diagnostic
+      type: Microsoft.CodeAnalysis.Diagnostic
+    content.vb: Public Sub ReportDiagnostic(diagnostic As Diagnostic)
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider
+  id: ServiceProvider
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: ServiceProvider
+  nameWithType: AspectWeaverContext.ServiceProvider
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public ProjectServiceProvider ServiceProvider { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    content.vb: Public ReadOnly Property ServiceProvider As ProjectServiceProvider
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass
+  id: AspectClass
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: AspectClass
+  nameWithType: AspectWeaverContext.AspectClass
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Gets the <xref href="Metalama.Framework.Aspects.IAspectClass" data-throw-if-not-resolved="false"></xref> metadata for the aspect type being processed.
+  example: []
+  syntax:
+    content: public IAspectClass AspectClass { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Aspects.IAspectClass
+    content.vb: Public ReadOnly Property AspectClass As IAspectClass
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  id: AspectInstances
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: AspectInstances
+  nameWithType: AspectWeaverContext.AspectInstances
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Gets the dictionary of aspect instances that must be processed, keyed by their target <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>Iterate over this dictionary to process each aspect instance. Use the <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref> key to locate
+        the target declaration's syntax via <xref href="Microsoft.CodeAnalysis.ISymbol.DeclaringSyntaxReferences" data-throw-if-not-resolved="false"></xref>.</p>
+    <p>To map the Metalama code model to an <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref>, use extension methods in <xref href="Metalama.Framework.Engine.CodeModel.SymbolExtensions" data-throw-if-not-resolved="false"></xref>.</p>
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<ISymbol, IAspectInstance> AspectInstances { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{Microsoft.CodeAnalysis.ISymbol,Metalama.Framework.Aspects.IAspectInstance}
+    content.vb: Public ReadOnly Property AspectInstances As IReadOnlyDictionary(Of ISymbol, IAspectInstance)
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project
+  id: Project
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: AspectWeaverContext.Project
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Gets the current <xref href="Metalama.Framework.Project.IProject" data-throw-if-not-resolved="false"></xref> being compiled.
+  example: []
+  syntax:
+    content: public IProject Project { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Project.IProject
+    content.vb: Public ReadOnly Property Project As IProject
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  id: Compilation
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: Compilation
+  nameWithType: AspectWeaverContext.Compilation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Gets or sets the compilation being transformed.
+  remarks: >-
+    <p>You can modify the compilation by either:</p>
+
+    <ul><li>Using helper methods like <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> which automatically update this property.</li><li>Setting this property directly with a new <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> derived from the current value using methods like <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList%7bMetalama.Compiler.SyntaxTreeTransformation%7d)" data-throw-if-not-resolved="false"></xref>.</li></ul>
+
+    <p>The new compilation must be derived from the initial value; setting an unrelated compilation throws <xref href="System.ArgumentOutOfRangeException" data-throw-if-not-resolved="false"></xref>.</p>
+  example: []
+  syntax:
+    content: public IPartialCompilation Compilation { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    content.vb: Public Property Compilation As IPartialCompilation
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices
+  id: CompilationServices
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: CompilationServices
+  nameWithType: AspectWeaverContext.CompilationServices
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public ICompilationServices CompilationServices { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Engine.Services.ICompilationServices
+    content.vb: Public ReadOnly Property CompilationServices As ICompilationServices
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices*
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  id: GeneratedCodeAnnotation
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: GeneratedCodeAnnotation
+  nameWithType: AspectWeaverContext.GeneratedCodeAnnotation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Gets the <xref href="Microsoft.CodeAnalysis.SyntaxAnnotation" data-throw-if-not-resolved="false"></xref> that must be applied to all code generated by the weaver.
+  remarks: >-
+    <p>Apply this annotation to generated syntax nodes using <xref href="Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation%60%601(%60%600%2cMicrosoft.CodeAnalysis.SyntaxAnnotation)" data-throw-if-not-resolved="false"></xref>.</p>
+
+    <p>This annotation enables Metalama to distinguish generated code from source code for formatting, diff views, and IDE features.</p>
+
+    <p>For source code nodes within generated code, use <xref href="Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> instead.</p>
+  example: []
+  syntax:
+    content: public SyntaxAnnotation GeneratedCodeAnnotation { get; }
+    parameters: []
+    return:
+      type: Microsoft.CodeAnalysis.SyntaxAnnotation
+    content.vb: Public ReadOnly Property GeneratedCodeAnnotation As SyntaxAnnotation
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation*
+  seealso:
+  - linkId: Metalama.Framework.Engine.Formatting.FormattingAnnotations
+    commentId: T:Metalama.Framework.Engine.Formatting.FormattingAnnotations
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken
+  id: CancellationToken
+  parent: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  langs:
+  - csharp
+  - vb
+  name: CancellationToken
+  nameWithType: AspectWeaverContext.CancellationToken
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  syntax:
+    content: public CancellationToken CancellationToken { get; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationToken
+    content.vb: Public ReadOnly Property CancellationToken As CancellationToken
+  overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken*
+references:
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  name: IAspectWeaver
+  nameWithType: IAspectWeaver
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  commentId: T:Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  parent: Metalama.Framework.Engine.CodeModel
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  name: IPartialCompilation
+  nameWithType: IPartialCompilation
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+- uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations
+  commentId: T:Metalama.Framework.Engine.Formatting.FormattingAnnotations
+  isExternal: true
+  href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.html
+  name: FormattingAnnotations
+  nameWithType: FormattingAnnotations
+  fullName: Metalama.Framework.Engine.Formatting.FormattingAnnotations
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  name: TransformAsync(AspectWeaverContext)
+  nameWithType: IAspectWeaver.TransformAsync(AspectWeaverContext)
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+    name: TransformAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+    name: TransformAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_AspectInstances
+  name: AspectInstances
+  nameWithType: AspectWeaverContext.AspectInstances
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+- uid: Microsoft.CodeAnalysis.ISymbol
+  commentId: T:Microsoft.CodeAnalysis.ISymbol
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.isymbol
+  name: ISymbol
+  nameWithType: ISymbol
+  fullName: Microsoft.CodeAnalysis.ISymbol
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_Compilation
+  name: Compilation
+  nameWithType: AspectWeaverContext.Compilation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  name: RewriteAspectTargetsAsync(CSharpSyntaxRewriter, CancellationToken)
+  nameWithType: AspectWeaverContext.RewriteAspectTargetsAsync(CSharpSyntaxRewriter, CancellationToken)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+    name: RewriteAspectTargetsAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  - name: (
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+    name: RewriteAspectTargetsAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  - name: (
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_GeneratedCodeAnnotation
+  name: GeneratedCodeAnnotation
+  nameWithType: AspectWeaverContext.GeneratedCodeAnnotation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+- uid: Metalama.Framework.Engine.AspectWeavers
+  commentId: N:Metalama.Framework.Engine.AspectWeavers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.AspectWeavers
+  nameWithType: Metalama.Framework.Engine.AspectWeavers
+  fullName: Metalama.Framework.Engine.AspectWeavers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.AspectWeavers
+    name: AspectWeavers
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.AspectWeavers
+    name: AspectWeavers
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<AspectWeaverContext>(AspectWeaverContext, Func<AspectWeaverContext, IEnumerable<AspectWeaverContext>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<AspectWeaverContext>(AspectWeaverContext, Func<AspectWeaverContext, IEnumerable<AspectWeaverContext>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext>(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext, System.Func<Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext, System.Collections.Generic.IEnumerable<Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of AspectWeaverContext)(AspectWeaverContext, Func(Of AspectWeaverContext, IEnumerable(Of AspectWeaverContext)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext, System.Func(Of Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of AspectWeaverContext)(AspectWeaverContext, Func(Of AspectWeaverContext, IEnumerable(Of AspectWeaverContext)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext,System.Func{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext,System.Func{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel
+  commentId: N:Metalama.Framework.Engine.CodeModel
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.CodeModel
+  nameWithType: Metalama.Framework.Engine.CodeModel
+  fullName: Metalama.Framework.Engine.CodeModel
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.CodeModel
+    name: CodeModel
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.CodeModel
+    name: CodeModel
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.html
+- uid: Microsoft.CodeAnalysis
+  commentId: N:Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.CodeAnalysis
+  nameWithType: Microsoft.CodeAnalysis
+  fullName: Microsoft.CodeAnalysis
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_GetOptions__1_Microsoft_CodeAnalysis_ISymbol_
+  name: GetOptions
+  nameWithType: AspectWeaverContext.GetOptions
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GetOptions
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteSyntaxTreesAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  name: RewriteSyntaxTreesAsync
+  nameWithType: AspectWeaverContext.RewriteSyntaxTreesAsync
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync
+- uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+  commentId: T:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+  parent: Microsoft.CodeAnalysis.CSharp
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  name: CSharpSyntaxRewriter
+  nameWithType: CSharpSyntaxRewriter
+  fullName: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Microsoft.CodeAnalysis.CSharp
+  commentId: N:Microsoft.CodeAnalysis.CSharp
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.CodeAnalysis.CSharp
+  nameWithType: Microsoft.CodeAnalysis.CSharp
+  fullName: Microsoft.CodeAnalysis.CSharp
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+  - name: .
+  - uid: Microsoft.CodeAnalysis.CSharp
+    name: CSharp
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+  - name: .
+  - uid: Microsoft.CodeAnalysis.CSharp
+    name: CSharp
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter}
+  commentId: T:System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<SyntaxNode, CSharpSyntaxRewriter>
+  nameWithType: Func<SyntaxNode, CSharpSyntaxRewriter>
+  fullName: System.Func<Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter>
+  nameWithType.vb: Func(Of SyntaxNode, CSharpSyntaxRewriter)
+  fullName.vb: System.Func(Of Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter)
+  name.vb: Func(Of SyntaxNode, CSharpSyntaxRewriter)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  name: RewriteAspectTargetsAsync
+  nameWithType: AspectWeaverContext.RewriteAspectTargetsAsync
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_ReportDiagnostic_Microsoft_CodeAnalysis_Diagnostic_
+  name: ReportDiagnostic
+  nameWithType: AspectWeaverContext.ReportDiagnostic
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic
+- uid: Microsoft.CodeAnalysis.Diagnostic
+  commentId: T:Microsoft.CodeAnalysis.Diagnostic
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostic
+  name: Diagnostic
+  nameWithType: Diagnostic
+  fullName: Microsoft.CodeAnalysis.Diagnostic
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_ServiceProvider
+  name: ServiceProvider
+  nameWithType: AspectWeaverContext.ServiceProvider
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider
+- uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+  commentId: T:Metalama.Framework.Engine.Services.ProjectServiceProvider
+  parent: Metalama.Framework.Engine.Services
+  isExternal: true
+  href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  name: ProjectServiceProvider
+  nameWithType: ProjectServiceProvider
+  fullName: Metalama.Framework.Engine.Services.ProjectServiceProvider
+- uid: Metalama.Framework.Engine.Services
+  commentId: N:Metalama.Framework.Engine.Services
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.Services
+  nameWithType: Metalama.Framework.Engine.Services
+  fullName: Metalama.Framework.Engine.Services
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.html
+- uid: Metalama.Framework.Aspects.IAspectClass
+  commentId: T:Metalama.Framework.Aspects.IAspectClass
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectClass.html
+  name: IAspectClass
+  nameWithType: IAspectClass
+  fullName: Metalama.Framework.Aspects.IAspectClass
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_AspectClass
+  name: AspectClass
+  nameWithType: AspectWeaverContext.AspectClass
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectClass
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Microsoft.CodeAnalysis.ISymbol.DeclaringSyntaxReferences
+  commentId: P:Microsoft.CodeAnalysis.ISymbol.DeclaringSyntaxReferences
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.isymbol.declaringsyntaxreferences
+  name: DeclaringSyntaxReferences
+  nameWithType: ISymbol.DeclaringSyntaxReferences
+  fullName: Microsoft.CodeAnalysis.ISymbol.DeclaringSyntaxReferences
+- uid: Metalama.Framework.Engine.CodeModel.SymbolExtensions
+  commentId: T:Metalama.Framework.Engine.CodeModel.SymbolExtensions
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.SymbolExtensions.html
+  name: SymbolExtensions
+  nameWithType: SymbolExtensions
+  fullName: Metalama.Framework.Engine.CodeModel.SymbolExtensions
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_AspectInstances
+  name: AspectInstances
+  nameWithType: AspectWeaverContext.AspectInstances
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+- uid: System.Collections.Generic.IReadOnlyDictionary{Microsoft.CodeAnalysis.ISymbol,Metalama.Framework.Aspects.IAspectInstance}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{Microsoft.CodeAnalysis.ISymbol,Metalama.Framework.Aspects.IAspectInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<ISymbol, IAspectInstance>
+  nameWithType: IReadOnlyDictionary<ISymbol, IAspectInstance>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<Microsoft.CodeAnalysis.ISymbol, Metalama.Framework.Aspects.IAspectInstance>
+  nameWithType.vb: IReadOnlyDictionary(Of ISymbol, IAspectInstance)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of Microsoft.CodeAnalysis.ISymbol, Metalama.Framework.Aspects.IAspectInstance)
+  name.vb: IReadOnlyDictionary(Of ISymbol, IAspectInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: Microsoft.CodeAnalysis.ISymbol
+    name: ISymbol
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.isymbol
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectInstance
+    name: IAspectInstance
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.ISymbol
+    name: ISymbol
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.isymbol
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectInstance
+    name: IAspectInstance
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Project.IProject
+  commentId: T:Metalama.Framework.Project.IProject
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.html
+  name: IProject
+  nameWithType: IProject
+  fullName: Metalama.Framework.Project.IProject
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_Project
+  name: Project
+  nameWithType: AspectWeaverContext.Project
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Project
+- uid: Metalama.Framework.Project
+  commentId: N:Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Project
+  nameWithType: Metalama.Framework.Project
+  fullName: Metalama.Framework.Project
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  name: WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>)
+  nameWithType: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>)
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList<Metalama.Compiler.SyntaxTreeTransformation>)
+  nameWithType.vb: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
+  fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList(Of Metalama.Compiler.SyntaxTreeTransformation))
+  name.vb: WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+    name: WithSyntaxTreeTransformations
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  - name: (
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Metalama.Compiler.SyntaxTreeTransformation
+    name: SyntaxTreeTransformation
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+    name: WithSyntaxTreeTransformations
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  - name: (
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Compiler.SyntaxTreeTransformation
+    name: SyntaxTreeTransformation
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_Compilation
+  name: Compilation
+  nameWithType: AspectWeaverContext.Compilation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_CompilationServices
+  name: CompilationServices
+  nameWithType: AspectWeaverContext.CompilationServices
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CompilationServices
+- uid: Metalama.Framework.Engine.Services.ICompilationServices
+  commentId: T:Metalama.Framework.Engine.Services.ICompilationServices
+  parent: Metalama.Framework.Engine.Services
+  isExternal: true
+  href: Metalama.Framework.Engine.Services.ICompilationServices.html
+  name: ICompilationServices
+  nameWithType: ICompilationServices
+  fullName: Metalama.Framework.Engine.Services.ICompilationServices
+- uid: Microsoft.CodeAnalysis.SyntaxAnnotation
+  commentId: T:Microsoft.CodeAnalysis.SyntaxAnnotation
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxannotation
+  name: SyntaxAnnotation
+  nameWithType: SyntaxAnnotation
+  fullName: Microsoft.CodeAnalysis.SyntaxAnnotation
+- uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation``1(``0,Microsoft.CodeAnalysis.SyntaxAnnotation)
+  commentId: M:Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation``1(``0,Microsoft.CodeAnalysis.SyntaxAnnotation)
+  isExternal: true
+  href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation.html#Metalama_Framework_Engine_Formatting_FormattingAnnotations_WithGeneratedCodeAnnotation__1___0_Microsoft_CodeAnalysis_SyntaxAnnotation_
+  name: WithGeneratedCodeAnnotation<T>(T, SyntaxAnnotation)
+  nameWithType: FormattingAnnotations.WithGeneratedCodeAnnotation<T>(T, SyntaxAnnotation)
+  fullName: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation<T>(T, Microsoft.CodeAnalysis.SyntaxAnnotation)
+  nameWithType.vb: FormattingAnnotations.WithGeneratedCodeAnnotation(Of T)(T, SyntaxAnnotation)
+  fullName.vb: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation(Of T)(T, Microsoft.CodeAnalysis.SyntaxAnnotation)
+  name.vb: WithGeneratedCodeAnnotation(Of T)(T, SyntaxAnnotation)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation``1(``0,Microsoft.CodeAnalysis.SyntaxAnnotation)
+    name: WithGeneratedCodeAnnotation
+    isExternal: true
+    href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation.html#Metalama_Framework_Engine_Formatting_FormattingAnnotations_WithGeneratedCodeAnnotation__1___0_Microsoft_CodeAnalysis_SyntaxAnnotation_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxAnnotation
+    name: SyntaxAnnotation
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxannotation
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation``1(``0,Microsoft.CodeAnalysis.SyntaxAnnotation)
+    name: WithGeneratedCodeAnnotation
+    isExternal: true
+    href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation.html#Metalama_Framework_Engine_Formatting_FormattingAnnotations_WithGeneratedCodeAnnotation__1___0_Microsoft_CodeAnalysis_SyntaxAnnotation_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxAnnotation
+    name: SyntaxAnnotation
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxannotation
+  - name: )
+- uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation``1(``0)
+  commentId: M:Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation``1(``0)
+  isExternal: true
+  href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation.html#Metalama_Framework_Engine_Formatting_FormattingAnnotations_WithSourceCodeAnnotation__1___0_
+  name: WithSourceCodeAnnotation<T>(T)
+  nameWithType: FormattingAnnotations.WithSourceCodeAnnotation<T>(T)
+  fullName: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation<T>(T)
+  nameWithType.vb: FormattingAnnotations.WithSourceCodeAnnotation(Of T)(T)
+  fullName.vb: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation(Of T)(T)
+  name.vb: WithSourceCodeAnnotation(Of T)(T)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation``1(``0)
+    name: WithSourceCodeAnnotation
+    isExternal: true
+    href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation.html#Metalama_Framework_Engine_Formatting_FormattingAnnotations_WithSourceCodeAnnotation__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation``1(``0)
+    name: WithSourceCodeAnnotation
+    isExternal: true
+    href: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation.html#Metalama_Framework_Engine_Formatting_FormattingAnnotations_WithSourceCodeAnnotation__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_GeneratedCodeAnnotation
+  name: GeneratedCodeAnnotation
+  nameWithType: AspectWeaverContext.GeneratedCodeAnnotation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_CancellationToken
+  name: CancellationToken
+  nameWithType: AspectWeaverContext.CancellationToken
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken
+memberLayout: SeparatePages

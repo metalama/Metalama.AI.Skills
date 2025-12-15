@@ -1,0 +1,1788 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  id: ExpressionBuilder
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  children:
+  - Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.#ctor
+  - Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone
+  - Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType
+  - Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable
+  - Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+  langs:
+  - csharp
+  - vb
+  name: ExpressionBuilder
+  nameWithType: ExpressionBuilder
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.SyntaxBuilders
+  summary: Allows to build a run-time expression programmatically by composing a string using an underlying <xref href="System.Text.StringBuilder" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+      <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref> provides a text-based approach to constructing complex C# expressions programmatically or
+        dynamically. It offers specialized methods for appending different syntax elements: <xref href="Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Byte%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>
+        for literals, <xref href="Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)" data-throw-if-not-resolved="false"></xref> for fully-qualified type names, <xref href="Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(System.Object)" data-throw-if-not-resolved="false"></xref>
+        for existing expressions, and <xref href="Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(System.String)" data-throw-if-not-resolved="false"></xref> for keywords and punctuation.
+        </p>
+    <p>
+        A major benefit of <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref> is that it can be used in compile-time methods that are not templates,
+        providing flexibility for building expressions in helper methods. After building the expression string, call
+        <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression" data-throw-if-not-resolved="false"></xref> to get an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> object, or use <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder)" data-throw-if-not-resolved="false"></xref>
+        to get a <code>dynamic</code> value that can be used directly in template code.
+        </p>
+    <p>
+        When using <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref>, ensure that all type names are fully namespace-qualified, as you cannot assume
+        the target code has any required <code>using</code> directives. Metalama will simplify the code and add relevant <code>using</code>
+        directives when producing formatted output.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public sealed class ExpressionBuilder : SyntaxBuilder, IExpressionBuilder
+    content.vb: >-
+      <CompileTime>
+
+      Public NotInheritable Class ExpressionBuilder Inherits SyntaxBuilder Implements IExpressionBuilder
+  seealso:
+  - linkId: Metalama.Framework.Code.IExpression
+    commentId: T:Metalama.Framework.Code.IExpression
+  - linkId: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    commentId: T:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+  - linkId: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+    commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  - linkId: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+    commentId: T:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  - linkType: HRef
+    linkId: '@run-time-expressions'
+    altText: '@run-time-expressions'
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+  inheritance:
+  - System.Object
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  implements:
+  - Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+  inheritedMembers:
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(System.String)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int32)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt32,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int16,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt16,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int64,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt64,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Byte,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.SByte,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Double,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Single,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Decimal,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.String,System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(System.Type)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.IExpression)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(System.Object)
+  - Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder}},System.Boolean)
+  - Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.#ctor
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.#ctor
+  id: '#ctor'
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  langs:
+  - csharp
+  - vb
+  name: ExpressionBuilder()
+  nameWithType: ExpressionBuilder.ExpressionBuilder()
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionBuilder()
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.SyntaxBuilders
+  syntax:
+    content: public ExpressionBuilder()
+    content.vb: Public Sub New()
+  overload: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.#ctor*
+  nameWithType.vb: ExpressionBuilder.New()
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.New()
+  name.vb: New()
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+  id: ToExpression
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  langs:
+  - csharp
+  - vb
+  name: ToExpression()
+  nameWithType: ExpressionBuilder.ToExpression()
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.SyntaxBuilders
+  summary: Creates a compile-time <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> from the current <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public IExpression ToExpression()
+    return:
+      type: Metalama.Framework.Code.IExpression
+      description: An <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> representing the built expression.
+    content.vb: Public Function ToExpression() As IExpression
+  overload: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression*
+  implements:
+  - Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone
+  id: Clone
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: ExpressionBuilder.Clone()
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.SyntaxBuilders
+  summary: Returns a clone of the current <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ExpressionBuilder Clone()
+    return:
+      type: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+      description: A new <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref> with the same content.
+    content.vb: Public Function Clone() As ExpressionBuilder
+  overload: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone*
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType
+  commentId: P:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType
+  id: ExpressionType
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  langs:
+  - csharp
+  - vb
+  name: ExpressionType
+  nameWithType: ExpressionBuilder.ExpressionType
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.SyntaxBuilders
+  summary: Gets or sets the resulting type of the expression, if known. This value allows to generate simpler code.
+  example: []
+  syntax:
+    content: public IType? ExpressionType { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IType
+    content.vb: Public Property ExpressionType As IType
+  overload: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType*
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable
+  commentId: P:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable
+  id: IsReferenceable
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  langs:
+  - csharp
+  - vb
+  name: IsReferenceable
+  nameWithType: ExpressionBuilder.IsReferenceable
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.SyntaxBuilders
+  summary: Gets or sets a value indicating whether the expression can be used in <code>ref</code> or <code>out</code> situations.
+  example: []
+  syntax:
+    content: public bool? IsReferenceable { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property IsReferenceable As Boolean?
+  overload: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable*
+references:
+- uid: Metalama.Framework.Code.IExpression
+  commentId: T:Metalama.Framework.Code.IExpression
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.html
+  name: IExpression
+  nameWithType: IExpression
+  fullName: Metalama.Framework.Code.IExpression
+- uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  name: IExpressionBuilder
+  nameWithType: IExpressionBuilder
+  fullName: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.html
+  name: ExpressionFactory
+  nameWithType: ExpressionFactory
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.html
+  name: SyntaxBuilder
+  nameWithType: SyntaxBuilder
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  name: ExpressionBuilder
+  nameWithType: ExpressionBuilder
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Byte,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Byte,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Byte_System_Boolean_
+  name: AppendLiteral(byte, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(byte, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(byte, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Byte, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Byte, Boolean)
+  name.vb: AppendLiteral(Byte, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Byte,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Byte_System_Boolean_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Byte,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Byte_System_Boolean_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendTypeName_Metalama_Framework_Code_IType_
+  name: AppendTypeName(IType)
+  nameWithType: SyntaxBuilder.AppendTypeName(IType)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)
+    name: AppendTypeName
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendTypeName_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(Metalama.Framework.Code.IType)
+    name: AppendTypeName
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendTypeName_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(System.Object)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(System.Object)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_System_Object_
+  name: AppendExpression(dynamic)
+  nameWithType: SyntaxBuilder.AppendExpression(dynamic)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(dynamic)
+  nameWithType.vb: SyntaxBuilder.AppendExpression(Object)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Object)
+  name.vb: AppendExpression(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(System.Object)
+    name: AppendExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_System_Object_
+  - name: (
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(System.Object)
+    name: AppendExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_System_Object_
+  - name: (
+  - name: Object
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(System.String)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(System.String)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendVerbatim_System_String_
+  name: AppendVerbatim(string)
+  nameWithType: SyntaxBuilder.AppendVerbatim(string)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(string)
+  nameWithType.vb: SyntaxBuilder.AppendVerbatim(String)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(String)
+  name.vb: AppendVerbatim(String)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(System.String)
+    name: AppendVerbatim
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendVerbatim_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim(System.String)
+    name: AppendVerbatim
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendVerbatim_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_ToExpression
+  name: ToExpression()
+  nameWithType: ExpressionBuilder.ToExpression()
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+    name: ToExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_ToExpression
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+    name: ToExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_ToExpression
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_INotNullExpressionBuilder_
+  name: ToValue(INotNullExpressionBuilder)
+  nameWithType: ExpressionBuilderExtensions.ToValue(INotNullExpressionBuilder)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder)
+    name: ToValue
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_INotNullExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder
+    name: INotNullExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder)
+    name: ToValue
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_INotNullExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder
+    name: INotNullExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.INotNullExpressionBuilder.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders
+  commentId: N:Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.SyntaxBuilders
+  nameWithType: Metalama.Framework.Code.SyntaxBuilders
+  fullName: Metalama.Framework.Code.SyntaxBuilders
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.SyntaxBuilders
+    name: SyntaxBuilders
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.SyntaxBuilders
+    name: SyntaxBuilders
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int32)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int32)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int32_
+  name: AppendLiteral(int)
+  nameWithType: SyntaxBuilder.AppendLiteral(int)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(int)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Integer)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Integer)
+  name.vb: AppendLiteral(Integer)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int32)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int32)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt32,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt32,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt32_System_Boolean_
+  name: AppendLiteral(uint, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(uint, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(uint, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(UInteger, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(UInteger, Boolean)
+  name.vb: AppendLiteral(UInteger, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt32,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt32_System_Boolean_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt32,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt32_System_Boolean_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int16,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int16,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int16_System_Boolean_
+  name: AppendLiteral(short, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(short, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(short, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Short, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Short, Boolean)
+  name.vb: AppendLiteral(Short, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int16,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int16_System_Boolean_
+  - name: (
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int16,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int16_System_Boolean_
+  - name: (
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt16,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt16,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt16_System_Boolean_
+  name: AppendLiteral(ushort, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(ushort, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(ushort, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(UShort, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(UShort, Boolean)
+  name.vb: AppendLiteral(UShort, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt16,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt16_System_Boolean_
+  - name: (
+  - uid: System.UInt16
+    name: ushort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt16,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt16_System_Boolean_
+  - name: (
+  - uid: System.UInt16
+    name: UShort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int64,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int64,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int64_System_Boolean_
+  name: AppendLiteral(long, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(long, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(long, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Long, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Long, Boolean)
+  name.vb: AppendLiteral(Long, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int64,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int64_System_Boolean_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Int64,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Int64_System_Boolean_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt64,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt64,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt64_System_Boolean_
+  name: AppendLiteral(ulong, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(ulong, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(ulong, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(ULong, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(ULong, Boolean)
+  name.vb: AppendLiteral(ULong, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt64,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt64_System_Boolean_
+  - name: (
+  - uid: System.UInt64
+    name: ulong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.UInt64,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_UInt64_System_Boolean_
+  - name: (
+  - uid: System.UInt64
+    name: ULong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.SByte,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.SByte,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_SByte_System_Boolean_
+  name: AppendLiteral(sbyte, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(sbyte, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(sbyte, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(SByte, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(SByte, Boolean)
+  name.vb: AppendLiteral(SByte, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.SByte,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_SByte_System_Boolean_
+  - name: (
+  - uid: System.SByte
+    name: sbyte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.sbyte
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.SByte,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_SByte_System_Boolean_
+  - name: (
+  - uid: System.SByte
+    name: SByte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.sbyte
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Double,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Double,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Double_System_Boolean_
+  name: AppendLiteral(double, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(double, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(double, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Double, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Double, Boolean)
+  name.vb: AppendLiteral(Double, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Double,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Double_System_Boolean_
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Double,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Double_System_Boolean_
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Single,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Single,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Single_System_Boolean_
+  name: AppendLiteral(float, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(float, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(float, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Single, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Single, Boolean)
+  name.vb: AppendLiteral(Single, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Single,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Single_System_Boolean_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Single,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Single_System_Boolean_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Decimal,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Decimal,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Decimal_System_Boolean_
+  name: AppendLiteral(decimal, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(decimal, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(decimal, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(Decimal, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(Decimal, Boolean)
+  name.vb: AppendLiteral(Decimal, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Decimal,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Decimal_System_Boolean_
+  - name: (
+  - uid: System.Decimal
+    name: decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.Decimal,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_Decimal_System_Boolean_
+  - name: (
+  - uid: System.Decimal
+    name: Decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.String,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.String,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_String_System_Boolean_
+  name: AppendLiteral(string, bool)
+  nameWithType: SyntaxBuilder.AppendLiteral(string, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(string, bool)
+  nameWithType.vb: SyntaxBuilder.AppendLiteral(String, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(String, Boolean)
+  name.vb: AppendLiteral(String, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.String,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_String_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral(System.String,System.Boolean)
+    name: AppendLiteral
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendLiteral_System_String_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(System.Type)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(System.Type)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendTypeName_System_Type_
+  name: AppendTypeName(Type)
+  nameWithType: SyntaxBuilder.AppendTypeName(Type)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(System.Type)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(System.Type)
+    name: AppendTypeName
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendTypeName_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName(System.Type)
+    name: AppendTypeName
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendTypeName_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.IExpression)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_Metalama_Framework_Code_IExpression_
+  name: AppendExpression(IExpression)
+  nameWithType: SyntaxBuilder.AppendExpression(IExpression)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.IExpression)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.IExpression)
+    name: AppendExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_Metalama_Framework_Code_IExpression_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.IExpression)
+    name: AppendExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_Metalama_Framework_Code_IExpression_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  name: AppendExpression(IExpressionBuilder)
+  nameWithType: SyntaxBuilder.AppendExpression(IExpressionBuilder)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+    name: AppendExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    name: IExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+    name: AppendExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_AppendExpression_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    name: IExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString
+  parent: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_ToString
+  name: ToString()
+  nameWithType: SyntaxBuilder.ToString()
+  fullName: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString
+    name: ToString
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString
+    name: ToString
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.ToString.html#Metalama_Framework_Code_SyntaxBuilders_SyntaxBuilder_ToString
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<ExpressionBuilder>(ExpressionBuilder, Func<ExpressionBuilder, IEnumerable<ExpressionBuilder>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<ExpressionBuilder>(ExpressionBuilder, Func<ExpressionBuilder, IEnumerable<ExpressionBuilder>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder>(Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder, System.Func<Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of ExpressionBuilder)(ExpressionBuilder, Func(Of ExpressionBuilder, IEnumerable(Of ExpressionBuilder)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder)(Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder, System.Func(Of Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of ExpressionBuilder)(ExpressionBuilder, Func(Of ExpressionBuilder, IEnumerable(Of ExpressionBuilder)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder,System.Func{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder,System.Func{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder
+    name: ExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  name: ToValue(IExpressionBuilder)
+  nameWithType: ExpressionBuilderExtensions.ToValue(IExpressionBuilder)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+    name: ToValue
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    name: IExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+    name: ToValue
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    name: IExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  name: ToValue(IExpressionBuilder)
+  nameWithType: ExpressionBuilderExtensions.ToValue(IExpressionBuilder)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+    name: ToValue
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    name: IExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue(Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder)
+    name: ToValue
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.ToValue.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilderExtensions_ToValue_Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_
+  - name: (
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+    name: IExpressionBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions.html
+  name: ExpressionBuilderExtensions
+  nameWithType: ExpressionBuilderExtensions
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilderExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.#ctor*
+  commentId: Overload:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.#ctor
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.-ctor.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder__ctor
+  name: ExpressionBuilder
+  nameWithType: ExpressionBuilder.ExpressionBuilder
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionBuilder
+  nameWithType.vb: ExpressionBuilder.New
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.New
+  name.vb: New
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression*
+  commentId: Overload:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_ToExpression
+  name: ToExpression
+  nameWithType: ExpressionBuilder.ToExpression
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression
+- uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression
+  parent: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_ToExpression
+  name: ToExpression()
+  nameWithType: IExpressionBuilder.ToExpression()
+  fullName: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression
+    name: ToExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_ToExpression
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression
+    name: ToExpression
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression.html#Metalama_Framework_Code_SyntaxBuilders_IExpressionBuilder_ToExpression
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone*
+  commentId: Overload:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_Clone
+  name: Clone
+  nameWithType: ExpressionBuilder.Clone
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.Clone
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType*
+  commentId: Overload:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_ExpressionType
+  name: ExpressionType
+  nameWithType: ExpressionBuilder.ExpressionType
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ExpressionType
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable*
+  commentId: Overload:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionBuilder_IsReferenceable
+  name: IsReferenceable
+  nameWithType: ExpressionBuilder.IsReferenceable
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.IsReferenceable
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+memberLayout: SeparatePages

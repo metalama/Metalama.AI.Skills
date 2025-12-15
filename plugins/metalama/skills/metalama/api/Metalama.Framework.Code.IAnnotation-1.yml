@@ -1,0 +1,663 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.IAnnotation`1
+  commentId: T:Metalama.Framework.Code.IAnnotation`1
+  id: IAnnotation`1
+  parent: Metalama.Framework.Code
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IAnnotation<T>
+  nameWithType: IAnnotation<T>
+  fullName: Metalama.Framework.Code.IAnnotation<T>
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Represents an annotation - an arbitrary serializable object that aspects can attach to declarations
+
+    to communicate information to other aspects or subsequent compilation phases.
+  remarks: >-
+    <p>
+        Annotations provide a mechanism for aspects to store and share custom metadata on declarations.
+        Common use cases include:
+        </p>
+    <ul><li>
+          <b>Inter-aspect communication:</b> One aspect adds an annotation that other aspects can query to coordinate behavior</li><li>
+          <b>Code generation metadata:</b> Store configuration or contextual information that template code needs during code generation</li><li>
+          <b>Aspect coordination:</b> Mark declarations with flags or data that influence how subsequent aspects process them</li></ul>
+    <p>
+      <b>Adding annotations:</b> Use <xref href="Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation%60%601(Metalama.Framework.Aspects.IAdviser%7b%60%600%7d%2cMetalama.Framework.Code.IAnnotation%7b%60%600%7d%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> in your aspect's
+        <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method to attach an annotation to a declaration.
+        </p>
+    <p>
+      <b>Retrieving annotations:</b> Call <xref href="Metalama.Framework.Code.DeclarationEnhancements%601.GetAnnotations%60%601" data-throw-if-not-resolved="false"></xref>
+        via <xref href="Metalama.Framework.Code.DeclarationExtensions.Enhancements%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> to retrieve annotations from a declaration.
+        </p>
+    <p>
+      <b>Serialization:</b> Annotations must be compile-time serializable (implement <xref href="Metalama.Framework.Serialization.ICompileTimeSerializable" data-throw-if-not-resolved="false"></xref>)
+        as they may be persisted and accessed across project boundaries.
+        </p>
+    <p>
+      <b>Design-time limitation:</b> At design time (in the IDE), Metalama performs partial compilations that only include
+        the inheritance closure of modified files. Aspects targeting declarations outside of this partial compilation
+        do not execute, so their annotations are not added and cannot be queried. This limitation does not apply at full
+        compile time when all aspects execute.
+        </p>
+  example: []
+  syntax:
+    content: 'public interface IAnnotation<in T> : IAnnotation, ICompileTimeSerializable where T : class, IDeclaration'
+    typeParameters:
+    - id: T
+      description: The type of declarations to which the annotation can be added.
+    content.vb: Public Interface IAnnotation(Of In T As {Class, IDeclaration}) Inherits IAnnotation, ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Framework.Code.IAnnotation
+    commentId: T:Metalama.Framework.Code.IAnnotation
+  - linkId: Metalama.Framework.Code.DeclarationEnhancements`1
+    commentId: T:Metalama.Framework.Code.DeclarationEnhancements`1
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+  - linkId: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+    commentId: M:Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+  - linkId: Metalama.Framework.Serialization.ICompileTimeSerializable
+    commentId: T:Metalama.Framework.Serialization.ICompileTimeSerializable
+  - linkType: HRef
+    linkId: '@sharing-state-with-advice'
+    altText: '@sharing-state-with-advice'
+  extensionMethods:
+  - Metalama.Framework.Code.IAnnotation`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IAnnotation{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAnnotation{{T}}}},System.Boolean)
+  nameWithType.vb: IAnnotation(Of T)
+  fullName.vb: Metalama.Framework.Code.IAnnotation(Of T)
+  name.vb: IAnnotation(Of T)
+references:
+- uid: Metalama.Framework.Code.IAnnotation
+  commentId: T:Metalama.Framework.Code.IAnnotation
+  isExternal: true
+  href: Metalama.Framework.Code.IAnnotation.html
+  name: IAnnotation
+  nameWithType: IAnnotation
+  fullName: Metalama.Framework.Code.IAnnotation
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1
+  commentId: T:Metalama.Framework.Code.DeclarationEnhancements`1
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.html
+  name: DeclarationEnhancements<T>
+  nameWithType: DeclarationEnhancements<T>
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>
+  nameWithType.vb: DeclarationEnhancements(Of T)
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T)
+  name.vb: DeclarationEnhancements(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1
+    name: DeclarationEnhancements
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1
+    name: DeclarationEnhancements
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation.html#Metalama_Framework_Aspects_AdviserExtensions_AddAnnotation__1_Metalama_Framework_Aspects_IAdviser___0__Metalama_Framework_Code_IAnnotation___0__System_Boolean_
+  name: AddAnnotation<TDeclaration>(IAdviser<TDeclaration>, IAnnotation<TDeclaration>, bool)
+  nameWithType: AdviserExtensions.AddAnnotation<TDeclaration>(IAdviser<TDeclaration>, IAnnotation<TDeclaration>, bool)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation<TDeclaration>(Metalama.Framework.Aspects.IAdviser<TDeclaration>, Metalama.Framework.Code.IAnnotation<TDeclaration>, bool)
+  nameWithType.vb: AdviserExtensions.AddAnnotation(Of TDeclaration)(IAdviser(Of TDeclaration), IAnnotation(Of TDeclaration), Boolean)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation(Of TDeclaration)(Metalama.Framework.Aspects.IAdviser(Of TDeclaration), Metalama.Framework.Code.IAnnotation(Of TDeclaration), Boolean)
+  name.vb: AddAnnotation(Of TDeclaration)(IAdviser(Of TDeclaration), IAnnotation(Of TDeclaration), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+    name: AddAnnotation
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation.html#Metalama_Framework_Aspects_AdviserExtensions_AddAnnotation__1_Metalama_Framework_Aspects_IAdviser___0__Metalama_Framework_Code_IAnnotation___0__System_Boolean_
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
+    name: AddAnnotation
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation.html#Metalama_Framework_Aspects_AdviserExtensions_AddAnnotation__1_Metalama_Framework_Aspects_IAdviser___0__Metalama_Framework_Code_IAnnotation___0__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+  commentId: M:Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationExtensions.Enhancements.html#Metalama_Framework_Code_DeclarationExtensions_Enhancements__1___0_
+  name: Enhancements<T>(T)
+  nameWithType: DeclarationExtensions.Enhancements<T>(T)
+  fullName: Metalama.Framework.Code.DeclarationExtensions.Enhancements<T>(T)
+  nameWithType.vb: DeclarationExtensions.Enhancements(Of T)(T)
+  fullName.vb: Metalama.Framework.Code.DeclarationExtensions.Enhancements(Of T)(T)
+  name.vb: Enhancements(Of T)(T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+    name: Enhancements
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.Enhancements.html#Metalama_Framework_Code_DeclarationExtensions_Enhancements__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
+    name: Enhancements
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.Enhancements.html#Metalama_Framework_Code_DeclarationExtensions_Enhancements__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Serialization.ICompileTimeSerializable
+  commentId: T:Metalama.Framework.Serialization.ICompileTimeSerializable
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.ICompileTimeSerializable.html
+  name: ICompileTimeSerializable
+  nameWithType: ICompileTimeSerializable
+  fullName: Metalama.Framework.Serialization.ICompileTimeSerializable
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  commentId: M:Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  name: GetAnnotations<TAnnotation>()
+  nameWithType: DeclarationEnhancements<T>.GetAnnotations<TAnnotation>()
+  fullName: Metalama.Framework.Code.DeclarationEnhancements<T>.GetAnnotations<TAnnotation>()
+  nameWithType.vb: DeclarationEnhancements(Of T).GetAnnotations(Of TAnnotation)()
+  fullName.vb: Metalama.Framework.Code.DeclarationEnhancements(Of T).GetAnnotations(Of TAnnotation)()
+  name.vb: GetAnnotations(Of TAnnotation)()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+    name: GetAnnotations
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  - name: <
+  - name: TAnnotation
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations``1
+    name: GetAnnotations
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationEnhancements-1.GetAnnotations.html#Metalama_Framework_Code_DeclarationEnhancements_1_GetAnnotations__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnnotation
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.IAnnotation`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IAnnotation{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAnnotation{{T}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IAnnotation<T>>(IAnnotation<T>, Func<IAnnotation<T>, IEnumerable<IAnnotation<T>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IAnnotation<T>>(IAnnotation<T>, Func<IAnnotation<T>, IEnumerable<IAnnotation<T>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Code.IAnnotation<T>>(Metalama.Framework.Code.IAnnotation<T>, System.Func<Metalama.Framework.Code.IAnnotation<T>, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IAnnotation<T>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IAnnotation(Of T))(IAnnotation(Of T), Func(Of IAnnotation(Of T), IEnumerable(Of IAnnotation(Of T))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Code.IAnnotation(Of T))(Metalama.Framework.Code.IAnnotation(Of T), System.Func(Of Metalama.Framework.Code.IAnnotation(Of T), System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IAnnotation(Of T))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IAnnotation(Of T))(IAnnotation(Of T), Func(Of IAnnotation(Of T), IEnumerable(Of IAnnotation(Of T))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.IAnnotation{`0},System.Func{Metalama.Framework.Code.IAnnotation{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAnnotation{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.IAnnotation{`0},System.Func{Metalama.Framework.Code.IAnnotation{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAnnotation{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IAnnotation`1
+    name: IAnnotation
+    isExternal: true
+    href: Metalama.Framework.Code.IAnnotation-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Serialization
+  commentId: N:Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Serialization
+  nameWithType: Metalama.Framework.Serialization
+  fullName: Metalama.Framework.Serialization
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+memberLayout: SeparatePages

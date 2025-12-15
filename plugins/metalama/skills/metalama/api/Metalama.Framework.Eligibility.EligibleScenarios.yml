@@ -1,0 +1,532 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Eligibility.EligibleScenarios
+  commentId: T:Metalama.Framework.Eligibility.EligibleScenarios
+  id: EligibleScenarios
+  parent: Metalama.Framework.Eligibility
+  children:
+  - Metalama.Framework.Eligibility.EligibleScenarios.All
+  - Metalama.Framework.Eligibility.EligibleScenarios.Aspect
+  - Metalama.Framework.Eligibility.EligibleScenarios.Default
+  - Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  - Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+  - Metalama.Framework.Eligibility.EligibleScenarios.None
+  langs:
+  - csharp
+  - vb
+  name: EligibleScenarios
+  nameWithType: EligibleScenarios
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: >-
+    A flags enumeration of scenarios in which an aspect can be used, controlling whether aspects are eligible
+
+    for direct application, inheritance, or live templates. Values can be combined using bitwise operators.
+  remarks: >-
+    <p>
+        This is a flags enumeration (marked with <xref href="System.FlagsAttribute" data-throw-if-not-resolved="false"></xref>), allowing fine-grained control over aspect
+        eligibility across different usage scenarios. Individual scenario values can be combined using bitwise OR (<code>|</code>),
+        and checked using bitwise AND (<code>&amp;</code>). Use methods like <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d%2cMetalama.Framework.Eligibility.EligibleScenarios)" data-throw-if-not-resolved="false"></xref> or
+        <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d%2cMetalama.Framework.Eligibility.EligibleScenarios)" data-throw-if-not-resolved="false"></xref> to restrict eligibility to specific scenarios.
+        </p>
+    <p>
+        The most common scenario is <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref>, which represents direct application of aspects to declarations.
+        Use <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref> to control eligibility for derived or overridden declarations, and <xref href="Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate" data-throw-if-not-resolved="false"></xref>
+        for IDE code generation scenarios. The <xref href="Metalama.Framework.Eligibility.EligibleScenarios.All" data-throw-if-not-resolved="false"></xref> value is the combination of all scenarios.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [Flags]
+
+      public enum EligibleScenarios
+    content.vb: >-
+      <CompileTime>
+
+      <Flags>
+
+      Public Enum EligibleScenarios
+  seealso:
+  - linkId: Metalama.Framework.Eligibility.IEligibilityBuilder
+    commentId: T:Metalama.Framework.Eligibility.IEligibilityBuilder
+  - linkId: Metalama.Framework.Eligibility.IEligible`1
+    commentId: T:Metalama.Framework.Eligibility.IEligible`1
+  - linkId: Metalama.Framework.Eligibility.EligibilityExtensions
+    commentId: T:Metalama.Framework.Eligibility.EligibilityExtensions
+  - linkType: HRef
+    linkId: '@eligibility'
+    altText: '@eligibility'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.None
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.None
+  id: None
+  parent: Metalama.Framework.Eligibility.EligibleScenarios
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: EligibleScenarios.None
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.None
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: >-
+    The aspect or option cannot be applied to the target declaration in any scenario:
+
+    not for direct application, not for inheritance, and not as a live template.
+  remarks: This value indicates complete ineligibility. Use it when a declaration fundamentally does not support the aspect.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  id: Inheritance
+  parent: Metalama.Framework.Eligibility.EligibleScenarios
+  langs:
+  - csharp
+  - vb
+  name: Inheritance
+  nameWithType: EligibleScenarios.Inheritance
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: >-
+    The aspect or option can be applied to declarations that are derived from or override the target declaration,
+
+    but not directly to the target declaration itself.
+  remarks: >-
+    <p>
+        This scenario is commonly used when applying advice to interface methods or abstract methods. The aspect is not
+        eligible on the interface or abstract method itself (since they have no implementation), but it is eligible on
+        the concrete implementations of those methods.
+        </p>
+    <p>
+        Use this scenario when an aspect should propagate to derived types or overriding members through inheritance,
+        even if the original declaration is not eligible for direct application. Aspects must be marked with
+        <xref href="Metalama.Framework.Aspects.InheritableAttribute" data-throw-if-not-resolved="false"></xref> to support inheritance.
+        </p>
+  example: []
+  syntax:
+    content: Inheritance = 1
+    return:
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+  seealso:
+  - linkType: HRef
+    linkId: '@aspect-inheritance'
+    altText: '@aspect-inheritance'
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Default
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Default
+  id: Default
+  parent: Metalama.Framework.Eligibility.EligibleScenarios
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: EligibleScenarios.Default
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: The aspect or option can be directly applied to the target declaration.
+  remarks: >-
+    This is the most common scenario and represents normal aspect application. When you check eligibility
+
+    without specifying scenarios, this is the default scenario that is checked.
+  example: []
+  syntax:
+    content: Default = 2
+    return:
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Aspect
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Aspect
+  id: Aspect
+  parent: Metalama.Framework.Eligibility.EligibleScenarios
+  langs:
+  - csharp
+  - vb
+  name: Aspect
+  nameWithType: EligibleScenarios.Aspect
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Aspect
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  syntax:
+    content: >-
+      [Obsolete("Use EligibleScenarios.Default")]
+
+      Aspect = 2
+    return:
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+    content.vb: >-
+      <Obsolete("Use EligibleScenarios.Default")>
+
+      Aspect = 2
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use EligibleScenarios.Default
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+  id: LiveTemplate
+  parent: Metalama.Framework.Eligibility.EligibleScenarios
+  langs:
+  - csharp
+  - vb
+  name: LiveTemplate
+  nameWithType: EligibleScenarios.LiveTemplate
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: The aspect or option can be used as a live template on the target declaration for IDE code generation.
+  remarks: >-
+    Live templates enable aspects to be used interactively in the IDE for code generation scenarios.
+
+    This scenario is separate from normal aspect application.
+  example: []
+  syntax:
+    content: LiveTemplate = 4
+    return:
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.All
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.All
+  id: All
+  parent: Metalama.Framework.Eligibility.EligibleScenarios
+  langs:
+  - csharp
+  - vb
+  name: All
+  nameWithType: EligibleScenarios.All
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.All
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: 'The aspect or option can be used in any scenario: direct application, inheritance, and as a live template.'
+  remarks: This is the combination of all eligibility scenarios (<xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate" data-throw-if-not-resolved="false"></xref>).
+  example: []
+  syntax:
+    content: All = Inheritance | Aspect | LiveTemplate
+    return:
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+    content.vb: All = Inheritance Or Aspect Or LiveTemplate
+references:
+- uid: Metalama.Framework.Eligibility.IEligibilityBuilder
+  commentId: T:Metalama.Framework.Eligibility.IEligibilityBuilder
+  parent: Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.Framework.Eligibility.IEligibilityBuilder.html
+  name: IEligibilityBuilder
+  nameWithType: IEligibilityBuilder
+  fullName: Metalama.Framework.Eligibility.IEligibilityBuilder
+- uid: Metalama.Framework.Eligibility.IEligible`1
+  commentId: T:Metalama.Framework.Eligibility.IEligible`1
+  isExternal: true
+  href: Metalama.Framework.Eligibility.IEligible-1.html
+  name: IEligible<T>
+  nameWithType: IEligible<T>
+  fullName: Metalama.Framework.Eligibility.IEligible<T>
+  nameWithType.vb: IEligible(Of T)
+  fullName.vb: Metalama.Framework.Eligibility.IEligible(Of T)
+  name.vb: IEligible(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions
+  commentId: T:Metalama.Framework.Eligibility.EligibilityExtensions
+  parent: Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.html
+  name: EligibilityExtensions
+  nameWithType: EligibilityExtensions
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions
+- uid: System.FlagsAttribute
+  commentId: T:System.FlagsAttribute
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.flagsattribute
+  name: FlagsAttribute
+  nameWithType: FlagsAttribute
+  fullName: System.FlagsAttribute
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios.html#Metalama_Framework_Eligibility_EligibilityExtensions_ForScenarios__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: ForScenarios<T>(IEligibilityBuilder<T>, EligibleScenarios)
+  nameWithType: EligibilityExtensions.ForScenarios<T>(IEligibilityBuilder<T>, EligibleScenarios)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios<T>(Metalama.Framework.Eligibility.IEligibilityBuilder<T>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: EligibilityExtensions.ForScenarios(Of T)(IEligibilityBuilder(Of T), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios(Of T)(Metalama.Framework.Eligibility.IEligibilityBuilder(Of T), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: ForScenarios(Of T)(IEligibilityBuilder(Of T), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: ForScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios.html#Metalama_Framework_Eligibility_EligibilityExtensions_ForScenarios__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: ForScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.ForScenarios.html#Metalama_Framework_Eligibility_EligibilityExtensions_ForScenarios__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios.html#Metalama_Framework_Eligibility_EligibilityExtensions_ExceptForScenarios__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: ExceptForScenarios<T>(IEligibilityBuilder<T>, EligibleScenarios)
+  nameWithType: EligibilityExtensions.ExceptForScenarios<T>(IEligibilityBuilder<T>, EligibleScenarios)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios<T>(Metalama.Framework.Eligibility.IEligibilityBuilder<T>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: EligibilityExtensions.ExceptForScenarios(Of T)(IEligibilityBuilder(Of T), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios(Of T)(Metalama.Framework.Eligibility.IEligibilityBuilder(Of T), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: ExceptForScenarios(Of T)(IEligibilityBuilder(Of T), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: ExceptForScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios.html#Metalama_Framework_Eligibility_EligibilityExtensions_ExceptForScenarios__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: ExceptForScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForScenarios.html#Metalama_Framework_Eligibility_EligibilityExtensions_ExceptForScenarios__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Default
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Default
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_Default
+  name: Default
+  nameWithType: EligibleScenarios.Default
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Default
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_Inheritance
+  name: Inheritance
+  nameWithType: EligibleScenarios.Inheritance
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_LiveTemplate
+  name: LiveTemplate
+  nameWithType: EligibleScenarios.LiveTemplate
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.LiveTemplate
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.All
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.All
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_All
+  name: All
+  nameWithType: EligibleScenarios.All
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.All
+- uid: Metalama.Framework.Eligibility
+  commentId: N:Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Eligibility
+  nameWithType: Metalama.Framework.Eligibility
+  fullName: Metalama.Framework.Eligibility
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Eligibility
+    name: Eligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Eligibility
+    name: Eligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Eligibility.EligibleScenarios
+  commentId: T:Metalama.Framework.Eligibility.EligibleScenarios
+  parent: Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  name: EligibleScenarios
+  nameWithType: EligibleScenarios
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios
+- uid: Metalama.Framework.Aspects.InheritableAttribute
+  commentId: T:Metalama.Framework.Aspects.InheritableAttribute
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.InheritableAttribute.html
+  name: InheritableAttribute
+  nameWithType: InheritableAttribute
+  fullName: Metalama.Framework.Aspects.InheritableAttribute
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+memberLayout: SeparatePages

@@ -1,0 +1,899 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  commentId: T:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  id: CacheParameterClassification
+  parent: Metalama.Patterns.Caching.Aspects.Configuration
+  children:
+  - Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  - Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  - Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+  - Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible(Metalama.Framework.Diagnostics.IDiagnostic)
+  langs:
+  - csharp
+  - vb
+  name: CacheParameterClassification
+  nameWithType: CacheParameterClassification
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  type: Class
+  assemblies:
+  - Metalama.Patterns.Caching.Aspects
+  namespace: Metalama.Patterns.Caching.Aspects.Configuration
+  summary: Represents the result of classifying a method parameter for cache key generation.
+  remarks: >-
+    <p>This class is returned by <xref href="Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)" data-throw-if-not-resolved="false"></xref> and determines
+
+    how a parameter is handled by the caching aspect:</p>
+
+    <ul><li><xref href="Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default" data-throw-if-not-resolved="false"></xref>: The parameter is included in the cache key using standard formatting.</li><li><xref href="Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey" data-throw-if-not-resolved="false"></xref>: The parameter is excluded from the cache key.</li><li><xref href="Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible" data-throw-if-not-resolved="false"></xref>: The method cannot be cached because of this parameter (reports a compile-time error).</li></ul>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public sealed class CacheParameterClassification
+    content.vb: >-
+      <CompileTime>
+
+      Public NotInheritable Class CacheParameterClassification
+  seealso:
+  - linkId: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+    commentId: T:Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+  - linkId: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(System.String,Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+    commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(System.String,Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible(Metalama.Framework.Diagnostics.IDiagnostic)
+  commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible(Metalama.Framework.Diagnostics.IDiagnostic)
+  id: Ineligible(Metalama.Framework.Diagnostics.IDiagnostic)
+  parent: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  langs:
+  - csharp
+  - vb
+  name: Ineligible(IDiagnostic)
+  nameWithType: CacheParameterClassification.Ineligible(IDiagnostic)
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible(Metalama.Framework.Diagnostics.IDiagnostic)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Aspects
+  namespace: Metalama.Patterns.Caching.Aspects.Configuration
+  summary: >-
+    Creates a classification indicating that the method cannot be cached because of this parameter,
+
+    with a custom error diagnostic.
+  example: []
+  syntax:
+    content: public static CacheParameterClassification Ineligible(IDiagnostic diagnostic)
+    parameters:
+    - id: diagnostic
+      type: Metalama.Framework.Diagnostics.IDiagnostic
+      description: The error diagnostic to report. Must have <xref href="Metalama.Framework.Diagnostics.Severity.Error" data-throw-if-not-resolved="false"></xref> severity.
+    return:
+      type: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+      description: A classification that will cause a compile-time error with the specified diagnostic.
+    content.vb: Public Shared Function Ineligible(diagnostic As IDiagnostic) As CacheParameterClassification
+  overload: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when the diagnostic does not have <xref href="Metalama.Framework.Diagnostics.Severity.Error" data-throw-if-not-resolved="false"></xref> severity.
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+  commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+  id: Ineligible
+  parent: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  langs:
+  - csharp
+  - vb
+  name: Ineligible()
+  nameWithType: CacheParameterClassification.Ineligible()
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible()
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Aspects
+  namespace: Metalama.Patterns.Caching.Aspects.Configuration
+  summary: >-
+    Creates a classification indicating that the method cannot be cached because of this parameter,
+
+    with a default error diagnostic.
+  example: []
+  syntax:
+    content: public static CacheParameterClassification Ineligible()
+    return:
+      type: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+      description: A classification that will cause a compile-time error with a standard diagnostic message.
+    content.vb: Public Shared Function Ineligible() As CacheParameterClassification
+  overload: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible*
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  commentId: P:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  id: Default
+  parent: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: CacheParameterClassification.Default
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Aspects
+  namespace: Metalama.Patterns.Caching.Aspects.Configuration
+  summary: Gets a classification indicating that the parameter should be included in the cache key using standard formatting.
+  example: []
+  syntax:
+    content: public static CacheParameterClassification Default { get; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    content.vb: Public Shared ReadOnly Property [Default] As CacheParameterClassification
+  overload: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default*
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  commentId: P:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  id: ExcludeFromCacheKey
+  parent: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  langs:
+  - csharp
+  - vb
+  name: ExcludeFromCacheKey
+  nameWithType: CacheParameterClassification.ExcludeFromCacheKey
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Aspects
+  namespace: Metalama.Patterns.Caching.Aspects.Configuration
+  summary: >-
+    Gets a classification indicating that the parameter should be excluded from the cache key.
+
+    The <xref href="Metalama.Patterns.Caching.NotCacheKeyAttribute" data-throw-if-not-resolved="false"></xref> will be automatically added to the parameter.
+  example: []
+  syntax:
+    content: public static CacheParameterClassification ExcludeFromCacheKey { get; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    content.vb: Public Shared ReadOnly Property ExcludeFromCacheKey As CacheParameterClassification
+  overload: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey*
+references:
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+  commentId: T:Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+  parent: Metalama.Patterns.Caching.Aspects.Configuration
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.html
+  name: ICacheParameterClassifier
+  nameWithType: ICacheParameterClassifier
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(System.String,Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+  commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(System.String,Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier.html#Metalama_Patterns_Caching_Aspects_Configuration_CachingOptionsBuilder_AddParameterClassifier_System_String_Metalama_Patterns_Caching_Aspects_Configuration_ICacheParameterClassifier_
+  name: AddParameterClassifier(string, ICacheParameterClassifier)
+  nameWithType: CachingOptionsBuilder.AddParameterClassifier(string, ICacheParameterClassifier)
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(string, Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+  nameWithType.vb: CachingOptionsBuilder.AddParameterClassifier(String, ICacheParameterClassifier)
+  fullName.vb: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(String, Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+  name.vb: AddParameterClassifier(String, ICacheParameterClassifier)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(System.String,Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+    name: AddParameterClassifier
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier.html#Metalama_Patterns_Caching_Aspects_Configuration_CachingOptionsBuilder_AddParameterClassifier_System_String_Metalama_Patterns_Caching_Aspects_Configuration_ICacheParameterClassifier_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+    name: ICacheParameterClassifier
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier(System.String,Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier)
+    name: AddParameterClassifier
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.AddParameterClassifier.html#Metalama_Patterns_Caching_Aspects_Configuration_CachingOptionsBuilder_AddParameterClassifier_System_String_Metalama_Patterns_Caching_Aspects_Configuration_ICacheParameterClassifier_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier
+    name: ICacheParameterClassifier
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.html
+  - name: )
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
+  commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification.html#Metalama_Patterns_Caching_Aspects_Configuration_ICacheParameterClassifier_GetClassification_Metalama_Framework_Code_IParameter_
+  name: GetClassification(IParameter)
+  nameWithType: ICacheParameterClassifier.GetClassification(IParameter)
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
+    name: GetClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification.html#Metalama_Patterns_Caching_Aspects_Configuration_ICacheParameterClassifier_GetClassification_Metalama_Framework_Code_IParameter_
+  - name: (
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
+    name: GetClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification.html#Metalama_Patterns_Caching_Aspects_Configuration_ICacheParameterClassifier_GetClassification_Metalama_Framework_Code_IParameter_
+  - name: (
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+  - name: )
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  commentId: P:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_Default
+  name: Default
+  nameWithType: CacheParameterClassification.Default
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  commentId: P:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_ExcludeFromCacheKey
+  name: ExcludeFromCacheKey
+  nameWithType: CacheParameterClassification.ExcludeFromCacheKey
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+  commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_Ineligible
+  name: Ineligible()
+  nameWithType: CacheParameterClassification.Ineligible()
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible()
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+    name: Ineligible
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_Ineligible
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+    name: Ineligible
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_Ineligible
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Aspects.Configuration
+  commentId: N:Metalama.Patterns.Caching.Aspects.Configuration
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching.Aspects.Configuration
+  nameWithType: Metalama.Patterns.Caching.Aspects.Configuration
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration
+    name: Configuration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration
+    name: Configuration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<CacheParameterClassification>(CacheParameterClassification, Func<CacheParameterClassification, IEnumerable<CacheParameterClassification>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<CacheParameterClassification>(CacheParameterClassification, Func<CacheParameterClassification, IEnumerable<CacheParameterClassification>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification>(Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification, System.Func<Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification, System.Collections.Generic.IEnumerable<Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of CacheParameterClassification)(CacheParameterClassification, Func(Of CacheParameterClassification, IEnumerable(Of CacheParameterClassification)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification)(Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification, System.Func(Of Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification, System.Collections.Generic.IEnumerable(Of Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of CacheParameterClassification)(CacheParameterClassification, Func(Of CacheParameterClassification, IEnumerable(Of CacheParameterClassification)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification,System.Func{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification,System.Func{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+    name: CacheParameterClassification
+    isExternal: true
+    href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Diagnostics.Severity.Error
+  commentId: F:Metalama.Framework.Diagnostics.Severity.Error
+  isExternal: true
+  name: Error
+  nameWithType: Severity.Error
+  fullName: Metalama.Framework.Diagnostics.Severity.Error
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible*
+  commentId: Overload:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_Ineligible_Metalama_Framework_Diagnostics_IDiagnostic_
+  name: Ineligible
+  nameWithType: CacheParameterClassification.Ineligible
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Ineligible
+- uid: Metalama.Framework.Diagnostics.IDiagnostic
+  commentId: T:Metalama.Framework.Diagnostics.IDiagnostic
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  name: IDiagnostic
+  nameWithType: IDiagnostic
+  fullName: Metalama.Framework.Diagnostics.IDiagnostic
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  commentId: T:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+  parent: Metalama.Patterns.Caching.Aspects.Configuration
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.html
+  name: CacheParameterClassification
+  nameWithType: CacheParameterClassification
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
+- uid: Metalama.Framework.Diagnostics
+  commentId: N:Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Diagnostics
+  nameWithType: Metalama.Framework.Diagnostics
+  fullName: Metalama.Framework.Diagnostics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default*
+  commentId: Overload:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_Default
+  name: Default
+  nameWithType: CacheParameterClassification.Default
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.Default
+- uid: Metalama.Patterns.Caching.NotCacheKeyAttribute
+  commentId: T:Metalama.Patterns.Caching.NotCacheKeyAttribute
+  isExternal: true
+  href: Metalama.Patterns.Caching.NotCacheKeyAttribute.html
+  name: NotCacheKeyAttribute
+  nameWithType: NotCacheKeyAttribute
+  fullName: Metalama.Patterns.Caching.NotCacheKeyAttribute
+- uid: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey*
+  commentId: Overload:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+  isExternal: true
+  href: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey.html#Metalama_Patterns_Caching_Aspects_Configuration_CacheParameterClassification_ExcludeFromCacheKey
+  name: ExcludeFromCacheKey
+  nameWithType: CacheParameterClassification.ExcludeFromCacheKey
+  fullName: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification.ExcludeFromCacheKey
+memberLayout: SeparatePages

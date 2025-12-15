@@ -1,0 +1,1077 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Eligibility.IEligible`1
+  commentId: T:Metalama.Framework.Eligibility.IEligible`1
+  id: IEligible`1
+  parent: Metalama.Framework.Eligibility
+  children:
+  - Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+  langs:
+  - csharp
+  - vb
+  name: IEligible<T>
+  nameWithType: IEligible<T>
+  fullName: Metalama.Framework.Eligibility.IEligible<T>
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: >-
+    An interface that allows aspects to specify to which declarations they can be applied, ensuring predictable behavior
+
+    and preventing confusing build errors or incorrect code generation patterns.
+  remarks: >-
+    <p>
+        Defining eligibility provides several benefits:
+        </p>
+    <ul><li>
+          <strong>Predictable behavior:</strong> Users receive clear feedback when applying aspects to unsupported declarations.</li><li>
+          <strong>Standard error messages:</strong> All eligibility errors use consistent, understandable messages.</li><li>
+          <strong>IDE support:</strong> Only eligible declarations appear in code action and refactoring menus.</li></ul>
+    <p>
+        Implement the <xref href="Metalama.Framework.Eligibility.IEligible%601.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method to define eligibility rules using the <xref href="Metalama.Framework.Eligibility.IEligibilityBuilder%601" data-throw-if-not-resolved="false"></xref>
+        and extension methods from <xref href="Metalama.Framework.Eligibility.EligibilityExtensions" data-throw-if-not-resolved="false"></xref>. Common rules include checking if a method is static, abstract,
+        or has certain parameter types.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public interface IEligible<in T> where T : class, IDeclaration
+    typeParameters:
+    - id: T
+      description: The type of declaration to which the eligibility applies.
+    content.vb: >-
+      <CompileTime>
+
+      Public Interface IEligible(Of In T As {Class, IDeclaration})
+  seealso:
+  - linkId: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    commentId: T:Metalama.Framework.Eligibility.IEligibilityBuilder`1
+  - linkId: Metalama.Framework.Aspects.IAspect`1
+    commentId: T:Metalama.Framework.Aspects.IAspect`1
+  - linkId: Metalama.Framework.Eligibility.EligibilityExtensions
+    commentId: T:Metalama.Framework.Eligibility.EligibilityExtensions
+  - linkType: HRef
+    linkId: '@eligibility'
+    altText: '@eligibility'
+  extensionMethods:
+  - Metalama.Framework.Eligibility.IEligible`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Eligibility.IEligible{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Eligibility.IEligible{{T}}}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  nameWithType.vb: IEligible(Of T)
+  fullName.vb: Metalama.Framework.Eligibility.IEligible(Of T)
+  name.vb: IEligible(Of T)
+- uid: Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+  commentId: M:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+  id: BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+  parent: Metalama.Framework.Eligibility.IEligible`1
+  langs:
+  - csharp
+  - vb
+  name: BuildEligibility(IEligibilityBuilder<T>)
+  nameWithType: IEligible<T>.BuildEligibility(IEligibilityBuilder<T>)
+  fullName: Metalama.Framework.Eligibility.IEligible<T>.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder<T>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: >-
+    Configures the eligibility of the aspect or attribute by defining rules that determine which declarations
+
+    the aspect can be applied to.
+  remarks: >-
+    <p>
+      <strong>Important:</strong> Do not reference instance class members in your implementation of <xref href="Metalama.Framework.Eligibility.IEligible%601.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref>.
+        This method is called on an instance obtained using <xref href="System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)" data-throw-if-not-resolved="false"></xref>, that is,
+        <i>without invoking the class constructor</i>.
+        </p>
+    <p>
+        Implementations must call the base class implementation if one exists.
+        </p>
+    <p>
+        Use <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d%2cSystem.Predicate%7b%60%600%7d%2cSystem.Func%7bMetalama.Framework.Eligibility.IDescribedObject%7b%60%600%7d%2cSystem.FormattableString%7d)" data-throw-if-not-resolved="false"></xref> to define custom eligibility conditions when standard methods
+        like <code>MustNotBeStatic</code> or <code>MustNotBeAbstract</code> are insufficient. You can also validate related declarations
+        such as the declaring type (using <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d)" data-throw-if-not-resolved="false"></xref>), return type
+        (using <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IMethod%7d)" data-throw-if-not-resolved="false"></xref>), or parameters (using <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IHasParameters%7d%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>).
+        </p>
+    <p>
+        When implementing <xref href="Metalama.Framework.Eligibility.IEligible%601.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> manually (instead of inheriting from built-in aspect classes like
+        <xref href="Metalama.Framework.Aspects.OverrideMethodAspect" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect" data-throw-if-not-resolved="false"></xref>), you can use
+        <xref href="Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)" data-throw-if-not-resolved="false"></xref> to retrieve the default eligibility rules for specific
+        advice kinds and then add only the rules that are specific to your aspect.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      void BuildEligibility(IEligibilityBuilder<in T> builder)
+    parameters:
+    - id: builder
+      type: Metalama.Framework.Eligibility.IEligibilityBuilder{{T}}
+      description: >-
+        An object that allows defining eligibility rules using methods from <xref href="Metalama.Framework.Eligibility.EligibilityExtensions" data-throw-if-not-resolved="false"></xref>,
+                    such as <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IMemberOrNamedType%7d)" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IMemberOrNamedType%7d)" data-throw-if-not-resolved="false"></xref>,
+                    or <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d%2cSystem.Predicate%7b%60%600%7d%2cSystem.Func%7bMetalama.Framework.Eligibility.IDescribedObject%7b%60%600%7d%2cSystem.FormattableString%7d)" data-throw-if-not-resolved="false"></xref>.
+    content.vb: >-
+      <CompileTime>
+
+      Sub BuildEligibility(builder As IEligibilityBuilder(Of In T))
+  overload: Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*
+  seealso:
+  - linkId: Metalama.Framework.Eligibility.EligibilityRuleFactory
+    commentId: T:Metalama.Framework.Eligibility.EligibilityRuleFactory
+  - linkType: HRef
+    linkId: '@eligibility'
+    altText: '@eligibility'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  nameWithType.vb: IEligible(Of T).BuildEligibility(IEligibilityBuilder(Of T))
+  fullName.vb: Metalama.Framework.Eligibility.IEligible(Of T).BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder(Of T))
+  name.vb: BuildEligibility(IEligibilityBuilder(Of T))
+references:
+- uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+  commentId: T:Metalama.Framework.Eligibility.IEligibilityBuilder`1
+  isExternal: true
+  href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  name: IEligibilityBuilder<T>
+  nameWithType: IEligibilityBuilder<T>
+  fullName: Metalama.Framework.Eligibility.IEligibilityBuilder<T>
+  nameWithType.vb: IEligibilityBuilder(Of T)
+  fullName.vb: Metalama.Framework.Eligibility.IEligibilityBuilder(Of T)
+  name.vb: IEligibilityBuilder(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspect`1
+  commentId: T:Metalama.Framework.Aspects.IAspect`1
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.html
+  name: IAspect<T>
+  nameWithType: IAspect<T>
+  fullName: Metalama.Framework.Aspects.IAspect<T>
+  nameWithType.vb: IAspect(Of T)
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T)
+  name.vb: IAspect(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions
+  commentId: T:Metalama.Framework.Eligibility.EligibilityExtensions
+  parent: Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.html
+  name: EligibilityExtensions
+  nameWithType: EligibilityExtensions
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions
+- uid: Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+  commentId: M:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Eligibility.IEligible-1.BuildEligibility.html#Metalama_Framework_Eligibility_IEligible_1_BuildEligibility_Metalama_Framework_Eligibility_IEligibilityBuilder__0__
+  name: BuildEligibility(IEligibilityBuilder<T>)
+  nameWithType: IEligible<T>.BuildEligibility(IEligibilityBuilder<T>)
+  fullName: Metalama.Framework.Eligibility.IEligible<T>.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder<T>)
+  nameWithType.vb: IEligible(Of T).BuildEligibility(IEligibilityBuilder(Of T))
+  fullName.vb: Metalama.Framework.Eligibility.IEligible(Of T).BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder(Of T))
+  name.vb: BuildEligibility(IEligibilityBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+    name: BuildEligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.BuildEligibility.html#Metalama_Framework_Eligibility_IEligible_1_BuildEligibility_Metalama_Framework_Eligibility_IEligibilityBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.IEligible`1.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{`0})
+    name: BuildEligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.BuildEligibility.html#Metalama_Framework_Eligibility_IEligible_1_BuildEligibility_Metalama_Framework_Eligibility_IEligibilityBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Eligibility
+  commentId: N:Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Eligibility
+  nameWithType: Metalama.Framework.Eligibility
+  fullName: Metalama.Framework.Eligibility
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Eligibility
+    name: Eligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Eligibility
+    name: Eligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.html
+- uid: Metalama.Framework.Eligibility.IEligible`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Eligibility.IEligible{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Eligibility.IEligible{{T}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IEligible<T>>(IEligible<T>, Func<IEligible<T>, IEnumerable<IEligible<T>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IEligible<T>>(IEligible<T>, Func<IEligible<T>, IEnumerable<IEligible<T>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Eligibility.IEligible<T>>(Metalama.Framework.Eligibility.IEligible<T>, System.Func<Metalama.Framework.Eligibility.IEligible<T>, System.Collections.Generic.IEnumerable<Metalama.Framework.Eligibility.IEligible<T>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IEligible(Of T))(IEligible(Of T), Func(Of IEligible(Of T), IEnumerable(Of IEligible(Of T))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Eligibility.IEligible(Of T))(Metalama.Framework.Eligibility.IEligible(Of T), System.Func(Of Metalama.Framework.Eligibility.IEligible(Of T), System.Collections.Generic.IEnumerable(Of Metalama.Framework.Eligibility.IEligible(Of T))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IEligible(Of T))(IEligible(Of T), Func(Of IEligible(Of T), IEnumerable(Of IEligible(Of T))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Eligibility.IEligible{`0},System.Func{Metalama.Framework.Eligibility.IEligible{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Eligibility.IEligible{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Eligibility.IEligible{`0},System.Func{Metalama.Framework.Eligibility.IEligible{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Eligibility.IEligible{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.IEligible`1
+    name: IEligible
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligible-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Eligibility.EligibilityRuleFactory
+  commentId: T:Metalama.Framework.Eligibility.EligibilityRuleFactory
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityRuleFactory.html
+  name: EligibilityRuleFactory
+  nameWithType: EligibilityRuleFactory
+  fullName: Metalama.Framework.Eligibility.EligibilityRuleFactory
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustNotBeStatic_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMemberOrNamedType__
+  name: MustNotBeStatic(IEligibilityBuilder<IMemberOrNamedType>)
+  nameWithType: EligibilityExtensions.MustNotBeStatic(IEligibilityBuilder<IMemberOrNamedType>)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IMemberOrNamedType>)
+  nameWithType.vb: EligibilityExtensions.MustNotBeStatic(IEligibilityBuilder(Of IMemberOrNamedType))
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IMemberOrNamedType))
+  name.vb: MustNotBeStatic(IEligibilityBuilder(Of IMemberOrNamedType))
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+    name: MustNotBeStatic
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustNotBeStatic_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMemberOrNamedType__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IMemberOrNamedType
+    name: IMemberOrNamedType
+    isExternal: true
+    href: Metalama.Framework.Code.IMemberOrNamedType.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+    name: MustNotBeStatic
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustNotBeStatic_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMemberOrNamedType__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMemberOrNamedType
+    name: IMemberOrNamedType
+    isExternal: true
+    href: Metalama.Framework.Code.IMemberOrNamedType.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustNotBeAbstract_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMemberOrNamedType__
+  name: MustNotBeAbstract(IEligibilityBuilder<IMemberOrNamedType>)
+  nameWithType: EligibilityExtensions.MustNotBeAbstract(IEligibilityBuilder<IMemberOrNamedType>)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IMemberOrNamedType>)
+  nameWithType.vb: EligibilityExtensions.MustNotBeAbstract(IEligibilityBuilder(Of IMemberOrNamedType))
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IMemberOrNamedType))
+  name.vb: MustNotBeAbstract(IEligibilityBuilder(Of IMemberOrNamedType))
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+    name: MustNotBeAbstract
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustNotBeAbstract_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMemberOrNamedType__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IMemberOrNamedType
+    name: IMemberOrNamedType
+    isExternal: true
+    href: Metalama.Framework.Code.IMemberOrNamedType.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMemberOrNamedType})
+    name: MustNotBeAbstract
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustNotBeAbstract_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMemberOrNamedType__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMemberOrNamedType
+    name: IMemberOrNamedType
+    isExternal: true
+    href: Metalama.Framework.Code.IMemberOrNamedType.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},System.Predicate{``0},System.Func{Metalama.Framework.Eligibility.IDescribedObject{``0},System.FormattableString})
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},System.Predicate{``0},System.Func{Metalama.Framework.Eligibility.IDescribedObject{``0},System.FormattableString})
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustSatisfy__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__System_Predicate___0__System_Func_Metalama_Framework_Eligibility_IDescribedObject___0__System_FormattableString__
+  name: MustSatisfy<T>(IEligibilityBuilder<T>, Predicate<T>, Func<IDescribedObject<T>, FormattableString>)
+  nameWithType: EligibilityExtensions.MustSatisfy<T>(IEligibilityBuilder<T>, Predicate<T>, Func<IDescribedObject<T>, FormattableString>)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy<T>(Metalama.Framework.Eligibility.IEligibilityBuilder<T>, System.Predicate<T>, System.Func<Metalama.Framework.Eligibility.IDescribedObject<T>, System.FormattableString>)
+  nameWithType.vb: EligibilityExtensions.MustSatisfy(Of T)(IEligibilityBuilder(Of T), Predicate(Of T), Func(Of IDescribedObject(Of T), FormattableString))
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy(Of T)(Metalama.Framework.Eligibility.IEligibilityBuilder(Of T), System.Predicate(Of T), System.Func(Of Metalama.Framework.Eligibility.IDescribedObject(Of T), System.FormattableString))
+  name.vb: MustSatisfy(Of T)(IEligibilityBuilder(Of T), Predicate(Of T), Func(Of IDescribedObject(Of T), FormattableString))
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},System.Predicate{``0},System.Func{Metalama.Framework.Eligibility.IDescribedObject{``0},System.FormattableString})
+    name: MustSatisfy
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustSatisfy__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__System_Predicate___0__System_Func_Metalama_Framework_Eligibility_IDescribedObject___0__System_FormattableString__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Eligibility.IDescribedObject`1
+    name: IDescribedObject
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IDescribedObject-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.FormattableString
+    name: FormattableString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.formattablestring
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},System.Predicate{``0},System.Func{Metalama.Framework.Eligibility.IDescribedObject{``0},System.FormattableString})
+    name: MustSatisfy
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy.html#Metalama_Framework_Eligibility_EligibilityExtensions_MustSatisfy__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__System_Predicate___0__System_Func_Metalama_Framework_Eligibility_IDescribedObject___0__System_FormattableString__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.IDescribedObject`1
+    name: IDescribedObject
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IDescribedObject-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.FormattableString
+    name: FormattableString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.formattablestring
+  - name: )
+  - name: )
+- uid: System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)
+  commentId: M:System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.formatterservices.getuninitializedobject
+  name: GetUninitializedObject(Type)
+  nameWithType: FormatterServices.GetUninitializedObject(Type)
+  fullName: System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)
+  spec.csharp:
+  - uid: System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)
+    name: GetUninitializedObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.formatterservices.getuninitializedobject
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)
+    name: GetUninitializedObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.formatterservices.getuninitializedobject
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0})
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0})
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType.html#Metalama_Framework_Eligibility_EligibilityExtensions_DeclaringType__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__
+  name: DeclaringType<T>(IEligibilityBuilder<T>)
+  nameWithType: EligibilityExtensions.DeclaringType<T>(IEligibilityBuilder<T>)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType<T>(Metalama.Framework.Eligibility.IEligibilityBuilder<T>)
+  nameWithType.vb: EligibilityExtensions.DeclaringType(Of T)(IEligibilityBuilder(Of T))
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType(Of T)(Metalama.Framework.Eligibility.IEligibilityBuilder(Of T))
+  name.vb: DeclaringType(Of T)(IEligibilityBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0})
+    name: DeclaringType
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType.html#Metalama_Framework_Eligibility_EligibilityExtensions_DeclaringType__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0})
+    name: DeclaringType
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType.html#Metalama_Framework_Eligibility_EligibilityExtensions_DeclaringType__1_Metalama_Framework_Eligibility_IEligibilityBuilder___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMethod})
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMethod})
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType.html#Metalama_Framework_Eligibility_EligibilityExtensions_ReturnType_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMethod__
+  name: ReturnType(IEligibilityBuilder<IMethod>)
+  nameWithType: EligibilityExtensions.ReturnType(IEligibilityBuilder<IMethod>)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IMethod>)
+  nameWithType.vb: EligibilityExtensions.ReturnType(IEligibilityBuilder(Of IMethod))
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IMethod))
+  name.vb: ReturnType(IEligibilityBuilder(Of IMethod))
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMethod})
+    name: ReturnType
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType.html#Metalama_Framework_Eligibility_EligibilityExtensions_ReturnType_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMethod__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMethod})
+    name: ReturnType
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType.html#Metalama_Framework_Eligibility_EligibilityExtensions_ReturnType_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IMethod__
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IHasParameters},System.Int32)
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IHasParameters},System.Int32)
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter.html#Metalama_Framework_Eligibility_EligibilityExtensions_Parameter_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IHasParameters__System_Int32_
+  name: Parameter(IEligibilityBuilder<IHasParameters>, int)
+  nameWithType: EligibilityExtensions.Parameter(IEligibilityBuilder<IHasParameters>, int)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IHasParameters>, int)
+  nameWithType.vb: EligibilityExtensions.Parameter(IEligibilityBuilder(Of IHasParameters), Integer)
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IHasParameters), Integer)
+  name.vb: Parameter(IEligibilityBuilder(Of IHasParameters), Integer)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IHasParameters},System.Int32)
+    name: Parameter
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter.html#Metalama_Framework_Eligibility_EligibilityExtensions_Parameter_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IHasParameters__System_Int32_
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IHasParameters
+    name: IHasParameters
+    isExternal: true
+    href: Metalama.Framework.Code.IHasParameters.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IHasParameters},System.Int32)
+    name: Parameter
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityExtensions.Parameter.html#Metalama_Framework_Eligibility_EligibilityExtensions_Parameter_Metalama_Framework_Eligibility_IEligibilityBuilder_Metalama_Framework_Code_IHasParameters__System_Int32_
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IHasParameters
+    name: IHasParameters
+    isExternal: true
+    href: Metalama.Framework.Code.IHasParameters.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Metalama.Framework.Aspects.OverrideMethodAspect
+  commentId: T:Metalama.Framework.Aspects.OverrideMethodAspect
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideMethodAspect.html
+  name: OverrideMethodAspect
+  nameWithType: OverrideMethodAspect
+  fullName: Metalama.Framework.Aspects.OverrideMethodAspect
+- uid: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+  commentId: T:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.html
+  name: OverrideFieldOrPropertyAspect
+  nameWithType: OverrideFieldOrPropertyAspect
+  fullName: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+- uid: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)
+  commentId: M:Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule.html#Metalama_Framework_Eligibility_EligibilityRuleFactory_GetAdviceEligibilityRule_Metalama_Framework_Advising_AdviceKind_
+  name: GetAdviceEligibilityRule(AdviceKind)
+  nameWithType: EligibilityRuleFactory.GetAdviceEligibilityRule(AdviceKind)
+  fullName: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)
+    name: GetAdviceEligibilityRule
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule.html#Metalama_Framework_Eligibility_EligibilityRuleFactory_GetAdviceEligibilityRule_Metalama_Framework_Advising_AdviceKind_
+  - name: (
+  - uid: Metalama.Framework.Advising.AdviceKind
+    name: AdviceKind
+    isExternal: true
+    href: Metalama.Framework.Advising.AdviceKind.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)
+    name: GetAdviceEligibilityRule
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule.html#Metalama_Framework_Eligibility_EligibilityRuleFactory_GetAdviceEligibilityRule_Metalama_Framework_Advising_AdviceKind_
+  - name: (
+  - uid: Metalama.Framework.Advising.AdviceKind
+    name: AdviceKind
+    isExternal: true
+    href: Metalama.Framework.Advising.AdviceKind.html
+  - name: )
+- uid: Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*
+  commentId: Overload:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility
+  isExternal: true
+  href: Metalama.Framework.Eligibility.IEligible-1.BuildEligibility.html#Metalama_Framework_Eligibility_IEligible_1_BuildEligibility_Metalama_Framework_Eligibility_IEligibilityBuilder__0__
+  name: BuildEligibility
+  nameWithType: IEligible<T>.BuildEligibility
+  fullName: Metalama.Framework.Eligibility.IEligible<T>.BuildEligibility
+  nameWithType.vb: IEligible(Of T).BuildEligibility
+  fullName.vb: Metalama.Framework.Eligibility.IEligible(Of T).BuildEligibility
+- uid: Metalama.Framework.Eligibility.IEligibilityBuilder{{T}}
+  commentId: T:Metalama.Framework.Eligibility.IEligibilityBuilder{``0}
+  parent: Metalama.Framework.Eligibility
+  definition: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+  href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  name: IEligibilityBuilder<T>
+  nameWithType: IEligibilityBuilder<T>
+  fullName: Metalama.Framework.Eligibility.IEligibilityBuilder<T>
+  nameWithType.vb: IEligibilityBuilder(Of T)
+  fullName.vb: Metalama.Framework.Eligibility.IEligibilityBuilder(Of T)
+  name.vb: IEligibilityBuilder(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+memberLayout: SeparatePages

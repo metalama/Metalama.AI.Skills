@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.ConversionKind
+  commentId: T:Metalama.Framework.Code.ConversionKind
+  id: ConversionKind
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.ConversionKind.Default
+  - Metalama.Framework.Code.ConversionKind.Implicit
+  - Metalama.Framework.Code.ConversionKind.ImplicitReference
+  - Metalama.Framework.Code.ConversionKind.Reference
+  - Metalama.Framework.Code.ConversionKind.TypeDefinition
+  langs:
+  - csharp
+  - vb
+  name: ConversionKind
+  nameWithType: ConversionKind
+  fullName: Metalama.Framework.Code.ConversionKind
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Describes conversion between types possible during comparison.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum ConversionKind
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum ConversionKind
+  seealso:
+  - linkId: Metalama.Framework.Code.IType
+    commentId: T:Metalama.Framework.Code.IType
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.ConversionKind.Default
+  commentId: F:Metalama.Framework.Code.ConversionKind.Default
+  id: Default
+  parent: Metalama.Framework.Code.ConversionKind
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: ConversionKind.Default
+  fullName: Metalama.Framework.Code.ConversionKind.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Accepts any value that is type-compatible, including boxing conversions, but excluding user-defined implicit operators. This corresponds to the behavior of C# <code>is</code> operator.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Framework.Code.ConversionKind
+- uid: Metalama.Framework.Code.ConversionKind.Reference
+  commentId: F:Metalama.Framework.Code.ConversionKind.Reference
+  id: Reference
+  parent: Metalama.Framework.Code.ConversionKind
+  langs:
+  - csharp
+  - vb
+  name: Reference
+  nameWithType: ConversionKind.Reference
+  fullName: Metalama.Framework.Code.ConversionKind.Reference
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Accepts any value that is reference-compatible with the given type i.e. instances of subclasses or interface implementations, but refuses boxing conversions.
+  example: []
+  syntax:
+    content: Reference = 1
+    return:
+      type: Metalama.Framework.Code.ConversionKind
+- uid: Metalama.Framework.Code.ConversionKind.Implicit
+  commentId: F:Metalama.Framework.Code.ConversionKind.Implicit
+  id: Implicit
+  parent: Metalama.Framework.Code.ConversionKind
+  langs:
+  - csharp
+  - vb
+  name: Implicit
+  nameWithType: ConversionKind.Implicit
+  fullName: Metalama.Framework.Code.ConversionKind.Implicit
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Accepts any value implicitly convertible to the given type, including boxing and user-defined implicit operators. This corresponds to C# value assignability.
+  example: []
+  syntax:
+    content: Implicit = 2
+    return:
+      type: Metalama.Framework.Code.ConversionKind
+- uid: Metalama.Framework.Code.ConversionKind.TypeDefinition
+  commentId: F:Metalama.Framework.Code.ConversionKind.TypeDefinition
+  id: TypeDefinition
+  parent: Metalama.Framework.Code.ConversionKind
+  langs:
+  - csharp
+  - vb
+  name: TypeDefinition
+  nameWithType: ConversionKind.TypeDefinition
+  fullName: Metalama.Framework.Code.ConversionKind.TypeDefinition
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Accepts any value that extends or implements a type that is of the same type definition as the given type definition.
+  remarks: >-
+    For non-generic types behaves like <xref href="Metalama.Framework.Code.ConversionKind.Reference" data-throw-if-not-resolved="false"></xref>. For generic types, ignores all type arguments and tests that 
+
+    the given type definition is equal to a type definition of the value, a type definition of any base type, or a type definition of
+
+    any implemented interface (by the type itself or by any base type, including base interfaces).
+  example: []
+  syntax:
+    content: TypeDefinition = 3
+    return:
+      type: Metalama.Framework.Code.ConversionKind
+- uid: Metalama.Framework.Code.ConversionKind.ImplicitReference
+  commentId: F:Metalama.Framework.Code.ConversionKind.ImplicitReference
+  id: ImplicitReference
+  parent: Metalama.Framework.Code.ConversionKind
+  langs:
+  - csharp
+  - vb
+  name: ImplicitReference
+  nameWithType: ConversionKind.ImplicitReference
+  fullName: Metalama.Framework.Code.ConversionKind.ImplicitReference
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  syntax:
+    content: >-
+      [Obsolete("Use Reference.", true)]
+
+      ImplicitReference = 1
+    return:
+      type: Metalama.Framework.Code.ConversionKind
+    content.vb: >-
+      <Obsolete("Use Reference.", True)>
+
+      ImplicitReference = 1
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: Use Reference.
+    - type: System.Boolean
+      value: true
+references:
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.ConversionKind
+  commentId: T:Metalama.Framework.Code.ConversionKind
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ConversionKind.html
+  name: ConversionKind
+  nameWithType: ConversionKind
+  fullName: Metalama.Framework.Code.ConversionKind
+- uid: Metalama.Framework.Code.ConversionKind.Reference
+  commentId: F:Metalama.Framework.Code.ConversionKind.Reference
+  isExternal: true
+  href: Metalama.Framework.Code.ConversionKind.html#Metalama_Framework_Code_ConversionKind_Reference
+  name: Reference
+  nameWithType: ConversionKind.Reference
+  fullName: Metalama.Framework.Code.ConversionKind.Reference
+memberLayout: SeparatePages

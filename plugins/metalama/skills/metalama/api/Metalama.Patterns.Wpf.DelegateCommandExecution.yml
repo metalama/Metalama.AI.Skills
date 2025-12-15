@@ -1,0 +1,634 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution
+  commentId: T:Metalama.Patterns.Wpf.DelegateCommandExecution
+  id: DelegateCommandExecution
+  parent: Metalama.Patterns.Wpf
+  children:
+  - Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+  - Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested
+  - Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  langs:
+  - csharp
+  - vb
+  name: DelegateCommandExecution
+  nameWithType: DelegateCommandExecution
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution
+  type: Struct
+  assemblies:
+  - Metalama.Patterns.Wpf
+  namespace: Metalama.Patterns.Wpf
+  summary: >-
+    Represents a single execution of an asynchronous delegate command, providing access to the execution's <xref href="Metalama.Patterns.Wpf.DelegateCommandExecution.Task" data-throw-if-not-resolved="false"></xref>
+
+    and allowing cancellation of that specific invocation.
+  remarks: >-
+    <p>This struct is returned by the <xref href="Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Patterns.Wpf.AsyncDelegateCommand%601.Execute(%600)" data-throw-if-not-resolved="false"></xref> methods,
+
+    and is also provided through the <xref href="Metalama.Patterns.Wpf.BaseAsyncDelegateCommand.Executed" data-throw-if-not-resolved="false"></xref> event.</p>
+
+    <p>Use this type to track and cancel individual command executions, especially when concurrent execution is enabled
+
+    via <xref href="Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution" data-throw-if-not-resolved="false"></xref>.</p>
+  example: []
+  syntax:
+    content: public readonly struct DelegateCommandExecution
+    content.vb: Public Structure DelegateCommandExecution
+  seealso:
+  - linkId: Metalama.Patterns.Wpf.AsyncDelegateCommand
+    commentId: T:Metalama.Patterns.Wpf.AsyncDelegateCommand
+  - linkId: Metalama.Patterns.Wpf.AsyncDelegateCommand`1
+    commentId: T:Metalama.Patterns.Wpf.AsyncDelegateCommand`1
+  - linkId: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand
+    commentId: T:Metalama.Patterns.Wpf.BaseAsyncDelegateCommand
+  - linkType: HRef
+    linkId: '@wpf-command'
+    altText: '@wpf-command'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+  commentId: M:Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+  id: Cancel
+  parent: Metalama.Patterns.Wpf.DelegateCommandExecution
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: DelegateCommandExecution.Cancel()
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel()
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Wpf
+  namespace: Metalama.Patterns.Wpf
+  summary: >-
+    Cancels this specific execution of the command by signaling the <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>
+
+    that was passed to the execute delegate.
+  example: []
+  syntax:
+    content: public void Cancel()
+    content.vb: Public Sub Cancel()
+  overload: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when the command does not support cancellation.
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  commentId: P:Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  id: Task
+  parent: Metalama.Patterns.Wpf.DelegateCommandExecution
+  langs:
+  - csharp
+  - vb
+  name: Task
+  nameWithType: DelegateCommandExecution.Task
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Wpf
+  namespace: Metalama.Patterns.Wpf
+  summary: Gets the <xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref> representing this execution of the command.
+  example: []
+  syntax:
+    content: public Task Task { get; }
+    parameters: []
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public ReadOnly Property Task As Task
+  overload: Metalama.Patterns.Wpf.DelegateCommandExecution.Task*
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested
+  commentId: P:Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested
+  id: IsCancellationRequested
+  parent: Metalama.Patterns.Wpf.DelegateCommandExecution
+  langs:
+  - csharp
+  - vb
+  name: IsCancellationRequested
+  nameWithType: DelegateCommandExecution.IsCancellationRequested
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Wpf
+  namespace: Metalama.Patterns.Wpf
+  summary: Gets a value indicating whether <xref href="Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel" data-throw-if-not-resolved="false"></xref> has been called for this execution.
+  example: []
+  syntax:
+    content: public bool IsCancellationRequested { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsCancellationRequested As Boolean
+  overload: Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested*
+references:
+- uid: Metalama.Patterns.Wpf.AsyncDelegateCommand
+  commentId: T:Metalama.Patterns.Wpf.AsyncDelegateCommand
+  parent: Metalama.Patterns.Wpf
+  isExternal: true
+  href: Metalama.Patterns.Wpf.AsyncDelegateCommand.html
+  name: AsyncDelegateCommand
+  nameWithType: AsyncDelegateCommand
+  fullName: Metalama.Patterns.Wpf.AsyncDelegateCommand
+- uid: Metalama.Patterns.Wpf.AsyncDelegateCommand`1
+  commentId: T:Metalama.Patterns.Wpf.AsyncDelegateCommand`1
+  isExternal: true
+  href: Metalama.Patterns.Wpf.AsyncDelegateCommand-1.html
+  name: AsyncDelegateCommand<T>
+  nameWithType: AsyncDelegateCommand<T>
+  fullName: Metalama.Patterns.Wpf.AsyncDelegateCommand<T>
+  nameWithType.vb: AsyncDelegateCommand(Of T)
+  fullName.vb: Metalama.Patterns.Wpf.AsyncDelegateCommand(Of T)
+  name.vb: AsyncDelegateCommand(Of T)
+  spec.csharp:
+  - uid: Metalama.Patterns.Wpf.AsyncDelegateCommand`1
+    name: AsyncDelegateCommand
+    isExternal: true
+    href: Metalama.Patterns.Wpf.AsyncDelegateCommand-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Patterns.Wpf.AsyncDelegateCommand`1
+    name: AsyncDelegateCommand
+    isExternal: true
+    href: Metalama.Patterns.Wpf.AsyncDelegateCommand-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand
+  commentId: T:Metalama.Patterns.Wpf.BaseAsyncDelegateCommand
+  parent: Metalama.Patterns.Wpf
+  isExternal: true
+  href: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand.html
+  name: BaseAsyncDelegateCommand
+  nameWithType: BaseAsyncDelegateCommand
+  fullName: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  commentId: P:Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  isExternal: true
+  href: Metalama.Patterns.Wpf.DelegateCommandExecution.Task.html#Metalama_Patterns_Wpf_DelegateCommandExecution_Task
+  name: Task
+  nameWithType: DelegateCommandExecution.Task
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+- uid: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute
+  commentId: M:Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute
+  isExternal: true
+  href: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute.html#Metalama_Patterns_Wpf_AsyncDelegateCommand_Execute
+  name: Execute()
+  nameWithType: AsyncDelegateCommand.Execute()
+  fullName: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute()
+  spec.csharp:
+  - uid: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute
+    name: Execute
+    isExternal: true
+    href: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute.html#Metalama_Patterns_Wpf_AsyncDelegateCommand_Execute
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute
+    name: Execute
+    isExternal: true
+    href: Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute.html#Metalama_Patterns_Wpf_AsyncDelegateCommand_Execute
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Wpf.AsyncDelegateCommand`1.Execute(`0)
+  commentId: M:Metalama.Patterns.Wpf.AsyncDelegateCommand`1.Execute(`0)
+  isExternal: true
+  href: Metalama.Patterns.Wpf.AsyncDelegateCommand-1.Execute.html#Metalama_Patterns_Wpf_AsyncDelegateCommand_1_Execute__0_
+  name: Execute(T)
+  nameWithType: AsyncDelegateCommand<T>.Execute(T)
+  fullName: Metalama.Patterns.Wpf.AsyncDelegateCommand<T>.Execute(T)
+  nameWithType.vb: AsyncDelegateCommand(Of T).Execute(T)
+  fullName.vb: Metalama.Patterns.Wpf.AsyncDelegateCommand(Of T).Execute(T)
+  spec.csharp:
+  - uid: Metalama.Patterns.Wpf.AsyncDelegateCommand`1.Execute(`0)
+    name: Execute
+    isExternal: true
+    href: Metalama.Patterns.Wpf.AsyncDelegateCommand-1.Execute.html#Metalama_Patterns_Wpf_AsyncDelegateCommand_1_Execute__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Wpf.AsyncDelegateCommand`1.Execute(`0)
+    name: Execute
+    isExternal: true
+    href: Metalama.Patterns.Wpf.AsyncDelegateCommand-1.Execute.html#Metalama_Patterns_Wpf_AsyncDelegateCommand_1_Execute__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand.Executed
+  commentId: E:Metalama.Patterns.Wpf.BaseAsyncDelegateCommand.Executed
+  parent: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand
+  isExternal: true
+  href: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand.Executed.html#Metalama_Patterns_Wpf_BaseAsyncDelegateCommand_Executed
+  name: Executed
+  nameWithType: BaseAsyncDelegateCommand.Executed
+  fullName: Metalama.Patterns.Wpf.BaseAsyncDelegateCommand.Executed
+- uid: Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution
+  commentId: P:Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution
+  isExternal: true
+  href: Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution.html#Metalama_Patterns_Wpf_CommandAttribute_SupportsConcurrentExecution
+  name: SupportsConcurrentExecution
+  nameWithType: CommandAttribute.SupportsConcurrentExecution
+  fullName: Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution
+- uid: Metalama.Patterns.Wpf
+  commentId: N:Metalama.Patterns.Wpf
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Wpf
+  nameWithType: Metalama.Patterns.Wpf
+  fullName: Metalama.Patterns.Wpf
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Wpf
+    name: Wpf
+    isExternal: true
+    href: Metalama.Patterns.Wpf.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Wpf
+    name: Wpf
+    isExternal: true
+    href: Metalama.Patterns.Wpf.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel*
+  commentId: Overload:Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+  isExternal: true
+  href: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel.html#Metalama_Patterns_Wpf_DelegateCommandExecution_Cancel
+  name: Cancel
+  nameWithType: DelegateCommandExecution.Cancel
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Task*
+  commentId: Overload:Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+  isExternal: true
+  href: Metalama.Patterns.Wpf.DelegateCommandExecution.Task.html#Metalama_Patterns_Wpf_DelegateCommandExecution_Task
+  name: Task
+  nameWithType: DelegateCommandExecution.Task
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+  commentId: M:Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+  isExternal: true
+  href: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel.html#Metalama_Patterns_Wpf_DelegateCommandExecution_Cancel
+  name: Cancel()
+  nameWithType: DelegateCommandExecution.Cancel()
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel()
+  spec.csharp:
+  - uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+    name: Cancel
+    isExternal: true
+    href: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel.html#Metalama_Patterns_Wpf_DelegateCommandExecution_Cancel
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel
+    name: Cancel
+    isExternal: true
+    href: Metalama.Patterns.Wpf.DelegateCommandExecution.Cancel.html#Metalama_Patterns_Wpf_DelegateCommandExecution_Cancel
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested*
+  commentId: Overload:Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested
+  isExternal: true
+  href: Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested.html#Metalama_Patterns_Wpf_DelegateCommandExecution_IsCancellationRequested
+  name: IsCancellationRequested
+  nameWithType: DelegateCommandExecution.IsCancellationRequested
+  fullName: Metalama.Patterns.Wpf.DelegateCommandExecution.IsCancellationRequested
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+memberLayout: SeparatePages

@@ -1,0 +1,1347 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  commentId: T:Metalama.Framework.Engine.Metrics.MetricProvider`1
+  id: MetricProvider`1
+  parent: Metalama.Framework.Engine.Metrics
+  children:
+  - Metalama.Framework.Engine.Metrics.MetricProvider`1.#ctor
+  - Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+  - Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  - Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  - Metalama.Framework.Engine.Metrics.MetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  langs:
+  - csharp
+  - vb
+  name: MetricProvider<T>
+  nameWithType: MetricProvider<T>
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>
+  type: Class
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.Metrics
+  summary: >-
+    Base class for implementing custom metric providers. Derive from this class to create metrics that
+
+    can measure code characteristics like complexity, coupling, or custom patterns.
+  remarks: >-
+    <p>
+        To create a custom metric:
+        </p>
+    <ol><li>Create a metric struct implementing <xref href="Metalama.Framework.Metrics.IMetric%601" data-throw-if-not-resolved="false"></xref> for each declaration type it supports.</li><li>Create a metric provider class deriving from <xref href="Metalama.Framework.Engine.Metrics.MetricProvider%601" data-throw-if-not-resolved="false"></xref> (or <xref href="Metalama.Framework.Engine.Metrics.SyntaxMetricProvider%601" data-throw-if-not-resolved="false"></xref> for syntax-based metrics).</li><li>Annotate the provider class with <xref href="Metalama.Framework.Engine.MetalamaPlugInAttribute" data-throw-if-not-resolved="false"></xref>.</li></ol>
+
+    <p>
+        Override the following methods:
+        </p>
+    <ul><li>
+          <xref href="Metalama.Framework.Engine.Metrics.MetricProvider%601.ComputeMetricForType(Metalama.Framework.Code.INamedType)" data-throw-if-not-resolved="false"></xref>: Compute the metric for a type.</li><li>
+          <xref href="Metalama.Framework.Engine.Metrics.MetricProvider%601.ComputeMetricForMember(Metalama.Framework.Code.IMember)" data-throw-if-not-resolved="false"></xref>: Compute the metric for a member.</li><li>
+          <xref href="Metalama.Framework.Engine.Metrics.MetricProvider%601.Aggregate(%600%40%2c%600%40)" data-throw-if-not-resolved="false"></xref>: Combine metric values when aggregating across members or types.</li></ul>
+    <p>
+        For syntax-based metrics that analyze syntax trees, use <xref href="Metalama.Framework.Engine.Metrics.SyntaxMetricProvider%601" data-throw-if-not-resolved="false"></xref> instead.
+        </p>
+  example: []
+  syntax:
+    content: 'public abstract class MetricProvider<T> : IMetricProvider<T>, IProjectService, IService where T : struct, IMetric'
+    typeParameters:
+    - id: T
+      description: The metric type, which must be a struct implementing <xref href="Metalama.Framework.Metrics.IMetric" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public MustInherit Class MetricProvider(Of T As {Structure, IMetric}) Implements IMetricProvider(Of T), IProjectService, IService
+  seealso:
+  - linkId: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+    commentId: T:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+  - linkId: Metalama.Framework.Metrics.IMetric
+    commentId: T:Metalama.Framework.Metrics.IMetric
+  - linkType: HRef
+    linkId: '@custom-metrics'
+    altText: '@custom-metrics'
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Metalama.Extensions.Metrics.LinesOfCodeMetricProvider
+  - Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+  implements:
+  - Metalama.Framework.Metrics.IMetricProvider{{T}}
+  - Metalama.Framework.Services.IProjectService
+  - Metalama.Framework.Services.IService
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Engine.Metrics.MetricProvider`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.Metrics.MetricProvider{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.Metrics.MetricProvider{{T}}}},System.Boolean)
+  nameWithType.vb: MetricProvider(Of T)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T)
+  name.vb: MetricProvider(Of T)
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  id: GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  parent: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  langs:
+  - csharp
+  - vb
+  name: GetMetric(IMeasurable)
+  nameWithType: MetricProvider<T>.GetMetric(IMeasurable)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.Metrics
+  summary: Gets the metric for a measurable code element.
+  remarks: >-
+    This method dispatches to the appropriate compute method based on the target type:
+
+    <xref href="Metalama.Framework.Engine.Metrics.MetricProvider%601.ComputeMetricForType(Metalama.Framework.Code.INamedType)" data-throw-if-not-resolved="false"></xref> for types, <xref href="Metalama.Framework.Engine.Metrics.MetricProvider%601.ComputeMetricForMember(Metalama.Framework.Code.IMember)" data-throw-if-not-resolved="false"></xref> for members,
+
+    and aggregates results for namespaces and compilations.
+  example: []
+  syntax:
+    content: public T GetMetric(IMeasurable measurable)
+    parameters:
+    - id: measurable
+      type: Metalama.Framework.Metrics.IMeasurable
+      description: The code element to measure (type, member, namespace, or compilation).
+    return:
+      type: '{T}'
+      description: The computed metric value.
+    content.vb: Public Function GetMetric(measurable As IMeasurable) As T
+  overload: Metalama.Framework.Engine.Metrics.MetricProvider`1.GetMetric*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The metric cannot be computed for the given target type.
+  implements:
+  - Metalama.Framework.Metrics.IMetricProvider{{T}}.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  nameWithType.vb: MetricProvider(Of T).GetMetric(IMeasurable)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).GetMetric(Metalama.Framework.Metrics.IMeasurable)
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+  id: Aggregate(`0@,`0@)
+  parent: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  langs:
+  - csharp
+  - vb
+  name: Aggregate(ref T, in T)
+  nameWithType: MetricProvider<T>.Aggregate(ref T, in T)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.Aggregate(ref T, in T)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.Metrics
+  summary: Aggregates a new value into an aggregate value.
+  example: []
+  syntax:
+    content: protected abstract void Aggregate(ref T aggregate, in T newValue)
+    parameters:
+    - id: aggregate
+      type: '{T}'
+      description: The aggregate value.
+    - id: newValue
+      type: '{T}'
+      description: The new value.
+    content.vb: Protected MustOverride Sub Aggregate(aggregate As T, newValue As T)
+  overload: Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate*
+  nameWithType.vb: MetricProvider(Of T).Aggregate(T, T)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).Aggregate(T, T)
+  name.vb: Aggregate(T, T)
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  id: ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  parent: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  langs:
+  - csharp
+  - vb
+  name: ComputeMetricForType(INamedType)
+  nameWithType: MetricProvider<T>.ComputeMetricForType(INamedType)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.Metrics
+  summary: Computes the metric for a whole type.
+  example: []
+  syntax:
+    content: protected abstract T ComputeMetricForType(INamedType namedType)
+    parameters:
+    - id: namedType
+      type: Metalama.Framework.Code.INamedType
+    return:
+      type: '{T}'
+    content.vb: Protected MustOverride Function ComputeMetricForType(namedType As INamedType) As T
+  overload: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType*
+  nameWithType.vb: MetricProvider(Of T).ComputeMetricForType(INamedType)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).ComputeMetricForType(Metalama.Framework.Code.INamedType)
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  id: ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  parent: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  langs:
+  - csharp
+  - vb
+  name: ComputeMetricForMember(IMember)
+  nameWithType: MetricProvider<T>.ComputeMetricForMember(IMember)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.Metrics
+  summary: Computes the metric for a member.
+  example: []
+  syntax:
+    content: protected abstract T ComputeMetricForMember(IMember member)
+    parameters:
+    - id: member
+      type: Metalama.Framework.Code.IMember
+    return:
+      type: '{T}'
+    content.vb: Protected MustOverride Function ComputeMetricForMember(member As IMember) As T
+  overload: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember*
+  nameWithType.vb: MetricProvider(Of T).ComputeMetricForMember(IMember)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).ComputeMetricForMember(Metalama.Framework.Code.IMember)
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.#ctor
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.#ctor
+  id: '#ctor'
+  parent: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  langs:
+  - csharp
+  - vb
+  name: MetricProvider()
+  nameWithType: MetricProvider<T>.MetricProvider()
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.MetricProvider()
+  type: Constructor
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.Metrics
+  syntax:
+    content: protected MetricProvider()
+    content.vb: Protected Sub New()
+  overload: Metalama.Framework.Engine.Metrics.MetricProvider`1.#ctor*
+  nameWithType.vb: MetricProvider(Of T).New()
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).New()
+  name.vb: New()
+references:
+- uid: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+  commentId: T:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider-1.html
+  name: SyntaxMetricProvider<T>
+  nameWithType: SyntaxMetricProvider<T>
+  fullName: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider<T>
+  nameWithType.vb: SyntaxMetricProvider(Of T)
+  fullName.vb: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider(Of T)
+  name.vb: SyntaxMetricProvider(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+    name: SyntaxMetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1
+    name: SyntaxMetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.SyntaxMetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Metrics.IMetric
+  commentId: T:Metalama.Framework.Metrics.IMetric
+  parent: Metalama.Framework.Metrics
+  isExternal: true
+  href: Metalama.Framework.Metrics.IMetric.html
+  name: IMetric
+  nameWithType: IMetric
+  fullName: Metalama.Framework.Metrics.IMetric
+- uid: Metalama.Framework.Metrics.IMetric`1
+  commentId: T:Metalama.Framework.Metrics.IMetric`1
+  isExternal: true
+  href: Metalama.Framework.Metrics.IMetric-1.html
+  name: IMetric<T>
+  nameWithType: IMetric<T>
+  fullName: Metalama.Framework.Metrics.IMetric<T>
+  nameWithType.vb: IMetric(Of T)
+  fullName.vb: Metalama.Framework.Metrics.IMetric(Of T)
+  name.vb: IMetric(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Metrics.IMetric`1
+    name: IMetric
+    isExternal: true
+    href: Metalama.Framework.Metrics.IMetric-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Metrics.IMetric`1
+    name: IMetric
+    isExternal: true
+    href: Metalama.Framework.Metrics.IMetric-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+  commentId: T:Metalama.Framework.Engine.Metrics.MetricProvider`1
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  name: MetricProvider<T>
+  nameWithType: MetricProvider<T>
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>
+  nameWithType.vb: MetricProvider(Of T)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T)
+  name.vb: MetricProvider(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.MetalamaPlugInAttribute
+  commentId: T:Metalama.Framework.Engine.MetalamaPlugInAttribute
+  parent: Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.Framework.Engine.MetalamaPlugInAttribute.html
+  name: MetalamaPlugInAttribute
+  nameWithType: MetalamaPlugInAttribute
+  fullName: Metalama.Framework.Engine.MetalamaPlugInAttribute
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForType.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForType_Metalama_Framework_Code_INamedType_
+  name: ComputeMetricForType(INamedType)
+  nameWithType: MetricProvider<T>.ComputeMetricForType(INamedType)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  nameWithType.vb: MetricProvider(Of T).ComputeMetricForType(INamedType)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).ComputeMetricForType(Metalama.Framework.Code.INamedType)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+    name: ComputeMetricForType
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForType.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForType_Metalama_Framework_Code_INamedType_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType(Metalama.Framework.Code.INamedType)
+    name: ComputeMetricForType
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForType.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForType_Metalama_Framework_Code_INamedType_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+  - name: )
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForMember.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForMember_Metalama_Framework_Code_IMember_
+  name: ComputeMetricForMember(IMember)
+  nameWithType: MetricProvider<T>.ComputeMetricForMember(IMember)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  nameWithType.vb: MetricProvider(Of T).ComputeMetricForMember(IMember)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).ComputeMetricForMember(Metalama.Framework.Code.IMember)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+    name: ComputeMetricForMember
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForMember.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForMember_Metalama_Framework_Code_IMember_
+  - name: (
+  - uid: Metalama.Framework.Code.IMember
+    name: IMember
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember(Metalama.Framework.Code.IMember)
+    name: ComputeMetricForMember
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForMember.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForMember_Metalama_Framework_Code_IMember_
+  - name: (
+  - uid: Metalama.Framework.Code.IMember
+    name: IMember
+    isExternal: true
+  - name: )
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+  commentId: M:Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.Aggregate.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_Aggregate__0___0__
+  name: Aggregate(ref T, in T)
+  nameWithType: MetricProvider<T>.Aggregate(ref T, in T)
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.Aggregate(ref T, in T)
+  nameWithType.vb: MetricProvider(Of T).Aggregate(T, T)
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).Aggregate(T, T)
+  name.vb: Aggregate(T, T)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+    name: Aggregate
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.Aggregate.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_Aggregate__0___0__
+  - name: (
+  - name: ref
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate(`0@,`0@)
+    name: Aggregate
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.Aggregate.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_Aggregate__0___0__
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.Metrics
+  commentId: N:Metalama.Framework.Engine.Metrics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.Metrics
+  nameWithType: Metalama.Framework.Engine.Metrics
+  fullName: Metalama.Framework.Engine.Metrics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Metrics
+    name: Metrics
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Metrics
+    name: Metrics
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Metalama.Framework.Metrics.IMetricProvider{{T}}
+  commentId: T:Metalama.Framework.Metrics.IMetricProvider{`0}
+  parent: Metalama.Framework.Metrics
+  definition: Metalama.Framework.Metrics.IMetricProvider`1
+  name: IMetricProvider<T>
+  nameWithType: IMetricProvider<T>
+  fullName: Metalama.Framework.Metrics.IMetricProvider<T>
+  nameWithType.vb: IMetricProvider(Of T)
+  fullName.vb: Metalama.Framework.Metrics.IMetricProvider(Of T)
+  name.vb: IMetricProvider(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Metrics.IMetricProvider`1
+    name: IMetricProvider
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Metrics.IMetricProvider`1
+    name: IMetricProvider
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Services.IProjectService
+  commentId: T:Metalama.Framework.Services.IProjectService
+  parent: Metalama.Framework.Services
+  isExternal: true
+  href: Metalama.Framework.Services.IProjectService.html
+  name: IProjectService
+  nameWithType: IProjectService
+  fullName: Metalama.Framework.Services.IProjectService
+- uid: Metalama.Framework.Services.IService
+  commentId: T:Metalama.Framework.Services.IService
+  parent: Metalama.Framework.Services
+  isExternal: true
+  href: Metalama.Framework.Services.IService.html
+  name: IService
+  nameWithType: IService
+  fullName: Metalama.Framework.Services.IService
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.Metrics.MetricProvider{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.Metrics.MetricProvider{{T}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<MetricProvider<T>>(MetricProvider<T>, Func<MetricProvider<T>, IEnumerable<MetricProvider<T>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<MetricProvider<T>>(MetricProvider<T>, Func<MetricProvider<T>, IEnumerable<MetricProvider<T>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Engine.Metrics.MetricProvider<T>>(Metalama.Framework.Engine.Metrics.MetricProvider<T>, System.Func<Metalama.Framework.Engine.Metrics.MetricProvider<T>, System.Collections.Generic.IEnumerable<Metalama.Framework.Engine.Metrics.MetricProvider<T>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of MetricProvider(Of T))(MetricProvider(Of T), Func(Of MetricProvider(Of T), IEnumerable(Of MetricProvider(Of T))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Engine.Metrics.MetricProvider(Of T))(Metalama.Framework.Engine.Metrics.MetricProvider(Of T), System.Func(Of Metalama.Framework.Engine.Metrics.MetricProvider(Of T), System.Collections.Generic.IEnumerable(Of Metalama.Framework.Engine.Metrics.MetricProvider(Of T))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of MetricProvider(Of T))(MetricProvider(Of T), Func(Of MetricProvider(Of T), IEnumerable(Of MetricProvider(Of T))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.Metrics.MetricProvider{`0},System.Func{Metalama.Framework.Engine.Metrics.MetricProvider{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.Metrics.MetricProvider{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.Metrics.MetricProvider{`0},System.Func{Metalama.Framework.Engine.Metrics.MetricProvider{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.Metrics.MetricProvider{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.Metrics.MetricProvider`1
+    name: MetricProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Metrics.MetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Metrics
+  commentId: N:Metalama.Framework.Metrics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Metrics
+  nameWithType: Metalama.Framework.Metrics
+  fullName: Metalama.Framework.Metrics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Metrics
+    name: Metrics
+    isExternal: true
+    href: Metalama.Framework.Metrics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Metrics
+    name: Metrics
+    isExternal: true
+    href: Metalama.Framework.Metrics.html
+- uid: Metalama.Framework.Engine
+  commentId: N:Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine
+  nameWithType: Metalama.Framework.Engine
+  fullName: Metalama.Framework.Engine
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Metrics.IMetricProvider`1
+  commentId: T:Metalama.Framework.Metrics.IMetricProvider`1
+  isExternal: true
+  href: Metalama.Framework.Metrics.IMetricProvider-1.html
+  name: IMetricProvider<T>
+  nameWithType: IMetricProvider<T>
+  fullName: Metalama.Framework.Metrics.IMetricProvider<T>
+  nameWithType.vb: IMetricProvider(Of T)
+  fullName.vb: Metalama.Framework.Metrics.IMetricProvider(Of T)
+  name.vb: IMetricProvider(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Metrics.IMetricProvider`1
+    name: IMetricProvider
+    isExternal: true
+    href: Metalama.Framework.Metrics.IMetricProvider-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Metrics.IMetricProvider`1
+    name: IMetricProvider
+    isExternal: true
+    href: Metalama.Framework.Metrics.IMetricProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Services
+  commentId: N:Metalama.Framework.Services
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Services
+  nameWithType: Metalama.Framework.Services
+  fullName: Metalama.Framework.Services
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Services.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Services.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.GetMetric*
+  commentId: Overload:Metalama.Framework.Engine.Metrics.MetricProvider`1.GetMetric
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.GetMetric.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_GetMetric_Metalama_Framework_Metrics_IMeasurable_
+  name: GetMetric
+  nameWithType: MetricProvider<T>.GetMetric
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.GetMetric
+  nameWithType.vb: MetricProvider(Of T).GetMetric
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).GetMetric
+- uid: Metalama.Framework.Metrics.IMetricProvider{{T}}.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  commentId: M:Metalama.Framework.Metrics.IMetricProvider{`0}.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  parent: Metalama.Framework.Metrics.IMetricProvider{{T}}
+  definition: Metalama.Framework.Metrics.IMetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  name: GetMetric(IMeasurable)
+  nameWithType: IMetricProvider<T>.GetMetric(IMeasurable)
+  fullName: Metalama.Framework.Metrics.IMetricProvider<T>.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  nameWithType.vb: IMetricProvider(Of T).GetMetric(IMeasurable)
+  fullName.vb: Metalama.Framework.Metrics.IMetricProvider(Of T).GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  spec.csharp:
+  - uid: Metalama.Framework.Metrics.IMetricProvider{`0}.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+    name: GetMetric
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Metrics.IMeasurable
+    name: IMeasurable
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Metrics.IMetricProvider{`0}.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+    name: GetMetric
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Metrics.IMeasurable
+    name: IMeasurable
+    isExternal: true
+  - name: )
+- uid: Metalama.Framework.Metrics.IMeasurable
+  commentId: T:Metalama.Framework.Metrics.IMeasurable
+  parent: Metalama.Framework.Metrics
+  isExternal: true
+  href: Metalama.Framework.Metrics.IMeasurable.html
+  name: IMeasurable
+  nameWithType: IMeasurable
+  fullName: Metalama.Framework.Metrics.IMeasurable
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Metalama.Framework.Metrics.IMetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  commentId: M:Metalama.Framework.Metrics.IMetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  isExternal: true
+  name: GetMetric(IMeasurable)
+  nameWithType: IMetricProvider<T>.GetMetric(IMeasurable)
+  fullName: Metalama.Framework.Metrics.IMetricProvider<T>.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  nameWithType.vb: IMetricProvider(Of T).GetMetric(IMeasurable)
+  fullName.vb: Metalama.Framework.Metrics.IMetricProvider(Of T).GetMetric(Metalama.Framework.Metrics.IMeasurable)
+  spec.csharp:
+  - uid: Metalama.Framework.Metrics.IMetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+    name: GetMetric
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Metrics.IMeasurable
+    name: IMeasurable
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Metrics.IMetricProvider`1.GetMetric(Metalama.Framework.Metrics.IMeasurable)
+    name: GetMetric
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Metrics.IMeasurable
+    name: IMeasurable
+    isExternal: true
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate*
+  commentId: Overload:Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.Aggregate.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_Aggregate__0___0__
+  name: Aggregate
+  nameWithType: MetricProvider<T>.Aggregate
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.Aggregate
+  nameWithType.vb: MetricProvider(Of T).Aggregate
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).Aggregate
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType*
+  commentId: Overload:Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForType
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForType.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForType_Metalama_Framework_Code_INamedType_
+  name: ComputeMetricForType
+  nameWithType: MetricProvider<T>.ComputeMetricForType
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.ComputeMetricForType
+  nameWithType.vb: MetricProvider(Of T).ComputeMetricForType
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).ComputeMetricForType
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember*
+  commentId: Overload:Metalama.Framework.Engine.Metrics.MetricProvider`1.ComputeMetricForMember
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.ComputeMetricForMember.html#Metalama_Framework_Engine_Metrics_MetricProvider_1_ComputeMetricForMember_Metalama_Framework_Code_IMember_
+  name: ComputeMetricForMember
+  nameWithType: MetricProvider<T>.ComputeMetricForMember
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.ComputeMetricForMember
+  nameWithType.vb: MetricProvider(Of T).ComputeMetricForMember
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).ComputeMetricForMember
+- uid: Metalama.Framework.Code.IMember
+  commentId: T:Metalama.Framework.Code.IMember
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMember.html
+  name: IMember
+  nameWithType: IMember
+  fullName: Metalama.Framework.Code.IMember
+- uid: Metalama.Framework.Engine.Metrics.MetricProvider`1.#ctor*
+  commentId: Overload:Metalama.Framework.Engine.Metrics.MetricProvider`1.#ctor
+  isExternal: true
+  href: Metalama.Framework.Engine.Metrics.MetricProvider-1.-ctor.html#Metalama_Framework_Engine_Metrics_MetricProvider_1__ctor
+  name: MetricProvider
+  nameWithType: MetricProvider<T>.MetricProvider
+  fullName: Metalama.Framework.Engine.Metrics.MetricProvider<T>.MetricProvider
+  nameWithType.vb: MetricProvider(Of T).New
+  fullName.vb: Metalama.Framework.Engine.Metrics.MetricProvider(Of T).New
+  name.vb: New
+memberLayout: SeparatePages

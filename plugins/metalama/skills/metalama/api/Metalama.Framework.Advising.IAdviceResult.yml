@@ -1,0 +1,647 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.IAdviceResult
+  commentId: T:Metalama.Framework.Advising.IAdviceResult
+  id: IAdviceResult
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  - Metalama.Framework.Advising.IAdviceResult.Outcome
+  langs:
+  - csharp
+  - vb
+  name: IAdviceResult
+  nameWithType: IAdviceResult
+  fullName: Metalama.Framework.Advising.IAdviceResult
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Represents the result of applying an advice (code transformation) through <xref href="Metalama.Framework.Aspects.AdviserExtensions" data-throw-if-not-resolved="false"></xref> methods.
+
+    Check the <xref href="Metalama.Framework.Advising.IAdviceResult.Outcome" data-throw-if-not-resolved="false"></xref> property to determine whether the advice was successfully applied.
+  remarks: >-
+    <p>
+        All advice methods in <xref href="Metalama.Framework.Aspects.AdviserExtensions" data-throw-if-not-resolved="false"></xref> return an <xref href="Metalama.Framework.Advising.IAdviceResult" data-throw-if-not-resolved="false"></xref> or a derived interface.
+        The result provides information about:
+        </p>
+    <ul><li>
+          <xref href="Metalama.Framework.Advising.IAdviceResult.AdviceKind" data-throw-if-not-resolved="false"></xref>: The type of transformation attempted (override, introduce, etc.)</li><li>
+          <xref href="Metalama.Framework.Advising.IAdviceResult.Outcome" data-throw-if-not-resolved="false"></xref>: Whether the advice succeeded, was ignored, or encountered an error</li></ul>
+    <p>
+        Derived result interfaces (e.g., <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref>) provide additional properties
+        such as the introduced declaration or specific outcome details.
+        </p>
+    <p>
+      <b>Typical usage:</b> Check the <xref href="Metalama.Framework.Advising.IAdviceResult.Outcome" data-throw-if-not-resolved="false"></xref> property after applying advice to determine if follow-up
+        actions are needed or to conditionally proceed based on success/failure.
+        </p>
+  example:
+  - >-
+    <pre><code class="lang-csharp">var result = builder.IntroduceMethod(nameof(MyMethod));
+
+    if (result.Outcome == AdviceOutcome.Success)
+
+    {
+        // Use result.Declaration to reference the introduced method
+    }</code></pre>
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IAdviceResult
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IAdviceResult
+  seealso:
+  - linkId: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+    commentId: T:Metalama.Framework.Advising.IIntroductionAdviceResult`1
+  - linkId: Metalama.Framework.Advising.IOverrideAdviceResult`1
+    commentId: T:Metalama.Framework.Advising.IOverrideAdviceResult`1
+  - linkId: Metalama.Framework.Advising.IImplementInterfaceAdviceResult
+    commentId: T:Metalama.Framework.Advising.IImplementInterfaceAdviceResult
+  - linkId: Metalama.Framework.Advising.IAddContractAdviceResult`1
+    commentId: T:Metalama.Framework.Advising.IAddContractAdviceResult`1
+  - linkId: Metalama.Framework.Advising.IAddInitializerAdviceResult
+    commentId: T:Metalama.Framework.Advising.IAddInitializerAdviceResult
+  - linkId: Metalama.Framework.Advising.IRemoveAttributesAdviceResult
+    commentId: T:Metalama.Framework.Advising.IRemoveAttributesAdviceResult
+  - linkId: Metalama.Framework.Advising.AdviceOutcome
+    commentId: T:Metalama.Framework.Advising.AdviceOutcome
+  - linkId: Metalama.Framework.Advising.IAdviceResult.AdviceKind
+    commentId: P:Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions
+    commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  - linkType: HRef
+    linkId: '@advising-code'
+    altText: '@advising-code'
+  extensionMethods:
+  - Metalama.Framework.Advising.IAdviceResult.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Advising.IAdviceResult,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IAdviceResult}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  commentId: P:Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  id: AdviceKind
+  parent: Metalama.Framework.Advising.IAdviceResult
+  langs:
+  - csharp
+  - vb
+  name: AdviceKind
+  nameWithType: IAdviceResult.AdviceKind
+  fullName: Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Gets the kind of advice whose the current object is the result.
+  example: []
+  syntax:
+    content: AdviceKind AdviceKind { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.AdviceKind
+    content.vb: ReadOnly Property AdviceKind As AdviceKind
+  overload: Metalama.Framework.Advising.IAdviceResult.AdviceKind*
+- uid: Metalama.Framework.Advising.IAdviceResult.Outcome
+  commentId: P:Metalama.Framework.Advising.IAdviceResult.Outcome
+  id: Outcome
+  parent: Metalama.Framework.Advising.IAdviceResult
+  langs:
+  - csharp
+  - vb
+  name: Outcome
+  nameWithType: IAdviceResult.Outcome
+  fullName: Metalama.Framework.Advising.IAdviceResult.Outcome
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the advice outcome, indicating whether the advice was applied, was ignored because the same declaration already exists (according to <xref href="Metalama.Framework.Aspects.OverrideStrategy" data-throw-if-not-resolved="false"></xref>),
+
+    or resulted in an error diagnostic that caused the aspect to be skipped.
+  example: []
+  syntax:
+    content: AdviceOutcome Outcome { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+    content.vb: ReadOnly Property Outcome As AdviceOutcome
+  overload: Metalama.Framework.Advising.IAdviceResult.Outcome*
+references:
+- uid: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+  commentId: T:Metalama.Framework.Advising.IIntroductionAdviceResult`1
+  isExternal: true
+  href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.html
+  name: IIntroductionAdviceResult<T>
+  nameWithType: IIntroductionAdviceResult<T>
+  fullName: Metalama.Framework.Advising.IIntroductionAdviceResult<T>
+  nameWithType.vb: IIntroductionAdviceResult(Of T)
+  fullName.vb: Metalama.Framework.Advising.IIntroductionAdviceResult(Of T)
+  name.vb: IIntroductionAdviceResult(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+    name: IIntroductionAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+    name: IIntroductionAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Advising.IOverrideAdviceResult`1
+  commentId: T:Metalama.Framework.Advising.IOverrideAdviceResult`1
+  isExternal: true
+  href: Metalama.Framework.Advising.IOverrideAdviceResult-1.html
+  name: IOverrideAdviceResult<T>
+  nameWithType: IOverrideAdviceResult<T>
+  fullName: Metalama.Framework.Advising.IOverrideAdviceResult<T>
+  nameWithType.vb: IOverrideAdviceResult(Of T)
+  fullName.vb: Metalama.Framework.Advising.IOverrideAdviceResult(Of T)
+  name.vb: IOverrideAdviceResult(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.IOverrideAdviceResult`1
+    name: IOverrideAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IOverrideAdviceResult-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Advising.IOverrideAdviceResult`1
+    name: IOverrideAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IOverrideAdviceResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Advising.IImplementInterfaceAdviceResult
+  commentId: T:Metalama.Framework.Advising.IImplementInterfaceAdviceResult
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IImplementInterfaceAdviceResult.html
+  name: IImplementInterfaceAdviceResult
+  nameWithType: IImplementInterfaceAdviceResult
+  fullName: Metalama.Framework.Advising.IImplementInterfaceAdviceResult
+- uid: Metalama.Framework.Advising.IAddContractAdviceResult`1
+  commentId: T:Metalama.Framework.Advising.IAddContractAdviceResult`1
+  isExternal: true
+  href: Metalama.Framework.Advising.IAddContractAdviceResult-1.html
+  name: IAddContractAdviceResult<T>
+  nameWithType: IAddContractAdviceResult<T>
+  fullName: Metalama.Framework.Advising.IAddContractAdviceResult<T>
+  nameWithType.vb: IAddContractAdviceResult(Of T)
+  fullName.vb: Metalama.Framework.Advising.IAddContractAdviceResult(Of T)
+  name.vb: IAddContractAdviceResult(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.IAddContractAdviceResult`1
+    name: IAddContractAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAddContractAdviceResult-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Advising.IAddContractAdviceResult`1
+    name: IAddContractAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAddContractAdviceResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Advising.IAddInitializerAdviceResult
+  commentId: T:Metalama.Framework.Advising.IAddInitializerAdviceResult
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IAddInitializerAdviceResult.html
+  name: IAddInitializerAdviceResult
+  nameWithType: IAddInitializerAdviceResult
+  fullName: Metalama.Framework.Advising.IAddInitializerAdviceResult
+- uid: Metalama.Framework.Advising.IRemoveAttributesAdviceResult
+  commentId: T:Metalama.Framework.Advising.IRemoveAttributesAdviceResult
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IRemoveAttributesAdviceResult.html
+  name: IRemoveAttributesAdviceResult
+  nameWithType: IRemoveAttributesAdviceResult
+  fullName: Metalama.Framework.Advising.IRemoveAttributesAdviceResult
+- uid: Metalama.Framework.Advising.AdviceOutcome
+  commentId: T:Metalama.Framework.Advising.AdviceOutcome
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceOutcome.html
+  name: AdviceOutcome
+  nameWithType: AdviceOutcome
+  fullName: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  commentId: P:Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  parent: Metalama.Framework.Advising.IAdviceResult
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.AdviceKind.html#Metalama_Framework_Advising_IAdviceResult_AdviceKind
+  name: AdviceKind
+  nameWithType: IAdviceResult.AdviceKind
+  fullName: Metalama.Framework.Advising.IAdviceResult.AdviceKind
+- uid: Metalama.Framework.Aspects.AdviserExtensions
+  commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.html
+  name: AdviserExtensions
+  nameWithType: AdviserExtensions
+  fullName: Metalama.Framework.Aspects.AdviserExtensions
+- uid: Metalama.Framework.Advising.IAdviceResult.Outcome
+  commentId: P:Metalama.Framework.Advising.IAdviceResult.Outcome
+  parent: Metalama.Framework.Advising.IAdviceResult
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.Outcome.html#Metalama_Framework_Advising_IAdviceResult_Outcome
+  name: Outcome
+  nameWithType: IAdviceResult.Outcome
+  fullName: Metalama.Framework.Advising.IAdviceResult.Outcome
+- uid: Metalama.Framework.Advising.IAdviceResult
+  commentId: T:Metalama.Framework.Advising.IAdviceResult
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.html
+  name: IAdviceResult
+  nameWithType: IAdviceResult
+  fullName: Metalama.Framework.Advising.IAdviceResult
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: Metalama.Framework.Advising.IAdviceResult.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Advising.IAdviceResult,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IAdviceResult}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IAdviceResult>(IAdviceResult, Func<IAdviceResult, IEnumerable<IAdviceResult>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IAdviceResult>(IAdviceResult, Func<IAdviceResult, IEnumerable<IAdviceResult>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Advising.IAdviceResult>(Metalama.Framework.Advising.IAdviceResult, System.Func<Metalama.Framework.Advising.IAdviceResult, System.Collections.Generic.IEnumerable<Metalama.Framework.Advising.IAdviceResult>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IAdviceResult)(IAdviceResult, Func(Of IAdviceResult, IEnumerable(Of IAdviceResult)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Advising.IAdviceResult)(Metalama.Framework.Advising.IAdviceResult, System.Func(Of Metalama.Framework.Advising.IAdviceResult, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Advising.IAdviceResult)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IAdviceResult)(IAdviceResult, Func(Of IAdviceResult, IEnumerable(Of IAdviceResult)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Advising.IAdviceResult,System.Func{Metalama.Framework.Advising.IAdviceResult,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IAdviceResult}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Advising.IAdviceResult,System.Func{Metalama.Framework.Advising.IAdviceResult,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IAdviceResult}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Advising.IAdviceResult
+    name: IAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceResult.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Advising.IAdviceResult.AdviceKind*
+  commentId: Overload:Metalama.Framework.Advising.IAdviceResult.AdviceKind
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.AdviceKind.html#Metalama_Framework_Advising_IAdviceResult_AdviceKind
+  name: AdviceKind
+  nameWithType: IAdviceResult.AdviceKind
+  fullName: Metalama.Framework.Advising.IAdviceResult.AdviceKind
+- uid: Metalama.Framework.Advising.AdviceKind
+  commentId: T:Metalama.Framework.Advising.AdviceKind
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceKind.html
+  name: AdviceKind
+  nameWithType: AdviceKind
+  fullName: Metalama.Framework.Advising.AdviceKind
+- uid: Metalama.Framework.Aspects.OverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html
+  name: OverrideStrategy
+  nameWithType: OverrideStrategy
+  fullName: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Advising.IAdviceResult.Outcome*
+  commentId: Overload:Metalama.Framework.Advising.IAdviceResult.Outcome
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.Outcome.html#Metalama_Framework_Advising_IAdviceResult_Outcome
+  name: Outcome
+  nameWithType: IAdviceResult.Outcome
+  fullName: Metalama.Framework.Advising.IAdviceResult.Outcome
+memberLayout: SeparatePages

@@ -1,0 +1,1577 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.IMetaTarget
+  commentId: T:Metalama.Framework.Aspects.IMetaTarget
+  id: IMetaTarget
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.IMetaTarget.Compilation
+  - Metalama.Framework.Aspects.IMetaTarget.Constructor
+  - Metalama.Framework.Aspects.IMetaTarget.ContractDirection
+  - Metalama.Framework.Aspects.IMetaTarget.Declaration
+  - Metalama.Framework.Aspects.IMetaTarget.Event
+  - Metalama.Framework.Aspects.IMetaTarget.Expression
+  - Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  - Metalama.Framework.Aspects.IMetaTarget.Field
+  - Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  - Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  - Metalama.Framework.Aspects.IMetaTarget.Indexer
+  - Metalama.Framework.Aspects.IMetaTarget.Member
+  - Metalama.Framework.Aspects.IMetaTarget.Method
+  - Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  - Metalama.Framework.Aspects.IMetaTarget.Parameter
+  - Metalama.Framework.Aspects.IMetaTarget.Parameters
+  - Metalama.Framework.Aspects.IMetaTarget.Project
+  - Metalama.Framework.Aspects.IMetaTarget.Property
+  - Metalama.Framework.Aspects.IMetaTarget.Type
+  langs:
+  - csharp
+  - vb
+  name: IMetaTarget
+  nameWithType: IMetaTarget
+  fullName: Metalama.Framework.Aspects.IMetaTarget
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Provides access to the target declaration being transformed by an aspect template. Access via <xref href="Metalama.Framework.Aspects.meta" data-throw-if-not-resolved="false"></xref><code>.Target</code> in template code.
+  remarks: >-
+    <p>
+      <xref href="Metalama.Framework.Aspects.IMetaTarget" data-throw-if-not-resolved="false"></xref> exposes properties to access the specific declaration type being targeted by a template (e.g., method, property, field, event).
+        Use these properties to interact with and reference the target declaration within template code.
+        </p>
+    <p>
+        For example, access <xref href="Metalama.Framework.Aspects.meta" data-throw-if-not-resolved="false"></xref><code>.Target.Method</code> in a method template to get the method being overridden,
+        or <xref href="Metalama.Framework.Aspects.meta" data-throw-if-not-resolved="false"></xref><code>.Target.FieldOrProperty</code> in a property template to access the underlying field or property.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IMetaTarget
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IMetaTarget
+  seealso:
+  - linkId: Metalama.Framework.Aspects.meta
+    commentId: T:Metalama.Framework.Aspects.meta
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+  - linkType: HRef
+    linkId: '@template-overview'
+    altText: '@template-overview'
+  extensionMethods:
+  - Metalama.Framework.Aspects.IMetaTarget.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.IMetaTarget,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IMetaTarget}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  id: MethodBase
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: MethodBase
+  nameWithType: IMetaTarget.MethodBase
+  fullName: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the target method or constructor, or the accessor if this is a template for a field, property or event,
+
+    or throws an exception if the advice does not target a method, constructor or accessor.
+  example: []
+  syntax:
+    content: IMethodBase MethodBase { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMethodBase
+    content.vb: ReadOnly Property MethodBase As IMethodBase
+  overload: Metalama.Framework.Aspects.IMetaTarget.MethodBase*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Method
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Method
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Constructor
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Constructor
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Field
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Field
+  id: Field
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Field
+  nameWithType: IMetaTarget.Field
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Field
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target field, or throws an exception if the advice does not target a field.
+  example: []
+  syntax:
+    content: IField Field { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IField
+    content.vb: ReadOnly Property Field As IField
+  overload: Metalama.Framework.Aspects.IMetaTarget.Field*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Property
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Property
+- uid: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  id: FieldOrProperty
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: FieldOrProperty
+  nameWithType: IMetaTarget.FieldOrProperty
+  fullName: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target field or property, or throws an exception if the advice does not target a field or a property.
+  remarks: >-
+    Access the underlying value using <code>meta.Target.FieldOrProperty.Value</code> in property override templates.
+
+    This works for both reading and writing the value.
+  example: []
+  syntax:
+    content: IFieldOrProperty FieldOrProperty { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IFieldOrProperty
+    content.vb: ReadOnly Property FieldOrProperty As IFieldOrProperty
+  overload: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty*
+  seealso:
+  - linkId: Metalama.Framework.Code.IExpression.Value
+    commentId: P:Metalama.Framework.Code.IExpression.Value
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Field
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Field
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Property
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Property
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  - linkType: HRef
+    linkId: '@overriding-fields-or-properties'
+    altText: '@overriding-fields-or-properties'
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+- uid: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  id: FieldOrPropertyOrIndexer
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: FieldOrPropertyOrIndexer
+  nameWithType: IMetaTarget.FieldOrPropertyOrIndexer
+  fullName: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target field or property or indexer, or throws an exception if the advice does not target a field or a property or an indexer.
+  example: []
+  syntax:
+    content: IFieldOrPropertyOrIndexer FieldOrPropertyOrIndexer { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IFieldOrPropertyOrIndexer
+    content.vb: ReadOnly Property FieldOrPropertyOrIndexer As IFieldOrPropertyOrIndexer
+  overload: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Indexer
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Indexer
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Declaration
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Declaration
+  id: Declaration
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Declaration
+  nameWithType: IMetaTarget.Declaration
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Declaration
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target declaration.
+  example: []
+  syntax:
+    content: IDeclaration Declaration { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IDeclaration
+    content.vb: ReadOnly Property Declaration As IDeclaration
+  overload: Metalama.Framework.Aspects.IMetaTarget.Declaration*
+- uid: Metalama.Framework.Aspects.IMetaTarget.Expression
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Expression
+  id: Expression
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Expression
+  nameWithType: IMetaTarget.Expression
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Expression
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the target field, property, or parameter as a unified <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>,
+
+    or throws an exception if the declaration does not implement <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    This property is useful when authoring contract templates because it provides unified access to <xref href="Metalama.Framework.Code.IField" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IProperty" data-throw-if-not-resolved="false"></xref>, and <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>
+
+    as an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IExpression Expression { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IExpression
+    content.vb: ReadOnly Property Expression As IExpression
+  overload: Metalama.Framework.Aspects.IMetaTarget.Expression*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Field
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Field
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Parameter
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameter
+  - linkId: Metalama.Framework.Code.IExpression
+    commentId: T:Metalama.Framework.Code.IExpression
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Member
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Member
+  id: Member
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Member
+  nameWithType: IMetaTarget.Member
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Member
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the target member (method, constructor, field, property or event, but not a nested type), or
+
+    throws an exception if the advice does not target a member.
+  example: []
+  syntax:
+    content: IMember Member { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMember
+    content.vb: ReadOnly Property Member As IMember
+  overload: Metalama.Framework.Aspects.IMetaTarget.Member*
+  seealso:
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Method
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Method
+  id: Method
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Method
+  nameWithType: IMetaTarget.Method
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Method
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the target method, or the accessor if this is a template for a field, property or event,
+
+    or throws an exception if the advice does not target a method or accessor.
+  remarks: >-
+    To invoke the method, use <xref href="Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object%5b%5d)" data-throw-if-not-resolved="false"></xref>,
+
+    e.g. <code>meta.Target.Method.Invoke(1, 2, 3);</code>.
+  example: []
+  syntax:
+    content: IMethod Method { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMethod
+    content.vb: ReadOnly Property Method As IMethod
+  overload: Metalama.Framework.Aspects.IMetaTarget.Method*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Parameters
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameters
+  - linkType: HRef
+    linkId: '@overriding-methods'
+    altText: '@overriding-methods'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Constructor
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Constructor
+  id: Constructor
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Constructor
+  nameWithType: IMetaTarget.Constructor
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Constructor
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target constructor, or throws an exception if the advice does not target a constructor.
+  example: []
+  syntax:
+    content: IConstructor Constructor { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IConstructor
+    content.vb: ReadOnly Property Constructor As IConstructor
+  overload: Metalama.Framework.Aspects.IMetaTarget.Constructor*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Parameters
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameters
+  - linkType: HRef
+    linkId: '@overriding-constructors'
+    altText: '@overriding-constructors'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Property
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Property
+  id: Property
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Property
+  nameWithType: IMetaTarget.Property
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Property
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target property, or throws an exception if the advice does not target a property.
+  example: []
+  syntax:
+    content: IProperty Property { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IProperty
+    content.vb: ReadOnly Property [Property] As IProperty
+  overload: Metalama.Framework.Aspects.IMetaTarget.Property*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Indexer
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Indexer
+- uid: Metalama.Framework.Aspects.IMetaTarget.Event
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Event
+  id: Event
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Event
+  nameWithType: IMetaTarget.Event
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Event
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target event, or throws an exception if the advice does not target an event.
+  remarks: >-
+    Programmatically add or remove handlers using <code>meta.Target.Event.Add(handler)</code> or
+
+    <code>meta.Target.Event.Remove(handler)</code> in event override templates.
+  example: []
+  syntax:
+    content: IEvent Event { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IEvent
+    content.vb: ReadOnly Property [Event] As IEvent
+  overload: Metalama.Framework.Aspects.IMetaTarget.Event*
+  seealso:
+  - linkId: Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+    commentId: M:Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+  - linkId: Metalama.Framework.Code.Invokers.IEventInvoker.Remove(System.Object)
+    commentId: M:Metalama.Framework.Code.Invokers.IEventInvoker.Remove(System.Object)
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Member
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Member
+  - linkType: HRef
+    linkId: '@overriding-events'
+    altText: '@overriding-events'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Parameters
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameters
+  id: Parameters
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Parameters
+  nameWithType: IMetaTarget.Parameters
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Parameters
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the list of parameters of the current <xref href="Metalama.Framework.Aspects.IMetaTarget.Method" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Aspects.IMetaTarget.Constructor" data-throw-if-not-resolved="false"></xref>,  <xref href="Metalama.Framework.Aspects.IMetaTarget.Property" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.IMetaTarget.Indexer" data-throw-if-not-resolved="false"></xref> or throws
+
+    an exception if the advice does not target a method, constructor, property or indexer.
+  remarks: >-
+    <p>
+        Access parameter values using indexer syntax: <code>meta.Target.Parameters[0].Value</code> or <code>meta.Target.Parameters["paramName"].Value</code>.
+        You can also modify parameter values before calling <code>meta.Proceed()</code>, and the modified values will be passed to the original implementation.
+        </p>
+  example: []
+  syntax:
+    content: IParameterList Parameters { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.Collections.IParameterList
+    content.vb: ReadOnly Property Parameters As IParameterList
+  overload: Metalama.Framework.Aspects.IMetaTarget.Parameters*
+  seealso:
+  - linkId: Metalama.Framework.Code.Collections.IParameterList
+    commentId: T:Metalama.Framework.Code.Collections.IParameterList
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Method
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Method
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Constructor
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Constructor
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Parameter
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameter
+  - linkType: HRef
+    linkId: '@overriding-methods'
+    altText: '@overriding-methods'
+- uid: Metalama.Framework.Aspects.IMetaTarget.Parameter
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameter
+  id: Parameter
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Parameter
+  nameWithType: IMetaTarget.Parameter
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Parameter
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target parameter or throws an exception if the advice does not target a parameter.
+  example: []
+  syntax:
+    content: IParameter Parameter { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IParameter
+    content.vb: ReadOnly Property Parameter As IParameter
+  overload: Metalama.Framework.Aspects.IMetaTarget.Parameter*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Parameters
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameters
+- uid: Metalama.Framework.Aspects.IMetaTarget.Indexer
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Indexer
+  id: Indexer
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Indexer
+  nameWithType: IMetaTarget.Indexer
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Indexer
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the target indexer, or throws an exception if the advice does not target an indexer.
+  example: []
+  syntax:
+    content: IIndexer Indexer { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IIndexer
+    content.vb: ReadOnly Property Indexer As IIndexer
+  overload: Metalama.Framework.Aspects.IMetaTarget.Indexer*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Property
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Property
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.Parameters
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameters
+- uid: Metalama.Framework.Aspects.IMetaTarget.Type
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Type
+  id: Type
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: IMetaTarget.Type
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Type
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the current type including the introductions of the current aspect type.
+
+    If the current context is within an extension block, this property evaluates to the declaring type of the extension block.
+  example: []
+  syntax:
+    content: INamedType Type { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.INamedType
+    content.vb: ReadOnly Property Type As INamedType
+  overload: Metalama.Framework.Aspects.IMetaTarget.Type*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+    commentId: P:Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+- uid: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  id: ExtensionBlock
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: ExtensionBlock
+  nameWithType: IMetaTarget.ExtensionBlock
+  fullName: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the current extension block.
+  example: []
+  syntax:
+    content: IExtensionBlock? ExtensionBlock { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IExtensionBlock
+    content.vb: ReadOnly Property ExtensionBlock As IExtensionBlock
+  overload: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock*
+- uid: Metalama.Framework.Aspects.IMetaTarget.Compilation
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Compilation
+  id: Compilation
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Compilation
+  nameWithType: IMetaTarget.Compilation
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Compilation
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the code model of the whole compilation.
+  example: []
+  syntax:
+    content: ICompilation Compilation { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.ICompilation
+    content.vb: ReadOnly Property Compilation As ICompilation
+  overload: Metalama.Framework.Aspects.IMetaTarget.Compilation*
+- uid: Metalama.Framework.Aspects.IMetaTarget.Project
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Project
+  id: Project
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: IMetaTarget.Project
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Project
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the project being compiled.
+  example: []
+  syntax:
+    content: IProject Project { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Project.IProject
+    content.vb: ReadOnly Property Project As IProject
+  overload: Metalama.Framework.Aspects.IMetaTarget.Project*
+- uid: Metalama.Framework.Aspects.IMetaTarget.ContractDirection
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.ContractDirection
+  id: ContractDirection
+  parent: Metalama.Framework.Aspects.IMetaTarget
+  langs:
+  - csharp
+  - vb
+  name: ContractDirection
+  nameWithType: IMetaTarget.ContractDirection
+  fullName: Metalama.Framework.Aspects.IMetaTarget.ContractDirection
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the direction of the contract for which the template is being expanded.
+  example: []
+  syntax:
+    content: ContractDirection ContractDirection { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Aspects.ContractDirection
+    content.vb: ReadOnly Property ContractDirection As ContractDirection
+  overload: Metalama.Framework.Aspects.IMetaTarget.ContractDirection*
+references:
+- uid: Metalama.Framework.Aspects.meta
+  commentId: T:Metalama.Framework.Aspects.meta
+  isExternal: true
+  href: Metalama.Framework.Aspects.meta.html
+  name: meta
+  nameWithType: meta
+  fullName: Metalama.Framework.Aspects.meta
+- uid: Metalama.Framework.Aspects.IMetaTarget
+  commentId: T:Metalama.Framework.Aspects.IMetaTarget
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.html
+  name: IMetaTarget
+  nameWithType: IMetaTarget
+  fullName: Metalama.Framework.Aspects.IMetaTarget
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Aspects.IMetaTarget.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.IMetaTarget,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IMetaTarget}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IMetaTarget>(IMetaTarget, Func<IMetaTarget, IEnumerable<IMetaTarget>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IMetaTarget>(IMetaTarget, Func<IMetaTarget, IEnumerable<IMetaTarget>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Aspects.IMetaTarget>(Metalama.Framework.Aspects.IMetaTarget, System.Func<Metalama.Framework.Aspects.IMetaTarget, System.Collections.Generic.IEnumerable<Metalama.Framework.Aspects.IMetaTarget>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IMetaTarget)(IMetaTarget, Func(Of IMetaTarget, IEnumerable(Of IMetaTarget)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Aspects.IMetaTarget)(Metalama.Framework.Aspects.IMetaTarget, System.Func(Of Metalama.Framework.Aspects.IMetaTarget, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Aspects.IMetaTarget)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IMetaTarget)(IMetaTarget, Func(Of IMetaTarget, IEnumerable(Of IMetaTarget)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.IMetaTarget,System.Func{Metalama.Framework.Aspects.IMetaTarget,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IMetaTarget}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.IMetaTarget,System.Func{Metalama.Framework.Aspects.IMetaTarget,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IMetaTarget}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IMetaTarget
+    name: IMetaTarget
+    isExternal: true
+    href: Metalama.Framework.Aspects.IMetaTarget.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Aspects.IMetaTarget.Method
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Method
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Method.html#Metalama_Framework_Aspects_IMetaTarget_Method
+  name: Method
+  nameWithType: IMetaTarget.Method
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Method
+- uid: Metalama.Framework.Aspects.IMetaTarget.Constructor
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Constructor
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Constructor.html#Metalama_Framework_Aspects_IMetaTarget_Constructor
+  name: Constructor
+  nameWithType: IMetaTarget.Constructor
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Constructor
+- uid: Metalama.Framework.Aspects.IMetaTarget.MethodBase*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.MethodBase.html#Metalama_Framework_Aspects_IMetaTarget_MethodBase
+  name: MethodBase
+  nameWithType: IMetaTarget.MethodBase
+  fullName: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+- uid: Metalama.Framework.Code.IMethodBase
+  commentId: T:Metalama.Framework.Code.IMethodBase
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMethodBase.html
+  name: IMethodBase
+  nameWithType: IMethodBase
+  fullName: Metalama.Framework.Code.IMethodBase
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty.html#Metalama_Framework_Aspects_IMetaTarget_FieldOrProperty
+  name: FieldOrProperty
+  nameWithType: IMetaTarget.FieldOrProperty
+  fullName: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+- uid: Metalama.Framework.Aspects.IMetaTarget.Property
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Property
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Property.html#Metalama_Framework_Aspects_IMetaTarget_Property
+  name: Property
+  nameWithType: IMetaTarget.Property
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Property
+- uid: Metalama.Framework.Aspects.IMetaTarget.Field*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Field
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Field.html#Metalama_Framework_Aspects_IMetaTarget_Field
+  name: Field
+  nameWithType: IMetaTarget.Field
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Field
+- uid: Metalama.Framework.Code.IField
+  commentId: T:Metalama.Framework.Code.IField
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IField.html
+  name: IField
+  nameWithType: IField
+  fullName: Metalama.Framework.Code.IField
+- uid: Metalama.Framework.Code.IExpression.Value
+  commentId: P:Metalama.Framework.Code.IExpression.Value
+  parent: Metalama.Framework.Code.IExpression
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.Value.html#Metalama_Framework_Code_IExpression_Value
+  name: Value
+  nameWithType: IExpression.Value
+  fullName: Metalama.Framework.Code.IExpression.Value
+- uid: Metalama.Framework.Aspects.IMetaTarget.Field
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Field
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Field.html#Metalama_Framework_Aspects_IMetaTarget_Field
+  name: Field
+  nameWithType: IMetaTarget.Field
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Field
+- uid: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer.html#Metalama_Framework_Aspects_IMetaTarget_FieldOrPropertyOrIndexer
+  name: FieldOrPropertyOrIndexer
+  nameWithType: IMetaTarget.FieldOrPropertyOrIndexer
+  fullName: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+- uid: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty.html#Metalama_Framework_Aspects_IMetaTarget_FieldOrProperty
+  name: FieldOrProperty
+  nameWithType: IMetaTarget.FieldOrProperty
+  fullName: Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty
+- uid: Metalama.Framework.Code.IFieldOrProperty
+  commentId: T:Metalama.Framework.Code.IFieldOrProperty
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IFieldOrProperty.html
+  name: IFieldOrProperty
+  nameWithType: IFieldOrProperty
+  fullName: Metalama.Framework.Code.IFieldOrProperty
+- uid: Metalama.Framework.Code.IExpression
+  commentId: T:Metalama.Framework.Code.IExpression
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.html
+  name: IExpression
+  nameWithType: IExpression
+  fullName: Metalama.Framework.Code.IExpression
+- uid: Metalama.Framework.Aspects.IMetaTarget.Indexer
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Indexer
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Indexer.html#Metalama_Framework_Aspects_IMetaTarget_Indexer
+  name: Indexer
+  nameWithType: IMetaTarget.Indexer
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Indexer
+- uid: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer.html#Metalama_Framework_Aspects_IMetaTarget_FieldOrPropertyOrIndexer
+  name: FieldOrPropertyOrIndexer
+  nameWithType: IMetaTarget.FieldOrPropertyOrIndexer
+  fullName: Metalama.Framework.Aspects.IMetaTarget.FieldOrPropertyOrIndexer
+- uid: Metalama.Framework.Code.IFieldOrPropertyOrIndexer
+  commentId: T:Metalama.Framework.Code.IFieldOrPropertyOrIndexer
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IFieldOrPropertyOrIndexer.html
+  name: IFieldOrPropertyOrIndexer
+  nameWithType: IFieldOrPropertyOrIndexer
+  fullName: Metalama.Framework.Code.IFieldOrPropertyOrIndexer
+- uid: Metalama.Framework.Aspects.IMetaTarget.Declaration*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Declaration
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Declaration.html#Metalama_Framework_Aspects_IMetaTarget_Declaration
+  name: Declaration
+  nameWithType: IMetaTarget.Declaration
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Declaration
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Aspects.IMetaTarget.Parameter
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameter
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Parameter.html#Metalama_Framework_Aspects_IMetaTarget_Parameter
+  name: Parameter
+  nameWithType: IMetaTarget.Parameter
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Parameter
+- uid: Metalama.Framework.Code.IProperty
+  commentId: T:Metalama.Framework.Code.IProperty
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IProperty.html
+  name: IProperty
+  nameWithType: IProperty
+  fullName: Metalama.Framework.Code.IProperty
+- uid: Metalama.Framework.Code.IParameter
+  commentId: T:Metalama.Framework.Code.IParameter
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IParameter.html
+  name: IParameter
+  nameWithType: IParameter
+  fullName: Metalama.Framework.Code.IParameter
+- uid: Metalama.Framework.Aspects.IMetaTarget.Expression*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Expression
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Expression.html#Metalama_Framework_Aspects_IMetaTarget_Expression
+  name: Expression
+  nameWithType: IMetaTarget.Expression
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Expression
+- uid: Metalama.Framework.Aspects.IMetaTarget.Member*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Member
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Member.html#Metalama_Framework_Aspects_IMetaTarget_Member
+  name: Member
+  nameWithType: IMetaTarget.Member
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Member
+- uid: Metalama.Framework.Code.IMember
+  commentId: T:Metalama.Framework.Code.IMember
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMember.html
+  name: IMember
+  nameWithType: IMember
+  fullName: Metalama.Framework.Code.IMember
+- uid: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.MethodBase
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.MethodBase.html#Metalama_Framework_Aspects_IMetaTarget_MethodBase
+  name: MethodBase
+  nameWithType: IMetaTarget.MethodBase
+  fullName: Metalama.Framework.Aspects.IMetaTarget.MethodBase
+- uid: Metalama.Framework.Aspects.IMetaTarget.Parameters
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Parameters
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Parameters.html#Metalama_Framework_Aspects_IMetaTarget_Parameters
+  name: Parameters
+  nameWithType: IMetaTarget.Parameters
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Parameters
+- uid: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object[])
+  commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object[])
+  parent: Metalama.Framework.Code.Invokers.IMethodInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IMethodInvoker_Invoke_System_Object___
+  name: Invoke(params dynamic[])
+  nameWithType: IMethodInvoker.Invoke(params dynamic[])
+  fullName: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(params dynamic[])
+  nameWithType.vb: IMethodInvoker.Invoke(ParamArray Object())
+  fullName.vb: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(ParamArray Object())
+  name.vb: Invoke(ParamArray Object())
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object[])
+    name: Invoke
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IMethodInvoker_Invoke_System_Object___
+  - name: (
+  - name: params
+  - name: " "
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object[])
+    name: Invoke
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke.html#Metalama_Framework_Code_Invokers_IMethodInvoker_Invoke_System_Object___
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - name: Object
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.IMetaTarget.Method*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Method
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Method.html#Metalama_Framework_Aspects_IMetaTarget_Method
+  name: Method
+  nameWithType: IMetaTarget.Method
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Method
+- uid: Metalama.Framework.Code.IMethod
+  commentId: T:Metalama.Framework.Code.IMethod
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMethod.html
+  name: IMethod
+  nameWithType: IMethod
+  fullName: Metalama.Framework.Code.IMethod
+- uid: Metalama.Framework.Code.Invokers.IMethodInvoker
+  commentId: T:Metalama.Framework.Code.Invokers.IMethodInvoker
+  parent: Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IMethodInvoker.html
+  name: IMethodInvoker
+  nameWithType: IMethodInvoker
+  fullName: Metalama.Framework.Code.Invokers.IMethodInvoker
+- uid: Metalama.Framework.Code.Invokers
+  commentId: N:Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Invokers
+  nameWithType: Metalama.Framework.Code.Invokers
+  fullName: Metalama.Framework.Code.Invokers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Invokers
+    name: Invokers
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Invokers
+    name: Invokers
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.html
+- uid: Metalama.Framework.Aspects.IMetaTarget.Constructor*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Constructor
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Constructor.html#Metalama_Framework_Aspects_IMetaTarget_Constructor
+  name: Constructor
+  nameWithType: IMetaTarget.Constructor
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Constructor
+- uid: Metalama.Framework.Code.IConstructor
+  commentId: T:Metalama.Framework.Code.IConstructor
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IConstructor.html
+  name: IConstructor
+  nameWithType: IConstructor
+  fullName: Metalama.Framework.Code.IConstructor
+- uid: Metalama.Framework.Aspects.IMetaTarget.Property*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Property
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Property.html#Metalama_Framework_Aspects_IMetaTarget_Property
+  name: Property
+  nameWithType: IMetaTarget.Property
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Property
+- uid: Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+  commentId: M:Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+  parent: Metalama.Framework.Code.Invokers.IEventInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IEventInvoker.Add.html#Metalama_Framework_Code_Invokers_IEventInvoker_Add_System_Object_
+  name: Add(dynamic)
+  nameWithType: IEventInvoker.Add(dynamic)
+  fullName: Metalama.Framework.Code.Invokers.IEventInvoker.Add(dynamic)
+  nameWithType.vb: IEventInvoker.Add(Object)
+  fullName.vb: Metalama.Framework.Code.Invokers.IEventInvoker.Add(Object)
+  name.vb: Add(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+    name: Add
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IEventInvoker.Add.html#Metalama_Framework_Code_Invokers_IEventInvoker_Add_System_Object_
+  - name: (
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+    name: Add
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IEventInvoker.Add.html#Metalama_Framework_Code_Invokers_IEventInvoker_Add_System_Object_
+  - name: (
+  - name: Object
+  - name: )
+- uid: Metalama.Framework.Code.Invokers.IEventInvoker.Remove(System.Object)
+  commentId: M:Metalama.Framework.Code.Invokers.IEventInvoker.Remove(System.Object)
+  parent: Metalama.Framework.Code.Invokers.IEventInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IEventInvoker.Remove.html#Metalama_Framework_Code_Invokers_IEventInvoker_Remove_System_Object_
+  name: Remove(dynamic)
+  nameWithType: IEventInvoker.Remove(dynamic)
+  fullName: Metalama.Framework.Code.Invokers.IEventInvoker.Remove(dynamic)
+  nameWithType.vb: IEventInvoker.Remove(Object)
+  fullName.vb: Metalama.Framework.Code.Invokers.IEventInvoker.Remove(Object)
+  name.vb: Remove(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IEventInvoker.Remove(System.Object)
+    name: Remove
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IEventInvoker.Remove.html#Metalama_Framework_Code_Invokers_IEventInvoker_Remove_System_Object_
+  - name: (
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IEventInvoker.Remove(System.Object)
+    name: Remove
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IEventInvoker.Remove.html#Metalama_Framework_Code_Invokers_IEventInvoker_Remove_System_Object_
+  - name: (
+  - name: Object
+  - name: )
+- uid: Metalama.Framework.Aspects.IMetaTarget.Member
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.Member
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Member.html#Metalama_Framework_Aspects_IMetaTarget_Member
+  name: Member
+  nameWithType: IMetaTarget.Member
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Member
+- uid: Metalama.Framework.Aspects.IMetaTarget.Event*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Event
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Event.html#Metalama_Framework_Aspects_IMetaTarget_Event
+  name: Event
+  nameWithType: IMetaTarget.Event
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Event
+- uid: Metalama.Framework.Code.IEvent
+  commentId: T:Metalama.Framework.Code.IEvent
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IEvent.html
+  name: IEvent
+  nameWithType: IEvent
+  fullName: Metalama.Framework.Code.IEvent
+- uid: Metalama.Framework.Code.Invokers.IEventInvoker
+  commentId: T:Metalama.Framework.Code.Invokers.IEventInvoker
+  parent: Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IEventInvoker.html
+  name: IEventInvoker
+  nameWithType: IEventInvoker
+  fullName: Metalama.Framework.Code.Invokers.IEventInvoker
+- uid: Metalama.Framework.Code.Collections.IParameterList
+  commentId: T:Metalama.Framework.Code.Collections.IParameterList
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.IParameterList.html
+  name: IParameterList
+  nameWithType: IParameterList
+  fullName: Metalama.Framework.Code.Collections.IParameterList
+- uid: Metalama.Framework.Aspects.IMetaTarget.Parameters*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Parameters
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Parameters.html#Metalama_Framework_Aspects_IMetaTarget_Parameters
+  name: Parameters
+  nameWithType: IMetaTarget.Parameters
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Parameters
+- uid: Metalama.Framework.Aspects.IMetaTarget.Parameter*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Parameter
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Parameter.html#Metalama_Framework_Aspects_IMetaTarget_Parameter
+  name: Parameter
+  nameWithType: IMetaTarget.Parameter
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Parameter
+- uid: Metalama.Framework.Aspects.IMetaTarget.Indexer*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Indexer
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Indexer.html#Metalama_Framework_Aspects_IMetaTarget_Indexer
+  name: Indexer
+  nameWithType: IMetaTarget.Indexer
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Indexer
+- uid: Metalama.Framework.Code.IIndexer
+  commentId: T:Metalama.Framework.Code.IIndexer
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IIndexer.html
+  name: IIndexer
+  nameWithType: IIndexer
+  fullName: Metalama.Framework.Code.IIndexer
+- uid: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  commentId: P:Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock.html#Metalama_Framework_Aspects_IMetaTarget_ExtensionBlock
+  name: ExtensionBlock
+  nameWithType: IMetaTarget.ExtensionBlock
+  fullName: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+- uid: Metalama.Framework.Aspects.IMetaTarget.Type*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Type
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Type.html#Metalama_Framework_Aspects_IMetaTarget_Type
+  name: Type
+  nameWithType: IMetaTarget.Type
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Type
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock.html#Metalama_Framework_Aspects_IMetaTarget_ExtensionBlock
+  name: ExtensionBlock
+  nameWithType: IMetaTarget.ExtensionBlock
+  fullName: Metalama.Framework.Aspects.IMetaTarget.ExtensionBlock
+- uid: Metalama.Framework.Code.IExtensionBlock
+  commentId: T:Metalama.Framework.Code.IExtensionBlock
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExtensionBlock.html
+  name: IExtensionBlock
+  nameWithType: IExtensionBlock
+  fullName: Metalama.Framework.Code.IExtensionBlock
+- uid: Metalama.Framework.Aspects.IMetaTarget.Compilation*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Compilation
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Compilation.html#Metalama_Framework_Aspects_IMetaTarget_Compilation
+  name: Compilation
+  nameWithType: IMetaTarget.Compilation
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Compilation
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Aspects.IMetaTarget.Project*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.Project
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.Project.html#Metalama_Framework_Aspects_IMetaTarget_Project
+  name: Project
+  nameWithType: IMetaTarget.Project
+  fullName: Metalama.Framework.Aspects.IMetaTarget.Project
+- uid: Metalama.Framework.Project.IProject
+  commentId: T:Metalama.Framework.Project.IProject
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.html
+  name: IProject
+  nameWithType: IProject
+  fullName: Metalama.Framework.Project.IProject
+- uid: Metalama.Framework.Project
+  commentId: N:Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Project
+  nameWithType: Metalama.Framework.Project
+  fullName: Metalama.Framework.Project
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+- uid: Metalama.Framework.Aspects.IMetaTarget.ContractDirection*
+  commentId: Overload:Metalama.Framework.Aspects.IMetaTarget.ContractDirection
+  isExternal: true
+  href: Metalama.Framework.Aspects.IMetaTarget.ContractDirection.html#Metalama_Framework_Aspects_IMetaTarget_ContractDirection
+  name: ContractDirection
+  nameWithType: IMetaTarget.ContractDirection
+  fullName: Metalama.Framework.Aspects.IMetaTarget.ContractDirection
+- uid: Metalama.Framework.Aspects.ContractDirection
+  commentId: T:Metalama.Framework.Aspects.ContractDirection
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractDirection.html
+  name: ContractDirection
+  nameWithType: ContractDirection
+  fullName: Metalama.Framework.Aspects.ContractDirection
+memberLayout: SeparatePages

@@ -1,0 +1,593 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Project.IExecutionScenario
+  commentId: T:Metalama.Framework.Project.IExecutionScenario
+  id: IExecutionScenario
+  parent: Metalama.Framework.Project
+  children:
+  - Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  - Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles
+  - Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations
+  - Metalama.Framework.Project.IExecutionScenario.IsDesignTime
+  - Metalama.Framework.Project.IExecutionScenario.IsTest
+  - Metalama.Framework.Project.IExecutionScenario.Name
+  langs:
+  - csharp
+  - vb
+  name: IExecutionScenario
+  nameWithType: IExecutionScenario
+  fullName: Metalama.Framework.Project.IExecutionScenario
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Exposes the properties of the scenarios in which an aspect, template, or fabric is being executed. The interface is accessible
+
+    from the <xref href="Metalama.Framework.Project.MetalamaExecutionContext" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IExecutionScenario
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IExecutionScenario
+  seealso:
+  - linkId: Metalama.Framework.Project.MetalamaExecutionContext
+    commentId: T:Metalama.Framework.Project.MetalamaExecutionContext
+  - linkId: Metalama.Framework.Project.IExecutionContext
+    commentId: T:Metalama.Framework.Project.IExecutionContext
+  extensionMethods:
+  - Metalama.Framework.Project.IExecutionScenario.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Project.IExecutionScenario,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionScenario}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Project.IExecutionScenario.Name
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.Name
+  id: Name
+  parent: Metalama.Framework.Project.IExecutionScenario
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IExecutionScenario.Name
+  fullName: Metalama.Framework.Project.IExecutionScenario.Name
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets the name of the scenario. Callers should not rely on this scenario. Instead, it should rely on the other properties
+
+    of this interface.
+  example: []
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Metalama.Framework.Project.IExecutionScenario.Name*
+- uid: Metalama.Framework.Project.IExecutionScenario.IsDesignTime
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.IsDesignTime
+  id: IsDesignTime
+  parent: Metalama.Framework.Project.IExecutionScenario
+  langs:
+  - csharp
+  - vb
+  name: IsDesignTime
+  nameWithType: IExecutionScenario.IsDesignTime
+  fullName: Metalama.Framework.Project.IExecutionScenario.IsDesignTime
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets a value indicating whether Metalama is currently executing at design time.
+  example: []
+  syntax:
+    content: bool IsDesignTime { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsDesignTime As Boolean
+  overload: Metalama.Framework.Project.IExecutionScenario.IsDesignTime*
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations
+  id: CapturesNonObservableTransformations
+  parent: Metalama.Framework.Project.IExecutionScenario
+  langs:
+  - csharp
+  - vb
+  name: CapturesNonObservableTransformations
+  nameWithType: IExecutionScenario.CapturesNonObservableTransformations
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets a value indicating whether the current execution context is interested by non-observable transformations, i.e. transformations
+
+    that affect the implementation of an existing declaration, but does not add, remove or modify characteristics that are observable
+
+    outside of the declaration. It is generally useless to add non-observable transformations in a context that does not support them
+
+    (they will be ignored anyway).
+  example: []
+  syntax:
+    content: bool CapturesNonObservableTransformations { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CapturesNonObservableTransformations As Boolean
+  overload: Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations*
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  id: CapturesCodeFixImplementations
+  parent: Metalama.Framework.Project.IExecutionScenario
+  langs:
+  - csharp
+  - vb
+  name: CapturesCodeFixImplementations
+  nameWithType: IExecutionScenario.CapturesCodeFixImplementations
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets a value indicating whether the current execution context is interested by the implementation of code fixes. The only
+
+    situation when Metalama is interested by the code fix implementation is when the user actually selects a code fix, either
+
+    for preview or for execution. In other scenarios, the implementation is dropped.
+  example: []
+  syntax:
+    content: bool CapturesCodeFixImplementations { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CapturesCodeFixImplementations As Boolean
+  overload: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations*
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles
+  id: CapturesCodeFixTitles
+  parent: Metalama.Framework.Project.IExecutionScenario
+  langs:
+  - csharp
+  - vb
+  name: CapturesCodeFixTitles
+  nameWithType: IExecutionScenario.CapturesCodeFixTitles
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets a value indicating whether the current execution context is interested by the titles of code fixes. This does <i>not</i> imply
+
+    <xref href="Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: bool CapturesCodeFixTitles { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CapturesCodeFixTitles As Boolean
+  overload: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles*
+- uid: Metalama.Framework.Project.IExecutionScenario.IsTest
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.IsTest
+  id: IsTest
+  parent: Metalama.Framework.Project.IExecutionScenario
+  langs:
+  - csharp
+  - vb
+  name: IsTest
+  nameWithType: IExecutionScenario.IsTest
+  fullName: Metalama.Framework.Project.IExecutionScenario.IsTest
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  syntax:
+    content: bool IsTest { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsTest As Boolean
+  overload: Metalama.Framework.Project.IExecutionScenario.IsTest*
+references:
+- uid: Metalama.Framework.Project.MetalamaExecutionContext
+  commentId: T:Metalama.Framework.Project.MetalamaExecutionContext
+  isExternal: true
+  href: Metalama.Framework.Project.MetalamaExecutionContext.html
+  name: MetalamaExecutionContext
+  nameWithType: MetalamaExecutionContext
+  fullName: Metalama.Framework.Project.MetalamaExecutionContext
+- uid: Metalama.Framework.Project.IExecutionContext
+  commentId: T:Metalama.Framework.Project.IExecutionContext
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.html
+  name: IExecutionContext
+  nameWithType: IExecutionContext
+  fullName: Metalama.Framework.Project.IExecutionContext
+- uid: Metalama.Framework.Project
+  commentId: N:Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Project
+  nameWithType: Metalama.Framework.Project
+  fullName: Metalama.Framework.Project
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+- uid: Metalama.Framework.Project.IExecutionScenario.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Project.IExecutionScenario,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionScenario}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IExecutionScenario>(IExecutionScenario, Func<IExecutionScenario, IEnumerable<IExecutionScenario>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IExecutionScenario>(IExecutionScenario, Func<IExecutionScenario, IEnumerable<IExecutionScenario>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Project.IExecutionScenario>(Metalama.Framework.Project.IExecutionScenario, System.Func<Metalama.Framework.Project.IExecutionScenario, System.Collections.Generic.IEnumerable<Metalama.Framework.Project.IExecutionScenario>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IExecutionScenario)(IExecutionScenario, Func(Of IExecutionScenario, IEnumerable(Of IExecutionScenario)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Project.IExecutionScenario)(Metalama.Framework.Project.IExecutionScenario, System.Func(Of Metalama.Framework.Project.IExecutionScenario, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Project.IExecutionScenario)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IExecutionScenario)(IExecutionScenario, Func(Of IExecutionScenario, IEnumerable(Of IExecutionScenario)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Project.IExecutionScenario,System.Func{Metalama.Framework.Project.IExecutionScenario,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionScenario}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Project.IExecutionScenario,System.Func{Metalama.Framework.Project.IExecutionScenario,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionScenario}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IExecutionScenario
+    name: IExecutionScenario
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionScenario.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Project.IExecutionScenario.Name*
+  commentId: Overload:Metalama.Framework.Project.IExecutionScenario.Name
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.Name.html#Metalama_Framework_Project_IExecutionScenario_Name
+  name: Name
+  nameWithType: IExecutionScenario.Name
+  fullName: Metalama.Framework.Project.IExecutionScenario.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Project.IExecutionScenario.IsDesignTime*
+  commentId: Overload:Metalama.Framework.Project.IExecutionScenario.IsDesignTime
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.IsDesignTime.html#Metalama_Framework_Project_IExecutionScenario_IsDesignTime
+  name: IsDesignTime
+  nameWithType: IExecutionScenario.IsDesignTime
+  fullName: Metalama.Framework.Project.IExecutionScenario.IsDesignTime
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations*
+  commentId: Overload:Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations.html#Metalama_Framework_Project_IExecutionScenario_CapturesNonObservableTransformations
+  name: CapturesNonObservableTransformations
+  nameWithType: IExecutionScenario.CapturesNonObservableTransformations
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesNonObservableTransformations
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations*
+  commentId: Overload:Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations.html#Metalama_Framework_Project_IExecutionScenario_CapturesCodeFixImplementations
+  name: CapturesCodeFixImplementations
+  nameWithType: IExecutionScenario.CapturesCodeFixImplementations
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  commentId: P:Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations.html#Metalama_Framework_Project_IExecutionScenario_CapturesCodeFixImplementations
+  name: CapturesCodeFixImplementations
+  nameWithType: IExecutionScenario.CapturesCodeFixImplementations
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixImplementations
+- uid: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles*
+  commentId: Overload:Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles.html#Metalama_Framework_Project_IExecutionScenario_CapturesCodeFixTitles
+  name: CapturesCodeFixTitles
+  nameWithType: IExecutionScenario.CapturesCodeFixTitles
+  fullName: Metalama.Framework.Project.IExecutionScenario.CapturesCodeFixTitles
+- uid: Metalama.Framework.Project.IExecutionScenario.IsTest*
+  commentId: Overload:Metalama.Framework.Project.IExecutionScenario.IsTest
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.IsTest.html#Metalama_Framework_Project_IExecutionScenario_IsTest
+  name: IsTest
+  nameWithType: IExecutionScenario.IsTest
+  fullName: Metalama.Framework.Project.IExecutionScenario.IsTest
+memberLayout: SeparatePages

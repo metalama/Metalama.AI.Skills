@@ -1,0 +1,351 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.IntroductionScope
+  commentId: T:Metalama.Framework.Aspects.IntroductionScope
+  id: IntroductionScope
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.IntroductionScope.Default
+  - Metalama.Framework.Aspects.IntroductionScope.Instance
+  - Metalama.Framework.Aspects.IntroductionScope.Static
+  - Metalama.Framework.Aspects.IntroductionScope.Target
+  langs:
+  - csharp
+  - vb
+  name: IntroductionScope
+  nameWithType: IntroductionScope
+  fullName: Metalama.Framework.Aspects.IntroductionScope
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Determines the scope (static vs instance) of a member introduced by an aspect.
+  remarks: >-
+    <p>
+        This enum is used with the <xref href="Metalama.Framework.Aspects.IntroduceAttribute.Scope" data-throw-if-not-resolved="false"></xref> property and the <code>scope</code> parameter of
+        programmatic introduction methods like <xref href="Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cSystem.String%2cMetalama.Framework.Aspects.IntroductionScope%2cMetalama.Framework.Aspects.OverrideStrategy%2cSystem.Action%7bMetalama.Framework.Code.DeclarationBuilders.IMethodBuilder%7d%2cSystem.Object%2cSystem.Object)" data-throw-if-not-resolved="false"></xref>.
+        It controls whether the introduced member is static or instance.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum IntroductionScope
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum IntroductionScope
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IntroduceAttribute
+    commentId: T:Metalama.Framework.Aspects.IntroduceAttribute
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions
+    commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  - linkType: HRef
+    linkId: '@introducing-members'
+    altText: '@introducing-members'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.IntroductionScope.Default
+  commentId: F:Metalama.Framework.Aspects.IntroductionScope.Default
+  id: Default
+  parent: Metalama.Framework.Aspects.IntroductionScope
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: IntroductionScope.Default
+  fullName: Metalama.Framework.Aspects.IntroductionScope.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    The scope is determined by the template: if the template member is static, the introduced member is static;
+
+    if the template is non-static, the introduced member is an instance member.
+  remarks: This is the default behavior. Note that introducing an instance member to a static type results in an error.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Framework.Aspects.IntroductionScope
+- uid: Metalama.Framework.Aspects.IntroductionScope.Instance
+  commentId: F:Metalama.Framework.Aspects.IntroductionScope.Instance
+  id: Instance
+  parent: Metalama.Framework.Aspects.IntroductionScope
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: IntroductionScope.Instance
+  fullName: Metalama.Framework.Aspects.IntroductionScope.Instance
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: The introduced member is always an instance member, regardless of the template or target declaration.
+  remarks: >-
+    Use this option when you need to introduce an instance member from a static template, or when you want to
+
+    ensure the member is always an instance member regardless of the aspect target.
+  example: []
+  syntax:
+    content: Instance = 1
+    return:
+      type: Metalama.Framework.Aspects.IntroductionScope
+- uid: Metalama.Framework.Aspects.IntroductionScope.Static
+  commentId: F:Metalama.Framework.Aspects.IntroductionScope.Static
+  id: Static
+  parent: Metalama.Framework.Aspects.IntroductionScope
+  langs:
+  - csharp
+  - vb
+  name: Static
+  nameWithType: IntroductionScope.Static
+  fullName: Metalama.Framework.Aspects.IntroductionScope.Static
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: The introduced member is always a static member, regardless of the template or target declaration.
+  remarks: >-
+    Use this option when you need to introduce a static member from an instance template, or when you want to
+
+    ensure the member is always static regardless of the aspect target.
+  example: []
+  syntax:
+    content: Static = 2
+    return:
+      type: Metalama.Framework.Aspects.IntroductionScope
+- uid: Metalama.Framework.Aspects.IntroductionScope.Target
+  commentId: F:Metalama.Framework.Aspects.IntroductionScope.Target
+  id: Target
+  parent: Metalama.Framework.Aspects.IntroductionScope
+  langs:
+  - csharp
+  - vb
+  name: Target
+  nameWithType: IntroductionScope.Target
+  fullName: Metalama.Framework.Aspects.IntroductionScope.Target
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: The introduced member matches the scope of the target declaration to which the aspect is applied.
+  remarks: >-
+    <p>
+        If the aspect is applied to a static member or type, the introduced member is static.
+        If the aspect is applied to an instance member, the introduced member is an instance member.
+        </p>
+    <p>
+        This is useful when creating aspects that can be applied to both static and instance members.
+        </p>
+  example: []
+  syntax:
+    content: Target = 3
+    return:
+      type: Metalama.Framework.Aspects.IntroductionScope
+references:
+- uid: Metalama.Framework.Aspects.IntroduceAttribute
+  commentId: T:Metalama.Framework.Aspects.IntroduceAttribute
+  isExternal: true
+  href: Metalama.Framework.Aspects.IntroduceAttribute.html
+  name: IntroduceAttribute
+  nameWithType: IntroduceAttribute
+  fullName: Metalama.Framework.Aspects.IntroduceAttribute
+- uid: Metalama.Framework.Aspects.AdviserExtensions
+  commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.html
+  name: AdviserExtensions
+  nameWithType: AdviserExtensions
+  fullName: Metalama.Framework.Aspects.AdviserExtensions
+- uid: Metalama.Framework.Aspects.IntroduceAttribute.Scope
+  commentId: P:Metalama.Framework.Aspects.IntroduceAttribute.Scope
+  isExternal: true
+  href: Metalama.Framework.Aspects.IntroduceAttribute.Scope.html#Metalama_Framework_Aspects_IntroduceAttribute_Scope
+  name: Scope
+  nameWithType: IntroduceAttribute.Scope
+  fullName: Metalama.Framework.Aspects.IntroduceAttribute.Scope
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceMethod_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Aspects_IntroductionScope_Metalama_Framework_Aspects_OverrideStrategy_System_Action_Metalama_Framework_Code_DeclarationBuilders_IMethodBuilder__System_Object_System_Object_
+  name: IntroduceMethod(IAdviser<INamedType>, string, IntroductionScope, OverrideStrategy, Action<IMethodBuilder>, object, object)
+  nameWithType: AdviserExtensions.IntroduceMethod(IAdviser<INamedType>, string, IntroductionScope, OverrideStrategy, Action<IMethodBuilder>, object, object)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, string, Metalama.Framework.Aspects.IntroductionScope, Metalama.Framework.Aspects.OverrideStrategy, System.Action<Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>, object, object)
+  nameWithType.vb: AdviserExtensions.IntroduceMethod(IAdviser(Of INamedType), String, IntroductionScope, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Aspects.IntroductionScope, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder), Object, Object)
+  name.vb: IntroduceMethod(IAdviser(Of INamedType), String, IntroductionScope, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+    name: IntroduceMethod
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceMethod_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Aspects_IntroductionScope_Metalama_Framework_Aspects_OverrideStrategy_System_Action_Metalama_Framework_Code_DeclarationBuilders_IMethodBuilder__System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IntroductionScope
+    name: IntroductionScope
+    isExternal: true
+    href: Metalama.Framework.Aspects.IntroductionScope.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.OverrideStrategy
+    name: OverrideStrategy
+    isExternal: true
+    href: Metalama.Framework.Aspects.OverrideStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
+    name: IMethodBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+    name: IntroduceMethod
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceMethod_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Aspects_IntroductionScope_Metalama_Framework_Aspects_OverrideStrategy_System_Action_Metalama_Framework_Code_DeclarationBuilders_IMethodBuilder__System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IntroductionScope
+    name: IntroductionScope
+    isExternal: true
+    href: Metalama.Framework.Aspects.IntroductionScope.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.OverrideStrategy
+    name: OverrideStrategy
+    isExternal: true
+    href: Metalama.Framework.Aspects.OverrideStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
+    name: IMethodBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Aspects.IntroductionScope
+  commentId: T:Metalama.Framework.Aspects.IntroductionScope
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IntroductionScope.html
+  name: IntroductionScope
+  nameWithType: IntroductionScope
+  fullName: Metalama.Framework.Aspects.IntroductionScope
+memberLayout: SeparatePages

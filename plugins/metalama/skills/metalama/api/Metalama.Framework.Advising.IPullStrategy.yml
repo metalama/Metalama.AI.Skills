@@ -1,0 +1,717 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.IPullStrategy
+  commentId: T:Metalama.Framework.Advising.IPullStrategy
+  id: IPullStrategy
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  langs:
+  - csharp
+  - vb
+  name: IPullStrategy
+  nameWithType: IPullStrategy
+  fullName: Metalama.Framework.Advising.IPullStrategy
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    A strategy that defines how an introduced constructor parameter should be propagated (or "pulled") to child constructors in derived classes.
+
+    For standard implementations, see <xref href="Metalama.Framework.Advising.PullStrategy" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+        When you introduce a parameter to a base constructor using <xref href="Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.IConstructor%7d%2cSystem.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.TypedConstant%2cMetalama.Framework.Advising.IPullStrategy%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d)" data-throw-if-not-resolved="false"></xref>
+        or the corresponding extension methods in <xref href="Metalama.Framework.Aspects.AdviserExtensions" data-throw-if-not-resolved="false"></xref>, this strategy determines how child constructors (in derived classes or in the same class)
+        should obtain the value for this parameter when calling the base constructor.
+        </p>
+    <p>
+      <strong>Cross-Project Operation:</strong> Pull strategies operate across project boundaries. Custom implementations
+        must be serializable (implement <xref href="Metalama.Framework.Serialization.ICompileTimeSerializable" data-throw-if-not-resolved="false"></xref>) because the strategy needs to be persisted
+        and applied in projects that reference the project where the parameter was introduced. For example, if you introduce
+        a parameter to a base class in Project A using <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref>, and Project B
+        references Project A and has derived classes, those derived classes will automatically have the parameter added to
+        their constructors.
+        </p>
+  example: []
+  syntax:
+    content: 'public interface IPullStrategy : ICompileTimeSerializable'
+    content.vb: Public Interface IPullStrategy Inherits ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Framework.Advising.PullStrategy
+    commentId: T:Metalama.Framework.Advising.PullStrategy
+  - linkId: Metalama.Framework.Advising.PullAction
+    commentId: T:Metalama.Framework.Advising.PullAction
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - linkType: HRef
+    linkId: '@introducing-constructor-parameters'
+    altText: '@introducing-constructor-parameters'
+  extensionMethods:
+  - Metalama.Framework.Advising.IPullStrategy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Advising.IPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IPullStrategy}},System.Boolean)
+- uid: Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  commentId: M:Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  id: GetPullAction(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IHasParameters)
+  parent: Metalama.Framework.Advising.IPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: GetPullAction(IParameter, IHasParameters)
+  nameWithType: IPullStrategy.GetPullAction(IParameter, IHasParameters)
+  fullName: Metalama.Framework.Advising.IPullStrategy.GetPullAction(Metalama.Framework.Code.IParameter, Metalama.Framework.Code.IHasParameters)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that specifies how to obtain the value for an introduced parameter
+
+    when it needs to be passed from a child constructor to the constructor where it was introduced.
+  example: []
+  syntax:
+    content: PullAction GetPullAction(IParameter pulledParameter, IHasParameters targetMember)
+    parameters:
+    - id: pulledParameter
+      type: Metalama.Framework.Code.IParameter
+      description: The parameter that was introduced in the parent constructor and needs to be passed a value.
+    - id: targetMember
+      type: Metalama.Framework.Code.IHasParameters
+      description: The child constructor or method that needs to provide a value for <code class="paramref">pulledParameter</code>.
+    return:
+      type: Metalama.Framework.Advising.PullAction
+      description: A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that specifies how the child constructor should obtain the value for the introduced parameter.
+    content.vb: Function GetPullAction(pulledParameter As IParameter, targetMember As IHasParameters) As PullAction
+  overload: Metalama.Framework.Advising.IPullStrategy.GetPullAction*
+references:
+- uid: Metalama.Framework.Advising.PullStrategy
+  commentId: T:Metalama.Framework.Advising.PullStrategy
+  isExternal: true
+  href: Metalama.Framework.Advising.PullStrategy.html
+  name: PullStrategy
+  nameWithType: PullStrategy
+  fullName: Metalama.Framework.Advising.PullStrategy
+- uid: Metalama.Framework.Advising.PullAction
+  commentId: T:Metalama.Framework.Advising.PullAction
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.html
+  name: PullAction
+  nameWithType: PullAction
+  fullName: Metalama.Framework.Advising.PullAction
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  name: IntroduceParameter(IAdviser<IConstructor>, string, IType, TypedConstant, IPullStrategy, ImmutableArray<AttributeConstruction>)
+  nameWithType: AdviserExtensions.IntroduceParameter(IAdviser<IConstructor>, string, IType, TypedConstant, IPullStrategy, ImmutableArray<AttributeConstruction>)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IConstructor>, string, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
+  nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
+  name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: IntroduceParameter
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.TypedConstant
+    name: TypedConstant
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: IntroduceParameter
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.TypedConstant
+    name: TypedConstant
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AdviserExtensions
+  commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.html
+  name: AdviserExtensions
+  nameWithType: AdviserExtensions
+  fullName: Metalama.Framework.Aspects.AdviserExtensions
+- uid: Metalama.Framework.Serialization.ICompileTimeSerializable
+  commentId: T:Metalama.Framework.Serialization.ICompileTimeSerializable
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.ICompileTimeSerializable.html
+  name: ICompileTimeSerializable
+  nameWithType: ICompileTimeSerializable
+  fullName: Metalama.Framework.Serialization.ICompileTimeSerializable
+- uid: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression)
+  isExternal: true
+  href: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullStrategy_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_
+  name: IntroduceParameterAndPull(string, IType, IExpression)
+  nameWithType: PullStrategy.IntroduceParameterAndPull(string, IType, IExpression)
+  fullName: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(string, Metalama.Framework.Code.IType, Metalama.Framework.Code.IExpression)
+  nameWithType.vb: PullStrategy.IntroduceParameterAndPull(String, IType, IExpression)
+  fullName.vb: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(String, Metalama.Framework.Code.IType, Metalama.Framework.Code.IExpression)
+  name.vb: IntroduceParameterAndPull(String, IType, IExpression)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression)
+    name: IntroduceParameterAndPull
+    isExternal: true
+    href: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullStrategy_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression)
+    name: IntroduceParameterAndPull
+    isExternal: true
+    href: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullStrategy_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: Metalama.Framework.Advising.IPullStrategy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Advising.IPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IPullStrategy}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IPullStrategy>(IPullStrategy, Func<IPullStrategy, IEnumerable<IPullStrategy>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IPullStrategy>(IPullStrategy, Func<IPullStrategy, IEnumerable<IPullStrategy>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Advising.IPullStrategy>(Metalama.Framework.Advising.IPullStrategy, System.Func<Metalama.Framework.Advising.IPullStrategy, System.Collections.Generic.IEnumerable<Metalama.Framework.Advising.IPullStrategy>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IPullStrategy)(IPullStrategy, Func(Of IPullStrategy, IEnumerable(Of IPullStrategy)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Advising.IPullStrategy)(Metalama.Framework.Advising.IPullStrategy, System.Func(Of Metalama.Framework.Advising.IPullStrategy, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Advising.IPullStrategy)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IPullStrategy)(IPullStrategy, Func(Of IPullStrategy, IEnumerable(Of IPullStrategy)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Advising.IPullStrategy,System.Func{Metalama.Framework.Advising.IPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IPullStrategy}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Advising.IPullStrategy,System.Func{Metalama.Framework.Advising.IPullStrategy,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IPullStrategy}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Serialization
+  commentId: N:Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Serialization
+  nameWithType: Metalama.Framework.Serialization
+  fullName: Metalama.Framework.Serialization
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Advising.IPullStrategy.GetPullAction*
+  commentId: Overload:Metalama.Framework.Advising.IPullStrategy.GetPullAction
+  isExternal: true
+  href: Metalama.Framework.Advising.IPullStrategy.GetPullAction.html#Metalama_Framework_Advising_IPullStrategy_GetPullAction_Metalama_Framework_Code_IParameter_Metalama_Framework_Code_IHasParameters_
+  name: GetPullAction
+  nameWithType: IPullStrategy.GetPullAction
+  fullName: Metalama.Framework.Advising.IPullStrategy.GetPullAction
+- uid: Metalama.Framework.Code.IParameter
+  commentId: T:Metalama.Framework.Code.IParameter
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IParameter.html
+  name: IParameter
+  nameWithType: IParameter
+  fullName: Metalama.Framework.Code.IParameter
+- uid: Metalama.Framework.Code.IHasParameters
+  commentId: T:Metalama.Framework.Code.IHasParameters
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IHasParameters.html
+  name: IHasParameters
+  nameWithType: IHasParameters
+  fullName: Metalama.Framework.Code.IHasParameters
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+memberLayout: SeparatePages

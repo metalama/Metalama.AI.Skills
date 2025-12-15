@@ -1,0 +1,826 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+  commentId: T:Metalama.Framework.RunTime.Events.IEventAdapter`3
+  id: IEventAdapter`3
+  parent: Metalama.Framework.RunTime.Events
+  children:
+  - Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+  - Metalama.Framework.RunTime.Events.IEventAdapter`3.GetBrokerInvocationDelegate(Metalama.Framework.RunTime.Events.EventBroker{`0,`1,`2})
+  - Metalama.Framework.RunTime.Events.IEventAdapter`3.InvokeHandler(`0,`1@,`2)
+  - Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+  langs:
+  - csharp
+  - vb
+  name: IEventAdapter<TDelegate, TArgs, TState>
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Events
+  summary: >-
+    A bidirectional adapter between an event, with an arbitrary, and an <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref>,
+
+    where all arguments and return values are packed in a single tuple.
+  example: []
+  syntax:
+    content: 'public interface IEventAdapter<TDelegate, TArgs, TState> where TDelegate : Delegate'
+    typeParameters:
+    - id: TDelegate
+      description: The event type (a <xref href="System.Delegate" data-throw-if-not-resolved="false"></xref>).
+    - id: TArgs
+      description: A tuple type packing event arguments.
+    - id: TState
+      description: An opaque state stored by <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Interface IEventAdapter(Of TDelegate As [Delegate], TArgs, TState)
+  extensionMethods:
+  - Metalama.Framework.RunTime.Events.IEventAdapter`3.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.RunTime.Events.IEventAdapter{{TDelegate},{TArgs},{TState}},System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.Events.IEventAdapter{{TDelegate},{TArgs},{TState}}}},System.Boolean)
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState)
+  name.vb: IEventAdapter(Of TDelegate, TArgs, TState)
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.InvokeHandler(`0,`1@,`2)
+  commentId: M:Metalama.Framework.RunTime.Events.IEventAdapter`3.InvokeHandler(`0,`1@,`2)
+  id: InvokeHandler(`0,`1@,`2)
+  parent: Metalama.Framework.RunTime.Events.IEventAdapter`3
+  langs:
+  - csharp
+  - vb
+  name: InvokeHandler(TDelegate, ref TArgs, TState)
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.InvokeHandler(TDelegate, ref TArgs, TState)
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.InvokeHandler(TDelegate, ref TArgs, TState)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Events
+  summary: Invokes an event handler.
+  example: []
+  syntax:
+    content: void InvokeHandler(TDelegate handler, ref TArgs args, TState state)
+    parameters:
+    - id: handler
+      type: '{TDelegate}'
+      description: An event handler.
+    - id: args
+      type: '{TArgs}'
+      description: A tuple packing all arguments to be passed to the event <code class="paramref">handler</code>.
+    - id: state
+      type: '{TState}'
+    content.vb: Sub InvokeHandler(handler As TDelegate, args As TArgs, state As TState)
+  overload: Metalama.Framework.RunTime.Events.IEventAdapter`3.InvokeHandler*
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).InvokeHandler(TDelegate, TArgs, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).InvokeHandler(TDelegate, TArgs, TState)
+  name.vb: InvokeHandler(TDelegate, TArgs, TState)
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+  commentId: M:Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+  id: AddHandler(`0,`2)
+  parent: Metalama.Framework.RunTime.Events.IEventAdapter`3
+  langs:
+  - csharp
+  - vb
+  name: AddHandler(TDelegate, TState)
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.AddHandler(TDelegate, TState)
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.AddHandler(TDelegate, TState)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Events
+  summary: Adds a handler to the event. Typically used to register the <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref> to the event.
+  example: []
+  syntax:
+    content: void AddHandler(TDelegate handler, TState state)
+    parameters:
+    - id: handler
+      type: '{TDelegate}'
+      description: An event handler (typically a method of the <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref>).
+    - id: state
+      type: '{TState}'
+    content.vb: Sub [AddHandler](handler As TDelegate, state As TState)
+  overload: Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler*
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).AddHandler(TDelegate, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).AddHandler(TDelegate, TState)
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+  commentId: M:Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+  id: RemoveHandler(`0,`2)
+  parent: Metalama.Framework.RunTime.Events.IEventAdapter`3
+  langs:
+  - csharp
+  - vb
+  name: RemoveHandler(TDelegate, TState)
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.RemoveHandler(TDelegate, TState)
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.RemoveHandler(TDelegate, TState)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Events
+  summary: Removes a handler from the event. Typically used to unregister the <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref> from the event.
+  example: []
+  syntax:
+    content: void RemoveHandler(TDelegate handler, TState state)
+    parameters:
+    - id: handler
+      type: '{TDelegate}'
+      description: An event handler (typically a method of the <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref>).
+    - id: state
+      type: '{TState}'
+    content.vb: Sub [RemoveHandler](handler As TDelegate, state As TState)
+  overload: Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler*
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).RemoveHandler(TDelegate, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).RemoveHandler(TDelegate, TState)
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.GetBrokerInvocationDelegate(Metalama.Framework.RunTime.Events.EventBroker{`0,`1,`2})
+  commentId: M:Metalama.Framework.RunTime.Events.IEventAdapter`3.GetBrokerInvocationDelegate(Metalama.Framework.RunTime.Events.EventBroker{`0,`1,`2})
+  id: GetBrokerInvocationDelegate(Metalama.Framework.RunTime.Events.EventBroker{`0,`1,`2})
+  parent: Metalama.Framework.RunTime.Events.IEventAdapter`3
+  langs:
+  - csharp
+  - vb
+  name: GetBrokerInvocationDelegate(EventBroker<TDelegate, TArgs, TState>)
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.GetBrokerInvocationDelegate(EventBroker<TDelegate, TArgs, TState>)
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.GetBrokerInvocationDelegate(Metalama.Framework.RunTime.Events.EventBroker<TDelegate, TArgs, TState>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Events
+  summary: >-
+    Gets the delegate that packs the event arguments and calls <xref href="Metalama.Framework.RunTime.Events.EventBroker%603.Invoke(%601%40)" data-throw-if-not-resolved="false"></xref>
+
+    or <xref href="Metalama.Framework.RunTime.Events.EventBroker%603.InvokeByRef(%601%40)" data-throw-if-not-resolved="false"></xref>. This delegate is then registered in the event using <xref href="Metalama.Framework.RunTime.Events.IEventAdapter%603.AddHandler(%600%2c%602)" data-throw-if-not-resolved="false"></xref>
+
+    or unregistered using <xref href="Metalama.Framework.RunTime.Events.IEventAdapter%603.RemoveHandler(%600%2c%602)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: TDelegate GetBrokerInvocationDelegate(EventBroker<TDelegate, TArgs, TState> broker)
+    parameters:
+    - id: broker
+      type: Metalama.Framework.RunTime.Events.EventBroker{{TDelegate},{TArgs},{TState}}
+      description: The <xref href="Metalama.Framework.RunTime.Events.EventBroker%603" data-throw-if-not-resolved="false"></xref> that should be invoked.
+    return:
+      type: '{TDelegate}'
+      description: A delegate.
+    content.vb: Function GetBrokerInvocationDelegate(broker As EventBroker(Of TDelegate, TArgs, TState)) As TDelegate
+  overload: Metalama.Framework.RunTime.Events.IEventAdapter`3.GetBrokerInvocationDelegate*
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).GetBrokerInvocationDelegate(EventBroker(Of TDelegate, TArgs, TState))
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).GetBrokerInvocationDelegate(Metalama.Framework.RunTime.Events.EventBroker(Of TDelegate, TArgs, TState))
+  name.vb: GetBrokerInvocationDelegate(EventBroker(Of TDelegate, TArgs, TState))
+references:
+- uid: Metalama.Framework.RunTime.Events.EventBroker`3
+  commentId: T:Metalama.Framework.RunTime.Events.EventBroker`3
+  parent: Metalama.Framework.RunTime.Events
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.EventBroker-3.html
+  name: EventBroker<TDelegate, TArgs, TState>
+  nameWithType: EventBroker<TDelegate, TArgs, TState>
+  fullName: Metalama.Framework.RunTime.Events.EventBroker<TDelegate, TArgs, TState>
+  nameWithType.vb: EventBroker(Of TDelegate, TArgs, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.EventBroker(Of TDelegate, TArgs, TState)
+  name.vb: EventBroker(Of TDelegate, TArgs, TState)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3
+    name: EventBroker
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.html
+  - name: <
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3
+    name: EventBroker
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+- uid: System.Delegate
+  commentId: T:System.Delegate
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.delegate
+  name: Delegate
+  nameWithType: Delegate
+  fullName: System.Delegate
+- uid: Metalama.Framework.RunTime.Events
+  commentId: N:Metalama.Framework.RunTime.Events
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.RunTime.Events
+  nameWithType: Metalama.Framework.RunTime.Events
+  fullName: Metalama.Framework.RunTime.Events
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.RunTime
+    name: RunTime
+    isExternal: true
+    href: Metalama.Framework.RunTime.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.Events
+    name: Events
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.RunTime
+    name: RunTime
+    isExternal: true
+    href: Metalama.Framework.RunTime.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.Events
+    name: Events
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.html
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.RunTime.Events.IEventAdapter{{TDelegate},{TArgs},{TState}},System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.Events.IEventAdapter{{TDelegate},{TArgs},{TState}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IEventAdapter<TDelegate, TArgs, TState>>(IEventAdapter<TDelegate, TArgs, TState>, Func<IEventAdapter<TDelegate, TArgs, TState>, IEnumerable<IEventAdapter<TDelegate, TArgs, TState>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IEventAdapter<TDelegate, TArgs, TState>>(IEventAdapter<TDelegate, TArgs, TState>, Func<IEventAdapter<TDelegate, TArgs, TState>, IEnumerable<IEventAdapter<TDelegate, TArgs, TState>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>>(Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>, System.Func<Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>, System.Collections.Generic.IEnumerable<Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IEventAdapter(Of TDelegate, TArgs, TState))(IEventAdapter(Of TDelegate, TArgs, TState), Func(Of IEventAdapter(Of TDelegate, TArgs, TState), IEnumerable(Of IEventAdapter(Of TDelegate, TArgs, TState))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState))(Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState), System.Func(Of Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState), System.Collections.Generic.IEnumerable(Of Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IEventAdapter(Of TDelegate, TArgs, TState))(IEventAdapter(Of TDelegate, TArgs, TState), Func(Of IEventAdapter(Of TDelegate, TArgs, TState), IEnumerable(Of IEventAdapter(Of TDelegate, TArgs, TState))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.RunTime.Events.IEventAdapter{`0,`1,`2},System.Func{Metalama.Framework.RunTime.Events.IEventAdapter{`0,`1,`2},System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.Events.IEventAdapter{`0,`1,`2}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: <
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: <
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: <
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: <
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.RunTime.Events.IEventAdapter{`0,`1,`2},System.Func{Metalama.Framework.RunTime.Events.IEventAdapter{`0,`1,`2},System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.Events.IEventAdapter{`0,`1,`2}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3
+    name: IEventAdapter
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.InvokeHandler*
+  commentId: Overload:Metalama.Framework.RunTime.Events.IEventAdapter`3.InvokeHandler
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.IEventAdapter-3.InvokeHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_InvokeHandler__0__1___2_
+  name: InvokeHandler
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.InvokeHandler
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.InvokeHandler
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).InvokeHandler
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).InvokeHandler
+- uid: '{TDelegate}'
+  commentId: '!:TDelegate'
+  definition: TDelegate
+  name: TDelegate
+  nameWithType: TDelegate
+  fullName: TDelegate
+- uid: '{TArgs}'
+  commentId: '!:TArgs'
+  definition: TArgs
+  name: TArgs
+  nameWithType: TArgs
+  fullName: TArgs
+- uid: '{TState}'
+  commentId: '!:TState'
+  definition: TState
+  name: TState
+  nameWithType: TState
+  fullName: TState
+- uid: TDelegate
+  name: TDelegate
+  nameWithType: TDelegate
+  fullName: TDelegate
+- uid: TArgs
+  name: TArgs
+  nameWithType: TArgs
+  fullName: TArgs
+- uid: TState
+  name: TState
+  nameWithType: TState
+  fullName: TState
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler*
+  commentId: Overload:Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.IEventAdapter-3.AddHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_AddHandler__0__2_
+  name: AddHandler
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.AddHandler
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.AddHandler
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).AddHandler
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).AddHandler
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler*
+  commentId: Overload:Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.IEventAdapter-3.RemoveHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_RemoveHandler__0__2_
+  name: RemoveHandler
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.RemoveHandler
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.RemoveHandler
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).RemoveHandler
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).RemoveHandler
+- uid: Metalama.Framework.RunTime.Events.EventBroker`3.Invoke(`1@)
+  commentId: M:Metalama.Framework.RunTime.Events.EventBroker`3.Invoke(`1@)
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.EventBroker-3.Invoke.html#Metalama_Framework_RunTime_Events_EventBroker_3_Invoke__1__
+  name: Invoke(in TArgs)
+  nameWithType: EventBroker<TDelegate, TArgs, TState>.Invoke(in TArgs)
+  fullName: Metalama.Framework.RunTime.Events.EventBroker<TDelegate, TArgs, TState>.Invoke(in TArgs)
+  nameWithType.vb: EventBroker(Of TDelegate, TArgs, TState).Invoke(TArgs)
+  fullName.vb: Metalama.Framework.RunTime.Events.EventBroker(Of TDelegate, TArgs, TState).Invoke(TArgs)
+  name.vb: Invoke(TArgs)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3.Invoke(`1@)
+    name: Invoke
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.Invoke.html#Metalama_Framework_RunTime_Events_EventBroker_3_Invoke__1__
+  - name: (
+  - name: in
+  - name: " "
+  - name: TArgs
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3.Invoke(`1@)
+    name: Invoke
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.Invoke.html#Metalama_Framework_RunTime_Events_EventBroker_3_Invoke__1__
+  - name: (
+  - name: TArgs
+  - name: )
+- uid: Metalama.Framework.RunTime.Events.EventBroker`3.InvokeByRef(`1@)
+  commentId: M:Metalama.Framework.RunTime.Events.EventBroker`3.InvokeByRef(`1@)
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.EventBroker-3.InvokeByRef.html#Metalama_Framework_RunTime_Events_EventBroker_3_InvokeByRef__1__
+  name: InvokeByRef(ref TArgs)
+  nameWithType: EventBroker<TDelegate, TArgs, TState>.InvokeByRef(ref TArgs)
+  fullName: Metalama.Framework.RunTime.Events.EventBroker<TDelegate, TArgs, TState>.InvokeByRef(ref TArgs)
+  nameWithType.vb: EventBroker(Of TDelegate, TArgs, TState).InvokeByRef(TArgs)
+  fullName.vb: Metalama.Framework.RunTime.Events.EventBroker(Of TDelegate, TArgs, TState).InvokeByRef(TArgs)
+  name.vb: InvokeByRef(TArgs)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3.InvokeByRef(`1@)
+    name: InvokeByRef
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.InvokeByRef.html#Metalama_Framework_RunTime_Events_EventBroker_3_InvokeByRef__1__
+  - name: (
+  - name: ref
+  - name: " "
+  - name: TArgs
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3.InvokeByRef(`1@)
+    name: InvokeByRef
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.InvokeByRef.html#Metalama_Framework_RunTime_Events_EventBroker_3_InvokeByRef__1__
+  - name: (
+  - name: TArgs
+  - name: )
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+  commentId: M:Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.IEventAdapter-3.AddHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_AddHandler__0__2_
+  name: AddHandler(TDelegate, TState)
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.AddHandler(TDelegate, TState)
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.AddHandler(TDelegate, TState)
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).AddHandler(TDelegate, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).AddHandler(TDelegate, TState)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+    name: AddHandler
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.AddHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_AddHandler__0__2_
+  - name: (
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.AddHandler(`0,`2)
+    name: AddHandler
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.AddHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_AddHandler__0__2_
+  - name: (
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+  commentId: M:Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.IEventAdapter-3.RemoveHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_RemoveHandler__0__2_
+  name: RemoveHandler(TDelegate, TState)
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.RemoveHandler(TDelegate, TState)
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.RemoveHandler(TDelegate, TState)
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).RemoveHandler(TDelegate, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).RemoveHandler(TDelegate, TState)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+    name: RemoveHandler
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.RemoveHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_RemoveHandler__0__2_
+  - name: (
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.RemoveHandler(`0,`2)
+    name: RemoveHandler
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.IEventAdapter-3.RemoveHandler.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_RemoveHandler__0__2_
+  - name: (
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+- uid: Metalama.Framework.RunTime.Events.IEventAdapter`3.GetBrokerInvocationDelegate*
+  commentId: Overload:Metalama.Framework.RunTime.Events.IEventAdapter`3.GetBrokerInvocationDelegate
+  isExternal: true
+  href: Metalama.Framework.RunTime.Events.IEventAdapter-3.GetBrokerInvocationDelegate.html#Metalama_Framework_RunTime_Events_IEventAdapter_3_GetBrokerInvocationDelegate_Metalama_Framework_RunTime_Events_EventBroker__0__1__2__
+  name: GetBrokerInvocationDelegate
+  nameWithType: IEventAdapter<TDelegate, TArgs, TState>.GetBrokerInvocationDelegate
+  fullName: Metalama.Framework.RunTime.Events.IEventAdapter<TDelegate, TArgs, TState>.GetBrokerInvocationDelegate
+  nameWithType.vb: IEventAdapter(Of TDelegate, TArgs, TState).GetBrokerInvocationDelegate
+  fullName.vb: Metalama.Framework.RunTime.Events.IEventAdapter(Of TDelegate, TArgs, TState).GetBrokerInvocationDelegate
+- uid: Metalama.Framework.RunTime.Events.EventBroker{{TDelegate},{TArgs},{TState}}
+  commentId: T:Metalama.Framework.RunTime.Events.EventBroker{``0,``1,``2}
+  parent: Metalama.Framework.RunTime.Events
+  definition: Metalama.Framework.RunTime.Events.EventBroker`3
+  href: Metalama.Framework.RunTime.Events.EventBroker-3.html
+  name: EventBroker<TDelegate, TArgs, TState>
+  nameWithType: EventBroker<TDelegate, TArgs, TState>
+  fullName: Metalama.Framework.RunTime.Events.EventBroker<TDelegate, TArgs, TState>
+  nameWithType.vb: EventBroker(Of TDelegate, TArgs, TState)
+  fullName.vb: Metalama.Framework.RunTime.Events.EventBroker(Of TDelegate, TArgs, TState)
+  name.vb: EventBroker(Of TDelegate, TArgs, TState)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3
+    name: EventBroker
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.html
+  - name: <
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.Events.EventBroker`3
+    name: EventBroker
+    isExternal: true
+    href: Metalama.Framework.RunTime.Events.EventBroker-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: ','
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: )
+memberLayout: SeparatePages

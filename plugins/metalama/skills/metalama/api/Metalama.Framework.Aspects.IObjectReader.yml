@@ -1,0 +1,2004 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.IObjectReader
+  commentId: T:Metalama.Framework.Aspects.IObjectReader
+  id: IObjectReader
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.IObjectReader.Source
+  langs:
+  - csharp
+  - vb
+  name: IObjectReader
+  nameWithType: IObjectReader
+  fullName: Metalama.Framework.Aspects.IObjectReader
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Provides read-only dictionary access to tags passed from the <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method to templates.
+
+    Accessible in templates via <xref href="Metalama.Framework.Aspects.meta.Tags" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+        Tags are compile-time name-value pairs used to pass contextual information from <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref>
+        to template implementations. This interface exposes tags as a dictionary while also providing access to the original
+        source object(s) via the <xref href="Metalama.Framework.Aspects.IObjectReader.Source" data-throw-if-not-resolved="false"></xref> property.
+        </p>
+    <p>
+      <b>Setting tags:</b> Tags can be set in two ways:
+        </p>
+    <ul><li>By passing an argument to the <code>tags</code> parameter of advice methods (e.g., <code>builder.Override(nameof(Template), tags: new { Key = value })</code>)</li><li>By setting <xref href="Metalama.Framework.Aspects.IAspectBuilder.Tags" data-throw-if-not-resolved="false"></xref> at any point in <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref></li></ul>
+
+    <p>
+        When both methods are used, the tags are merged. In case of key conflicts, values from the advice method parameter take precedence.
+        </p>
+    <p>
+      <b>Reading tags:</b> In template code, access tags through <code>meta.Tags</code> using two approaches:
+        </p>
+    <ul><li>
+          <b>Dictionary access:</b> Use <code>meta.Tags["key"]</code> to read individual values. This is the typical approach
+        when using anonymous types (e.g., <code>new { Key = value }</code>).</li><li>
+          <b>Source property:</b> Use <code>meta.Tags.Source</code> to access the original object cast to a strongly-typed class.
+        This is useful when using a dedicated tag class instead of anonymous types.</li></ul>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public interface IObjectReader : IReadOnlyDictionary<string, object?>, IReadOnlyCollection<KeyValuePair<string, object?>>, IEnumerable<KeyValuePair<string, object?>>, IEnumerable
+    content.vb: >-
+      <CompileTime>
+
+      Public Interface IObjectReader Inherits IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of KeyValuePair(Of String, Object)), IEnumerable(Of KeyValuePair(Of String, Object)), IEnumerable
+  seealso:
+  - linkId: Metalama.Framework.Aspects.meta.Tags
+    commentId: P:Metalama.Framework.Aspects.meta.Tags
+  - linkId: Metalama.Framework.Aspects.IAspectBuilder.Tags
+    commentId: P:Metalama.Framework.Aspects.IAspectBuilder.Tags
+  - linkType: HRef
+    linkId: '@sharing-state-with-advice'
+    altText: '@sharing-state-with-advice'
+  inheritedMembers:
+  - System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.ContainsKey(System.String)
+  - System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+  - System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Item(System.String)
+  - System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Keys
+  - System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Values
+  - System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Count
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.GetEnumerator
+  - System.Collections.IEnumerable.GetEnumerator
+  extensionMethods:
+  - Metalama.Framework.Aspects.IObjectReader.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.IObjectReader,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IObjectReader}},System.Boolean)
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}},System.Collections.Generic.IEqualityComparer{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Boolean)
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1
+  - System.Collections.IEnumerable.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.IObjectReader.Source
+  commentId: P:Metalama.Framework.Aspects.IObjectReader.Source
+  id: Source
+  parent: Metalama.Framework.Aspects.IObjectReader
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: IObjectReader.Source
+  fullName: Metalama.Framework.Aspects.IObjectReader.Source
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the original source object(s) used to set the tags.
+  remarks: >-
+    <p>
+        Use this property when you want to work with the original tag object rather than accessing individual keys.
+        This is particularly useful when using anonymous types or custom tag classes, as it preserves the original type.
+        </p>
+    <p>
+        If there are multiple source objects (i.e., when both <xref href="Metalama.Framework.Aspects.IAspectBuilder.Tags" data-throw-if-not-resolved="false"></xref> and the
+        <code>tags</code> advice method parameter are set), this property returns an <xref href="System.Collections.Immutable.ImmutableArray%601" data-throw-if-not-resolved="false"></xref>
+        containing all source objects.
+        </p>
+  example: []
+  syntax:
+    content: object? Source { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: ReadOnly Property Source As Object
+  overload: Metalama.Framework.Aspects.IObjectReader.Source*
+references:
+- uid: Metalama.Framework.Aspects.meta.Tags
+  commentId: P:Metalama.Framework.Aspects.meta.Tags
+  isExternal: true
+  href: Metalama.Framework.Aspects.meta.Tags.html#Metalama_Framework_Aspects_meta_Tags
+  name: Tags
+  nameWithType: meta.Tags
+  fullName: Metalama.Framework.Aspects.meta.Tags
+- uid: Metalama.Framework.Aspects.IAspectBuilder.Tags
+  commentId: P:Metalama.Framework.Aspects.IAspectBuilder.Tags
+  parent: Metalama.Framework.Aspects.IAspectBuilder
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder.Tags.html#Metalama_Framework_Aspects_IAspectBuilder_Tags
+  name: Tags
+  nameWithType: IAspectBuilder.Tags
+  fullName: Metalama.Framework.Aspects.IAspectBuilder.Tags
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.IObjectReader.Source
+  commentId: P:Metalama.Framework.Aspects.IObjectReader.Source
+  isExternal: true
+  href: Metalama.Framework.Aspects.IObjectReader.Source.html#Metalama_Framework_Aspects_IObjectReader_Source
+  name: Source
+  nameWithType: IObjectReader.Source
+  fullName: Metalama.Framework.Aspects.IObjectReader.Source
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.ContainsKey(System.String)
+  commentId: M:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.ContainsKey(System.String)
+  parent: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  definition: System.Collections.Generic.IReadOnlyDictionary`2.ContainsKey(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey
+  name: ContainsKey(string)
+  nameWithType: IReadOnlyDictionary<string, object>.ContainsKey(string)
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>.ContainsKey(string)
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object).ContainsKey(String)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object).ContainsKey(String)
+  name.vb: ContainsKey(String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+  commentId: M:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+  parent: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  definition: System.Collections.Generic.IReadOnlyDictionary`2.TryGetValue(`0,`1@)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue
+  name: TryGetValue(string, out object)
+  nameWithType: IReadOnlyDictionary<string, object>.TryGetValue(string, out object)
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>.TryGetValue(string, out object)
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object).TryGetValue(String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object).TryGetValue(String, Object)
+  name.vb: TryGetValue(String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Item(System.String)
+  commentId: P:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Item(System.String)
+  parent: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  definition: System.Collections.Generic.IReadOnlyDictionary`2.Item(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: this[string]
+  nameWithType: IReadOnlyDictionary<string, object>.this[string]
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>.this[string]
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object).this[](String)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object).this[](String)
+  name.vb: this[](String)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Item(System.String)
+    name: this[]
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.item
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Keys
+  commentId: P:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Keys
+  parent: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  definition: System.Collections.Generic.IReadOnlyDictionary`2.Keys
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.keys
+  name: Keys
+  nameWithType: IReadOnlyDictionary<string, object>.Keys
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>.Keys
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object).Keys
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object).Keys
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Values
+  commentId: P:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}.Values
+  parent: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  definition: System.Collections.Generic.IReadOnlyDictionary`2.Values
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.values
+  name: Values
+  nameWithType: IReadOnlyDictionary<string, object>.Values
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>.Values
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object).Values
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object).Values
+- uid: System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Count
+  parent: System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  definition: System.Collections.Generic.IReadOnlyCollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<KeyValuePair<string, object>>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<string, object>>.Count
+  nameWithType.vb: IReadOnlyCollection(Of KeyValuePair(Of String, Object)).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of System.Collections.Generic.KeyValuePair(Of String, Object)).Count
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<KeyValuePair<string, object>>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, Object)).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object)).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.IEnumerable.GetEnumerator
+  commentId: M:System.Collections.IEnumerable.GetEnumerator
+  parent: System.Collections.IEnumerable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable.GetEnumerator()
+  fullName: System.Collections.IEnumerable.GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Aspects.IObjectReader.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.IObjectReader,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IObjectReader}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IObjectReader>(IObjectReader, Func<IObjectReader, IEnumerable<IObjectReader>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IObjectReader>(IObjectReader, Func<IObjectReader, IEnumerable<IObjectReader>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Aspects.IObjectReader>(Metalama.Framework.Aspects.IObjectReader, System.Func<Metalama.Framework.Aspects.IObjectReader, System.Collections.Generic.IEnumerable<Metalama.Framework.Aspects.IObjectReader>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IObjectReader)(IObjectReader, Func(Of IObjectReader, IEnumerable(Of IObjectReader)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Aspects.IObjectReader)(Metalama.Framework.Aspects.IObjectReader, System.Func(Of Metalama.Framework.Aspects.IObjectReader, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Aspects.IObjectReader)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IObjectReader)(IObjectReader, Func(Of IObjectReader, IEnumerable(Of IObjectReader)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.IObjectReader,System.Func{Metalama.Framework.Aspects.IObjectReader,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IObjectReader}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.IObjectReader,System.Func{Metalama.Framework.Aspects.IObjectReader,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.IObjectReader}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IObjectReader
+    name: IObjectReader
+    isExternal: true
+    href: Metalama.Framework.Aspects.IObjectReader.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  name: Cache<KeyValuePair<string, object>>(IEnumerable<KeyValuePair<string, object>>)
+  nameWithType: EnumerableExtensions.Cache<KeyValuePair<string, object>>(IEnumerable<KeyValuePair<string, object>>)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache<System.Collections.Generic.KeyValuePair<string, object>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: EnumerableExtensions.Cache(Of KeyValuePair(Of String, Object))(IEnumerable(Of KeyValuePair(Of String, Object)))
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache(Of System.Collections.Generic.KeyValuePair(Of String, Object))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: Cache(Of KeyValuePair(Of String, Object))(IEnumerable(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}},System.Collections.Generic.IEqualityComparer{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  name: SelectManyRecursiveDistinct<KeyValuePair<string, object>>(IEnumerable<KeyValuePair<string, object>>, Func<KeyValuePair<string, object>, IEnumerable<KeyValuePair<string, object>>>, IEqualityComparer<KeyValuePair<string, object>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<KeyValuePair<string, object>>(IEnumerable<KeyValuePair<string, object>>, Func<KeyValuePair<string, object>, IEnumerable<KeyValuePair<string, object>>>, IEqualityComparer<KeyValuePair<string, object>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<System.Collections.Generic.KeyValuePair<string, object>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>, System.Func<System.Collections.Generic.KeyValuePair<string, object>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>>, System.Collections.Generic.IEqualityComparer<System.Collections.Generic.KeyValuePair<string, object>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of KeyValuePair(Of String, Object))(IEnumerable(Of KeyValuePair(Of String, Object)), Func(Of KeyValuePair(Of String, Object), IEnumerable(Of KeyValuePair(Of String, Object))), IEqualityComparer(Of KeyValuePair(Of String, Object)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of System.Collections.Generic.KeyValuePair(Of String, Object))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object)), System.Func(Of System.Collections.Generic.KeyValuePair(Of String, Object), System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object))), System.Collections.Generic.IEqualityComparer(Of System.Collections.Generic.KeyValuePair(Of String, Object)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of KeyValuePair(Of String, Object))(IEnumerable(Of KeyValuePair(Of String, Object)), Func(Of KeyValuePair(Of String, Object), IEnumerable(Of KeyValuePair(Of String, Object))), IEqualityComparer(Of KeyValuePair(Of String, Object)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}},System.Collections.Generic.IEqualityComparer{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}},System.Collections.Generic.IEqualityComparer{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  parent: Metalama.Framework.RunTime.RunTimeAspectHelper
+  definition: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  name: Buffer<KeyValuePair<string, object>>(IEnumerable<KeyValuePair<string, object>>)
+  nameWithType: RunTimeAspectHelper.Buffer<KeyValuePair<string, object>>(IEnumerable<KeyValuePair<string, object>>)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer<System.Collections.Generic.KeyValuePair<string, object>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>)
+  nameWithType.vb: RunTimeAspectHelper.Buffer(Of KeyValuePair(Of String, Object))(IEnumerable(Of KeyValuePair(Of String, Object)))
+  fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(Of System.Collections.Generic.KeyValuePair(Of String, Object))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object)))
+  name.vb: Buffer(Of KeyValuePair(Of String, Object))(IEnumerable(Of KeyValuePair(Of String, Object)))
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  parent: Metalama.Framework.RunTime.RunTimeAspectHelper
+  definition: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  name: Buffer(IEnumerable)
+  nameWithType: RunTimeAspectHelper.Buffer(IEnumerable)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspectBuilder
+  commentId: T:Metalama.Framework.Aspects.IAspectBuilder
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder.html
+  name: IAspectBuilder
+  nameWithType: IAspectBuilder
+  fullName: Metalama.Framework.Aspects.IAspectBuilder
+- uid: System.Collections.Generic.IReadOnlyDictionary`2.ContainsKey(`0)
+  commentId: M:System.Collections.Generic.IReadOnlyDictionary`2.ContainsKey(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey
+  name: ContainsKey(TKey)
+  nameWithType: IReadOnlyDictionary<TKey, TValue>.ContainsKey(TKey)
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>.ContainsKey(TKey)
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue).ContainsKey(TKey)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue).ContainsKey(TKey)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey
+  - name: (
+  - name: TKey
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2.TryGetValue(`0,`1@)
+  commentId: M:System.Collections.Generic.IReadOnlyDictionary`2.TryGetValue(`0,`1@)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue
+  name: TryGetValue(TKey, out TValue)
+  nameWithType: IReadOnlyDictionary<TKey, TValue>.TryGetValue(TKey, out TValue)
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>.TryGetValue(TKey, out TValue)
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue).TryGetValue(TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue).TryGetValue(TKey, TValue)
+  name.vb: TryGetValue(TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2.Item(`0)
+  commentId: P:System.Collections.Generic.IReadOnlyDictionary`2.Item(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.item
+  name: this[TKey]
+  nameWithType: IReadOnlyDictionary<TKey, TValue>.this[TKey]
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>.this[TKey]
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue).this[](TKey)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue).this[](TKey)
+  name.vb: this[](TKey)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - name: TKey
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2.Item(`0)
+    name: this[]
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.item
+  - name: (
+  - name: TKey
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2.Keys
+  commentId: P:System.Collections.Generic.IReadOnlyDictionary`2.Keys
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.keys
+  name: Keys
+  nameWithType: IReadOnlyDictionary<TKey, TValue>.Keys
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>.Keys
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue).Keys
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue).Keys
+- uid: System.Collections.Generic.IReadOnlyDictionary`2.Values
+  commentId: P:System.Collections.Generic.IReadOnlyDictionary`2.Values
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2.values
+  name: Values
+  nameWithType: IReadOnlyDictionary<TKey, TValue>.Values
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>.Values
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue).Values
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue).Values
+- uid: System.Collections.Generic.IReadOnlyCollection`1.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<T>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>.Count
+  nameWithType.vb: IReadOnlyCollection(Of T).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T).Count
+- uid: System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<KeyValuePair<string, object>>
+  nameWithType: IReadOnlyCollection<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: IReadOnlyCollection(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: IReadOnlyCollection(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, object>>
+  nameWithType: IEnumerable<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  name: Cache<T>(IEnumerable<T>)
+  nameWithType: EnumerableExtensions.Cache<T>(IEnumerable<T>)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache<T>(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: EnumerableExtensions.Cache(Of T)(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Cache(Of T)(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(IEnumerable<T>, Func<T, IEnumerable<T>>, IEqualityComparer<T>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(IEnumerable<T>, Func<T, IEnumerable<T>>, IEqualityComparer<T>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, System.Collections.Generic.IEnumerable<T>>, System.Collections.Generic.IEqualityComparer<T>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(IEnumerable(Of T), Func(Of T, IEnumerable(Of T)), IEqualityComparer(Of T), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), System.Collections.Generic.IEqualityComparer(Of T), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(IEnumerable(Of T), Func(Of T, IEnumerable(Of T)), IEqualityComparer(Of T), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  name: Buffer<T>(IEnumerable<T>)
+  nameWithType: RunTimeAspectHelper.Buffer<T>(IEnumerable<T>)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer<T>(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RunTimeAspectHelper.Buffer(Of T)(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Buffer(Of T)(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+  commentId: T:Metalama.Framework.RunTime.RunTimeAspectHelper
+  parent: Metalama.Framework.RunTime
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  name: RunTimeAspectHelper
+  nameWithType: RunTimeAspectHelper
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  name: Buffer(IEnumerable)
+  nameWithType: RunTimeAspectHelper.Buffer(IEnumerable)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.RunTime
+  commentId: N:Metalama.Framework.RunTime
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.RunTime
+  nameWithType: Metalama.Framework.RunTime
+  fullName: Metalama.Framework.RunTime
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.RunTime
+    name: RunTime
+    isExternal: true
+    href: Metalama.Framework.RunTime.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.RunTime
+    name: RunTime
+    isExternal: true
+    href: Metalama.Framework.RunTime.html
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects.IObjectReader.Source*
+  commentId: Overload:Metalama.Framework.Aspects.IObjectReader.Source
+  isExternal: true
+  href: Metalama.Framework.Aspects.IObjectReader.Source.html#Metalama_Framework_Aspects_IObjectReader_Source
+  name: Source
+  nameWithType: IObjectReader.Source
+  fullName: Metalama.Framework.Aspects.IObjectReader.Source
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+memberLayout: SeparatePages

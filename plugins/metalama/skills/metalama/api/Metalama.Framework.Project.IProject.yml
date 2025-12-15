@@ -1,0 +1,1283 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Project.IProject
+  commentId: T:Metalama.Framework.Project.IProject
+  id: IProject
+  parent: Metalama.Framework.Project
+  children:
+  - Metalama.Framework.Project.IProject.AssemblyName
+  - Metalama.Framework.Project.IProject.AssemblyReferences
+  - Metalama.Framework.Project.IProject.Configuration
+  - Metalama.Framework.Project.IProject.Extension``1
+  - Metalama.Framework.Project.IProject.Name
+  - Metalama.Framework.Project.IProject.Path
+  - Metalama.Framework.Project.IProject.PreprocessorSymbols
+  - Metalama.Framework.Project.IProject.ServiceProvider
+  - Metalama.Framework.Project.IProject.TargetFramework
+  - Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+  langs:
+  - csharp
+  - vb
+  name: IProject
+  nameWithType: IProject
+  fullName: Metalama.Framework.Project.IProject
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Exposes the properties of the current C# project, such as <xref href="Metalama.Framework.Project.IProject.Path" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Project.IProject.AssemblyReferences" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Project.IProject.PreprocessorSymbols" data-throw-if-not-resolved="false"></xref>,
+
+    <xref href="Metalama.Framework.Project.IProject.Configuration" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Project.IProject.TargetFramework" data-throw-if-not-resolved="false"></xref>. To access a custom MSBuild property, use <xref href="Metalama.Framework.Project.IProject.TryGetProperty(System.String%2cSystem.String%40)" data-throw-if-not-resolved="false"></xref>. You can extend
+
+    this interface with your own framework-specific by using the <xref href="Metalama.Framework.Project.IProject.Extension%60%601" data-throw-if-not-resolved="false"></xref> method.
+  example: []
+  syntax:
+    content: >-
+      [InternalImplement]
+
+      [CompileTime]
+
+      public interface IProject
+    content.vb: >-
+      <InternalImplement>
+
+      <CompileTime>
+
+      Public Interface IProject
+  seealso:
+  - linkId: Metalama.Framework.Code.ICompilation
+    commentId: T:Metalama.Framework.Code.ICompilation
+  - linkId: Metalama.Framework.Project.IExecutionContext
+    commentId: T:Metalama.Framework.Project.IExecutionContext
+  - linkId: Metalama.Framework.Project.MetalamaExecutionContext
+    commentId: T:Metalama.Framework.Project.MetalamaExecutionContext
+  - linkId: Metalama.Framework.Aspects.IAspectBuilder
+    commentId: T:Metalama.Framework.Aspects.IAspectBuilder
+  - linkId: Metalama.Framework.Project.ProjectExtension
+    commentId: T:Metalama.Framework.Project.ProjectExtension
+  - linkType: HRef
+    linkId: '@reading-msbuild-properties'
+    altText: '@reading-msbuild-properties'
+  extensionMethods:
+  - Metalama.Framework.Project.IProject.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Project.IProject,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IProject}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+  commentId: M:Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+  id: TryGetProperty(System.String,System.String@)
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: TryGetProperty(string, out string?)
+  nameWithType: IProject.TryGetProperty(string, out string?)
+  fullName: Metalama.Framework.Project.IProject.TryGetProperty(string, out string?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets the set of properties passed from MSBuild. To expose an MSBuild property to this collection,
+
+    define the <code>CompilerVisibleProperty</code> item.
+  example: []
+  syntax:
+    content: bool TryGetProperty(string name, out string? value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.String
+      attributes:
+      - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+        ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
+        arguments:
+        - type: System.Boolean
+          value: true
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetProperty(name As String, value As String) As Boolean
+  overload: Metalama.Framework.Project.IProject.TryGetProperty*
+  seealso:
+  - linkType: HRef
+    linkId: '@reading-msbuild-properties'
+    altText: '@reading-msbuild-properties'
+  nameWithType.vb: IProject.TryGetProperty(String, String)
+  fullName.vb: Metalama.Framework.Project.IProject.TryGetProperty(String, String)
+  name.vb: TryGetProperty(String, String)
+- uid: Metalama.Framework.Project.IProject.Extension``1
+  commentId: M:Metalama.Framework.Project.IProject.Extension``1
+  id: Extension``1
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: Extension<T>()
+  nameWithType: IProject.Extension<T>()
+  fullName: Metalama.Framework.Project.IProject.Extension<T>()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets a project extension object or creates a new instance if none has been created before. The type must derive from <xref href="Metalama.Framework.Project.ProjectExtension" data-throw-if-not-resolved="false"></xref>
+
+    and have a default constructor. New instances will be initialized using <xref href="Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use IDeclaration.Enhancements().GetOptions<T> to get or amender.Configure<T>(...) to set an option.")]
+
+      T Extension<T>() where T : ProjectExtension, new()
+    typeParameters:
+    - id: T
+      description: The extension type, which must derive from <xref href="Metalama.Framework.Project.ProjectExtension" data-throw-if-not-resolved="false"></xref> and have a default constructor.
+    return:
+      type: '{T}'
+    content.vb: >-
+      <Obsolete("Use IDeclaration.Enhancements().GetOptions<T> to get or amender.Configure<T>(...) to set an option.")>
+
+      Function Extension(Of T As {ProjectExtension, New})() As T
+  overload: Metalama.Framework.Project.IProject.Extension*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use IDeclaration.Enhancements().GetOptions<T> to get or amender.Configure<T>(...) to set an option.
+  nameWithType.vb: IProject.Extension(Of T)()
+  fullName.vb: Metalama.Framework.Project.IProject.Extension(Of T)()
+  name.vb: Extension(Of T)()
+- uid: Metalama.Framework.Project.IProject.Name
+  commentId: P:Metalama.Framework.Project.IProject.Name
+  id: Name
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IProject.Name
+  fullName: Metalama.Framework.Project.IProject.Name
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the project name, i.e. the <xref href="Metalama.Framework.Project.IProject.Path" data-throw-if-not-resolved="false"></xref> without the directory and without the extension.
+  example: []
+  syntax:
+    content: string? Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Metalama.Framework.Project.IProject.Name*
+- uid: Metalama.Framework.Project.IProject.AssemblyName
+  commentId: P:Metalama.Framework.Project.IProject.AssemblyName
+  id: AssemblyName
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: AssemblyName
+  nameWithType: IProject.AssemblyName
+  fullName: Metalama.Framework.Project.IProject.AssemblyName
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the name of the assembly produced by the project.
+  example: []
+  syntax:
+    content: string AssemblyName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property AssemblyName As String
+  overload: Metalama.Framework.Project.IProject.AssemblyName*
+- uid: Metalama.Framework.Project.IProject.Path
+  commentId: P:Metalama.Framework.Project.IProject.Path
+  id: Path
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: Path
+  nameWithType: IProject.Path
+  fullName: Metalama.Framework.Project.IProject.Path
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the path to the <code>csproj</code> file.
+  example: []
+  syntax:
+    content: string? Path { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Path As String
+  overload: Metalama.Framework.Project.IProject.Path*
+- uid: Metalama.Framework.Project.IProject.AssemblyReferences
+  commentId: P:Metalama.Framework.Project.IProject.AssemblyReferences
+  id: AssemblyReferences
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: AssemblyReferences
+  nameWithType: IProject.AssemblyReferences
+  fullName: Metalama.Framework.Project.IProject.AssemblyReferences
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the list of assembly references of the current project.
+  example: []
+  syntax:
+    content: ImmutableArray<IAssemblyIdentity> AssemblyReferences { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.IAssemblyIdentity}
+    content.vb: ReadOnly Property AssemblyReferences As ImmutableArray(Of IAssemblyIdentity)
+  overload: Metalama.Framework.Project.IProject.AssemblyReferences*
+- uid: Metalama.Framework.Project.IProject.PreprocessorSymbols
+  commentId: P:Metalama.Framework.Project.IProject.PreprocessorSymbols
+  id: PreprocessorSymbols
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: PreprocessorSymbols
+  nameWithType: IProject.PreprocessorSymbols
+  fullName: Metalama.Framework.Project.IProject.PreprocessorSymbols
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the list of defined preprocessor symbols like <code>DEBUG</code>, <code>TRACE</code>, <code>NET5_0_OR_GREATER</code> and so on.
+  example: []
+  syntax:
+    content: ImmutableHashSet<string> PreprocessorSymbols { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableHashSet{System.String}
+    content.vb: ReadOnly Property PreprocessorSymbols As ImmutableHashSet(Of String)
+  overload: Metalama.Framework.Project.IProject.PreprocessorSymbols*
+- uid: Metalama.Framework.Project.IProject.Configuration
+  commentId: P:Metalama.Framework.Project.IProject.Configuration
+  id: Configuration
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: Configuration
+  nameWithType: IProject.Configuration
+  fullName: Metalama.Framework.Project.IProject.Configuration
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the name of the build configuration, for instance <code>Debug</code> or <code>Release</code>.
+  example: []
+  syntax:
+    content: string? Configuration { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Configuration As String
+  overload: Metalama.Framework.Project.IProject.Configuration*
+- uid: Metalama.Framework.Project.IProject.TargetFramework
+  commentId: P:Metalama.Framework.Project.IProject.TargetFramework
+  id: TargetFramework
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: TargetFramework
+  nameWithType: IProject.TargetFramework
+  fullName: Metalama.Framework.Project.IProject.TargetFramework
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the identifier of the target framework, for instance <code>netstandard2.0</code>.
+  example: []
+  syntax:
+    content: string? TargetFramework { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property TargetFramework As String
+  overload: Metalama.Framework.Project.IProject.TargetFramework*
+- uid: Metalama.Framework.Project.IProject.ServiceProvider
+  commentId: P:Metalama.Framework.Project.IProject.ServiceProvider
+  id: ServiceProvider
+  parent: Metalama.Framework.Project.IProject
+  langs:
+  - csharp
+  - vb
+  name: ServiceProvider
+  nameWithType: IProject.ServiceProvider
+  fullName: Metalama.Framework.Project.IProject.ServiceProvider
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets an <xref href="Metalama.Framework.Services.IServiceProvider%601" data-throw-if-not-resolved="false"></xref> that gives access to the compiler services exposed using the <code>[CompileTimePlugIn]</code> facility.
+
+    Only interfaces that derive from <xref href="Metalama.Framework.Services.IProjectService" data-throw-if-not-resolved="false"></xref> are accessible from this property.
+  example: []
+  syntax:
+    content: IServiceProvider<IProjectService> ServiceProvider { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Services.IServiceProvider{Metalama.Framework.Services.IProjectService}
+    content.vb: ReadOnly Property ServiceProvider As IServiceProvider(Of IProjectService)
+  overload: Metalama.Framework.Project.IProject.ServiceProvider*
+references:
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Project.IExecutionContext
+  commentId: T:Metalama.Framework.Project.IExecutionContext
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.html
+  name: IExecutionContext
+  nameWithType: IExecutionContext
+  fullName: Metalama.Framework.Project.IExecutionContext
+- uid: Metalama.Framework.Project.MetalamaExecutionContext
+  commentId: T:Metalama.Framework.Project.MetalamaExecutionContext
+  isExternal: true
+  href: Metalama.Framework.Project.MetalamaExecutionContext.html
+  name: MetalamaExecutionContext
+  nameWithType: MetalamaExecutionContext
+  fullName: Metalama.Framework.Project.MetalamaExecutionContext
+- uid: Metalama.Framework.Aspects.IAspectBuilder
+  commentId: T:Metalama.Framework.Aspects.IAspectBuilder
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder.html
+  name: IAspectBuilder
+  nameWithType: IAspectBuilder
+  fullName: Metalama.Framework.Aspects.IAspectBuilder
+- uid: Metalama.Framework.Project.ProjectExtension
+  commentId: T:Metalama.Framework.Project.ProjectExtension
+  isExternal: true
+  href: Metalama.Framework.Project.ProjectExtension.html
+  name: ProjectExtension
+  nameWithType: ProjectExtension
+  fullName: Metalama.Framework.Project.ProjectExtension
+- uid: Metalama.Framework.Project.IProject.Path
+  commentId: P:Metalama.Framework.Project.IProject.Path
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Path.html#Metalama_Framework_Project_IProject_Path
+  name: Path
+  nameWithType: IProject.Path
+  fullName: Metalama.Framework.Project.IProject.Path
+- uid: Metalama.Framework.Project.IProject.AssemblyReferences
+  commentId: P:Metalama.Framework.Project.IProject.AssemblyReferences
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.AssemblyReferences.html#Metalama_Framework_Project_IProject_AssemblyReferences
+  name: AssemblyReferences
+  nameWithType: IProject.AssemblyReferences
+  fullName: Metalama.Framework.Project.IProject.AssemblyReferences
+- uid: Metalama.Framework.Project.IProject.PreprocessorSymbols
+  commentId: P:Metalama.Framework.Project.IProject.PreprocessorSymbols
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.PreprocessorSymbols.html#Metalama_Framework_Project_IProject_PreprocessorSymbols
+  name: PreprocessorSymbols
+  nameWithType: IProject.PreprocessorSymbols
+  fullName: Metalama.Framework.Project.IProject.PreprocessorSymbols
+- uid: Metalama.Framework.Project.IProject.Configuration
+  commentId: P:Metalama.Framework.Project.IProject.Configuration
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Configuration.html#Metalama_Framework_Project_IProject_Configuration
+  name: Configuration
+  nameWithType: IProject.Configuration
+  fullName: Metalama.Framework.Project.IProject.Configuration
+- uid: Metalama.Framework.Project.IProject.TargetFramework
+  commentId: P:Metalama.Framework.Project.IProject.TargetFramework
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.TargetFramework.html#Metalama_Framework_Project_IProject_TargetFramework
+  name: TargetFramework
+  nameWithType: IProject.TargetFramework
+  fullName: Metalama.Framework.Project.IProject.TargetFramework
+- uid: Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+  commentId: M:Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.TryGetProperty.html#Metalama_Framework_Project_IProject_TryGetProperty_System_String_System_String__
+  name: TryGetProperty(string, out string)
+  nameWithType: IProject.TryGetProperty(string, out string)
+  fullName: Metalama.Framework.Project.IProject.TryGetProperty(string, out string)
+  nameWithType.vb: IProject.TryGetProperty(String, String)
+  fullName.vb: Metalama.Framework.Project.IProject.TryGetProperty(String, String)
+  name.vb: TryGetProperty(String, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+    name: TryGetProperty
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.TryGetProperty.html#Metalama_Framework_Project_IProject_TryGetProperty_System_String_System_String__
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Project.IProject.TryGetProperty(System.String,System.String@)
+    name: TryGetProperty
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.TryGetProperty.html#Metalama_Framework_Project_IProject_TryGetProperty_System_String_System_String__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Project.IProject.Extension``1
+  commentId: M:Metalama.Framework.Project.IProject.Extension``1
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Extension.html#Metalama_Framework_Project_IProject_Extension__1
+  name: Extension<T>()
+  nameWithType: IProject.Extension<T>()
+  fullName: Metalama.Framework.Project.IProject.Extension<T>()
+  nameWithType.vb: IProject.Extension(Of T)()
+  fullName.vb: Metalama.Framework.Project.IProject.Extension(Of T)()
+  name.vb: Extension(Of T)()
+  spec.csharp:
+  - uid: Metalama.Framework.Project.IProject.Extension``1
+    name: Extension
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.Extension.html#Metalama_Framework_Project_IProject_Extension__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Project.IProject.Extension``1
+    name: Extension
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.Extension.html#Metalama_Framework_Project_IProject_Extension__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Project
+  commentId: N:Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Project
+  nameWithType: Metalama.Framework.Project
+  fullName: Metalama.Framework.Project
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+- uid: Metalama.Framework.Project.IProject.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Project.IProject,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IProject}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IProject>(IProject, Func<IProject, IEnumerable<IProject>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IProject>(IProject, Func<IProject, IEnumerable<IProject>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Project.IProject>(Metalama.Framework.Project.IProject, System.Func<Metalama.Framework.Project.IProject, System.Collections.Generic.IEnumerable<Metalama.Framework.Project.IProject>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IProject)(IProject, Func(Of IProject, IEnumerable(Of IProject)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Project.IProject)(Metalama.Framework.Project.IProject, System.Func(Of Metalama.Framework.Project.IProject, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Project.IProject)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IProject)(IProject, Func(Of IProject, IEnumerable(Of IProject)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Project.IProject,System.Func{Metalama.Framework.Project.IProject,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IProject}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Project.IProject,System.Func{Metalama.Framework.Project.IProject,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IProject}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Project.IProject.TryGetProperty*
+  commentId: Overload:Metalama.Framework.Project.IProject.TryGetProperty
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.TryGetProperty.html#Metalama_Framework_Project_IProject_TryGetProperty_System_String_System_String__
+  name: TryGetProperty
+  nameWithType: IProject.TryGetProperty
+  fullName: Metalama.Framework.Project.IProject.TryGetProperty
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject,System.Boolean)
+  commentId: M:Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject,System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Project.ProjectExtension.Initialize.html#Metalama_Framework_Project_ProjectExtension_Initialize_Metalama_Framework_Project_IProject_System_Boolean_
+  name: Initialize(IProject, bool)
+  nameWithType: ProjectExtension.Initialize(IProject, bool)
+  fullName: Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject, bool)
+  nameWithType.vb: ProjectExtension.Initialize(IProject, Boolean)
+  fullName.vb: Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject, Boolean)
+  name.vb: Initialize(IProject, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject,System.Boolean)
+    name: Initialize
+    isExternal: true
+    href: Metalama.Framework.Project.ProjectExtension.Initialize.html#Metalama_Framework_Project_ProjectExtension_Initialize_Metalama_Framework_Project_IProject_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Project.ProjectExtension.Initialize(Metalama.Framework.Project.IProject,System.Boolean)
+    name: Initialize
+    isExternal: true
+    href: Metalama.Framework.Project.ProjectExtension.Initialize.html#Metalama_Framework_Project_ProjectExtension_Initialize_Metalama_Framework_Project_IProject_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Project.IProject
+    name: IProject
+    isExternal: true
+    href: Metalama.Framework.Project.IProject.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Project.IProject.Extension*
+  commentId: Overload:Metalama.Framework.Project.IProject.Extension
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Extension.html#Metalama_Framework_Project_IProject_Extension__1
+  name: Extension
+  nameWithType: IProject.Extension
+  fullName: Metalama.Framework.Project.IProject.Extension
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Metalama.Framework.Project.IProject.Name*
+  commentId: Overload:Metalama.Framework.Project.IProject.Name
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Name.html#Metalama_Framework_Project_IProject_Name
+  name: Name
+  nameWithType: IProject.Name
+  fullName: Metalama.Framework.Project.IProject.Name
+- uid: Metalama.Framework.Project.IProject.AssemblyName*
+  commentId: Overload:Metalama.Framework.Project.IProject.AssemblyName
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.AssemblyName.html#Metalama_Framework_Project_IProject_AssemblyName
+  name: AssemblyName
+  nameWithType: IProject.AssemblyName
+  fullName: Metalama.Framework.Project.IProject.AssemblyName
+- uid: Metalama.Framework.Project.IProject.Path*
+  commentId: Overload:Metalama.Framework.Project.IProject.Path
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Path.html#Metalama_Framework_Project_IProject_Path
+  name: Path
+  nameWithType: IProject.Path
+  fullName: Metalama.Framework.Project.IProject.Path
+- uid: Metalama.Framework.Project.IProject.AssemblyReferences*
+  commentId: Overload:Metalama.Framework.Project.IProject.AssemblyReferences
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.AssemblyReferences.html#Metalama_Framework_Project_IProject_AssemblyReferences
+  name: AssemblyReferences
+  nameWithType: IProject.AssemblyReferences
+  fullName: Metalama.Framework.Project.IProject.AssemblyReferences
+- uid: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.IAssemblyIdentity}
+  commentId: T:System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.IAssemblyIdentity}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<IAssemblyIdentity>
+  nameWithType: ImmutableArray<IAssemblyIdentity>
+  fullName: System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.IAssemblyIdentity>
+  nameWithType.vb: ImmutableArray(Of IAssemblyIdentity)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.IAssemblyIdentity)
+  name.vb: ImmutableArray(Of IAssemblyIdentity)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Code.IAssemblyIdentity
+    name: IAssemblyIdentity
+    isExternal: true
+    href: Metalama.Framework.Code.IAssemblyIdentity.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IAssemblyIdentity
+    name: IAssemblyIdentity
+    isExternal: true
+    href: Metalama.Framework.Code.IAssemblyIdentity.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+- uid: Metalama.Framework.Project.IProject.PreprocessorSymbols*
+  commentId: Overload:Metalama.Framework.Project.IProject.PreprocessorSymbols
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.PreprocessorSymbols.html#Metalama_Framework_Project_IProject_PreprocessorSymbols
+  name: PreprocessorSymbols
+  nameWithType: IProject.PreprocessorSymbols
+  fullName: Metalama.Framework.Project.IProject.PreprocessorSymbols
+- uid: System.Collections.Immutable.ImmutableHashSet{System.String}
+  commentId: T:System.Collections.Immutable.ImmutableHashSet{System.String}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableHashSet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  name: ImmutableHashSet<string>
+  nameWithType: ImmutableHashSet<string>
+  fullName: System.Collections.Immutable.ImmutableHashSet<string>
+  nameWithType.vb: ImmutableHashSet(Of String)
+  fullName.vb: System.Collections.Immutable.ImmutableHashSet(Of String)
+  name.vb: ImmutableHashSet(Of String)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Immutable.ImmutableHashSet`1
+  commentId: T:System.Collections.Immutable.ImmutableHashSet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  name: ImmutableHashSet<T>
+  nameWithType: ImmutableHashSet<T>
+  fullName: System.Collections.Immutable.ImmutableHashSet<T>
+  nameWithType.vb: ImmutableHashSet(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableHashSet(Of T)
+  name.vb: ImmutableHashSet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Project.IProject.Configuration*
+  commentId: Overload:Metalama.Framework.Project.IProject.Configuration
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.Configuration.html#Metalama_Framework_Project_IProject_Configuration
+  name: Configuration
+  nameWithType: IProject.Configuration
+  fullName: Metalama.Framework.Project.IProject.Configuration
+- uid: Metalama.Framework.Project.IProject.TargetFramework*
+  commentId: Overload:Metalama.Framework.Project.IProject.TargetFramework
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.TargetFramework.html#Metalama_Framework_Project_IProject_TargetFramework
+  name: TargetFramework
+  nameWithType: IProject.TargetFramework
+  fullName: Metalama.Framework.Project.IProject.TargetFramework
+- uid: Metalama.Framework.Services.IServiceProvider`1
+  commentId: T:Metalama.Framework.Services.IServiceProvider`1
+  isExternal: true
+  href: Metalama.Framework.Services.IServiceProvider-1.html
+  name: IServiceProvider<TBase>
+  nameWithType: IServiceProvider<TBase>
+  fullName: Metalama.Framework.Services.IServiceProvider<TBase>
+  nameWithType.vb: IServiceProvider(Of TBase)
+  fullName.vb: Metalama.Framework.Services.IServiceProvider(Of TBase)
+  name.vb: IServiceProvider(Of TBase)
+  spec.csharp:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: <
+  - name: TBase
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBase
+  - name: )
+- uid: Metalama.Framework.Services.IProjectService
+  commentId: T:Metalama.Framework.Services.IProjectService
+  parent: Metalama.Framework.Services
+  isExternal: true
+  href: Metalama.Framework.Services.IProjectService.html
+  name: IProjectService
+  nameWithType: IProjectService
+  fullName: Metalama.Framework.Services.IProjectService
+- uid: Metalama.Framework.Project.IProject.ServiceProvider*
+  commentId: Overload:Metalama.Framework.Project.IProject.ServiceProvider
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.ServiceProvider.html#Metalama_Framework_Project_IProject_ServiceProvider
+  name: ServiceProvider
+  nameWithType: IProject.ServiceProvider
+  fullName: Metalama.Framework.Project.IProject.ServiceProvider
+- uid: Metalama.Framework.Services.IServiceProvider{Metalama.Framework.Services.IProjectService}
+  commentId: T:Metalama.Framework.Services.IServiceProvider{Metalama.Framework.Services.IProjectService}
+  parent: Metalama.Framework.Services
+  definition: Metalama.Framework.Services.IServiceProvider`1
+  href: Metalama.Framework.Services.IServiceProvider-1.html
+  name: IServiceProvider<IProjectService>
+  nameWithType: IServiceProvider<IProjectService>
+  fullName: Metalama.Framework.Services.IServiceProvider<Metalama.Framework.Services.IProjectService>
+  nameWithType.vb: IServiceProvider(Of IProjectService)
+  fullName.vb: Metalama.Framework.Services.IServiceProvider(Of Metalama.Framework.Services.IProjectService)
+  name.vb: IServiceProvider(Of IProjectService)
+  spec.csharp:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: <
+  - uid: Metalama.Framework.Services.IProjectService
+    name: IProjectService
+    isExternal: true
+    href: Metalama.Framework.Services.IProjectService.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Services.IProjectService
+    name: IProjectService
+    isExternal: true
+    href: Metalama.Framework.Services.IProjectService.html
+  - name: )
+- uid: Metalama.Framework.Services
+  commentId: N:Metalama.Framework.Services
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Services
+  nameWithType: Metalama.Framework.Services
+  fullName: Metalama.Framework.Services
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Services.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Services.html
+memberLayout: SeparatePages

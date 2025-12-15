@@ -1,0 +1,1123 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.MethodTemplateSelector
+  commentId: T:Metalama.Framework.Advising.MethodTemplateSelector
+  id: MethodTemplateSelector
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.MethodTemplateSelector.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  - Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  - Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  - Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  - Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  - Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  - Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  - Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  - Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  - Metalama.Framework.Advising.MethodTemplateSelector.op_Implicit(System.String)~Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: MethodTemplateSelector
+  nameWithType: MethodTemplateSelector
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Specifies which T# templates to use when overriding methods, enabling automatic selection of specialized
+
+    templates based on the target method's characteristics (async, iterator, async iterator).
+  remarks: >-
+    <p>
+        When overriding methods with <xref href="Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.IMethod%7d%2cMetalama.Framework.Advising.MethodTemplateSelector%40%2cSystem.Object%2cSystem.Object)" data-throw-if-not-resolved="false"></xref>,
+        different target methods may require different template implementations. For example, an async method might need
+        a template that uses <code>await meta.ProceedAsync()</code>, while an iterator method might need <code>yield return</code> semantics.
+        </p>
+    <p>
+      <xref href="Metalama.Framework.Advising.MethodTemplateSelector" data-throw-if-not-resolved="false"></xref> allows you to specify multiple templates and let Metalama automatically
+        select the appropriate one. Template selection depends on two factors: the method's characteristics and the
+        <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> flags.
+        </p>
+    <p>
+      <b>Default behavior</b> (both flags are <code>false</code>): Templates are selected based on how the method is <i>implemented</i>:
+        <ul><li><xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate" data-throw-if-not-resolved="false"></xref>: Methods with the <code>async</code> modifier</li><li><xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref>/<xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref>: Methods using <code>yield</code> statements</li><li><xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate" data-throw-if-not-resolved="false"></xref>/<xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate" data-throw-if-not-resolved="false"></xref>: Async iterator methods (both <code>async</code> and <code>yield</code>)</li><li><xref href="Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate" data-throw-if-not-resolved="false"></xref>: All other methods (required)</li></ul></p>
+    <p>
+      <b>When <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable" data-throw-if-not-resolved="false"></xref> is <code>true</code></b>: <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate" data-throw-if-not-resolved="false"></xref> is selected based on
+        the method's <i>return type</i> being awaitable (e.g., <code>Task</code>, <code>ValueTask</code>), regardless of whether the method
+        has the <code>async</code> modifier.
+        </p>
+    <p>
+      <b>When <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is <code>true</code></b>: Iterator templates are selected based on
+        the method's <i>return type</i> (e.g., <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref>, <code>IAsyncEnumerable</code>), regardless of whether
+        the method uses <code>yield</code> statements.
+        </p>
+    <p>
+        This type has an implicit conversion from <xref href="System.String" data-throw-if-not-resolved="false"></xref>, so if you only need a default template,
+        you can pass the template name directly without constructing a <xref href="Metalama.Framework.Advising.MethodTemplateSelector" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct MethodTemplateSelector
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure MethodTemplateSelector
+  seealso:
+  - linkId: Metalama.Framework.Advising.GetterTemplateSelector
+    commentId: T:Metalama.Framework.Advising.GetterTemplateSelector
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
+  - linkId: Metalama.Framework.Aspects.IAdviser`1
+    commentId: T:Metalama.Framework.Aspects.IAdviser`1
+  - linkId: Metalama.Framework.Aspects.TemplateAttribute
+    commentId: T:Metalama.Framework.Aspects.TemplateAttribute
+  - linkId: Metalama.Framework.Aspects.OverrideMethodAspect
+    commentId: T:Metalama.Framework.Aspects.OverrideMethodAspect
+  - linkType: HRef
+    linkId: '@overriding-methods'
+    altText: '@overriding-methods'
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  commentId: M:Metalama.Framework.Advising.MethodTemplateSelector.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  id: '#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)'
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: MethodTemplateSelector(string, string?, string?, string?, string?, string?, bool, bool)
+  nameWithType: MethodTemplateSelector.MethodTemplateSelector(string, string?, string?, string?, string?, string?, bool, bool)
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.MethodTemplateSelector(string, string?, string?, string?, string?, string?, bool, bool)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Initializes a new instance of the <xref href="Metalama.Framework.Advising.MethodTemplateSelector" data-throw-if-not-resolved="false"></xref> struct by specifying the name of the template methods to be applied. The named passed to this
+
+    constructor must be the name of methods of the current aspect class, and these methods must be annotated with the <xref href="Metalama.Framework.Aspects.TemplateAttribute" data-throw-if-not-resolved="false"></xref> custom attribute.
+
+    You can define several templates by passing a value to optional parameters. The appropriate template will be automatically selected according to
+
+    the method to which the advice is applied. If several templates are eligible for a method, the template that is the last in the list of parameters is selected.
+  remarks: >-
+    Note that this type has also an implicit conversion from <xref href="System.String" data-throw-if-not-resolved="false"></xref>.
+
+    If you only want to specify a default template, you can pass a string, without calling the constructor.
+  example: []
+  syntax:
+    content: public MethodTemplateSelector(string defaultTemplate, string? asyncTemplate = null, string? enumerableTemplate = null, string? enumeratorTemplate = null, string? asyncEnumerableTemplate = null, string? asyncEnumeratorTemplate = null, bool useAsyncTemplateForAnyAwaitable = false, bool useEnumerableTemplateForAnyEnumerable = false)
+    parameters:
+    - id: defaultTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied if no other template is applicable. This parameter is required.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: asyncTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to async methods, including async iterators unless specified otherwise.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: enumerableTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to iterator methods  returning an an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerable" data-throw-if-not-resolved="false"></xref>.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: enumeratorTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to an iterator method returning an an <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref>.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: asyncEnumerableTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to an async iterator method returning an <code>IAsyncEnumerable</code>.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: asyncEnumeratorTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to an async iterator method returning an <code>IAsyncEnumerator</code>.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: useAsyncTemplateForAnyAwaitable
+      type: System.Boolean
+      description: >-
+        Indicates whether the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate" data-throw-if-not-resolved="false"></xref> must be applied to all methods returning an awaitable
+                    type (including <code>IAsyncEnumerable</code> and <code>IAsyncEnumerator</code>), instead of only to methods that have the <code>async</code> modifier.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable" data-throw-if-not-resolved="false"></xref> for details.
+    - id: useEnumerableTemplateForAnyEnumerable
+      type: System.Boolean
+      description: >-
+        Indicates whether the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate" data-throw-if-not-resolved="false"></xref>,
+                    <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate" data-throw-if-not-resolved="false"></xref> must be applied to all methods returning a compatible return type (if set to <code>true</code>),
+                    instead of only to methods using the <code>yield</code> statement.
+                    See <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> for details.
+    content.vb: Public Sub New(defaultTemplate As String, asyncTemplate As String = Nothing, enumerableTemplate As String = Nothing, enumeratorTemplate As String = Nothing, asyncEnumerableTemplate As String = Nothing, asyncEnumeratorTemplate As String = Nothing, useAsyncTemplateForAnyAwaitable As Boolean = False, useEnumerableTemplateForAnyEnumerable As Boolean = False)
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.#ctor*
+  nameWithType.vb: MethodTemplateSelector.New(String, String, String, String, String, String, Boolean, Boolean)
+  fullName.vb: Metalama.Framework.Advising.MethodTemplateSelector.New(String, String, String, String, String, String, Boolean, Boolean)
+  name.vb: New(String, String, String, String, String, String, Boolean, Boolean)
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.op_Implicit(System.String)~Metalama.Framework.Advising.MethodTemplateSelector
+  commentId: M:Metalama.Framework.Advising.MethodTemplateSelector.op_Implicit(System.String)~Metalama.Framework.Advising.MethodTemplateSelector
+  id: op_Implicit(System.String)~Metalama.Framework.Advising.MethodTemplateSelector
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: implicit operator MethodTemplateSelector(string)
+  nameWithType: MethodTemplateSelector.implicit operator MethodTemplateSelector(string)
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.implicit operator Metalama.Framework.Advising.MethodTemplateSelector(string)
+  type: Operator
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Converts a <xref href="System.String" data-throw-if-not-resolved="false"></xref> to a new instance of the <xref href="Metalama.Framework.Advising.MethodTemplateSelector" data-throw-if-not-resolved="false"></xref> where the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate" data-throw-if-not-resolved="false"></xref> property is
+
+    set to this string.
+  example: []
+  syntax:
+    content: public static implicit operator MethodTemplateSelector(string defaultTemplate)
+    parameters:
+    - id: defaultTemplate
+      type: System.String
+      description: Name of the default template.
+    return:
+      type: Metalama.Framework.Advising.MethodTemplateSelector
+      description: A new <xref href="Metalama.Framework.Advising.MethodTemplateSelector" data-throw-if-not-resolved="false"></xref> with the specified default template.
+    content.vb: Public Shared Widening Operator CType(defaultTemplate As String) As MethodTemplateSelector
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.op_Implicit*
+  nameWithType.vb: MethodTemplateSelector.CType(String)
+  fullName.vb: Metalama.Framework.Advising.MethodTemplateSelector.CType(String)
+  name.vb: CType(String)
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  id: DefaultTemplate
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: DefaultTemplate
+  nameWithType: MethodTemplateSelector.DefaultTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Gets the name of the template that must be applied if no other template is applicable. This property is required.
+  example: []
+  syntax:
+    content: public string DefaultTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DefaultTemplate As String
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  id: AsyncTemplate
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: AsyncTemplate
+  nameWithType: MethodTemplateSelector.AsyncTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the name of the template that must be applied to async methods, including async iterators (unless <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate" data-throw-if-not-resolved="false"></xref>
+
+    or <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate" data-throw-if-not-resolved="false"></xref> is defined).
+
+    If <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable" data-throw-if-not-resolved="false"></xref> is set to <code>true</code>, this template will be used for any method that has an awaitable return type,
+
+    including <code>IAsyncEnumerable</code> and
+
+    <code>IAsyncEnumerator</code>.
+  example: []
+  syntax:
+    content: public string? AsyncTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property AsyncTemplate As String
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  id: EnumerableTemplate
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: EnumerableTemplate
+  nameWithType: MethodTemplateSelector.EnumerableTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the name of the template that must be applied to yield-based iterator methods returning an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerable" data-throw-if-not-resolved="false"></xref>.
+
+    If the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is set to <code>true</code>, this template will be used for
+
+    any method that returns the <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerable" data-throw-if-not-resolved="false"></xref> type, even if it not a yield-based iterator.
+  example: []
+  syntax:
+    content: public string? EnumerableTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property EnumerableTemplate As String
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  id: EnumeratorTemplate
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: EnumeratorTemplate
+  nameWithType: MethodTemplateSelector.EnumeratorTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the name of the template that must be applied to yield-based iterator methods returning an <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref>.
+
+    If the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is set to <code>true</code>, this template will be used for
+
+    any method that returns the <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref> type, even if it not a yield-based iterator.
+  example: []
+  syntax:
+    content: public string? EnumeratorTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property EnumeratorTemplate As String
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  id: AsyncEnumerableTemplate
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: AsyncEnumerableTemplate
+  nameWithType: MethodTemplateSelector.AsyncEnumerableTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the name of the template that must be applied to an async iterator method returning the <code>IAsyncEnumerable</code> type.
+
+    If the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is set to <code>true</code>, this template will be used for
+
+    any method that returns the <code>IAsyncEnumerable</code> type, even if it is not implemented as an async or yield-based iterator.
+  example: []
+  syntax:
+    content: public string? AsyncEnumerableTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property AsyncEnumerableTemplate As String
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  id: AsyncEnumeratorTemplate
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: AsyncEnumeratorTemplate
+  nameWithType: MethodTemplateSelector.AsyncEnumeratorTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the name of the template that must be applied to an async iterator method returning the <code>IAsyncEnumerable</code> type.
+
+    If the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is set to <code>true</code>, this template will be used for
+
+    any method that returns the <code>IAsyncEnumerable</code> type, even if it is not implemented as an async or yield-based iterator.
+  example: []
+  syntax:
+    content: public string? AsyncEnumeratorTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property AsyncEnumeratorTemplate As String
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  id: UseAsyncTemplateForAnyAwaitable
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: UseAsyncTemplateForAnyAwaitable
+  nameWithType: MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a value indicating whether the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate" data-throw-if-not-resolved="false"></xref> must be applied to all methods returning an awaitable type (including <code>IAsyncEnumerable</code>
+
+    and <code>IAsyncEnumerator</code>) instead of only to methods that have the <code>async</code> modifier. If the implementation of the template method is async,
+
+    the awaitable type must also have an async method builder, otherwise the method will be processed by <xref href="Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool UseAsyncTemplateForAnyAwaitable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property UseAsyncTemplateForAnyAwaitable As Boolean
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable*
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  id: UseEnumerableTemplateForAnyEnumerable
+  parent: Metalama.Framework.Advising.MethodTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: UseEnumerableTemplateForAnyEnumerable
+  nameWithType: MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a value indicating whether the <xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate" data-throw-if-not-resolved="false"></xref>,
+
+    <xref href="Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate" data-throw-if-not-resolved="false"></xref> must be applied to all methods returning a compatible return type (if set to <code>true</code>),
+
+    instead of only to methods using the <code>yield</code> statement.
+  example: []
+  syntax:
+    content: public bool UseEnumerableTemplateForAnyEnumerable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property UseEnumerableTemplateForAnyEnumerable As Boolean
+  overload: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable*
+references:
+- uid: Metalama.Framework.Advising.GetterTemplateSelector
+  commentId: T:Metalama.Framework.Advising.GetterTemplateSelector
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.html
+  name: GetterTemplateSelector
+  nameWithType: GetterTemplateSelector
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector
+- uid: Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.Override.html#Metalama_Framework_Aspects_AdviserExtensions_Override_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IMethod__Metalama_Framework_Advising_MethodTemplateSelector__System_Object_System_Object_
+  name: Override(IAdviser<IMethod>, in MethodTemplateSelector, object, object)
+  nameWithType: AdviserExtensions.Override(IAdviser<IMethod>, in MethodTemplateSelector, object, object)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IMethod>, in Metalama.Framework.Advising.MethodTemplateSelector, object, object)
+  nameWithType.vb: AdviserExtensions.Override(IAdviser(Of IMethod), MethodTemplateSelector, Object, Object)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IMethod), Metalama.Framework.Advising.MethodTemplateSelector, Object, Object)
+  name.vb: Override(IAdviser(Of IMethod), MethodTemplateSelector, Object, Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
+    name: Override
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.Override.html#Metalama_Framework_Aspects_AdviserExtensions_Override_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IMethod__Metalama_Framework_Advising_MethodTemplateSelector__System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Advising.MethodTemplateSelector
+    name: MethodTemplateSelector
+    isExternal: true
+    href: Metalama.Framework.Advising.MethodTemplateSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
+    name: Override
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.Override.html#Metalama_Framework_Aspects_AdviserExtensions_Override_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IMethod__Metalama_Framework_Advising_MethodTemplateSelector__System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.MethodTemplateSelector
+    name: MethodTemplateSelector
+    isExternal: true
+    href: Metalama.Framework.Advising.MethodTemplateSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects.IAdviser`1
+  commentId: T:Metalama.Framework.Aspects.IAdviser`1
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAdviser-1.html
+  name: IAdviser<T>
+  nameWithType: IAdviser<T>
+  fullName: Metalama.Framework.Aspects.IAdviser<T>
+  nameWithType.vb: IAdviser(Of T)
+  fullName.vb: Metalama.Framework.Aspects.IAdviser(Of T)
+  name.vb: IAdviser(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Aspects.TemplateAttribute
+  commentId: T:Metalama.Framework.Aspects.TemplateAttribute
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.TemplateAttribute.html
+  name: TemplateAttribute
+  nameWithType: TemplateAttribute
+  fullName: Metalama.Framework.Aspects.TemplateAttribute
+- uid: Metalama.Framework.Aspects.OverrideMethodAspect
+  commentId: T:Metalama.Framework.Aspects.OverrideMethodAspect
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideMethodAspect.html
+  name: OverrideMethodAspect
+  nameWithType: OverrideMethodAspect
+  fullName: Metalama.Framework.Aspects.OverrideMethodAspect
+- uid: Metalama.Framework.Advising.MethodTemplateSelector
+  commentId: T:Metalama.Framework.Advising.MethodTemplateSelector
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.html
+  name: MethodTemplateSelector
+  nameWithType: MethodTemplateSelector
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable.html#Metalama_Framework_Advising_MethodTemplateSelector_UseAsyncTemplateForAnyAwaitable
+  name: UseAsyncTemplateForAnyAwaitable
+  nameWithType: MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable.html#Metalama_Framework_Advising_MethodTemplateSelector_UseEnumerableTemplateForAnyEnumerable
+  name: UseEnumerableTemplateForAnyEnumerable
+  nameWithType: MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_AsyncTemplate
+  name: AsyncTemplate
+  nameWithType: MethodTemplateSelector.AsyncTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_EnumerableTemplate
+  name: EnumerableTemplate
+  nameWithType: MethodTemplateSelector.EnumerableTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_EnumeratorTemplate
+  name: EnumeratorTemplate
+  nameWithType: MethodTemplateSelector.EnumeratorTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_AsyncEnumerableTemplate
+  name: AsyncEnumerableTemplate
+  nameWithType: MethodTemplateSelector.AsyncEnumerableTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_AsyncEnumeratorTemplate
+  name: AsyncEnumeratorTemplate
+  nameWithType: MethodTemplateSelector.AsyncEnumeratorTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  commentId: P:Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_DefaultTemplate
+  name: DefaultTemplate
+  nameWithType: MethodTemplateSelector.DefaultTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.#ctor*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.#ctor
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.-ctor.html#Metalama_Framework_Advising_MethodTemplateSelector__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_
+  name: MethodTemplateSelector
+  nameWithType: MethodTemplateSelector.MethodTemplateSelector
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.MethodTemplateSelector
+  nameWithType.vb: MethodTemplateSelector.New
+  fullName.vb: Metalama.Framework.Advising.MethodTemplateSelector.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.op_Implicit*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.op_Implicit
+  name: implicit operator
+  nameWithType: MethodTemplateSelector.implicit operator
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.implicit operator
+  nameWithType.vb: MethodTemplateSelector.CType
+  fullName.vb: Metalama.Framework.Advising.MethodTemplateSelector.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_DefaultTemplate
+  name: DefaultTemplate
+  nameWithType: MethodTemplateSelector.DefaultTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.DefaultTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_AsyncTemplate
+  name: AsyncTemplate
+  nameWithType: MethodTemplateSelector.AsyncTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_EnumerableTemplate
+  name: EnumerableTemplate
+  nameWithType: MethodTemplateSelector.EnumerableTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.EnumerableTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_EnumeratorTemplate
+  name: EnumeratorTemplate
+  nameWithType: MethodTemplateSelector.EnumeratorTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.EnumeratorTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_AsyncEnumerableTemplate
+  name: AsyncEnumerableTemplate
+  nameWithType: MethodTemplateSelector.AsyncEnumerableTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumerableTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate.html#Metalama_Framework_Advising_MethodTemplateSelector_AsyncEnumeratorTemplate
+  name: AsyncEnumeratorTemplate
+  nameWithType: MethodTemplateSelector.AsyncEnumeratorTemplate
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.AsyncEnumeratorTemplate
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable.html#Metalama_Framework_Advising_MethodTemplateSelector_UseAsyncTemplateForAnyAwaitable
+  name: UseAsyncTemplateForAnyAwaitable
+  nameWithType: MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.UseAsyncTemplateForAnyAwaitable
+- uid: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable*
+  commentId: Overload:Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable.html#Metalama_Framework_Advising_MethodTemplateSelector_UseEnumerableTemplateForAnyEnumerable
+  name: UseEnumerableTemplateForAnyEnumerable
+  nameWithType: MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+memberLayout: SeparatePages

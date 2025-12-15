@@ -1,0 +1,354 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.AdviceOutcome
+  commentId: T:Metalama.Framework.Advising.AdviceOutcome
+  id: AdviceOutcome
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.AdviceOutcome.Default
+  - Metalama.Framework.Advising.AdviceOutcome.Error
+  - Metalama.Framework.Advising.AdviceOutcome.Ignore
+  - Metalama.Framework.Advising.AdviceOutcome.New
+  - Metalama.Framework.Advising.AdviceOutcome.Override
+  - Metalama.Framework.Advising.AdviceOutcome.Success
+  langs:
+  - csharp
+  - vb
+  name: AdviceOutcome
+  nameWithType: AdviceOutcome
+  fullName: Metalama.Framework.Advising.AdviceOutcome
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Indicates the result of applying an advice (code transformation). This enum is returned via <xref href="Metalama.Framework.Advising.IAdviceResult.Outcome" data-throw-if-not-resolved="false"></xref>
+
+    by all advice methods to indicate whether the transformation succeeded, was ignored, or encountered an error.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum AdviceOutcome
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum AdviceOutcome
+  seealso:
+  - linkId: Metalama.Framework.Advising.IAdviceResult
+    commentId: T:Metalama.Framework.Advising.IAdviceResult
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions
+    commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  - linkId: Metalama.Framework.Aspects.IAspectBuilder
+    commentId: T:Metalama.Framework.Aspects.IAspectBuilder
+  - linkId: Metalama.Framework.Aspects.OverrideStrategy
+    commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  - linkType: HRef
+    linkId: '@advising-code'
+    altText: '@advising-code'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.AdviceOutcome.Default
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Default
+  id: Default
+  parent: Metalama.Framework.Advising.AdviceOutcome
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: AdviceOutcome.Default
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Synonym to <xref href="Metalama.Framework.Advising.AdviceOutcome.Success" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Advising.AdviceOutcome.Success
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Success
+  id: Success
+  parent: Metalama.Framework.Advising.AdviceOutcome
+  langs:
+  - csharp
+  - vb
+  name: Success
+  nameWithType: AdviceOutcome.Success
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Success
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: The advice was successfully applied and there was no conflict.
+  example: []
+  syntax:
+    content: Success = 0
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Advising.AdviceOutcome.Override
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Override
+  id: Override
+  parent: Metalama.Framework.Advising.AdviceOutcome
+  langs:
+  - csharp
+  - vb
+  name: Override
+  nameWithType: AdviceOutcome.Override
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Override
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: There was a conflict and the advice was successfully applied and the new advice overrides the previous declaration.
+  example: []
+  syntax:
+    content: Override = 1
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Advising.AdviceOutcome.New
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.New
+  id: New
+  parent: Metalama.Framework.Advising.AdviceOutcome
+  langs:
+  - csharp
+  - vb
+  name: New
+  nameWithType: AdviceOutcome.New
+  fullName: Metalama.Framework.Advising.AdviceOutcome.New
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: There was a conflict and the advice was successfully applied and the new advice hides the previous declaration with the <code>new</code> keyword.
+  example: []
+  syntax:
+    content: New = 2
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Advising.AdviceOutcome.Ignore
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Ignore
+  id: Ignore
+  parent: Metalama.Framework.Advising.AdviceOutcome
+  langs:
+  - csharp
+  - vb
+  name: Ignore
+  nameWithType: AdviceOutcome.Ignore
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Ignore
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    The advice was ignored due to a conflict or <xref href="Metalama.Framework.Aspects.OverrideStrategy" data-throw-if-not-resolved="false"></xref> settings. Common scenarios include:
+
+    a member with the same signature already exists and the <xref href="Metalama.Framework.Aspects.OverrideStrategy" data-throw-if-not-resolved="false"></xref> prevents overriding it,
+
+    or another aspect with higher priority already introduced the same member.
+  example: []
+  syntax:
+    content: Ignore = 3
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Advising.AdviceOutcome.Error
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Error
+  id: Error
+  parent: Metalama.Framework.Advising.AdviceOutcome
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: AdviceOutcome.Error
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Error
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    An error diagnostic was reported during advice application. The advice was ignored and the whole aspect was automatically skipped.
+
+    The <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method continues executing without throwing an exception; check <xref href="Metalama.Framework.Advising.IAdviceResult.Outcome" data-throw-if-not-resolved="false"></xref>
+
+    to detect errors and handle them appropriately.
+  example: []
+  syntax:
+    content: Error = 4
+    return:
+      type: Metalama.Framework.Advising.AdviceOutcome
+references:
+- uid: Metalama.Framework.Advising.IAdviceResult
+  commentId: T:Metalama.Framework.Advising.IAdviceResult
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.html
+  name: IAdviceResult
+  nameWithType: IAdviceResult
+  fullName: Metalama.Framework.Advising.IAdviceResult
+- uid: Metalama.Framework.Aspects.AdviserExtensions
+  commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.html
+  name: AdviserExtensions
+  nameWithType: AdviserExtensions
+  fullName: Metalama.Framework.Aspects.AdviserExtensions
+- uid: Metalama.Framework.Aspects.IAspectBuilder
+  commentId: T:Metalama.Framework.Aspects.IAspectBuilder
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder.html
+  name: IAspectBuilder
+  nameWithType: IAspectBuilder
+  fullName: Metalama.Framework.Aspects.IAspectBuilder
+- uid: Metalama.Framework.Aspects.OverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html
+  name: OverrideStrategy
+  nameWithType: OverrideStrategy
+  fullName: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Advising.IAdviceResult.Outcome
+  commentId: P:Metalama.Framework.Advising.IAdviceResult.Outcome
+  parent: Metalama.Framework.Advising.IAdviceResult
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceResult.Outcome.html#Metalama_Framework_Advising_IAdviceResult_Outcome
+  name: Outcome
+  nameWithType: IAdviceResult.Outcome
+  fullName: Metalama.Framework.Advising.IAdviceResult.Outcome
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Advising.AdviceOutcome.Success
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Success
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceOutcome.html#Metalama_Framework_Advising_AdviceOutcome_Success
+  name: Success
+  nameWithType: AdviceOutcome.Success
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Success
+- uid: Metalama.Framework.Advising.AdviceOutcome
+  commentId: T:Metalama.Framework.Advising.AdviceOutcome
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceOutcome.html
+  name: AdviceOutcome
+  nameWithType: AdviceOutcome
+  fullName: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+memberLayout: SeparatePages

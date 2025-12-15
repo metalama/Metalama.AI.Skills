@@ -1,0 +1,662 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.SourceReference
+  commentId: T:Metalama.Framework.Code.SourceReference
+  id: SourceReference
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.SourceReference.#ctor(System.Object,Metalama.Framework.Code.ISourceReferenceImpl)
+  - Metalama.Framework.Code.SourceReference.GetText(System.Boolean)
+  - Metalama.Framework.Code.SourceReference.IsImplementationPart
+  - Metalama.Framework.Code.SourceReference.Kind
+  - Metalama.Framework.Code.SourceReference.NodeOrToken
+  - Metalama.Framework.Code.SourceReference.Span
+  - Metalama.Framework.Code.SourceReference.ToString
+  langs:
+  - csharp
+  - vb
+  name: SourceReference
+  nameWithType: SourceReference
+  fullName: Metalama.Framework.Code.SourceReference
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Represents a syntax node in source code. Using <code>Metalama.Framework.Sdk</code> you can use <code>ToSyntaxNodeOrToken</code> to convert it to a Roslyn object.
+  remarks: >-
+    <p>
+        To obtain a <xref href="Metalama.Framework.Code.SourceReference" data-throw-if-not-resolved="false"></xref>, access the <xref href="Metalama.Framework.Code.IDeclaration.Sources" data-throw-if-not-resolved="false"></xref> property on any declaration.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct SourceReference : IDiagnosticLocation
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure SourceReference Implements IDiagnosticLocation
+  seealso:
+  - linkId: Metalama.Framework.Code.SourceSpan
+    commentId: T:Metalama.Framework.Code.SourceSpan
+  - linkId: Metalama.Framework.Diagnostics.IDiagnosticLocation
+    commentId: T:Metalama.Framework.Diagnostics.IDiagnosticLocation
+  - linkId: Metalama.Framework.Code.IDeclaration
+    commentId: T:Metalama.Framework.Code.IDeclaration
+  implements:
+  - Metalama.Framework.Diagnostics.IDiagnosticLocation
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.SourceReference.#ctor(System.Object,Metalama.Framework.Code.ISourceReferenceImpl)
+  commentId: M:Metalama.Framework.Code.SourceReference.#ctor(System.Object,Metalama.Framework.Code.ISourceReferenceImpl)
+  id: '#ctor(System.Object,Metalama.Framework.Code.ISourceReferenceImpl)'
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: SourceReference(object, ISourceReferenceImpl)
+  nameWithType: SourceReference.SourceReference(object, ISourceReferenceImpl)
+  fullName: Metalama.Framework.Code.SourceReference.SourceReference(object, Metalama.Framework.Code.ISourceReferenceImpl)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  syntax:
+    content: public SourceReference(object nodeOrToken, ISourceReferenceImpl sourceReferenceImpl)
+    parameters:
+    - id: nodeOrToken
+      type: System.Object
+    - id: sourceReferenceImpl
+      type: Metalama.Framework.Code.ISourceReferenceImpl
+    content.vb: Public Sub New(nodeOrToken As Object, sourceReferenceImpl As ISourceReferenceImpl)
+  overload: Metalama.Framework.Code.SourceReference.#ctor*
+  nameWithType.vb: SourceReference.New(Object, ISourceReferenceImpl)
+  fullName.vb: Metalama.Framework.Code.SourceReference.New(Object, Metalama.Framework.Code.ISourceReferenceImpl)
+  name.vb: New(Object, ISourceReferenceImpl)
+- uid: Metalama.Framework.Code.SourceReference.GetText(System.Boolean)
+  commentId: M:Metalama.Framework.Code.SourceReference.GetText(System.Boolean)
+  id: GetText(System.Boolean)
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: GetText(bool)
+  nameWithType: SourceReference.GetText(bool)
+  fullName: Metalama.Framework.Code.SourceReference.GetText(bool)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the text representation (i.e. the source code) of the current syntax node or token.
+  example: []
+  syntax:
+    content: public string GetText(bool normalized = false)
+    parameters:
+    - id: normalized
+      type: System.Boolean
+      description: <code>true</code> if whitespace should be normalized, <code>false</code> if the original formatting should be preserved.
+    return:
+      type: System.String
+      description: The source code of the current syntax node.
+    content.vb: Public Function GetText(normalized As Boolean = False) As String
+  overload: Metalama.Framework.Code.SourceReference.GetText*
+  nameWithType.vb: SourceReference.GetText(Boolean)
+  fullName.vb: Metalama.Framework.Code.SourceReference.GetText(Boolean)
+  name.vb: GetText(Boolean)
+- uid: Metalama.Framework.Code.SourceReference.ToString
+  commentId: M:Metalama.Framework.Code.SourceReference.ToString
+  id: ToString
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: SourceReference.ToString()
+  fullName: Metalama.Framework.Code.SourceReference.ToString()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the content of the node or token (without trivia).
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Metalama.Framework.Code.SourceReference.ToString*
+- uid: Metalama.Framework.Code.SourceReference.NodeOrToken
+  commentId: P:Metalama.Framework.Code.SourceReference.NodeOrToken
+  id: NodeOrToken
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: NodeOrToken
+  nameWithType: SourceReference.NodeOrToken
+  fullName: Metalama.Framework.Code.SourceReference.NodeOrToken
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the Roslyn <code>SyntaxNode</code>, <code>SyntaxToken</code>.
+
+    This property can be used by SDK-based plugins.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use ToSyntaxNodeOrToken() from Metalama.Framework.Sdk.")]
+
+      public object NodeOrToken { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: >-
+      <Obsolete("Use ToSyntaxNodeOrToken() from Metalama.Framework.Sdk.")>
+
+      Public ReadOnly Property NodeOrToken As Object
+  overload: Metalama.Framework.Code.SourceReference.NodeOrToken*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ToSyntaxNodeOrToken() from Metalama.Framework.Sdk.
+- uid: Metalama.Framework.Code.SourceReference.Kind
+  commentId: P:Metalama.Framework.Code.SourceReference.Kind
+  id: Kind
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: SourceReference.Kind
+  fullName: Metalama.Framework.Code.SourceReference.Kind
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the <code>SyntaxKind</code> of the node or token.
+  example: []
+  syntax:
+    content: public string Kind { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Kind As String
+  overload: Metalama.Framework.Code.SourceReference.Kind*
+- uid: Metalama.Framework.Code.SourceReference.IsImplementationPart
+  commentId: P:Metalama.Framework.Code.SourceReference.IsImplementationPart
+  id: IsImplementationPart
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: IsImplementationPart
+  nameWithType: SourceReference.IsImplementationPart
+  fullName: Metalama.Framework.Code.SourceReference.IsImplementationPart
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets a value indicating whether the current syntax node is contains the implementation of the declaration.
+
+    This property evaluates to <code>false</code> only for partial methods without implementation.
+  example: []
+  syntax:
+    content: public bool IsImplementationPart { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsImplementationPart As Boolean
+  overload: Metalama.Framework.Code.SourceReference.IsImplementationPart*
+- uid: Metalama.Framework.Code.SourceReference.Span
+  commentId: P:Metalama.Framework.Code.SourceReference.Span
+  id: Span
+  parent: Metalama.Framework.Code.SourceReference
+  langs:
+  - csharp
+  - vb
+  name: Span
+  nameWithType: SourceReference.Span
+  fullName: Metalama.Framework.Code.SourceReference.Span
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets source file, line and column for the node.
+  example: []
+  syntax:
+    content: public SourceSpan Span { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.SourceSpan
+    content.vb: Public ReadOnly Property Span As SourceSpan
+  overload: Metalama.Framework.Code.SourceReference.Span*
+references:
+- uid: Metalama.Framework.Code.SourceSpan
+  commentId: T:Metalama.Framework.Code.SourceSpan
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SourceSpan.html
+  name: SourceSpan
+  nameWithType: SourceSpan
+  fullName: Metalama.Framework.Code.SourceSpan
+- uid: Metalama.Framework.Diagnostics.IDiagnosticLocation
+  commentId: T:Metalama.Framework.Diagnostics.IDiagnosticLocation
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.IDiagnosticLocation.html
+  name: IDiagnosticLocation
+  nameWithType: IDiagnosticLocation
+  fullName: Metalama.Framework.Diagnostics.IDiagnosticLocation
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Code.SourceReference
+  commentId: T:Metalama.Framework.Code.SourceReference
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.html
+  name: SourceReference
+  nameWithType: SourceReference
+  fullName: Metalama.Framework.Code.SourceReference
+- uid: Metalama.Framework.Code.IDeclaration.Sources
+  commentId: P:Metalama.Framework.Code.IDeclaration.Sources
+  parent: Metalama.Framework.Code.IDeclaration
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.Sources.html#Metalama_Framework_Code_IDeclaration_Sources
+  name: Sources
+  nameWithType: IDeclaration.Sources
+  fullName: Metalama.Framework.Code.IDeclaration.Sources
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Diagnostics
+  commentId: N:Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Diagnostics
+  nameWithType: Metalama.Framework.Diagnostics
+  fullName: Metalama.Framework.Diagnostics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.SourceReference.#ctor*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.#ctor
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.-ctor.html#Metalama_Framework_Code_SourceReference__ctor_System_Object_Metalama_Framework_Code_ISourceReferenceImpl_
+  name: SourceReference
+  nameWithType: SourceReference.SourceReference
+  fullName: Metalama.Framework.Code.SourceReference.SourceReference
+  nameWithType.vb: SourceReference.New
+  fullName.vb: Metalama.Framework.Code.SourceReference.New
+  name.vb: New
+- uid: Metalama.Framework.Code.ISourceReferenceImpl
+  commentId: T:Metalama.Framework.Code.ISourceReferenceImpl
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ISourceReferenceImpl.html
+  name: ISourceReferenceImpl
+  nameWithType: ISourceReferenceImpl
+  fullName: Metalama.Framework.Code.ISourceReferenceImpl
+- uid: Metalama.Framework.Code.SourceReference.GetText*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.GetText
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.GetText.html#Metalama_Framework_Code_SourceReference_GetText_System_Boolean_
+  name: GetText
+  nameWithType: SourceReference.GetText
+  fullName: Metalama.Framework.Code.SourceReference.GetText
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SourceReference.ToString*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.ToString
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.ToString.html#Metalama_Framework_Code_SourceReference_ToString
+  name: ToString
+  nameWithType: SourceReference.ToString
+  fullName: Metalama.Framework.Code.SourceReference.ToString
+- uid: Metalama.Framework.Code.SourceReference.NodeOrToken*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.NodeOrToken
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.NodeOrToken.html#Metalama_Framework_Code_SourceReference_NodeOrToken
+  name: NodeOrToken
+  nameWithType: SourceReference.NodeOrToken
+  fullName: Metalama.Framework.Code.SourceReference.NodeOrToken
+- uid: Metalama.Framework.Code.SourceReference.Kind*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.Kind
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.Kind.html#Metalama_Framework_Code_SourceReference_Kind
+  name: Kind
+  nameWithType: SourceReference.Kind
+  fullName: Metalama.Framework.Code.SourceReference.Kind
+- uid: Metalama.Framework.Code.SourceReference.IsImplementationPart*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.IsImplementationPart
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.IsImplementationPart.html#Metalama_Framework_Code_SourceReference_IsImplementationPart
+  name: IsImplementationPart
+  nameWithType: SourceReference.IsImplementationPart
+  fullName: Metalama.Framework.Code.SourceReference.IsImplementationPart
+- uid: Metalama.Framework.Code.SourceReference.Span*
+  commentId: Overload:Metalama.Framework.Code.SourceReference.Span
+  isExternal: true
+  href: Metalama.Framework.Code.SourceReference.Span.html#Metalama_Framework_Code_SourceReference_Span
+  name: Span
+  nameWithType: SourceReference.Span
+  fullName: Metalama.Framework.Code.SourceReference.Span
+memberLayout: SeparatePages

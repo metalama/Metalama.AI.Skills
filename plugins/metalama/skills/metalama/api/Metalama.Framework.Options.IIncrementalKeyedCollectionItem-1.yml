@@ -1,0 +1,834 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+  commentId: T:Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+  id: IIncrementalKeyedCollectionItem`1
+  parent: Metalama.Framework.Options
+  children:
+  - Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key
+  langs:
+  - csharp
+  - vb
+  name: IIncrementalKeyedCollectionItem<TKey>
+  nameWithType: IIncrementalKeyedCollectionItem<TKey>
+  fullName: Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: An item in a <xref href="Metalama.Framework.Options.IncrementalKeyedCollection%602" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+        Classes that implement this interface can be used as values in an <xref href="Metalama.Framework.Options.IncrementalKeyedCollection%602" data-throw-if-not-resolved="false"></xref>.
+        Each item must provide a unique <xref href="Metalama.Framework.Options.IIncrementalKeyedCollectionItem%601.Key" data-throw-if-not-resolved="false"></xref> and implement the <xref href="Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object%2cMetalama.Framework.Options.ApplyChangesContext%40)" data-throw-if-not-resolved="false"></xref> method
+        to support merging of items with the same key across different configuration layers.
+        </p>
+    <p>
+        Because this interface extends <xref href="Metalama.Framework.Options.IIncrementalObject" data-throw-if-not-resolved="false"></xref>, items in the collection must be immutable and use the
+        same pattern as hierarchical options: properties should typically be nullable, and <xref href="Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object%2cMetalama.Framework.Options.ApplyChangesContext%40)" data-throw-if-not-resolved="false"></xref>
+        should merge properties from two instances, with the <code>changes</code> parameter taking precedence for non-null values.
+        </p>
+  example: []
+  syntax:
+    content: 'public interface IIncrementalKeyedCollectionItem<out TKey> : IIncrementalObject, ICompileTimeSerializable where TKey : notnull'
+    typeParameters:
+    - id: TKey
+      description: The type of the key that identifies items in the collection.
+    content.vb: Public Interface IIncrementalKeyedCollectionItem(Of Out TKey) Inherits IIncrementalObject, ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Framework.Options.IncrementalKeyedCollection`2
+    commentId: T:Metalama.Framework.Options.IncrementalKeyedCollection`2
+  - linkId: Metalama.Framework.Options.IIncrementalObject
+    commentId: T:Metalama.Framework.Options.IIncrementalObject
+  - linkType: HRef
+    linkId: '@exposing-options'
+    altText: '@exposing-options'
+  inheritedMembers:
+  - Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+  extensionMethods:
+  - Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}}}},System.Boolean)
+  - Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}},Metalama.Framework.Options.ApplyChangesContext@)
+  - Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}},Metalama.Framework.Options.ApplyChangesContext@)
+  nameWithType.vb: IIncrementalKeyedCollectionItem(Of TKey)
+  fullName.vb: Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey)
+  name.vb: IIncrementalKeyedCollectionItem(Of TKey)
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key
+  commentId: P:Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key
+  id: Key
+  parent: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: IIncrementalKeyedCollectionItem<TKey>.Key
+  fullName: Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>.Key
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: Gets the key that uniquely identifies the item in the collection.
+  example: []
+  syntax:
+    content: TKey Key { get; }
+    parameters: []
+    return:
+      type: '{TKey}'
+      description: >-
+        The unique key for this item. Items with the same key will be merged using <xref href="Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object%2cMetalama.Framework.Options.ApplyChangesContext%40)" data-throw-if-not-resolved="false"></xref>
+
+        when combining collection layers.
+    content.vb: ReadOnly Property Key As TKey
+  overload: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key*
+  nameWithType.vb: IIncrementalKeyedCollectionItem(Of TKey).Key
+  fullName.vb: Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey).Key
+references:
+- uid: Metalama.Framework.Options.IncrementalKeyedCollection`2
+  commentId: T:Metalama.Framework.Options.IncrementalKeyedCollection`2
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalKeyedCollection-2.html
+  name: IncrementalKeyedCollection<TKey, TValue>
+  nameWithType: IncrementalKeyedCollection<TKey, TValue>
+  fullName: Metalama.Framework.Options.IncrementalKeyedCollection<TKey, TValue>
+  nameWithType.vb: IncrementalKeyedCollection(Of TKey, TValue)
+  fullName.vb: Metalama.Framework.Options.IncrementalKeyedCollection(Of TKey, TValue)
+  name.vb: IncrementalKeyedCollection(Of TKey, TValue)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalKeyedCollection`2
+    name: IncrementalKeyedCollection
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalKeyedCollection-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalKeyedCollection`2
+    name: IncrementalKeyedCollection
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalKeyedCollection-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Metalama.Framework.Options.IIncrementalObject
+  commentId: T:Metalama.Framework.Options.IIncrementalObject
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalObject.html
+  name: IIncrementalObject
+  nameWithType: IIncrementalObject
+  fullName: Metalama.Framework.Options.IIncrementalObject
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key
+  commentId: P:Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.Key.html#Metalama_Framework_Options_IIncrementalKeyedCollectionItem_1_Key
+  name: Key
+  nameWithType: IIncrementalKeyedCollectionItem<TKey>.Key
+  fullName: Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>.Key
+  nameWithType.vb: IIncrementalKeyedCollectionItem(Of TKey).Key
+  fullName.vb: Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey).Key
+- uid: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IIncrementalObject
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalObject.ApplyChanges.html#Metalama_Framework_Options_IIncrementalObject_ApplyChanges_System_Object_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges(object, in ApplyChangesContext)
+  nameWithType: IIncrementalObject.ApplyChanges(object, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(object, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IIncrementalObject.ApplyChanges(Object, ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(Object, Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(Object, ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalObject.ApplyChanges.html#Metalama_Framework_Options_IIncrementalObject_ApplyChanges_System_Object_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IIncrementalObject.ApplyChanges(System.Object,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalObject.ApplyChanges.html#Metalama_Framework_Options_IIncrementalObject_ApplyChanges_System_Object_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options
+  commentId: N:Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Options
+  nameWithType: Metalama.Framework.Options
+  fullName: Metalama.Framework.Options
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IIncrementalKeyedCollectionItem<TKey>>(IIncrementalKeyedCollectionItem<TKey>, Func<IIncrementalKeyedCollectionItem<TKey>, IEnumerable<IIncrementalKeyedCollectionItem<TKey>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IIncrementalKeyedCollectionItem<TKey>>(IIncrementalKeyedCollectionItem<TKey>, Func<IIncrementalKeyedCollectionItem<TKey>, IEnumerable<IIncrementalKeyedCollectionItem<TKey>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>>(Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>, System.Func<Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>, System.Collections.Generic.IEnumerable<Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IIncrementalKeyedCollectionItem(Of TKey))(IIncrementalKeyedCollectionItem(Of TKey), Func(Of IIncrementalKeyedCollectionItem(Of TKey), IEnumerable(Of IIncrementalKeyedCollectionItem(Of TKey))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey))(Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey), System.Func(Of Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey), System.Collections.Generic.IEnumerable(Of Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IIncrementalKeyedCollectionItem(Of TKey))(IIncrementalKeyedCollectionItem(Of TKey), Func(Of IIncrementalKeyedCollectionItem(Of TKey), IEnumerable(Of IIncrementalKeyedCollectionItem(Of TKey))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},System.Func{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},System.Func{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}},Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IncrementalObjectExtensions
+  definition: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges<IIncrementalKeyedCollectionItem<TKey>>(IIncrementalKeyedCollectionItem<TKey>, IIncrementalKeyedCollectionItem<TKey>, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChanges<IIncrementalKeyedCollectionItem<TKey>>(IIncrementalKeyedCollectionItem<TKey>, IIncrementalKeyedCollectionItem<TKey>, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges<Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>>(Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>, Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChanges(Of IIncrementalKeyedCollectionItem(Of TKey))(IIncrementalKeyedCollectionItem(Of TKey), IIncrementalKeyedCollectionItem(Of TKey), ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges(Of Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey))(Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey), Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey), Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(Of IIncrementalKeyedCollectionItem(Of TKey))(IIncrementalKeyedCollectionItem(Of TKey), IIncrementalKeyedCollectionItem(Of TKey), ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{{TKey}},Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IncrementalObjectExtensions
+  definition: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChangesSafe<IIncrementalKeyedCollectionItem<TKey>>(IIncrementalKeyedCollectionItem<TKey>, IIncrementalKeyedCollectionItem<TKey>, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChangesSafe<IIncrementalKeyedCollectionItem<TKey>>(IIncrementalKeyedCollectionItem<TKey>, IIncrementalKeyedCollectionItem<TKey>, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe<Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>>(Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>, Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChangesSafe(Of IIncrementalKeyedCollectionItem(Of TKey))(IIncrementalKeyedCollectionItem(Of TKey), IIncrementalKeyedCollectionItem(Of TKey), ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe(Of Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey))(Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey), Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey), Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChangesSafe(Of IIncrementalKeyedCollectionItem(Of TKey))(IIncrementalKeyedCollectionItem(Of TKey), IIncrementalKeyedCollectionItem(Of TKey), ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.IIncrementalKeyedCollectionItem{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1
+    name: IIncrementalKeyedCollectionItem
+    isExternal: true
+    href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges<T>(T, T, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChanges<T>(T, T, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges<T>(T, T, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChanges(Of T)(T, T, ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges(Of T)(T, T, Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(Of T)(T, T, ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalObjectExtensions
+  commentId: T:Metalama.Framework.Options.IncrementalObjectExtensions
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.html
+  name: IncrementalObjectExtensions
+  nameWithType: IncrementalObjectExtensions
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions
+- uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChangesSafe<T>(T, T, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChangesSafe<T>(T, T, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe<T>(T, T, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChangesSafe(Of T)(T, T, ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe(Of T)(T, T, Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChangesSafe(Of T)(T, T, ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key*
+  commentId: Overload:Metalama.Framework.Options.IIncrementalKeyedCollectionItem`1.Key
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalKeyedCollectionItem-1.Key.html#Metalama_Framework_Options_IIncrementalKeyedCollectionItem_1_Key
+  name: Key
+  nameWithType: IIncrementalKeyedCollectionItem<TKey>.Key
+  fullName: Metalama.Framework.Options.IIncrementalKeyedCollectionItem<TKey>.Key
+  nameWithType.vb: IIncrementalKeyedCollectionItem(Of TKey).Key
+  fullName.vb: Metalama.Framework.Options.IIncrementalKeyedCollectionItem(Of TKey).Key
+- uid: '{TKey}'
+  commentId: '!:TKey'
+  definition: TKey
+  name: TKey
+  nameWithType: TKey
+  fullName: TKey
+- uid: TKey
+  name: TKey
+  nameWithType: TKey
+  fullName: TKey
+memberLayout: SeparatePages

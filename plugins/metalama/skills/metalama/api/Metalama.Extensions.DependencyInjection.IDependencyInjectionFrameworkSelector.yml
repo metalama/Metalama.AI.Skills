@@ -1,0 +1,695 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+  commentId: T:Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+  id: IDependencyInjectionFrameworkSelector
+  parent: Metalama.Extensions.DependencyInjection
+  children:
+  - Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+  langs:
+  - csharp
+  - vb
+  name: IDependencyInjectionFrameworkSelector
+  nameWithType: IDependencyInjectionFrameworkSelector
+  fullName: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection
+  summary: Exposes a method <xref href="Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework%7d)" data-throw-if-not-resolved="false"></xref> that gets called when there are many candidate frameworks for a dependency.
+  remarks: >-
+    <p>
+
+    This interface allows customization of dependency injection framework selection when multiple frameworks
+
+    are registered and eligible to handle a specific dependency. To provide a custom selector, set
+
+    <xref href="Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.Selector" data-throw-if-not-resolved="false"></xref> when configuring dependency injection options
+
+    via <xref href="Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.Action%7bMetalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder%7d)" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+
+    <p>
+
+    By default, Metalama selects the framework with the lowest priority value among the eligible ones.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public interface IDependencyInjectionFrameworkSelector : ICompileTimeSerializable
+    content.vb: >-
+      <CompileTime>
+
+      Public Interface IDependencyInjectionFrameworkSelector Inherits ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+    commentId: T:Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+  - linkId: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+    commentId: T:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+  - linkType: HRef
+    linkId: '@dependency-injection'
+    altText: '@dependency-injection'
+  extensionMethods:
+  - Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+  commentId: M:Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+  id: SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+  parent: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+  langs:
+  - csharp
+  - vb
+  name: SelectFramework(DependencyProperties, ImmutableArray<IDependencyInjectionFramework>)
+  nameWithType: IDependencyInjectionFrameworkSelector.SelectFramework(DependencyProperties, ImmutableArray<IDependencyInjectionFramework>)
+  fullName: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties, System.Collections.Immutable.ImmutableArray<Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection
+  summary: Selects the <xref href="Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework" data-throw-if-not-resolved="false"></xref> that should handle a given dependency.
+  example: []
+  syntax:
+    content: IDependencyInjectionFramework SelectFramework(DependencyProperties properties, ImmutableArray<IDependencyInjectionFramework> eligibleFrameworks)
+    parameters:
+    - id: properties
+      type: Metalama.Extensions.DependencyInjection.DependencyProperties
+      description: The properties of this dependencies.
+    - id: eligibleFrameworks
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework}
+      description: The list of frameworks that are eligible for this dependency.
+    return:
+      type: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+      description: The selected dependency.
+    content.vb: Function SelectFramework(properties As DependencyProperties, eligibleFrameworks As ImmutableArray(Of IDependencyInjectionFramework)) As IDependencyInjectionFramework
+  overload: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework*
+  nameWithType.vb: IDependencyInjectionFrameworkSelector.SelectFramework(DependencyProperties, ImmutableArray(Of IDependencyInjectionFramework))
+  fullName.vb: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties, System.Collections.Immutable.ImmutableArray(Of Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework))
+  name.vb: SelectFramework(DependencyProperties, ImmutableArray(Of IDependencyInjectionFramework))
+references:
+- uid: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+  commentId: T:Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.html
+  name: DependencyInjectionOptionsBuilder
+  nameWithType: DependencyInjectionOptionsBuilder
+  fullName: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+- uid: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+  commentId: T:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+  parent: Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework.html
+  name: IDependencyInjectionFramework
+  nameWithType: IDependencyInjectionFramework
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+- uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+  commentId: M:Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework.html#Metalama_Extensions_DependencyInjection_IDependencyInjectionFrameworkSelector_SelectFramework_Metalama_Extensions_DependencyInjection_DependencyProperties_System_Collections_Immutable_ImmutableArray_Metalama_Extensions_DependencyInjection_Implementation_IDependencyInjectionFramework__
+  name: SelectFramework(DependencyProperties, ImmutableArray<IDependencyInjectionFramework>)
+  nameWithType: IDependencyInjectionFrameworkSelector.SelectFramework(DependencyProperties, ImmutableArray<IDependencyInjectionFramework>)
+  fullName: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties, System.Collections.Immutable.ImmutableArray<Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework>)
+  nameWithType.vb: IDependencyInjectionFrameworkSelector.SelectFramework(DependencyProperties, ImmutableArray(Of IDependencyInjectionFramework))
+  fullName.vb: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties, System.Collections.Immutable.ImmutableArray(Of Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework))
+  name.vb: SelectFramework(DependencyProperties, ImmutableArray(Of IDependencyInjectionFramework))
+  spec.csharp:
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+    name: SelectFramework
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework.html#Metalama_Extensions_DependencyInjection_IDependencyInjectionFrameworkSelector_SelectFramework_Metalama_Extensions_DependencyInjection_DependencyProperties_System_Collections_Immutable_ImmutableArray_Metalama_Extensions_DependencyInjection_Implementation_IDependencyInjectionFramework__
+  - name: (
+  - uid: Metalama.Extensions.DependencyInjection.DependencyProperties
+    name: DependencyProperties
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.DependencyProperties.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+    name: IDependencyInjectionFramework
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework(Metalama.Extensions.DependencyInjection.DependencyProperties,System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework})
+    name: SelectFramework
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework.html#Metalama_Extensions_DependencyInjection_IDependencyInjectionFrameworkSelector_SelectFramework_Metalama_Extensions_DependencyInjection_DependencyProperties_System_Collections_Immutable_ImmutableArray_Metalama_Extensions_DependencyInjection_Implementation_IDependencyInjectionFramework__
+  - name: (
+  - uid: Metalama.Extensions.DependencyInjection.DependencyProperties
+    name: DependencyProperties
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.DependencyProperties.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+    name: IDependencyInjectionFramework
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework.html
+  - name: )
+  - name: )
+- uid: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.Selector
+  commentId: P:Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.Selector
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.Selector.html#Metalama_Extensions_DependencyInjection_DependencyInjectionOptionsBuilder_Selector
+  name: Selector
+  nameWithType: DependencyInjectionOptionsBuilder.Selector
+  fullName: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.Selector
+- uid: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.ICompilation},System.Action{Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder})
+  commentId: M:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.ICompilation},System.Action{Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder})
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection.html#Metalama_Extensions_DependencyInjection_DependencyInjectionExtensions_ConfigureDependencyInjection_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_ICompilation__System_Action_Metalama_Extensions_DependencyInjection_DependencyInjectionOptionsBuilder__
+  name: ConfigureDependencyInjection(IQuery<ICompilation>, Action<DependencyInjectionOptionsBuilder>)
+  nameWithType: DependencyInjectionExtensions.ConfigureDependencyInjection(IQuery<ICompilation>, Action<DependencyInjectionOptionsBuilder>)
+  fullName: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.ICompilation>, System.Action<Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder>)
+  nameWithType.vb: DependencyInjectionExtensions.ConfigureDependencyInjection(IQuery(Of ICompilation), Action(Of DependencyInjectionOptionsBuilder))
+  fullName.vb: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.ICompilation), System.Action(Of Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder))
+  name.vb: ConfigureDependencyInjection(IQuery(Of ICompilation), Action(Of DependencyInjectionOptionsBuilder))
+  spec.csharp:
+  - uid: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.ICompilation},System.Action{Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder})
+    name: ConfigureDependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection.html#Metalama_Extensions_DependencyInjection_DependencyInjectionExtensions_ConfigureDependencyInjection_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_ICompilation__System_Action_Metalama_Extensions_DependencyInjection_DependencyInjectionOptionsBuilder__
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+  - name: <
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+    name: DependencyInjectionOptionsBuilder
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.ICompilation},System.Action{Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder})
+    name: ConfigureDependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection.html#Metalama_Extensions_DependencyInjection_DependencyInjectionExtensions_ConfigureDependencyInjection_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_ICompilation__System_Action_Metalama_Extensions_DependencyInjection_DependencyInjectionOptionsBuilder__
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder
+    name: DependencyInjectionOptionsBuilder
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.html
+  - name: )
+  - name: )
+- uid: Metalama.Extensions.DependencyInjection
+  commentId: N:Metalama.Extensions.DependencyInjection
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Extensions.DependencyInjection
+  nameWithType: Metalama.Extensions.DependencyInjection
+  fullName: Metalama.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.html
+- uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IDependencyInjectionFrameworkSelector>(IDependencyInjectionFrameworkSelector, Func<IDependencyInjectionFrameworkSelector, IEnumerable<IDependencyInjectionFrameworkSelector>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IDependencyInjectionFrameworkSelector>(IDependencyInjectionFrameworkSelector, Func<IDependencyInjectionFrameworkSelector, IEnumerable<IDependencyInjectionFrameworkSelector>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector>(Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector, System.Func<Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector, System.Collections.Generic.IEnumerable<Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IDependencyInjectionFrameworkSelector)(IDependencyInjectionFrameworkSelector, Func(Of IDependencyInjectionFrameworkSelector, IEnumerable(Of IDependencyInjectionFrameworkSelector)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector)(Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector, System.Func(Of Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector, System.Collections.Generic.IEnumerable(Of Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IDependencyInjectionFrameworkSelector)(IDependencyInjectionFrameworkSelector, Func(Of IDependencyInjectionFrameworkSelector, IEnumerable(Of IDependencyInjectionFrameworkSelector)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector,System.Func{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector,System.Func{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector,System.Collections.Generic.IEnumerable{Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: )
+  - name: (
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector
+    name: IDependencyInjectionFrameworkSelector
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Extensions.DependencyInjection.Implementation
+  commentId: N:Metalama.Extensions.DependencyInjection.Implementation
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Extensions.DependencyInjection.Implementation
+  nameWithType: Metalama.Extensions.DependencyInjection.Implementation
+  fullName: Metalama.Extensions.DependencyInjection.Implementation
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection.Implementation
+    name: Implementation
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.html
+  - name: .
+  - uid: Metalama.Extensions.DependencyInjection.Implementation
+    name: Implementation
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework*
+  commentId: Overload:Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework.html#Metalama_Extensions_DependencyInjection_IDependencyInjectionFrameworkSelector_SelectFramework_Metalama_Extensions_DependencyInjection_DependencyProperties_System_Collections_Immutable_ImmutableArray_Metalama_Extensions_DependencyInjection_Implementation_IDependencyInjectionFramework__
+  name: SelectFramework
+  nameWithType: IDependencyInjectionFrameworkSelector.SelectFramework
+  fullName: Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector.SelectFramework
+- uid: Metalama.Extensions.DependencyInjection.DependencyProperties
+  commentId: T:Metalama.Extensions.DependencyInjection.DependencyProperties
+  parent: Metalama.Extensions.DependencyInjection
+  isExternal: true
+  href: Metalama.Extensions.DependencyInjection.DependencyProperties.html
+  name: DependencyProperties
+  nameWithType: DependencyProperties
+  fullName: Metalama.Extensions.DependencyInjection.DependencyProperties
+- uid: System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework}
+  commentId: T:System.Collections.Immutable.ImmutableArray{Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<IDependencyInjectionFramework>
+  nameWithType: ImmutableArray<IDependencyInjectionFramework>
+  fullName: System.Collections.Immutable.ImmutableArray<Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework>
+  nameWithType.vb: ImmutableArray(Of IDependencyInjectionFramework)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework)
+  name.vb: ImmutableArray(Of IDependencyInjectionFramework)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+    name: IDependencyInjectionFramework
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework
+    name: IDependencyInjectionFramework
+    isExternal: true
+    href: Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+memberLayout: SeparatePages

@@ -1,0 +1,748 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+  commentId: T:Metalama.Patterns.Caching.Dependencies.ICacheDependency
+  id: ICacheDependency
+  parent: Metalama.Patterns.Caching.Dependencies
+  children:
+  - Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies
+  - Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey(Metalama.Patterns.Caching.ICachingService)
+  langs:
+  - csharp
+  - vb
+  name: ICacheDependency
+  nameWithType: ICacheDependency
+  fullName: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+  type: Interface
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Dependencies
+  summary: >-
+    Interface that must be implemented by classes that need to be used as cache dependencies,
+
+    for use with the <xref href="Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService%2cMetalama.Patterns.Caching.Dependencies.ICacheDependency)" data-throw-if-not-resolved="false"></xref> method.
+
+    Alternatively, custom classes may implement the <xref href="Flashtrace.Formatters.IFormattable%601" data-throw-if-not-resolved="false"></xref> interface or simply
+
+    the <xref href="System.Object.ToString" data-throw-if-not-resolved="false"></xref> method.
+  remarks: >-
+    <p>Cache dependencies provide an indirect way to invalidate cache items. Instead of directly invalidating
+
+    a specific cached method, you can invalidate a dependency, which automatically invalidates all cache items
+
+    that depend on it.</p>
+
+    <p>Dependencies are added to the current caching context using the
+
+    <xref href="Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService%2cMetalama.Patterns.Caching.Dependencies.ICacheDependency)" data-throw-if-not-resolved="false"></xref> method and invalidated using the
+
+    <xref href="Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService%2cMetalama.Patterns.Caching.Dependencies.ICacheDependency)" data-throw-if-not-resolved="false"></xref> method.</p>
+  example: []
+  syntax:
+    content: public interface ICacheDependency
+    content.vb: Public Interface ICacheDependency
+  seealso:
+  - linkId: Metalama.Patterns.Caching.Dependencies.StringDependency
+    commentId: T:Metalama.Patterns.Caching.Dependencies.StringDependency
+  - linkId: Metalama.Patterns.Caching.Dependencies.ObjectDependency
+    commentId: T:Metalama.Patterns.Caching.Dependencies.ObjectDependency
+  - linkId: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+    commentId: M:Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  - linkId: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+    commentId: M:Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  - linkType: HRef
+    linkId: '@caching-dependencies'
+    altText: '@caching-dependencies'
+  extensionMethods:
+  - Metalama.Patterns.Caching.Dependencies.ICacheDependency.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Dependencies.ICacheDependency,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Dependencies.ICacheDependency}},System.Boolean)
+- uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey(Metalama.Patterns.Caching.ICachingService)
+  commentId: M:Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey(Metalama.Patterns.Caching.ICachingService)
+  id: GetCacheKey(Metalama.Patterns.Caching.ICachingService)
+  parent: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+  langs:
+  - csharp
+  - vb
+  name: GetCacheKey(ICachingService)
+  nameWithType: ICacheDependency.GetCacheKey(ICachingService)
+  fullName: Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey(Metalama.Patterns.Caching.ICachingService)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Dependencies
+  summary: Gets a string that uniquely represents the current object.
+  remarks: <p>The returned key should be globally unique, not just unique within the class implementing the method.</p>
+  example: []
+  syntax:
+    content: string GetCacheKey(ICachingService cachingService)
+    parameters:
+    - id: cachingService
+      type: Metalama.Patterns.Caching.ICachingService
+      description: ''
+    return:
+      type: System.String
+      description: A string that uniquely represents the current object.
+    content.vb: Function GetCacheKey(cachingService As ICachingService) As String
+  overload: Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey*
+- uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies
+  commentId: P:Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies
+  id: CascadeDependencies
+  parent: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+  langs:
+  - csharp
+  - vb
+  name: CascadeDependencies
+  nameWithType: ICacheDependency.CascadeDependencies
+  fullName: Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Dependencies
+  summary: Gets the list of dependencies that must also be invalidated when the current dependency is invalidated.
+  remarks: The implementation of this method should not perform I/O operations.
+  example: []
+  syntax:
+    content: IReadOnlyCollection<ICacheDependency> CascadeDependencies { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{Metalama.Patterns.Caching.Dependencies.ICacheDependency}
+    content.vb: ReadOnly Property CascadeDependencies As IReadOnlyCollection(Of ICacheDependency)
+  overload: Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies*
+references:
+- uid: Metalama.Patterns.Caching.Dependencies.StringDependency
+  commentId: T:Metalama.Patterns.Caching.Dependencies.StringDependency
+  parent: Metalama.Patterns.Caching.Dependencies
+  isExternal: true
+  href: Metalama.Patterns.Caching.Dependencies.StringDependency.html
+  name: StringDependency
+  nameWithType: StringDependency
+  fullName: Metalama.Patterns.Caching.Dependencies.StringDependency
+- uid: Metalama.Patterns.Caching.Dependencies.ObjectDependency
+  commentId: T:Metalama.Patterns.Caching.Dependencies.ObjectDependency
+  parent: Metalama.Patterns.Caching.Dependencies
+  isExternal: true
+  href: Metalama.Patterns.Caching.Dependencies.ObjectDependency.html
+  name: ObjectDependency
+  nameWithType: ObjectDependency
+  fullName: Metalama.Patterns.Caching.Dependencies.ObjectDependency
+- uid: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  commentId: M:Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  isExternal: true
+  href: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency.html#Metalama_Patterns_Caching_CachingServiceExtensions_AddDependency_Metalama_Patterns_Caching_ICachingService_Metalama_Patterns_Caching_Dependencies_ICacheDependency_
+  name: AddDependency(ICachingService, ICacheDependency)
+  nameWithType: CachingServiceExtensions.AddDependency(ICachingService, ICacheDependency)
+  fullName: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService, Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+    name: AddDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency.html#Metalama_Patterns_Caching_CachingServiceExtensions_AddDependency_Metalama_Patterns_Caching_ICachingService_Metalama_Patterns_Caching_Dependencies_ICacheDependency_
+  - name: (
+  - uid: Metalama.Patterns.Caching.ICachingService
+    name: ICachingService
+    isExternal: true
+    href: Metalama.Patterns.Caching.ICachingService.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+    name: AddDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.CachingServiceExtensions.AddDependency.html#Metalama_Patterns_Caching_CachingServiceExtensions_AddDependency_Metalama_Patterns_Caching_ICachingService_Metalama_Patterns_Caching_Dependencies_ICacheDependency_
+  - name: (
+  - uid: Metalama.Patterns.Caching.ICachingService
+    name: ICachingService
+    isExternal: true
+    href: Metalama.Patterns.Caching.ICachingService.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+- uid: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  commentId: M:Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  isExternal: true
+  href: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate.html#Metalama_Patterns_Caching_CachingServiceExtensions_Invalidate_Metalama_Patterns_Caching_ICachingService_Metalama_Patterns_Caching_Dependencies_ICacheDependency_
+  name: Invalidate(ICachingService, ICacheDependency)
+  nameWithType: CachingServiceExtensions.Invalidate(ICachingService, ICacheDependency)
+  fullName: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService, Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+    name: Invalidate
+    isExternal: true
+    href: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate.html#Metalama_Patterns_Caching_CachingServiceExtensions_Invalidate_Metalama_Patterns_Caching_ICachingService_Metalama_Patterns_Caching_Dependencies_ICacheDependency_
+  - name: (
+  - uid: Metalama.Patterns.Caching.ICachingService
+    name: ICachingService
+    isExternal: true
+    href: Metalama.Patterns.Caching.ICachingService.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate(Metalama.Patterns.Caching.ICachingService,Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+    name: Invalidate
+    isExternal: true
+    href: Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate.html#Metalama_Patterns_Caching_CachingServiceExtensions_Invalidate_Metalama_Patterns_Caching_ICachingService_Metalama_Patterns_Caching_Dependencies_ICacheDependency_
+  - name: (
+  - uid: Metalama.Patterns.Caching.ICachingService
+    name: ICachingService
+    isExternal: true
+    href: Metalama.Patterns.Caching.ICachingService.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+- uid: Flashtrace.Formatters.IFormattable`1
+  commentId: T:Flashtrace.Formatters.IFormattable`1
+  isExternal: true
+  href: Flashtrace.Formatters.IFormattable-1.html
+  name: IFormattable<T>
+  nameWithType: IFormattable<T>
+  fullName: Flashtrace.Formatters.IFormattable<T>
+  nameWithType.vb: IFormattable(Of T)
+  fullName.vb: Flashtrace.Formatters.IFormattable(Of T)
+  name.vb: IFormattable(Of T)
+  spec.csharp:
+  - uid: Flashtrace.Formatters.IFormattable`1
+    name: IFormattable
+    isExternal: true
+    href: Flashtrace.Formatters.IFormattable-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Flashtrace.Formatters.IFormattable`1
+    name: IFormattable
+    isExternal: true
+    href: Flashtrace.Formatters.IFormattable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Dependencies
+  commentId: N:Metalama.Patterns.Caching.Dependencies
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching.Dependencies
+  nameWithType: Metalama.Patterns.Caching.Dependencies
+  fullName: Metalama.Patterns.Caching.Dependencies
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Dependencies
+    name: Dependencies
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Dependencies
+    name: Dependencies
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.html
+- uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Dependencies.ICacheDependency,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Dependencies.ICacheDependency}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<ICacheDependency>(ICacheDependency, Func<ICacheDependency, IEnumerable<ICacheDependency>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<ICacheDependency>(ICacheDependency, Func<ICacheDependency, IEnumerable<ICacheDependency>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Patterns.Caching.Dependencies.ICacheDependency>(Metalama.Patterns.Caching.Dependencies.ICacheDependency, System.Func<Metalama.Patterns.Caching.Dependencies.ICacheDependency, System.Collections.Generic.IEnumerable<Metalama.Patterns.Caching.Dependencies.ICacheDependency>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of ICacheDependency)(ICacheDependency, Func(Of ICacheDependency, IEnumerable(Of ICacheDependency)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Patterns.Caching.Dependencies.ICacheDependency)(Metalama.Patterns.Caching.Dependencies.ICacheDependency, System.Func(Of Metalama.Patterns.Caching.Dependencies.ICacheDependency, System.Collections.Generic.IEnumerable(Of Metalama.Patterns.Caching.Dependencies.ICacheDependency)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of ICacheDependency)(ICacheDependency, Func(Of ICacheDependency, IEnumerable(Of ICacheDependency)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Dependencies.ICacheDependency,System.Func{Metalama.Patterns.Caching.Dependencies.ICacheDependency,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Dependencies.ICacheDependency}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Dependencies.ICacheDependency,System.Func{Metalama.Patterns.Caching.Dependencies.ICacheDependency,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Dependencies.ICacheDependency}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey*
+  commentId: Overload:Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey
+  isExternal: true
+  href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey.html#Metalama_Patterns_Caching_Dependencies_ICacheDependency_GetCacheKey_Metalama_Patterns_Caching_ICachingService_
+  name: GetCacheKey
+  nameWithType: ICacheDependency.GetCacheKey
+  fullName: Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey
+- uid: Metalama.Patterns.Caching.ICachingService
+  commentId: T:Metalama.Patterns.Caching.ICachingService
+  parent: Metalama.Patterns.Caching
+  isExternal: true
+  href: Metalama.Patterns.Caching.ICachingService.html
+  name: ICachingService
+  nameWithType: ICachingService
+  fullName: Metalama.Patterns.Caching.ICachingService
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Patterns.Caching
+  commentId: N:Metalama.Patterns.Caching
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching
+  nameWithType: Metalama.Patterns.Caching
+  fullName: Metalama.Patterns.Caching
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+- uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies*
+  commentId: Overload:Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies
+  isExternal: true
+  href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies.html#Metalama_Patterns_Caching_Dependencies_ICacheDependency_CascadeDependencies
+  name: CascadeDependencies
+  nameWithType: ICacheDependency.CascadeDependencies
+  fullName: Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies
+- uid: System.Collections.Generic.IReadOnlyCollection{Metalama.Patterns.Caching.Dependencies.ICacheDependency}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{Metalama.Patterns.Caching.Dependencies.ICacheDependency}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<ICacheDependency>
+  nameWithType: IReadOnlyCollection<ICacheDependency>
+  fullName: System.Collections.Generic.IReadOnlyCollection<Metalama.Patterns.Caching.Dependencies.ICacheDependency>
+  nameWithType.vb: IReadOnlyCollection(Of ICacheDependency)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of Metalama.Patterns.Caching.Dependencies.ICacheDependency)
+  name.vb: IReadOnlyCollection(Of ICacheDependency)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Dependencies.ICacheDependency
+    name: ICacheDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Dependencies.ICacheDependency.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+memberLayout: SeparatePages

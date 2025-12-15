@@ -1,0 +1,696 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.MethodExtensions
+  commentId: T:Metalama.Framework.Code.MethodExtensions
+  id: MethodExtensions
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  - Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  - Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType(Metalama.Framework.Code.IMethod)
+  - Metalama.Framework.Code.MethodExtensions.HasCovariantType(Metalama.Framework.Code.IPropertyOrIndexer)
+  langs:
+  - csharp
+  - vb
+  name: MethodExtensions
+  nameWithType: MethodExtensions
+  fullName: Metalama.Framework.Code.MethodExtensions
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Extension methods for the <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref> interface.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static class MethodExtensions
+    content.vb: >-
+      <CompileTime>
+
+      Public Module MethodExtensions
+  seealso:
+  - linkId: Metalama.Framework.Code.AsyncInfo
+    commentId: T:Metalama.Framework.Code.AsyncInfo
+  - linkId: Metalama.Framework.Code.IteratorInfo
+    commentId: T:Metalama.Framework.Code.IteratorInfo
+  - linkId: Metalama.Framework.Code.EnumerableKind
+    commentId: T:Metalama.Framework.Code.EnumerableKind
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  id: GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MethodExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetIteratorInfo(IMethod)
+  nameWithType: MethodExtensions.GetIteratorInfo(IMethod)
+  fullName: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets information about whether a method is a <code>yield</code>-based iterator and returns an <xref href="Metalama.Framework.Code.IteratorInfo" data-throw-if-not-resolved="false"></xref> value
+
+    exposing details about the iterator, such as the <xref href="Metalama.Framework.Code.IteratorInfo.ItemType" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Code.IteratorInfo.EnumerableKind" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>This method is useful for aspects that need to inspect iterator method properties at compile time, for example in <code>BuildAspect</code>.</p>
+
+    <p>Note that <xref href="Metalama.Framework.Code.IteratorInfo.IsIteratorMethod" data-throw-if-not-resolved="false"></xref> indicates whether the method uses <code>yield return</code> or <code>yield break</code>,
+        while <xref href="Metalama.Framework.Code.IteratorInfo.EnumerableKind" data-throw-if-not-resolved="false"></xref> indicates the return type regardless of the implementation.</p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static IteratorInfo GetIteratorInfo(this IMethod method)
+    parameters:
+    - id: method
+      type: Metalama.Framework.Code.IMethod
+      description: The method to inspect.
+    return:
+      type: Metalama.Framework.Code.IteratorInfo
+      description: >-
+        An <xref href="Metalama.Framework.Code.IteratorInfo" data-throw-if-not-resolved="false"></xref> containing information about the iterator. The <xref href="Metalama.Framework.Code.IteratorInfo.EnumerableKind" data-throw-if-not-resolved="false"></xref>
+                    property is set to <xref href="Metalama.Framework.Code.EnumerableKind.None" data-throw-if-not-resolved="false"></xref> if the method does not return an enumerable or enumerator type.
+    content.vb: >-
+      <CompileTime>
+
+      Public Shared Function GetIteratorInfo(method As IMethod) As IteratorInfo
+  overload: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo*
+  seealso:
+  - linkId: Metalama.Framework.Code.IteratorInfo
+    commentId: T:Metalama.Framework.Code.IteratorInfo
+  - linkId: Metalama.Framework.Code.EnumerableKind
+    commentId: T:Metalama.Framework.Code.EnumerableKind
+  - linkId: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+    commentId: M:Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  - linkType: HRef
+    linkId: '@overriding-methods#async-iterator-default-template'
+    altText: '@overriding-methods#async-iterator-default-template'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  id: GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MethodExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAsyncInfo(IMethod)
+  nameWithType: MethodExtensions.GetAsyncInfo(IMethod)
+  fullName: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets information about the async characteristics of a method, including whether it is awaitable and its result type.
+  remarks: >-
+    <p>This method is useful for aspects that need to inspect async method properties at compile time, for example in <code>BuildAspect</code>.</p>
+
+    <p>The <xref href="Metalama.Framework.Code.AsyncInfo.ResultType" data-throw-if-not-resolved="false"></xref> property returns the unwrapped result type. For example, for a method returning
+        <code>Task&lt;string&gt;</code>, the <xref href="Metalama.Framework.Code.AsyncInfo.ResultType" data-throw-if-not-resolved="false"></xref> is <code>string</code>.</p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static AsyncInfo GetAsyncInfo(this IMethod method)
+    parameters:
+    - id: method
+      type: Metalama.Framework.Code.IMethod
+      description: The method to inspect.
+    return:
+      type: Metalama.Framework.Code.AsyncInfo
+      description: >-
+        An <xref href="Metalama.Framework.Code.AsyncInfo" data-throw-if-not-resolved="false"></xref> containing information about the async characteristics of the method,
+                    including whether it has the <code>async</code> modifier, whether its return type is awaitable, and the unwrapped result type.
+    content.vb: >-
+      <CompileTime>
+
+      Public Shared Function GetAsyncInfo(method As IMethod) As AsyncInfo
+  overload: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo*
+  seealso:
+  - linkId: Metalama.Framework.Code.AsyncInfo
+    commentId: T:Metalama.Framework.Code.AsyncInfo
+  - linkId: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+    commentId: M:Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  - linkType: HRef
+    linkId: '@overriding-methods#async-iterator-default-template'
+    altText: '@overriding-methods#async-iterator-default-template'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType(Metalama.Framework.Code.IMethod)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType(Metalama.Framework.Code.IMethod)
+  id: HasCovariantReturnType(Metalama.Framework.Code.IMethod)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MethodExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasCovariantReturnType(IMethod)
+  nameWithType: MethodExtensions.HasCovariantReturnType(IMethod)
+  fullName: Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType(Metalama.Framework.Code.IMethod)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines whether a method override has a covariant return type with respect to the base implementation.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static bool HasCovariantReturnType(this IMethod method)
+    parameters:
+    - id: method
+      type: Metalama.Framework.Code.IMethod
+      description: The method to check.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the method has a covariant return type compared to its overridden method; otherwise, <code>false</code>.
+    content.vb: >-
+      <CompileTime>
+
+      Public Shared Function HasCovariantReturnType(method As IMethod) As Boolean
+  overload: Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType*
+  seealso:
+  - linkType: HRef
+    linkId: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/covariant-returns
+    altText: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/covariant-returns
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.MethodExtensions.HasCovariantType(Metalama.Framework.Code.IPropertyOrIndexer)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.HasCovariantType(Metalama.Framework.Code.IPropertyOrIndexer)
+  id: HasCovariantType(Metalama.Framework.Code.IPropertyOrIndexer)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MethodExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasCovariantType(IPropertyOrIndexer)
+  nameWithType: MethodExtensions.HasCovariantType(IPropertyOrIndexer)
+  fullName: Metalama.Framework.Code.MethodExtensions.HasCovariantType(Metalama.Framework.Code.IPropertyOrIndexer)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines whether a read-only property or indexer override has a covariant type with respect to the base implementation.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static bool HasCovariantType(this IPropertyOrIndexer propertyOrIndexer)
+    parameters:
+    - id: propertyOrIndexer
+      type: Metalama.Framework.Code.IPropertyOrIndexer
+      description: The property or indexer to check.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the property or indexer has a covariant type compared to its overridden member; otherwise, <code>false</code>.
+    content.vb: >-
+      <CompileTime>
+
+      Public Shared Function HasCovariantType(propertyOrIndexer As IPropertyOrIndexer) As Boolean
+  overload: Metalama.Framework.Code.MethodExtensions.HasCovariantType*
+  seealso:
+  - linkType: HRef
+    linkId: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/covariant-returns
+    altText: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/covariant-returns
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+references:
+- uid: Metalama.Framework.Code.AsyncInfo
+  commentId: T:Metalama.Framework.Code.AsyncInfo
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.html
+  name: AsyncInfo
+  nameWithType: AsyncInfo
+  fullName: Metalama.Framework.Code.AsyncInfo
+- uid: Metalama.Framework.Code.IteratorInfo
+  commentId: T:Metalama.Framework.Code.IteratorInfo
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IteratorInfo.html
+  name: IteratorInfo
+  nameWithType: IteratorInfo
+  fullName: Metalama.Framework.Code.IteratorInfo
+- uid: Metalama.Framework.Code.EnumerableKind
+  commentId: T:Metalama.Framework.Code.EnumerableKind
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.EnumerableKind.html
+  name: EnumerableKind
+  nameWithType: EnumerableKind
+  fullName: Metalama.Framework.Code.EnumerableKind
+- uid: Metalama.Framework.Code.IMethod
+  commentId: T:Metalama.Framework.Code.IMethod
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMethod.html
+  name: IMethod
+  nameWithType: IMethod
+  fullName: Metalama.Framework.Code.IMethod
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  name: GetAsyncInfo(IMethod)
+  nameWithType: MethodExtensions.GetAsyncInfo(IMethod)
+  fullName: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+    name: GetAsyncInfo
+    isExternal: true
+    href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+    name: GetAsyncInfo
+    isExternal: true
+    href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+- uid: Metalama.Framework.Code.IteratorInfo.ItemType
+  commentId: P:Metalama.Framework.Code.IteratorInfo.ItemType
+  isExternal: true
+  href: Metalama.Framework.Code.IteratorInfo.ItemType.html#Metalama_Framework_Code_IteratorInfo_ItemType
+  name: ItemType
+  nameWithType: IteratorInfo.ItemType
+  fullName: Metalama.Framework.Code.IteratorInfo.ItemType
+- uid: Metalama.Framework.Code.IteratorInfo.EnumerableKind
+  commentId: P:Metalama.Framework.Code.IteratorInfo.EnumerableKind
+  isExternal: true
+  href: Metalama.Framework.Code.IteratorInfo.EnumerableKind.html#Metalama_Framework_Code_IteratorInfo_EnumerableKind
+  name: EnumerableKind
+  nameWithType: IteratorInfo.EnumerableKind
+  fullName: Metalama.Framework.Code.IteratorInfo.EnumerableKind
+- uid: Metalama.Framework.Code.EnumerableKind.None
+  commentId: F:Metalama.Framework.Code.EnumerableKind.None
+  isExternal: true
+  href: Metalama.Framework.Code.EnumerableKind.html#Metalama_Framework_Code_EnumerableKind_None
+  name: None
+  nameWithType: EnumerableKind.None
+  fullName: Metalama.Framework.Code.EnumerableKind.None
+- uid: Metalama.Framework.Code.IteratorInfo.IsIteratorMethod
+  commentId: P:Metalama.Framework.Code.IteratorInfo.IsIteratorMethod
+  isExternal: true
+  href: Metalama.Framework.Code.IteratorInfo.IsIteratorMethod.html#Metalama_Framework_Code_IteratorInfo_IsIteratorMethod
+  name: IsIteratorMethod
+  nameWithType: IteratorInfo.IsIteratorMethod
+  fullName: Metalama.Framework.Code.IteratorInfo.IsIteratorMethod
+- uid: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo*
+  commentId: Overload:Metalama.Framework.Code.MethodExtensions.GetIteratorInfo
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo.html#Metalama_Framework_Code_MethodExtensions_GetIteratorInfo_Metalama_Framework_Code_IMethod_
+  name: GetIteratorInfo
+  nameWithType: MethodExtensions.GetIteratorInfo
+  fullName: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo
+- uid: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo.html#Metalama_Framework_Code_MethodExtensions_GetIteratorInfo_Metalama_Framework_Code_IMethod_
+  name: GetIteratorInfo(IMethod)
+  nameWithType: MethodExtensions.GetIteratorInfo(IMethod)
+  fullName: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+    name: GetIteratorInfo
+    isExternal: true
+    href: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo.html#Metalama_Framework_Code_MethodExtensions_GetIteratorInfo_Metalama_Framework_Code_IMethod_
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo(Metalama.Framework.Code.IMethod)
+    name: GetIteratorInfo
+    isExternal: true
+    href: Metalama.Framework.Code.MethodExtensions.GetIteratorInfo.html#Metalama_Framework_Code_MethodExtensions_GetIteratorInfo_Metalama_Framework_Code_IMethod_
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+- uid: Metalama.Framework.Code.AsyncInfo.ResultType
+  commentId: P:Metalama.Framework.Code.AsyncInfo.ResultType
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.ResultType.html#Metalama_Framework_Code_AsyncInfo_ResultType
+  name: ResultType
+  nameWithType: AsyncInfo.ResultType
+  fullName: Metalama.Framework.Code.AsyncInfo.ResultType
+- uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo*
+  commentId: Overload:Metalama.Framework.Code.MethodExtensions.GetAsyncInfo
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  name: GetAsyncInfo
+  nameWithType: MethodExtensions.GetAsyncInfo
+  fullName: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo
+- uid: Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType*
+  commentId: Overload:Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType.html#Metalama_Framework_Code_MethodExtensions_HasCovariantReturnType_Metalama_Framework_Code_IMethod_
+  name: HasCovariantReturnType
+  nameWithType: MethodExtensions.HasCovariantReturnType
+  fullName: Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Framework.Code.MethodExtensions.HasCovariantType*
+  commentId: Overload:Metalama.Framework.Code.MethodExtensions.HasCovariantType
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.HasCovariantType.html#Metalama_Framework_Code_MethodExtensions_HasCovariantType_Metalama_Framework_Code_IPropertyOrIndexer_
+  name: HasCovariantType
+  nameWithType: MethodExtensions.HasCovariantType
+  fullName: Metalama.Framework.Code.MethodExtensions.HasCovariantType
+- uid: Metalama.Framework.Code.IPropertyOrIndexer
+  commentId: T:Metalama.Framework.Code.IPropertyOrIndexer
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IPropertyOrIndexer.html
+  name: IPropertyOrIndexer
+  nameWithType: IPropertyOrIndexer
+  fullName: Metalama.Framework.Code.IPropertyOrIndexer
+memberLayout: SeparatePages

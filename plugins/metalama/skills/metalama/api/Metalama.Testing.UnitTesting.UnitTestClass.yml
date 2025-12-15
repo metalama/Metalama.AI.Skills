@@ -1,0 +1,1534 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Testing.UnitTesting.UnitTestClass
+  commentId: T:Metalama.Testing.UnitTesting.UnitTestClass
+  id: UnitTestClass
+  parent: Metalama.Testing.UnitTesting
+  children:
+  - Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)
+  - Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  - Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  - Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
+  - Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection(Metalama.Framework.Services.IService[])
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  - Metalama.Testing.UnitTesting.UnitTestClass.Dispose
+  - Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
+  langs:
+  - csharp
+  - vb
+  name: UnitTestClass
+  nameWithType: UnitTestClass
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass
+  type: Class
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: A base class for xUnit tests that need to unit-test compile-time helper classes or query the Metalama code model.
+  remarks: >-
+    <p>
+        This class provides the infrastructure for writing unit tests of compile-time logic used by aspects,
+        without executing the aspects themselves. Test methods should call <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref>
+        to obtain a <xref href="Metalama.Testing.UnitTesting.TestContext" data-throw-if-not-resolved="false"></xref> that provides access to Metalama services.
+        </p>
+    <p>
+        A typical test workflow is:
+        <ol><li>Create a test context using <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref></li><li>Create a compilation using <xref href="Metalama.Testing.UnitTesting.TestContext.CreateCompilation(System.String%2cSystem.String%2cSystem.Boolean%2cSystem.Collections.Generic.IEnumerable%7bMicrosoft.CodeAnalysis.MetadataReference%7d%2cSystem.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref></li><li>Optionally switch execution context using <xref href="Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation%2cSystem.String)" data-throw-if-not-resolved="false"></xref> if your code uses <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory" data-throw-if-not-resolved="false"></xref></li><li>Query the code model or call your compile-time helper classes</li><li>Assert expected results</li></ol></p>
+    <p>
+        The test context must be disposed at the end of each test method.
+        </p>
+  example: []
+  syntax:
+    content: 'public abstract class UnitTestClass : IDisposable'
+    content.vb: Public MustInherit Class UnitTestClass Implements IDisposable
+  seealso:
+  - linkId: Metalama.Testing.UnitTesting.TestContext
+    commentId: T:Metalama.Testing.UnitTesting.TestContext
+  - linkId: Metalama.Testing.UnitTesting.TestContextOptions
+    commentId: T:Metalama.Testing.UnitTesting.TestContextOptions
+  - linkType: HRef
+    linkId: '@compile-time-testing'
+    altText: '@compile-time-testing'
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Testing.UnitTesting.UnitTestClass.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.UnitTesting.UnitTestClass,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.UnitTestClass}},System.Boolean)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)
+  id: '#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)'
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: UnitTestClass(ITestOutputHelper?, bool)
+  nameWithType: UnitTestClass.UnitTestClass(ITestOutputHelper?, bool)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.UnitTestClass(Xunit.Abstractions.ITestOutputHelper?, bool)
+  type: Constructor
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected UnitTestClass(ITestOutputHelper? logger = null, bool injectLoggingService = true)
+    parameters:
+    - id: logger
+      type: Xunit.Abstractions.ITestOutputHelper
+    - id: injectLoggingService
+      type: System.Boolean
+    content.vb: Protected Sub New(logger As ITestOutputHelper = Nothing, injectLoggingService As Boolean = True)
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.#ctor*
+  nameWithType.vb: UnitTestClass.New(ITestOutputHelper, Boolean)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.New(Xunit.Abstractions.ITestOutputHelper, Boolean)
+  name.vb: New(ITestOutputHelper, Boolean)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  id: ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: ConfigureServices(IAdditionalServiceCollection)
+  nameWithType: UnitTestClass.ConfigureServices(IAdditionalServiceCollection)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Adds services or mocks that are common to all tests in the current class. This method is called
+
+    by <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref> and the
+
+    <code class="paramref">services</code> parameter is the one passed to the <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection%2cSystem.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref>, if any,
+
+    or an empty collection otherwise.
+  example: []
+  syntax:
+    content: protected virtual void ConfigureServices(IAdditionalServiceCollection services)
+    parameters:
+    - id: services
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    content.vb: Protected Overridable Sub ConfigureServices(services As IAdditionalServiceCollection)
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
+  id: ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: ConfigureExtensions(ITestExtensionCollector)
+  nameWithType: UnitTestClass.ConfigureExtensions(ITestExtensionCollector)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected virtual void ConfigureExtensions(ITestExtensionCollector collector)
+    parameters:
+    - id: collector
+      type: Metalama.Framework.Engine.Extensibility.ITestExtensionCollector
+    content.vb: Protected Overridable Sub ConfigureExtensions(collector As ITestExtensionCollector)
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  id: AddSyntaxGenerationOptions(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: AddSyntaxGenerationOptions(IAdditionalServiceCollection)
+  nameWithType: UnitTestClass.AddSyntaxGenerationOptions(IAdditionalServiceCollection)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected virtual void AddSyntaxGenerationOptions(IAdditionalServiceCollection services)
+    parameters:
+    - id: services
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    content.vb: Protected Overridable Sub AddSyntaxGenerationOptions(services As IAdditionalServiceCollection)
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  id: AddExceptionHandler(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: AddExceptionHandler(IAdditionalServiceCollection)
+  nameWithType: UnitTestClass.AddExceptionHandler(IAdditionalServiceCollection)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected virtual void AddExceptionHandler(IAdditionalServiceCollection services)
+    parameters:
+    - id: services
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    content.vb: Protected Overridable Sub AddExceptionHandler(services As IAdditionalServiceCollection)
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection(Metalama.Framework.Services.IService[])
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection(Metalama.Framework.Services.IService[])
+  id: CreateAdditionalServiceCollection(Metalama.Framework.Services.IService[])
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateAdditionalServiceCollection(params IService[])
+  nameWithType: UnitTestClass.CreateAdditionalServiceCollection(params IService[])
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection(params Metalama.Framework.Services.IService[])
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: Creates a collection of additional services that can then be passed to <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection%2cSystem.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected static IAdditionalServiceCollection CreateAdditionalServiceCollection(params IService[] services)
+    parameters:
+    - id: services
+      type: Metalama.Framework.Services.IService[]
+    return:
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    content.vb: Protected Shared Function CreateAdditionalServiceCollection(ParamArray services As IService()) As IAdditionalServiceCollection
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection*
+  nameWithType.vb: UnitTestClass.CreateAdditionalServiceCollection(ParamArray IService())
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection(ParamArray Metalama.Framework.Services.IService())
+  name.vb: CreateAdditionalServiceCollection(ParamArray IService())
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+  id: CreateTestContext(System.String,System.String)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateTestContext(string?, string?)
+  nameWithType: UnitTestClass.CreateTestContext(string?, string?)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(string?, string?)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected TestContext CreateTestContext(string? callerFile = null, string? callerMemberName = null)
+    parameters:
+    - id: callerFile
+      type: System.String
+    - id: callerMemberName
+      type: System.String
+    return:
+      type: Metalama.Testing.UnitTesting.TestContext
+    content.vb: Protected Function CreateTestContext(callerFile As String = Nothing, callerMemberName As String = Nothing) As TestContext
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
+  nameWithType.vb: UnitTestClass.CreateTestContext(String, String)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(String, String)
+  name.vb: CreateTestContext(String, String)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  id: CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateTestContext(IAdditionalServiceCollection, string?, string?)
+  nameWithType: UnitTestClass.CreateTestContext(IAdditionalServiceCollection, string?, string?)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection, string?, string?)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: Creates a test context with a collection of additional services or mocks.
+  example: []
+  syntax:
+    content: protected TestContext CreateTestContext(IAdditionalServiceCollection service, string? callerFile = null, string? callerMemberName = null)
+    parameters:
+    - id: service
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    - id: callerFile
+      type: System.String
+    - id: callerMemberName
+      type: System.String
+    return:
+      type: Metalama.Testing.UnitTesting.TestContext
+    content.vb: Protected Function CreateTestContext(service As IAdditionalServiceCollection, callerFile As String = Nothing, callerMemberName As String = Nothing) As TestContext
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
+  nameWithType.vb: UnitTestClass.CreateTestContext(IAdditionalServiceCollection, String, String)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection, String, String)
+  name.vb: CreateTestContext(IAdditionalServiceCollection, String, String)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  id: CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateTestContext(TestContextOptions?, IAdditionalServiceCollection?, string?, string?)
+  nameWithType: UnitTestClass.CreateTestContext(TestContextOptions?, IAdditionalServiceCollection?, string?, string?)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions?, Metalama.Framework.Engine.Services.IAdditionalServiceCollection?, string?, string?)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: Creates a test context, optionally with a non-default <xref href="Metalama.Testing.UnitTesting.TestContextOptions" data-throw-if-not-resolved="false"></xref> or a collection of additional services or mocks.
+  example: []
+  syntax:
+    content: protected TestContext CreateTestContext(TestContextOptions? contextOptions, IAdditionalServiceCollection? services = null, string? callerFile = null, string? callerMemberName = null)
+    parameters:
+    - id: contextOptions
+      type: Metalama.Testing.UnitTesting.TestContextOptions
+    - id: services
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    - id: callerFile
+      type: System.String
+    - id: callerMemberName
+      type: System.String
+    return:
+      type: Metalama.Testing.UnitTesting.TestContext
+    content.vb: Protected Function CreateTestContext(contextOptions As TestContextOptions, services As IAdditionalServiceCollection = Nothing, callerFile As String = Nothing, callerMemberName As String = Nothing) As TestContext
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
+  nameWithType.vb: UnitTestClass.CreateTestContext(TestContextOptions, IAdditionalServiceCollection, String, String)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions, Metalama.Framework.Engine.Services.IAdditionalServiceCollection, String, String)
+  name.vb: CreateTestContext(TestContextOptions, IAdditionalServiceCollection, String, String)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  id: CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateTestContextCore(TestContextOptions, IAdditionalServiceCollection)
+  nameWithType: UnitTestClass.CreateTestContextCore(TestContextOptions, IAdditionalServiceCollection)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions, Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected virtual TestContext CreateTestContextCore(TestContextOptions contextOptions, IAdditionalServiceCollection services)
+    parameters:
+    - id: contextOptions
+      type: Metalama.Testing.UnitTesting.TestContextOptions
+    - id: services
+      type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    return:
+      type: Metalama.Testing.UnitTesting.TestContext
+    content.vb: Protected Overridable Function CreateTestContextCore(contextOptions As TestContextOptions, services As IAdditionalServiceCollection) As TestContext
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
+  id: CreateDefaultTestContextOptions
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateDefaultTestContextOptions()
+  nameWithType: UnitTestClass.CreateDefaultTestContextOptions()
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions()
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: protected virtual TestContextOptions CreateDefaultTestContextOptions()
+    return:
+      type: Metalama.Testing.UnitTesting.TestContextOptions
+    content.vb: Protected Overridable Function CreateDefaultTestContextOptions() As TestContextOptions
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.Dispose
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.Dispose
+  id: Dispose
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: UnitTestClass.Dispose()
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.Dispose()
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
+  commentId: P:Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
+  id: TestOutput
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: TestOutput
+  nameWithType: UnitTestClass.TestOutput
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
+  type: Property
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: Gets an object allowing to write to the test output.
+  example: []
+  syntax:
+    content: protected ITestOutputHelper TestOutput { get; }
+    parameters: []
+    return:
+      type: Xunit.Abstractions.ITestOutputHelper
+    content.vb: Protected ReadOnly Property TestOutput As ITestOutputHelper
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput*
+references:
+- uid: Metalama.Testing.UnitTesting.TestContext
+  commentId: T:Metalama.Testing.UnitTesting.TestContext
+  parent: Metalama.Testing.UnitTesting
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestContext.html
+  name: TestContext
+  nameWithType: TestContext
+  fullName: Metalama.Testing.UnitTesting.TestContext
+- uid: Metalama.Testing.UnitTesting.TestContextOptions
+  commentId: T:Metalama.Testing.UnitTesting.TestContextOptions
+  parent: Metalama.Testing.UnitTesting
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestContextOptions.html
+  name: TestContextOptions
+  nameWithType: TestContextOptions
+  fullName: Metalama.Testing.UnitTesting.TestContextOptions
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_System_String_System_String_
+  name: CreateTestContext(string, string)
+  nameWithType: UnitTestClass.CreateTestContext(string, string)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(string, string)
+  nameWithType.vb: UnitTestClass.CreateTestContext(String, String)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(String, String)
+  name.vb: CreateTestContext(String, String)
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+    name: CreateTestContext
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
+    name: CreateTestContext
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Testing.UnitTesting.TestContext.CreateCompilation(System.String,System.String,System.Boolean,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},System.String,System.Boolean)
+  commentId: M:Metalama.Testing.UnitTesting.TestContext.CreateCompilation(System.String,System.String,System.Boolean,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},System.String,System.Boolean)
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestContext.CreateCompilation.html#Metalama_Testing_UnitTesting_TestContext_CreateCompilation_System_String_System_String_System_Boolean_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_MetadataReference__System_String_System_Boolean_
+  name: CreateCompilation(string, string, bool, IEnumerable<MetadataReference>, string, bool)
+  nameWithType: TestContext.CreateCompilation(string, string, bool, IEnumerable<MetadataReference>, string, bool)
+  fullName: Metalama.Testing.UnitTesting.TestContext.CreateCompilation(string, string, bool, System.Collections.Generic.IEnumerable<Microsoft.CodeAnalysis.MetadataReference>, string, bool)
+  nameWithType.vb: TestContext.CreateCompilation(String, String, Boolean, IEnumerable(Of MetadataReference), String, Boolean)
+  fullName.vb: Metalama.Testing.UnitTesting.TestContext.CreateCompilation(String, String, Boolean, System.Collections.Generic.IEnumerable(Of Microsoft.CodeAnalysis.MetadataReference), String, Boolean)
+  name.vb: CreateCompilation(String, String, Boolean, IEnumerable(Of MetadataReference), String, Boolean)
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.TestContext.CreateCompilation(System.String,System.String,System.Boolean,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},System.String,System.Boolean)
+    name: CreateCompilation
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestContext.CreateCompilation.html#Metalama_Testing_UnitTesting_TestContext_CreateCompilation_System_String_System_String_System_Boolean_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_MetadataReference__System_String_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Microsoft.CodeAnalysis.MetadataReference
+    name: MetadataReference
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.metadatareference
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.TestContext.CreateCompilation(System.String,System.String,System.Boolean,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},System.String,System.Boolean)
+    name: CreateCompilation
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestContext.CreateCompilation.html#Metalama_Testing_UnitTesting_TestContext_CreateCompilation_System_String_System_String_System_Boolean_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_MetadataReference__System_String_System_Boolean_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.MetadataReference
+    name: MetadataReference
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.metadatareference
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation,System.String)
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext.html#Metalama_Testing_UnitTesting_TestContext_WithExecutionContext_Metalama_Framework_Code_ICompilation_System_String_
+  name: WithExecutionContext(ICompilation, string)
+  nameWithType: TestContext.WithExecutionContext(ICompilation, string)
+  fullName: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation, string)
+  nameWithType.vb: TestContext.WithExecutionContext(ICompilation, String)
+  fullName.vb: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation, String)
+  name.vb: WithExecutionContext(ICompilation, String)
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation,System.String)
+    name: WithExecutionContext
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext.html#Metalama_Testing_UnitTesting_TestContext_WithExecutionContext_Metalama_Framework_Code_ICompilation_System_String_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation,System.String)
+    name: WithExecutionContext
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestContext.WithExecutionContext.html#Metalama_Testing_UnitTesting_TestContext_WithExecutionContext_Metalama_Framework_Code_ICompilation_System_String_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.html
+  name: ExpressionFactory
+  nameWithType: ExpressionFactory
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+- uid: Metalama.Testing.UnitTesting
+  commentId: N:Metalama.Testing.UnitTesting
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Testing.UnitTesting
+  nameWithType: Metalama.Testing.UnitTesting
+  fullName: Metalama.Testing.UnitTesting
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Testing
+    name: Testing
+    isExternal: true
+    href: Metalama.Testing.html
+  - name: .
+  - uid: Metalama.Testing.UnitTesting
+    name: UnitTesting
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Testing
+    name: Testing
+    isExternal: true
+    href: Metalama.Testing.html
+  - name: .
+  - uid: Metalama.Testing.UnitTesting
+    name: UnitTesting
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.UnitTesting.UnitTestClass,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.UnitTestClass}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<UnitTestClass>(UnitTestClass, Func<UnitTestClass, IEnumerable<UnitTestClass>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<UnitTestClass>(UnitTestClass, Func<UnitTestClass, IEnumerable<UnitTestClass>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Testing.UnitTesting.UnitTestClass>(Metalama.Testing.UnitTesting.UnitTestClass, System.Func<Metalama.Testing.UnitTesting.UnitTestClass, System.Collections.Generic.IEnumerable<Metalama.Testing.UnitTesting.UnitTestClass>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of UnitTestClass)(UnitTestClass, Func(Of UnitTestClass, IEnumerable(Of UnitTestClass)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Testing.UnitTesting.UnitTestClass)(Metalama.Testing.UnitTesting.UnitTestClass, System.Func(Of Metalama.Testing.UnitTesting.UnitTestClass, System.Collections.Generic.IEnumerable(Of Metalama.Testing.UnitTesting.UnitTestClass)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of UnitTestClass)(UnitTestClass, Func(Of UnitTestClass, IEnumerable(Of UnitTestClass)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.UnitTesting.UnitTestClass,System.Func{Metalama.Testing.UnitTesting.UnitTestClass,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.UnitTestClass}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.UnitTesting.UnitTestClass,System.Func{Metalama.Testing.UnitTesting.UnitTestClass,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.UnitTestClass}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: )
+  - name: (
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass
+    name: UnitTestClass
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders
+  commentId: N:Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.SyntaxBuilders
+  nameWithType: Metalama.Framework.Code.SyntaxBuilders
+  fullName: Metalama.Framework.Code.SyntaxBuilders
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.SyntaxBuilders
+    name: SyntaxBuilders
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.SyntaxBuilders
+    name: SyntaxBuilders
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.#ctor*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.#ctor
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.-ctor.html#Metalama_Testing_UnitTesting_UnitTestClass__ctor_Xunit_Abstractions_ITestOutputHelper_System_Boolean_
+  name: UnitTestClass
+  nameWithType: UnitTestClass.UnitTestClass
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.UnitTestClass
+  nameWithType.vb: UnitTestClass.New
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.New
+  name.vb: New
+- uid: Xunit.Abstractions.ITestOutputHelper
+  commentId: T:Xunit.Abstractions.ITestOutputHelper
+  parent: Xunit.Abstractions
+  isExternal: true
+  name: ITestOutputHelper
+  nameWithType: ITestOutputHelper
+  fullName: Xunit.Abstractions.ITestOutputHelper
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Xunit.Abstractions
+  commentId: N:Xunit.Abstractions
+  isExternal: true
+  name: Xunit.Abstractions
+  nameWithType: Xunit.Abstractions
+  fullName: Xunit.Abstractions
+  spec.csharp:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Abstractions
+    name: Abstractions
+    isExternal: true
+  spec.vb:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Abstractions
+    name: Abstractions
+    isExternal: true
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_System_String_System_String_
+  name: CreateTestContext(IAdditionalServiceCollection, string, string)
+  nameWithType: UnitTestClass.CreateTestContext(IAdditionalServiceCollection, string, string)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection, string, string)
+  nameWithType.vb: UnitTestClass.CreateTestContext(IAdditionalServiceCollection, String, String)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection, String, String)
+  name.vb: CreateTestContext(IAdditionalServiceCollection, String, String)
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+    name: CreateTestContext
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_System_String_System_String_
+  - name: (
+  - uid: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    name: IAdditionalServiceCollection
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+    name: CreateTestContext
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_System_String_System_String_
+  - name: (
+  - uid: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+    name: IAdditionalServiceCollection
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices.html#Metalama_Testing_UnitTesting_UnitTestClass_ConfigureServices_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_
+  name: ConfigureServices
+  nameWithType: UnitTestClass.ConfigureServices
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices
+- uid: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+  commentId: T:Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+  parent: Metalama.Framework.Engine.Services
+  isExternal: true
+  href: Metalama.Framework.Engine.Services.IAdditionalServiceCollection.html
+  name: IAdditionalServiceCollection
+  nameWithType: IAdditionalServiceCollection
+  fullName: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+- uid: Metalama.Framework.Engine.Services
+  commentId: N:Metalama.Framework.Engine.Services
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.Services
+  nameWithType: Metalama.Framework.Engine.Services
+  fullName: Metalama.Framework.Engine.Services
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.html
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions.html#Metalama_Testing_UnitTesting_UnitTestClass_ConfigureExtensions_Metalama_Framework_Engine_Extensibility_ITestExtensionCollector_
+  name: ConfigureExtensions
+  nameWithType: UnitTestClass.ConfigureExtensions
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions
+- uid: Metalama.Framework.Engine.Extensibility.ITestExtensionCollector
+  commentId: T:Metalama.Framework.Engine.Extensibility.ITestExtensionCollector
+  parent: Metalama.Framework.Engine.Extensibility
+  isExternal: true
+  name: ITestExtensionCollector
+  nameWithType: ITestExtensionCollector
+  fullName: Metalama.Framework.Engine.Extensibility.ITestExtensionCollector
+- uid: Metalama.Framework.Engine.Extensibility
+  commentId: N:Metalama.Framework.Engine.Extensibility
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.Extensibility
+  nameWithType: Metalama.Framework.Engine.Extensibility
+  fullName: Metalama.Framework.Engine.Extensibility
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Extensibility
+    name: Extensibility
+    isExternal: true
+    href: Metalama.Framework.Engine.Extensibility.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.Extensibility
+    name: Extensibility
+    isExternal: true
+    href: Metalama.Framework.Engine.Extensibility.html
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions.html#Metalama_Testing_UnitTesting_UnitTestClass_AddSyntaxGenerationOptions_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_
+  name: AddSyntaxGenerationOptions
+  nameWithType: UnitTestClass.AddSyntaxGenerationOptions
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler.html#Metalama_Testing_UnitTesting_UnitTestClass_AddExceptionHandler_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_
+  name: AddExceptionHandler
+  nameWithType: UnitTestClass.AddExceptionHandler
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateAdditionalServiceCollection_Metalama_Framework_Services_IService___
+  name: CreateAdditionalServiceCollection
+  nameWithType: UnitTestClass.CreateAdditionalServiceCollection
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection
+- uid: Metalama.Framework.Services.IService[]
+  isExternal: true
+  name: IService[]
+  nameWithType: IService[]
+  fullName: Metalama.Framework.Services.IService[]
+  nameWithType.vb: IService()
+  fullName.vb: Metalama.Framework.Services.IService()
+  name.vb: IService()
+  spec.csharp:
+  - uid: Metalama.Framework.Services.IService
+    name: IService
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Metalama.Framework.Services.IService
+    name: IService
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContext_System_String_System_String_
+  name: CreateTestContext
+  nameWithType: UnitTestClass.CreateTestContext
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateTestContextCore_Metalama_Testing_UnitTesting_TestContextOptions_Metalama_Framework_Engine_Services_IAdditionalServiceCollection_
+  name: CreateTestContextCore
+  nameWithType: UnitTestClass.CreateTestContextCore
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions.html#Metalama_Testing_UnitTesting_UnitTestClass_CreateDefaultTestContextOptions
+  name: CreateDefaultTestContextOptions
+  nameWithType: UnitTestClass.CreateDefaultTestContextOptions
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.Dispose*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.Dispose
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.Dispose.html#Metalama_Testing_UnitTesting_UnitTestClass_Dispose
+  name: Dispose
+  nameWithType: UnitTestClass.Dispose
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput*
+  commentId: Overload:Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput.html#Metalama_Testing_UnitTesting_UnitTestClass_TestOutput
+  name: TestOutput
+  nameWithType: UnitTestClass.TestOutput
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
+memberLayout: SeparatePages

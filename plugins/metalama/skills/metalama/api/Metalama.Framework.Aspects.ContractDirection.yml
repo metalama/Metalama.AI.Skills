@@ -1,0 +1,379 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.ContractDirection
+  commentId: T:Metalama.Framework.Aspects.ContractDirection
+  id: ContractDirection
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.ContractDirection.Both
+  - Metalama.Framework.Aspects.ContractDirection.Default
+  - Metalama.Framework.Aspects.ContractDirection.Input
+  - Metalama.Framework.Aspects.ContractDirection.None
+  - Metalama.Framework.Aspects.ContractDirection.Output
+  langs:
+  - csharp
+  - vb
+  name: ContractDirection
+  nameWithType: ContractDirection
+  fullName: Metalama.Framework.Aspects.ContractDirection
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Specifies the direction of the data flow to which a contract applies. Contracts can validate or transform values
+
+    at different points in the data flow: when values are received (input/preconditions), when values are returned (output/postconditions), or both.
+  remarks: >-
+    <p>
+        Understanding contract directions is crucial for implementing effective validation:
+        </p>
+    <ul><li>
+          <b>Input contracts</b> validate values coming into a method or being assigned to a property (preconditions).</li><li>
+          <b>Output contracts</b> validate values being returned from a method or property getter (postconditions).</li><li>
+          <b>Both</b> applies validation in both directions, useful for ref parameters.</li></ul>
+    <p>
+        The <xref href="Metalama.Framework.Aspects.ContractDirection.Default" data-throw-if-not-resolved="false"></xref> direction automatically selects the appropriate direction based on the target declaration type.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [RunTimeOrCompileTime]
+
+      public enum ContractDirection
+    content.vb: >-
+      <RunTimeOrCompileTime>
+
+      Public Enum ContractDirection
+  seealso:
+  - linkId: Metalama.Framework.Aspects.ContractAspect
+    commentId: T:Metalama.Framework.Aspects.ContractAspect
+  - linkId: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+    commentId: M:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
+  - linkType: HRef
+    linkId: '@contracts'
+    altText: '@contracts'
+  attributes:
+  - type: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.ContractDirection.None
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.None
+  id: None
+  parent: Metalama.Framework.Aspects.ContractDirection
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: ContractDirection.None
+  fullName: Metalama.Framework.Aspects.ContractDirection.None
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Disables the contract. The contract will not be applied.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Metalama.Framework.Aspects.ContractDirection
+- uid: Metalama.Framework.Aspects.ContractDirection.Default
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Default
+  id: Default
+  parent: Metalama.Framework.Aspects.ContractDirection
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: ContractDirection.Default
+  fullName: Metalama.Framework.Aspects.ContractDirection.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Uses the default direction based on the target declaration type:
+
+    <ul><li>For input and <code>ref</code> parameters: equivalent to <xref href="Metalama.Framework.Aspects.ContractDirection.Input" data-throw-if-not-resolved="false"></xref> (validates the value passed by the caller).</li><li>For fields and properties: equivalent to <xref href="Metalama.Framework.Aspects.ContractDirection.Input" data-throw-if-not-resolved="false"></xref> (validates the value being assigned via the setter).</li><li>For <code>out</code> parameters and return values: equivalent to <xref href="Metalama.Framework.Aspects.ContractDirection.Output" data-throw-if-not-resolved="false"></xref> (validates the value being returned to the caller).</li><li>For read-only properties or indexers: equivalent to <xref href="Metalama.Framework.Aspects.ContractDirection.Output" data-throw-if-not-resolved="false"></xref> (validates the value returned by the getter).</li></ul>
+  example: []
+  syntax:
+    content: Default = 1
+    return:
+      type: Metalama.Framework.Aspects.ContractDirection
+- uid: Metalama.Framework.Aspects.ContractDirection.Input
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Input
+  id: Input
+  parent: Metalama.Framework.Aspects.ContractDirection
+  langs:
+  - csharp
+  - vb
+  name: Input
+  nameWithType: ContractDirection.Input
+  fullName: Metalama.Framework.Aspects.ContractDirection.Input
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Validates the input data flow (precondition):
+
+    <ul><li>For parameters: validates the value <i>before</i> the method executes (caller must provide valid value).</li><li>For properties, indexers, and fields: validates the value <i>before</i> it is assigned (caller must assign valid value).</li></ul>
+
+    This is commonly used for parameter validation (e.g., null checks, range validation).
+  example: []
+  syntax:
+    content: Input = 2
+    return:
+      type: Metalama.Framework.Aspects.ContractDirection
+- uid: Metalama.Framework.Aspects.ContractDirection.Output
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Output
+  id: Output
+  parent: Metalama.Framework.Aspects.ContractDirection
+  langs:
+  - csharp
+  - vb
+  name: Output
+  nameWithType: ContractDirection.Output
+  fullName: Metalama.Framework.Aspects.ContractDirection.Output
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Validates the output data flow (postcondition):
+
+    <ul><li>For <code>out</code> or <code>ref</code> parameters: validates the value <i>after</i> the method executes (method must set valid value).</li><li>For return values: validates the value being returned (method must return valid value).</li><li>For property or indexer getters: validates the value being retrieved (getter must return valid value).</li><li>For fields: validates the value when the field is read (field must contain valid value).</li></ul>
+
+    This is commonly used for return value validation and ensuring methods fulfill their contracts.
+  example: []
+  syntax:
+    content: Output = 3
+    return:
+      type: Metalama.Framework.Aspects.ContractDirection
+- uid: Metalama.Framework.Aspects.ContractDirection.Both
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Both
+  id: Both
+  parent: Metalama.Framework.Aspects.ContractDirection
+  langs:
+  - csharp
+  - vb
+  name: Both
+  nameWithType: ContractDirection.Both
+  fullName: Metalama.Framework.Aspects.ContractDirection.Both
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Applies to both <xref href="Metalama.Framework.Aspects.ContractDirection.Input" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Aspects.ContractDirection.Output" data-throw-if-not-resolved="false"></xref> data flows. The contract validates:
+
+    <ul><li>Values coming in (preconditions)</li><li>Values going out (postconditions)</li></ul>
+
+    This is particularly useful for <code>ref</code> parameters where the value flows in both directions.
+  example: []
+  syntax:
+    content: Both = 4
+    return:
+      type: Metalama.Framework.Aspects.ContractDirection
+references:
+- uid: Metalama.Framework.Aspects.ContractAspect
+  commentId: T:Metalama.Framework.Aspects.ContractAspect
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractAspect.html
+  name: ContractAspect
+  nameWithType: ContractAspect
+  fullName: Metalama.Framework.Aspects.ContractAspect
+- uid: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+  commentId: M:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+  parent: Metalama.Framework.Aspects.ContractAspect
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection.html#Metalama_Framework_Aspects_ContractAspect_GetDefinedDirection_Metalama_Framework_Aspects_IAspectBuilder_
+  name: GetDefinedDirection(IAspectBuilder)
+  nameWithType: ContractAspect.GetDefinedDirection(IAspectBuilder)
+  fullName: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+    name: GetDefinedDirection
+    isExternal: true
+    href: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection.html#Metalama_Framework_Aspects_ContractAspect_GetDefinedDirection_Metalama_Framework_Aspects_IAspectBuilder_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
+    name: GetDefinedDirection
+    isExternal: true
+    href: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection.html#Metalama_Framework_Aspects_ContractAspect_GetDefinedDirection_Metalama_Framework_Aspects_IAspectBuilder_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder.html
+  - name: )
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddContract.html#Metalama_Framework_Aspects_AdviserExtensions_AddContract_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IParameter__System_String_Metalama_Framework_Aspects_ContractDirection_System_Object_System_Object_
+  name: AddContract(IAdviser<IParameter>, string, ContractDirection, object, object)
+  nameWithType: AdviserExtensions.AddContract(IAdviser<IParameter>, string, ContractDirection, object, object)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IParameter>, string, Metalama.Framework.Aspects.ContractDirection, object, object)
+  nameWithType.vb: AdviserExtensions.AddContract(IAdviser(Of IParameter), String, ContractDirection, Object, Object)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IParameter), String, Metalama.Framework.Aspects.ContractDirection, Object, Object)
+  name.vb: AddContract(IAdviser(Of IParameter), String, ContractDirection, Object, Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
+    name: AddContract
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddContract.html#Metalama_Framework_Aspects_AdviserExtensions_AddContract_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IParameter__System_String_Metalama_Framework_Aspects_ContractDirection_System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+    href: Metalama.Framework.Code.IParameter.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.ContractDirection
+    name: ContractDirection
+    isExternal: true
+    href: Metalama.Framework.Aspects.ContractDirection.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
+    name: AddContract
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddContract.html#Metalama_Framework_Aspects_AdviserExtensions_AddContract_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IParameter__System_String_Metalama_Framework_Aspects_ContractDirection_System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+    href: Metalama.Framework.Code.IParameter.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.ContractDirection
+    name: ContractDirection
+    isExternal: true
+    href: Metalama.Framework.Aspects.ContractDirection.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects.ContractDirection.Default
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Default
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractDirection.html#Metalama_Framework_Aspects_ContractDirection_Default
+  name: Default
+  nameWithType: ContractDirection.Default
+  fullName: Metalama.Framework.Aspects.ContractDirection.Default
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Aspects.ContractDirection
+  commentId: T:Metalama.Framework.Aspects.ContractDirection
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractDirection.html
+  name: ContractDirection
+  nameWithType: ContractDirection
+  fullName: Metalama.Framework.Aspects.ContractDirection
+- uid: Metalama.Framework.Aspects.ContractDirection.Input
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Input
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractDirection.html#Metalama_Framework_Aspects_ContractDirection_Input
+  name: Input
+  nameWithType: ContractDirection.Input
+  fullName: Metalama.Framework.Aspects.ContractDirection.Input
+- uid: Metalama.Framework.Aspects.ContractDirection.Output
+  commentId: F:Metalama.Framework.Aspects.ContractDirection.Output
+  isExternal: true
+  href: Metalama.Framework.Aspects.ContractDirection.html#Metalama_Framework_Aspects_ContractDirection_Output
+  name: Output
+  nameWithType: ContractDirection.Output
+  fullName: Metalama.Framework.Aspects.ContractDirection.Output
+memberLayout: SeparatePages

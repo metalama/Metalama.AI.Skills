@@ -1,0 +1,968 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.SerializableDeclarationId
+  commentId: T:Metalama.Framework.Code.SerializableDeclarationId
+  id: SerializableDeclarationId
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
+  - Metalama.Framework.Code.SerializableDeclarationId.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  - Metalama.Framework.Code.SerializableDeclarationId.Equals(System.Object)
+  - Metalama.Framework.Code.SerializableDeclarationId.GetHashCode
+  - Metalama.Framework.Code.SerializableDeclarationId.Id
+  - Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  - Metalama.Framework.Code.SerializableDeclarationId.ToString
+  - Metalama.Framework.Code.SerializableDeclarationId.op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  - Metalama.Framework.Code.SerializableDeclarationId.op_Inequality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  langs:
+  - csharp
+  - vb
+  name: SerializableDeclarationId
+  nameWithType: SerializableDeclarationId
+  fullName: Metalama.Framework.Code.SerializableDeclarationId
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Encapsulates a string that uniquely identifies a declaration within a compilation and that is safe to persist in a file
+
+    or serialize across processes.
+  remarks: >-
+    <p>
+        This struct provides a lightweight, string-based identifier for declarations that can be serialized to disk or transmitted
+        across processes. Unlike <xref href="Metalama.Framework.Code.IRef%601" data-throw-if-not-resolved="false"></xref>, which maintains a reference to the declaration, this struct stores only
+        the string identifier.
+        </p>
+    <p>
+        To obtain a <xref href="Metalama.Framework.Code.SerializableDeclarationId" data-throw-if-not-resolved="false"></xref>, call <xref href="Metalama.Framework.Code.IDeclaration.ToSerializableId" data-throw-if-not-resolved="false"></xref> or
+        <xref href="Metalama.Framework.Code.IRef.ToSerializableId" data-throw-if-not-resolved="false"></xref>. To resolve the identifier back to a declaration, call
+        <xref href="Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)" data-throw-if-not-resolved="false"></xref>.
+        </p>
+    <p>
+      <b>Limitation:</b> The identifier may not be unique if the compilation contains several assemblies providing types
+        with the same fully qualified name.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct SerializableDeclarationId : IEquatable<SerializableDeclarationId>
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure SerializableDeclarationId Implements IEquatable(Of SerializableDeclarationId)
+  seealso:
+  - linkId: Metalama.Framework.Code.SerializableTypeId
+    commentId: T:Metalama.Framework.Code.SerializableTypeId
+  - linkId: Metalama.Framework.Code.IRef`1
+    commentId: T:Metalama.Framework.Code.IRef`1
+  - linkId: Metalama.Framework.Code.IDeclaration.ToSerializableId
+    commentId: M:Metalama.Framework.Code.IDeclaration.ToSerializableId
+  - linkType: HRef
+    linkId: '@aspect-serialization'
+    altText: '@aspect-serialization'
+  implements:
+  - System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: SerializableDeclarationId(string)
+  nameWithType: SerializableDeclarationId.SerializableDeclarationId(string)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.SerializableDeclarationId(string)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Code.SerializableDeclarationId" data-throw-if-not-resolved="false"></xref> struct with the specified identifier string.
+  example: []
+  syntax:
+    content: public SerializableDeclarationId(string id)
+    parameters:
+    - id: id
+      type: System.String
+      description: The string identifier for the declaration.
+    content.vb: Public Sub New(id As String)
+  overload: Metalama.Framework.Code.SerializableDeclarationId.#ctor*
+  nameWithType.vb: SerializableDeclarationId.New(String)
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.New(String)
+  name.vb: New(String)
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  id: Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: Equals(SerializableDeclarationId)
+  nameWithType: SerializableDeclarationId.Equals(SerializableDeclarationId)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  example: []
+  syntax:
+    content: public bool Equals(SerializableDeclarationId other)
+    parameters:
+    - id: other
+      type: Metalama.Framework.Code.SerializableDeclarationId
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As SerializableDeclarationId) As Boolean
+  overload: Metalama.Framework.Code.SerializableDeclarationId.Equals*
+  implements:
+  - System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Equals(System.Object)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: SerializableDeclarationId.Equals(object?)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Equals(object?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Metalama.Framework.Code.SerializableDeclarationId.Equals*
+  nameWithType.vb: SerializableDeclarationId.Equals(Object)
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.GetHashCode
+  id: GetHashCode
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: SerializableDeclarationId.GetHashCode()
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode*
+- uid: Metalama.Framework.Code.SerializableDeclarationId.op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  id: op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: operator ==(SerializableDeclarationId, SerializableDeclarationId)
+  nameWithType: SerializableDeclarationId.operator ==(SerializableDeclarationId, SerializableDeclarationId)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.operator ==(Metalama.Framework.Code.SerializableDeclarationId, Metalama.Framework.Code.SerializableDeclarationId)
+  type: Operator
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines whether two <xref href="Metalama.Framework.Code.SerializableDeclarationId" data-throw-if-not-resolved="false"></xref> instances are equal.
+  example: []
+  syntax:
+    content: public static bool operator ==(SerializableDeclarationId left, SerializableDeclarationId right)
+    parameters:
+    - id: left
+      type: Metalama.Framework.Code.SerializableDeclarationId
+    - id: right
+      type: Metalama.Framework.Code.SerializableDeclarationId
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(left As SerializableDeclarationId, right As SerializableDeclarationId) As Boolean
+  overload: Metalama.Framework.Code.SerializableDeclarationId.op_Equality*
+  nameWithType.vb: SerializableDeclarationId.=(SerializableDeclarationId, SerializableDeclarationId)
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.=(Metalama.Framework.Code.SerializableDeclarationId, Metalama.Framework.Code.SerializableDeclarationId)
+  name.vb: =(SerializableDeclarationId, SerializableDeclarationId)
+- uid: Metalama.Framework.Code.SerializableDeclarationId.op_Inequality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.op_Inequality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  id: op_Inequality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: operator !=(SerializableDeclarationId, SerializableDeclarationId)
+  nameWithType: SerializableDeclarationId.operator !=(SerializableDeclarationId, SerializableDeclarationId)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.operator !=(Metalama.Framework.Code.SerializableDeclarationId, Metalama.Framework.Code.SerializableDeclarationId)
+  type: Operator
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines whether two <xref href="Metalama.Framework.Code.SerializableDeclarationId" data-throw-if-not-resolved="false"></xref> instances are not equal.
+  example: []
+  syntax:
+    content: public static bool operator !=(SerializableDeclarationId left, SerializableDeclarationId right)
+    parameters:
+    - id: left
+      type: Metalama.Framework.Code.SerializableDeclarationId
+    - id: right
+      type: Metalama.Framework.Code.SerializableDeclarationId
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(left As SerializableDeclarationId, right As SerializableDeclarationId) As Boolean
+  overload: Metalama.Framework.Code.SerializableDeclarationId.op_Inequality*
+  nameWithType.vb: SerializableDeclarationId.<>(SerializableDeclarationId, SerializableDeclarationId)
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.<>(Metalama.Framework.Code.SerializableDeclarationId, Metalama.Framework.Code.SerializableDeclarationId)
+  name.vb: <>(SerializableDeclarationId, SerializableDeclarationId)
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  id: Resolve(Metalama.Framework.Code.ICompilation)
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: Resolve(ICompilation)
+  nameWithType: SerializableDeclarationId.Resolve(ICompilation)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Resolves this identifier to the corresponding <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref> in the specified compilation.
+  example: []
+  syntax:
+    content: public IDeclaration Resolve(ICompilation compilation)
+    parameters:
+    - id: compilation
+      type: Metalama.Framework.Code.ICompilation
+      description: The compilation in which to resolve the declaration.
+    return:
+      type: Metalama.Framework.Code.IDeclaration
+      description: The resolved declaration.
+    content.vb: Public Function Resolve(compilation As ICompilation) As IDeclaration
+  overload: Metalama.Framework.Code.SerializableDeclarationId.Resolve*
+- uid: Metalama.Framework.Code.SerializableDeclarationId.ToString
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.ToString
+  id: ToString
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: SerializableDeclarationId.ToString()
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.ToString()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Metalama.Framework.Code.SerializableDeclarationId.ToString*
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Id
+  commentId: P:Metalama.Framework.Code.SerializableDeclarationId.Id
+  id: Id
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: SerializableDeclarationId.Id
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Id
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the string identifier for this declaration.
+  example: []
+  syntax:
+    content: public string Id { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Id As String
+  overload: Metalama.Framework.Code.SerializableDeclarationId.Id*
+references:
+- uid: Metalama.Framework.Code.SerializableTypeId
+  commentId: T:Metalama.Framework.Code.SerializableTypeId
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableTypeId.html
+  name: SerializableTypeId
+  nameWithType: SerializableTypeId
+  fullName: Metalama.Framework.Code.SerializableTypeId
+- uid: Metalama.Framework.Code.IRef`1
+  commentId: T:Metalama.Framework.Code.IRef`1
+  isExternal: true
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<T>
+  nameWithType: IRef<T>
+  fullName: Metalama.Framework.Code.IRef<T>
+  nameWithType.vb: IRef(Of T)
+  fullName.vb: Metalama.Framework.Code.IRef(Of T)
+  name.vb: IRef(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.IDeclaration.ToSerializableId
+  commentId: M:Metalama.Framework.Code.IDeclaration.ToSerializableId
+  parent: Metalama.Framework.Code.IDeclaration
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.ToSerializableId.html#Metalama_Framework_Code_IDeclaration_ToSerializableId
+  name: ToSerializableId()
+  nameWithType: IDeclaration.ToSerializableId()
+  fullName: Metalama.Framework.Code.IDeclaration.ToSerializableId()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IDeclaration.ToSerializableId
+    name: ToSerializableId
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.ToSerializableId.html#Metalama_Framework_Code_IDeclaration_ToSerializableId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IDeclaration.ToSerializableId
+    name: ToSerializableId
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.ToSerializableId.html#Metalama_Framework_Code_IDeclaration_ToSerializableId
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SerializableDeclarationId
+  commentId: T:Metalama.Framework.Code.SerializableDeclarationId
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.html
+  name: SerializableDeclarationId
+  nameWithType: SerializableDeclarationId
+  fullName: Metalama.Framework.Code.SerializableDeclarationId
+- uid: Metalama.Framework.Code.IRef.ToSerializableId
+  commentId: M:Metalama.Framework.Code.IRef.ToSerializableId
+  parent: Metalama.Framework.Code.IRef
+  isExternal: true
+  href: Metalama.Framework.Code.IRef.ToSerializableId.html#Metalama_Framework_Code_IRef_ToSerializableId
+  name: ToSerializableId()
+  nameWithType: IRef.ToSerializableId()
+  fullName: Metalama.Framework.Code.IRef.ToSerializableId()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef.ToSerializableId
+    name: ToSerializableId
+    isExternal: true
+    href: Metalama.Framework.Code.IRef.ToSerializableId.html#Metalama_Framework_Code_IRef_ToSerializableId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef.ToSerializableId
+    name: ToSerializableId
+    isExternal: true
+    href: Metalama.Framework.Code.IRef.ToSerializableId.html#Metalama_Framework_Code_IRef_ToSerializableId
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.Resolve.html#Metalama_Framework_Code_SerializableDeclarationId_Resolve_Metalama_Framework_Code_ICompilation_
+  name: Resolve(ICompilation)
+  nameWithType: SerializableDeclarationId.Resolve(ICompilation)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+    name: Resolve
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.Resolve.html#Metalama_Framework_Code_SerializableDeclarationId_Resolve_Metalama_Framework_Code_ICompilation_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SerializableDeclarationId.Resolve(Metalama.Framework.Code.ICompilation)
+    name: Resolve
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.Resolve.html#Metalama_Framework_Code_SerializableDeclarationId_Resolve_Metalama_Framework_Code_ICompilation_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: )
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId.html#Metalama_Framework_Code_IDeclarationFactory_GetDeclarationFromId_Metalama_Framework_Code_SerializableDeclarationId_
+  name: GetDeclarationFromId(SerializableDeclarationId)
+  nameWithType: IDeclarationFactory.GetDeclarationFromId(SerializableDeclarationId)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+    name: GetDeclarationFromId
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId.html#Metalama_Framework_Code_IDeclarationFactory_GetDeclarationFromId_Metalama_Framework_Code_SerializableDeclarationId_
+  - name: (
+  - uid: Metalama.Framework.Code.SerializableDeclarationId
+    name: SerializableDeclarationId
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+    name: GetDeclarationFromId
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId.html#Metalama_Framework_Code_IDeclarationFactory_GetDeclarationFromId_Metalama_Framework_Code_SerializableDeclarationId_
+  - name: (
+  - uid: Metalama.Framework.Code.SerializableDeclarationId
+    name: SerializableDeclarationId
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.html
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}
+  commentId: T:System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<SerializableDeclarationId>
+  nameWithType: IEquatable<SerializableDeclarationId>
+  fullName: System.IEquatable<Metalama.Framework.Code.SerializableDeclarationId>
+  nameWithType.vb: IEquatable(Of SerializableDeclarationId)
+  fullName.vb: System.IEquatable(Of Metalama.Framework.Code.SerializableDeclarationId)
+  name.vb: IEquatable(Of SerializableDeclarationId)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Metalama.Framework.Code.SerializableDeclarationId
+    name: SerializableDeclarationId
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.SerializableDeclarationId
+    name: SerializableDeclarationId
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.html
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Code.IRef
+  commentId: T:Metalama.Framework.Code.IRef
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IRef.html
+  name: IRef
+  nameWithType: IRef
+  fullName: Metalama.Framework.Code.IRef
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Metalama.Framework.Code.SerializableDeclarationId.#ctor*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.#ctor
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.-ctor.html#Metalama_Framework_Code_SerializableDeclarationId__ctor_System_String_
+  name: SerializableDeclarationId
+  nameWithType: SerializableDeclarationId.SerializableDeclarationId
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.SerializableDeclarationId
+  nameWithType.vb: SerializableDeclarationId.New
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Equals*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.Equals
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.Equals.html#Metalama_Framework_Code_SerializableDeclarationId_Equals_Metalama_Framework_Code_SerializableDeclarationId_
+  name: Equals
+  nameWithType: SerializableDeclarationId.Equals
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Equals
+- uid: System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  parent: System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(SerializableDeclarationId)
+  nameWithType: IEquatable<SerializableDeclarationId>.Equals(SerializableDeclarationId)
+  fullName: System.IEquatable<Metalama.Framework.Code.SerializableDeclarationId>.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  nameWithType.vb: IEquatable(Of SerializableDeclarationId).Equals(SerializableDeclarationId)
+  fullName.vb: System.IEquatable(Of Metalama.Framework.Code.SerializableDeclarationId).Equals(Metalama.Framework.Code.SerializableDeclarationId)
+  spec.csharp:
+  - uid: System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Metalama.Framework.Code.SerializableDeclarationId
+    name: SerializableDeclarationId
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}.Equals(Metalama.Framework.Code.SerializableDeclarationId)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Metalama.Framework.Code.SerializableDeclarationId
+    name: SerializableDeclarationId
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.GetHashCode
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode.html#Metalama_Framework_Code_SerializableDeclarationId_GetHashCode
+  name: GetHashCode
+  nameWithType: SerializableDeclarationId.GetHashCode
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Metalama.Framework.Code.SerializableDeclarationId.op_Equality*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.op_Equality
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.op_Equality.html#Metalama_Framework_Code_SerializableDeclarationId_op_Equality_Metalama_Framework_Code_SerializableDeclarationId_Metalama_Framework_Code_SerializableDeclarationId_
+  name: operator ==
+  nameWithType: SerializableDeclarationId.operator ==
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.operator ==
+  nameWithType.vb: SerializableDeclarationId.=
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Metalama.Framework.Code.SerializableDeclarationId.op_Equality*
+    name: ==
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.op_Equality.html#Metalama_Framework_Code_SerializableDeclarationId_op_Equality_Metalama_Framework_Code_SerializableDeclarationId_Metalama_Framework_Code_SerializableDeclarationId_
+- uid: Metalama.Framework.Code.SerializableDeclarationId.op_Inequality*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.op_Inequality
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.op_Inequality.html#Metalama_Framework_Code_SerializableDeclarationId_op_Inequality_Metalama_Framework_Code_SerializableDeclarationId_Metalama_Framework_Code_SerializableDeclarationId_
+  name: operator !=
+  nameWithType: SerializableDeclarationId.operator !=
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.operator !=
+  nameWithType.vb: SerializableDeclarationId.<>
+  fullName.vb: Metalama.Framework.Code.SerializableDeclarationId.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Metalama.Framework.Code.SerializableDeclarationId.op_Inequality*
+    name: '!='
+    isExternal: true
+    href: Metalama.Framework.Code.SerializableDeclarationId.op_Inequality.html#Metalama_Framework_Code_SerializableDeclarationId_op_Inequality_Metalama_Framework_Code_SerializableDeclarationId_Metalama_Framework_Code_SerializableDeclarationId_
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Resolve*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.Resolve
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.Resolve.html#Metalama_Framework_Code_SerializableDeclarationId_Resolve_Metalama_Framework_Code_ICompilation_
+  name: Resolve
+  nameWithType: SerializableDeclarationId.Resolve
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Resolve
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.SerializableDeclarationId.ToString*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.ToString
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.ToString.html#Metalama_Framework_Code_SerializableDeclarationId_ToString
+  name: ToString
+  nameWithType: SerializableDeclarationId.ToString
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.ToString
+- uid: Metalama.Framework.Code.SerializableDeclarationId.Id*
+  commentId: Overload:Metalama.Framework.Code.SerializableDeclarationId.Id
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.Id.html#Metalama_Framework_Code_SerializableDeclarationId_Id
+  name: Id
+  nameWithType: SerializableDeclarationId.Id
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.Id
+memberLayout: SeparatePages

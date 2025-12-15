@@ -1,0 +1,705 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Project.IExecutionContext
+  commentId: T:Metalama.Framework.Project.IExecutionContext
+  id: IExecutionContext
+  parent: Metalama.Framework.Project
+  children:
+  - Metalama.Framework.Project.IExecutionContext.Compilation
+  - Metalama.Framework.Project.IExecutionContext.ExecutionScenario
+  - Metalama.Framework.Project.IExecutionContext.FormatProvider
+  - Metalama.Framework.Project.IExecutionContext.ServiceProvider
+  - Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection
+  langs:
+  - csharp
+  - vb
+  name: IExecutionContext
+  nameWithType: IExecutionContext
+  fullName: Metalama.Framework.Project.IExecutionContext
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Represents the execution context of Metalama. Exposed by the <xref href="Metalama.Framework.Project.MetalamaExecutionContext.Current" data-throw-if-not-resolved="false"></xref> property of <xref href="Metalama.Framework.Project.MetalamaExecutionContext" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [InternalImplement]
+
+      [CompileTime]
+
+      public interface IExecutionContext
+    content.vb: >-
+      <InternalImplement>
+
+      <CompileTime>
+
+      Public Interface IExecutionContext
+  seealso:
+  - linkId: Metalama.Framework.Project.MetalamaExecutionContext
+    commentId: T:Metalama.Framework.Project.MetalamaExecutionContext
+  - linkId: Metalama.Framework.Project.IProject
+    commentId: T:Metalama.Framework.Project.IProject
+  - linkId: Metalama.Framework.Code.ICompilation
+    commentId: T:Metalama.Framework.Code.ICompilation
+  - linkId: Metalama.Framework.Project.IExecutionScenario
+    commentId: T:Metalama.Framework.Project.IExecutionScenario
+  extensionMethods:
+  - Metalama.Framework.Project.IExecutionContext.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Project.IExecutionContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionContext}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection
+  commentId: M:Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection
+  id: WithoutDependencyCollection
+  parent: Metalama.Framework.Project.IExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: WithoutDependencyCollection()
+  nameWithType: IExecutionContext.WithoutDependencyCollection()
+  fullName: Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Disables the mechanism of dependency collection in the current execution context.
+  example: []
+  syntax:
+    content: IDisposable WithoutDependencyCollection()
+    return:
+      type: System.IDisposable
+      description: A cookie that must be restored to restore the execution context to its original state.
+    content.vb: Function WithoutDependencyCollection() As IDisposable
+  overload: Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection*
+- uid: Metalama.Framework.Project.IExecutionContext.ServiceProvider
+  commentId: P:Metalama.Framework.Project.IExecutionContext.ServiceProvider
+  id: ServiceProvider
+  parent: Metalama.Framework.Project.IExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: ServiceProvider
+  nameWithType: IExecutionContext.ServiceProvider
+  fullName: Metalama.Framework.Project.IExecutionContext.ServiceProvider
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the <xref href="System.IServiceProvider" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IServiceProvider<IProjectService> ServiceProvider { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Services.IServiceProvider{Metalama.Framework.Services.IProjectService}
+    content.vb: ReadOnly Property ServiceProvider As IServiceProvider(Of IProjectService)
+  overload: Metalama.Framework.Project.IExecutionContext.ServiceProvider*
+- uid: Metalama.Framework.Project.IExecutionContext.FormatProvider
+  commentId: P:Metalama.Framework.Project.IExecutionContext.FormatProvider
+  id: FormatProvider
+  parent: Metalama.Framework.Project.IExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: FormatProvider
+  nameWithType: IExecutionContext.FormatProvider
+  fullName: Metalama.Framework.Project.IExecutionContext.FormatProvider
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: >-
+    Gets the <xref href="System.IFormatProvider" data-throw-if-not-resolved="false"></xref>, used to format formattable strings. This format provider will properly format elements of the code model
+
+    and other similar objects.
+  example: []
+  syntax:
+    content: IFormatProvider FormatProvider { get; }
+    parameters: []
+    return:
+      type: System.IFormatProvider
+    content.vb: ReadOnly Property FormatProvider As IFormatProvider
+  overload: Metalama.Framework.Project.IExecutionContext.FormatProvider*
+- uid: Metalama.Framework.Project.IExecutionContext.Compilation
+  commentId: P:Metalama.Framework.Project.IExecutionContext.Compilation
+  id: Compilation
+  parent: Metalama.Framework.Project.IExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Compilation
+  nameWithType: IExecutionContext.Compilation
+  fullName: Metalama.Framework.Project.IExecutionContext.Compilation
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets the current compilation.
+  example: []
+  syntax:
+    content: ICompilation Compilation { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.ICompilation
+    content.vb: ReadOnly Property Compilation As ICompilation
+  overload: Metalama.Framework.Project.IExecutionContext.Compilation*
+- uid: Metalama.Framework.Project.IExecutionContext.ExecutionScenario
+  commentId: P:Metalama.Framework.Project.IExecutionContext.ExecutionScenario
+  id: ExecutionScenario
+  parent: Metalama.Framework.Project.IExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: ExecutionScenario
+  nameWithType: IExecutionContext.ExecutionScenario
+  fullName: Metalama.Framework.Project.IExecutionContext.ExecutionScenario
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Project
+  summary: Gets information about why the current code is executed and what are the abilities of the current execution context.
+  example: []
+  syntax:
+    content: IExecutionScenario ExecutionScenario { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Project.IExecutionScenario
+    content.vb: ReadOnly Property ExecutionScenario As IExecutionScenario
+  overload: Metalama.Framework.Project.IExecutionContext.ExecutionScenario*
+references:
+- uid: Metalama.Framework.Project.MetalamaExecutionContext
+  commentId: T:Metalama.Framework.Project.MetalamaExecutionContext
+  isExternal: true
+  href: Metalama.Framework.Project.MetalamaExecutionContext.html
+  name: MetalamaExecutionContext
+  nameWithType: MetalamaExecutionContext
+  fullName: Metalama.Framework.Project.MetalamaExecutionContext
+- uid: Metalama.Framework.Project.IProject
+  commentId: T:Metalama.Framework.Project.IProject
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.html
+  name: IProject
+  nameWithType: IProject
+  fullName: Metalama.Framework.Project.IProject
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Project.IExecutionScenario
+  commentId: T:Metalama.Framework.Project.IExecutionScenario
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionScenario.html
+  name: IExecutionScenario
+  nameWithType: IExecutionScenario
+  fullName: Metalama.Framework.Project.IExecutionScenario
+- uid: Metalama.Framework.Project.MetalamaExecutionContext.Current
+  commentId: P:Metalama.Framework.Project.MetalamaExecutionContext.Current
+  isExternal: true
+  href: Metalama.Framework.Project.MetalamaExecutionContext.Current.html#Metalama_Framework_Project_MetalamaExecutionContext_Current
+  name: Current
+  nameWithType: MetalamaExecutionContext.Current
+  fullName: Metalama.Framework.Project.MetalamaExecutionContext.Current
+- uid: Metalama.Framework.Project
+  commentId: N:Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Project
+  nameWithType: Metalama.Framework.Project
+  fullName: Metalama.Framework.Project
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+- uid: Metalama.Framework.Project.IExecutionContext.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Project.IExecutionContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionContext}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IExecutionContext>(IExecutionContext, Func<IExecutionContext, IEnumerable<IExecutionContext>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IExecutionContext>(IExecutionContext, Func<IExecutionContext, IEnumerable<IExecutionContext>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Project.IExecutionContext>(Metalama.Framework.Project.IExecutionContext, System.Func<Metalama.Framework.Project.IExecutionContext, System.Collections.Generic.IEnumerable<Metalama.Framework.Project.IExecutionContext>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IExecutionContext)(IExecutionContext, Func(Of IExecutionContext, IEnumerable(Of IExecutionContext)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Project.IExecutionContext)(Metalama.Framework.Project.IExecutionContext, System.Func(Of Metalama.Framework.Project.IExecutionContext, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Project.IExecutionContext)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IExecutionContext)(IExecutionContext, Func(Of IExecutionContext, IEnumerable(Of IExecutionContext)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Project.IExecutionContext,System.Func{Metalama.Framework.Project.IExecutionContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionContext}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Project.IExecutionContext,System.Func{Metalama.Framework.Project.IExecutionContext,System.Collections.Generic.IEnumerable{Metalama.Framework.Project.IExecutionContext}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Project.IExecutionContext
+    name: IExecutionContext
+    isExternal: true
+    href: Metalama.Framework.Project.IExecutionContext.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection*
+  commentId: Overload:Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection.html#Metalama_Framework_Project_IExecutionContext_WithoutDependencyCollection
+  name: WithoutDependencyCollection
+  nameWithType: IExecutionContext.WithoutDependencyCollection
+  fullName: Metalama.Framework.Project.IExecutionContext.WithoutDependencyCollection
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IServiceProvider
+  commentId: T:System.IServiceProvider
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
+  name: IServiceProvider
+  nameWithType: IServiceProvider
+  fullName: System.IServiceProvider
+- uid: Metalama.Framework.Project.IExecutionContext.ServiceProvider*
+  commentId: Overload:Metalama.Framework.Project.IExecutionContext.ServiceProvider
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.ServiceProvider.html#Metalama_Framework_Project_IExecutionContext_ServiceProvider
+  name: ServiceProvider
+  nameWithType: IExecutionContext.ServiceProvider
+  fullName: Metalama.Framework.Project.IExecutionContext.ServiceProvider
+- uid: Metalama.Framework.Services.IServiceProvider{Metalama.Framework.Services.IProjectService}
+  commentId: T:Metalama.Framework.Services.IServiceProvider{Metalama.Framework.Services.IProjectService}
+  parent: Metalama.Framework.Services
+  definition: Metalama.Framework.Services.IServiceProvider`1
+  href: Metalama.Framework.Services.IServiceProvider-1.html
+  name: IServiceProvider<IProjectService>
+  nameWithType: IServiceProvider<IProjectService>
+  fullName: Metalama.Framework.Services.IServiceProvider<Metalama.Framework.Services.IProjectService>
+  nameWithType.vb: IServiceProvider(Of IProjectService)
+  fullName.vb: Metalama.Framework.Services.IServiceProvider(Of Metalama.Framework.Services.IProjectService)
+  name.vb: IServiceProvider(Of IProjectService)
+  spec.csharp:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: <
+  - uid: Metalama.Framework.Services.IProjectService
+    name: IProjectService
+    isExternal: true
+    href: Metalama.Framework.Services.IProjectService.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Services.IProjectService
+    name: IProjectService
+    isExternal: true
+    href: Metalama.Framework.Services.IProjectService.html
+  - name: )
+- uid: Metalama.Framework.Services.IServiceProvider`1
+  commentId: T:Metalama.Framework.Services.IServiceProvider`1
+  isExternal: true
+  href: Metalama.Framework.Services.IServiceProvider-1.html
+  name: IServiceProvider<TBase>
+  nameWithType: IServiceProvider<TBase>
+  fullName: Metalama.Framework.Services.IServiceProvider<TBase>
+  nameWithType.vb: IServiceProvider(Of TBase)
+  fullName.vb: Metalama.Framework.Services.IServiceProvider(Of TBase)
+  name.vb: IServiceProvider(Of TBase)
+  spec.csharp:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: <
+  - name: TBase
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Services.IServiceProvider`1
+    name: IServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Services.IServiceProvider-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBase
+  - name: )
+- uid: Metalama.Framework.Services
+  commentId: N:Metalama.Framework.Services
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Services
+  nameWithType: Metalama.Framework.Services
+  fullName: Metalama.Framework.Services
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Services.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Services
+    name: Services
+    isExternal: true
+    href: Metalama.Framework.Services.html
+- uid: System.IFormatProvider
+  commentId: T:System.IFormatProvider
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iformatprovider
+  name: IFormatProvider
+  nameWithType: IFormatProvider
+  fullName: System.IFormatProvider
+- uid: Metalama.Framework.Project.IExecutionContext.FormatProvider*
+  commentId: Overload:Metalama.Framework.Project.IExecutionContext.FormatProvider
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.FormatProvider.html#Metalama_Framework_Project_IExecutionContext_FormatProvider
+  name: FormatProvider
+  nameWithType: IExecutionContext.FormatProvider
+  fullName: Metalama.Framework.Project.IExecutionContext.FormatProvider
+- uid: Metalama.Framework.Project.IExecutionContext.Compilation*
+  commentId: Overload:Metalama.Framework.Project.IExecutionContext.Compilation
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.Compilation.html#Metalama_Framework_Project_IExecutionContext_Compilation
+  name: Compilation
+  nameWithType: IExecutionContext.Compilation
+  fullName: Metalama.Framework.Project.IExecutionContext.Compilation
+- uid: Metalama.Framework.Project.IExecutionContext.ExecutionScenario*
+  commentId: Overload:Metalama.Framework.Project.IExecutionContext.ExecutionScenario
+  isExternal: true
+  href: Metalama.Framework.Project.IExecutionContext.ExecutionScenario.html#Metalama_Framework_Project_IExecutionContext_ExecutionScenario
+  name: ExecutionScenario
+  nameWithType: IExecutionContext.ExecutionScenario
+  fullName: Metalama.Framework.Project.IExecutionContext.ExecutionScenario
+memberLayout: SeparatePages

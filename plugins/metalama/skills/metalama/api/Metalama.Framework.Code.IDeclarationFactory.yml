@@ -1,0 +1,1375 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.IDeclarationFactory
+  commentId: T:Metalama.Framework.Code.IDeclarationFactory
+  id: IDeclarationFactory
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter})
+  - Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType})
+  - Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.Type})
+  - Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}})
+  - Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}})
+  - Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  - Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType(System.Type)
+  - Metalama.Framework.Code.IDeclarationFactory.GetSpecialType(Metalama.Framework.Code.SpecialType)
+  - Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName(System.String)
+  - Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType(System.Type)
+  - Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId(Metalama.Framework.Code.SerializableTypeId,System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType})
+  - Metalama.Framework.Code.IDeclarationFactory.Translate``1(``0,Metalama.Framework.Code.IGenericContext)
+  langs:
+  - csharp
+  - vb
+  name: IDeclarationFactory
+  nameWithType: IDeclarationFactory
+  fullName: Metalama.Framework.Code.IDeclarationFactory
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Allows to get instances of the <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref> interface or to test for type equality or inheritance.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public interface IDeclarationFactory
+    content.vb: >-
+      <CompileTime>
+
+      Public Interface IDeclarationFactory
+  seealso:
+  - linkId: Metalama.Framework.Code.IType
+    commentId: T:Metalama.Framework.Code.IType
+  - linkId: Metalama.Framework.Code.INamedType
+    commentId: T:Metalama.Framework.Code.INamedType
+  - linkId: Metalama.Framework.Code.TypeFactory
+    commentId: T:Metalama.Framework.Code.TypeFactory
+  - linkId: Metalama.Framework.Code.ICompilation
+    commentId: T:Metalama.Framework.Code.ICompilation
+  extensionMethods:
+  - Metalama.Framework.Code.IDeclarationFactory.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IDeclarationFactory,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclarationFactory}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName(System.String)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName(System.String)
+  id: GetTypeByReflectionName(System.String)
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: GetTypeByReflectionName(string)
+  nameWithType: IDeclarationFactory.GetTypeByReflectionName(string)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName(string)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Get type based on its full name, as used in reflection.
+  remarks: >-
+    <p>
+        For nested types, this means using <code>+</code>, e.g. to get <xref href="System.Environment.SpecialFolder" data-throw-if-not-resolved="false"></xref>, use <code>System.Environment+SpecialFolder</code>.
+        </p>
+    <p>
+        For generic type definitions, this requires using <code>`</code>, e.g. to get <code>List&lt;T&gt;</code>, use <code>System.Collections.Generic.List`1</code>.
+        </p>
+    <p>
+        Constructed generic types (e.g. <code>List&lt;int&gt;</code>) are not supported, for those, use <xref href="Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod%2cMetalama.Framework.Code.IType%5b%5d)" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: INamedType GetTypeByReflectionName(string reflectionName)
+    parameters:
+    - id: reflectionName
+      type: System.String
+    return:
+      type: Metalama.Framework.Code.INamedType
+    content.vb: Function GetTypeByReflectionName(reflectionName As String) As INamedType
+  overload: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName*
+  nameWithType.vb: IDeclarationFactory.GetTypeByReflectionName(String)
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName(String)
+  name.vb: GetTypeByReflectionName(String)
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType(System.Type)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType(System.Type)
+  id: GetTypeByReflectionType(System.Type)
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: GetTypeByReflectionType(Type)
+  nameWithType: IDeclarationFactory.GetTypeByReflectionType(Type)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets an <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref> given a reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IType GetTypeByReflectionType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+    return:
+      type: Metalama.Framework.Code.IType
+    content.vb: Function GetTypeByReflectionType(type As Type) As IType
+  overload: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType*
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType(System.Type)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType(System.Type)
+  id: GetNamedTypeByReflectionType(System.Type)
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: GetNamedTypeByReflectionType(Type)
+  nameWithType: IDeclarationFactory.GetNamedTypeByReflectionType(Type)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets an <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> given a reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: INamedType GetNamedTypeByReflectionType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+    return:
+      type: Metalama.Framework.Code.INamedType
+    content.vb: Function GetNamedTypeByReflectionType(type As Type) As INamedType
+  overload: Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType*
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetSpecialType(Metalama.Framework.Code.SpecialType)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetSpecialType(Metalama.Framework.Code.SpecialType)
+  id: GetSpecialType(Metalama.Framework.Code.SpecialType)
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: GetSpecialType(SpecialType)
+  nameWithType: IDeclarationFactory.GetSpecialType(SpecialType)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetSpecialType(Metalama.Framework.Code.SpecialType)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> representing a given <xref href="Metalama.Framework.Code.SpecialType" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: INamedType GetSpecialType(SpecialType specialType)
+    parameters:
+    - id: specialType
+      type: Metalama.Framework.Code.SpecialType
+    return:
+      type: Metalama.Framework.Code.INamedType
+    content.vb: Function GetSpecialType(specialType As SpecialType) As INamedType
+  overload: Metalama.Framework.Code.IDeclarationFactory.GetSpecialType*
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  id: GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: GetDeclarationFromId(SerializableDeclarationId)
+  nameWithType: IDeclarationFactory.GetDeclarationFromId(SerializableDeclarationId)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a declaration from a serialized identifier generated by <xref href="Metalama.Framework.Code.IRef.ToSerializableId" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IDeclaration GetDeclarationFromId(SerializableDeclarationId declarationId)
+    parameters:
+    - id: declarationId
+      type: Metalama.Framework.Code.SerializableDeclarationId
+    return:
+      type: Metalama.Framework.Code.IDeclaration
+    content.vb: Function GetDeclarationFromId(declarationId As SerializableDeclarationId) As IDeclaration
+  overload: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId*
+- uid: Metalama.Framework.Code.IDeclarationFactory.Translate``1(``0,Metalama.Framework.Code.IGenericContext)
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.Translate``1(``0,Metalama.Framework.Code.IGenericContext)
+  id: Translate``1(``0,Metalama.Framework.Code.IGenericContext)
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: Translate<T>(T?, IGenericContext?)
+  nameWithType: IDeclarationFactory.Translate<T>(T?, IGenericContext?)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.Translate<T>(T?, Metalama.Framework.Code.IGenericContext?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Translates a compilation element to the current compilation context, optionally applying a generic context for type parameter substitution.
+  example: []
+  syntax:
+    content: 'T? Translate<T>(T? compilationElement, IGenericContext? genericContext = null) where T : class, ICompilationElement'
+    parameters:
+    - id: compilationElement
+      type: '{T}'
+      description: The compilation element to translate.
+    - id: genericContext
+      type: Metalama.Framework.Code.IGenericContext
+      description: Optional generic context for type parameter substitution.
+    typeParameters:
+    - id: T
+      description: The type of compilation element to translate.
+    return:
+      type: '{T}'
+      description: The translated compilation element, or <code>null</code> if the input is <code>null</code> or cannot be translated.
+    content.vb: Function Translate(Of T As {Class, ICompilationElement})(compilationElement As T, genericContext As IGenericContext = Nothing) As T
+  overload: Metalama.Framework.Code.IDeclarationFactory.Translate*
+  nameWithType.vb: IDeclarationFactory.Translate(Of T)(T, IGenericContext)
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.Translate(Of T)(T, Metalama.Framework.Code.IGenericContext)
+  name.vb: Translate(Of T)(T, IGenericContext)
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId(Metalama.Framework.Code.SerializableTypeId,System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType})
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId(Metalama.Framework.Code.SerializableTypeId,System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType})
+  id: GetTypeFromId(Metalama.Framework.Code.SerializableTypeId,System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType})
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: GetTypeFromId(SerializableTypeId, IReadOnlyDictionary<string, IType>?)
+  nameWithType: IDeclarationFactory.GetTypeFromId(SerializableTypeId, IReadOnlyDictionary<string, IType>?)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId(Metalama.Framework.Code.SerializableTypeId, System.Collections.Generic.IReadOnlyDictionary<string, Metalama.Framework.Code.IType>?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a type from a serialized type identifier, optionally substituting generic arguments.
+  example: []
+  syntax:
+    content: IType GetTypeFromId(SerializableTypeId serializableTypeId, IReadOnlyDictionary<string, IType>? genericArguments)
+    parameters:
+    - id: serializableTypeId
+      type: Metalama.Framework.Code.SerializableTypeId
+      description: The serialized type identifier.
+    - id: genericArguments
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType}
+      description: Optional dictionary mapping generic parameter names to their type arguments.
+    return:
+      type: Metalama.Framework.Code.IType
+      description: The type corresponding to the serialized identifier.
+    content.vb: Function GetTypeFromId(serializableTypeId As SerializableTypeId, genericArguments As IReadOnlyDictionary(Of String, IType)) As IType
+  overload: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId*
+  nameWithType.vb: IDeclarationFactory.GetTypeFromId(SerializableTypeId, IReadOnlyDictionary(Of String, IType))
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId(Metalama.Framework.Code.SerializableTypeId, System.Collections.Generic.IReadOnlyDictionary(Of String, Metalama.Framework.Code.IType))
+  name.vb: GetTypeFromId(SerializableTypeId, IReadOnlyDictionary(Of String, IType))
+- uid: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType})
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType})
+  id: CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType})
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateTupleType(IEnumerable<IType>)
+  nameWithType: IDeclarationFactory.CreateTupleType(IEnumerable<IType>)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IType>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Creates a tuple type with the specified element types (given as <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>) and default element names.
+  example: []
+  syntax:
+    content: ITupleType CreateTupleType(IEnumerable<IType> elementTypes)
+    parameters:
+    - id: elementTypes
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType}
+    return:
+      type: Metalama.Framework.Code.ITupleType
+    content.vb: Function CreateTupleType(elementTypes As IEnumerable(Of IType)) As ITupleType
+  overload: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType*
+  nameWithType.vb: IDeclarationFactory.CreateTupleType(IEnumerable(Of IType))
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IType))
+  name.vb: CreateTupleType(IEnumerable(Of IType))
+- uid: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.Type})
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.Type})
+  id: CreateTupleType(System.Collections.Generic.IEnumerable{System.Type})
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateTupleType(IEnumerable<Type>)
+  nameWithType: IDeclarationFactory.CreateTupleType(IEnumerable<Type>)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable<System.Type>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Creates a tuple type with the specified element types (given as reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref>'s) and default element names.
+  example: []
+  syntax:
+    content: ITupleType CreateTupleType(IEnumerable<Type> elementTypes)
+    parameters:
+    - id: elementTypes
+      type: System.Collections.Generic.IEnumerable{System.Type}
+    return:
+      type: Metalama.Framework.Code.ITupleType
+    content.vb: Function CreateTupleType(elementTypes As IEnumerable(Of Type)) As ITupleType
+  overload: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType*
+  nameWithType.vb: IDeclarationFactory.CreateTupleType(IEnumerable(Of Type))
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable(Of System.Type))
+  name.vb: CreateTupleType(IEnumerable(Of Type))
+- uid: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}})
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}})
+  id: CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}})
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateTupleType(IEnumerable<(IType Type, string Name)>)
+  nameWithType: IDeclarationFactory.CreateTupleType(IEnumerable<(IType Type, string Name)>)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable<(Metalama.Framework.Code.IType Type, string Name)>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Creates a tuple type with the specified element types (given as <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>'s) and names.
+  example: []
+  syntax:
+    content: ITupleType CreateTupleType(IEnumerable<(IType Type, string Name)> elementTypes)
+    parameters:
+    - id: elementTypes
+      type: System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}}
+    return:
+      type: Metalama.Framework.Code.ITupleType
+    content.vb: Function CreateTupleType(elementTypes As IEnumerable(Of (Type As IType, Name As String))) As ITupleType
+  overload: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType*
+  nameWithType.vb: IDeclarationFactory.CreateTupleType(IEnumerable(Of (Type As IType, Name As String)))
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable(Of (Type As Metalama.Framework.Code.IType, Name As String)))
+  name.vb: CreateTupleType(IEnumerable(Of (Type As IType, Name As String)))
+- uid: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}})
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}})
+  id: CreateTupleType(System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}})
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateTupleType(IEnumerable<(Type Type, string Name)>)
+  nameWithType: IDeclarationFactory.CreateTupleType(IEnumerable<(Type Type, string Name)>)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable<(System.Type Type, string Name)>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Creates a tuple type with the specified element types (given as reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref>'s) and names.
+  example: []
+  syntax:
+    content: ITupleType CreateTupleType(IEnumerable<(Type Type, string Name)> elementTypes)
+    parameters:
+    - id: elementTypes
+      type: System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}}
+    return:
+      type: Metalama.Framework.Code.ITupleType
+    content.vb: Function CreateTupleType(elementTypes As IEnumerable(Of (Type As Type, Name As String))) As ITupleType
+  overload: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType*
+  nameWithType.vb: IDeclarationFactory.CreateTupleType(IEnumerable(Of (Type As Type, Name As String)))
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable(Of (Type As System.Type, Name As String)))
+  name.vb: CreateTupleType(IEnumerable(Of (Type As Type, Name As String)))
+- uid: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter})
+  commentId: M:Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter})
+  id: CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter})
+  parent: Metalama.Framework.Code.IDeclarationFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateTupleType(IEnumerable<IParameter>)
+  nameWithType: IDeclarationFactory.CreateTupleType(IEnumerable<IParameter>)
+  fullName: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IParameter>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Creates a tuple type with the specified parameters as elements.
+  example: []
+  syntax:
+    content: ITupleType CreateTupleType(IEnumerable<IParameter> elementTypes)
+    parameters:
+    - id: elementTypes
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter}
+    return:
+      type: Metalama.Framework.Code.ITupleType
+    content.vb: Function CreateTupleType(elementTypes As IEnumerable(Of IParameter)) As ITupleType
+  overload: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType*
+  nameWithType.vb: IDeclarationFactory.CreateTupleType(IEnumerable(Of IParameter))
+  fullName.vb: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IParameter))
+  name.vb: CreateTupleType(IEnumerable(Of IParameter))
+references:
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: Metalama.Framework.Code.TypeFactory
+  commentId: T:Metalama.Framework.Code.TypeFactory
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.TypeFactory.html
+  name: TypeFactory
+  nameWithType: TypeFactory
+  fullName: Metalama.Framework.Code.TypeFactory
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.IDeclarationFactory.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IDeclarationFactory,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclarationFactory}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IDeclarationFactory>(IDeclarationFactory, Func<IDeclarationFactory, IEnumerable<IDeclarationFactory>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IDeclarationFactory>(IDeclarationFactory, Func<IDeclarationFactory, IEnumerable<IDeclarationFactory>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Code.IDeclarationFactory>(Metalama.Framework.Code.IDeclarationFactory, System.Func<Metalama.Framework.Code.IDeclarationFactory, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IDeclarationFactory>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IDeclarationFactory)(IDeclarationFactory, Func(Of IDeclarationFactory, IEnumerable(Of IDeclarationFactory)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Code.IDeclarationFactory)(Metalama.Framework.Code.IDeclarationFactory, System.Func(Of Metalama.Framework.Code.IDeclarationFactory, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IDeclarationFactory)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IDeclarationFactory)(IDeclarationFactory, Func(Of IDeclarationFactory, IEnumerable(Of IDeclarationFactory)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.IDeclarationFactory,System.Func{Metalama.Framework.Code.IDeclarationFactory,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclarationFactory}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.IDeclarationFactory,System.Func{Metalama.Framework.Code.IDeclarationFactory,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclarationFactory}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclarationFactory
+    name: IDeclarationFactory
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclarationFactory.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: System.Environment.SpecialFolder
+  commentId: T:System.Environment.SpecialFolder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.environment
+  name: Environment.SpecialFolder
+  nameWithType: Environment.SpecialFolder
+  fullName: System.Environment.SpecialFolder
+  spec.csharp:
+  - uid: System.Environment
+    name: Environment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.environment
+  - name: .
+  - uid: System.Environment.SpecialFolder
+    name: SpecialFolder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.environment.specialfolder
+  spec.vb:
+  - uid: System.Environment
+    name: Environment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.environment
+  - name: .
+  - uid: System.Environment.SpecialFolder
+    name: SpecialFolder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.environment.specialfolder
+- uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
+  commentId: M:Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
+  isExternal: true
+  href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_IMethod_Metalama_Framework_Code_IType___
+  name: WithTypeArguments(IMethod, params IType[])
+  nameWithType: GenericExtensions.WithTypeArguments(IMethod, params IType[])
+  fullName: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod, params Metalama.Framework.Code.IType[])
+  nameWithType.vb: GenericExtensions.WithTypeArguments(IMethod, ParamArray IType())
+  fullName.vb: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod, ParamArray Metalama.Framework.Code.IType())
+  name.vb: WithTypeArguments(IMethod, ParamArray IType())
+  spec.csharp:
+  - uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
+    name: WithTypeArguments
+    isExternal: true
+    href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_IMethod_Metalama_Framework_Code_IType___
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
+    name: WithTypeArguments
+    isExternal: true
+    href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_IMethod_Metalama_Framework_Code_IType___
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName.html#Metalama_Framework_Code_IDeclarationFactory_GetTypeByReflectionName_System_String_
+  name: GetTypeByReflectionName
+  nameWithType: IDeclarationFactory.GetTypeByReflectionName
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType.html#Metalama_Framework_Code_IDeclarationFactory_GetTypeByReflectionType_System_Type_
+  name: GetTypeByReflectionType
+  nameWithType: IDeclarationFactory.GetTypeByReflectionType
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetTypeByReflectionType
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType.html#Metalama_Framework_Code_IDeclarationFactory_GetNamedTypeByReflectionType_System_Type_
+  name: GetNamedTypeByReflectionType
+  nameWithType: IDeclarationFactory.GetNamedTypeByReflectionType
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetNamedTypeByReflectionType
+- uid: Metalama.Framework.Code.SpecialType
+  commentId: T:Metalama.Framework.Code.SpecialType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SpecialType.html
+  name: SpecialType
+  nameWithType: SpecialType
+  fullName: Metalama.Framework.Code.SpecialType
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetSpecialType*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.GetSpecialType
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetSpecialType.html#Metalama_Framework_Code_IDeclarationFactory_GetSpecialType_Metalama_Framework_Code_SpecialType_
+  name: GetSpecialType
+  nameWithType: IDeclarationFactory.GetSpecialType
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetSpecialType
+- uid: Metalama.Framework.Code.IRef.ToSerializableId
+  commentId: M:Metalama.Framework.Code.IRef.ToSerializableId
+  parent: Metalama.Framework.Code.IRef
+  isExternal: true
+  href: Metalama.Framework.Code.IRef.ToSerializableId.html#Metalama_Framework_Code_IRef_ToSerializableId
+  name: ToSerializableId()
+  nameWithType: IRef.ToSerializableId()
+  fullName: Metalama.Framework.Code.IRef.ToSerializableId()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef.ToSerializableId
+    name: ToSerializableId
+    isExternal: true
+    href: Metalama.Framework.Code.IRef.ToSerializableId.html#Metalama_Framework_Code_IRef_ToSerializableId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef.ToSerializableId
+    name: ToSerializableId
+    isExternal: true
+    href: Metalama.Framework.Code.IRef.ToSerializableId.html#Metalama_Framework_Code_IRef_ToSerializableId
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId.html#Metalama_Framework_Code_IDeclarationFactory_GetDeclarationFromId_Metalama_Framework_Code_SerializableDeclarationId_
+  name: GetDeclarationFromId
+  nameWithType: IDeclarationFactory.GetDeclarationFromId
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId
+- uid: Metalama.Framework.Code.SerializableDeclarationId
+  commentId: T:Metalama.Framework.Code.SerializableDeclarationId
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableDeclarationId.html
+  name: SerializableDeclarationId
+  nameWithType: SerializableDeclarationId
+  fullName: Metalama.Framework.Code.SerializableDeclarationId
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Code.IRef
+  commentId: T:Metalama.Framework.Code.IRef
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IRef.html
+  name: IRef
+  nameWithType: IRef
+  fullName: Metalama.Framework.Code.IRef
+- uid: Metalama.Framework.Code.IDeclarationFactory.Translate*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.Translate
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.Translate.html#Metalama_Framework_Code_IDeclarationFactory_Translate__1___0_Metalama_Framework_Code_IGenericContext_
+  name: Translate
+  nameWithType: IDeclarationFactory.Translate
+  fullName: Metalama.Framework.Code.IDeclarationFactory.Translate
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Metalama.Framework.Code.IGenericContext
+  commentId: T:Metalama.Framework.Code.IGenericContext
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IGenericContext.html
+  name: IGenericContext
+  nameWithType: IGenericContext
+  fullName: Metalama.Framework.Code.IGenericContext
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId.html#Metalama_Framework_Code_IDeclarationFactory_GetTypeFromId_Metalama_Framework_Code_SerializableTypeId_System_Collections_Generic_IReadOnlyDictionary_System_String_Metalama_Framework_Code_IType__
+  name: GetTypeFromId
+  nameWithType: IDeclarationFactory.GetTypeFromId
+  fullName: Metalama.Framework.Code.IDeclarationFactory.GetTypeFromId
+- uid: Metalama.Framework.Code.SerializableTypeId
+  commentId: T:Metalama.Framework.Code.SerializableTypeId
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.SerializableTypeId.html
+  name: SerializableTypeId
+  nameWithType: SerializableTypeId
+  fullName: Metalama.Framework.Code.SerializableTypeId
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,Metalama.Framework.Code.IType}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, IType>
+  nameWithType: IReadOnlyDictionary<string, IType>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, Metalama.Framework.Code.IType>
+  nameWithType.vb: IReadOnlyDictionary(Of String, IType)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Metalama.Framework.Code.IType)
+  name.vb: IReadOnlyDictionary(Of String, IType)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType*
+  commentId: Overload:Metalama.Framework.Code.IDeclarationFactory.CreateTupleType
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType.html#Metalama_Framework_Code_IDeclarationFactory_CreateTupleType_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IType__
+  name: CreateTupleType
+  nameWithType: IDeclarationFactory.CreateTupleType
+  fullName: Metalama.Framework.Code.IDeclarationFactory.CreateTupleType
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IType>
+  nameWithType: IEnumerable<IType>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IType>
+  nameWithType.vb: IEnumerable(Of IType)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IType)
+  name.vb: IEnumerable(Of IType)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: Metalama.Framework.Code.ITupleType
+  commentId: T:Metalama.Framework.Code.ITupleType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ITupleType.html
+  name: ITupleType
+  nameWithType: ITupleType
+  fullName: Metalama.Framework.Code.ITupleType
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Type}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Type}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Type>
+  nameWithType: IEnumerable<Type>
+  fullName: System.Collections.Generic.IEnumerable<System.Type>
+  nameWithType.vb: IEnumerable(Of Type)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Type)
+  name.vb: IEnumerable(Of Type)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ValueTuple{Metalama.Framework.Code.IType,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<(IType Type, string Name)>
+  nameWithType: IEnumerable<(IType Type, string Name)>
+  fullName: System.Collections.Generic.IEnumerable<(Metalama.Framework.Code.IType Type, string Name)>
+  nameWithType.vb: IEnumerable(Of (Type As IType, Name As String))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of (Type As Metalama.Framework.Code.IType, Name As String))
+  name.vb: IEnumerable(Of (Type As IType, Name As String))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: (
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IType,System.String}.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.itype,system.string-.type
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IType,System.String}.Name
+    name: Name
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.itype,system.string-.name
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{Metalama.Framework.Code.IType,System.String}.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.itype,system.string-.type
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IType,System.String}.Name
+    name: Name
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.itype,system.string-.name
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ValueTuple{System.Type,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<(Type Type, string Name)>
+  nameWithType: IEnumerable<(Type Type, string Name)>
+  fullName: System.Collections.Generic.IEnumerable<(System.Type Type, string Name)>
+  nameWithType.vb: IEnumerable(Of (Type As Type, Name As String))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of (Type As System.Type, Name As String))
+  name.vb: IEnumerable(Of (Type As Type, Name As String))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: " "
+  - uid: System.ValueTuple{System.Type,System.String}.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.string-.type
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.Type,System.String}.Name
+    name: Name
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.string-.name
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.Type,System.String}.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.string-.type
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Type,System.String}.Name
+    name: Name
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.type,system.string-.name
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IParameter>
+  nameWithType: IEnumerable<IParameter>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IParameter>
+  nameWithType.vb: IEnumerable(Of IParameter)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IParameter)
+  name.vb: IEnumerable(Of IParameter)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+    href: Metalama.Framework.Code.IParameter.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+    href: Metalama.Framework.Code.IParameter.html
+  - name: )
+memberLayout: SeparatePages

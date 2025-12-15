@@ -1,0 +1,874 @@
+### YamlMime:ManagedReference
+items:
+- uid: PostSharp.Aspects.IAspectProvider
+  commentId: T:PostSharp.Aspects.IAspectProvider
+  id: IAspectProvider
+  parent: PostSharp.Aspects
+  children:
+  - PostSharp.Aspects.IAspectProvider.ProvideAspects(System.Object)
+  langs:
+  - csharp
+  - vb
+  name: IAspectProvider
+  nameWithType: IAspectProvider
+  fullName: PostSharp.Aspects.IAspectProvider
+  type: Interface
+  assemblies:
+  - Metalama.Migration
+  namespace: PostSharp.Aspects
+  summary: >-
+    In Metalama, you can add aspects using fabrics. In aspects, implement the <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref>.
+
+    In fabrics, implement <xref href="Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)" data-throw-if-not-resolved="false"></xref>.
+
+    In both cases,
+
+    call the <xref href="Metalama.Framework.Fabrics.IQuery%601.Select%60%601(System.Func%7b%600%2c%60%600%7d)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Fabrics.IQuery%601.SelectMany%60%601(System.Func%7b%600%2cSystem.Collections.Generic.IEnumerable%7b%60%600%7d%7d)" data-throw-if-not-resolved="false"></xref>
+
+    method, then call <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect%60%601(Metalama.Framework.Fabrics.IQuery%7b%60%600%7d%2cSystem.Type%2cSystem.Func%7b%60%600%2cMetalama.Framework.Aspects.IAspect%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("In Metalama, you can add aspects using fabrics. In aspects, implement the 'IAspect<T>.BuildAspect(IAspectBuilder<T>)'. In fabrics, implement 'TypeFabric.AmendType(ITypeAmender)', 'ProjectFabric.AmendProject(IProjectAmender)' or 'NamespaceFabric.AmendNamespace(INamespaceAmender)'. In both cases, call the 'IQuery<TDeclaration>.Select<TMember>(Func<TDeclaration, TMember>)' or 'IQuery<TDeclaration>.SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)' method, then call 'AspectQueryExtensions.AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)'.", false)]
+
+      public interface IAspectProvider : IAspect, IService
+    content.vb: >-
+      <Obsolete("In Metalama, you can add aspects using fabrics. In aspects, implement the 'IAspect<T>.BuildAspect(IAspectBuilder<T>)'. In fabrics, implement 'TypeFabric.AmendType(ITypeAmender)', 'ProjectFabric.AmendProject(IProjectAmender)' or 'NamespaceFabric.AmendNamespace(INamespaceAmender)'. In both cases, call the 'IQuery<TDeclaration>.Select<TMember>(Func<TDeclaration, TMember>)' or 'IQuery<TDeclaration>.SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)' method, then call 'AspectQueryExtensions.AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)'.", False)>
+
+      Public Interface IAspectProvider Inherits IAspect, IService
+  seealso:
+  - linkType: HRef
+    linkId: '@child-aspects'
+    altText: '@child-aspects'
+  - linkType: HRef
+    linkId: '@fabrics-aspects'
+    altText: '@fabrics-aspects'
+  extensionMethods:
+  - PostSharp.Aspects.IAspectProvider.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{PostSharp.Aspects.IAspectProvider,System.Collections.Generic.IEnumerable{PostSharp.Aspects.IAspectProvider}},System.Boolean)
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: In Metalama, you can add aspects using fabrics. In aspects, implement the 'IAspect<T>.BuildAspect(IAspectBuilder<T>)'. In fabrics, implement 'TypeFabric.AmendType(ITypeAmender)', 'ProjectFabric.AmendProject(IProjectAmender)' or 'NamespaceFabric.AmendNamespace(INamespaceAmender)'. In both cases, call the 'IQuery<TDeclaration>.Select<TMember>(Func<TDeclaration, TMember>)' or 'IQuery<TDeclaration>.SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)' method, then call 'AspectQueryExtensions.AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)'.
+    - type: System.Boolean
+      value: false
+- uid: PostSharp.Aspects.IAspectProvider.ProvideAspects(System.Object)
+  commentId: M:PostSharp.Aspects.IAspectProvider.ProvideAspects(System.Object)
+  id: ProvideAspects(System.Object)
+  parent: PostSharp.Aspects.IAspectProvider
+  langs:
+  - csharp
+  - vb
+  name: ProvideAspects(object)
+  nameWithType: IAspectProvider.ProvideAspects(object)
+  fullName: PostSharp.Aspects.IAspectProvider.ProvideAspects(object)
+  type: Method
+  assemblies:
+  - Metalama.Migration
+  namespace: PostSharp.Aspects
+  syntax:
+    content: IEnumerable<AspectInstance> ProvideAspects(object targetElement)
+    parameters:
+    - id: targetElement
+      type: System.Object
+    return:
+      type: System.Collections.Generic.IEnumerable{PostSharp.Aspects.AspectInstance}
+    content.vb: Function ProvideAspects(targetElement As Object) As IEnumerable(Of AspectInstance)
+  overload: PostSharp.Aspects.IAspectProvider.ProvideAspects*
+  nameWithType.vb: IAspectProvider.ProvideAspects(Object)
+  fullName.vb: PostSharp.Aspects.IAspectProvider.ProvideAspects(Object)
+  name.vb: ProvideAspects(Object)
+references:
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+  commentId: M:Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.TypeFabric.AmendType.html#Metalama_Framework_Fabrics_TypeFabric_AmendType_Metalama_Framework_Fabrics_ITypeAmender_
+  name: AmendType(ITypeAmender)
+  nameWithType: TypeFabric.AmendType(ITypeAmender)
+  fullName: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+    name: AmendType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.TypeFabric.AmendType.html#Metalama_Framework_Fabrics_TypeFabric_AmendType_Metalama_Framework_Fabrics_ITypeAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.ITypeAmender
+    name: ITypeAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITypeAmender.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+    name: AmendType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.TypeFabric.AmendType.html#Metalama_Framework_Fabrics_TypeFabric_AmendType_Metalama_Framework_Fabrics_ITypeAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.ITypeAmender
+    name: ITypeAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITypeAmender.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+  commentId: M:Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+  parent: Metalama.Framework.Fabrics.ProjectFabric
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ProjectFabric.AmendProject.html#Metalama_Framework_Fabrics_ProjectFabric_AmendProject_Metalama_Framework_Fabrics_IProjectAmender_
+  name: AmendProject(IProjectAmender)
+  nameWithType: ProjectFabric.AmendProject(IProjectAmender)
+  fullName: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+    name: AmendProject
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ProjectFabric.AmendProject.html#Metalama_Framework_Fabrics_ProjectFabric_AmendProject_Metalama_Framework_Fabrics_IProjectAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IProjectAmender
+    name: IProjectAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IProjectAmender.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+    name: AmendProject
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ProjectFabric.AmendProject.html#Metalama_Framework_Fabrics_ProjectFabric_AmendProject_Metalama_Framework_Fabrics_IProjectAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IProjectAmender
+    name: IProjectAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IProjectAmender.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+  commentId: M:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace.html#Metalama_Framework_Fabrics_NamespaceFabric_AmendNamespace_Metalama_Framework_Fabrics_INamespaceAmender_
+  name: AmendNamespace(INamespaceAmender)
+  nameWithType: NamespaceFabric.AmendNamespace(INamespaceAmender)
+  fullName: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+    name: AmendNamespace
+    isExternal: true
+    href: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace.html#Metalama_Framework_Fabrics_NamespaceFabric_AmendNamespace_Metalama_Framework_Fabrics_INamespaceAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.INamespaceAmender
+    name: INamespaceAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.INamespaceAmender.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+    name: AmendNamespace
+    isExternal: true
+    href: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace.html#Metalama_Framework_Fabrics_NamespaceFabric_AmendNamespace_Metalama_Framework_Fabrics_INamespaceAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.INamespaceAmender
+    name: INamespaceAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.INamespaceAmender.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  name: Select<TMember>(Func<TDeclaration, TMember>)
+  nameWithType: IQuery<TDeclaration>.Select<TMember>(Func<TDeclaration, TMember>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.Select<TMember>(System.Func<TDeclaration, TMember>)
+  nameWithType.vb: IQuery(Of TDeclaration).Select(Of TMember)(Func(Of TDeclaration, TMember))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).Select(Of TMember)(System.Func(Of TDeclaration, TMember))
+  name.vb: Select(Of TMember)(Func(Of TDeclaration, TMember))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+    name: Select
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+    name: Select
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  name: SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)
+  nameWithType: IQuery<TDeclaration>.SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.SelectMany<TMember>(System.Func<TDeclaration, System.Collections.Generic.IEnumerable<TMember>>)
+  nameWithType.vb: IQuery(Of TDeclaration).SelectMany(Of TMember)(Func(Of TDeclaration, IEnumerable(Of TMember)))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).SelectMany(Of TMember)(System.Func(Of TDeclaration, System.Collections.Generic.IEnumerable(Of TMember)))
+  name.vb: SelectMany(Of TMember)(Func(Of TDeclaration, IEnumerable(Of TMember)))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+    name: SelectMany
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+    name: SelectMany
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  name: AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Type, System.Func<TDeclaration, Metalama.Framework.Aspects.IAspect>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Type, System.Func(Of TDeclaration, Metalama.Framework.Aspects.IAspect))
+  name.vb: AddAspect(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+  - name: )
+- uid: PostSharp.Aspects
+  commentId: N:PostSharp.Aspects
+  isExternal: true
+  href: PostSharp.html
+  name: PostSharp.Aspects
+  nameWithType: PostSharp.Aspects
+  fullName: PostSharp.Aspects
+  spec.csharp:
+  - uid: PostSharp
+    name: PostSharp
+    isExternal: true
+    href: PostSharp.html
+  - name: .
+  - uid: PostSharp.Aspects
+    name: Aspects
+    isExternal: true
+    href: PostSharp.Aspects.html
+  spec.vb:
+  - uid: PostSharp
+    name: PostSharp
+    isExternal: true
+    href: PostSharp.html
+  - name: .
+  - uid: PostSharp.Aspects
+    name: Aspects
+    isExternal: true
+    href: PostSharp.Aspects.html
+- uid: PostSharp.Aspects.IAspectProvider.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{PostSharp.Aspects.IAspectProvider,System.Collections.Generic.IEnumerable{PostSharp.Aspects.IAspectProvider}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IAspectProvider>(IAspectProvider, Func<IAspectProvider, IEnumerable<IAspectProvider>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IAspectProvider>(IAspectProvider, Func<IAspectProvider, IEnumerable<IAspectProvider>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<PostSharp.Aspects.IAspectProvider>(PostSharp.Aspects.IAspectProvider, System.Func<PostSharp.Aspects.IAspectProvider, System.Collections.Generic.IEnumerable<PostSharp.Aspects.IAspectProvider>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IAspectProvider)(IAspectProvider, Func(Of IAspectProvider, IEnumerable(Of IAspectProvider)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of PostSharp.Aspects.IAspectProvider)(PostSharp.Aspects.IAspectProvider, System.Func(Of PostSharp.Aspects.IAspectProvider, System.Collections.Generic.IEnumerable(Of PostSharp.Aspects.IAspectProvider)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IAspectProvider)(IAspectProvider, Func(Of IAspectProvider, IEnumerable(Of IAspectProvider)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(PostSharp.Aspects.IAspectProvider,System.Func{PostSharp.Aspects.IAspectProvider,System.Collections.Generic.IEnumerable{PostSharp.Aspects.IAspectProvider}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: '>'
+  - name: (
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(PostSharp.Aspects.IAspectProvider,System.Func{PostSharp.Aspects.IAspectProvider,System.Collections.Generic.IEnumerable{PostSharp.Aspects.IAspectProvider}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: )
+  - name: (
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: PostSharp.Aspects.IAspectProvider
+    name: IAspectProvider
+    isExternal: true
+    href: PostSharp.Aspects.IAspectProvider.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Fabrics.ProjectFabric
+  commentId: T:Metalama.Framework.Fabrics.ProjectFabric
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ProjectFabric.html
+  name: ProjectFabric
+  nameWithType: ProjectFabric
+  fullName: Metalama.Framework.Fabrics.ProjectFabric
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Fabrics
+  commentId: N:Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Fabrics
+  nameWithType: Metalama.Framework.Fabrics
+  fullName: Metalama.Framework.Fabrics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: PostSharp.Aspects.IAspectProvider.ProvideAspects*
+  commentId: Overload:PostSharp.Aspects.IAspectProvider.ProvideAspects
+  isExternal: true
+  href: PostSharp.Aspects.IAspectProvider.ProvideAspects.html#PostSharp_Aspects_IAspectProvider_ProvideAspects_System_Object_
+  name: ProvideAspects
+  nameWithType: IAspectProvider.ProvideAspects
+  fullName: PostSharp.Aspects.IAspectProvider.ProvideAspects
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.IEnumerable{PostSharp.Aspects.AspectInstance}
+  commentId: T:System.Collections.Generic.IEnumerable{PostSharp.Aspects.AspectInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<AspectInstance>
+  nameWithType: IEnumerable<AspectInstance>
+  fullName: System.Collections.Generic.IEnumerable<PostSharp.Aspects.AspectInstance>
+  nameWithType.vb: IEnumerable(Of AspectInstance)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PostSharp.Aspects.AspectInstance)
+  name.vb: IEnumerable(Of AspectInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: PostSharp.Aspects.AspectInstance
+    name: AspectInstance
+    isExternal: true
+    href: PostSharp.Aspects.AspectInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: PostSharp.Aspects.AspectInstance
+    name: AspectInstance
+    isExternal: true
+    href: PostSharp.Aspects.AspectInstance.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+memberLayout: SeparatePages

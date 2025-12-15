@@ -1,0 +1,1054 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.RefExtensions
+  commentId: T:Metalama.Framework.Code.RefExtensions
+  id: RefExtensions
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.RefExtensions.Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.IRef,System.Boolean)
+  - Metalama.Framework.Code.RefExtensions.GetTarget(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  - Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  - Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+  - Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  - Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+  - Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  langs:
+  - csharp
+  - vb
+  name: RefExtensions
+  nameWithType: RefExtensions
+  fullName: Metalama.Framework.Code.RefExtensions
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Extension methods for resolving <xref href="Metalama.Framework.Code.IRef%601" data-throw-if-not-resolved="false"></xref> references to their target declarations.
+  remarks: >-
+    <p>
+        This class provides the primary methods for resolving references to declarations. References are used because
+        <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref> objects are bound to a specific <xref href="Metalama.Framework.Code.ICompilation" data-throw-if-not-resolved="false"></xref>, which changes at each
+        step of the aspect pipeline. References provide a stable way to identify the same declaration across these
+        compilation versions.
+        </p>
+    <p>
+      <b>Key methods:</b>
+    </p>
+
+    <ul><li>
+          <xref href="Metalama.Framework.Code.RefExtensions.GetTarget%60%601(Metalama.Framework.Code.IRef%7b%60%600%7d)" data-throw-if-not-resolved="false"></xref>: Resolves a reference using the current execution context.</li><li>
+          <xref href="Metalama.Framework.Code.RefExtensions.GetTarget%60%601(Metalama.Framework.Code.IRef%7b%60%600%7d%2cMetalama.Framework.Code.ICompilation%2cMetalama.Framework.Code.IGenericContext)" data-throw-if-not-resolved="false"></xref>: Resolves a reference in a specific compilation.</li><li>
+          <xref href="Metalama.Framework.Code.RefExtensions.GetTargetOrNull%60%601(Metalama.Framework.Code.IRef%7b%60%600%7d)" data-throw-if-not-resolved="false"></xref>: Like GetTarget but returns <code>null</code> instead of throwing.</li></ul>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static class RefExtensions
+    content.vb: >-
+      <CompileTime>
+
+      Public Module RefExtensions
+  seealso:
+  - linkId: Metalama.Framework.Code.IRef`1
+    commentId: T:Metalama.Framework.Code.IRef`1
+  - linkId: Metalama.Framework.Code.IRef
+    commentId: T:Metalama.Framework.Code.IRef
+  - linkId: Metalama.Framework.Code.IDeclaration.ToRef
+    commentId: M:Metalama.Framework.Code.IDeclaration.ToRef
+  - linkType: HRef
+    linkId: '@aspect-serialization'
+    altText: '@aspect-serialization'
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  id: GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTarget<T>(IRef<T>, ICompilation, IGenericContext?)
+  nameWithType: RefExtensions.GetTarget<T>(IRef<T>, ICompilation, IGenericContext?)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTarget<T>(Metalama.Framework.Code.IRef<T>, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Resolves a reference to its target declaration within a specific compilation.
+  remarks: >-
+    <p>
+        To resolve a reference using the current execution context (e.g., within a template or <code>BuildAspect</code>),
+        use <xref href="Metalama.Framework.Code.RefExtensions.GetTarget%60%601(Metalama.Framework.Code.IRef%7b%60%600%7d)" data-throw-if-not-resolved="false"></xref> instead.
+        </p>
+  example: []
+  syntax:
+    content: 'public static T GetTarget<T>(this IRef<T> reference, ICompilation compilation, IGenericContext? genericContext = null) where T : class, ICompilationElement'
+    parameters:
+    - id: reference
+      type: Metalama.Framework.Code.IRef{{T}}
+      description: The reference to resolve.
+    - id: compilation
+      type: Metalama.Framework.Code.ICompilation
+      description: >-
+        The compilation in which to resolve the reference. This may be a different compilation version
+                    than the one from which the reference was obtained.
+    - id: genericContext
+      type: Metalama.Framework.Code.IGenericContext
+      description: >-
+        The optional generic context for resolving references within generic types or methods.
+                    Pass this when the declaration needs to be resolved in the context of a specific generic instantiation.
+    typeParameters:
+    - id: T
+      description: The type of compilation element, such as <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IProperty" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: '{T}'
+      description: The resolved declaration.
+    content.vb: Public Shared Function GetTarget(Of T As {Class, ICompilationElement})(reference As IRef(Of T), compilation As ICompilation, genericContext As IGenericContext = Nothing) As T
+  overload: Metalama.Framework.Code.RefExtensions.GetTarget*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when the reference cannot be resolved in the specified compilation.
+  nameWithType.vb: RefExtensions.GetTarget(Of T)(IRef(Of T), ICompilation, IGenericContext)
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTarget(Of T)(Metalama.Framework.Code.IRef(Of T), Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext)
+  name.vb: GetTarget(Of T)(IRef(Of T), ICompilation, IGenericContext)
+- uid: Metalama.Framework.Code.RefExtensions.GetTarget(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTarget(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  id: GetTarget(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTarget(IRef, ICompilation, IGenericContext?, Type?)
+  nameWithType: RefExtensions.GetTarget(IRef, ICompilation, IGenericContext?, Type?)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTarget(Metalama.Framework.Code.IRef, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext?, System.Type?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Resolves a non-generic reference to its target declaration within a specific compilation.
+  example: []
+  syntax:
+    content: public static ICompilationElement GetTarget(this IRef reference, ICompilation compilation, IGenericContext? genericContext = null, Type? interfaceType = null)
+    parameters:
+    - id: reference
+      type: Metalama.Framework.Code.IRef
+      description: The reference to resolve.
+    - id: compilation
+      type: Metalama.Framework.Code.ICompilation
+      description: The compilation in which to resolve the reference.
+    - id: genericContext
+      type: Metalama.Framework.Code.IGenericContext
+      description: The optional generic context for resolving references within generic types or methods.
+    - id: interfaceType
+      type: System.Type
+      description: >-
+        The optional interface type to return. When <code>null</code>, the default interface for the
+                    declaration type is used.
+    return:
+      type: Metalama.Framework.Code.ICompilationElement
+      description: The resolved declaration.
+    content.vb: Public Shared Function GetTarget(reference As IRef, compilation As ICompilation, genericContext As IGenericContext = Nothing, interfaceType As Type = Nothing) As ICompilationElement
+  overload: Metalama.Framework.Code.RefExtensions.GetTarget*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when the reference cannot be resolved in the specified compilation.
+  nameWithType.vb: RefExtensions.GetTarget(IRef, ICompilation, IGenericContext, Type)
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTarget(Metalama.Framework.Code.IRef, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext, System.Type)
+  name.vb: GetTarget(IRef, ICompilation, IGenericContext, Type)
+- uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  id: GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTargetOrNull<T>(IRef<T>, ICompilation, IGenericContext?)
+  nameWithType: RefExtensions.GetTargetOrNull<T>(IRef<T>, ICompilation, IGenericContext?)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTargetOrNull<T>(Metalama.Framework.Code.IRef<T>, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Resolves a reference to its target declaration within a specific compilation, returning <code>null</code> if the reference
+
+    cannot be resolved.
+  remarks: >-
+    <p>
+        To resolve a reference using the current execution context, use <xref href="Metalama.Framework.Code.RefExtensions.GetTargetOrNull%60%601(Metalama.Framework.Code.IRef%7b%60%600%7d)" data-throw-if-not-resolved="false"></xref> instead.
+        </p>
+  example: []
+  syntax:
+    content: 'public static T? GetTargetOrNull<T>(this IRef<T> reference, ICompilation compilation, IGenericContext? genericContext = null) where T : class, ICompilationElement'
+    parameters:
+    - id: reference
+      type: Metalama.Framework.Code.IRef{{T}}
+      description: The reference to resolve.
+    - id: compilation
+      type: Metalama.Framework.Code.ICompilation
+      description: >-
+        The compilation in which to resolve the reference. This may be a different compilation version
+                    than the one from which the reference was obtained.
+    - id: genericContext
+      type: Metalama.Framework.Code.IGenericContext
+      description: The optional generic context for resolving references within generic types or methods.
+    typeParameters:
+    - id: T
+      description: The type of compilation element, such as <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IProperty" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: '{T}'
+      description: >-
+        The resolved declaration, or <code>null</code> if the reference cannot be resolved (e.g., if the declaration
+                    was removed from the compilation).
+    content.vb: Public Shared Function GetTargetOrNull(Of T As {Class, ICompilationElement})(reference As IRef(Of T), compilation As ICompilation, genericContext As IGenericContext = Nothing) As T
+  overload: Metalama.Framework.Code.RefExtensions.GetTargetOrNull*
+  nameWithType.vb: RefExtensions.GetTargetOrNull(Of T)(IRef(Of T), ICompilation, IGenericContext)
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Of T)(Metalama.Framework.Code.IRef(Of T), Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext)
+  name.vb: GetTargetOrNull(Of T)(IRef(Of T), ICompilation, IGenericContext)
+- uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  id: GetTargetOrNull(Metalama.Framework.Code.IRef,Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTargetOrNull(IRef, ICompilation, IGenericContext?, Type?)
+  nameWithType: RefExtensions.GetTargetOrNull(IRef, ICompilation, IGenericContext?, Type?)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Metalama.Framework.Code.IRef, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext?, System.Type?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Resolves a non-generic reference to its target declaration within a specific compilation, returning <code>null</code>
+
+    if the reference cannot be resolved.
+  example: []
+  syntax:
+    content: public static ICompilationElement? GetTargetOrNull(this IRef reference, ICompilation compilation, IGenericContext? genericContext = null, Type? interfaceType = null)
+    parameters:
+    - id: reference
+      type: Metalama.Framework.Code.IRef
+      description: The reference to resolve.
+    - id: compilation
+      type: Metalama.Framework.Code.ICompilation
+      description: The compilation in which to resolve the reference.
+    - id: genericContext
+      type: Metalama.Framework.Code.IGenericContext
+      description: The optional generic context for resolving references within generic types or methods.
+    - id: interfaceType
+      type: System.Type
+      description: >-
+        The optional interface type to return. When <code>null</code>, the default interface for the
+                    declaration type is used.
+    return:
+      type: Metalama.Framework.Code.ICompilationElement
+      description: The resolved declaration, or <code>null</code> if the reference cannot be resolved.
+    content.vb: Public Shared Function GetTargetOrNull(reference As IRef, compilation As ICompilation, genericContext As IGenericContext = Nothing, interfaceType As Type = Nothing) As ICompilationElement
+  overload: Metalama.Framework.Code.RefExtensions.GetTargetOrNull*
+  nameWithType.vb: RefExtensions.GetTargetOrNull(IRef, ICompilation, IGenericContext, Type)
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Metalama.Framework.Code.IRef, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext, System.Type)
+  name.vb: GetTargetOrNull(IRef, ICompilation, IGenericContext, Type)
+- uid: Metalama.Framework.Code.RefExtensions.Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.IRef,System.Boolean)
+  commentId: M:Metalama.Framework.Code.RefExtensions.Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.IRef,System.Boolean)
+  id: Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.IRef,System.Boolean)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: Equals(IRef, IRef?, bool)
+  nameWithType: RefExtensions.Equals(IRef, IRef?, bool)
+  fullName: Metalama.Framework.Code.RefExtensions.Equals(Metalama.Framework.Code.IRef, Metalama.Framework.Code.IRef?, bool)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  syntax:
+    content: >-
+      [Obsolete("Use the overload that accepts a RefComparison")]
+
+      public static bool Equals(this IRef a, IRef? b, bool includeNullability)
+    parameters:
+    - id: a
+      type: Metalama.Framework.Code.IRef
+    - id: b
+      type: Metalama.Framework.Code.IRef
+    - id: includeNullability
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Obsolete("Use the overload that accepts a RefComparison")>
+
+      Public Shared Function Equals(a As IRef, b As IRef, includeNullability As Boolean) As Boolean
+  overload: Metalama.Framework.Code.RefExtensions.Equals*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use the overload that accepts a RefComparison
+  nameWithType.vb: RefExtensions.Equals(IRef, IRef, Boolean)
+  fullName.vb: Metalama.Framework.Code.RefExtensions.Equals(Metalama.Framework.Code.IRef, Metalama.Framework.Code.IRef, Boolean)
+  name.vb: Equals(IRef, IRef, Boolean)
+- uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+  id: GetTarget``1(Metalama.Framework.Code.IRef{``0})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTarget<T>(IRef<T>)
+  nameWithType: RefExtensions.GetTarget<T>(IRef<T>)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTarget<T>(Metalama.Framework.Code.IRef<T>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Resolves a reference to its target declaration using the current Metalama execution context.
+  remarks: >-
+    <p>
+        This is the most common way to resolve a reference. It uses <xref href="Metalama.Framework.Project.MetalamaExecutionContext.Current" data-throw-if-not-resolved="false"></xref>
+        to obtain the current compilation. Use this method when resolving references during aspect execution.
+        </p>
+    <p>
+        For resolving references in a specific compilation (e.g., when comparing declarations across compilation versions),
+        use <xref href="Metalama.Framework.Code.RefExtensions.GetTarget%60%601(Metalama.Framework.Code.IRef%7b%60%600%7d%2cMetalama.Framework.Code.ICompilation%2cMetalama.Framework.Code.IGenericContext)" data-throw-if-not-resolved="false"></xref> instead.
+        </p>
+  example: []
+  syntax:
+    content: 'public static T GetTarget<T>(this IRef<T> reference) where T : class, ICompilationElement'
+    parameters:
+    - id: reference
+      type: Metalama.Framework.Code.IRef{{T}}
+      description: The reference to resolve.
+    typeParameters:
+    - id: T
+      description: The type of compilation element, such as <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IProperty" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: '{T}'
+      description: The resolved declaration.
+    content.vb: Public Shared Function GetTarget(Of T As {Class, ICompilationElement})(reference As IRef(Of T)) As T
+  overload: Metalama.Framework.Code.RefExtensions.GetTarget*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: >-
+      Thrown when the reference cannot be resolved or when called outside
+                  of a Metalama execution context (e.g., from a template, <code>BuildAspect</code>, or fabric).
+  nameWithType.vb: RefExtensions.GetTarget(Of T)(IRef(Of T))
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTarget(Of T)(Metalama.Framework.Code.IRef(Of T))
+  name.vb: GetTarget(Of T)(IRef(Of T))
+- uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+  id: GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.RefExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetTargetOrNull<T>(IRef<T>)
+  nameWithType: RefExtensions.GetTargetOrNull<T>(IRef<T>)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTargetOrNull<T>(Metalama.Framework.Code.IRef<T>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Resolves a reference to its target declaration using the current Metalama execution context, returning <code>null</code>
+
+    if the reference cannot be resolved.
+  remarks: >-
+    <p>
+        This method uses <xref href="Metalama.Framework.Project.MetalamaExecutionContext.Current" data-throw-if-not-resolved="false"></xref> to obtain the current compilation.
+        It returns <code>null</code> instead of throwing when the reference cannot be resolved.
+        </p>
+  example: []
+  syntax:
+    content: 'public static T? GetTargetOrNull<T>(this IRef<T> reference) where T : class, ICompilationElement'
+    parameters:
+    - id: reference
+      type: Metalama.Framework.Code.IRef{{T}}
+      description: The reference to resolve.
+    typeParameters:
+    - id: T
+      description: The type of compilation element, such as <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IProperty" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: '{T}'
+      description: The resolved declaration, or <code>null</code> if the reference cannot be resolved.
+    content.vb: Public Shared Function GetTargetOrNull(Of T As {Class, ICompilationElement})(reference As IRef(Of T)) As T
+  overload: Metalama.Framework.Code.RefExtensions.GetTargetOrNull*
+  nameWithType.vb: RefExtensions.GetTargetOrNull(Of T)(IRef(Of T))
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Of T)(Metalama.Framework.Code.IRef(Of T))
+  name.vb: GetTargetOrNull(Of T)(IRef(Of T))
+references:
+- uid: Metalama.Framework.Code.IRef`1
+  commentId: T:Metalama.Framework.Code.IRef`1
+  isExternal: true
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<T>
+  nameWithType: IRef<T>
+  fullName: Metalama.Framework.Code.IRef<T>
+  nameWithType.vb: IRef(Of T)
+  fullName.vb: Metalama.Framework.Code.IRef(Of T)
+  name.vb: IRef(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.IRef
+  commentId: T:Metalama.Framework.Code.IRef
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IRef.html
+  name: IRef
+  nameWithType: IRef
+  fullName: Metalama.Framework.Code.IRef
+- uid: Metalama.Framework.Code.IDeclaration.ToRef
+  commentId: M:Metalama.Framework.Code.IDeclaration.ToRef
+  parent: Metalama.Framework.Code.IDeclaration
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.ToRef.html#Metalama_Framework_Code_IDeclaration_ToRef
+  name: ToRef()
+  nameWithType: IDeclaration.ToRef()
+  fullName: Metalama.Framework.Code.IDeclaration.ToRef()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IDeclaration.ToRef
+    name: ToRef
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.ToRef.html#Metalama_Framework_Code_IDeclaration_ToRef
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IDeclaration.ToRef
+    name: ToRef
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.ToRef.html#Metalama_Framework_Code_IDeclaration_ToRef
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+  isExternal: true
+  href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__
+  name: GetTarget<T>(IRef<T>)
+  nameWithType: RefExtensions.GetTarget<T>(IRef<T>)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTarget<T>(Metalama.Framework.Code.IRef<T>)
+  nameWithType.vb: RefExtensions.GetTarget(Of T)(IRef(Of T))
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTarget(Of T)(Metalama.Framework.Code.IRef(Of T))
+  name.vb: GetTarget(Of T)(IRef(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+    name: GetTarget
+    isExternal: true
+    href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0})
+    name: GetTarget
+    isExternal: true
+    href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+  isExternal: true
+  href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__Metalama_Framework_Code_ICompilation_Metalama_Framework_Code_IGenericContext_
+  name: GetTarget<T>(IRef<T>, ICompilation, IGenericContext)
+  nameWithType: RefExtensions.GetTarget<T>(IRef<T>, ICompilation, IGenericContext)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTarget<T>(Metalama.Framework.Code.IRef<T>, Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext)
+  nameWithType.vb: RefExtensions.GetTarget(Of T)(IRef(Of T), ICompilation, IGenericContext)
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTarget(Of T)(Metalama.Framework.Code.IRef(Of T), Metalama.Framework.Code.ICompilation, Metalama.Framework.Code.IGenericContext)
+  name.vb: GetTarget(Of T)(IRef(Of T), ICompilation, IGenericContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+    name: GetTarget
+    isExternal: true
+    href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__Metalama_Framework_Code_ICompilation_Metalama_Framework_Code_IGenericContext_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IGenericContext
+    name: IGenericContext
+    isExternal: true
+    href: Metalama.Framework.Code.IGenericContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.RefExtensions.GetTarget``1(Metalama.Framework.Code.IRef{``0},Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext)
+    name: GetTarget
+    isExternal: true
+    href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__Metalama_Framework_Code_ICompilation_Metalama_Framework_Code_IGenericContext_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IGenericContext
+    name: IGenericContext
+    isExternal: true
+    href: Metalama.Framework.Code.IGenericContext.html
+  - name: )
+- uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+  commentId: M:Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+  isExternal: true
+  href: Metalama.Framework.Code.RefExtensions.GetTargetOrNull.html#Metalama_Framework_Code_RefExtensions_GetTargetOrNull__1_Metalama_Framework_Code_IRef___0__
+  name: GetTargetOrNull<T>(IRef<T>)
+  nameWithType: RefExtensions.GetTargetOrNull<T>(IRef<T>)
+  fullName: Metalama.Framework.Code.RefExtensions.GetTargetOrNull<T>(Metalama.Framework.Code.IRef<T>)
+  nameWithType.vb: RefExtensions.GetTargetOrNull(Of T)(IRef(Of T))
+  fullName.vb: Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Of T)(Metalama.Framework.Code.IRef(Of T))
+  name.vb: GetTargetOrNull(Of T)(IRef(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+    name: GetTargetOrNull
+    isExternal: true
+    href: Metalama.Framework.Code.RefExtensions.GetTargetOrNull.html#Metalama_Framework_Code_RefExtensions_GetTargetOrNull__1_Metalama_Framework_Code_IRef___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull``1(Metalama.Framework.Code.IRef{``0})
+    name: GetTargetOrNull
+    isExternal: true
+    href: Metalama.Framework.Code.RefExtensions.GetTargetOrNull.html#Metalama_Framework_Code_RefExtensions_GetTargetOrNull__1_Metalama_Framework_Code_IRef___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.IMethod
+  commentId: T:Metalama.Framework.Code.IMethod
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMethod.html
+  name: IMethod
+  nameWithType: IMethod
+  fullName: Metalama.Framework.Code.IMethod
+- uid: Metalama.Framework.Code.IProperty
+  commentId: T:Metalama.Framework.Code.IProperty
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IProperty.html
+  name: IProperty
+  nameWithType: IProperty
+  fullName: Metalama.Framework.Code.IProperty
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Metalama.Framework.Code.RefExtensions.GetTarget*
+  commentId: Overload:Metalama.Framework.Code.RefExtensions.GetTarget
+  isExternal: true
+  href: Metalama.Framework.Code.RefExtensions.GetTarget.html#Metalama_Framework_Code_RefExtensions_GetTarget__1_Metalama_Framework_Code_IRef___0__Metalama_Framework_Code_ICompilation_Metalama_Framework_Code_IGenericContext_
+  name: GetTarget
+  nameWithType: RefExtensions.GetTarget
+  fullName: Metalama.Framework.Code.RefExtensions.GetTarget
+- uid: Metalama.Framework.Code.IRef{{T}}
+  commentId: T:Metalama.Framework.Code.IRef{``0}
+  parent: Metalama.Framework.Code
+  definition: Metalama.Framework.Code.IRef`1
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<T>
+  nameWithType: IRef<T>
+  fullName: Metalama.Framework.Code.IRef<T>
+  nameWithType.vb: IRef(Of T)
+  fullName.vb: Metalama.Framework.Code.IRef(Of T)
+  name.vb: IRef(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.IGenericContext
+  commentId: T:Metalama.Framework.Code.IGenericContext
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IGenericContext.html
+  name: IGenericContext
+  nameWithType: IGenericContext
+  fullName: Metalama.Framework.Code.IGenericContext
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Metalama.Framework.Code.ICompilationElement
+  commentId: T:Metalama.Framework.Code.ICompilationElement
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilationElement.html
+  name: ICompilationElement
+  nameWithType: ICompilationElement
+  fullName: Metalama.Framework.Code.ICompilationElement
+- uid: Metalama.Framework.Code.RefExtensions.GetTargetOrNull*
+  commentId: Overload:Metalama.Framework.Code.RefExtensions.GetTargetOrNull
+  isExternal: true
+  href: Metalama.Framework.Code.RefExtensions.GetTargetOrNull.html#Metalama_Framework_Code_RefExtensions_GetTargetOrNull__1_Metalama_Framework_Code_IRef___0__Metalama_Framework_Code_ICompilation_Metalama_Framework_Code_IGenericContext_
+  name: GetTargetOrNull
+  nameWithType: RefExtensions.GetTargetOrNull
+  fullName: Metalama.Framework.Code.RefExtensions.GetTargetOrNull
+- uid: Metalama.Framework.Code.RefExtensions.Equals*
+  commentId: Overload:Metalama.Framework.Code.RefExtensions.Equals
+  isExternal: true
+  href: Metalama.Framework.Code.RefExtensions.Equals.html#Metalama_Framework_Code_RefExtensions_Equals_Metalama_Framework_Code_IRef_Metalama_Framework_Code_IRef_System_Boolean_
+  name: Equals
+  nameWithType: RefExtensions.Equals
+  fullName: Metalama.Framework.Code.RefExtensions.Equals
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Framework.Project.MetalamaExecutionContext.Current
+  commentId: P:Metalama.Framework.Project.MetalamaExecutionContext.Current
+  isExternal: true
+  href: Metalama.Framework.Project.MetalamaExecutionContext.Current.html#Metalama_Framework_Project_MetalamaExecutionContext_Current
+  name: Current
+  nameWithType: MetalamaExecutionContext.Current
+  fullName: Metalama.Framework.Project.MetalamaExecutionContext.Current
+memberLayout: SeparatePages

@@ -1,0 +1,1056 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  commentId: T:Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  id: TestSynchronizationProvider
+  parent: Metalama.Testing.UnitTesting
+  children:
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.#ctor(Xunit.Abstractions.ITestOutputHelper)
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint(System.String)
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: TestSynchronizationProvider
+  nameWithType: TestSynchronizationProvider
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  type: Class
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Test implementation of <xref href="Metalama.Framework.DesignTime.Rpc.ITestSynchronizationProvider" data-throw-if-not-resolved="false"></xref> that allows tests to control
+
+    execution order by blocking at named synchronization points. This enables deterministic testing
+
+    of concurrent code by letting tests wait for code to reach specific points and then release it.
+  remarks: >-
+    <p>
+        Sync points are only active (blocking) when the test has registered interest by calling
+        <xref href="Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>. Unregistered sync points are skipped without blocking.
+        </p>
+    <p>
+        Usage pattern:
+        <ol><li>Register this provider with the service provider before starting the test.</li><li>Start the operation being tested in a background task.</li><li>Call <xref href="Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> to wait until the code reaches the sync point.</li><li>Perform any setup needed (e.g., register an extension) while code is blocked.</li><li>Call <xref href="Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)" data-throw-if-not-resolved="false"></xref> to let the code continue.</li></ol></p>
+    <p>
+        Always call <xref href="Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll" data-throw-if-not-resolved="false"></xref> in test cleanup to avoid deadlocks if a test fails.
+        </p>
+  example: []
+  syntax:
+    content: 'public sealed class TestSynchronizationProvider : ITestSynchronizationProvider, IDisposable'
+    content.vb: Public NotInheritable Class TestSynchronizationProvider Implements ITestSynchronizationProvider, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Metalama.Framework.DesignTime.Rpc.ITestSynchronizationProvider
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Testing.UnitTesting.TestSynchronizationProvider.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.UnitTesting.TestSynchronizationProvider,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.TestSynchronizationProvider}},System.Boolean)
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.#ctor(Xunit.Abstractions.ITestOutputHelper)
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.#ctor(Xunit.Abstractions.ITestOutputHelper)
+  id: '#ctor(Xunit.Abstractions.ITestOutputHelper)'
+  parent: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  langs:
+  - csharp
+  - vb
+  name: TestSynchronizationProvider(ITestOutputHelper?)
+  nameWithType: TestSynchronizationProvider.TestSynchronizationProvider(ITestOutputHelper?)
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.TestSynchronizationProvider(Xunit.Abstractions.ITestOutputHelper?)
+  type: Constructor
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  syntax:
+    content: public TestSynchronizationProvider(ITestOutputHelper? testOutput = null)
+    parameters:
+    - id: testOutput
+      type: Xunit.Abstractions.ITestOutputHelper
+    content.vb: Public Sub New(testOutput As ITestOutputHelper = Nothing)
+  overload: Metalama.Testing.UnitTesting.TestSynchronizationProvider.#ctor*
+  nameWithType.vb: TestSynchronizationProvider.New(ITestOutputHelper)
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.New(Xunit.Abstractions.ITestOutputHelper)
+  name.vb: New(ITestOutputHelper)
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint(System.String)
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint(System.String)
+  id: EnableSyncPoint(System.String)
+  parent: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  langs:
+  - csharp
+  - vb
+  name: EnableSyncPoint(string)
+  nameWithType: TestSynchronizationProvider.EnableSyncPoint(string)
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint(string)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Called by test code. Enables a sync point so that code under test will block when reaching it.
+
+    This must be called BEFORE starting the operation that will hit the sync point.
+  example: []
+  syntax:
+    content: public void EnableSyncPoint(string syncPointName)
+    parameters:
+    - id: syncPointName
+      type: System.String
+      description: The name of the sync point to enable.
+    content.vb: Public Sub EnableSyncPoint(syncPointName As String)
+  overload: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint*
+  nameWithType.vb: TestSynchronizationProvider.EnableSyncPoint(String)
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint(String)
+  name.vb: EnableSyncPoint(String)
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+  id: WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+  parent: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  langs:
+  - csharp
+  - vb
+  name: WaitForSyncPointReachedAsync(string, CancellationToken)
+  nameWithType: TestSynchronizationProvider.WaitForSyncPointReachedAsync(string, CancellationToken)
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Called by test code. Waits until the code under test reaches the named sync point.
+
+    Also enables the sync point if not already enabled.
+  example: []
+  syntax:
+    content: public Task WaitForSyncPointReachedAsync(string syncPointName, CancellationToken cancellationToken)
+    parameters:
+    - id: syncPointName
+      type: System.String
+      description: The name of the sync point to wait for.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function WaitForSyncPointReachedAsync(syncPointName As String, cancellationToken As CancellationToken) As Task
+  overload: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync*
+  nameWithType.vb: TestSynchronizationProvider.WaitForSyncPointReachedAsync(String, CancellationToken)
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(String, System.Threading.CancellationToken)
+  name.vb: WaitForSyncPointReachedAsync(String, CancellationToken)
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+  id: ReleaseSyncPoint(System.String)
+  parent: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  langs:
+  - csharp
+  - vb
+  name: ReleaseSyncPoint(string)
+  nameWithType: TestSynchronizationProvider.ReleaseSyncPoint(string)
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(string)
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: Called by test code. Releases the code blocked at the named sync point.
+  example: []
+  syntax:
+    content: public void ReleaseSyncPoint(string syncPointName)
+    parameters:
+    - id: syncPointName
+      type: System.String
+      description: The name of the sync point to release.
+    content.vb: Public Sub ReleaseSyncPoint(syncPointName As String)
+  overload: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint*
+  nameWithType.vb: TestSynchronizationProvider.ReleaseSyncPoint(String)
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(String)
+  name.vb: ReleaseSyncPoint(String)
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+  id: ReleaseAll
+  parent: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  langs:
+  - csharp
+  - vb
+  name: ReleaseAll()
+  nameWithType: TestSynchronizationProvider.ReleaseAll()
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll()
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: Releases all sync points. Call this in test cleanup to avoid deadlocks if a test fails.
+  example: []
+  syntax:
+    content: public void ReleaseAll()
+    content.vb: Public Sub ReleaseAll()
+  overload: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll*
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose
+  id: Dispose
+  parent: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: TestSynchronizationProvider.Dispose()
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose()
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Metalama.Framework.DesignTime.Rpc.ITestSynchronizationProvider
+  commentId: T:Metalama.Framework.DesignTime.Rpc.ITestSynchronizationProvider
+  parent: Metalama.Framework.DesignTime.Rpc
+  isExternal: true
+  name: ITestSynchronizationProvider
+  nameWithType: ITestSynchronizationProvider
+  fullName: Metalama.Framework.DesignTime.Rpc.ITestSynchronizationProvider
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_WaitForSyncPointReachedAsync_System_String_System_Threading_CancellationToken_
+  name: WaitForSyncPointReachedAsync(string, CancellationToken)
+  nameWithType: TestSynchronizationProvider.WaitForSyncPointReachedAsync(string, CancellationToken)
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: TestSynchronizationProvider.WaitForSyncPointReachedAsync(String, CancellationToken)
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(String, System.Threading.CancellationToken)
+  name.vb: WaitForSyncPointReachedAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+    name: WaitForSyncPointReachedAsync
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_WaitForSyncPointReachedAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync(System.String,System.Threading.CancellationToken)
+    name: WaitForSyncPointReachedAsync
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_WaitForSyncPointReachedAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseSyncPoint_System_String_
+  name: ReleaseSyncPoint(string)
+  nameWithType: TestSynchronizationProvider.ReleaseSyncPoint(string)
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(string)
+  nameWithType.vb: TestSynchronizationProvider.ReleaseSyncPoint(String)
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(String)
+  name.vb: ReleaseSyncPoint(String)
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+    name: ReleaseSyncPoint
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseSyncPoint_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint(System.String)
+    name: ReleaseSyncPoint
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseSyncPoint_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+  commentId: M:Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseAll
+  name: ReleaseAll()
+  nameWithType: TestSynchronizationProvider.ReleaseAll()
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll()
+  spec.csharp:
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+    name: ReleaseAll
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+    name: ReleaseAll
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseAll
+  - name: (
+  - name: )
+- uid: Metalama.Testing.UnitTesting
+  commentId: N:Metalama.Testing.UnitTesting
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Testing.UnitTesting
+  nameWithType: Metalama.Testing.UnitTesting
+  fullName: Metalama.Testing.UnitTesting
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Testing
+    name: Testing
+    isExternal: true
+    href: Metalama.Testing.html
+  - name: .
+  - uid: Metalama.Testing.UnitTesting
+    name: UnitTesting
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Testing
+    name: Testing
+    isExternal: true
+    href: Metalama.Testing.html
+  - name: .
+  - uid: Metalama.Testing.UnitTesting
+    name: UnitTesting
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.UnitTesting.TestSynchronizationProvider,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.TestSynchronizationProvider}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<TestSynchronizationProvider>(TestSynchronizationProvider, Func<TestSynchronizationProvider, IEnumerable<TestSynchronizationProvider>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<TestSynchronizationProvider>(TestSynchronizationProvider, Func<TestSynchronizationProvider, IEnumerable<TestSynchronizationProvider>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Testing.UnitTesting.TestSynchronizationProvider>(Metalama.Testing.UnitTesting.TestSynchronizationProvider, System.Func<Metalama.Testing.UnitTesting.TestSynchronizationProvider, System.Collections.Generic.IEnumerable<Metalama.Testing.UnitTesting.TestSynchronizationProvider>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of TestSynchronizationProvider)(TestSynchronizationProvider, Func(Of TestSynchronizationProvider, IEnumerable(Of TestSynchronizationProvider)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Testing.UnitTesting.TestSynchronizationProvider)(Metalama.Testing.UnitTesting.TestSynchronizationProvider, System.Func(Of Metalama.Testing.UnitTesting.TestSynchronizationProvider, System.Collections.Generic.IEnumerable(Of Metalama.Testing.UnitTesting.TestSynchronizationProvider)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of TestSynchronizationProvider)(TestSynchronizationProvider, Func(Of TestSynchronizationProvider, IEnumerable(Of TestSynchronizationProvider)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.UnitTesting.TestSynchronizationProvider,System.Func{Metalama.Testing.UnitTesting.TestSynchronizationProvider,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.TestSynchronizationProvider}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.UnitTesting.TestSynchronizationProvider,System.Func{Metalama.Testing.UnitTesting.TestSynchronizationProvider,System.Collections.Generic.IEnumerable{Metalama.Testing.UnitTesting.TestSynchronizationProvider}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: )
+  - name: (
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider
+    name: TestSynchronizationProvider
+    isExternal: true
+    href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.DesignTime.Rpc
+  commentId: N:Metalama.Framework.DesignTime.Rpc
+  isExternal: true
+  name: Metalama.Framework.DesignTime.Rpc
+  nameWithType: Metalama.Framework.DesignTime.Rpc
+  fullName: Metalama.Framework.DesignTime.Rpc
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Metalama.Framework.DesignTime
+    name: DesignTime
+    isExternal: true
+  - name: .
+  - uid: Metalama.Framework.DesignTime.Rpc
+    name: Rpc
+    isExternal: true
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Metalama.Framework.DesignTime
+    name: DesignTime
+    isExternal: true
+  - name: .
+  - uid: Metalama.Framework.DesignTime.Rpc
+    name: Rpc
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.#ctor*
+  commentId: Overload:Metalama.Testing.UnitTesting.TestSynchronizationProvider.#ctor
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.-ctor.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider__ctor_Xunit_Abstractions_ITestOutputHelper_
+  name: TestSynchronizationProvider
+  nameWithType: TestSynchronizationProvider.TestSynchronizationProvider
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.TestSynchronizationProvider
+  nameWithType.vb: TestSynchronizationProvider.New
+  fullName.vb: Metalama.Testing.UnitTesting.TestSynchronizationProvider.New
+  name.vb: New
+- uid: Xunit.Abstractions.ITestOutputHelper
+  commentId: T:Xunit.Abstractions.ITestOutputHelper
+  parent: Xunit.Abstractions
+  isExternal: true
+  name: ITestOutputHelper
+  nameWithType: ITestOutputHelper
+  fullName: Xunit.Abstractions.ITestOutputHelper
+- uid: Xunit.Abstractions
+  commentId: N:Xunit.Abstractions
+  isExternal: true
+  name: Xunit.Abstractions
+  nameWithType: Xunit.Abstractions
+  fullName: Xunit.Abstractions
+  spec.csharp:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Abstractions
+    name: Abstractions
+    isExternal: true
+  spec.vb:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Abstractions
+    name: Abstractions
+    isExternal: true
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint*
+  commentId: Overload:Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_EnableSyncPoint_System_String_
+  name: EnableSyncPoint
+  nameWithType: TestSynchronizationProvider.EnableSyncPoint
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.EnableSyncPoint
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync*
+  commentId: Overload:Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_WaitForSyncPointReachedAsync_System_String_System_Threading_CancellationToken_
+  name: WaitForSyncPointReachedAsync
+  nameWithType: TestSynchronizationProvider.WaitForSyncPointReachedAsync
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.WaitForSyncPointReachedAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint*
+  commentId: Overload:Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseSyncPoint_System_String_
+  name: ReleaseSyncPoint
+  nameWithType: TestSynchronizationProvider.ReleaseSyncPoint
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseSyncPoint
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll*
+  commentId: Overload:Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_ReleaseAll
+  name: ReleaseAll
+  nameWithType: TestSynchronizationProvider.ReleaseAll
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.ReleaseAll
+- uid: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose*
+  commentId: Overload:Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose
+  isExternal: true
+  href: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose.html#Metalama_Testing_UnitTesting_TestSynchronizationProvider_Dispose
+  name: Dispose
+  nameWithType: TestSynchronizationProvider.Dispose
+  fullName: Metalama.Testing.UnitTesting.TestSynchronizationProvider.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+memberLayout: SeparatePages

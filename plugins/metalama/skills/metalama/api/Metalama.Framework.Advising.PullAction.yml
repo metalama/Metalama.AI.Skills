@@ -1,0 +1,1058 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.PullAction
+  commentId: T:Metalama.Framework.Advising.PullAction
+  id: PullAction
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.PullAction.Expression
+  - Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - Metalama.Framework.Advising.PullAction.None
+  - Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  - Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  - Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  langs:
+  - csharp
+  - vb
+  name: PullAction
+  nameWithType: PullAction
+  fullName: Metalama.Framework.Advising.PullAction
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Represents a way to pull a constructor parameter value from child constructors when propagating introduced parameters.
+  remarks: >-
+    <p>
+        When a parameter is introduced to a constructor using <xref href="Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.IConstructor%7d%2cSystem.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.TypedConstant%2cMetalama.Framework.Advising.IPullStrategy%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d)" data-throw-if-not-resolved="false"></xref>,
+        child constructors (those that call the modified constructor via <code>: base(...)</code> or <code>: this(...)</code>)
+        need to provide a value for this new parameter. A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> specifies how to obtain that value.
+        </p>
+    <p>
+        Common scenarios:
+        <ul><li><xref href="Metalama.Framework.Advising.PullAction.None" data-throw-if-not-resolved="false"></xref> - Use the default value of the introduced parameter</li><li><xref href="Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)" data-throw-if-not-resolved="false"></xref> - Forward an existing parameter from the child constructor</li><li><xref href="Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d)" data-throw-if-not-resolved="false"></xref> - Add a new parameter to the child constructor and forward its value</li><li><xref href="Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> - Pass a custom expression (e.g., a constant or field access)</li></ul></p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct PullAction
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure PullAction
+  seealso:
+  - linkId: Metalama.Framework.Advising.IPullStrategy
+    commentId: T:Metalama.Framework.Advising.IPullStrategy
+  - linkId: Metalama.Framework.Advising.PullStrategy
+    commentId: T:Metalama.Framework.Advising.PullStrategy
+  - linkId: Metalama.Framework.Advising.PullActionKind
+    commentId: T:Metalama.Framework.Advising.PullActionKind
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - linkType: HRef
+    linkId: '@introducing-constructor-parameters'
+    altText: '@introducing-constructor-parameters'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  commentId: M:Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  id: UseExistingParameter(Metalama.Framework.Code.IParameter)
+  parent: Metalama.Framework.Advising.PullAction
+  langs:
+  - csharp
+  - vb
+  name: UseExistingParameter(IParameter)
+  nameWithType: PullAction.UseExistingParameter(IParameter)
+  fullName: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Creates a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that means that the dependency should be pulled from an existing constructor parameter.
+  remarks: >-
+    This action is useful when the child constructor already has a parameter with the value needed for the
+
+    introduced parameter. For example, if you introduce an <code>ILogger</code> parameter to a base constructor,
+
+    and a derived class constructor already has an <code>ILogger logger</code> parameter, you can use
+
+    <code>UseExistingParameter(loggerParam)</code> to forward that value.
+  example: []
+  syntax:
+    content: public static PullAction UseExistingParameter(IParameter parameter)
+    parameters:
+    - id: parameter
+      type: Metalama.Framework.Code.IParameter
+      description: The existing parameter to use.
+    return:
+      type: Metalama.Framework.Advising.PullAction
+      description: A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that uses the specified parameter.
+    content.vb: Public Shared Function UseExistingParameter(parameter As IParameter) As PullAction
+  overload: Metalama.Framework.Advising.PullAction.UseExistingParameter*
+- uid: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  commentId: M:Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  id: IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  parent: Metalama.Framework.Advising.PullAction
+  langs:
+  - csharp
+  - vb
+  name: IntroduceParameterAndPull(string, IType, IExpression?, ImmutableArray<AttributeConstruction>)
+  nameWithType: PullAction.IntroduceParameterAndPull(string, IType, IExpression?, ImmutableArray<AttributeConstruction>)
+  fullName: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(string, Metalama.Framework.Code.IType, Metalama.Framework.Code.IExpression?, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  syntax:
+    content: public static PullAction IntroduceParameterAndPull(string parameterName, IType parameterType, IExpression? parameterDefaultValue, ImmutableArray<AttributeConstruction> parameterAttributes = default)
+    parameters:
+    - id: parameterName
+      type: System.String
+    - id: parameterType
+      type: Metalama.Framework.Code.IType
+    - id: parameterDefaultValue
+      type: Metalama.Framework.Code.IExpression
+    - id: parameterAttributes
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+    return:
+      type: Metalama.Framework.Advising.PullAction
+    content.vb: Public Shared Function IntroduceParameterAndPull(parameterName As String, parameterType As IType, parameterDefaultValue As IExpression, parameterAttributes As ImmutableArray(Of AttributeConstruction) = Nothing) As PullAction
+  overload: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull*
+  nameWithType.vb: PullAction.IntroduceParameterAndPull(String, IType, IExpression, ImmutableArray(Of AttributeConstruction))
+  fullName.vb: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(String, Metalama.Framework.Code.IType, Metalama.Framework.Code.IExpression, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
+  name.vb: IntroduceParameterAndPull(String, IType, IExpression, ImmutableArray(Of AttributeConstruction))
+- uid: Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  id: UseExpression(Metalama.Framework.Code.IExpression)
+  parent: Metalama.Framework.Advising.PullAction
+  langs:
+  - csharp
+  - vb
+  name: UseExpression(IExpression)
+  nameWithType: PullAction.UseExpression(IExpression)
+  fullName: Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Creates a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that means that the dependency should be assigned to a given <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+        This action allows you to pass a static expression to the introduced parameter. Use this for expressions that
+        can be evaluated at compile-time and are static in nature, i.e. do not reference <code>this</code>.
+        </p>
+    <p>
+      <strong>Note:</strong> To forward an existing parameter from the child constructor, use <xref href="Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)" data-throw-if-not-resolved="false"></xref>
+        instead, as it provides better readability and type safety.
+        </p>
+  example: []
+  syntax:
+    content: public static PullAction UseExpression(IExpression expression)
+    parameters:
+    - id: expression
+      type: Metalama.Framework.Code.IExpression
+      description: >-
+        The expression to use for pulling the dependency. Only static expressions are supported
+                    (e.g., constants, field access, static method calls).
+    return:
+      type: Metalama.Framework.Advising.PullAction
+      description: A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that uses the specified expression.
+    content.vb: Public Shared Function UseExpression(expression As IExpression) As PullAction
+  overload: Metalama.Framework.Advising.PullAction.UseExpression*
+  seealso:
+  - linkId: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+    commentId: M:Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+- uid: Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  commentId: M:Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  id: UseConstant(Metalama.Framework.Code.TypedConstant)
+  parent: Metalama.Framework.Advising.PullAction
+  langs:
+  - csharp
+  - vb
+  name: UseConstant(TypedConstant)
+  nameWithType: PullAction.UseConstant(TypedConstant)
+  fullName: Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Creates a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that means that the dependency should be assigned to a given <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    This is a convenience method for passing constant values. Use this when all child constructors should
+
+    pass the same constant value to the introduced parameter (e.g., <code>UseConstant(TypedConstant.Create(true))</code>).
+  example: []
+  syntax:
+    content: public static PullAction UseConstant(TypedConstant constant)
+    parameters:
+    - id: constant
+      type: Metalama.Framework.Code.TypedConstant
+      description: The constant value to use for pulling the dependency.
+    return:
+      type: Metalama.Framework.Advising.PullAction
+      description: A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that uses the specified constant.
+    content.vb: Public Shared Function UseConstant(constant As TypedConstant) As PullAction
+  overload: Metalama.Framework.Advising.PullAction.UseConstant*
+- uid: Metalama.Framework.Advising.PullAction.Expression
+  commentId: P:Metalama.Framework.Advising.PullAction.Expression
+  id: Expression
+  parent: Metalama.Framework.Advising.PullAction
+  langs:
+  - csharp
+  - vb
+  name: Expression
+  nameWithType: PullAction.Expression
+  fullName: Metalama.Framework.Advising.PullAction.Expression
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Gets the expression to use for pulling the dependency when <xref href="Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)" data-throw-if-not-resolved="false"></xref> is used.
+  example: []
+  syntax:
+    content: public IExpression? Expression { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IExpression
+    content.vb: Public ReadOnly Property Expression As IExpression
+  overload: Metalama.Framework.Advising.PullAction.Expression*
+- uid: Metalama.Framework.Advising.PullAction.None
+  commentId: P:Metalama.Framework.Advising.PullAction.None
+  id: None
+  parent: Metalama.Framework.Advising.PullAction
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: PullAction.None
+  fullName: Metalama.Framework.Advising.PullAction.None
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Gets a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that means that the dependency has to be set to its default value.
+  remarks: >-
+    When this action is used, the child constructor will pass the default value (as specified in
+
+    <xref href="Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.IConstructor%7d%2cSystem.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.TypedConstant%2cMetalama.Framework.Advising.IPullStrategy%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d)" data-throw-if-not-resolved="false"></xref>) to the introduced parameter.
+  example: []
+  syntax:
+    content: public static PullAction None { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.PullAction
+    content.vb: Public Shared ReadOnly Property None As PullAction
+  overload: Metalama.Framework.Advising.PullAction.None*
+references:
+- uid: Metalama.Framework.Advising.IPullStrategy
+  commentId: T:Metalama.Framework.Advising.IPullStrategy
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IPullStrategy.html
+  name: IPullStrategy
+  nameWithType: IPullStrategy
+  fullName: Metalama.Framework.Advising.IPullStrategy
+- uid: Metalama.Framework.Advising.PullStrategy
+  commentId: T:Metalama.Framework.Advising.PullStrategy
+  isExternal: true
+  href: Metalama.Framework.Advising.PullStrategy.html
+  name: PullStrategy
+  nameWithType: PullStrategy
+  fullName: Metalama.Framework.Advising.PullStrategy
+- uid: Metalama.Framework.Advising.PullActionKind
+  commentId: T:Metalama.Framework.Advising.PullActionKind
+  isExternal: true
+  name: PullActionKind
+  nameWithType: PullActionKind
+  fullName: Metalama.Framework.Advising.PullActionKind
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  name: IntroduceParameter(IAdviser<IConstructor>, string, IType, TypedConstant, IPullStrategy, ImmutableArray<AttributeConstruction>)
+  nameWithType: AdviserExtensions.IntroduceParameter(IAdviser<IConstructor>, string, IType, TypedConstant, IPullStrategy, ImmutableArray<AttributeConstruction>)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IConstructor>, string, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
+  nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
+  name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: IntroduceParameter
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.TypedConstant
+    name: TypedConstant
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: IntroduceParameter
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.TypedConstant
+    name: TypedConstant
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.IPullStrategy
+    name: IPullStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IPullStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Advising.PullAction
+  commentId: T:Metalama.Framework.Advising.PullAction
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.html
+  name: PullAction
+  nameWithType: PullAction
+  fullName: Metalama.Framework.Advising.PullAction
+- uid: Metalama.Framework.Advising.PullAction.None
+  commentId: P:Metalama.Framework.Advising.PullAction.None
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.None.html#Metalama_Framework_Advising_PullAction_None
+  name: None
+  nameWithType: PullAction.None
+  fullName: Metalama.Framework.Advising.PullAction.None
+- uid: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  commentId: M:Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.UseExistingParameter.html#Metalama_Framework_Advising_PullAction_UseExistingParameter_Metalama_Framework_Code_IParameter_
+  name: UseExistingParameter(IParameter)
+  nameWithType: PullAction.UseExistingParameter(IParameter)
+  fullName: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+    name: UseExistingParameter
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.UseExistingParameter.html#Metalama_Framework_Advising_PullAction_UseExistingParameter_Metalama_Framework_Code_IParameter_
+  - name: (
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+    href: Metalama.Framework.Code.IParameter.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)
+    name: UseExistingParameter
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.UseExistingParameter.html#Metalama_Framework_Advising_PullAction_UseExistingParameter_Metalama_Framework_Code_IParameter_
+  - name: (
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+    href: Metalama.Framework.Code.IParameter.html
+  - name: )
+- uid: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  commentId: M:Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullAction_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  name: IntroduceParameterAndPull(string, IType, IExpression, ImmutableArray<AttributeConstruction>)
+  nameWithType: PullAction.IntroduceParameterAndPull(string, IType, IExpression, ImmutableArray<AttributeConstruction>)
+  fullName: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(string, Metalama.Framework.Code.IType, Metalama.Framework.Code.IExpression, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
+  nameWithType.vb: PullAction.IntroduceParameterAndPull(String, IType, IExpression, ImmutableArray(Of AttributeConstruction))
+  fullName.vb: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(String, Metalama.Framework.Code.IType, Metalama.Framework.Code.IExpression, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
+  name.vb: IntroduceParameterAndPull(String, IType, IExpression, ImmutableArray(Of AttributeConstruction))
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: IntroduceParameterAndPull
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullAction_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: IntroduceParameterAndPull
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullAction_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.UseExpression.html#Metalama_Framework_Advising_PullAction_UseExpression_Metalama_Framework_Code_IExpression_
+  name: UseExpression(IExpression)
+  nameWithType: PullAction.UseExpression(IExpression)
+  fullName: Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+    name: UseExpression
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.UseExpression.html#Metalama_Framework_Advising_PullAction_UseExpression_Metalama_Framework_Code_IExpression_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)
+    name: UseExpression
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.UseExpression.html#Metalama_Framework_Advising_PullAction_UseExpression_Metalama_Framework_Code_IExpression_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Advising.PullAction.UseExistingParameter*
+  commentId: Overload:Metalama.Framework.Advising.PullAction.UseExistingParameter
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.UseExistingParameter.html#Metalama_Framework_Advising_PullAction_UseExistingParameter_Metalama_Framework_Code_IParameter_
+  name: UseExistingParameter
+  nameWithType: PullAction.UseExistingParameter
+  fullName: Metalama.Framework.Advising.PullAction.UseExistingParameter
+- uid: Metalama.Framework.Code.IParameter
+  commentId: T:Metalama.Framework.Code.IParameter
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IParameter.html
+  name: IParameter
+  nameWithType: IParameter
+  fullName: Metalama.Framework.Code.IParameter
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull*
+  commentId: Overload:Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull.html#Metalama_Framework_Advising_PullAction_IntroduceParameterAndPull_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_IExpression_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  name: IntroduceParameterAndPull
+  nameWithType: PullAction.IntroduceParameterAndPull
+  fullName: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+- uid: Metalama.Framework.Code.IExpression
+  commentId: T:Metalama.Framework.Code.IExpression
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.html
+  name: IExpression
+  nameWithType: IExpression
+  fullName: Metalama.Framework.Code.IExpression
+- uid: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+  commentId: T:System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<AttributeConstruction>
+  nameWithType: ImmutableArray<AttributeConstruction>
+  fullName: System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>
+  nameWithType.vb: ImmutableArray(Of AttributeConstruction)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction)
+  name.vb: ImmutableArray(Of AttributeConstruction)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+- uid: Metalama.Framework.Advising.PullAction.UseExpression*
+  commentId: Overload:Metalama.Framework.Advising.PullAction.UseExpression
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.UseExpression.html#Metalama_Framework_Advising_PullAction_UseExpression_Metalama_Framework_Code_IExpression_
+  name: UseExpression
+  nameWithType: PullAction.UseExpression
+  fullName: Metalama.Framework.Advising.PullAction.UseExpression
+- uid: Metalama.Framework.Code.TypedConstant
+  commentId: T:Metalama.Framework.Code.TypedConstant
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.TypedConstant.html
+  name: TypedConstant
+  nameWithType: TypedConstant
+  fullName: Metalama.Framework.Code.TypedConstant
+- uid: Metalama.Framework.Advising.PullAction.UseConstant*
+  commentId: Overload:Metalama.Framework.Advising.PullAction.UseConstant
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.UseConstant.html#Metalama_Framework_Advising_PullAction_UseConstant_Metalama_Framework_Code_TypedConstant_
+  name: UseConstant
+  nameWithType: PullAction.UseConstant
+  fullName: Metalama.Framework.Advising.PullAction.UseConstant
+- uid: Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  commentId: M:Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.UseConstant.html#Metalama_Framework_Advising_PullAction_UseConstant_Metalama_Framework_Code_TypedConstant_
+  name: UseConstant(TypedConstant)
+  nameWithType: PullAction.UseConstant(TypedConstant)
+  fullName: Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+    name: UseConstant
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.UseConstant.html#Metalama_Framework_Advising_PullAction_UseConstant_Metalama_Framework_Code_TypedConstant_
+  - name: (
+  - uid: Metalama.Framework.Code.TypedConstant
+    name: TypedConstant
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)
+    name: UseConstant
+    isExternal: true
+    href: Metalama.Framework.Advising.PullAction.UseConstant.html#Metalama_Framework_Advising_PullAction_UseConstant_Metalama_Framework_Code_TypedConstant_
+  - name: (
+  - uid: Metalama.Framework.Code.TypedConstant
+    name: TypedConstant
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.html
+  - name: )
+- uid: Metalama.Framework.Advising.PullAction.Expression*
+  commentId: Overload:Metalama.Framework.Advising.PullAction.Expression
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.Expression.html#Metalama_Framework_Advising_PullAction_Expression
+  name: Expression
+  nameWithType: PullAction.Expression
+  fullName: Metalama.Framework.Advising.PullAction.Expression
+- uid: Metalama.Framework.Advising.PullAction.None*
+  commentId: Overload:Metalama.Framework.Advising.PullAction.None
+  isExternal: true
+  href: Metalama.Framework.Advising.PullAction.None.html#Metalama_Framework_Advising_PullAction_None
+  name: None
+  nameWithType: PullAction.None
+  fullName: Metalama.Framework.Advising.PullAction.None
+memberLayout: SeparatePages

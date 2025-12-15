@@ -1,0 +1,344 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.RefComparison
+  commentId: T:Metalama.Framework.Code.RefComparison
+  id: RefComparison
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.RefComparison.Default
+  - Metalama.Framework.Code.RefComparison.IncludeNullability
+  - Metalama.Framework.Code.RefComparison.Structural
+  - Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+  langs:
+  - csharp
+  - vb
+  name: RefComparison
+  nameWithType: RefComparison
+  fullName: Metalama.Framework.Code.RefComparison
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Defines strategies to compare two instances of the <xref href="Metalama.Framework.Code.IRef%601" data-throw-if-not-resolved="false"></xref> interface.
+  remarks: >-
+    <p>
+        References can be compared using different strategies depending on the scenario:
+        </p>
+    <ul><li>Use <xref href="Metalama.Framework.Code.RefComparison.Default" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.RefComparison.IncludeNullability" data-throw-if-not-resolved="false"></xref> when comparing references
+        within the same compilation. These strategies are faster but do not work across different compilation versions.</li><li>Use <xref href="Metalama.Framework.Code.RefComparison.Structural" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.RefComparison.StructuralIncludeNullability" data-throw-if-not-resolved="false"></xref> when comparing
+        references across different compilations. These strategies compare references by their structural identity
+        (e.g., fully qualified name) rather than object identity.</li></ul>
+    <p>
+        For type references (<xref href="Metalama.Framework.Code.IRef%601" data-throw-if-not-resolved="false"></xref> where <code>T</code> is <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>), the nullability variants
+        consider nullable reference type annotations in the comparison.
+        </p>
+  example: []
+  syntax:
+    content: public enum RefComparison
+    content.vb: Public Enum RefComparison
+  seealso:
+  - linkId: Metalama.Framework.Code.IRef
+    commentId: T:Metalama.Framework.Code.IRef
+  - linkId: Metalama.Framework.Code.Comparers.RefEqualityComparer`1
+    commentId: T:Metalama.Framework.Code.Comparers.RefEqualityComparer`1
+  - linkId: Metalama.Framework.Code.Comparers.RefEqualityComparer
+    commentId: T:Metalama.Framework.Code.Comparers.RefEqualityComparer
+- uid: Metalama.Framework.Code.RefComparison.Default
+  commentId: F:Metalama.Framework.Code.RefComparison.Default
+  id: Default
+  parent: Metalama.Framework.Code.RefComparison
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: RefComparison.Default
+  fullName: Metalama.Framework.Code.RefComparison.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Does not support cross-compilation comparisons and ignores nullability when comparing type references.
+
+    This is the fastest comparison strategy and is suitable for comparing references within the same compilation.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Framework.Code.RefComparison
+- uid: Metalama.Framework.Code.RefComparison.IncludeNullability
+  commentId: F:Metalama.Framework.Code.RefComparison.IncludeNullability
+  id: IncludeNullability
+  parent: Metalama.Framework.Code.RefComparison
+  langs:
+  - csharp
+  - vb
+  name: IncludeNullability
+  nameWithType: RefComparison.IncludeNullability
+  fullName: Metalama.Framework.Code.RefComparison.IncludeNullability
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Does not support cross-compilation comparisons and respects nullability when comparing type references.
+
+    Use this strategy when nullable reference type annotations should affect equality.
+  example: []
+  syntax:
+    content: IncludeNullability = 1
+    return:
+      type: Metalama.Framework.Code.RefComparison
+- uid: Metalama.Framework.Code.RefComparison.Structural
+  commentId: F:Metalama.Framework.Code.RefComparison.Structural
+  id: Structural
+  parent: Metalama.Framework.Code.RefComparison
+  langs:
+  - csharp
+  - vb
+  name: Structural
+  nameWithType: RefComparison.Structural
+  fullName: Metalama.Framework.Code.RefComparison.Structural
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Supports cross-compilation comparisons and ignores nullability when comparing type references.
+
+    Use this strategy when comparing references from different compilation versions, such as when
+
+    tracking declarations across aspect pipeline steps.
+  example: []
+  syntax:
+    content: Structural = 2
+    return:
+      type: Metalama.Framework.Code.RefComparison
+- uid: Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+  commentId: F:Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+  id: StructuralIncludeNullability
+  parent: Metalama.Framework.Code.RefComparison
+  langs:
+  - csharp
+  - vb
+  name: StructuralIncludeNullability
+  nameWithType: RefComparison.StructuralIncludeNullability
+  fullName: Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Supports cross-compilation comparisons and respects nullability when comparing type references.
+
+    This is the most comprehensive comparison strategy, suitable for cross-compilation scenarios where
+
+    nullable reference type annotations should affect equality.
+  example: []
+  syntax:
+    content: StructuralIncludeNullability = 3
+    return:
+      type: Metalama.Framework.Code.RefComparison
+references:
+- uid: Metalama.Framework.Code.IRef
+  commentId: T:Metalama.Framework.Code.IRef
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IRef.html
+  name: IRef
+  nameWithType: IRef
+  fullName: Metalama.Framework.Code.IRef
+- uid: Metalama.Framework.Code.Comparers.RefEqualityComparer`1
+  commentId: T:Metalama.Framework.Code.Comparers.RefEqualityComparer`1
+  parent: Metalama.Framework.Code.Comparers
+  isExternal: true
+  href: Metalama.Framework.Code.Comparers.RefEqualityComparer-1.html
+  name: RefEqualityComparer<T>
+  nameWithType: RefEqualityComparer<T>
+  fullName: Metalama.Framework.Code.Comparers.RefEqualityComparer<T>
+  nameWithType.vb: RefEqualityComparer(Of T)
+  fullName.vb: Metalama.Framework.Code.Comparers.RefEqualityComparer(Of T)
+  name.vb: RefEqualityComparer(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Comparers.RefEqualityComparer`1
+    name: RefEqualityComparer
+    isExternal: true
+    href: Metalama.Framework.Code.Comparers.RefEqualityComparer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.Comparers.RefEqualityComparer`1
+    name: RefEqualityComparer
+    isExternal: true
+    href: Metalama.Framework.Code.Comparers.RefEqualityComparer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.Comparers.RefEqualityComparer
+  commentId: T:Metalama.Framework.Code.Comparers.RefEqualityComparer
+  parent: Metalama.Framework.Code.Comparers
+  isExternal: true
+  href: Metalama.Framework.Code.Comparers.RefEqualityComparer.html
+  name: RefEqualityComparer
+  nameWithType: RefEqualityComparer
+  fullName: Metalama.Framework.Code.Comparers.RefEqualityComparer
+- uid: Metalama.Framework.Code.IRef`1
+  commentId: T:Metalama.Framework.Code.IRef`1
+  isExternal: true
+  href: Metalama.Framework.Code.IRef-1.html
+  name: IRef<T>
+  nameWithType: IRef<T>
+  fullName: Metalama.Framework.Code.IRef<T>
+  nameWithType.vb: IRef(Of T)
+  fullName.vb: Metalama.Framework.Code.IRef(Of T)
+  name.vb: IRef(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Code.IRef`1
+    name: IRef
+    isExternal: true
+    href: Metalama.Framework.Code.IRef-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.RefComparison.Default
+  commentId: F:Metalama.Framework.Code.RefComparison.Default
+  isExternal: true
+  href: Metalama.Framework.Code.RefComparison.html#Metalama_Framework_Code_RefComparison_Default
+  name: Default
+  nameWithType: RefComparison.Default
+  fullName: Metalama.Framework.Code.RefComparison.Default
+- uid: Metalama.Framework.Code.RefComparison.IncludeNullability
+  commentId: F:Metalama.Framework.Code.RefComparison.IncludeNullability
+  isExternal: true
+  href: Metalama.Framework.Code.RefComparison.html#Metalama_Framework_Code_RefComparison_IncludeNullability
+  name: IncludeNullability
+  nameWithType: RefComparison.IncludeNullability
+  fullName: Metalama.Framework.Code.RefComparison.IncludeNullability
+- uid: Metalama.Framework.Code.RefComparison.Structural
+  commentId: F:Metalama.Framework.Code.RefComparison.Structural
+  isExternal: true
+  href: Metalama.Framework.Code.RefComparison.html#Metalama_Framework_Code_RefComparison_Structural
+  name: Structural
+  nameWithType: RefComparison.Structural
+  fullName: Metalama.Framework.Code.RefComparison.Structural
+- uid: Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+  commentId: F:Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+  isExternal: true
+  href: Metalama.Framework.Code.RefComparison.html#Metalama_Framework_Code_RefComparison_StructuralIncludeNullability
+  name: StructuralIncludeNullability
+  nameWithType: RefComparison.StructuralIncludeNullability
+  fullName: Metalama.Framework.Code.RefComparison.StructuralIncludeNullability
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.Comparers
+  commentId: N:Metalama.Framework.Code.Comparers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Comparers
+  nameWithType: Metalama.Framework.Code.Comparers
+  fullName: Metalama.Framework.Code.Comparers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Comparers
+    name: Comparers
+    isExternal: true
+    href: Metalama.Framework.Code.Comparers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Comparers
+    name: Comparers
+    isExternal: true
+    href: Metalama.Framework.Code.Comparers.html
+- uid: Metalama.Framework.Code.RefComparison
+  commentId: T:Metalama.Framework.Code.RefComparison
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.RefComparison.html
+  name: RefComparison
+  nameWithType: RefComparison
+  fullName: Metalama.Framework.Code.RefComparison
+memberLayout: SeparatePages

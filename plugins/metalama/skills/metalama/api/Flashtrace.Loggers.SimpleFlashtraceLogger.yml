@@ -1,0 +1,938 @@
+### YamlMime:ManagedReference
+items:
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+  commentId: T:Flashtrace.Loggers.SimpleFlashtraceLogger
+  id: SimpleFlashtraceLogger
+  parent: Flashtrace.Loggers
+  children:
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.#ctor(Flashtrace.FlashtraceRole,System.String)
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.Category
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.Factory
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.Role
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.Write(Flashtrace.FlashtraceLevel,Flashtrace.Records.LogRecordKind,System.String,System.Exception)
+  langs:
+  - csharp
+  - vb
+  name: SimpleFlashtraceLogger
+  nameWithType: SimpleFlashtraceLogger
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger
+  type: Class
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  summary: A base class for simple but low-performance and low-feature implementations of <xref href="Flashtrace.IFlashtraceLogger" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>The simplification stems from the wrapping of all message arguments in an object array, which
+
+    allocates memory. Also, the logger does not support indentation.</p>
+  example: []
+  syntax:
+    content: 'public abstract class SimpleFlashtraceLogger : IFlashtraceLogger, IFlashtraceLocalLogger, IFlashtraceExceptionHandler'
+    content.vb: Public MustInherit Class SimpleFlashtraceLogger Implements IFlashtraceLogger, IFlashtraceLocalLogger, IFlashtraceExceptionHandler
+  inheritance:
+  - System.Object
+  implements:
+  - Flashtrace.IFlashtraceLogger
+  - Flashtrace.IFlashtraceLocalLogger
+  - Flashtrace.IFlashtraceExceptionHandler
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Flashtrace.Loggers.SimpleFlashtraceLogger.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Flashtrace.Loggers.SimpleFlashtraceLogger,System.Collections.Generic.IEnumerable{Flashtrace.Loggers.SimpleFlashtraceLogger}},System.Boolean)
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.#ctor(Flashtrace.FlashtraceRole,System.String)
+  commentId: M:Flashtrace.Loggers.SimpleFlashtraceLogger.#ctor(Flashtrace.FlashtraceRole,System.String)
+  id: '#ctor(Flashtrace.FlashtraceRole,System.String)'
+  parent: Flashtrace.Loggers.SimpleFlashtraceLogger
+  langs:
+  - csharp
+  - vb
+  name: SimpleFlashtraceLogger(FlashtraceRole, string)
+  nameWithType: SimpleFlashtraceLogger.SimpleFlashtraceLogger(FlashtraceRole, string)
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.SimpleFlashtraceLogger(Flashtrace.FlashtraceRole, string)
+  type: Constructor
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  summary: Initializes a new instance of the <xref href="Flashtrace.Loggers.SimpleFlashtraceLogger" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: protected SimpleFlashtraceLogger(FlashtraceRole role, string name)
+    parameters:
+    - id: role
+      type: Flashtrace.FlashtraceRole
+      description: The role.
+    - id: name
+      type: System.String
+      description: The source name.
+    content.vb: Protected Sub New(role As FlashtraceRole, name As String)
+  overload: Flashtrace.Loggers.SimpleFlashtraceLogger.#ctor*
+  nameWithType.vb: SimpleFlashtraceLogger.New(FlashtraceRole, String)
+  fullName.vb: Flashtrace.Loggers.SimpleFlashtraceLogger.New(Flashtrace.FlashtraceRole, String)
+  name.vb: New(FlashtraceRole, String)
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  commentId: M:Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  id: IsEnabled(Flashtrace.FlashtraceLevel)
+  parent: Flashtrace.Loggers.SimpleFlashtraceLogger
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled(FlashtraceLevel)
+  nameWithType: SimpleFlashtraceLogger.IsEnabled(FlashtraceLevel)
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  type: Method
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  summary: Determines whether logging is enabled for a given <xref href="Flashtrace.FlashtraceLevel" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public abstract bool IsEnabled(FlashtraceLevel level)
+    parameters:
+    - id: level
+      type: Flashtrace.FlashtraceLevel
+      description: A record level (or severity).
+    return:
+      type: System.Boolean
+      description: <code>true</code> if logging is enabled for <code class="paramref">level</code>, otherwise <code>false</code>.
+    content.vb: Public MustOverride Function IsEnabled(level As FlashtraceLevel) As Boolean
+  overload: Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled*
+  implements:
+  - Flashtrace.IFlashtraceLocalLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Write(Flashtrace.FlashtraceLevel,Flashtrace.Records.LogRecordKind,System.String,System.Exception)
+  commentId: M:Flashtrace.Loggers.SimpleFlashtraceLogger.Write(Flashtrace.FlashtraceLevel,Flashtrace.Records.LogRecordKind,System.String,System.Exception)
+  id: Write(Flashtrace.FlashtraceLevel,Flashtrace.Records.LogRecordKind,System.String,System.Exception)
+  parent: Flashtrace.Loggers.SimpleFlashtraceLogger
+  langs:
+  - csharp
+  - vb
+  name: Write(FlashtraceLevel, LogRecordKind, string, Exception?)
+  nameWithType: SimpleFlashtraceLogger.Write(FlashtraceLevel, LogRecordKind, string, Exception?)
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Write(Flashtrace.FlashtraceLevel, Flashtrace.Records.LogRecordKind, string, System.Exception?)
+  type: Method
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  summary: Writes a text message.
+  example: []
+  syntax:
+    content: protected abstract void Write(FlashtraceLevel level, LogRecordKind recordKind, string text, Exception? exception)
+    parameters:
+    - id: level
+      type: Flashtrace.FlashtraceLevel
+      description: ''
+    - id: recordKind
+      type: Flashtrace.Records.LogRecordKind
+      description: ''
+    - id: text
+      type: System.String
+      description: The fully-rendered message.
+    - id: exception
+      type: System.Exception
+      description: An optional <xref href="System.Exception" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Protected MustOverride Sub Write(level As FlashtraceLevel, recordKind As LogRecordKind, text As String, exception As Exception)
+  overload: Flashtrace.Loggers.SimpleFlashtraceLogger.Write*
+  nameWithType.vb: SimpleFlashtraceLogger.Write(FlashtraceLevel, LogRecordKind, String, Exception)
+  fullName.vb: Flashtrace.Loggers.SimpleFlashtraceLogger.Write(Flashtrace.FlashtraceLevel, Flashtrace.Records.LogRecordKind, String, System.Exception)
+  name.vb: Write(FlashtraceLevel, LogRecordKind, String, Exception)
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Category
+  commentId: P:Flashtrace.Loggers.SimpleFlashtraceLogger.Category
+  id: Category
+  parent: Flashtrace.Loggers.SimpleFlashtraceLogger
+  langs:
+  - csharp
+  - vb
+  name: Category
+  nameWithType: SimpleFlashtraceLogger.Category
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Category
+  type: Property
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  syntax:
+    content: public string Category { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Category As String
+  overload: Flashtrace.Loggers.SimpleFlashtraceLogger.Category*
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Role
+  commentId: P:Flashtrace.Loggers.SimpleFlashtraceLogger.Role
+  id: Role
+  parent: Flashtrace.Loggers.SimpleFlashtraceLogger
+  langs:
+  - csharp
+  - vb
+  name: Role
+  nameWithType: SimpleFlashtraceLogger.Role
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Role
+  type: Property
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  summary: Gets the role of records created by this <xref href="Flashtrace.IFlashtraceLogger" data-throw-if-not-resolved="false"></xref>. A list of standard roles is available in the <xref href="Flashtrace.FlashtraceRole" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public FlashtraceRole Role { get; }
+    parameters: []
+    return:
+      type: Flashtrace.FlashtraceRole
+    content.vb: Public ReadOnly Property Role As FlashtraceRole
+  overload: Flashtrace.Loggers.SimpleFlashtraceLogger.Role*
+  implements:
+  - Flashtrace.IFlashtraceLogger.Role
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Factory
+  commentId: P:Flashtrace.Loggers.SimpleFlashtraceLogger.Factory
+  id: Factory
+  parent: Flashtrace.Loggers.SimpleFlashtraceLogger
+  langs:
+  - csharp
+  - vb
+  name: Factory
+  nameWithType: SimpleFlashtraceLogger.Factory
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Factory
+  type: Property
+  assemblies:
+  - Flashtrace
+  namespace: Flashtrace.Loggers
+  syntax:
+    content: public abstract IFlashtraceRoleLoggerFactory Factory { get; }
+    parameters: []
+    return:
+      type: Flashtrace.IFlashtraceRoleLoggerFactory
+    content.vb: Public MustOverride ReadOnly Property Factory As IFlashtraceRoleLoggerFactory
+  overload: Flashtrace.Loggers.SimpleFlashtraceLogger.Factory*
+references:
+- uid: Flashtrace.IFlashtraceLogger
+  commentId: T:Flashtrace.IFlashtraceLogger
+  parent: Flashtrace
+  isExternal: true
+  href: Flashtrace.IFlashtraceLogger.html
+  name: IFlashtraceLogger
+  nameWithType: IFlashtraceLogger
+  fullName: Flashtrace.IFlashtraceLogger
+- uid: Flashtrace.Loggers
+  commentId: N:Flashtrace.Loggers
+  isExternal: true
+  href: Flashtrace.html
+  name: Flashtrace.Loggers
+  nameWithType: Flashtrace.Loggers
+  fullName: Flashtrace.Loggers
+  spec.csharp:
+  - uid: Flashtrace
+    name: Flashtrace
+    isExternal: true
+    href: Flashtrace.html
+  - name: .
+  - uid: Flashtrace.Loggers
+    name: Loggers
+    isExternal: true
+    href: Flashtrace.Loggers.html
+  spec.vb:
+  - uid: Flashtrace
+    name: Flashtrace
+    isExternal: true
+    href: Flashtrace.html
+  - name: .
+  - uid: Flashtrace.Loggers
+    name: Loggers
+    isExternal: true
+    href: Flashtrace.Loggers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Flashtrace.IFlashtraceLocalLogger
+  commentId: T:Flashtrace.IFlashtraceLocalLogger
+  parent: Flashtrace
+  isExternal: true
+  href: Flashtrace.IFlashtraceLocalLogger.html
+  name: IFlashtraceLocalLogger
+  nameWithType: IFlashtraceLocalLogger
+  fullName: Flashtrace.IFlashtraceLocalLogger
+- uid: Flashtrace.IFlashtraceExceptionHandler
+  commentId: T:Flashtrace.IFlashtraceExceptionHandler
+  parent: Flashtrace
+  isExternal: true
+  href: Flashtrace.IFlashtraceExceptionHandler.html
+  name: IFlashtraceExceptionHandler
+  nameWithType: IFlashtraceExceptionHandler
+  fullName: Flashtrace.IFlashtraceExceptionHandler
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Flashtrace.Loggers.SimpleFlashtraceLogger,System.Collections.Generic.IEnumerable{Flashtrace.Loggers.SimpleFlashtraceLogger}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<SimpleFlashtraceLogger>(SimpleFlashtraceLogger, Func<SimpleFlashtraceLogger, IEnumerable<SimpleFlashtraceLogger>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<SimpleFlashtraceLogger>(SimpleFlashtraceLogger, Func<SimpleFlashtraceLogger, IEnumerable<SimpleFlashtraceLogger>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Flashtrace.Loggers.SimpleFlashtraceLogger>(Flashtrace.Loggers.SimpleFlashtraceLogger, System.Func<Flashtrace.Loggers.SimpleFlashtraceLogger, System.Collections.Generic.IEnumerable<Flashtrace.Loggers.SimpleFlashtraceLogger>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of SimpleFlashtraceLogger)(SimpleFlashtraceLogger, Func(Of SimpleFlashtraceLogger, IEnumerable(Of SimpleFlashtraceLogger)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Flashtrace.Loggers.SimpleFlashtraceLogger)(Flashtrace.Loggers.SimpleFlashtraceLogger, System.Func(Of Flashtrace.Loggers.SimpleFlashtraceLogger, System.Collections.Generic.IEnumerable(Of Flashtrace.Loggers.SimpleFlashtraceLogger)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of SimpleFlashtraceLogger)(SimpleFlashtraceLogger, Func(Of SimpleFlashtraceLogger, IEnumerable(Of SimpleFlashtraceLogger)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Flashtrace.Loggers.SimpleFlashtraceLogger,System.Func{Flashtrace.Loggers.SimpleFlashtraceLogger,System.Collections.Generic.IEnumerable{Flashtrace.Loggers.SimpleFlashtraceLogger}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: '>'
+  - name: (
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Flashtrace.Loggers.SimpleFlashtraceLogger,System.Func{Flashtrace.Loggers.SimpleFlashtraceLogger,System.Collections.Generic.IEnumerable{Flashtrace.Loggers.SimpleFlashtraceLogger}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: )
+  - name: (
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+    name: SimpleFlashtraceLogger
+    isExternal: true
+    href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Flashtrace
+  commentId: N:Flashtrace
+  isExternal: true
+  href: Flashtrace.html
+  name: Flashtrace
+  nameWithType: Flashtrace
+  fullName: Flashtrace
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger
+  commentId: T:Flashtrace.Loggers.SimpleFlashtraceLogger
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.html
+  name: SimpleFlashtraceLogger
+  nameWithType: SimpleFlashtraceLogger
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.#ctor*
+  commentId: Overload:Flashtrace.Loggers.SimpleFlashtraceLogger.#ctor
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.-ctor.html#Flashtrace_Loggers_SimpleFlashtraceLogger__ctor_Flashtrace_FlashtraceRole_System_String_
+  name: SimpleFlashtraceLogger
+  nameWithType: SimpleFlashtraceLogger.SimpleFlashtraceLogger
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.SimpleFlashtraceLogger
+  nameWithType.vb: SimpleFlashtraceLogger.New
+  fullName.vb: Flashtrace.Loggers.SimpleFlashtraceLogger.New
+  name.vb: New
+- uid: Flashtrace.FlashtraceRole
+  commentId: T:Flashtrace.FlashtraceRole
+  parent: Flashtrace
+  isExternal: true
+  href: Flashtrace.FlashtraceRole.html
+  name: FlashtraceRole
+  nameWithType: FlashtraceRole
+  fullName: Flashtrace.FlashtraceRole
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Flashtrace.FlashtraceLevel
+  commentId: T:Flashtrace.FlashtraceLevel
+  parent: Flashtrace
+  isExternal: true
+  href: Flashtrace.FlashtraceLevel.html
+  name: FlashtraceLevel
+  nameWithType: FlashtraceLevel
+  fullName: Flashtrace.FlashtraceLevel
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled*
+  commentId: Overload:Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled.html#Flashtrace_Loggers_SimpleFlashtraceLogger_IsEnabled_Flashtrace_FlashtraceLevel_
+  name: IsEnabled
+  nameWithType: SimpleFlashtraceLogger.IsEnabled
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.IsEnabled
+- uid: Flashtrace.IFlashtraceLocalLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  commentId: M:Flashtrace.IFlashtraceLocalLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  parent: Flashtrace.IFlashtraceLocalLogger
+  isExternal: true
+  href: Flashtrace.IFlashtraceLocalLogger.IsEnabled.html#Flashtrace_IFlashtraceLocalLogger_IsEnabled_Flashtrace_FlashtraceLevel_
+  name: IsEnabled(FlashtraceLevel)
+  nameWithType: IFlashtraceLocalLogger.IsEnabled(FlashtraceLevel)
+  fullName: Flashtrace.IFlashtraceLocalLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+  spec.csharp:
+  - uid: Flashtrace.IFlashtraceLocalLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+    name: IsEnabled
+    isExternal: true
+    href: Flashtrace.IFlashtraceLocalLogger.IsEnabled.html#Flashtrace_IFlashtraceLocalLogger_IsEnabled_Flashtrace_FlashtraceLevel_
+  - name: (
+  - uid: Flashtrace.FlashtraceLevel
+    name: FlashtraceLevel
+    isExternal: true
+    href: Flashtrace.FlashtraceLevel.html
+  - name: )
+  spec.vb:
+  - uid: Flashtrace.IFlashtraceLocalLogger.IsEnabled(Flashtrace.FlashtraceLevel)
+    name: IsEnabled
+    isExternal: true
+    href: Flashtrace.IFlashtraceLocalLogger.IsEnabled.html#Flashtrace_IFlashtraceLocalLogger_IsEnabled_Flashtrace_FlashtraceLevel_
+  - name: (
+  - uid: Flashtrace.FlashtraceLevel
+    name: FlashtraceLevel
+    isExternal: true
+    href: Flashtrace.FlashtraceLevel.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Write*
+  commentId: Overload:Flashtrace.Loggers.SimpleFlashtraceLogger.Write
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.Write.html#Flashtrace_Loggers_SimpleFlashtraceLogger_Write_Flashtrace_FlashtraceLevel_Flashtrace_Records_LogRecordKind_System_String_System_Exception_
+  name: Write
+  nameWithType: SimpleFlashtraceLogger.Write
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Write
+- uid: Flashtrace.Records.LogRecordKind
+  commentId: T:Flashtrace.Records.LogRecordKind
+  parent: Flashtrace.Records
+  isExternal: true
+  href: Flashtrace.Records.LogRecordKind.html
+  name: LogRecordKind
+  nameWithType: LogRecordKind
+  fullName: Flashtrace.Records.LogRecordKind
+- uid: Flashtrace.Records
+  commentId: N:Flashtrace.Records
+  isExternal: true
+  href: Flashtrace.html
+  name: Flashtrace.Records
+  nameWithType: Flashtrace.Records
+  fullName: Flashtrace.Records
+  spec.csharp:
+  - uid: Flashtrace
+    name: Flashtrace
+    isExternal: true
+    href: Flashtrace.html
+  - name: .
+  - uid: Flashtrace.Records
+    name: Records
+    isExternal: true
+    href: Flashtrace.Records.html
+  spec.vb:
+  - uid: Flashtrace
+    name: Flashtrace
+    isExternal: true
+    href: Flashtrace.html
+  - name: .
+  - uid: Flashtrace.Records
+    name: Records
+    isExternal: true
+    href: Flashtrace.Records.html
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Category*
+  commentId: Overload:Flashtrace.Loggers.SimpleFlashtraceLogger.Category
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.Category.html#Flashtrace_Loggers_SimpleFlashtraceLogger_Category
+  name: Category
+  nameWithType: SimpleFlashtraceLogger.Category
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Category
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Role*
+  commentId: Overload:Flashtrace.Loggers.SimpleFlashtraceLogger.Role
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.Role.html#Flashtrace_Loggers_SimpleFlashtraceLogger_Role
+  name: Role
+  nameWithType: SimpleFlashtraceLogger.Role
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Role
+- uid: Flashtrace.IFlashtraceLogger.Role
+  commentId: P:Flashtrace.IFlashtraceLogger.Role
+  parent: Flashtrace.IFlashtraceLogger
+  isExternal: true
+  href: Flashtrace.IFlashtraceLogger.Role.html#Flashtrace_IFlashtraceLogger_Role
+  name: Role
+  nameWithType: IFlashtraceLogger.Role
+  fullName: Flashtrace.IFlashtraceLogger.Role
+- uid: Flashtrace.Loggers.SimpleFlashtraceLogger.Factory*
+  commentId: Overload:Flashtrace.Loggers.SimpleFlashtraceLogger.Factory
+  isExternal: true
+  href: Flashtrace.Loggers.SimpleFlashtraceLogger.Factory.html#Flashtrace_Loggers_SimpleFlashtraceLogger_Factory
+  name: Factory
+  nameWithType: SimpleFlashtraceLogger.Factory
+  fullName: Flashtrace.Loggers.SimpleFlashtraceLogger.Factory
+- uid: Flashtrace.IFlashtraceRoleLoggerFactory
+  commentId: T:Flashtrace.IFlashtraceRoleLoggerFactory
+  parent: Flashtrace
+  isExternal: true
+  href: Flashtrace.IFlashtraceRoleLoggerFactory.html
+  name: IFlashtraceRoleLoggerFactory
+  nameWithType: IFlashtraceRoleLoggerFactory
+  fullName: Flashtrace.IFlashtraceRoleLoggerFactory
+memberLayout: SeparatePages

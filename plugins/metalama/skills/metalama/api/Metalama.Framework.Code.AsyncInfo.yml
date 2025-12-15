@@ -1,0 +1,603 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.AsyncInfo
+  commentId: T:Metalama.Framework.Code.AsyncInfo
+  id: AsyncInfo
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.AsyncInfo.HasMethodBuilder
+  - Metalama.Framework.Code.AsyncInfo.IsAsync
+  - Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  - Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid
+  - Metalama.Framework.Code.AsyncInfo.ResultType
+  langs:
+  - csharp
+  - vb
+  name: AsyncInfo
+  nameWithType: AsyncInfo
+  fullName: Metalama.Framework.Code.AsyncInfo
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Provides information about the async characteristics of a method, returned by the <xref href="Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)" data-throw-if-not-resolved="false"></xref> extension method of <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>Use this struct to inspect async method properties at compile time, for example in <code>BuildAspect</code>.</p>
+
+    <p>The <xref href="Metalama.Framework.Code.AsyncInfo.ResultType" data-throw-if-not-resolved="false"></xref> property is particularly useful when you need the actual result type instead of the task type.
+        For example, for a method returning <code>Task&lt;string&gt;</code>, <xref href="Metalama.Framework.Code.AsyncInfo.ResultType" data-throw-if-not-resolved="false"></xref> is <code>string</code>.</p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct AsyncInfo
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure AsyncInfo
+  seealso:
+  - linkId: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+    commentId: M:Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  - linkId: Metalama.Framework.Code.IteratorInfo
+    commentId: T:Metalama.Framework.Code.IteratorInfo
+  - linkType: HRef
+    linkId: '@overriding-methods#async-iterator-default-template'
+    altText: '@overriding-methods#async-iterator-default-template'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.AsyncInfo.IsAsync
+  commentId: P:Metalama.Framework.Code.AsyncInfo.IsAsync
+  id: IsAsync
+  parent: Metalama.Framework.Code.AsyncInfo
+  langs:
+  - csharp
+  - vb
+  name: IsAsync
+  nameWithType: AsyncInfo.IsAsync
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAsync
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a value indicating whether the method has an async implementation, i.e., whether it has the <code>async</code> modifier.
+  example: []
+  syntax:
+    content: public bool? IsAsync { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+      description: >-
+        <code>true</code> if the method has the <code>async</code> modifier; <code>false</code> if it does not;
+            <code>null</code> if the method is not defined in the current project and the information is not available.
+    content.vb: Public ReadOnly Property IsAsync As Boolean?
+  overload: Metalama.Framework.Code.AsyncInfo.IsAsync*
+- uid: Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  commentId: P:Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  id: IsAwaitable
+  parent: Metalama.Framework.Code.AsyncInfo
+  langs:
+  - csharp
+  - vb
+  name: IsAwaitable
+  nameWithType: AsyncInfo.IsAwaitable
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a value indicating whether the return type of the method is awaitable, i.e., whether it can be used with the <code>await</code> keyword.
+  remarks: This does not include <code>IAsyncEnumerable&lt;T&gt;</code>, which can be used with <code>await foreach</code> but not <code>await</code>.
+  example: []
+  syntax:
+    content: public bool IsAwaitable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the return type can be used with <code>await</code>; otherwise, <code>false</code>.
+    content.vb: Public ReadOnly Property IsAwaitable As Boolean
+  overload: Metalama.Framework.Code.AsyncInfo.IsAwaitable*
+- uid: Metalama.Framework.Code.AsyncInfo.HasMethodBuilder
+  commentId: P:Metalama.Framework.Code.AsyncInfo.HasMethodBuilder
+  id: HasMethodBuilder
+  parent: Metalama.Framework.Code.AsyncInfo
+  langs:
+  - csharp
+  - vb
+  name: HasMethodBuilder
+  nameWithType: AsyncInfo.HasMethodBuilder
+  fullName: Metalama.Framework.Code.AsyncInfo.HasMethodBuilder
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a value indicating whether the return type of the method has an <code>AsyncMethodBuilderAttribute</code> custom attribute.
+  example: []
+  syntax:
+    content: public bool HasMethodBuilder { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the return type has an <code>AsyncMethodBuilderAttribute</code>; otherwise, <code>false</code>.
+    content.vb: Public ReadOnly Property HasMethodBuilder As Boolean
+  overload: Metalama.Framework.Code.AsyncInfo.HasMethodBuilder*
+- uid: Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid
+  commentId: P:Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid
+  id: IsAwaitableOrVoid
+  parent: Metalama.Framework.Code.AsyncInfo
+  langs:
+  - csharp
+  - vb
+  name: IsAwaitableOrVoid
+  nameWithType: AsyncInfo.IsAwaitableOrVoid
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a value indicating whether the return type of the method is either awaitable (see <xref href="Metalama.Framework.Code.AsyncInfo.IsAwaitable" data-throw-if-not-resolved="false"></xref>) or <code>void</code>.
+  example: []
+  syntax:
+    content: public bool IsAwaitableOrVoid { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the return type is awaitable or <code>void</code>; otherwise, <code>false</code>.
+    content.vb: Public ReadOnly Property IsAwaitableOrVoid As Boolean
+  overload: Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid*
+- uid: Metalama.Framework.Code.AsyncInfo.ResultType
+  commentId: P:Metalama.Framework.Code.AsyncInfo.ResultType
+  id: ResultType
+  parent: Metalama.Framework.Code.AsyncInfo
+  langs:
+  - csharp
+  - vb
+  name: ResultType
+  nameWithType: AsyncInfo.ResultType
+  fullName: Metalama.Framework.Code.AsyncInfo.ResultType
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets the unwrapped result type of the async method, i.e., the type of the <code>await</code> expression.
+  example: []
+  syntax:
+    content: public IType ResultType { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IType
+      description: >-
+        The unwrapped result type. For example, for a method returning <code>Task&lt;string&gt;</code>, this property returns <code>string</code>.
+
+        For a method returning <code>Task</code> or <code>void</code>, this property returns <code>void</code>.
+    content.vb: Public ReadOnly Property ResultType As IType
+  overload: Metalama.Framework.Code.AsyncInfo.ResultType*
+references:
+- uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  commentId: M:Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  isExternal: true
+  href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  name: GetAsyncInfo(IMethod)
+  nameWithType: MethodExtensions.GetAsyncInfo(IMethod)
+  fullName: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+    name: GetAsyncInfo
+    isExternal: true
+    href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo(Metalama.Framework.Code.IMethod)
+    name: GetAsyncInfo
+    isExternal: true
+    href: Metalama.Framework.Code.MethodExtensions.GetAsyncInfo.html#Metalama_Framework_Code_MethodExtensions_GetAsyncInfo_Metalama_Framework_Code_IMethod_
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+- uid: Metalama.Framework.Code.IteratorInfo
+  commentId: T:Metalama.Framework.Code.IteratorInfo
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IteratorInfo.html
+  name: IteratorInfo
+  nameWithType: IteratorInfo
+  fullName: Metalama.Framework.Code.IteratorInfo
+- uid: Metalama.Framework.Code.IMethod
+  commentId: T:Metalama.Framework.Code.IMethod
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMethod.html
+  name: IMethod
+  nameWithType: IMethod
+  fullName: Metalama.Framework.Code.IMethod
+- uid: Metalama.Framework.Code.AsyncInfo.ResultType
+  commentId: P:Metalama.Framework.Code.AsyncInfo.ResultType
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.ResultType.html#Metalama_Framework_Code_AsyncInfo_ResultType
+  name: ResultType
+  nameWithType: AsyncInfo.ResultType
+  fullName: Metalama.Framework.Code.AsyncInfo.ResultType
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.AsyncInfo.IsAsync*
+  commentId: Overload:Metalama.Framework.Code.AsyncInfo.IsAsync
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.IsAsync.html#Metalama_Framework_Code_AsyncInfo_IsAsync
+  name: IsAsync
+  nameWithType: AsyncInfo.IsAsync
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAsync
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.AsyncInfo.IsAwaitable*
+  commentId: Overload:Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.IsAwaitable.html#Metalama_Framework_Code_AsyncInfo_IsAwaitable
+  name: IsAwaitable
+  nameWithType: AsyncInfo.IsAwaitable
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAwaitable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Framework.Code.AsyncInfo.HasMethodBuilder*
+  commentId: Overload:Metalama.Framework.Code.AsyncInfo.HasMethodBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.HasMethodBuilder.html#Metalama_Framework_Code_AsyncInfo_HasMethodBuilder
+  name: HasMethodBuilder
+  nameWithType: AsyncInfo.HasMethodBuilder
+  fullName: Metalama.Framework.Code.AsyncInfo.HasMethodBuilder
+- uid: Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  commentId: P:Metalama.Framework.Code.AsyncInfo.IsAwaitable
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.IsAwaitable.html#Metalama_Framework_Code_AsyncInfo_IsAwaitable
+  name: IsAwaitable
+  nameWithType: AsyncInfo.IsAwaitable
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAwaitable
+- uid: Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid*
+  commentId: Overload:Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid.html#Metalama_Framework_Code_AsyncInfo_IsAwaitableOrVoid
+  name: IsAwaitableOrVoid
+  nameWithType: AsyncInfo.IsAwaitableOrVoid
+  fullName: Metalama.Framework.Code.AsyncInfo.IsAwaitableOrVoid
+- uid: Metalama.Framework.Code.AsyncInfo.ResultType*
+  commentId: Overload:Metalama.Framework.Code.AsyncInfo.ResultType
+  isExternal: true
+  href: Metalama.Framework.Code.AsyncInfo.ResultType.html#Metalama_Framework_Code_AsyncInfo_ResultType
+  name: ResultType
+  nameWithType: AsyncInfo.ResultType
+  fullName: Metalama.Framework.Code.AsyncInfo.ResultType
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+memberLayout: SeparatePages

@@ -1,0 +1,1191 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Multicast.MulticastImplementation
+  commentId: T:Metalama.Extensions.Multicast.MulticastImplementation
+  id: MulticastImplementation
+  parent: Metalama.Extensions.Multicast
+  children:
+  - Metalama.Extensions.Multicast.MulticastImplementation.#ctor(Metalama.Extensions.Multicast.MulticastTargets,System.Boolean)
+  - Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+  - Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  langs:
+  - csharp
+  - vb
+  name: MulticastImplementation
+  nameWithType: MulticastImplementation
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation
+  type: Class
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    A reusable implementation of the multicasting logic. Multicast-enabled aspects can contain an instance of this class
+
+    and call its <xref href="Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect%60%601(Metalama.Framework.Aspects.IAspectBuilder%7b%60%600%7d%2cSystem.Action%7bMetalama.Framework.Aspects.IAspectBuilder%7b%60%600%7d%7d)" data-throw-if-not-resolved="false"></xref> method to perform multicasting.
+  remarks: >-
+    <p>
+
+    This class provides the core multicasting functionality that enables aspects to be applied at the assembly or type level
+
+    and automatically cascade to matching members based on filtering criteria defined through <xref href="Metalama.Extensions.Multicast.IMulticastAttribute" data-throw-if-not-resolved="false"></xref> properties.
+
+    </p>
+
+    <p>
+
+    When using this class directly (rather than deriving from <xref href="Metalama.Extensions.Multicast.MulticastAspect" data-throw-if-not-resolved="false"></xref>), your aspect must:
+
+    <ul><li>Implement <xref href="Metalama.Extensions.Multicast.IMulticastAttribute" data-throw-if-not-resolved="false"></xref> to expose the filtering properties.</li><li>Implement <xref href="Metalama.Framework.Aspects.IAspect%601" data-throw-if-not-resolved="false"></xref> for intermediate targets (<xref href="Metalama.Framework.Code.ICompilation" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>) that
+
+    serve only as entry points for the multicasting process.</li><li>Implement <xref href="Metalama.Framework.Aspects.IAspect%601" data-throw-if-not-resolved="false"></xref> for final targets (e.g., <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IProperty" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.IField" data-throw-if-not-resolved="false"></xref>)
+
+    where the aspect will actually perform its work.</li></ul>
+
+    </p>
+
+    <p>
+
+    The multicasting process cascades from parent declarations to children: from assemblies to types, and from types to members.
+
+    At each level, the <xref href="Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect%60%601(Metalama.Framework.Aspects.IAspectBuilder%7b%60%600%7d%2cSystem.Action%7bMetalama.Framework.Aspects.IAspectBuilder%7b%60%600%7d%7d)" data-throw-if-not-resolved="false"></xref> method should be called to propagate the aspect to matching child declarations.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public sealed class MulticastImplementation
+    content.vb: >-
+      <CompileTime>
+
+      Public NotInheritable Class MulticastImplementation
+  seealso:
+  - linkId: Metalama.Extensions.Multicast.MulticastAspect
+    commentId: T:Metalama.Extensions.Multicast.MulticastAspect
+  - linkId: Metalama.Extensions.Multicast.IMulticastAttribute
+    commentId: T:Metalama.Extensions.Multicast.IMulticastAttribute
+  - linkId: Metalama.Extensions.Multicast.MulticastTargets
+    commentId: T:Metalama.Extensions.Multicast.MulticastTargets
+  - linkType: HRef
+    linkId: '@migrating-multicasting'
+    altText: '@migrating-multicasting'
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Extensions.Multicast.MulticastImplementation.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Multicast.MulticastImplementation,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.MulticastImplementation}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.#ctor(Metalama.Extensions.Multicast.MulticastTargets,System.Boolean)
+  commentId: M:Metalama.Extensions.Multicast.MulticastImplementation.#ctor(Metalama.Extensions.Multicast.MulticastTargets,System.Boolean)
+  id: '#ctor(Metalama.Extensions.Multicast.MulticastTargets,System.Boolean)'
+  parent: Metalama.Extensions.Multicast.MulticastImplementation
+  langs:
+  - csharp
+  - vb
+  name: MulticastImplementation(MulticastTargets, bool)
+  nameWithType: MulticastImplementation.MulticastImplementation(MulticastTargets, bool)
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.MulticastImplementation(Metalama.Extensions.Multicast.MulticastTargets, bool)
+  type: Constructor
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Initializes a new instance of the <xref href="Metalama.Extensions.Multicast.MulticastImplementation" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public MulticastImplementation(MulticastTargets concreteTargets, bool multicastOnInheritance = false)
+    parameters:
+    - id: concreteTargets
+      type: Metalama.Extensions.Multicast.MulticastTargets
+      description: >-
+        The set of targets to which concrete instances of the aspect can be applied. The aspect must implement the corresponding
+                    <xref href="Metalama.Framework.Aspects.IAspect%601" data-throw-if-not-resolved="false"></xref> generic interfaces.
+    - id: multicastOnInheritance
+      type: System.Boolean
+      description: >-
+        A value indicating whether an aspect instance, when it is inherited, should also multicast to children. The default is <code>false</code>.
+                    It corresponds to the <xref href="Metalama.Extensions.Multicast.MulticastInheritance.Strict" data-throw-if-not-resolved="false"></xref> multicast inheritance mode in PostSharp. When set to <code>true</code>, the behavior is equivalent to <xref href="Metalama.Extensions.Multicast.MulticastInheritance.Multicast" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Sub New(concreteTargets As MulticastTargets, multicastOnInheritance As Boolean = False)
+  overload: Metalama.Extensions.Multicast.MulticastImplementation.#ctor*
+  nameWithType.vb: MulticastImplementation.New(MulticastTargets, Boolean)
+  fullName.vb: Metalama.Extensions.Multicast.MulticastImplementation.New(Metalama.Extensions.Multicast.MulticastTargets, Boolean)
+  name.vb: New(MulticastTargets, Boolean)
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+  commentId: M:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+  id: BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+  parent: Metalama.Extensions.Multicast.MulticastImplementation
+  langs:
+  - csharp
+  - vb
+  name: BuildAspect<T>(IAspectBuilder<T>, Action<IAspectBuilder<T>>?)
+  nameWithType: MulticastImplementation.BuildAspect<T>(IAspectBuilder<T>, Action<IAspectBuilder<T>>?)
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect<T>(Metalama.Framework.Aspects.IAspectBuilder<T>, System.Action<Metalama.Framework.Aspects.IAspectBuilder<T>>?)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Implements the multicasting logic for a given declaration level. This method must be called from the
+
+    <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method of the aspect class.
+  remarks: >-
+    <p>
+
+    This method performs two key operations:
+
+    <ol><li>If the current target is a concrete target (as defined by <xref href="Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets" data-throw-if-not-resolved="false"></xref>) and matches
+
+    the filtering criteria defined by <xref href="Metalama.Extensions.Multicast.IMulticastAttribute" data-throw-if-not-resolved="false"></xref> properties, it invokes the
+
+    <code class="paramref">implementConcreteAspect</code> delegate to apply the aspect's actual transformation.</li><li>It propagates the aspect to matching child declarations based on the filtering criteria, enabling
+
+    the cascading multicast behavior from assemblies to types to members.</li></ol>
+
+    </p>
+
+    <p>
+
+    If the <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude" data-throw-if-not-resolved="false"></xref> property is <code>true</code> on the current aspect instance,
+
+    no transformation is applied and the aspect is skipped.
+
+    </p>
+  example: []
+  syntax:
+    content: 'public void BuildAspect<T>(IAspectBuilder<T> builder, Action<IAspectBuilder<T>>? implementConcreteAspect = null) where T : class, IDeclaration'
+    parameters:
+    - id: builder
+      type: Metalama.Framework.Aspects.IAspectBuilder{{T}}
+      description: The <xref href="Metalama.Framework.Aspects.IAspectBuilder%601" data-throw-if-not-resolved="false"></xref> provided to the aspect's <code>BuildAspect</code> method.
+    - id: implementConcreteAspect
+      type: System.Action{Metalama.Framework.Aspects.IAspectBuilder{{T}}}
+      description: >-
+        An optional action that implements the aspect's actual behavior. This delegate is called
+                    only when the current target is a final (concrete) target as specified by <xref href="Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets" data-throw-if-not-resolved="false"></xref> and matches the
+                    filtering criteria. For intermediate targets (assemblies, types), pass <code>null</code> or omit this parameter.
+    typeParameters:
+    - id: T
+      description: The type of the target declaration.
+    content.vb: Public Sub BuildAspect(Of T As {Class, IDeclaration})(builder As IAspectBuilder(Of T), implementConcreteAspect As Action(Of IAspectBuilder(Of T)) = Nothing)
+  overload: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect*
+  nameWithType.vb: MulticastImplementation.BuildAspect(Of T)(IAspectBuilder(Of T), Action(Of IAspectBuilder(Of T)))
+  fullName.vb: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect(Of T)(Metalama.Framework.Aspects.IAspectBuilder(Of T), System.Action(Of Metalama.Framework.Aspects.IAspectBuilder(Of T)))
+  name.vb: BuildAspect(Of T)(IAspectBuilder(Of T), Action(Of IAspectBuilder(Of T)))
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  commentId: P:Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  id: ConcreteTargets
+  parent: Metalama.Extensions.Multicast.MulticastImplementation
+  langs:
+  - csharp
+  - vb
+  name: ConcreteTargets
+  nameWithType: MulticastImplementation.ConcreteTargets
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Gets the kind of declarations to which the aspect can be applied. This property is set from the class constructor.
+  example: []
+  syntax:
+    content: public MulticastTargets ConcreteTargets { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastTargets
+    content.vb: Public ReadOnly Property ConcreteTargets As MulticastTargets
+  overload: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets*
+references:
+- uid: Metalama.Extensions.Multicast.MulticastAspect
+  commentId: T:Metalama.Extensions.Multicast.MulticastAspect
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastAspect.html
+  name: MulticastAspect
+  nameWithType: MulticastAspect
+  fullName: Metalama.Extensions.Multicast.MulticastAspect
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute
+  commentId: T:Metalama.Extensions.Multicast.IMulticastAttribute
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  name: IMulticastAttribute
+  nameWithType: IMulticastAttribute
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute
+- uid: Metalama.Extensions.Multicast.MulticastTargets
+  commentId: T:Metalama.Extensions.Multicast.MulticastTargets
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastTargets.html
+  name: MulticastTargets
+  nameWithType: MulticastTargets
+  fullName: Metalama.Extensions.Multicast.MulticastTargets
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+  commentId: M:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect.html#Metalama_Extensions_Multicast_MulticastImplementation_BuildAspect__1_Metalama_Framework_Aspects_IAspectBuilder___0__System_Action_Metalama_Framework_Aspects_IAspectBuilder___0___
+  name: BuildAspect<T>(IAspectBuilder<T>, Action<IAspectBuilder<T>>)
+  nameWithType: MulticastImplementation.BuildAspect<T>(IAspectBuilder<T>, Action<IAspectBuilder<T>>)
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect<T>(Metalama.Framework.Aspects.IAspectBuilder<T>, System.Action<Metalama.Framework.Aspects.IAspectBuilder<T>>)
+  nameWithType.vb: MulticastImplementation.BuildAspect(Of T)(IAspectBuilder(Of T), Action(Of IAspectBuilder(Of T)))
+  fullName.vb: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect(Of T)(Metalama.Framework.Aspects.IAspectBuilder(Of T), System.Action(Of Metalama.Framework.Aspects.IAspectBuilder(Of T)))
+  name.vb: BuildAspect(Of T)(IAspectBuilder(Of T), Action(Of IAspectBuilder(Of T)))
+  spec.csharp:
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect.html#Metalama_Extensions_Multicast_MulticastImplementation_BuildAspect__1_Metalama_Framework_Aspects_IAspectBuilder___0__System_Action_Metalama_Framework_Aspects_IAspectBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect``1(Metalama.Framework.Aspects.IAspectBuilder{``0},System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect.html#Metalama_Extensions_Multicast_MulticastImplementation_BuildAspect__1_Metalama_Framework_Aspects_IAspectBuilder___0__System_Action_Metalama_Framework_Aspects_IAspectBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspect`1
+  commentId: T:Metalama.Framework.Aspects.IAspect`1
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.html
+  name: IAspect<T>
+  nameWithType: IAspect<T>
+  fullName: Metalama.Framework.Aspects.IAspect<T>
+  nameWithType.vb: IAspect(Of T)
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T)
+  name.vb: IAspect(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: Metalama.Framework.Code.IMethod
+  commentId: T:Metalama.Framework.Code.IMethod
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IMethod.html
+  name: IMethod
+  nameWithType: IMethod
+  fullName: Metalama.Framework.Code.IMethod
+- uid: Metalama.Framework.Code.IProperty
+  commentId: T:Metalama.Framework.Code.IProperty
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IProperty.html
+  name: IProperty
+  nameWithType: IProperty
+  fullName: Metalama.Framework.Code.IProperty
+- uid: Metalama.Framework.Code.IField
+  commentId: T:Metalama.Framework.Code.IField
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IField.html
+  name: IField
+  nameWithType: IField
+  fullName: Metalama.Framework.Code.IField
+- uid: Metalama.Extensions.Multicast
+  commentId: N:Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Extensions.Multicast
+  nameWithType: Metalama.Extensions.Multicast
+  fullName: Metalama.Extensions.Multicast
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.Multicast
+    name: Multicast
+    isExternal: true
+    href: Metalama.Extensions.Multicast.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.Multicast
+    name: Multicast
+    isExternal: true
+    href: Metalama.Extensions.Multicast.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Multicast.MulticastImplementation,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.MulticastImplementation}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<MulticastImplementation>(MulticastImplementation, Func<MulticastImplementation, IEnumerable<MulticastImplementation>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<MulticastImplementation>(MulticastImplementation, Func<MulticastImplementation, IEnumerable<MulticastImplementation>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Extensions.Multicast.MulticastImplementation>(Metalama.Extensions.Multicast.MulticastImplementation, System.Func<Metalama.Extensions.Multicast.MulticastImplementation, System.Collections.Generic.IEnumerable<Metalama.Extensions.Multicast.MulticastImplementation>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of MulticastImplementation)(MulticastImplementation, Func(Of MulticastImplementation, IEnumerable(Of MulticastImplementation)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Extensions.Multicast.MulticastImplementation)(Metalama.Extensions.Multicast.MulticastImplementation, System.Func(Of Metalama.Extensions.Multicast.MulticastImplementation, System.Collections.Generic.IEnumerable(Of Metalama.Extensions.Multicast.MulticastImplementation)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of MulticastImplementation)(MulticastImplementation, Func(Of MulticastImplementation, IEnumerable(Of MulticastImplementation)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.Multicast.MulticastImplementation,System.Func{Metalama.Extensions.Multicast.MulticastImplementation,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.MulticastImplementation}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.Multicast.MulticastImplementation,System.Func{Metalama.Extensions.Multicast.MulticastImplementation,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.MulticastImplementation}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: )
+  - name: (
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.Multicast.MulticastImplementation
+    name: MulticastImplementation
+    isExternal: true
+    href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Extensions.Multicast.MulticastImplementation
+  commentId: T:Metalama.Extensions.Multicast.MulticastImplementation
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  name: MulticastImplementation
+  nameWithType: MulticastImplementation
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation
+- uid: Metalama.Extensions.Multicast.MulticastInheritance.Strict
+  commentId: F:Metalama.Extensions.Multicast.MulticastInheritance.Strict
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastInheritance.html#Metalama_Extensions_Multicast_MulticastInheritance_Strict
+  name: Strict
+  nameWithType: MulticastInheritance.Strict
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance.Strict
+- uid: Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+  commentId: F:Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastInheritance.html#Metalama_Extensions_Multicast_MulticastInheritance_Multicast
+  name: Multicast
+  nameWithType: MulticastInheritance.Multicast
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.#ctor*
+  commentId: Overload:Metalama.Extensions.Multicast.MulticastImplementation.#ctor
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.-ctor.html#Metalama_Extensions_Multicast_MulticastImplementation__ctor_Metalama_Extensions_Multicast_MulticastTargets_System_Boolean_
+  name: MulticastImplementation
+  nameWithType: MulticastImplementation.MulticastImplementation
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.MulticastImplementation
+  nameWithType.vb: MulticastImplementation.New
+  fullName.vb: Metalama.Extensions.Multicast.MulticastImplementation.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspectBuilder`1
+  commentId: T:Metalama.Framework.Aspects.IAspectBuilder`1
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  name: IAspectBuilder<TAspectTarget>
+  nameWithType: IAspectBuilder<TAspectTarget>
+  fullName: Metalama.Framework.Aspects.IAspectBuilder<TAspectTarget>
+  nameWithType.vb: IAspectBuilder(Of TAspectTarget)
+  fullName.vb: Metalama.Framework.Aspects.IAspectBuilder(Of TAspectTarget)
+  name.vb: IAspectBuilder(Of TAspectTarget)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: TAspectTarget
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspectTarget
+  - name: )
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  commentId: P:Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets.html#Metalama_Extensions_Multicast_MulticastImplementation_ConcreteTargets
+  name: ConcreteTargets
+  nameWithType: MulticastImplementation.ConcreteTargets
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeExclude
+  name: AttributeExclude
+  nameWithType: IMulticastAttribute.AttributeExclude
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect*
+  commentId: Overload:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect.html#Metalama_Extensions_Multicast_MulticastImplementation_BuildAspect__1_Metalama_Framework_Aspects_IAspectBuilder___0__System_Action_Metalama_Framework_Aspects_IAspectBuilder___0___
+  name: BuildAspect
+  nameWithType: MulticastImplementation.BuildAspect
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect
+- uid: Metalama.Framework.Aspects.IAspectBuilder{{T}}
+  commentId: T:Metalama.Framework.Aspects.IAspectBuilder{``0}
+  parent: Metalama.Framework.Aspects
+  definition: Metalama.Framework.Aspects.IAspectBuilder`1
+  href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  name: IAspectBuilder<T>
+  nameWithType: IAspectBuilder<T>
+  fullName: Metalama.Framework.Aspects.IAspectBuilder<T>
+  nameWithType.vb: IAspectBuilder(Of T)
+  fullName.vb: Metalama.Framework.Aspects.IAspectBuilder(Of T)
+  name.vb: IAspectBuilder(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{Metalama.Framework.Aspects.IAspectBuilder{{T}}}
+  commentId: T:System.Action{Metalama.Framework.Aspects.IAspectBuilder{``0}}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<IAspectBuilder<T>>
+  nameWithType: Action<IAspectBuilder<T>>
+  fullName: System.Action<Metalama.Framework.Aspects.IAspectBuilder<T>>
+  nameWithType.vb: Action(Of IAspectBuilder(Of T))
+  fullName.vb: System.Action(Of Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: Action(Of IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets*
+  commentId: Overload:Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets.html#Metalama_Extensions_Multicast_MulticastImplementation_ConcreteTargets
+  name: ConcreteTargets
+  nameWithType: MulticastImplementation.ConcreteTargets
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation.ConcreteTargets
+memberLayout: SeparatePages

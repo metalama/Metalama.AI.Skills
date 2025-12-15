@@ -1,0 +1,283 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.InitializerKind
+  commentId: T:Metalama.Framework.Advising.InitializerKind
+  id: InitializerKind
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.InitializerKind.BeforeInstanceConstructor
+  - Metalama.Framework.Advising.InitializerKind.BeforeTypeConstructor
+  langs:
+  - csharp
+  - vb
+  name: InitializerKind
+  nameWithType: InitializerKind
+  fullName: Metalama.Framework.Advising.InitializerKind
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Specifies the kind of initializer that should be added by an advice operation.
+  remarks: >-
+    This enumeration is used with methods like <xref href="Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cMetalama.Framework.Code.SyntaxBuilders.IStatement%2cMetalama.Framework.Advising.InitializerKind)" data-throw-if-not-resolved="false"></xref> to determine
+
+    when and where initialization code should be injected into a type's constructors or initialization sequence.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum InitializerKind
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum InitializerKind
+  seealso:
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions
+    commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  - linkId: Metalama.Framework.Advising.IAddInitializerAdviceResult
+    commentId: T:Metalama.Framework.Advising.IAddInitializerAdviceResult
+  - linkType: HRef
+    linkId: '@initializers'
+    altText: '@initializers'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.InitializerKind.BeforeInstanceConstructor
+  commentId: F:Metalama.Framework.Advising.InitializerKind.BeforeInstanceConstructor
+  id: BeforeInstanceConstructor
+  parent: Metalama.Framework.Advising.InitializerKind
+  langs:
+  - csharp
+  - vb
+  name: BeforeInstanceConstructor
+  nameWithType: InitializerKind.BeforeInstanceConstructor
+  fullName: Metalama.Framework.Advising.InitializerKind.BeforeInstanceConstructor
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Indicates that the advice should be executed before any user code in all instance constructors except those that are chained to a constructor of the current class (using the <code>this</code> chaining keyword). The initialization logic executes
+
+    after the call to the base constructor.
+  remarks: >-
+    <p>
+        Use this when you need to initialize instance state or register instances before any user constructor code runs.
+        The initialization code runs after <code>: base(...)</code> calls but before any user code in the constructor body.
+        </p>
+    <p>
+        A default constructor will be automatically created if the type does not contain any constructor.
+        </p>
+  example: []
+  syntax:
+    content: BeforeInstanceConstructor = 0
+    return:
+      type: Metalama.Framework.Advising.InitializerKind
+  seealso:
+  - linkType: HRef
+    linkId: '@initializers'
+    altText: '@initializers'
+- uid: Metalama.Framework.Advising.InitializerKind.BeforeTypeConstructor
+  commentId: F:Metalama.Framework.Advising.InitializerKind.BeforeTypeConstructor
+  id: BeforeTypeConstructor
+  parent: Metalama.Framework.Advising.InitializerKind
+  langs:
+  - csharp
+  - vb
+  name: BeforeTypeConstructor
+  nameWithType: InitializerKind.BeforeTypeConstructor
+  fullName: Metalama.Framework.Advising.InitializerKind.BeforeTypeConstructor
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Indicates that the advice should be executed before the type constructor (aka static constructor) of the target type. If there is no type constructor, this advice adds one.
+  remarks: >-
+    <p>
+        Use this when you need to initialize static/type-level state before any user static constructor code runs.
+        The type constructor is called once when the type is first accessed.
+        </p>
+    <p>
+        The initialization code runs at the beginning of the static constructor, after field initializers.
+        </p>
+  example: []
+  syntax:
+    content: BeforeTypeConstructor = 1
+    return:
+      type: Metalama.Framework.Advising.InitializerKind
+  seealso:
+  - linkType: HRef
+    linkId: '@initializers'
+    altText: '@initializers'
+references:
+- uid: Metalama.Framework.Aspects.AdviserExtensions
+  commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.html
+  name: AdviserExtensions
+  nameWithType: AdviserExtensions
+  fullName: Metalama.Framework.Aspects.AdviserExtensions
+- uid: Metalama.Framework.Advising.IAddInitializerAdviceResult
+  commentId: T:Metalama.Framework.Advising.IAddInitializerAdviceResult
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IAddInitializerAdviceResult.html
+  name: IAddInitializerAdviceResult
+  nameWithType: IAddInitializerAdviceResult
+  fullName: Metalama.Framework.Advising.IAddInitializerAdviceResult
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_SyntaxBuilders_IStatement_Metalama_Framework_Advising_InitializerKind_
+  name: AddInitializer(IAdviser<INamedType>, IStatement, InitializerKind)
+  nameWithType: AdviserExtensions.AddInitializer(IAdviser<INamedType>, IStatement, InitializerKind)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, Metalama.Framework.Code.SyntaxBuilders.IStatement, Metalama.Framework.Advising.InitializerKind)
+  nameWithType.vb: AdviserExtensions.AddInitializer(IAdviser(Of INamedType), IStatement, InitializerKind)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), Metalama.Framework.Code.SyntaxBuilders.IStatement, Metalama.Framework.Advising.InitializerKind)
+  name.vb: AddInitializer(IAdviser(Of INamedType), IStatement, InitializerKind)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
+    name: AddInitializer
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_SyntaxBuilders_IStatement_Metalama_Framework_Advising_InitializerKind_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IStatement
+    name: IStatement
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IStatement.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.InitializerKind
+    name: InitializerKind
+    isExternal: true
+    href: Metalama.Framework.Advising.InitializerKind.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
+    name: AddInitializer
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_SyntaxBuilders_IStatement_Metalama_Framework_Advising_InitializerKind_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.SyntaxBuilders.IStatement
+    name: IStatement
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.IStatement.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.InitializerKind
+    name: InitializerKind
+    isExternal: true
+    href: Metalama.Framework.Advising.InitializerKind.html
+  - name: )
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Advising.InitializerKind
+  commentId: T:Metalama.Framework.Advising.InitializerKind
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.InitializerKind.html
+  name: InitializerKind
+  nameWithType: InitializerKind
+  fullName: Metalama.Framework.Advising.InitializerKind
+memberLayout: SeparatePages

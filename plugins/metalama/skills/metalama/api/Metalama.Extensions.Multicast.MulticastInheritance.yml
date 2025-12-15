@@ -1,0 +1,254 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Multicast.MulticastInheritance
+  commentId: T:Metalama.Extensions.Multicast.MulticastInheritance
+  id: MulticastInheritance
+  parent: Metalama.Extensions.Multicast
+  children:
+  - Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+  - Metalama.Extensions.Multicast.MulticastInheritance.None
+  - Metalama.Extensions.Multicast.MulticastInheritance.Strict
+  langs:
+  - csharp
+  - vb
+  name: MulticastInheritance
+  nameWithType: MulticastInheritance
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance
+  type: Enum
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Specifies how a multicast attribute is inherited along inheritance hierarchies.
+  remarks: >-
+    <p>
+
+    In Metalama, aspect inheritance is ruled at the class level by the <xref href="Metalama.Framework.Aspects.InheritableAttribute" data-throw-if-not-resolved="false"></xref> custom attribute. In Metalama itself, only
+
+    <code>Strict</code> inheritance is implemented. <xref href="Metalama.Extensions.Multicast.MulticastAspect" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Extensions.Multicast.MulticastImplementation" data-throw-if-not-resolved="false"></xref> implement an emulation of the <code>Multicast</code>
+
+    inheritance mode by passing the proper parameter to the constructor.
+
+    </p>
+
+    <p>
+
+    This enum is provided for PostSharp compatibility and is obsolete. Use <xref href="Metalama.Framework.Aspects.InheritableAttribute" data-throw-if-not-resolved="false"></xref> on aspect classes instead.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Inheritance is Metalama is implemented at the aspect class level with the [Inheritable] attribute, and the difference between Strict and Multicast is made by an argument passed to the MulticastImplementation constructor.")]
+
+      [RunTimeOrCompileTime]
+
+      public enum MulticastInheritance
+    content.vb: >-
+      <Obsolete("Inheritance is Metalama is implemented at the aspect class level with the [Inheritable] attribute, and the difference between Strict and Multicast is made by an argument passed to the MulticastImplementation constructor.")>
+
+      <RunTimeOrCompileTime>
+
+      Public Enum MulticastInheritance
+  seealso:
+  - linkId: Metalama.Framework.Aspects.InheritableAttribute
+    commentId: T:Metalama.Framework.Aspects.InheritableAttribute
+  - linkId: Metalama.Extensions.Multicast.IMulticastAttribute
+    commentId: T:Metalama.Extensions.Multicast.IMulticastAttribute
+  - linkType: HRef
+    linkId: '@multicast'
+    altText: '@multicast'
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Inheritance is Metalama is implemented at the aspect class level with the [Inheritable] attribute, and the difference between Strict and Multicast is made by an argument passed to the MulticastImplementation constructor.
+  - type: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Multicast.MulticastInheritance.None
+  commentId: F:Metalama.Extensions.Multicast.MulticastInheritance.None
+  id: None
+  parent: Metalama.Extensions.Multicast.MulticastInheritance
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: MulticastInheritance.None
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance.None
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: No inheritance.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Metalama.Extensions.Multicast.MulticastInheritance
+- uid: Metalama.Extensions.Multicast.MulticastInheritance.Strict
+  commentId: F:Metalama.Extensions.Multicast.MulticastInheritance.Strict
+  id: Strict
+  parent: Metalama.Extensions.Multicast.MulticastInheritance
+  langs:
+  - csharp
+  - vb
+  name: Strict
+  nameWithType: MulticastInheritance.Strict
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance.Strict
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    This is the default inheritance mode when <xref href="Metalama.Framework.Aspects.InheritableAttribute" data-throw-if-not-resolved="false"></xref> is added to an aspect class.
+
+    It means that multicasting is performed before inheritance, but not after. There is no need of <xref href="Metalama.Extensions.Multicast.IMulticastAttribute" data-throw-if-not-resolved="false"></xref> to enable
+
+    this kind of inheritance with Metalama.
+  example: []
+  syntax:
+    content: Strict = 1
+    return:
+      type: Metalama.Extensions.Multicast.MulticastInheritance
+- uid: Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+  commentId: F:Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+  id: Multicast
+  parent: Metalama.Extensions.Multicast.MulticastInheritance
+  langs:
+  - csharp
+  - vb
+  name: Multicast
+  nameWithType: MulticastInheritance.Multicast
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance.Multicast
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    This inheritance mode means that multicasting is also performed after inheritance. To enable this inheritance mode with Metalama, the aspect
+
+    must implement multicasting using <xref href="Metalama.Extensions.Multicast.MulticastAspect" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Extensions.Multicast.IMulticastAttribute" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Extensions.Multicast.MulticastImplementation" data-throw-if-not-resolved="false"></xref>,
+
+    and must pass the adequate value to the constructor of these classes.
+  example: []
+  syntax:
+    content: Multicast = 2
+    return:
+      type: Metalama.Extensions.Multicast.MulticastInheritance
+references:
+- uid: Metalama.Framework.Aspects.InheritableAttribute
+  commentId: T:Metalama.Framework.Aspects.InheritableAttribute
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.InheritableAttribute.html
+  name: InheritableAttribute
+  nameWithType: InheritableAttribute
+  fullName: Metalama.Framework.Aspects.InheritableAttribute
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute
+  commentId: T:Metalama.Extensions.Multicast.IMulticastAttribute
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  name: IMulticastAttribute
+  nameWithType: IMulticastAttribute
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute
+- uid: Metalama.Extensions.Multicast.MulticastAspect
+  commentId: T:Metalama.Extensions.Multicast.MulticastAspect
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastAspect.html
+  name: MulticastAspect
+  nameWithType: MulticastAspect
+  fullName: Metalama.Extensions.Multicast.MulticastAspect
+- uid: Metalama.Extensions.Multicast.MulticastImplementation
+  commentId: T:Metalama.Extensions.Multicast.MulticastImplementation
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastImplementation.html
+  name: MulticastImplementation
+  nameWithType: MulticastImplementation
+  fullName: Metalama.Extensions.Multicast.MulticastImplementation
+- uid: Metalama.Extensions.Multicast
+  commentId: N:Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Extensions.Multicast
+  nameWithType: Metalama.Extensions.Multicast
+  fullName: Metalama.Extensions.Multicast
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.Multicast
+    name: Multicast
+    isExternal: true
+    href: Metalama.Extensions.Multicast.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.Multicast
+    name: Multicast
+    isExternal: true
+    href: Metalama.Extensions.Multicast.html
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Extensions.Multicast.MulticastInheritance
+  commentId: T:Metalama.Extensions.Multicast.MulticastInheritance
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastInheritance.html
+  name: MulticastInheritance
+  nameWithType: MulticastInheritance
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance
+memberLayout: SeparatePages

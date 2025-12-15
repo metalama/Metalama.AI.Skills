@@ -1,0 +1,380 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  id: InterfaceMemberOverrideStrategy
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Default
+  - Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Fail
+  - Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Ignore
+  - Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.MakeExplicit
+  langs:
+  - csharp
+  - vb
+  name: InterfaceMemberOverrideStrategy
+  nameWithType: InterfaceMemberOverrideStrategy
+  fullName: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Determines how to handle conflicts when introducing an interface member via <xref href="Metalama.Framework.Aspects.InterfaceMemberAttribute" data-throw-if-not-resolved="false"></xref>
+
+    when a member with the same name already exists on the target type.
+  remarks: >-
+    <p>
+        Use this enum with <xref href="Metalama.Framework.Aspects.InterfaceMemberAttribute.WhenExists" data-throw-if-not-resolved="false"></xref> to control per-member conflict resolution,
+        overriding the default behavior specified by the <xref href="Metalama.Framework.Aspects.OverrideStrategy" data-throw-if-not-resolved="false"></xref> parameter of
+        <xref href="Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cMetalama.Framework.Code.INamedType%2cMetalama.Framework.Aspects.OverrideStrategy%2cSystem.Object)" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum InterfaceMemberOverrideStrategy
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum InterfaceMemberOverrideStrategy
+  seealso:
+  - linkId: Metalama.Framework.Aspects.InterfaceMemberAttribute
+    commentId: T:Metalama.Framework.Aspects.InterfaceMemberAttribute
+  - linkId: Metalama.Framework.Aspects.OverrideStrategy
+    commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+  - linkType: HRef
+    linkId: '@implementing-interfaces'
+    altText: '@implementing-interfaces'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Default
+  commentId: F:Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Default
+  id: Default
+  parent: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: InterfaceMemberOverrideStrategy.Default
+  fullName: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Use the strategy from the <xref href="Metalama.Framework.Aspects.OverrideStrategy" data-throw-if-not-resolved="false"></xref> parameter of
+
+    <xref href="Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType%2cMetalama.Framework.Code.INamedType%2cMetalama.Framework.Aspects.OverrideStrategy%2cSystem.Object)" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    When the interface-level strategy is <xref href="Metalama.Framework.Aspects.OverrideStrategy.Fail" data-throw-if-not-resolved="false"></xref>, this member fails on conflict.
+
+    When it is <xref href="Metalama.Framework.Aspects.OverrideStrategy.Override" data-throw-if-not-resolved="false"></xref>, the existing member is overridden.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+- uid: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Fail
+  commentId: F:Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Fail
+  id: Fail
+  parent: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Fail
+  nameWithType: InterfaceMemberOverrideStrategy.Fail
+  fullName: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Fail
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Report a compilation error if a matching member already exists in the target type.
+  example: []
+  syntax:
+    content: Fail = 1
+    return:
+      type: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+- uid: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.MakeExplicit
+  commentId: F:Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.MakeExplicit
+  id: MakeExplicit
+  parent: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: MakeExplicit
+  nameWithType: InterfaceMemberOverrideStrategy.MakeExplicit
+  fullName: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.MakeExplicit
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Introduce the interface member as an explicit implementation, avoiding the conflict with the existing member.
+  remarks: >-
+    Use this when the target type already has a public member with the same name but you want to provide
+
+    a different implementation for the interface member.
+  example: []
+  syntax:
+    content: MakeExplicit = 2
+    return:
+      type: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+- uid: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Ignore
+  commentId: F:Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Ignore
+  id: Ignore
+  parent: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Ignore
+  nameWithType: InterfaceMemberOverrideStrategy.Ignore
+  fullName: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.Ignore
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Do not introduce or override this member if a matching member already exists.
+  remarks: Use this to allow the existing implementation to satisfy the interface member requirement.
+  example: []
+  syntax:
+    content: Ignore = 3
+    return:
+      type: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+references:
+- uid: Metalama.Framework.Aspects.InterfaceMemberAttribute
+  commentId: T:Metalama.Framework.Aspects.InterfaceMemberAttribute
+  isExternal: true
+  href: Metalama.Framework.Aspects.InterfaceMemberAttribute.html
+  name: InterfaceMemberAttribute
+  nameWithType: InterfaceMemberAttribute
+  fullName: Metalama.Framework.Aspects.InterfaceMemberAttribute
+- uid: Metalama.Framework.Aspects.OverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html
+  name: OverrideStrategy
+  nameWithType: OverrideStrategy
+  fullName: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface.html#Metalama_Framework_Aspects_AdviserExtensions_ImplementInterface_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_INamedType_Metalama_Framework_Aspects_OverrideStrategy_System_Object_
+  name: ImplementInterface(IAdviser<INamedType>, INamedType, OverrideStrategy, object)
+  nameWithType: AdviserExtensions.ImplementInterface(IAdviser<INamedType>, INamedType, OverrideStrategy, object)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, Metalama.Framework.Code.INamedType, Metalama.Framework.Aspects.OverrideStrategy, object)
+  nameWithType.vb: AdviserExtensions.ImplementInterface(IAdviser(Of INamedType), INamedType, OverrideStrategy, Object)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), Metalama.Framework.Code.INamedType, Metalama.Framework.Aspects.OverrideStrategy, Object)
+  name.vb: ImplementInterface(IAdviser(Of INamedType), INamedType, OverrideStrategy, Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+    name: ImplementInterface
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface.html#Metalama_Framework_Aspects_AdviserExtensions_ImplementInterface_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_INamedType_Metalama_Framework_Aspects_OverrideStrategy_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.OverrideStrategy
+    name: OverrideStrategy
+    isExternal: true
+    href: Metalama.Framework.Aspects.OverrideStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+    name: ImplementInterface
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface.html#Metalama_Framework_Aspects_AdviserExtensions_ImplementInterface_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_INamedType_Metalama_Framework_Aspects_OverrideStrategy_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.OverrideStrategy
+    name: OverrideStrategy
+    isExternal: true
+    href: Metalama.Framework.Aspects.OverrideStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects.InterfaceMemberAttribute.WhenExists
+  commentId: P:Metalama.Framework.Aspects.InterfaceMemberAttribute.WhenExists
+  isExternal: true
+  href: Metalama.Framework.Aspects.InterfaceMemberAttribute.WhenExists.html#Metalama_Framework_Aspects_InterfaceMemberAttribute_WhenExists
+  name: WhenExists
+  nameWithType: InterfaceMemberAttribute.WhenExists
+  fullName: Metalama.Framework.Aspects.InterfaceMemberAttribute.WhenExists
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+  commentId: M:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface.html#Metalama_Framework_Advising_IAdviceFactory_ImplementInterface_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_INamedType_Metalama_Framework_Aspects_OverrideStrategy_System_Object_
+  name: ImplementInterface(INamedType, INamedType, OverrideStrategy, object)
+  nameWithType: IAdviceFactory.ImplementInterface(INamedType, INamedType, OverrideStrategy, object)
+  fullName: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType, Metalama.Framework.Code.INamedType, Metalama.Framework.Aspects.OverrideStrategy, object)
+  nameWithType.vb: IAdviceFactory.ImplementInterface(INamedType, INamedType, OverrideStrategy, Object)
+  fullName.vb: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType, Metalama.Framework.Code.INamedType, Metalama.Framework.Aspects.OverrideStrategy, Object)
+  name.vb: ImplementInterface(INamedType, INamedType, OverrideStrategy, Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+    name: ImplementInterface
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface.html#Metalama_Framework_Advising_IAdviceFactory_ImplementInterface_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_INamedType_Metalama_Framework_Aspects_OverrideStrategy_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.OverrideStrategy
+    name: OverrideStrategy
+    isExternal: true
+    href: Metalama.Framework.Aspects.OverrideStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
+    name: ImplementInterface
+    isExternal: true
+    href: Metalama.Framework.Advising.IAdviceFactory.ImplementInterface.html#Metalama_Framework_Advising_IAdviceFactory_ImplementInterface_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_INamedType_Metalama_Framework_Aspects_OverrideStrategy_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.OverrideStrategy
+    name: OverrideStrategy
+    isExternal: true
+    href: Metalama.Framework.Aspects.OverrideStrategy.html
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Fail
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Fail
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html#Metalama_Framework_Aspects_OverrideStrategy_Fail
+  name: Fail
+  nameWithType: OverrideStrategy.Fail
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Fail
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Override
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Override
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html#Metalama_Framework_Aspects_OverrideStrategy_Override
+  name: Override
+  nameWithType: OverrideStrategy.Override
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Override
+- uid: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy.html
+  name: InterfaceMemberOverrideStrategy
+  nameWithType: InterfaceMemberOverrideStrategy
+  fullName: Metalama.Framework.Aspects.InterfaceMemberOverrideStrategy
+memberLayout: SeparatePages

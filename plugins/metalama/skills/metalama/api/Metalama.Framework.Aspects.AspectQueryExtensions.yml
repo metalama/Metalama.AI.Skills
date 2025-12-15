@@ -1,0 +1,1637 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions
+  commentId: T:Metalama.Framework.Aspects.AspectQueryExtensions
+  id: AspectQueryExtensions
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect})
+  - Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2})
+  - Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  langs:
+  - csharp
+  - vb
+  name: AspectQueryExtensions
+  nameWithType: AspectQueryExtensions
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Extension methods for <xref href="Metalama.Framework.Fabrics.IQuery%601" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Fabrics.ITaggedQuery%602" data-throw-if-not-resolved="false"></xref> that provide
+
+    methods to add aspects to declarations selected through queries.
+  remarks: >-
+    <p>
+        These extension methods are primarily used with fabrics (<xref href="Metalama.Framework.Fabrics.ProjectFabric" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Fabrics.TypeFabric" data-throw-if-not-resolved="false"></xref>, etc.)
+        to add aspects programmatically to selected declarations. In a <xref href="Metalama.Framework.Fabrics.ProjectFabric" data-throw-if-not-resolved="false"></xref>, use
+        the <code>amender</code> parameter's query methods to select declarations, then call these methods to add aspects:
+        </p>
+
+    <pre><code class="lang-csharp">// In a ProjectFabric.AmendProject override
+
+    amender.SelectMany(p =&gt; p.Types)
+           .SelectMany(t =&gt; t.Methods.Where(m =&gt; m.Accessibility == Accessibility.Public))
+           .AddAspectIfEligible&lt;LoggingAspect&gt;();</code></pre>
+    <p>
+        They can also be used with <xref href="Metalama.Framework.Aspects.IAspectBuilder%601.Outbound" data-throw-if-not-resolved="false"></xref> to add child aspects from within
+        the <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method:
+        </p>
+
+    <pre><code class="lang-csharp">// In an aspect's BuildAspect method
+
+    builder.Outbound.SelectMany(t =&gt; t.Methods).AddAspect&lt;LoggingAspect&gt;();</code></pre>
+
+    <p>
+      <b>AddAspect vs AddAspectIfEligible:</b>
+      <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect%60%601(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.IDeclaration%7d)" data-throw-if-not-resolved="false"></xref> throws an exception
+        if the target is ineligible, while <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible%60%601(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.IDeclaration%7d%2cMetalama.Framework.Eligibility.EligibleScenarios)" data-throw-if-not-resolved="false"></xref> silently skips ineligible targets.
+        For bulk operations in fabrics, <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible%60%601(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.IDeclaration%7d%2cMetalama.Framework.Eligibility.EligibleScenarios)" data-throw-if-not-resolved="false"></xref> is generally recommended.
+        </p>
+    <p>
+      <b>AddAspect vs RequireAspect:</b>
+      <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect%60%601(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.IDeclaration%7d)" data-throw-if-not-resolved="false"></xref> always creates a new aspect instance
+        (existing instances become secondary). <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect%60%601(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.IDeclaration%7d)" data-throw-if-not-resolved="false"></xref> only adds an instance if the aspect doesn't already exist on the target.
+        </p>
+    <p>
+      <b>Child aspect ordering:</b> When adding child aspects from an aspect, the child aspect class must be ordered <em>after</em> the parent aspect.
+        The child must be listed <em>before</em> the parent in the <xref href="Metalama.Framework.Aspects.AspectOrderAttribute" data-throw-if-not-resolved="false"></xref> definition.
+        </p>
+    <p>
+      <b>Precedence:</b> Aspects added manually as custom attributes take precedence over aspects added programmatically.
+        When the same aspect type is applied multiple times, the primary instance executes and secondary instances are available
+        via <xref href="Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static class AspectQueryExtensions
+    content.vb: >-
+      <CompileTime>
+
+      Public Module AspectQueryExtensions
+  seealso:
+  - linkId: Metalama.Framework.Fabrics.ProjectFabric
+    commentId: T:Metalama.Framework.Fabrics.ProjectFabric
+  - linkId: Metalama.Framework.Aspects.IAspectBuilder`1.Outbound
+    commentId: P:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound
+  - linkId: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+    commentId: P:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+  - linkId: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+    commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  - linkType: HRef
+    linkId: '@fabrics-adding-aspects'
+    altText: '@fabrics-adding-aspects'
+  - linkType: HRef
+    linkId: '@child-aspects'
+    altText: '@child-aspects'
+  - linkType: HRef
+    linkId: '@ordering-aspects'
+    altText: '@ordering-aspects'
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  id: AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Type, System.Func<TDeclaration, Metalama.Framework.Aspects.IAspect>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds a aspect to the current set of declarations or throws an exception if the aspect is not eligible for the aspect. This overload is non-generic.
+  example: []
+  syntax:
+    content: 'public static void AddAspect<TDeclaration>(this IQuery<TDeclaration> query, Type aspectType, Func<TDeclaration, IAspect> createAspect) where TDeclaration : class, IDeclaration'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{{TDeclaration}}
+      description: A query selecting the declarations to validate.
+    - id: aspectType
+      type: System.Type
+      description: The exact type of the aspect returned by <code class="paramref">createAspect</code>. It is not allowed to specify a base type in this parameter, only the exact type.
+    - id: createAspect
+      type: System.Func{{TDeclaration},Metalama.Framework.Aspects.IAspect}
+      description: A function that returns the aspect for a given declaration.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    content.vb: Public Shared Sub AddAspect(Of TDeclaration As {Class, IDeclaration})(query As IQuery(Of TDeclaration), aspectType As Type, createAspect As Func(Of TDeclaration, IAspect))
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect*
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Type, System.Func(Of TDeclaration, Metalama.Framework.Aspects.IAspect))
+  name.vb: AddAspect(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect))
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  id: AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspectIfEligible<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Type, System.Func<TDeclaration, Metalama.Framework.Aspects.IAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the current set of declarations but only if the aspect is eligible for the declaration. This overload is non-generic.
+  example: []
+  syntax:
+    content: 'public static void AddAspectIfEligible<TDeclaration>(this IQuery<TDeclaration> query, Type aspectType, Func<TDeclaration, IAspect> createAspect, EligibleScenarios eligibility = EligibleScenarios.Inheritance | EligibleScenarios.Aspect) where TDeclaration : class, IDeclaration'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{{TDeclaration}}
+      description: A query selecting the declarations to validate.
+    - id: aspectType
+      type: System.Type
+      description: The exact type of the aspect returned by <code class="paramref">createAspect</code>. It is not allowed to specify a base type in this parameter, only the exact type.
+    - id: createAspect
+      type: System.Func{{TDeclaration},Metalama.Framework.Aspects.IAspect}
+      description: A function that returns the aspect for a given declaration.
+    - id: eligibility
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+      description: >-
+        The scenarios for which the aspect may be eligible. The default value is <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref>.
+                    If <xref href="Metalama.Framework.Eligibility.EligibleScenarios.None" data-throw-if-not-resolved="false"></xref> is provided, eligibility is not checked.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    content.vb: Public Shared Sub AddAspectIfEligible(Of TDeclaration As {Class, IDeclaration})(query As IQuery(Of TDeclaration), aspectType As Type, createAspect As Func(Of TDeclaration, IAspect), eligibility As EligibleScenarios = EligibleScenarios.Inheritance Or EligibleScenarios.Aspect)
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible*
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Type, System.Func(Of TDeclaration, Metalama.Framework.Aspects.IAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect), EligibleScenarios)
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  id: AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspect<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration, TAspect>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, TAspect>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the current set of declarations or throws an exception if the aspect is not eligible for the aspect.
+  example: []
+  syntax:
+    content: 'public static void AddAspect<TDeclaration, TAspect>(this IQuery<TDeclaration> query, Func<TDeclaration, TAspect> createAspect) where TDeclaration : class, IDeclaration where TAspect : class, IAspect<TDeclaration>'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{{TDeclaration}}
+      description: A query selecting the declarations to validate.
+    - id: createAspect
+      type: System.Func{{TDeclaration},{TAspect}}
+      description: A function that returns the aspect for a given declaration.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    - id: TAspect
+      description: The type of aspect to add.
+    content.vb: Public Shared Sub AddAspect(Of TDeclaration As {Class, IDeclaration}, TAspect As {Class, IAspect(Of TDeclaration)})(query As IQuery(Of TDeclaration), createAspect As Func(Of TDeclaration, TAspect))
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect*
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration, TAspect)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, TAspect))
+  name.vb: AddAspect(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect))
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  id: AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspectIfEligible<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TAspect>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, TAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the current set of declarations but only if the aspect is eligible for the declaration.
+  example: []
+  syntax:
+    content: 'public static void AddAspectIfEligible<TDeclaration, TAspect>(this IQuery<TDeclaration> query, Func<TDeclaration, TAspect> createAspect, EligibleScenarios eligibility = EligibleScenarios.Inheritance | EligibleScenarios.Aspect) where TDeclaration : class, IDeclaration where TAspect : class, IAspect<TDeclaration>'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{{TDeclaration}}
+      description: A query selecting the declarations to validate.
+    - id: createAspect
+      type: System.Func{{TDeclaration},{TAspect}}
+      description: A function that returns the aspect for a given declaration.
+    - id: eligibility
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+      description: >-
+        The scenarios for which the aspect may be eligible. The default value is <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref>.
+                    If <xref href="Metalama.Framework.Eligibility.EligibleScenarios.None" data-throw-if-not-resolved="false"></xref> is provided, eligibility is not checked.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    - id: TAspect
+      description: The type of aspect to add.
+    content.vb: Public Shared Sub AddAspectIfEligible(Of TDeclaration As {Class, IDeclaration}, TAspect As {Class, IAspect(Of TDeclaration)})(query As IQuery(Of TDeclaration), createAspect As Func(Of TDeclaration, TAspect), eligibility As EligibleScenarios = EligibleScenarios.Inheritance Or EligibleScenarios.Aspect)
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible*
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TAspect)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, TAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect), EligibleScenarios)
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  id: AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.AddAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Adds an aspect to the current set of declarations or throws an exception if the aspect is not eligible for the aspect. This overload creates a new instance of the
+
+    aspect class for each target declaration.
+  example: []
+  syntax:
+    content: 'public static void AddAspect<TAspect>(this IQuery<IDeclaration> query) where TAspect : class, IAspect, new()'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}
+      description: A query selecting the declarations to which the aspect should be added.
+    typeParameters:
+    - id: TAspect
+      description: The type of aspect to add.
+    content.vb: Public Shared Sub AddAspect(Of TAspect As {Class, IAspect, New})(query As IQuery(Of IDeclaration))
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect*
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  id: AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>, Metalama.Framework.Eligibility.EligibleScenarios)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Adds an aspect to the current set of declarations using the default constructor of the aspect type. This method
+
+    does not verify the eligibility of the declaration for the aspect unless you specify the <code class="paramref">eligibility</code> parameter.
+
+    This overload creates a new instance of the aspect class for each eligible target declaration.
+  example: []
+  syntax:
+    content: 'public static void AddAspectIfEligible<TAspect>(this IQuery<IDeclaration> query, EligibleScenarios eligibility = EligibleScenarios.Inheritance | EligibleScenarios.Aspect) where TAspect : class, IAspect, new()'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}
+      description: A query selecting the declarations to validate.
+    - id: eligibility
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+      description: >-
+        The scenarios for which the aspect may be eligible. The default value is <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref>.
+                    If <xref href="Metalama.Framework.Eligibility.EligibleScenarios.None" data-throw-if-not-resolved="false"></xref> is provided, eligibility is not checked.
+    typeParameters:
+    - id: TAspect
+      description: The type of aspect to add.
+    content.vb: Public Shared Sub AddAspectIfEligible(Of TAspect As {Class, IAspect, New})(query As IQuery(Of IDeclaration), eligibility As EligibleScenarios = EligibleScenarios.Inheritance Or EligibleScenarios.Aspect)
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible*
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  id: RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: RequireAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.RequireAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Requires an instance of a specified aspect type to be present on a specified declaration. If the aspect
+
+    is not present, this method adds a new instance of the aspect using the default aspect constructor.
+  remarks: >-
+    <p>
+        This method differs from <xref href="Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect%60%601(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.IDeclaration%7d)" data-throw-if-not-resolved="false"></xref> in that it does not create
+        a secondary aspect instance if the aspect already exists on the target. Instead, it simply registers the
+        current aspect as a predecessor of the existing aspect.
+        </p>
+    <p>
+        Calling this method causes the current aspect to be present in the <xref href="Metalama.Framework.Aspects.IAspectPredecessor.Predecessors" data-throw-if-not-resolved="false"></xref> list
+        even if the required aspect was already present on the target declaration. This allows the required aspect
+        to access the requiring aspect's state if needed.
+        </p>
+  example: []
+  syntax:
+    content: 'public static void RequireAspect<TAspect>(this IQuery<IDeclaration> query) where TAspect : class, IAspect, new()'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}
+    typeParameters:
+    - id: TAspect
+      description: >-
+        Type of the aspect. The type must have a default constructor and be ordered
+                    <em>after</em> the aspect type calling this method.
+    content.vb: Public Shared Sub RequireAspect(Of TAspect As {Class, IAspect, New})(query As IQuery(Of IDeclaration))
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect*
+  seealso:
+  - linkType: HRef
+    linkId: '@child-aspects'
+    altText: '@child-aspects'
+  nameWithType.vb: AspectQueryExtensions.RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect})
+  id: AddAspect``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspect<TDeclaration, TTag>(ITaggedQuery<TDeclaration, TTag>, Type, Func<TDeclaration, TTag, IAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration, TTag>(ITaggedQuery<TDeclaration, TTag>, Type, Func<TDeclaration, TTag, IAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration, TTag>(Metalama.Framework.Fabrics.ITaggedQuery<TDeclaration, TTag>, System.Type, System.Func<TDeclaration, TTag, Metalama.Framework.Aspects.IAspect>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds a aspect to the current set of declarations or throws an exception if the aspect is not eligible for the aspect. This overload is non-generic.
+  example: []
+  syntax:
+    content: 'public static void AddAspect<TDeclaration, TTag>(this ITaggedQuery<TDeclaration, TTag> query, Type aspectType, Func<TDeclaration, TTag, IAspect> createAspect) where TDeclaration : class, IDeclaration'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.ITaggedQuery{{TDeclaration},{TTag}}
+      description: A query selecting the declarations to validate.
+    - id: aspectType
+      type: System.Type
+      description: The exact type of the aspect returned by <code class="paramref">createAspect</code>. It is not allowed to specify a base type in this parameter, only the exact type.
+    - id: createAspect
+      type: System.Func{{TDeclaration},{TTag},Metalama.Framework.Aspects.IAspect}
+      description: A function that returns the aspect for a given declaration.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    - id: TTag
+      description: The type of tag associated with each declaration.
+    content.vb: Public Shared Sub AddAspect(Of TDeclaration As {Class, IDeclaration}, TTag)(query As ITaggedQuery(Of TDeclaration, TTag), aspectType As Type, createAspect As Func(Of TDeclaration, TTag, IAspect))
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect*
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration, TTag)(ITaggedQuery(Of TDeclaration, TTag), Type, Func(Of TDeclaration, TTag, IAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration, TTag)(Metalama.Framework.Fabrics.ITaggedQuery(Of TDeclaration, TTag), System.Type, System.Func(Of TDeclaration, TTag, Metalama.Framework.Aspects.IAspect))
+  name.vb: AddAspect(Of TDeclaration, TTag)(ITaggedQuery(Of TDeclaration, TTag), Type, Func(Of TDeclaration, TTag, IAspect))
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  id: AddAspectIfEligible``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Type,System.Func{``0,``1,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspectIfEligible<TDeclaration, TTag>(ITaggedQuery<TDeclaration, TTag>, Type, Func<TDeclaration, TTag, IAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TTag>(ITaggedQuery<TDeclaration, TTag>, Type, Func<TDeclaration, TTag, IAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TTag>(Metalama.Framework.Fabrics.ITaggedQuery<TDeclaration, TTag>, System.Type, System.Func<TDeclaration, TTag, Metalama.Framework.Aspects.IAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the current set of declarations but only if the aspect is eligible for the declaration. This overload is non-generic.
+  example: []
+  syntax:
+    content: 'public static void AddAspectIfEligible<TDeclaration, TTag>(this ITaggedQuery<TDeclaration, TTag> query, Type aspectType, Func<TDeclaration, TTag, IAspect> createAspect, EligibleScenarios eligibility = EligibleScenarios.Inheritance | EligibleScenarios.Aspect) where TDeclaration : class, IDeclaration'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.ITaggedQuery{{TDeclaration},{TTag}}
+      description: A query selecting the declarations to validate.
+    - id: aspectType
+      type: System.Type
+      description: The exact type of the aspect returned by <code class="paramref">createAspect</code>. It is not allowed to specify a base type in this parameter, only the exact type.
+    - id: createAspect
+      type: System.Func{{TDeclaration},{TTag},Metalama.Framework.Aspects.IAspect}
+      description: A function that returns the aspect for a given declaration.
+    - id: eligibility
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+      description: >-
+        The scenarios for which the aspect may be eligible. The default value is <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref>.
+                    If <xref href="Metalama.Framework.Eligibility.EligibleScenarios.None" data-throw-if-not-resolved="false"></xref> is provided, eligibility is not checked.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    - id: TTag
+      description: The type of tag associated with each declaration.
+    content.vb: Public Shared Sub AddAspectIfEligible(Of TDeclaration As {Class, IDeclaration}, TTag)(query As ITaggedQuery(Of TDeclaration, TTag), aspectType As Type, createAspect As Func(Of TDeclaration, TTag, IAspect), eligibility As EligibleScenarios = EligibleScenarios.Inheritance Or EligibleScenarios.Aspect)
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible*
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TTag)(ITaggedQuery(Of TDeclaration, TTag), Type, Func(Of TDeclaration, TTag, IAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TTag)(Metalama.Framework.Fabrics.ITaggedQuery(Of TDeclaration, TTag), System.Type, System.Func(Of TDeclaration, TTag, Metalama.Framework.Aspects.IAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TDeclaration, TTag)(ITaggedQuery(Of TDeclaration, TTag), Type, Func(Of TDeclaration, TTag, IAspect), EligibleScenarios)
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2})
+  id: AddAspect``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspect<TDeclaration, TTag, TAspect>(ITaggedQuery<TDeclaration, TTag>, Func<TDeclaration, TTag, TAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration, TTag, TAspect>(ITaggedQuery<TDeclaration, TTag>, Func<TDeclaration, TTag, TAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration, TTag, TAspect>(Metalama.Framework.Fabrics.ITaggedQuery<TDeclaration, TTag>, System.Func<TDeclaration, TTag, TAspect>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the current set of declarations or throws an exception if the aspect is not eligible for the aspect.
+  example: []
+  syntax:
+    content: 'public static void AddAspect<TDeclaration, TTag, TAspect>(this ITaggedQuery<TDeclaration, TTag> query, Func<TDeclaration, TTag, TAspect> createAspect) where TDeclaration : class, IDeclaration where TAspect : class, IAspect<TDeclaration>'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.ITaggedQuery{{TDeclaration},{TTag}}
+      description: A query selecting the declarations to validate.
+    - id: createAspect
+      type: System.Func{{TDeclaration},{TTag},{TAspect}}
+      description: A function that returns the aspect for a given declaration.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    - id: TTag
+      description: The type of tag associated with each declaration.
+    - id: TAspect
+      description: The type of aspect to add.
+    content.vb: Public Shared Sub AddAspect(Of TDeclaration As {Class, IDeclaration}, TTag, TAspect As {Class, IAspect(Of TDeclaration)})(query As ITaggedQuery(Of TDeclaration, TTag), createAspect As Func(Of TDeclaration, TTag, TAspect))
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect*
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration, TTag, TAspect)(ITaggedQuery(Of TDeclaration, TTag), Func(Of TDeclaration, TTag, TAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration, TTag, TAspect)(Metalama.Framework.Fabrics.ITaggedQuery(Of TDeclaration, TTag), System.Func(Of TDeclaration, TTag, TAspect))
+  name.vb: AddAspect(Of TDeclaration, TTag, TAspect)(ITaggedQuery(Of TDeclaration, TTag), Func(Of TDeclaration, TTag, TAspect))
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2},Metalama.Framework.Eligibility.EligibleScenarios)
+  id: AddAspectIfEligible``3(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{``0,``1,``2},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspectIfEligible<TDeclaration, TTag, TAspect>(ITaggedQuery<TDeclaration, TTag>, Func<TDeclaration, TTag, TAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TTag, TAspect>(ITaggedQuery<TDeclaration, TTag>, Func<TDeclaration, TTag, TAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TTag, TAspect>(Metalama.Framework.Fabrics.ITaggedQuery<TDeclaration, TTag>, System.Func<TDeclaration, TTag, TAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the current set of declarations but only if the aspect is eligible for the declaration.
+  example: []
+  syntax:
+    content: 'public static void AddAspectIfEligible<TDeclaration, TTag, TAspect>(this ITaggedQuery<TDeclaration, TTag> query, Func<TDeclaration, TTag, TAspect> createAspect, EligibleScenarios eligibility = EligibleScenarios.Inheritance | EligibleScenarios.Aspect) where TDeclaration : class, IDeclaration where TAspect : class, IAspect<TDeclaration>'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.ITaggedQuery{{TDeclaration},{TTag}}
+      description: A query selecting the declarations to validate.
+    - id: createAspect
+      type: System.Func{{TDeclaration},{TTag},{TAspect}}
+      description: A function that returns the aspect for a given declaration.
+    - id: eligibility
+      type: Metalama.Framework.Eligibility.EligibleScenarios
+      description: >-
+        The scenarios for which the aspect may be eligible. The default value is <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Default" data-throw-if-not-resolved="false"></xref> | <xref href="Metalama.Framework.Eligibility.EligibleScenarios.Inheritance" data-throw-if-not-resolved="false"></xref>.
+                    If <xref href="Metalama.Framework.Eligibility.EligibleScenarios.None" data-throw-if-not-resolved="false"></xref> is provided, eligibility is not checked.
+    typeParameters:
+    - id: TDeclaration
+      description: The type of declaration in the query.
+    - id: TTag
+      description: The type of tag associated with each declaration.
+    - id: TAspect
+      description: The type of aspect to add.
+    content.vb: Public Shared Sub AddAspectIfEligible(Of TDeclaration As {Class, IDeclaration}, TTag, TAspect As {Class, IAspect(Of TDeclaration)})(query As ITaggedQuery(Of TDeclaration, TTag), createAspect As Func(Of TDeclaration, TTag, TAspect), eligibility As EligibleScenarios = EligibleScenarios.Inheritance Or EligibleScenarios.Aspect)
+  overload: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible*
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TTag, TAspect)(ITaggedQuery(Of TDeclaration, TTag), Func(Of TDeclaration, TTag, TAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TTag, TAspect)(Metalama.Framework.Fabrics.ITaggedQuery(Of TDeclaration, TTag), System.Func(Of TDeclaration, TTag, TAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TDeclaration, TTag, TAspect)(ITaggedQuery(Of TDeclaration, TTag), Func(Of TDeclaration, TTag, TAspect), EligibleScenarios)
+references:
+- uid: Metalama.Framework.Fabrics.ProjectFabric
+  commentId: T:Metalama.Framework.Fabrics.ProjectFabric
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ProjectFabric.html
+  name: ProjectFabric
+  nameWithType: ProjectFabric
+  fullName: Metalama.Framework.Fabrics.ProjectFabric
+- uid: Metalama.Framework.Aspects.IAspectBuilder`1.Outbound
+  commentId: P:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder-1.Outbound.html#Metalama_Framework_Aspects_IAspectBuilder_1_Outbound
+  name: Outbound
+  nameWithType: IAspectBuilder<TAspectTarget>.Outbound
+  fullName: Metalama.Framework.Aspects.IAspectBuilder<TAspectTarget>.Outbound
+  nameWithType.vb: IAspectBuilder(Of TAspectTarget).Outbound
+  fullName.vb: Metalama.Framework.Aspects.IAspectBuilder(Of TAspectTarget).Outbound
+- uid: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+  commentId: P:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances.html#Metalama_Framework_Aspects_IAspectInstance_SecondaryInstances
+  name: SecondaryInstances
+  nameWithType: IAspectInstance.SecondaryInstances
+  fullName: Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances
+- uid: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  commentId: P:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+  parent: Metalama.Framework.Aspects.IAspectPredecessor
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors.html#Metalama_Framework_Aspects_IAspectPredecessor_Predecessors
+  name: Predecessors
+  nameWithType: IAspectPredecessor.Predecessors
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor.Predecessors
+- uid: Metalama.Framework.Fabrics.IQuery`1
+  commentId: T:Metalama.Framework.Fabrics.IQuery`1
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.html
+  name: IQuery<TDeclaration>
+  nameWithType: IQuery<TDeclaration>
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>
+  nameWithType.vb: IQuery(Of TDeclaration)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration)
+  name.vb: IQuery(Of TDeclaration)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+- uid: Metalama.Framework.Fabrics.ITaggedQuery`2
+  commentId: T:Metalama.Framework.Fabrics.ITaggedQuery`2
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ITaggedQuery-2.html
+  name: ITaggedQuery<TDeclaration, TTag>
+  nameWithType: ITaggedQuery<TDeclaration, TTag>
+  fullName: Metalama.Framework.Fabrics.ITaggedQuery<TDeclaration, TTag>
+  nameWithType.vb: ITaggedQuery(Of TDeclaration, TTag)
+  fullName.vb: Metalama.Framework.Fabrics.ITaggedQuery(Of TDeclaration, TTag)
+  name.vb: ITaggedQuery(Of TDeclaration, TTag)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.ITaggedQuery`2
+    name: ITaggedQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITaggedQuery-2.html
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.ITaggedQuery`2
+    name: ITaggedQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITaggedQuery-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: )
+- uid: Metalama.Framework.Fabrics.TypeFabric
+  commentId: T:Metalama.Framework.Fabrics.TypeFabric
+  isExternal: true
+  href: Metalama.Framework.Fabrics.TypeFabric.html
+  name: TypeFabric
+  nameWithType: TypeFabric
+  fullName: Metalama.Framework.Fabrics.TypeFabric
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: AddAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.AddAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: RequireAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.RequireAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  nameWithType.vb: AspectQueryExtensions.RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectOrderAttribute
+  commentId: T:Metalama.Framework.Aspects.AspectOrderAttribute
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectOrderAttribute.html
+  name: AspectOrderAttribute
+  nameWithType: AspectOrderAttribute
+  fullName: Metalama.Framework.Aspects.AspectOrderAttribute
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Fabrics
+  commentId: N:Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Fabrics
+  nameWithType: Metalama.Framework.Fabrics
+  fullName: Metalama.Framework.Fabrics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+- uid: Metalama.Framework.Aspects.IAspectPredecessor
+  commentId: T:Metalama.Framework.Aspects.IAspectPredecessor
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectPredecessor.html
+  name: IAspectPredecessor
+  nameWithType: IAspectPredecessor
+  fullName: Metalama.Framework.Aspects.IAspectPredecessor
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect*
+  commentId: Overload:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  name: AddAspect
+  nameWithType: AspectQueryExtensions.AddAspect
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect
+- uid: Metalama.Framework.Fabrics.IQuery{{TDeclaration}}
+  commentId: T:Metalama.Framework.Fabrics.IQuery{``0}
+  parent: Metalama.Framework.Fabrics
+  definition: Metalama.Framework.Fabrics.IQuery`1
+  href: Metalama.Framework.Fabrics.IQuery-1.html
+  name: IQuery<TDeclaration>
+  nameWithType: IQuery<TDeclaration>
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>
+  nameWithType.vb: IQuery(Of TDeclaration)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration)
+  name.vb: IQuery(Of TDeclaration)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Func{{TDeclaration},Metalama.Framework.Aspects.IAspect}
+  commentId: T:System.Func{``0,Metalama.Framework.Aspects.IAspect}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<TDeclaration, IAspect>
+  nameWithType: Func<TDeclaration, IAspect>
+  fullName: System.Func<TDeclaration, Metalama.Framework.Aspects.IAspect>
+  nameWithType.vb: Func(Of TDeclaration, IAspect)
+  fullName.vb: System.Func(Of TDeclaration, Metalama.Framework.Aspects.IAspect)
+  name.vb: Func(Of TDeclaration, IAspect)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Default
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Default
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_Default
+  name: Default
+  nameWithType: EligibleScenarios.Default
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Default
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_Inheritance
+  name: Inheritance
+  nameWithType: EligibleScenarios.Inheritance
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.Inheritance
+- uid: Metalama.Framework.Eligibility.EligibleScenarios.None
+  commentId: F:Metalama.Framework.Eligibility.EligibleScenarios.None
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html#Metalama_Framework_Eligibility_EligibleScenarios_None
+  name: None
+  nameWithType: EligibleScenarios.None
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios.None
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible*
+  commentId: Overload:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible
+- uid: Metalama.Framework.Eligibility.EligibleScenarios
+  commentId: T:Metalama.Framework.Eligibility.EligibleScenarios
+  parent: Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  name: EligibleScenarios
+  nameWithType: EligibleScenarios
+  fullName: Metalama.Framework.Eligibility.EligibleScenarios
+- uid: Metalama.Framework.Eligibility
+  commentId: N:Metalama.Framework.Eligibility
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Eligibility
+  nameWithType: Metalama.Framework.Eligibility
+  fullName: Metalama.Framework.Eligibility
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Eligibility
+    name: Eligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Eligibility
+    name: Eligibility
+    isExternal: true
+    href: Metalama.Framework.Eligibility.html
+- uid: System.Func{{TDeclaration},{TAspect}}
+  commentId: T:System.Func{``0,``1}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<TDeclaration, TAspect>
+  nameWithType: Func<TDeclaration, TAspect>
+  fullName: System.Func<TDeclaration, TAspect>
+  nameWithType.vb: Func(Of TDeclaration, TAspect)
+  fullName.vb: System.Func(Of TDeclaration, TAspect)
+  name.vb: Func(Of TDeclaration, TAspect)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}
+  commentId: T:Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}
+  parent: Metalama.Framework.Fabrics
+  definition: Metalama.Framework.Fabrics.IQuery`1
+  href: Metalama.Framework.Fabrics.IQuery-1.html
+  name: IQuery<IDeclaration>
+  nameWithType: IQuery<IDeclaration>
+  fullName: Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>
+  nameWithType.vb: IQuery(Of IDeclaration)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration)
+  name.vb: IQuery(Of IDeclaration)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect*
+  commentId: Overload:Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: RequireAspect
+  nameWithType: AspectQueryExtensions.RequireAspect
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect
+- uid: Metalama.Framework.Fabrics.ITaggedQuery{{TDeclaration},{TTag}}
+  commentId: T:Metalama.Framework.Fabrics.ITaggedQuery{``0,``1}
+  parent: Metalama.Framework.Fabrics
+  definition: Metalama.Framework.Fabrics.ITaggedQuery`2
+  href: Metalama.Framework.Fabrics.ITaggedQuery-2.html
+  name: ITaggedQuery<TDeclaration, TTag>
+  nameWithType: ITaggedQuery<TDeclaration, TTag>
+  fullName: Metalama.Framework.Fabrics.ITaggedQuery<TDeclaration, TTag>
+  nameWithType.vb: ITaggedQuery(Of TDeclaration, TTag)
+  fullName.vb: Metalama.Framework.Fabrics.ITaggedQuery(Of TDeclaration, TTag)
+  name.vb: ITaggedQuery(Of TDeclaration, TTag)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.ITaggedQuery`2
+    name: ITaggedQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITaggedQuery-2.html
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.ITaggedQuery`2
+    name: ITaggedQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITaggedQuery-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: )
+- uid: System.Func{{TDeclaration},{TTag},Metalama.Framework.Aspects.IAspect}
+  commentId: T:System.Func{``0,``1,Metalama.Framework.Aspects.IAspect}
+  parent: System
+  definition: System.Func`3
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<TDeclaration, TTag, IAspect>
+  nameWithType: Func<TDeclaration, TTag, IAspect>
+  fullName: System.Func<TDeclaration, TTag, Metalama.Framework.Aspects.IAspect>
+  nameWithType.vb: Func(Of TDeclaration, TTag, IAspect)
+  fullName.vb: System.Func(Of TDeclaration, TTag, Metalama.Framework.Aspects.IAspect)
+  name.vb: Func(Of TDeclaration, TTag, IAspect)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+- uid: System.Func`3
+  commentId: T:System.Func`3
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: System.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: System.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Func{{TDeclaration},{TTag},{TAspect}}
+  commentId: T:System.Func{``0,``1,``2}
+  parent: System
+  definition: System.Func`3
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<TDeclaration, TTag, TAspect>
+  nameWithType: Func<TDeclaration, TTag, TAspect>
+  fullName: System.Func<TDeclaration, TTag, TAspect>
+  nameWithType.vb: Func(Of TDeclaration, TTag, TAspect)
+  fullName.vb: System.Func(Of TDeclaration, TTag, TAspect)
+  name.vb: Func(Of TDeclaration, TTag, TAspect)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+memberLayout: SeparatePages

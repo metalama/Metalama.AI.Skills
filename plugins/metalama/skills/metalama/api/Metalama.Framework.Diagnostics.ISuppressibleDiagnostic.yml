@@ -1,0 +1,735 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  commentId: T:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  id: ISuppressibleDiagnostic
+  parent: Metalama.Framework.Diagnostics
+  children:
+  - Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments
+  - Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id
+  - Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage
+  - Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span
+  langs:
+  - csharp
+  - vb
+  name: ISuppressibleDiagnostic
+  nameWithType: ISuppressibleDiagnostic
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Represents a compiler or analyzer diagnostic that can be selectively suppressed using filtered suppressions.
+  remarks: >-
+    <p>
+        This interface provides access to diagnostic properties that can be used in suppression filters created with
+        <xref href="Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func%7bMetalama.Framework.Diagnostics.ISuppressibleDiagnostic%2cSystem.Boolean%7d)" data-throw-if-not-resolved="false"></xref>. When a suppression has a filter, each diagnostic matching
+        the suppression ID is passed to the filter predicate as an <xref href="Metalama.Framework.Diagnostics.ISuppressibleDiagnostic" data-throw-if-not-resolved="false"></xref>, allowing
+        the filter to inspect the diagnostic's message, arguments, or location to decide whether to suppress it.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [InternalImplement]
+
+      [CompileTime]
+
+      public interface ISuppressibleDiagnostic
+    content.vb: >-
+      <InternalImplement>
+
+      <CompileTime>
+
+      Public Interface ISuppressibleDiagnostic
+  seealso:
+  - linkId: Metalama.Framework.Diagnostics.ISuppression
+    commentId: T:Metalama.Framework.Diagnostics.ISuppression
+  - linkId: Metalama.Framework.Diagnostics.SuppressionDefinition
+    commentId: T:Metalama.Framework.Diagnostics.SuppressionDefinition
+  - linkId: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Boolean})
+    commentId: M:Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Boolean})
+  - linkId: Metalama.Framework.Diagnostics.IDiagnostic
+    commentId: T:Metalama.Framework.Diagnostics.IDiagnostic
+  - linkType: HRef
+    linkId: '@diagnostics'
+    altText: '@diagnostics'
+  extensionMethods:
+  - Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id
+  commentId: P:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id
+  id: Id
+  parent: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ISuppressibleDiagnostic.Id
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Gets the diagnostic ID (e.g., <code>CS0169</code> for "field is never used").
+  example: []
+  syntax:
+    content: string Id { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Id As String
+  overload: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id*
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage
+  commentId: P:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage
+  id: InvariantMessage
+  parent: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: InvariantMessage
+  nameWithType: ISuppressibleDiagnostic.InvariantMessage
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Gets the diagnostic message formatted in the invariant (English) culture.
+  remarks: Use this property in suppression filters to match diagnostics by message content.
+  example: []
+  syntax:
+    content: string InvariantMessage { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property InvariantMessage As String
+  overload: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage*
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments
+  commentId: P:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments
+  id: Arguments
+  parent: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Arguments
+  nameWithType: ISuppressibleDiagnostic.Arguments
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Gets the arguments passed to the diagnostic message formatter.
+  remarks: >-
+    These arguments often include symbols like members or types related to the diagnostic.
+
+    Use this property in suppression filters to match diagnostics based on specific symbols or values.
+  example: []
+  syntax:
+    content: ImmutableArray<object?> Arguments { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableArray{System.Object}
+    content.vb: ReadOnly Property Arguments As ImmutableArray(Of Object)
+  overload: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments*
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span
+  commentId: P:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span
+  id: Span
+  parent: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  langs:
+  - csharp
+  - vb
+  name: Span
+  nameWithType: ISuppressibleDiagnostic.Span
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Gets the source location (file, line, and column) of the diagnostic, when available.
+  example: []
+  syntax:
+    content: SourceSpan? Span { get; }
+    parameters: []
+    return:
+      type: System.Nullable{Metalama.Framework.Code.SourceSpan}
+    content.vb: ReadOnly Property Span As SourceSpan?
+  overload: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span*
+references:
+- uid: Metalama.Framework.Diagnostics.ISuppression
+  commentId: T:Metalama.Framework.Diagnostics.ISuppression
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ISuppression.html
+  name: ISuppression
+  nameWithType: ISuppression
+  fullName: Metalama.Framework.Diagnostics.ISuppression
+- uid: Metalama.Framework.Diagnostics.SuppressionDefinition
+  commentId: T:Metalama.Framework.Diagnostics.SuppressionDefinition
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.SuppressionDefinition.html
+  name: SuppressionDefinition
+  nameWithType: SuppressionDefinition
+  fullName: Metalama.Framework.Diagnostics.SuppressionDefinition
+- uid: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Boolean})
+  commentId: M:Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Boolean})
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter.html#Metalama_Framework_Diagnostics_SuppressionDefinition_WithFilter_System_Func_Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_System_Boolean__
+  name: WithFilter(Func<ISuppressibleDiagnostic, bool>)
+  nameWithType: SuppressionDefinition.WithFilter(Func<ISuppressibleDiagnostic, bool>)
+  fullName: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func<Metalama.Framework.Diagnostics.ISuppressibleDiagnostic, bool>)
+  nameWithType.vb: SuppressionDefinition.WithFilter(Func(Of ISuppressibleDiagnostic, Boolean))
+  fullName.vb: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func(Of Metalama.Framework.Diagnostics.ISuppressibleDiagnostic, Boolean))
+  name.vb: WithFilter(Func(Of ISuppressibleDiagnostic, Boolean))
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Boolean})
+    name: WithFilter
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter.html#Metalama_Framework_Diagnostics_SuppressionDefinition_WithFilter_System_Func_Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_System_Boolean__
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Boolean})
+    name: WithFilter
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter.html#Metalama_Framework_Diagnostics_SuppressionDefinition_WithFilter_System_Func_Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_System_Boolean__
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Diagnostics.IDiagnostic
+  commentId: T:Metalama.Framework.Diagnostics.IDiagnostic
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  name: IDiagnostic
+  nameWithType: IDiagnostic
+  fullName: Metalama.Framework.Diagnostics.IDiagnostic
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  commentId: T:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  name: ISuppressibleDiagnostic
+  nameWithType: ISuppressibleDiagnostic
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+- uid: Metalama.Framework.Diagnostics
+  commentId: N:Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Diagnostics
+  nameWithType: Metalama.Framework.Diagnostics
+  fullName: Metalama.Framework.Diagnostics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<ISuppressibleDiagnostic>(ISuppressibleDiagnostic, Func<ISuppressibleDiagnostic, IEnumerable<ISuppressibleDiagnostic>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<ISuppressibleDiagnostic>(ISuppressibleDiagnostic, Func<ISuppressibleDiagnostic, IEnumerable<ISuppressibleDiagnostic>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Diagnostics.ISuppressibleDiagnostic>(Metalama.Framework.Diagnostics.ISuppressibleDiagnostic, System.Func<Metalama.Framework.Diagnostics.ISuppressibleDiagnostic, System.Collections.Generic.IEnumerable<Metalama.Framework.Diagnostics.ISuppressibleDiagnostic>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of ISuppressibleDiagnostic)(ISuppressibleDiagnostic, Func(Of ISuppressibleDiagnostic, IEnumerable(Of ISuppressibleDiagnostic)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Diagnostics.ISuppressibleDiagnostic)(Metalama.Framework.Diagnostics.ISuppressibleDiagnostic, System.Func(Of Metalama.Framework.Diagnostics.ISuppressibleDiagnostic, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Diagnostics.ISuppressibleDiagnostic)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of ISuppressibleDiagnostic)(ISuppressibleDiagnostic, Func(Of ISuppressibleDiagnostic, IEnumerable(Of ISuppressibleDiagnostic)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Func{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic,System.Collections.Generic.IEnumerable{Metalama.Framework.Diagnostics.ISuppressibleDiagnostic}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic
+    name: ISuppressibleDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id*
+  commentId: Overload:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id.html#Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_Id
+  name: Id
+  nameWithType: ISuppressibleDiagnostic.Id
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage*
+  commentId: Overload:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage.html#Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_InvariantMessage
+  name: InvariantMessage
+  nameWithType: ISuppressibleDiagnostic.InvariantMessage
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.InvariantMessage
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments*
+  commentId: Overload:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments.html#Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_Arguments
+  name: Arguments
+  nameWithType: ISuppressibleDiagnostic.Arguments
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Arguments
+- uid: System.Collections.Immutable.ImmutableArray{System.Object}
+  commentId: T:System.Collections.Immutable.ImmutableArray{System.Object}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<object>
+  nameWithType: ImmutableArray<object>
+  fullName: System.Collections.Immutable.ImmutableArray<object>
+  nameWithType.vb: ImmutableArray(Of Object)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Object)
+  name.vb: ImmutableArray(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+- uid: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span*
+  commentId: Overload:Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span.html#Metalama_Framework_Diagnostics_ISuppressibleDiagnostic_Span
+  name: Span
+  nameWithType: ISuppressibleDiagnostic.Span
+  fullName: Metalama.Framework.Diagnostics.ISuppressibleDiagnostic.Span
+- uid: System.Nullable{Metalama.Framework.Code.SourceSpan}
+  commentId: T:System.Nullable{Metalama.Framework.Code.SourceSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: Metalama.Framework.Code.SourceSpan.html
+  name: SourceSpan?
+  nameWithType: SourceSpan?
+  fullName: Metalama.Framework.Code.SourceSpan?
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SourceSpan
+    name: SourceSpan
+    isExternal: true
+    href: Metalama.Framework.Code.SourceSpan.html
+  - name: '?'
+  spec.vb:
+  - uid: Metalama.Framework.Code.SourceSpan
+    name: SourceSpan
+    isExternal: true
+    href: Metalama.Framework.Code.SourceSpan.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+memberLayout: SeparatePages

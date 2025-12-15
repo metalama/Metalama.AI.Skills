@@ -1,0 +1,3606 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Fabrics.IAmender`1
+  commentId: T:Metalama.Framework.Fabrics.IAmender`1
+  id: IAmender`1
+  parent: Metalama.Framework.Fabrics
+  children:
+  - Metalama.Framework.Fabrics.IAmender`1.Outbound
+  - Metalama.Framework.Fabrics.IAmender`1.Project
+  langs:
+  - csharp
+  - vb
+  name: IAmender<T>
+  nameWithType: IAmender<T>
+  fullName: Metalama.Framework.Fabrics.IAmender<T>
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Fabrics
+  summary: >-
+    Base interface for the parameter passed to fabric methods such as <xref href="Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)" data-throw-if-not-resolved="false"></xref>,
+
+    or <xref href="Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)" data-throw-if-not-resolved="false"></xref>. Provides capabilities to query declarations, add aspects programmatically, configure options, report diagnostics, and validate architecture.
+  remarks: >-
+    <p>
+        The amender interface provides access to LINQ-like querying capabilities through <xref href="Metalama.Framework.Fabrics.IQuery%601" data-throw-if-not-resolved="false"></xref>, allowing you to select declarations
+        and apply aspects or configuration to them. It combines querying, aspect application, option configuration, and diagnostic reporting in a single interface.
+        </p>
+    <p>
+        Extension methods for this interface are provided by:
+        </p>
+    <ul><li>
+          <xref href="Metalama.Framework.Aspects.AspectQueryExtensions" data-throw-if-not-resolved="false"></xref> - for adding aspects to selected declarations</li><li>
+          <xref href="Metalama.Framework.Options.OptionQueryExtensions" data-throw-if-not-resolved="false"></xref> - for configuring options on selected declarations</li><li>
+          <xref href="Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions" data-throw-if-not-resolved="false"></xref> - for reporting diagnostics and suppressions</li><li>
+          <xref href="Metalama.Framework.Fabrics.QueryExtensions" data-throw-if-not-resolved="false"></xref> - for additional querying capabilities</li><li>
+          <code>Metalama.Extensions.Architecture.Predicates.PredicateExtensions</code> - for architecture validation predicates</li><li>
+          <code>Metalama.Extensions.Validation.ValidationQueryExtensions</code> - for validation rules</li><li>
+          <code>Metalama.Extensions.Validation.ReferenceValidationQueryExtensions</code> - for reference validation</li><li>
+          <code>Metalama.Extensions.CodeFixes.CodeFixQueryExtensions</code> - for code fix suggestions</li></ul>
+  example: []
+  syntax:
+    content: 'public interface IAmender<out T> : IAmender, IQuery<T>, IQuery where T : class, IDeclaration'
+    typeParameters:
+    - id: T
+      description: The type of declaration that this amender operates on (e.g., <xref href="Metalama.Framework.Code.ICompilation" data-throw-if-not-resolved="false"></xref> for projects, <xref href="Metalama.Framework.Code.INamespace" data-throw-if-not-resolved="false"></xref> for namespaces, <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> for types).
+    content.vb: Public Interface IAmender(Of Out T As {Class, IDeclaration}) Inherits IAmender, IQuery(Of T), IQuery
+  seealso:
+  - linkId: Metalama.Framework.Fabrics.ProjectFabric
+    commentId: T:Metalama.Framework.Fabrics.ProjectFabric
+  - linkId: Metalama.Framework.Fabrics.NamespaceFabric
+    commentId: T:Metalama.Framework.Fabrics.NamespaceFabric
+  - linkId: Metalama.Framework.Fabrics.TypeFabric
+    commentId: T:Metalama.Framework.Fabrics.TypeFabric
+  - linkId: Metalama.Framework.Fabrics.IProjectAmender
+    commentId: T:Metalama.Framework.Fabrics.IProjectAmender
+  - linkId: Metalama.Framework.Fabrics.INamespaceAmender
+    commentId: T:Metalama.Framework.Fabrics.INamespaceAmender
+  - linkId: Metalama.Framework.Fabrics.ITypeAmender
+    commentId: T:Metalama.Framework.Fabrics.ITypeAmender
+  - linkId: Metalama.Framework.Aspects.AspectQueryExtensions
+    commentId: T:Metalama.Framework.Aspects.AspectQueryExtensions
+  - linkId: Metalama.Framework.Options.OptionQueryExtensions
+    commentId: T:Metalama.Framework.Options.OptionQueryExtensions
+  - linkId: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+    commentId: T:Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+  - linkId: Metalama.Framework.Fabrics.QueryExtensions
+    commentId: T:Metalama.Framework.Fabrics.QueryExtensions
+  - linkType: HRef
+    linkId: '@fabrics'
+    altText: '@fabrics'
+  - linkType: HRef
+    linkId: '@fabrics-adding-aspects'
+    altText: '@fabrics-adding-aspects'
+  - linkType: HRef
+    linkId: '@aspect-configuration'
+    altText: '@aspect-configuration'
+  - linkType: HRef
+    linkId: '@validation'
+    altText: '@validation'
+  inheritedMembers:
+  - Metalama.Framework.Fabrics.IQuery{{T}}.SelectMany``1(System.Func{{T},System.Collections.Generic.IEnumerable{{TMember}}})
+  - Metalama.Framework.Fabrics.IQuery{{T}}.Select``1(System.Func{{T},{TMember}})
+  - Metalama.Framework.Fabrics.IQuery{{T}}.SelectTypes(System.Boolean)
+  - Metalama.Framework.Fabrics.IQuery{{T}}.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+  - Metalama.Framework.Fabrics.IQuery{{T}}.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+  - Metalama.Framework.Fabrics.IQuery{{T}}.Where(System.Func{{T},System.Boolean})
+  - Metalama.Framework.Fabrics.IQuery{{T}}.OfType``1
+  - Metalama.Framework.Fabrics.IQuery{{T}}.Tag``1(System.Func{{T},{TTag}})
+  - Metalama.Framework.Fabrics.IQuery{{T}}.WithTag``1(System.Func{{T},{TTag}})
+  - Metalama.Framework.Fabrics.IQuery{{T}}.ToCollection(Metalama.Framework.Code.ICompilation)
+  - Metalama.Framework.Fabrics.IQuery.OriginatingNamespace
+  - Metalama.Framework.Fabrics.IQuery.OriginatingDeclaration
+  extensionMethods:
+  - Metalama.Framework.Fabrics.IAmender`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Fabrics.IAmender{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Fabrics.IAmender{{T}}}},System.Boolean)
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(System.Type,System.Func{{T},Metalama.Framework.Aspects.IAspect})
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(System.Func{{T},{TAspect}})
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(System.Type,System.Func{{T},Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(System.Func{{T},{TAspect}},Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(System.Func{{T},Metalama.Framework.Diagnostics.IDiagnostic})
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(System.Func{{T},Metalama.Framework.Diagnostics.SuppressionDefinition})
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2({TOptions})
+  - Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(System.Func{{T},{TOptions}})
+  - Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1
+  - Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Eligibility.EligibleScenarios)
+  - Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}.Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1
+  nameWithType.vb: IAmender(Of T)
+  fullName.vb: Metalama.Framework.Fabrics.IAmender(Of T)
+  name.vb: IAmender(Of T)
+- uid: Metalama.Framework.Fabrics.IAmender`1.Project
+  commentId: P:Metalama.Framework.Fabrics.IAmender`1.Project
+  id: Project
+  parent: Metalama.Framework.Fabrics.IAmender`1
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: IAmender<T>.Project
+  fullName: Metalama.Framework.Fabrics.IAmender<T>.Project
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Fabrics
+  syntax:
+    content: IProject Project { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Project.IProject
+    content.vb: ReadOnly Property Project As IProject
+  overload: Metalama.Framework.Fabrics.IAmender`1.Project*
+  nameWithType.vb: IAmender(Of T).Project
+  fullName.vb: Metalama.Framework.Fabrics.IAmender(Of T).Project
+- uid: Metalama.Framework.Fabrics.IAmender`1.Outbound
+  commentId: P:Metalama.Framework.Fabrics.IAmender`1.Outbound
+  id: Outbound
+  parent: Metalama.Framework.Fabrics.IAmender`1
+  langs:
+  - csharp
+  - vb
+  name: Outbound
+  nameWithType: IAmender<T>.Outbound
+  fullName: Metalama.Framework.Fabrics.IAmender<T>.Outbound
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Fabrics
+  summary: Gets an object that allows to add child advice and to validate code and code references.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("The Outbound interface is now directly implemented by IAmender<T>.")]
+
+      IQuery<out T> Outbound { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Fabrics.IQuery{{T}}
+    content.vb: >-
+      <Obsolete("The Outbound interface is now directly implemented by IAmender<T>.")>
+
+      ReadOnly Property Outbound As IQuery(Of Out T)
+  overload: Metalama.Framework.Fabrics.IAmender`1.Outbound*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: The Outbound interface is now directly implemented by IAmender<T>.
+  nameWithType.vb: IAmender(Of T).Outbound
+  fullName.vb: Metalama.Framework.Fabrics.IAmender(Of T).Outbound
+references:
+- uid: Metalama.Framework.Fabrics.ProjectFabric
+  commentId: T:Metalama.Framework.Fabrics.ProjectFabric
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ProjectFabric.html
+  name: ProjectFabric
+  nameWithType: ProjectFabric
+  fullName: Metalama.Framework.Fabrics.ProjectFabric
+- uid: Metalama.Framework.Fabrics.NamespaceFabric
+  commentId: T:Metalama.Framework.Fabrics.NamespaceFabric
+  isExternal: true
+  href: Metalama.Framework.Fabrics.NamespaceFabric.html
+  name: NamespaceFabric
+  nameWithType: NamespaceFabric
+  fullName: Metalama.Framework.Fabrics.NamespaceFabric
+- uid: Metalama.Framework.Fabrics.TypeFabric
+  commentId: T:Metalama.Framework.Fabrics.TypeFabric
+  isExternal: true
+  href: Metalama.Framework.Fabrics.TypeFabric.html
+  name: TypeFabric
+  nameWithType: TypeFabric
+  fullName: Metalama.Framework.Fabrics.TypeFabric
+- uid: Metalama.Framework.Fabrics.IProjectAmender
+  commentId: T:Metalama.Framework.Fabrics.IProjectAmender
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IProjectAmender.html
+  name: IProjectAmender
+  nameWithType: IProjectAmender
+  fullName: Metalama.Framework.Fabrics.IProjectAmender
+- uid: Metalama.Framework.Fabrics.INamespaceAmender
+  commentId: T:Metalama.Framework.Fabrics.INamespaceAmender
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.INamespaceAmender.html
+  name: INamespaceAmender
+  nameWithType: INamespaceAmender
+  fullName: Metalama.Framework.Fabrics.INamespaceAmender
+- uid: Metalama.Framework.Fabrics.ITypeAmender
+  commentId: T:Metalama.Framework.Fabrics.ITypeAmender
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ITypeAmender.html
+  name: ITypeAmender
+  nameWithType: ITypeAmender
+  fullName: Metalama.Framework.Fabrics.ITypeAmender
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions
+  commentId: T:Metalama.Framework.Aspects.AspectQueryExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.html
+  name: AspectQueryExtensions
+  nameWithType: AspectQueryExtensions
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions
+- uid: Metalama.Framework.Options.OptionQueryExtensions
+  commentId: T:Metalama.Framework.Options.OptionQueryExtensions
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.OptionQueryExtensions.html
+  name: OptionQueryExtensions
+  nameWithType: OptionQueryExtensions
+  fullName: Metalama.Framework.Options.OptionQueryExtensions
+- uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+  commentId: T:Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+  parent: Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.html
+  name: DiagnosticsQueryExtensions
+  nameWithType: DiagnosticsQueryExtensions
+  fullName: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+- uid: Metalama.Framework.Fabrics.QueryExtensions
+  commentId: T:Metalama.Framework.Fabrics.QueryExtensions
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.QueryExtensions.html
+  name: QueryExtensions
+  nameWithType: QueryExtensions
+  fullName: Metalama.Framework.Fabrics.QueryExtensions
+- uid: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+  commentId: M:Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+  parent: Metalama.Framework.Fabrics.ProjectFabric
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ProjectFabric.AmendProject.html#Metalama_Framework_Fabrics_ProjectFabric_AmendProject_Metalama_Framework_Fabrics_IProjectAmender_
+  name: AmendProject(IProjectAmender)
+  nameWithType: ProjectFabric.AmendProject(IProjectAmender)
+  fullName: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+    name: AmendProject
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ProjectFabric.AmendProject.html#Metalama_Framework_Fabrics_ProjectFabric_AmendProject_Metalama_Framework_Fabrics_IProjectAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IProjectAmender
+    name: IProjectAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IProjectAmender.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.ProjectFabric.AmendProject(Metalama.Framework.Fabrics.IProjectAmender)
+    name: AmendProject
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ProjectFabric.AmendProject.html#Metalama_Framework_Fabrics_ProjectFabric_AmendProject_Metalama_Framework_Fabrics_IProjectAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IProjectAmender
+    name: IProjectAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IProjectAmender.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+  commentId: M:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace.html#Metalama_Framework_Fabrics_NamespaceFabric_AmendNamespace_Metalama_Framework_Fabrics_INamespaceAmender_
+  name: AmendNamespace(INamespaceAmender)
+  nameWithType: NamespaceFabric.AmendNamespace(INamespaceAmender)
+  fullName: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+    name: AmendNamespace
+    isExternal: true
+    href: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace.html#Metalama_Framework_Fabrics_NamespaceFabric_AmendNamespace_Metalama_Framework_Fabrics_INamespaceAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.INamespaceAmender
+    name: INamespaceAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.INamespaceAmender.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace(Metalama.Framework.Fabrics.INamespaceAmender)
+    name: AmendNamespace
+    isExternal: true
+    href: Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace.html#Metalama_Framework_Fabrics_NamespaceFabric_AmendNamespace_Metalama_Framework_Fabrics_INamespaceAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.INamespaceAmender
+    name: INamespaceAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.INamespaceAmender.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+  commentId: M:Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.TypeFabric.AmendType.html#Metalama_Framework_Fabrics_TypeFabric_AmendType_Metalama_Framework_Fabrics_ITypeAmender_
+  name: AmendType(ITypeAmender)
+  nameWithType: TypeFabric.AmendType(ITypeAmender)
+  fullName: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+    name: AmendType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.TypeFabric.AmendType.html#Metalama_Framework_Fabrics_TypeFabric_AmendType_Metalama_Framework_Fabrics_ITypeAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.ITypeAmender
+    name: ITypeAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITypeAmender.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.TypeFabric.AmendType(Metalama.Framework.Fabrics.ITypeAmender)
+    name: AmendType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.TypeFabric.AmendType.html#Metalama_Framework_Fabrics_TypeFabric_AmendType_Metalama_Framework_Fabrics_ITypeAmender_
+  - name: (
+  - uid: Metalama.Framework.Fabrics.ITypeAmender
+    name: ITypeAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.ITypeAmender.html
+  - name: )
+- uid: Metalama.Framework.Code.ICompilation
+  commentId: T:Metalama.Framework.Code.ICompilation
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ICompilation.html
+  name: ICompilation
+  nameWithType: ICompilation
+  fullName: Metalama.Framework.Code.ICompilation
+- uid: Metalama.Framework.Code.INamespace
+  commentId: T:Metalama.Framework.Code.INamespace
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamespace.html
+  name: INamespace
+  nameWithType: INamespace
+  fullName: Metalama.Framework.Code.INamespace
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: Metalama.Framework.Fabrics.IQuery`1
+  commentId: T:Metalama.Framework.Fabrics.IQuery`1
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.html
+  name: IQuery<TDeclaration>
+  nameWithType: IQuery<TDeclaration>
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>
+  nameWithType.vb: IQuery(Of TDeclaration)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration)
+  name.vb: IQuery(Of TDeclaration)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+- uid: Metalama.Framework.Fabrics
+  commentId: N:Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Fabrics
+  nameWithType: Metalama.Framework.Fabrics
+  fullName: Metalama.Framework.Fabrics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.SelectMany``1(System.Func{{T},System.Collections.Generic.IEnumerable{{TMember}}})
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  name: SelectMany<TMember>(Func<T, IEnumerable<TMember>>)
+  nameWithType: IQuery<T>.SelectMany<TMember>(Func<T, IEnumerable<TMember>>)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.SelectMany<TMember>(System.Func<T, System.Collections.Generic.IEnumerable<TMember>>)
+  nameWithType.vb: IQuery(Of T).SelectMany(Of TMember)(Func(Of T, IEnumerable(Of TMember)))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).SelectMany(Of TMember)(System.Func(Of T, System.Collections.Generic.IEnumerable(Of TMember)))
+  name.vb: SelectMany(Of TMember)(Func(Of T, IEnumerable(Of TMember)))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+    name: SelectMany
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+    name: SelectMany
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.Select``1(System.Func{{T},{TMember}})
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.Select``1(System.Func{`0,``0})
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+  href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  name: Select<TMember>(Func<T, TMember>)
+  nameWithType: IQuery<T>.Select<TMember>(Func<T, TMember>)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.Select<TMember>(System.Func<T, TMember>)
+  nameWithType.vb: IQuery(Of T).Select(Of TMember)(Func(Of T, TMember))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).Select(Of TMember)(System.Func(Of T, TMember))
+  name.vb: Select(Of TMember)(Func(Of T, TMember))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.Select``1(System.Func{`0,``0})
+    name: Select
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.Select``1(System.Func{`0,``0})
+    name: Select
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.SelectTypes(System.Boolean)
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.SelectTypes(System.Boolean)
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.SelectTypes(System.Boolean)
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectTypes.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypes_System_Boolean_
+  name: SelectTypes(bool)
+  nameWithType: IQuery<T>.SelectTypes(bool)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.SelectTypes(bool)
+  nameWithType.vb: IQuery(Of T).SelectTypes(Boolean)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).SelectTypes(Boolean)
+  name.vb: SelectTypes(Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectTypes(System.Boolean)
+    name: SelectTypes
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypes.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypes_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectTypes(System.Boolean)
+    name: SelectTypes
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypes.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypes_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_System_Type_Metalama_Framework_Code_DerivedTypesOptions_
+  name: SelectTypesDerivedFrom(Type, DerivedTypesOptions)
+  nameWithType: IQuery<T>.SelectTypesDerivedFrom(Type, DerivedTypesOptions)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.SelectTypesDerivedFrom(System.Type, Metalama.Framework.Code.DerivedTypesOptions)
+  nameWithType.vb: IQuery(Of T).SelectTypesDerivedFrom(Type, DerivedTypesOptions)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).SelectTypesDerivedFrom(System.Type, Metalama.Framework.Code.DerivedTypesOptions)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_System_Type_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_System_Type_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_DerivedTypesOptions_
+  name: SelectTypesDerivedFrom(INamedType, DerivedTypesOptions)
+  nameWithType: IQuery<T>.SelectTypesDerivedFrom(INamedType, DerivedTypesOptions)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType, Metalama.Framework.Code.DerivedTypesOptions)
+  nameWithType.vb: IQuery(Of T).SelectTypesDerivedFrom(INamedType, DerivedTypesOptions)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType, Metalama.Framework.Code.DerivedTypesOptions)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.Where(System.Func{{T},System.Boolean})
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.Where(System.Func{`0,System.Boolean})
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.Where(System.Func{`0,System.Boolean})
+  href: Metalama.Framework.Fabrics.IQuery-1.Where.html#Metalama_Framework_Fabrics_IQuery_1_Where_System_Func__0_System_Boolean__
+  name: Where(Func<T, bool>)
+  nameWithType: IQuery<T>.Where(Func<T, bool>)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.Where(System.Func<T, bool>)
+  nameWithType.vb: IQuery(Of T).Where(Func(Of T, Boolean))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).Where(System.Func(Of T, Boolean))
+  name.vb: Where(Func(Of T, Boolean))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.Where(System.Func{`0,System.Boolean})
+    name: Where
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Where.html#Metalama_Framework_Fabrics_IQuery_1_Where_System_Func__0_System_Boolean__
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.Where(System.Func{`0,System.Boolean})
+    name: Where
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Where.html#Metalama_Framework_Fabrics_IQuery_1_Where_System_Func__0_System_Boolean__
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.OfType``1
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.OfType``1
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.OfType``1
+  href: Metalama.Framework.Fabrics.IQuery-1.OfType.html#Metalama_Framework_Fabrics_IQuery_1_OfType__1
+  name: OfType<TOut>()
+  nameWithType: IQuery<T>.OfType<TOut>()
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.OfType<TOut>()
+  nameWithType.vb: IQuery(Of T).OfType(Of TOut)()
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).OfType(Of TOut)()
+  name.vb: OfType(Of TOut)()
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.OfType``1
+    name: OfType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.OfType.html#Metalama_Framework_Fabrics_IQuery_1_OfType__1
+  - name: <
+  - name: TOut
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.OfType``1
+    name: OfType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.OfType.html#Metalama_Framework_Fabrics_IQuery_1_OfType__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TOut
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.Tag``1(System.Func{{T},{TTag}})
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.Tag``1(System.Func{`0,``0})
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.Tag``1(System.Func{`0,``0})
+  href: Metalama.Framework.Fabrics.IQuery-1.Tag.html#Metalama_Framework_Fabrics_IQuery_1_Tag__1_System_Func__0___0__
+  name: Tag<TTag>(Func<T, TTag>)
+  nameWithType: IQuery<T>.Tag<TTag>(Func<T, TTag>)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.Tag<TTag>(System.Func<T, TTag>)
+  nameWithType.vb: IQuery(Of T).Tag(Of TTag)(Func(Of T, TTag))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).Tag(Of TTag)(System.Func(Of T, TTag))
+  name.vb: Tag(Of TTag)(Func(Of T, TTag))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.Tag``1(System.Func{`0,``0})
+    name: Tag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Tag.html#Metalama_Framework_Fabrics_IQuery_1_Tag__1_System_Func__0___0__
+  - name: <
+  - name: TTag
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.Tag``1(System.Func{`0,``0})
+    name: Tag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Tag.html#Metalama_Framework_Fabrics_IQuery_1_Tag__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.WithTag``1(System.Func{{T},{TTag}})
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.WithTag``1(System.Func{`0,``0})
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.WithTag``1(System.Func{`0,``0})
+  href: Metalama.Framework.Fabrics.IQuery-1.WithTag.html#Metalama_Framework_Fabrics_IQuery_1_WithTag__1_System_Func__0___0__
+  name: WithTag<TTag>(Func<T, TTag>)
+  nameWithType: IQuery<T>.WithTag<TTag>(Func<T, TTag>)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.WithTag<TTag>(System.Func<T, TTag>)
+  nameWithType.vb: IQuery(Of T).WithTag(Of TTag)(Func(Of T, TTag))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).WithTag(Of TTag)(System.Func(Of T, TTag))
+  name.vb: WithTag(Of TTag)(Func(Of T, TTag))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.WithTag``1(System.Func{`0,``0})
+    name: WithTag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.WithTag.html#Metalama_Framework_Fabrics_IQuery_1_WithTag__1_System_Func__0___0__
+  - name: <
+  - name: TTag
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.WithTag``1(System.Func{`0,``0})
+    name: WithTag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.WithTag.html#Metalama_Framework_Fabrics_IQuery_1_WithTag__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}.ToCollection(Metalama.Framework.Code.ICompilation)
+  commentId: M:Metalama.Framework.Fabrics.IQuery{`0}.ToCollection(Metalama.Framework.Code.ICompilation)
+  parent: Metalama.Framework.Fabrics.IQuery{{T}}
+  definition: Metalama.Framework.Fabrics.IQuery`1.ToCollection(Metalama.Framework.Code.ICompilation)
+  href: Metalama.Framework.Fabrics.IQuery-1.ToCollection.html#Metalama_Framework_Fabrics_IQuery_1_ToCollection_Metalama_Framework_Code_ICompilation_
+  name: ToCollection(ICompilation)
+  nameWithType: IQuery<T>.ToCollection(ICompilation)
+  fullName: Metalama.Framework.Fabrics.IQuery<T>.ToCollection(Metalama.Framework.Code.ICompilation)
+  nameWithType.vb: IQuery(Of T).ToCollection(ICompilation)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T).ToCollection(Metalama.Framework.Code.ICompilation)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.ToCollection(Metalama.Framework.Code.ICompilation)
+    name: ToCollection
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.ToCollection.html#Metalama_Framework_Fabrics_IQuery_1_ToCollection_Metalama_Framework_Code_ICompilation_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery{`0}.ToCollection(Metalama.Framework.Code.ICompilation)
+    name: ToCollection
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.ToCollection.html#Metalama_Framework_Fabrics_IQuery_1_ToCollection_Metalama_Framework_Code_ICompilation_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery.OriginatingNamespace
+  commentId: P:Metalama.Framework.Fabrics.IQuery.OriginatingNamespace
+  parent: Metalama.Framework.Fabrics.IQuery
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery.OriginatingNamespace.html#Metalama_Framework_Fabrics_IQuery_OriginatingNamespace
+  name: OriginatingNamespace
+  nameWithType: IQuery.OriginatingNamespace
+  fullName: Metalama.Framework.Fabrics.IQuery.OriginatingNamespace
+- uid: Metalama.Framework.Fabrics.IQuery.OriginatingDeclaration
+  commentId: P:Metalama.Framework.Fabrics.IQuery.OriginatingDeclaration
+  parent: Metalama.Framework.Fabrics.IQuery
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery.OriginatingDeclaration.html#Metalama_Framework_Fabrics_IQuery_OriginatingDeclaration
+  name: OriginatingDeclaration
+  nameWithType: IQuery.OriginatingDeclaration
+  fullName: Metalama.Framework.Fabrics.IQuery.OriginatingDeclaration
+- uid: Metalama.Framework.Fabrics.IAmender`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Fabrics.IAmender{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Fabrics.IAmender{{T}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IAmender<T>>(IAmender<T>, Func<IAmender<T>, IEnumerable<IAmender<T>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IAmender<T>>(IAmender<T>, Func<IAmender<T>, IEnumerable<IAmender<T>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Fabrics.IAmender<T>>(Metalama.Framework.Fabrics.IAmender<T>, System.Func<Metalama.Framework.Fabrics.IAmender<T>, System.Collections.Generic.IEnumerable<Metalama.Framework.Fabrics.IAmender<T>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IAmender(Of T))(IAmender(Of T), Func(Of IAmender(Of T), IEnumerable(Of IAmender(Of T))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Fabrics.IAmender(Of T))(Metalama.Framework.Fabrics.IAmender(Of T), System.Func(Of Metalama.Framework.Fabrics.IAmender(Of T), System.Collections.Generic.IEnumerable(Of Metalama.Framework.Fabrics.IAmender(Of T))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IAmender(Of T))(IAmender(Of T), Func(Of IAmender(Of T), IEnumerable(Of IAmender(Of T))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Fabrics.IAmender{`0},System.Func{Metalama.Framework.Fabrics.IAmender{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Fabrics.IAmender{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Fabrics.IAmender{`0},System.Func{Metalama.Framework.Fabrics.IAmender{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Fabrics.IAmender{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Fabrics.IAmender`1
+    name: IAmender
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IAmender-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(System.Type,System.Func{{T},Metalama.Framework.Aspects.IAspect})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  name: AddAspect<T>(IQuery<T>, Type, Func<T, IAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<T>(IQuery<T>, Type, Func<T, IAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<T>(Metalama.Framework.Fabrics.IQuery<T>, System.Type, System.Func<T, Metalama.Framework.Aspects.IAspect>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of T)(IQuery(Of T), Type, Func(Of T, IAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of T)(Metalama.Framework.Fabrics.IQuery(Of T), System.Type, System.Func(Of T, Metalama.Framework.Aspects.IAspect))
+  name.vb: AddAspect(Of T)(IQuery(Of T), Type, Func(Of T, IAspect))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{`0},System.Type,System.Func{`0,Metalama.Framework.Aspects.IAspect})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{`0},System.Type,System.Func{`0,Metalama.Framework.Aspects.IAspect})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(System.Func{{T},{TAspect}})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  name: AddAspect<T, TAspect>(IQuery<T>, Func<T, TAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<T, TAspect>(IQuery<T>, Func<T, TAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<T, TAspect>(Metalama.Framework.Fabrics.IQuery<T>, System.Func<T, TAspect>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of T, TAspect)(IQuery(Of T), Func(Of T, TAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of T, TAspect)(Metalama.Framework.Fabrics.IQuery(Of T), System.Func(Of T, TAspect))
+  name.vb: AddAspect(Of T, TAspect)(IQuery(Of T), Func(Of T, TAspect))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,``1})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,``1})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(System.Type,System.Func{{T},Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<T>(IQuery<T>, Type, Func<T, IAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<T>(IQuery<T>, Type, Func<T, IAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<T>(Metalama.Framework.Fabrics.IQuery<T>, System.Type, System.Func<T, Metalama.Framework.Aspects.IAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of T)(IQuery(Of T), Type, Func(Of T, IAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of T)(Metalama.Framework.Fabrics.IQuery(Of T), System.Type, System.Func(Of T, Metalama.Framework.Aspects.IAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of T)(IQuery(Of T), Type, Func(Of T, IAspect), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{`0},System.Type,System.Func{`0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{`0},System.Type,System.Func{`0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(System.Func{{T},{TAspect}},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<T, TAspect>(IQuery<T>, Func<T, TAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<T, TAspect>(IQuery<T>, Func<T, TAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<T, TAspect>(Metalama.Framework.Fabrics.IQuery<T>, System.Func<T, TAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of T, TAspect)(IQuery(Of T), Func(Of T, TAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of T, TAspect)(Metalama.Framework.Fabrics.IQuery(Of T), System.Func(Of T, TAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of T, TAspect)(IQuery(Of T), Func(Of T, TAspect), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(System.Func{{T},Metalama.Framework.Diagnostics.IDiagnostic})
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.IDiagnostic})
+  parent: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+  definition: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.IDiagnostic})
+  href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_ReportDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_IDiagnostic__
+  name: ReportDiagnostic<T>(IQuery<T>, Func<T, IDiagnostic>)
+  nameWithType: DiagnosticsQueryExtensions.ReportDiagnostic<T>(IQuery<T>, Func<T, IDiagnostic>)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic<T>(Metalama.Framework.Fabrics.IQuery<T>, System.Func<T, Metalama.Framework.Diagnostics.IDiagnostic>)
+  nameWithType.vb: DiagnosticsQueryExtensions.ReportDiagnostic(Of T)(IQuery(Of T), Func(Of T, IDiagnostic))
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic(Of T)(Metalama.Framework.Fabrics.IQuery(Of T), System.Func(Of T, Metalama.Framework.Diagnostics.IDiagnostic))
+  name.vb: ReportDiagnostic(Of T)(IQuery(Of T), Func(Of T, IDiagnostic))
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,Metalama.Framework.Diagnostics.IDiagnostic})
+    name: ReportDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_ReportDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_IDiagnostic__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic
+    name: IDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,Metalama.Framework.Diagnostics.IDiagnostic})
+    name: ReportDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_ReportDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_IDiagnostic__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic
+    name: IDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(System.Func{{T},Metalama.Framework.Diagnostics.SuppressionDefinition})
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+  parent: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions
+  definition: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+  href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_SuppressDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_SuppressionDefinition__
+  name: SuppressDiagnostic<T>(IQuery<T>, Func<T, SuppressionDefinition>)
+  nameWithType: DiagnosticsQueryExtensions.SuppressDiagnostic<T>(IQuery<T>, Func<T, SuppressionDefinition>)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic<T>(Metalama.Framework.Fabrics.IQuery<T>, System.Func<T, Metalama.Framework.Diagnostics.SuppressionDefinition>)
+  nameWithType.vb: DiagnosticsQueryExtensions.SuppressDiagnostic(Of T)(IQuery(Of T), Func(Of T, SuppressionDefinition))
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic(Of T)(Metalama.Framework.Fabrics.IQuery(Of T), System.Func(Of T, Metalama.Framework.Diagnostics.SuppressionDefinition))
+  name.vb: SuppressDiagnostic(Of T)(IQuery(Of T), Func(Of T, SuppressionDefinition))
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+    name: SuppressDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_SuppressDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_SuppressionDefinition__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.SuppressionDefinition
+    name: SuppressionDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.SuppressionDefinition.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+    name: SuppressDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_SuppressDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_SuppressionDefinition__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.SuppressionDefinition
+    name: SuppressionDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.SuppressionDefinition.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2({TOptions})
+  commentId: M:Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},``1)
+  parent: Metalama.Framework.Options.OptionQueryExtensions
+  definition: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},``1)
+  href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0____1_
+  name: SetOptions<T, TOptions>(IQuery<T>, TOptions)
+  nameWithType: OptionQueryExtensions.SetOptions<T, TOptions>(IQuery<T>, TOptions)
+  fullName: Metalama.Framework.Options.OptionQueryExtensions.SetOptions<T, TOptions>(Metalama.Framework.Fabrics.IQuery<T>, TOptions)
+  nameWithType.vb: OptionQueryExtensions.SetOptions(Of T, TOptions)(IQuery(Of T), TOptions)
+  fullName.vb: Metalama.Framework.Options.OptionQueryExtensions.SetOptions(Of T, TOptions)(Metalama.Framework.Fabrics.IQuery(Of T), TOptions)
+  name.vb: SetOptions(Of T, TOptions)(IQuery(Of T), TOptions)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{`0},``1)
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0____1_
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{`0},``1)
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0____1_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{`0}.Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(System.Func{{T},{TOptions}})
+  commentId: M:Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  parent: Metalama.Framework.Options.OptionQueryExtensions
+  definition: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  name: SetOptions<T, TOptions>(IQuery<T>, Func<T, TOptions>)
+  nameWithType: OptionQueryExtensions.SetOptions<T, TOptions>(IQuery<T>, Func<T, TOptions>)
+  fullName: Metalama.Framework.Options.OptionQueryExtensions.SetOptions<T, TOptions>(Metalama.Framework.Fabrics.IQuery<T>, System.Func<T, TOptions>)
+  nameWithType.vb: OptionQueryExtensions.SetOptions(Of T, TOptions)(IQuery(Of T), Func(Of T, TOptions))
+  fullName.vb: Metalama.Framework.Options.OptionQueryExtensions.SetOptions(Of T, TOptions)(Metalama.Framework.Fabrics.IQuery(Of T), System.Func(Of T, TOptions))
+  name.vb: SetOptions(Of T, TOptions)(IQuery(Of T), Func(Of T, TOptions))
+  spec.csharp:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,``1})
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{`0},System.Func{`0,``1})
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: AddAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.AddAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}.Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration}.Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  parent: Metalama.Framework.Aspects.AspectQueryExtensions
+  definition: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: RequireAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.RequireAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  nameWithType.vb: AspectQueryExtensions.RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Options
+  commentId: N:Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Options
+  nameWithType: Metalama.Framework.Options
+  fullName: Metalama.Framework.Options
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+- uid: Metalama.Framework.Diagnostics
+  commentId: N:Metalama.Framework.Diagnostics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Diagnostics
+  nameWithType: Metalama.Framework.Diagnostics
+  fullName: Metalama.Framework.Diagnostics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.html
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  name: SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)
+  nameWithType: IQuery<TDeclaration>.SelectMany<TMember>(Func<TDeclaration, IEnumerable<TMember>>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.SelectMany<TMember>(System.Func<TDeclaration, System.Collections.Generic.IEnumerable<TMember>>)
+  nameWithType.vb: IQuery(Of TDeclaration).SelectMany(Of TMember)(Func(Of TDeclaration, IEnumerable(Of TMember)))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).SelectMany(Of TMember)(System.Func(Of TDeclaration, System.Collections.Generic.IEnumerable(Of TMember)))
+  name.vb: SelectMany(Of TMember)(Func(Of TDeclaration, IEnumerable(Of TMember)))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+    name: SelectMany
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectMany``1(System.Func{`0,System.Collections.Generic.IEnumerable{``0}})
+    name: SelectMany
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectMany.html#Metalama_Framework_Fabrics_IQuery_1_SelectMany__1_System_Func__0_System_Collections_Generic_IEnumerable___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery{{T}}
+  commentId: T:Metalama.Framework.Fabrics.IQuery{`0}
+  parent: Metalama.Framework.Fabrics
+  definition: Metalama.Framework.Fabrics.IQuery`1
+  href: Metalama.Framework.Fabrics.IQuery-1.html
+  name: IQuery<T>
+  nameWithType: IQuery<T>
+  fullName: Metalama.Framework.Fabrics.IQuery<T>
+  nameWithType.vb: IQuery(Of T)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of T)
+  name.vb: IQuery(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  name: Select<TMember>(Func<TDeclaration, TMember>)
+  nameWithType: IQuery<TDeclaration>.Select<TMember>(Func<TDeclaration, TMember>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.Select<TMember>(System.Func<TDeclaration, TMember>)
+  nameWithType.vb: IQuery(Of TDeclaration).Select(Of TMember)(Func(Of TDeclaration, TMember))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).Select(Of TMember)(System.Func(Of TDeclaration, TMember))
+  name.vb: Select(Of TMember)(Func(Of TDeclaration, TMember))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+    name: Select
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  - name: <
+  - name: TMember
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Select``1(System.Func{`0,``0})
+    name: Select
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Select.html#Metalama_Framework_Fabrics_IQuery_1_Select__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TMember
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypes(System.Boolean)
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.SelectTypes(System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectTypes.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypes_System_Boolean_
+  name: SelectTypes(bool)
+  nameWithType: IQuery<TDeclaration>.SelectTypes(bool)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.SelectTypes(bool)
+  nameWithType.vb: IQuery(Of TDeclaration).SelectTypes(Boolean)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).SelectTypes(Boolean)
+  name.vb: SelectTypes(Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypes(System.Boolean)
+    name: SelectTypes
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypes.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypes_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypes(System.Boolean)
+    name: SelectTypes
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypes.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypes_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_System_Type_Metalama_Framework_Code_DerivedTypesOptions_
+  name: SelectTypesDerivedFrom(Type, DerivedTypesOptions)
+  nameWithType: IQuery<TDeclaration>.SelectTypesDerivedFrom(Type, DerivedTypesOptions)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.SelectTypesDerivedFrom(System.Type, Metalama.Framework.Code.DerivedTypesOptions)
+  nameWithType.vb: IQuery(Of TDeclaration).SelectTypesDerivedFrom(Type, DerivedTypesOptions)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).SelectTypesDerivedFrom(System.Type, Metalama.Framework.Code.DerivedTypesOptions)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_System_Type_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(System.Type,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_System_Type_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_DerivedTypesOptions_
+  name: SelectTypesDerivedFrom(INamedType, DerivedTypesOptions)
+  nameWithType: IQuery<TDeclaration>.SelectTypesDerivedFrom(INamedType, DerivedTypesOptions)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType, Metalama.Framework.Code.DerivedTypesOptions)
+  nameWithType.vb: IQuery(Of TDeclaration).SelectTypesDerivedFrom(INamedType, DerivedTypesOptions)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType, Metalama.Framework.Code.DerivedTypesOptions)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.SelectTypesDerivedFrom(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DerivedTypesOptions)
+    name: SelectTypesDerivedFrom
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.SelectTypesDerivedFrom.html#Metalama_Framework_Fabrics_IQuery_1_SelectTypesDerivedFrom_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_DerivedTypesOptions_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.DerivedTypesOptions
+    name: DerivedTypesOptions
+    isExternal: true
+    href: Metalama.Framework.Code.DerivedTypesOptions.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.Where(System.Func{`0,System.Boolean})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.Where(System.Func{`0,System.Boolean})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.Where.html#Metalama_Framework_Fabrics_IQuery_1_Where_System_Func__0_System_Boolean__
+  name: Where(Func<TDeclaration, bool>)
+  nameWithType: IQuery<TDeclaration>.Where(Func<TDeclaration, bool>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.Where(System.Func<TDeclaration, bool>)
+  nameWithType.vb: IQuery(Of TDeclaration).Where(Func(Of TDeclaration, Boolean))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).Where(System.Func(Of TDeclaration, Boolean))
+  name.vb: Where(Func(Of TDeclaration, Boolean))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Where(System.Func{`0,System.Boolean})
+    name: Where
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Where.html#Metalama_Framework_Fabrics_IQuery_1_Where_System_Func__0_System_Boolean__
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Where(System.Func{`0,System.Boolean})
+    name: Where
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Where.html#Metalama_Framework_Fabrics_IQuery_1_Where_System_Func__0_System_Boolean__
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.OfType``1
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.OfType``1
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.OfType.html#Metalama_Framework_Fabrics_IQuery_1_OfType__1
+  name: OfType<TOut>()
+  nameWithType: IQuery<TDeclaration>.OfType<TOut>()
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.OfType<TOut>()
+  nameWithType.vb: IQuery(Of TDeclaration).OfType(Of TOut)()
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).OfType(Of TOut)()
+  name.vb: OfType(Of TOut)()
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.OfType``1
+    name: OfType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.OfType.html#Metalama_Framework_Fabrics_IQuery_1_OfType__1
+  - name: <
+  - name: TOut
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.OfType``1
+    name: OfType
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.OfType.html#Metalama_Framework_Fabrics_IQuery_1_OfType__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TOut
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.Tag``1(System.Func{`0,``0})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.Tag``1(System.Func{`0,``0})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.Tag.html#Metalama_Framework_Fabrics_IQuery_1_Tag__1_System_Func__0___0__
+  name: Tag<TTag>(Func<TDeclaration, TTag>)
+  nameWithType: IQuery<TDeclaration>.Tag<TTag>(Func<TDeclaration, TTag>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.Tag<TTag>(System.Func<TDeclaration, TTag>)
+  nameWithType.vb: IQuery(Of TDeclaration).Tag(Of TTag)(Func(Of TDeclaration, TTag))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).Tag(Of TTag)(System.Func(Of TDeclaration, TTag))
+  name.vb: Tag(Of TTag)(Func(Of TDeclaration, TTag))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Tag``1(System.Func{`0,``0})
+    name: Tag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Tag.html#Metalama_Framework_Fabrics_IQuery_1_Tag__1_System_Func__0___0__
+  - name: <
+  - name: TTag
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.Tag``1(System.Func{`0,``0})
+    name: Tag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.Tag.html#Metalama_Framework_Fabrics_IQuery_1_Tag__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.WithTag``1(System.Func{`0,``0})
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.WithTag``1(System.Func{`0,``0})
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.WithTag.html#Metalama_Framework_Fabrics_IQuery_1_WithTag__1_System_Func__0___0__
+  name: WithTag<TTag>(Func<TDeclaration, TTag>)
+  nameWithType: IQuery<TDeclaration>.WithTag<TTag>(Func<TDeclaration, TTag>)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.WithTag<TTag>(System.Func<TDeclaration, TTag>)
+  nameWithType.vb: IQuery(Of TDeclaration).WithTag(Of TTag)(Func(Of TDeclaration, TTag))
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).WithTag(Of TTag)(System.Func(Of TDeclaration, TTag))
+  name.vb: WithTag(Of TTag)(Func(Of TDeclaration, TTag))
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.WithTag``1(System.Func{`0,``0})
+    name: WithTag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.WithTag.html#Metalama_Framework_Fabrics_IQuery_1_WithTag__1_System_Func__0___0__
+  - name: <
+  - name: TTag
+  - name: '>'
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.WithTag``1(System.Func{`0,``0})
+    name: WithTag
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.WithTag.html#Metalama_Framework_Fabrics_IQuery_1_WithTag__1_System_Func__0___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: (
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TTag
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery`1.ToCollection(Metalama.Framework.Code.ICompilation)
+  commentId: M:Metalama.Framework.Fabrics.IQuery`1.ToCollection(Metalama.Framework.Code.ICompilation)
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery-1.ToCollection.html#Metalama_Framework_Fabrics_IQuery_1_ToCollection_Metalama_Framework_Code_ICompilation_
+  name: ToCollection(ICompilation)
+  nameWithType: IQuery<TDeclaration>.ToCollection(ICompilation)
+  fullName: Metalama.Framework.Fabrics.IQuery<TDeclaration>.ToCollection(Metalama.Framework.Code.ICompilation)
+  nameWithType.vb: IQuery(Of TDeclaration).ToCollection(ICompilation)
+  fullName.vb: Metalama.Framework.Fabrics.IQuery(Of TDeclaration).ToCollection(Metalama.Framework.Code.ICompilation)
+  spec.csharp:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.ToCollection(Metalama.Framework.Code.ICompilation)
+    name: ToCollection
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.ToCollection.html#Metalama_Framework_Fabrics_IQuery_1_ToCollection_Metalama_Framework_Code_ICompilation_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Fabrics.IQuery`1.ToCollection(Metalama.Framework.Code.ICompilation)
+    name: ToCollection
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.ToCollection.html#Metalama_Framework_Fabrics_IQuery_1_ToCollection_Metalama_Framework_Code_ICompilation_
+  - name: (
+  - uid: Metalama.Framework.Code.ICompilation
+    name: ICompilation
+    isExternal: true
+    href: Metalama.Framework.Code.ICompilation.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.IQuery
+  commentId: T:Metalama.Framework.Fabrics.IQuery
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IQuery.html
+  name: IQuery
+  nameWithType: IQuery
+  fullName: Metalama.Framework.Fabrics.IQuery
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  name: AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Type, System.Func<TDeclaration, Metalama.Framework.Aspects.IAspect>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Type, System.Func(Of TDeclaration, Metalama.Framework.Aspects.IAspect))
+  name.vb: AddAspect(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  name: AddAspect<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>)
+  nameWithType: AspectQueryExtensions.AddAspect<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TDeclaration, TAspect>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, TAspect>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TDeclaration, TAspect)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, TAspect))
+  name.vb: AddAspect(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TDeclaration>(IQuery<TDeclaration>, Type, Func<TDeclaration, IAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Type, System.Func<TDeclaration, Metalama.Framework.Aspects.IAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Type, System.Func(Of TDeclaration, Metalama.Framework.Aspects.IAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TDeclaration)(IQuery(Of TDeclaration), Type, Func(Of TDeclaration, IAspect), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{``0},System.Type,System.Func{``0,Metalama.Framework.Aspects.IAspect},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery___0__System_Type_System_Func___0_Metalama_Framework_Aspects_IAspect__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Aspects.IAspect
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TAspect>(IQuery<TDeclaration>, Func<TDeclaration, TAspect>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TDeclaration, TAspect>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, TAspect>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TDeclaration, TAspect)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, TAspect), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TDeclaration, TAspect)(IQuery(Of TDeclaration), Func(Of TDeclaration, TAspect), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.IDiagnostic})
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.IDiagnostic})
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_ReportDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_IDiagnostic__
+  name: ReportDiagnostic<TDeclaration>(IQuery<TDeclaration>, Func<TDeclaration, IDiagnostic>)
+  nameWithType: DiagnosticsQueryExtensions.ReportDiagnostic<TDeclaration>(IQuery<TDeclaration>, Func<TDeclaration, IDiagnostic>)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, Metalama.Framework.Diagnostics.IDiagnostic>)
+  nameWithType.vb: DiagnosticsQueryExtensions.ReportDiagnostic(Of TDeclaration)(IQuery(Of TDeclaration), Func(Of TDeclaration, IDiagnostic))
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, Metalama.Framework.Diagnostics.IDiagnostic))
+  name.vb: ReportDiagnostic(Of TDeclaration)(IQuery(Of TDeclaration), Func(Of TDeclaration, IDiagnostic))
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.IDiagnostic})
+    name: ReportDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_ReportDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_IDiagnostic__
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic
+    name: IDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.IDiagnostic})
+    name: ReportDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.ReportDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_ReportDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_IDiagnostic__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.IDiagnostic
+    name: IDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.IDiagnostic.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+  isExternal: true
+  href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_SuppressDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_SuppressionDefinition__
+  name: SuppressDiagnostic<TDeclaration>(IQuery<TDeclaration>, Func<TDeclaration, SuppressionDefinition>)
+  nameWithType: DiagnosticsQueryExtensions.SuppressDiagnostic<TDeclaration>(IQuery<TDeclaration>, Func<TDeclaration, SuppressionDefinition>)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic<TDeclaration>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, Metalama.Framework.Diagnostics.SuppressionDefinition>)
+  nameWithType.vb: DiagnosticsQueryExtensions.SuppressDiagnostic(Of TDeclaration)(IQuery(Of TDeclaration), Func(Of TDeclaration, SuppressionDefinition))
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic(Of TDeclaration)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, Metalama.Framework.Diagnostics.SuppressionDefinition))
+  name.vb: SuppressDiagnostic(Of TDeclaration)(IQuery(Of TDeclaration), Func(Of TDeclaration, SuppressionDefinition))
+  spec.csharp:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+    name: SuppressDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_SuppressDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_SuppressionDefinition__
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.SuppressionDefinition
+    name: SuppressionDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.SuppressionDefinition.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,Metalama.Framework.Diagnostics.SuppressionDefinition})
+    name: SuppressDiagnostic
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.DiagnosticsQueryExtensions.SuppressDiagnostic.html#Metalama_Framework_Diagnostics_DiagnosticsQueryExtensions_SuppressDiagnostic__1_Metalama_Framework_Fabrics_IQuery___0__System_Func___0_Metalama_Framework_Diagnostics_SuppressionDefinition__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Diagnostics.SuppressionDefinition
+    name: SuppressionDefinition
+    isExternal: true
+    href: Metalama.Framework.Diagnostics.SuppressionDefinition.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},``1)
+  commentId: M:Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},``1)
+  isExternal: true
+  href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0____1_
+  name: SetOptions<TDeclaration, TOptions>(IQuery<TDeclaration>, TOptions)
+  nameWithType: OptionQueryExtensions.SetOptions<TDeclaration, TOptions>(IQuery<TDeclaration>, TOptions)
+  fullName: Metalama.Framework.Options.OptionQueryExtensions.SetOptions<TDeclaration, TOptions>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, TOptions)
+  nameWithType.vb: OptionQueryExtensions.SetOptions(Of TDeclaration, TOptions)(IQuery(Of TDeclaration), TOptions)
+  fullName.vb: Metalama.Framework.Options.OptionQueryExtensions.SetOptions(Of TDeclaration, TOptions)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), TOptions)
+  name.vb: SetOptions(Of TDeclaration, TOptions)(IQuery(Of TDeclaration), TOptions)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},``1)
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0____1_
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},``1)
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0____1_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+- uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  commentId: M:Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+  isExternal: true
+  href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  name: SetOptions<TDeclaration, TOptions>(IQuery<TDeclaration>, Func<TDeclaration, TOptions>)
+  nameWithType: OptionQueryExtensions.SetOptions<TDeclaration, TOptions>(IQuery<TDeclaration>, Func<TDeclaration, TOptions>)
+  fullName: Metalama.Framework.Options.OptionQueryExtensions.SetOptions<TDeclaration, TOptions>(Metalama.Framework.Fabrics.IQuery<TDeclaration>, System.Func<TDeclaration, TOptions>)
+  nameWithType.vb: OptionQueryExtensions.SetOptions(Of TDeclaration, TOptions)(IQuery(Of TDeclaration), Func(Of TDeclaration, TOptions))
+  fullName.vb: Metalama.Framework.Options.OptionQueryExtensions.SetOptions(Of TDeclaration, TOptions)(Metalama.Framework.Fabrics.IQuery(Of TDeclaration), System.Func(Of TDeclaration, TOptions))
+  name.vb: SetOptions(Of TDeclaration, TOptions)(IQuery(Of TDeclaration), Func(Of TDeclaration, TOptions))
+  spec.csharp:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - name: TDeclaration
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.OptionQueryExtensions.SetOptions``2(Metalama.Framework.Fabrics.IQuery{``0},System.Func{``0,``1})
+    name: SetOptions
+    isExternal: true
+    href: Metalama.Framework.Options.OptionQueryExtensions.SetOptions.html#Metalama_Framework_Options_OptionQueryExtensions_SetOptions__2_Metalama_Framework_Fabrics_IQuery___0__System_Func___0___1__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDeclaration
+  - name: ','
+  - name: " "
+  - name: TOptions
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: AddAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.AddAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  nameWithType.vb: AspectQueryExtensions.AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: AddAspect(Of TAspect)(IQuery(Of IDeclaration))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  name: AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  nameWithType: AspectQueryExtensions.AddAspectIfEligible<TAspect>(IQuery<IDeclaration>, EligibleScenarios)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>, Metalama.Framework.Eligibility.EligibleScenarios)
+  nameWithType.vb: AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration), Metalama.Framework.Eligibility.EligibleScenarios)
+  name.vb: AddAspectIfEligible(Of TAspect)(IQuery(Of IDeclaration), EligibleScenarios)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Eligibility.EligibleScenarios)
+    name: AddAspectIfEligible
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.AddAspectIfEligible.html#Metalama_Framework_Aspects_AspectQueryExtensions_AddAspectIfEligible__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__Metalama_Framework_Eligibility_EligibleScenarios_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Eligibility.EligibleScenarios
+    name: EligibleScenarios
+    isExternal: true
+    href: Metalama.Framework.Eligibility.EligibleScenarios.html
+  - name: )
+- uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  commentId: M:Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  name: RequireAspect<TAspect>(IQuery<IDeclaration>)
+  nameWithType: AspectQueryExtensions.RequireAspect<TAspect>(IQuery<IDeclaration>)
+  fullName: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect<TAspect>(Metalama.Framework.Fabrics.IQuery<Metalama.Framework.Code.IDeclaration>)
+  nameWithType.vb: AspectQueryExtensions.RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  fullName.vb: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect(Of TAspect)(Metalama.Framework.Fabrics.IQuery(Of Metalama.Framework.Code.IDeclaration))
+  name.vb: RequireAspect(Of TAspect)(IQuery(Of IDeclaration))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect``1(Metalama.Framework.Fabrics.IQuery{Metalama.Framework.Code.IDeclaration})
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AspectQueryExtensions.RequireAspect.html#Metalama_Framework_Aspects_AspectQueryExtensions_RequireAspect__1_Metalama_Framework_Fabrics_IQuery_Metalama_Framework_Code_IDeclaration__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Fabrics.IQuery`1
+    name: IQuery
+    isExternal: true
+    href: Metalama.Framework.Fabrics.IQuery-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Fabrics.IAmender`1.Project*
+  commentId: Overload:Metalama.Framework.Fabrics.IAmender`1.Project
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IAmender-1.Project.html#Metalama_Framework_Fabrics_IAmender_1_Project
+  name: Project
+  nameWithType: IAmender<T>.Project
+  fullName: Metalama.Framework.Fabrics.IAmender<T>.Project
+  nameWithType.vb: IAmender(Of T).Project
+  fullName.vb: Metalama.Framework.Fabrics.IAmender(Of T).Project
+- uid: Metalama.Framework.Project.IProject
+  commentId: T:Metalama.Framework.Project.IProject
+  parent: Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.Framework.Project.IProject.html
+  name: IProject
+  nameWithType: IProject
+  fullName: Metalama.Framework.Project.IProject
+- uid: Metalama.Framework.Project
+  commentId: N:Metalama.Framework.Project
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Project
+  nameWithType: Metalama.Framework.Project
+  fullName: Metalama.Framework.Project
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Project
+    name: Project
+    isExternal: true
+    href: Metalama.Framework.Project.html
+- uid: Metalama.Framework.Fabrics.IAmender`1.Outbound*
+  commentId: Overload:Metalama.Framework.Fabrics.IAmender`1.Outbound
+  isExternal: true
+  href: Metalama.Framework.Fabrics.IAmender-1.Outbound.html#Metalama_Framework_Fabrics_IAmender_1_Outbound
+  name: Outbound
+  nameWithType: IAmender<T>.Outbound
+  fullName: Metalama.Framework.Fabrics.IAmender<T>.Outbound
+  nameWithType.vb: IAmender(Of T).Outbound
+  fullName.vb: Metalama.Framework.Fabrics.IAmender(Of T).Outbound
+memberLayout: SeparatePages

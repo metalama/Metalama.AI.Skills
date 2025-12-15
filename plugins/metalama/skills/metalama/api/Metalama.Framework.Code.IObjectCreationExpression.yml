@@ -1,0 +1,1406 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.IObjectCreationExpression
+  commentId: T:Metalama.Framework.Code.IObjectCreationExpression
+  id: IObjectCreationExpression
+  parent: Metalama.Framework.Code
+  children:
+  - Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+  - Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+  langs:
+  - csharp
+  - vb
+  name: IObjectCreationExpression
+  nameWithType: IObjectCreationExpression
+  fullName: Metalama.Framework.Code.IObjectCreationExpression
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: A compile-time representation of a run-time object creation expression.
+  remarks: >-
+    <p>
+        The main use case for this interface is to add object initializers to constructor invocation expressions created via
+        <xref href="Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression" data-throw-if-not-resolved="false"></xref>. Use the <xref href="Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple%7bMetalama.Framework.Code.IFieldOrProperty%2cMetalama.Framework.Code.IExpression%7d%5b%5d)" data-throw-if-not-resolved="false"></xref>
+        or <xref href="Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple%7bSystem.String%2cMetalama.Framework.Code.IExpression%7d%5b%5d)" data-throw-if-not-resolved="false"></xref> methods to specify the fields or properties to initialize.
+        </p>
+    <p>
+        For example, to create a <code>new MyClass() { Field = 42, Property = "value" }</code> expression:
+        </p>
+
+    <pre><code class="lang-csharp">var expr = constructor.CreateInvokeExpression()
+        .WithObjectInitializer(
+            (fieldDeclaration, ExpressionFactory.Literal(42)),
+            (propertyDeclaration, ExpressionFactory.Literal("value")));</code></pre>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      [Hidden]
+
+      public interface IObjectCreationExpression : IExpression, IHasType
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      <Hidden>
+
+      Public Interface IObjectCreationExpression Inherits IExpression, IHasType
+  seealso:
+  - linkId: Metalama.Framework.Code.IExpression
+    commentId: T:Metalama.Framework.Code.IExpression
+  - linkId: Metalama.Framework.Code.Invokers.IConstructorInvoker
+    commentId: T:Metalama.Framework.Code.Invokers.IConstructorInvoker
+  - linkId: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+    commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  inheritedMembers:
+  - Metalama.Framework.Code.IExpression.IsAssignable
+  - Metalama.Framework.Code.IExpression.Value
+  - Metalama.Framework.Code.IHasType.Type
+  - Metalama.Framework.Code.IHasType.RefKind
+  extensionMethods:
+  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IType)
+  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(System.Type)
+  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1
+  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(System.Boolean)
+  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(System.Boolean)
+  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IType)
+  - Metalama.Framework.Code.IObjectCreationExpression.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IObjectCreationExpression,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IObjectCreationExpression}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.HiddenAttribute
+    ctor: Metalama.Framework.Utilities.HiddenAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+  commentId: M:Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+  id: WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+  parent: Metalama.Framework.Code.IObjectCreationExpression
+  langs:
+  - csharp
+  - vb
+  name: WithObjectInitializer(params (IFieldOrProperty FieldOrProperty, IExpression Value)[])
+  nameWithType: IObjectCreationExpression.WithObjectInitializer(params (IFieldOrProperty FieldOrProperty, IExpression Value)[])
+  fullName: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(params (Metalama.Framework.Code.IFieldOrProperty FieldOrProperty, Metalama.Framework.Code.IExpression Value)[])
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  syntax:
+    content: IExpression WithObjectInitializer(params (IFieldOrProperty FieldOrProperty, IExpression Value)[] initializationExpressions)
+    parameters:
+    - id: initializationExpressions
+      type: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[]
+    return:
+      type: Metalama.Framework.Code.IExpression
+    content.vb: Function WithObjectInitializer(ParamArray initializationExpressions As (FieldOrProperty As IFieldOrProperty, Value As IExpression)()) As IExpression
+  overload: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer*
+  nameWithType.vb: IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrProperty As IFieldOrProperty, Value As IExpression)())
+  fullName.vb: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrProperty As Metalama.Framework.Code.IFieldOrProperty, Value As Metalama.Framework.Code.IExpression)())
+  name.vb: WithObjectInitializer(ParamArray (FieldOrProperty As IFieldOrProperty, Value As IExpression)())
+- uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+  commentId: M:Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+  id: WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+  parent: Metalama.Framework.Code.IObjectCreationExpression
+  langs:
+  - csharp
+  - vb
+  name: WithObjectInitializer(params (string FieldOrPropertyName, IExpression Value)[])
+  nameWithType: IObjectCreationExpression.WithObjectInitializer(params (string FieldOrPropertyName, IExpression Value)[])
+  fullName: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(params (string FieldOrPropertyName, Metalama.Framework.Code.IExpression Value)[])
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  syntax:
+    content: IExpression WithObjectInitializer(params (string FieldOrPropertyName, IExpression Value)[] initializationExpressions)
+    parameters:
+    - id: initializationExpressions
+      type: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[]
+    return:
+      type: Metalama.Framework.Code.IExpression
+    content.vb: Function WithObjectInitializer(ParamArray initializationExpressions As (FieldOrPropertyName As String, Value As IExpression)()) As IExpression
+  overload: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer*
+  nameWithType.vb: IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrPropertyName As String, Value As IExpression)())
+  fullName.vb: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrPropertyName As String, Value As Metalama.Framework.Code.IExpression)())
+  name.vb: WithObjectInitializer(ParamArray (FieldOrPropertyName As String, Value As IExpression)())
+references:
+- uid: Metalama.Framework.Code.IExpression
+  commentId: T:Metalama.Framework.Code.IExpression
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.html
+  name: IExpression
+  nameWithType: IExpression
+  fullName: Metalama.Framework.Code.IExpression
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  commentId: T:Metalama.Framework.Code.Invokers.IConstructorInvoker
+  parent: Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.html
+  name: IConstructorInvoker
+  nameWithType: IConstructorInvoker
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  commentId: T:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  parent: Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.html
+  name: ExpressionFactory
+  nameWithType: ExpressionFactory
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+- uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  commentId: M:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+  parent: Metalama.Framework.Code.Invokers.IConstructorInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  name: CreateInvokeExpression()
+  nameWithType: IConstructorInvoker.CreateInvokeExpression()
+  fullName: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression()
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+    name: CreateInvokeExpression
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression
+    name: CreateInvokeExpression
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression.html#Metalama_Framework_Code_Invokers_IConstructorInvoker_CreateInvokeExpression
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+  commentId: M:Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+  isExternal: true
+  href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_Metalama_Framework_Code_IFieldOrProperty_Metalama_Framework_Code_IExpression____
+  name: WithObjectInitializer(params (IFieldOrProperty FieldOrProperty, IExpression Value)[])
+  nameWithType: IObjectCreationExpression.WithObjectInitializer(params (IFieldOrProperty FieldOrProperty, IExpression Value)[])
+  fullName: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(params (Metalama.Framework.Code.IFieldOrProperty FieldOrProperty, Metalama.Framework.Code.IExpression Value)[])
+  nameWithType.vb: IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrProperty As IFieldOrProperty, Value As IExpression)())
+  fullName.vb: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrProperty As Metalama.Framework.Code.IFieldOrProperty, Value As Metalama.Framework.Code.IExpression)())
+  name.vb: WithObjectInitializer(ParamArray (FieldOrProperty As IFieldOrProperty, Value As IExpression)())
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+    name: WithObjectInitializer
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_Metalama_Framework_Code_IFieldOrProperty_Metalama_Framework_Code_IExpression____
+  - name: (
+  - name: params
+  - name: " "
+  - name: (
+  - uid: Metalama.Framework.Code.IFieldOrProperty
+    name: IFieldOrProperty
+    isExternal: true
+    href: Metalama.Framework.Code.IFieldOrProperty.html
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.FieldOrProperty
+    name: FieldOrProperty
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.fieldorproperty
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.value
+  - name: )
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[])
+    name: WithObjectInitializer
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_Metalama_Framework_Code_IFieldOrProperty_Metalama_Framework_Code_IExpression____
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.FieldOrProperty
+    name: FieldOrProperty
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.fieldorproperty
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IFieldOrProperty
+    name: IFieldOrProperty
+    isExternal: true
+    href: Metalama.Framework.Code.IFieldOrProperty.html
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.value
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+  commentId: M:Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+  isExternal: true
+  href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_System_String_Metalama_Framework_Code_IExpression____
+  name: WithObjectInitializer(params (string FieldOrPropertyName, IExpression Value)[])
+  nameWithType: IObjectCreationExpression.WithObjectInitializer(params (string FieldOrPropertyName, IExpression Value)[])
+  fullName: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(params (string FieldOrPropertyName, Metalama.Framework.Code.IExpression Value)[])
+  nameWithType.vb: IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrPropertyName As String, Value As IExpression)())
+  fullName.vb: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(ParamArray (FieldOrPropertyName As String, Value As Metalama.Framework.Code.IExpression)())
+  name.vb: WithObjectInitializer(ParamArray (FieldOrPropertyName As String, Value As IExpression)())
+  spec.csharp:
+  - uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+    name: WithObjectInitializer
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_System_String_Metalama_Framework_Code_IExpression____
+  - name: (
+  - name: params
+  - name: " "
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.FieldOrPropertyName
+    name: FieldOrPropertyName
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.fieldorpropertyname
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: " "
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.value
+  - name: )
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer(System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[])
+    name: WithObjectInitializer
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_System_String_Metalama_Framework_Code_IExpression____
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.FieldOrPropertyName
+    name: FieldOrPropertyName
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.fieldorpropertyname
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.value
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: Metalama.Framework.Code.IExpression.IsAssignable
+  commentId: P:Metalama.Framework.Code.IExpression.IsAssignable
+  parent: Metalama.Framework.Code.IExpression
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.IsAssignable.html#Metalama_Framework_Code_IExpression_IsAssignable
+  name: IsAssignable
+  nameWithType: IExpression.IsAssignable
+  fullName: Metalama.Framework.Code.IExpression.IsAssignable
+- uid: Metalama.Framework.Code.IExpression.Value
+  commentId: P:Metalama.Framework.Code.IExpression.Value
+  parent: Metalama.Framework.Code.IExpression
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.Value.html#Metalama_Framework_Code_IExpression_Value
+  name: Value
+  nameWithType: IExpression.Value
+  fullName: Metalama.Framework.Code.IExpression.Value
+- uid: Metalama.Framework.Code.IHasType.Type
+  commentId: P:Metalama.Framework.Code.IHasType.Type
+  parent: Metalama.Framework.Code.IHasType
+  isExternal: true
+  href: Metalama.Framework.Code.IHasType.Type.html#Metalama_Framework_Code_IHasType_Type
+  name: Type
+  nameWithType: IHasType.Type
+  fullName: Metalama.Framework.Code.IHasType.Type
+- uid: Metalama.Framework.Code.IHasType.RefKind
+  commentId: P:Metalama.Framework.Code.IHasType.RefKind
+  parent: Metalama.Framework.Code.IHasType
+  isExternal: true
+  href: Metalama.Framework.Code.IHasType.RefKind.html#Metalama_Framework_Code_IHasType_RefKind
+  name: RefKind
+  nameWithType: IHasType.RefKind
+  fullName: Metalama.Framework.Code.IHasType.RefKind
+- uid: Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  name: CastTo(IExpression, IType)
+  nameWithType: ExpressionFactory.CastTo(IExpression, IType)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression, Metalama.Framework.Code.IType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(System.Type)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_System_Type_
+  name: CastTo(IExpression, Type)
+  nameWithType: ExpressionFactory.CastTo(IExpression, Type)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression, System.Type)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_System_Type_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_System_Type_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo__1_Metalama_Framework_Code_IExpression_
+  name: CastTo<T>(IExpression)
+  nameWithType: ExpressionFactory.CastTo<T>(IExpression)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo<T>(Metalama.Framework.Code.IExpression)
+  nameWithType.vb: ExpressionFactory.CastTo(Of T)(IExpression)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Of T)(Metalama.Framework.Code.IExpression)
+  name.vb: CastTo(Of T)(IExpression)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo__1_Metalama_Framework_Code_IExpression_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo__1_Metalama_Framework_Code_IExpression_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+- uid: Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullability_Metalama_Framework_Code_IExpression_System_Boolean_
+  name: WithNullability(IExpression, bool)
+  nameWithType: ExpressionFactory.WithNullability(IExpression, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression, bool)
+  nameWithType.vb: ExpressionFactory.WithNullability(IExpression, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression, Boolean)
+  name.vb: WithNullability(IExpression, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullability
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullability_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullability
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullability_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullForgivingOperator_Metalama_Framework_Code_IExpression_System_Boolean_
+  name: WithNullForgivingOperator(IExpression, bool)
+  nameWithType: ExpressionFactory.WithNullForgivingOperator(IExpression, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression, bool)
+  nameWithType.vb: ExpressionFactory.WithNullForgivingOperator(IExpression, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression, Boolean)
+  name.vb: WithNullForgivingOperator(IExpression, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullForgivingOperator
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullForgivingOperator_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullForgivingOperator
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullForgivingOperator_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  parent: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory
+  definition: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithType_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  name: WithType(IExpression, IType)
+  nameWithType: ExpressionFactory.WithType(IExpression, IType)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression, Metalama.Framework.Code.IType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: WithType
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithType_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: WithType
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithType_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: Metalama.Framework.Code.IObjectCreationExpression.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IObjectCreationExpression,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IObjectCreationExpression}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IObjectCreationExpression>(IObjectCreationExpression, Func<IObjectCreationExpression, IEnumerable<IObjectCreationExpression>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IObjectCreationExpression>(IObjectCreationExpression, Func<IObjectCreationExpression, IEnumerable<IObjectCreationExpression>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Code.IObjectCreationExpression>(Metalama.Framework.Code.IObjectCreationExpression, System.Func<Metalama.Framework.Code.IObjectCreationExpression, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IObjectCreationExpression>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IObjectCreationExpression)(IObjectCreationExpression, Func(Of IObjectCreationExpression, IEnumerable(Of IObjectCreationExpression)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Code.IObjectCreationExpression)(Metalama.Framework.Code.IObjectCreationExpression, System.Func(Of Metalama.Framework.Code.IObjectCreationExpression, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IObjectCreationExpression)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IObjectCreationExpression)(IObjectCreationExpression, Func(Of IObjectCreationExpression, IEnumerable(Of IObjectCreationExpression)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.IObjectCreationExpression,System.Func{Metalama.Framework.Code.IObjectCreationExpression,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IObjectCreationExpression}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Code.IObjectCreationExpression,System.Func{Metalama.Framework.Code.IObjectCreationExpression,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IObjectCreationExpression}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IObjectCreationExpression
+    name: IObjectCreationExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IObjectCreationExpression.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Invokers
+  commentId: N:Metalama.Framework.Code.Invokers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Invokers
+  nameWithType: Metalama.Framework.Code.Invokers
+  fullName: Metalama.Framework.Code.Invokers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Invokers
+    name: Invokers
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Invokers
+    name: Invokers
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.html
+- uid: Metalama.Framework.Code.SyntaxBuilders
+  commentId: N:Metalama.Framework.Code.SyntaxBuilders
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.SyntaxBuilders
+  nameWithType: Metalama.Framework.Code.SyntaxBuilders
+  fullName: Metalama.Framework.Code.SyntaxBuilders
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.SyntaxBuilders
+    name: SyntaxBuilders
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.SyntaxBuilders
+    name: SyntaxBuilders
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.html
+- uid: Metalama.Framework.Code.IHasType
+  commentId: T:Metalama.Framework.Code.IHasType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IHasType.html
+  name: IHasType
+  nameWithType: IHasType
+  fullName: Metalama.Framework.Code.IHasType
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  name: CastTo(IExpression, IType)
+  nameWithType: ExpressionFactory.CastTo(IExpression, IType)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression, Metalama.Framework.Code.IType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_System_Type_
+  name: CastTo(IExpression, Type)
+  nameWithType: ExpressionFactory.CastTo(IExpression, Type)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression, System.Type)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_System_Type_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IExpression,System.Type)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo_Metalama_Framework_Code_IExpression_System_Type_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo__1_Metalama_Framework_Code_IExpression_
+  name: CastTo<T>(IExpression)
+  nameWithType: ExpressionFactory.CastTo<T>(IExpression)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo<T>(Metalama.Framework.Code.IExpression)
+  nameWithType.vb: ExpressionFactory.CastTo(Of T)(IExpression)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Of T)(Metalama.Framework.Code.IExpression)
+  name.vb: CastTo(Of T)(IExpression)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo__1_Metalama_Framework_Code_IExpression_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1(Metalama.Framework.Code.IExpression)
+    name: CastTo
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_CastTo__1_Metalama_Framework_Code_IExpression_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullability_Metalama_Framework_Code_IExpression_System_Boolean_
+  name: WithNullability(IExpression, bool)
+  nameWithType: ExpressionFactory.WithNullability(IExpression, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression, bool)
+  nameWithType.vb: ExpressionFactory.WithNullability(IExpression, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression, Boolean)
+  name.vb: WithNullability(IExpression, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullability
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullability_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullability
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullability_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullForgivingOperator_Metalama_Framework_Code_IExpression_System_Boolean_
+  name: WithNullForgivingOperator(IExpression, bool)
+  nameWithType: ExpressionFactory.WithNullForgivingOperator(IExpression, bool)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression, bool)
+  nameWithType.vb: ExpressionFactory.WithNullForgivingOperator(IExpression, Boolean)
+  fullName.vb: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression, Boolean)
+  name.vb: WithNullForgivingOperator(IExpression, Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullForgivingOperator
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullForgivingOperator_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator(Metalama.Framework.Code.IExpression,System.Boolean)
+    name: WithNullForgivingOperator
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullForgivingOperator.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithNullForgivingOperator_Metalama_Framework_Code_IExpression_System_Boolean_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+  isExternal: true
+  href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithType_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  name: WithType(IExpression, IType)
+  nameWithType: ExpressionFactory.WithType(IExpression, IType)
+  fullName: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression, Metalama.Framework.Code.IType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: WithType
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithType_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType(Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IType)
+    name: WithType
+    isExternal: true
+    href: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType.html#Metalama_Framework_Code_SyntaxBuilders_ExpressionFactory_WithType_Metalama_Framework_Code_IExpression_Metalama_Framework_Code_IType_
+  - name: (
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer*
+  commentId: Overload:Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer
+  isExternal: true
+  href: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer.html#Metalama_Framework_Code_IObjectCreationExpression_WithObjectInitializer_System_ValueTuple_Metalama_Framework_Code_IFieldOrProperty_Metalama_Framework_Code_IExpression____
+  name: WithObjectInitializer
+  nameWithType: IObjectCreationExpression.WithObjectInitializer
+  fullName: Metalama.Framework.Code.IObjectCreationExpression.WithObjectInitializer
+- uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}[]
+  isExternal: true
+  href: Metalama.Framework.Code.IFieldOrProperty.html
+  name: (IFieldOrProperty FieldOrProperty, IExpression Value)[]
+  nameWithType: (IFieldOrProperty FieldOrProperty, IExpression Value)[]
+  fullName: (Metalama.Framework.Code.IFieldOrProperty FieldOrProperty, Metalama.Framework.Code.IExpression Value)[]
+  nameWithType.vb: (FieldOrProperty As IFieldOrProperty, Value As IExpression)()
+  fullName.vb: (FieldOrProperty As Metalama.Framework.Code.IFieldOrProperty, Value As Metalama.Framework.Code.IExpression)()
+  name.vb: (FieldOrProperty As IFieldOrProperty, Value As IExpression)()
+  spec.csharp:
+  - name: (
+  - uid: Metalama.Framework.Code.IFieldOrProperty
+    name: IFieldOrProperty
+    isExternal: true
+    href: Metalama.Framework.Code.IFieldOrProperty.html
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.FieldOrProperty
+    name: FieldOrProperty
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.fieldorproperty
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.value
+  - name: )
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.FieldOrProperty
+    name: FieldOrProperty
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.fieldorproperty
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IFieldOrProperty
+    name: IFieldOrProperty
+    isExternal: true
+    href: Metalama.Framework.Code.IFieldOrProperty.html
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Metalama.Framework.Code.IFieldOrProperty,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-metalama.framework.code.ifieldorproperty,metalama.framework.code.iexpression-.value
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  - name: (
+  - name: )
+- uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: (string FieldOrPropertyName, IExpression Value)[]
+  nameWithType: (string FieldOrPropertyName, IExpression Value)[]
+  fullName: (string FieldOrPropertyName, Metalama.Framework.Code.IExpression Value)[]
+  nameWithType.vb: (FieldOrPropertyName As String, Value As IExpression)()
+  fullName.vb: (FieldOrPropertyName As String, Value As Metalama.Framework.Code.IExpression)()
+  name.vb: (FieldOrPropertyName As String, Value As IExpression)()
+  spec.csharp:
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.FieldOrPropertyName
+    name: FieldOrPropertyName
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.fieldorpropertyname
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: " "
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.value
+  - name: )
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.FieldOrPropertyName
+    name: FieldOrPropertyName
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.fieldorpropertyname
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,Metalama.Framework.Code.IExpression}.Value
+    name: Value
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,metalama.framework.code.iexpression-.value
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Metalama.Framework.Code.IExpression
+    name: IExpression
+    isExternal: true
+    href: Metalama.Framework.Code.IExpression.html
+  - name: )
+  - name: (
+  - name: )
+memberLayout: SeparatePages

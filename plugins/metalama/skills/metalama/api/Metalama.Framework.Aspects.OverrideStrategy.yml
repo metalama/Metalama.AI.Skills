@@ -1,0 +1,317 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.OverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  id: OverrideStrategy
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.OverrideStrategy.Default
+  - Metalama.Framework.Aspects.OverrideStrategy.Fail
+  - Metalama.Framework.Aspects.OverrideStrategy.Ignore
+  - Metalama.Framework.Aspects.OverrideStrategy.New
+  - Metalama.Framework.Aspects.OverrideStrategy.Override
+  langs:
+  - csharp
+  - vb
+  name: OverrideStrategy
+  nameWithType: OverrideStrategy
+  fullName: Metalama.Framework.Aspects.OverrideStrategy
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Specifies how introduction advice should behave when a member with the same name or signature already exists
+
+    in the target type.
+  remarks: >-
+    <p>
+        This enumeration controls the conflict resolution strategy when introducing members (methods, properties, fields, events)
+        or when implementing interfaces. The strategy determines whether to fail, skip, override, or hide the existing member.
+        </p>
+    <p>
+        The choice of strategy affects both compilation behavior and the <xref href="Metalama.Framework.Advising.AdviceOutcome" data-throw-if-not-resolved="false"></xref> returned by the advice result.
+        For example, <xref href="Metalama.Framework.Aspects.OverrideStrategy.Ignore" data-throw-if-not-resolved="false"></xref> results in <xref href="Metalama.Framework.Advising.AdviceOutcome.Ignore" data-throw-if-not-resolved="false"></xref> when a conflict is detected, while
+        <xref href="Metalama.Framework.Aspects.OverrideStrategy.Override" data-throw-if-not-resolved="false"></xref> results in <xref href="Metalama.Framework.Advising.AdviceOutcome.Override" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum OverrideStrategy
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum OverrideStrategy
+  seealso:
+  - linkId: Metalama.Framework.Aspects.IntroduceAttribute
+    commentId: T:Metalama.Framework.Aspects.IntroduceAttribute
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions
+    commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  - linkId: Metalama.Framework.Advising.IAdviceFactory
+    commentId: T:Metalama.Framework.Advising.IAdviceFactory
+  - linkId: Metalama.Framework.Advising.AdviceOutcome
+    commentId: T:Metalama.Framework.Advising.AdviceOutcome
+  - linkType: HRef
+    linkId: '@introducing-members'
+    altText: '@introducing-members'
+  - linkType: HRef
+    linkId: '@implementing-interfaces'
+    altText: '@implementing-interfaces'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Default
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Default
+  id: Default
+  parent: Metalama.Framework.Aspects.OverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: OverrideStrategy.Default
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Default
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: The advice fails with a compilation error if the member already exists in the target declaration. Same as <xref href="Metalama.Framework.Aspects.OverrideStrategy.Fail" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Fail
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Fail
+  id: Fail
+  parent: Metalama.Framework.Aspects.OverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Fail
+  nameWithType: OverrideStrategy.Fail
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Fail
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: The advice fails with a compilation error if the member exists in the target declaration.
+  example: []
+  syntax:
+    content: Fail = 0
+    return:
+      type: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Ignore
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Ignore
+  id: Ignore
+  parent: Metalama.Framework.Aspects.OverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Ignore
+  nameWithType: OverrideStrategy.Ignore
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Ignore
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Advice is ignored if the member already exists in the target declaration.
+  example: []
+  syntax:
+    content: Ignore = 1
+    return:
+      type: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Override
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Override
+  id: Override
+  parent: Metalama.Framework.Aspects.OverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: Override
+  nameWithType: OverrideStrategy.Override
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Override
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Advice attempts to override the existing member or fails with a compilation error if that is not possible.
+  remarks: For attributes, this first removes all existing instances of the attribute.
+  example: []
+  syntax:
+    content: Override = 2
+    return:
+      type: Metalama.Framework.Aspects.OverrideStrategy
+- uid: Metalama.Framework.Aspects.OverrideStrategy.New
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.New
+  id: New
+  parent: Metalama.Framework.Aspects.OverrideStrategy
+  langs:
+  - csharp
+  - vb
+  name: New
+  nameWithType: OverrideStrategy.New
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.New
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: If the member already exists, the advice attempts to redefine it using <code>new</code> or fails with a compilation error if that is not possible.
+  remarks: For attributes, this adds an instance of the attribute, even when some already exist.
+  example: []
+  syntax:
+    content: New = 3
+    return:
+      type: Metalama.Framework.Aspects.OverrideStrategy
+references:
+- uid: Metalama.Framework.Aspects.IntroduceAttribute
+  commentId: T:Metalama.Framework.Aspects.IntroduceAttribute
+  isExternal: true
+  href: Metalama.Framework.Aspects.IntroduceAttribute.html
+  name: IntroduceAttribute
+  nameWithType: IntroduceAttribute
+  fullName: Metalama.Framework.Aspects.IntroduceAttribute
+- uid: Metalama.Framework.Aspects.AdviserExtensions
+  commentId: T:Metalama.Framework.Aspects.AdviserExtensions
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.html
+  name: AdviserExtensions
+  nameWithType: AdviserExtensions
+  fullName: Metalama.Framework.Aspects.AdviserExtensions
+- uid: Metalama.Framework.Advising.IAdviceFactory
+  commentId: T:Metalama.Framework.Advising.IAdviceFactory
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IAdviceFactory.html
+  name: IAdviceFactory
+  nameWithType: IAdviceFactory
+  fullName: Metalama.Framework.Advising.IAdviceFactory
+- uid: Metalama.Framework.Advising.AdviceOutcome
+  commentId: T:Metalama.Framework.Advising.AdviceOutcome
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceOutcome.html
+  name: AdviceOutcome
+  nameWithType: AdviceOutcome
+  fullName: Metalama.Framework.Advising.AdviceOutcome
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Ignore
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Ignore
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html#Metalama_Framework_Aspects_OverrideStrategy_Ignore
+  name: Ignore
+  nameWithType: OverrideStrategy.Ignore
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Ignore
+- uid: Metalama.Framework.Advising.AdviceOutcome.Ignore
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Ignore
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceOutcome.html#Metalama_Framework_Advising_AdviceOutcome_Ignore
+  name: Ignore
+  nameWithType: AdviceOutcome.Ignore
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Ignore
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Override
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Override
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html#Metalama_Framework_Aspects_OverrideStrategy_Override
+  name: Override
+  nameWithType: OverrideStrategy.Override
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Override
+- uid: Metalama.Framework.Advising.AdviceOutcome.Override
+  commentId: F:Metalama.Framework.Advising.AdviceOutcome.Override
+  isExternal: true
+  href: Metalama.Framework.Advising.AdviceOutcome.html#Metalama_Framework_Advising_AdviceOutcome_Override
+  name: Override
+  nameWithType: AdviceOutcome.Override
+  fullName: Metalama.Framework.Advising.AdviceOutcome.Override
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: Metalama.Framework.Aspects.OverrideStrategy.Fail
+  commentId: F:Metalama.Framework.Aspects.OverrideStrategy.Fail
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html#Metalama_Framework_Aspects_OverrideStrategy_Fail
+  name: Fail
+  nameWithType: OverrideStrategy.Fail
+  fullName: Metalama.Framework.Aspects.OverrideStrategy.Fail
+- uid: Metalama.Framework.Aspects.OverrideStrategy
+  commentId: T:Metalama.Framework.Aspects.OverrideStrategy
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideStrategy.html
+  name: OverrideStrategy
+  nameWithType: OverrideStrategy
+  fullName: Metalama.Framework.Aspects.OverrideStrategy
+memberLayout: SeparatePages

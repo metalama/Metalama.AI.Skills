@@ -1,0 +1,760 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  id: IAspectWeaver
+  parent: Metalama.Framework.Engine.AspectWeavers
+  children:
+  - Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  langs:
+  - csharp
+  - vb
+  name: IAspectWeaver
+  nameWithType: IAspectWeaver
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  type: Interface
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: >-
+    Defines an aspect weaver that applies low-level transformations to Roslyn compilations using the Roslyn API directly.
+
+    Aspect weavers bypass the standard <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> method and provide full control over C# code transformations.
+
+    Implementations must be public, have a default constructor, and be annotated with the <xref href="Metalama.Framework.Engine.MetalamaPlugInAttribute" data-throw-if-not-resolved="false"></xref> custom attribute.
+  remarks: >-
+    <p>
+        Aspect weavers enable arbitrary C# code transformations that are not possible with the high-level <xref href="Metalama.Framework.Aspects.IAspectBuilder" data-throw-if-not-resolved="false"></xref> advice API.
+        They operate at the Roslyn syntax tree level and have direct access to the <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref>.
+        </p>
+    <p>
+        To create an aspect weaver:
+        </p>
+    <ol><li>Reference the <code>Metalama.Framework.Sdk</code> package with <code>PrivateAssets="all"</code>.</li><li>Create a class implementing <xref href="Metalama.Framework.Engine.AspectWeavers.IAspectWeaver" data-throw-if-not-resolved="false"></xref> and annotate it with <xref href="Metalama.Framework.Engine.MetalamaPlugInAttribute" data-throw-if-not-resolved="false"></xref>.</li><li>Create an aspect class and annotate it with <xref href="Metalama.Framework.Aspects.RequireAspectWeaverAttribute" data-throw-if-not-resolved="false"></xref> pointing to the weaver type.</li><li>Implement the <xref href="Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)" data-throw-if-not-resolved="false"></xref> method to perform the transformations.</li></ol>
+
+    <p>
+      <b>Warning:</b> Weaver-based aspects are significantly more complex to implement, have worse IDE integration, and have
+        a significant performance impact when many are in use. Prefer using the standard <xref href="Metalama.Framework.Aspects.IAspect%601" data-throw-if-not-resolved="false"></xref>
+        approach when possible.
+        </p>
+    <p>
+        Each weaver is invoked once per project, regardless of the number of aspect instances. The <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances" data-throw-if-not-resolved="false"></xref>
+        property provides the list of all aspect instances to process.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public interface IAspectWeaver : IAspectDriver
+    content.vb: >-
+      <CompileTime>
+
+      Public Interface IAspectWeaver Inherits IAspectDriver
+  seealso:
+  - linkId: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    commentId: T:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  - linkId: Metalama.Framework.Engine.MetalamaPlugInAttribute
+    commentId: T:Metalama.Framework.Engine.MetalamaPlugInAttribute
+  - linkId: Metalama.Framework.Aspects.RequireAspectWeaverAttribute
+    commentId: T:Metalama.Framework.Aspects.RequireAspectWeaverAttribute
+  - linkId: Metalama.Framework.Engine.AspectWeavers.IAspectDriver
+    commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectDriver
+  - linkType: HRef
+    linkId: '@aspect-weavers'
+    altText: '@aspect-weavers'
+  extensionMethods:
+  - Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  id: TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  parent: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  langs:
+  - csharp
+  - vb
+  name: TransformAsync(AspectWeaverContext)
+  nameWithType: IAspectWeaver.TransformAsync(AspectWeaverContext)
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Transforms a Roslyn compilation according to the aspects being woven.
+  example: []
+  syntax:
+    content: Task TransformAsync(AspectWeaverContext context)
+    parameters:
+    - id: context
+      type: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+      description: >-
+        The context providing access to the compilation, aspect instances, and weaving services.
+                    Use <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances" data-throw-if-not-resolved="false"></xref> to iterate over targets, and set <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation" data-throw-if-not-resolved="false"></xref>
+                    or use helper methods like <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> to apply transformations.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous transformation operation.
+    content.vb: Function TransformAsync(context As AspectWeaverContext) As Task
+  overload: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync*
+references:
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  parent: Metalama.Framework.Engine.AspectWeavers
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  name: AspectWeaverContext
+  nameWithType: AspectWeaverContext
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+- uid: Metalama.Framework.Engine.MetalamaPlugInAttribute
+  commentId: T:Metalama.Framework.Engine.MetalamaPlugInAttribute
+  parent: Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.Framework.Engine.MetalamaPlugInAttribute.html
+  name: MetalamaPlugInAttribute
+  nameWithType: MetalamaPlugInAttribute
+  fullName: Metalama.Framework.Engine.MetalamaPlugInAttribute
+- uid: Metalama.Framework.Aspects.RequireAspectWeaverAttribute
+  commentId: T:Metalama.Framework.Aspects.RequireAspectWeaverAttribute
+  isExternal: true
+  href: Metalama.Framework.Aspects.RequireAspectWeaverAttribute.html
+  name: RequireAspectWeaverAttribute
+  nameWithType: RequireAspectWeaverAttribute
+  fullName: Metalama.Framework.Aspects.RequireAspectWeaverAttribute
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectDriver
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectDriver
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectDriver.html
+  name: IAspectDriver
+  nameWithType: IAspectDriver
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectDriver
+- uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  commentId: M:Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  name: BuildAspect(IAspectBuilder<T>)
+  nameWithType: IAspect<T>.BuildAspect(IAspectBuilder<T>)
+  fullName: Metalama.Framework.Aspects.IAspect<T>.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder<T>)
+  nameWithType.vb: IAspect(Of T).BuildAspect(IAspectBuilder(Of T))
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T).BuildAspect(Metalama.Framework.Aspects.IAspectBuilder(Of T))
+  name.vb: BuildAspect(IAspectBuilder(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{`0})
+    name: BuildAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.BuildAspect.html#Metalama_Framework_Aspects_IAspect_1_BuildAspect_Metalama_Framework_Aspects_IAspectBuilder__0__
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAspectBuilder`1
+    name: IAspectBuilder
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspectBuilder
+  commentId: T:Metalama.Framework.Aspects.IAspectBuilder
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspectBuilder.html
+  name: IAspectBuilder
+  nameWithType: IAspectBuilder
+  fullName: Metalama.Framework.Aspects.IAspectBuilder
+- uid: Microsoft.CodeAnalysis.Compilation
+  commentId: T:Microsoft.CodeAnalysis.Compilation
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.compilation
+  name: Compilation
+  nameWithType: Compilation
+  fullName: Microsoft.CodeAnalysis.Compilation
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  name: IAspectWeaver
+  nameWithType: IAspectWeaver
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  name: TransformAsync(AspectWeaverContext)
+  nameWithType: IAspectWeaver.TransformAsync(AspectWeaverContext)
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+    name: TransformAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync(Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext)
+    name: TransformAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    name: AspectWeaverContext
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  - name: )
+- uid: Metalama.Framework.Aspects.IAspect`1
+  commentId: T:Metalama.Framework.Aspects.IAspect`1
+  isExternal: true
+  href: Metalama.Framework.Aspects.IAspect-1.html
+  name: IAspect<T>
+  nameWithType: IAspect<T>
+  fullName: Metalama.Framework.Aspects.IAspect<T>
+  nameWithType.vb: IAspect(Of T)
+  fullName.vb: Metalama.Framework.Aspects.IAspect(Of T)
+  name.vb: IAspect(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.IAspect`1
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.IAspect`1
+    name: IAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAspect-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_AspectInstances
+  name: AspectInstances
+  nameWithType: AspectWeaverContext.AspectInstances
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances
+- uid: Metalama.Framework.Engine.AspectWeavers
+  commentId: N:Metalama.Framework.Engine.AspectWeavers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.AspectWeavers
+  nameWithType: Metalama.Framework.Engine.AspectWeavers
+  fullName: Metalama.Framework.Engine.AspectWeavers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.AspectWeavers
+    name: AspectWeavers
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.AspectWeavers
+    name: AspectWeavers
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.html
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IAspectWeaver>(IAspectWeaver, Func<IAspectWeaver, IEnumerable<IAspectWeaver>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IAspectWeaver>(IAspectWeaver, Func<IAspectWeaver, IEnumerable<IAspectWeaver>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Engine.AspectWeavers.IAspectWeaver>(Metalama.Framework.Engine.AspectWeavers.IAspectWeaver, System.Func<Metalama.Framework.Engine.AspectWeavers.IAspectWeaver, System.Collections.Generic.IEnumerable<Metalama.Framework.Engine.AspectWeavers.IAspectWeaver>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IAspectWeaver)(IAspectWeaver, Func(Of IAspectWeaver, IEnumerable(Of IAspectWeaver)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Engine.AspectWeavers.IAspectWeaver)(Metalama.Framework.Engine.AspectWeavers.IAspectWeaver, System.Func(Of Metalama.Framework.Engine.AspectWeavers.IAspectWeaver, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Engine.AspectWeavers.IAspectWeaver)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IAspectWeaver)(IAspectWeaver, Func(Of IAspectWeaver, IEnumerable(Of IAspectWeaver)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.AspectWeavers.IAspectWeaver,System.Func{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.AspectWeavers.IAspectWeaver,System.Func{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.AspectWeavers.IAspectWeaver}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+    name: IAspectWeaver
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Engine
+  commentId: N:Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine
+  nameWithType: Metalama.Framework.Engine
+  fullName: Metalama.Framework.Engine
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Microsoft.CodeAnalysis
+  commentId: N:Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.CodeAnalysis
+  nameWithType: Microsoft.CodeAnalysis
+  fullName: Microsoft.CodeAnalysis
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  commentId: P:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_Compilation
+  name: Compilation
+  nameWithType: AspectWeaverContext.Compilation
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  name: RewriteAspectTargetsAsync(CSharpSyntaxRewriter, CancellationToken)
+  nameWithType: AspectWeaverContext.RewriteAspectTargetsAsync(CSharpSyntaxRewriter, CancellationToken)
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+    name: RewriteAspectTargetsAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  - name: (
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,System.Threading.CancellationToken)
+    name: RewriteAspectTargetsAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync.html#Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_RewriteAspectTargetsAsync_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_System_Threading_CancellationToken_
+  - name: (
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync*
+  commentId: Overload:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync.html#Metalama_Framework_Engine_AspectWeavers_IAspectWeaver_TransformAsync_Metalama_Framework_Engine_AspectWeavers_AspectWeaverContext_
+  name: TransformAsync
+  nameWithType: IAspectWeaver.TransformAsync
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+memberLayout: SeparatePages

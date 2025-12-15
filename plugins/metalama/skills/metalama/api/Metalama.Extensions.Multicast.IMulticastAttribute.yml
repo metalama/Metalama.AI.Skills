@@ -1,0 +1,1076 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute
+  commentId: T:Metalama.Extensions.Multicast.IMulticastAttribute
+  id: IMulticastAttribute
+  parent: Metalama.Extensions.Multicast
+  children:
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes
+  - Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  langs:
+  - csharp
+  - vb
+  name: IMulticastAttribute
+  nameWithType: IMulticastAttribute
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    An interface that exposes properties equivalent to those of the PostSharp <code>MulticastAttribute</code>.
+
+    Multicast aspects in Metalama should implement this interface. All properties should be implemented as automatic properties.
+  remarks: >-
+    <p>
+
+    This interface provides PostSharp-compatible multicasting capabilities, allowing aspects to be automatically applied to
+
+    multiple targets based on filtering criteria such as visibility, scope, and naming patterns. Types implementing this interface
+
+    can control where they are applied using properties like <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes" data-throw-if-not-resolved="false"></xref>,
+
+    and <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [RunTimeOrCompileTime]
+
+      public interface IMulticastAttribute : IAspect, ICompileTimeSerializable, ITemplateProvider
+    content.vb: >-
+      <RunTimeOrCompileTime>
+
+      Public Interface IMulticastAttribute Inherits IAspect, ICompileTimeSerializable, ITemplateProvider
+  seealso:
+  - linkId: Metalama.Extensions.Multicast.MulticastTargets
+    commentId: T:Metalama.Extensions.Multicast.MulticastTargets
+  - linkId: Metalama.Extensions.Multicast.MulticastAttributes
+    commentId: T:Metalama.Extensions.Multicast.MulticastAttributes
+  - linkType: HRef
+    linkId: '@multicast'
+    altText: '@multicast'
+  extensionMethods:
+  - Metalama.Extensions.Multicast.IMulticastAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Multicast.IMulticastAttribute,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.IMulticastAttribute}},System.Boolean)
+  attributes:
+  - type: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  id: AttributeTargetElements
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetElements
+  nameWithType: IMulticastAttribute.AttributeTargetElements
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Gets or sets the kind of elements to which this custom attributes applies.
+  example: []
+  syntax:
+    content: MulticastTargets AttributeTargetElements { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastTargets
+    content.vb: Property AttributeTargetElements As MulticastTargets
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies
+  id: AttributeTargetAssemblies
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetAssemblies
+  nameWithType: IMulticastAttribute.AttributeTargetAssemblies
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Multicasting to external assemblies is not supported in Metalama.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Multicasting to external assemblies is not supported in Metalama.", true)]
+
+      string? AttributeTargetAssemblies { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Obsolete("Multicasting to external assemblies is not supported in Metalama.", True)>
+
+      Property AttributeTargetAssemblies As String
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: Multicasting to external assemblies is not supported in Metalama.
+    - type: System.Boolean
+      value: true
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  id: AttributeTargetTypes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetTypes
+  nameWithType: IMulticastAttribute.AttributeTargetTypes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the expression specifying to which types
+
+    this instance applies.
+  remarks: >-
+    <p>Ignored if the <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref> are only the module and/or the assembly.
+
+    </p>
+
+    <p>Unless you use a wildcard or a regex, you must specify the fully qualified name of the type.</p>
+
+    <p>Nested types are delimited by a plus sign (<code>+</code>) in place of a dot (<code>.</code>).</p>
+
+    <p>If the type is generic, add a backtick and its type arity at the end.</p>
+
+    <p>Examples:
+
+    <ul><li>Namespace.OuterType`1+NestedType`2</li><li>regex:Namespace.*Nested.*</li></ul>
+
+    </p>
+  example: []
+  syntax:
+    content: string? AttributeTargetTypes { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: >-
+        A wildcard or regular expression specifying to which types
+
+        this instance applies, or <code>null</code> this instance
+
+        applies either to all types. Regular expressions should
+
+        start with the <code>regex:</code> prefix.
+    content.vb: Property AttributeTargetTypes As String
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes
+  id: AttributeTargetTypeAttributes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetTypeAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetTypeAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the attributes of types to which this attribute applies. Visibility, scope (<xref href="Metalama.Extensions.Multicast.MulticastAttributes.Instance" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Extensions.Multicast.MulticastAttributes.Static" data-throw-if-not-resolved="false"></xref>)
+      and generation are the only categories that are taken into account; attributes of other categories are ignored.
+  example: []
+  syntax:
+    content: MulticastAttributes AttributeTargetTypeAttributes { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastAttributes
+    content.vb: Property AttributeTargetTypeAttributes As MulticastAttributes
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  id: AttributeTargetExternalTypeAttributes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetExternalTypeAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Multicasting to external types is not supported in Metalama.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Multicasting to external assemblies is not supported in Metalama.", true)]
+
+      MulticastAttributes AttributeTargetExternalTypeAttributes { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastAttributes
+    content.vb: >-
+      <Obsolete("Multicasting to external assemblies is not supported in Metalama.", True)>
+
+      Property AttributeTargetExternalTypeAttributes As MulticastAttributes
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: Multicasting to external assemblies is not supported in Metalama.
+    - type: System.Boolean
+      value: true
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  id: AttributeTargetMembers
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetMembers
+  nameWithType: IMulticastAttribute.AttributeTargetMembers
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the expression specifying to which members 
+
+    this instance applies.
+  remarks: >-
+    <p>Ignored if the only <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref> are only types.
+
+    </p>
+  example: []
+  syntax:
+    content: string? AttributeTargetMembers { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: >-
+        A wildcard or regular expression specifying to which members
+
+        this instance applies, or <code>null</code> this instance
+
+        applies either to all members whose kind is given in <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref>.
+
+        Regular expressions should start with the <code>regex:</code> prefix.
+    content.vb: Property AttributeTargetMembers As String
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes
+  id: AttributeTargetMemberAttributes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetMemberAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetMemberAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the visibilities, scopes, virtualities, and other characteristics 
+     of members to which this attribute applies.
+  remarks: >-
+    <p>Ignored if the <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref> are only the module, the assembly,
+
+    and/or types.
+
+    </p>
+
+    <p>
+
+    The <xref href="Metalama.Extensions.Multicast.MulticastAttributes" data-throw-if-not-resolved="false"></xref> enumeration is a multi-part flag: there is one
+
+    part for visibility, one for scope, one for virtuality, and so on.
+
+    If you specify one part, it will override the values defined on the custom attribute definition.
+
+    If you do not specify it, the values defined on the custom attribute definition will be inherited.
+
+    Note that custom attributes may apply restrictions on these attributes. For instance, 
+
+    a custom attribute may not be valid on abstract methods. You are obviously not allowed
+
+    to 'enlarge' the set of possible targets.
+
+    </p>
+  example: []
+  syntax:
+    content: MulticastAttributes AttributeTargetMemberAttributes { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastAttributes
+    content.vb: Property AttributeTargetMemberAttributes As MulticastAttributes
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  id: AttributeTargetExternalMemberAttributes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetExternalMemberAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Multicasting to external types is not supported in Metalama.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Multicasting to external assemblies is not supported in Metalama.", true)]
+
+      MulticastAttributes AttributeTargetExternalMemberAttributes { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastAttributes
+    content.vb: >-
+      <Obsolete("Multicasting to external assemblies is not supported in Metalama.", True)>
+
+      Property AttributeTargetExternalMemberAttributes As MulticastAttributes
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: Multicasting to external assemblies is not supported in Metalama.
+    - type: System.Boolean
+      value: true
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters
+  id: AttributeTargetParameters
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetParameters
+  nameWithType: IMulticastAttribute.AttributeTargetParameters
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the expression specifying to which parameters 
+
+    this instance applies.
+  remarks: >-
+    <p>Ignored if the only <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref> are only types.
+
+    </p>
+  example: []
+  syntax:
+    content: string? AttributeTargetParameters { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: >-
+        A wildcard or regular expression specifying to which parameters
+
+        this instance applies, or <code>null</code> this instance
+
+        applies either to all members whose kind is given in <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref>.
+
+        Wildcard expressions should
+
+        start with the <code>regex:</code> prefix.
+    content.vb: Property AttributeTargetParameters As String
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes
+  id: AttributeTargetParameterAttributes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeTargetParameterAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetParameterAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the passing style (by value, <b>out</b> or <b>ref</b>)
+     of parameters to which this attribute applies.
+  remarks: >-
+    <p>Ignored if the <xref href="Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements" data-throw-if-not-resolved="false"></xref> do not include parameters.
+
+    </p>
+  example: []
+  syntax:
+    content: MulticastAttributes AttributeTargetParameterAttributes { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastAttributes
+    content.vb: Property AttributeTargetParameterAttributes As MulticastAttributes
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  id: AttributeExclude
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeExclude
+  nameWithType: IMulticastAttribute.AttributeExclude
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    If true, indicates that this attribute <i>removes</i> all other instances of the
+
+    same attribute type from the set of elements defined by the current instance.
+  example: []
+  syntax:
+    content: bool AttributeExclude { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property AttributeExclude As Boolean
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority
+  id: AttributePriority
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributePriority
+  nameWithType: IMulticastAttribute.AttributePriority
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: >-
+    Gets or sets the priority of the current attribute in case that multiple 
+
+    instances are defined on the same element (lower values are processed before).
+  remarks: You should use only 16-bit values in user code. Top 16 bits are reserved for the system.
+  example: []
+  syntax:
+    content: int AttributePriority { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property AttributePriority As Integer
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority*
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace
+  id: AttributeReplace
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeReplace
+  nameWithType: IMulticastAttribute.AttributeReplace
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: This property not supported in Metalama. Metalama always behaves as if this property were <code>true</code>.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("AttributeReplace is true by default and cannot be set to false.", true)]
+
+      bool AttributeReplace { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Obsolete("AttributeReplace is true by default and cannot be set to false.", True)>
+
+      Property AttributeReplace As Boolean
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: AttributeReplace is true by default and cannot be set to false.
+    - type: System.Boolean
+      value: true
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance
+  id: AttributeInheritance
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  langs:
+  - csharp
+  - vb
+  name: AttributeInheritance
+  nameWithType: IMulticastAttribute.AttributeInheritance
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Multicast
+  namespace: Metalama.Extensions.Multicast
+  summary: Determines whether this attribute is inherited.
+  remarks: >-
+    <p>If this property is not set to <code>MulticastInheritance.None</code>,
+
+    a copy of this attribute will be propagated
+
+    along the lines of inheritance of the target element:</p>
+
+    <ul><li>On <b>classes</b>: all classed derived from that class.</li><li>On <b>interfaces</b>: all classes implementing this interface.</li><li>On <b>virtual, abstract or interface methods</b>: all methods overriding 
+
+    or implementing this method.</li><li>On <b>parameters</b> or <b>return value</b> of virtual, abstract or interface methods:
+
+    corresponding parameter or return value on all methods or overriding or implementing the
+
+    parent method of the target parameter or return value.</li></ul>
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Inheritance is decided at the class level using the [Inheritable] attribute.", true)]
+
+      MulticastInheritance AttributeInheritance { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Multicast.MulticastInheritance
+    content.vb: >-
+      <Obsolete("Inheritance is decided at the class level using the [Inheritable] attribute.", True)>
+
+      Property AttributeInheritance As MulticastInheritance
+  overload: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: Inheritance is decided at the class level using the [Inheritable] attribute.
+    - type: System.Boolean
+      value: true
+references:
+- uid: Metalama.Extensions.Multicast.MulticastTargets
+  commentId: T:Metalama.Extensions.Multicast.MulticastTargets
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastTargets.html
+  name: MulticastTargets
+  nameWithType: MulticastTargets
+  fullName: Metalama.Extensions.Multicast.MulticastTargets
+- uid: Metalama.Extensions.Multicast.MulticastAttributes
+  commentId: T:Metalama.Extensions.Multicast.MulticastAttributes
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastAttributes.html
+  name: MulticastAttributes
+  nameWithType: MulticastAttributes
+  fullName: Metalama.Extensions.Multicast.MulticastAttributes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetElements
+  name: AttributeTargetElements
+  nameWithType: IMulticastAttribute.AttributeTargetElements
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetTypes
+  name: AttributeTargetTypes
+  nameWithType: IMulticastAttribute.AttributeTargetTypes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  commentId: P:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  parent: Metalama.Extensions.Multicast.IMulticastAttribute
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetMembers
+  name: AttributeTargetMembers
+  nameWithType: IMulticastAttribute.AttributeTargetMembers
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+- uid: Metalama.Extensions.Multicast
+  commentId: N:Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Extensions.Multicast
+  nameWithType: Metalama.Extensions.Multicast
+  fullName: Metalama.Extensions.Multicast
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.Multicast
+    name: Multicast
+    isExternal: true
+    href: Metalama.Extensions.Multicast.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Extensions
+    name: Extensions
+    isExternal: true
+    href: Metalama.Extensions.html
+  - name: .
+  - uid: Metalama.Extensions.Multicast
+    name: Multicast
+    isExternal: true
+    href: Metalama.Extensions.Multicast.html
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Multicast.IMulticastAttribute,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.IMulticastAttribute}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IMulticastAttribute>(IMulticastAttribute, Func<IMulticastAttribute, IEnumerable<IMulticastAttribute>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IMulticastAttribute>(IMulticastAttribute, Func<IMulticastAttribute, IEnumerable<IMulticastAttribute>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Extensions.Multicast.IMulticastAttribute>(Metalama.Extensions.Multicast.IMulticastAttribute, System.Func<Metalama.Extensions.Multicast.IMulticastAttribute, System.Collections.Generic.IEnumerable<Metalama.Extensions.Multicast.IMulticastAttribute>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IMulticastAttribute)(IMulticastAttribute, Func(Of IMulticastAttribute, IEnumerable(Of IMulticastAttribute)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Extensions.Multicast.IMulticastAttribute)(Metalama.Extensions.Multicast.IMulticastAttribute, System.Func(Of Metalama.Extensions.Multicast.IMulticastAttribute, System.Collections.Generic.IEnumerable(Of Metalama.Extensions.Multicast.IMulticastAttribute)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IMulticastAttribute)(IMulticastAttribute, Func(Of IMulticastAttribute, IEnumerable(Of IMulticastAttribute)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.Multicast.IMulticastAttribute,System.Func{Metalama.Extensions.Multicast.IMulticastAttribute,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.IMulticastAttribute}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Extensions.Multicast.IMulticastAttribute,System.Func{Metalama.Extensions.Multicast.IMulticastAttribute,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.IMulticastAttribute}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: )
+  - name: (
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Extensions.Multicast.IMulticastAttribute
+    name: IMulticastAttribute
+    isExternal: true
+    href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute
+  commentId: T:Metalama.Extensions.Multicast.IMulticastAttribute
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.html
+  name: IMulticastAttribute
+  nameWithType: IMulticastAttribute
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetElements
+  name: AttributeTargetElements
+  nameWithType: IMulticastAttribute.AttributeTargetElements
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetElements
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetAssemblies
+  name: AttributeTargetAssemblies
+  nameWithType: IMulticastAttribute.AttributeTargetAssemblies
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetAssemblies
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetTypes
+  name: AttributeTargetTypes
+  nameWithType: IMulticastAttribute.AttributeTargetTypes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypes
+- uid: Metalama.Extensions.Multicast.MulticastAttributes.Instance
+  commentId: F:Metalama.Extensions.Multicast.MulticastAttributes.Instance
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastAttributes.html#Metalama_Extensions_Multicast_MulticastAttributes_Instance
+  name: Instance
+  nameWithType: MulticastAttributes.Instance
+  fullName: Metalama.Extensions.Multicast.MulticastAttributes.Instance
+- uid: Metalama.Extensions.Multicast.MulticastAttributes.Static
+  commentId: F:Metalama.Extensions.Multicast.MulticastAttributes.Static
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastAttributes.html#Metalama_Extensions_Multicast_MulticastAttributes_Static
+  name: Static
+  nameWithType: MulticastAttributes.Static
+  fullName: Metalama.Extensions.Multicast.MulticastAttributes.Static
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetTypeAttributes
+  name: AttributeTargetTypeAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetTypeAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetTypeAttributes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetExternalTypeAttributes
+  name: AttributeTargetExternalTypeAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetExternalTypeAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalTypeAttributes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetMembers
+  name: AttributeTargetMembers
+  nameWithType: IMulticastAttribute.AttributeTargetMembers
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMembers
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetMemberAttributes
+  name: AttributeTargetMemberAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetMemberAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetMemberAttributes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetExternalMemberAttributes
+  name: AttributeTargetExternalMemberAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetExternalMemberAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetExternalMemberAttributes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetParameters
+  name: AttributeTargetParameters
+  nameWithType: IMulticastAttribute.AttributeTargetParameters
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameters
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeTargetParameterAttributes
+  name: AttributeTargetParameterAttributes
+  nameWithType: IMulticastAttribute.AttributeTargetParameterAttributes
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeTargetParameterAttributes
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeExclude
+  name: AttributeExclude
+  nameWithType: IMulticastAttribute.AttributeExclude
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeExclude
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributePriority
+  name: AttributePriority
+  nameWithType: IMulticastAttribute.AttributePriority
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributePriority
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeReplace
+  name: AttributeReplace
+  nameWithType: IMulticastAttribute.AttributeReplace
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeReplace
+- uid: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance*
+  commentId: Overload:Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance
+  isExternal: true
+  href: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance.html#Metalama_Extensions_Multicast_IMulticastAttribute_AttributeInheritance
+  name: AttributeInheritance
+  nameWithType: IMulticastAttribute.AttributeInheritance
+  fullName: Metalama.Extensions.Multicast.IMulticastAttribute.AttributeInheritance
+- uid: Metalama.Extensions.Multicast.MulticastInheritance
+  commentId: T:Metalama.Extensions.Multicast.MulticastInheritance
+  parent: Metalama.Extensions.Multicast
+  isExternal: true
+  href: Metalama.Extensions.Multicast.MulticastInheritance.html
+  name: MulticastInheritance
+  nameWithType: MulticastInheritance
+  fullName: Metalama.Extensions.Multicast.MulticastInheritance
+memberLayout: SeparatePages

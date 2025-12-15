@@ -1,0 +1,2756 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Options.IncrementalHashSet`1
+  commentId: T:Metalama.Framework.Options.IncrementalHashSet`1
+  id: IncrementalHashSet`1
+  parent: Metalama.Framework.Options
+  children:
+  - Metalama.Framework.Options.IncrementalHashSet`1.#ctor(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Add(System.Collections.Generic.IEnumerable{`0})
+  - Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Add(`0[])
+  - Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Count
+  - Metalama.Framework.Options.IncrementalHashSet`1.Create(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Empty
+  - Metalama.Framework.Options.IncrementalHashSet`1.GetEnumerator
+  - Metalama.Framework.Options.IncrementalHashSet`1.IsEmpty
+  - Metalama.Framework.Options.IncrementalHashSet`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  - Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0[])
+  langs:
+  - csharp
+  - vb
+  name: IncrementalHashSet<T>
+  nameWithType: IncrementalHashSet<T>
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    An immutable hash set where each class instance does not represent the full set but a modification of another set (possibly empty).
+
+    This class implements the <xref href="Metalama.Framework.Options.IIncrementalObject" data-throw-if-not-resolved="false"></xref> interface and can be easily used in the context of an <xref href="Metalama.Framework.Options.IHierarchicalOptions%601" data-throw-if-not-resolved="false"></xref>.
+
+    The class can represent the <xref href="Metalama.Framework.Options.IncrementalHashSet%601.Add(%600)" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Options.IncrementalHashSet%601.Remove(%600)" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Options.IncrementalHashSet.Clear%60%601" data-throw-if-not-resolved="false"></xref> operations.
+  remarks: >-
+    <p>
+      <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> is designed for use as a property type within hierarchical options classes. Unlike a regular
+        hash set, each instance represents a <i>layer of changes</i> to a set rather than the complete set itself. When multiple layers
+        are merged using <xref href="Metalama.Framework.Options.IncrementalHashSet%601.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet%7b%600%7d%2cMetalama.Framework.Options.ApplyChangesContext%40)" data-throw-if-not-resolved="false"></xref>, the operations from each layer are combined to produce the effective final set.
+        </p>
+    <p>
+        For example, if one layer adds items {"A", "B"} and another layer removes {"B"} and adds {"C"}, the final merged set contains {"A", "C"}.
+        The <xref href="Metalama.Framework.Options.IncrementalHashSet.Clear%60%601" data-throw-if-not-resolved="false"></xref> operation creates a layer that clears all previous items, starting fresh.
+        </p>
+    <p>
+        This class is immutable. All operations (<xref href="Metalama.Framework.Options.IncrementalHashSet%601.Add(%600)" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Options.IncrementalHashSet%601.Remove(%600)" data-throw-if-not-resolved="false"></xref>, etc.) return new instances rather than
+        modifying the current instance.
+        </p>
+  example: []
+  syntax:
+    content: 'public class IncrementalHashSet<T> : IIncrementalObject, IReadOnlyCollection<T>, IEnumerable<T>, IEnumerable, ICompileTimeSerializable where T : notnull'
+    typeParameters:
+    - id: T
+      description: Type of items.
+    content.vb: Public Class IncrementalHashSet(Of T) Implements IIncrementalObject, IReadOnlyCollection(Of T), IEnumerable(Of T), IEnumerable, ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Framework.Options.IIncrementalObject
+    commentId: T:Metalama.Framework.Options.IIncrementalObject
+  - linkId: Metalama.Framework.Options.IHierarchicalOptions
+    commentId: T:Metalama.Framework.Options.IHierarchicalOptions
+  - linkId: Metalama.Framework.Options.IncrementalKeyedCollection`2
+    commentId: T:Metalama.Framework.Options.IncrementalKeyedCollection`2
+  - linkType: HRef
+    linkId: '@exposing-options'
+    altText: '@exposing-options'
+  inheritance:
+  - System.Object
+  implements:
+  - Metalama.Framework.Options.IIncrementalObject
+  - System.Collections.Generic.IReadOnlyCollection{{T}}
+  - System.Collections.Generic.IEnumerable{{T}}
+  - System.Collections.IEnumerable
+  - Metalama.Framework.Serialization.ICompileTimeSerializable
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Options.IncrementalHashSet`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Options.IncrementalHashSet{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IncrementalHashSet{{T}}}},System.Boolean)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IncrementalHashSet{{T}},Metalama.Framework.Options.ApplyChangesContext@)
+  - Metalama.Framework.Options.IncrementalHashSet`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IncrementalHashSet{{T}},Metalama.Framework.Options.ApplyChangesContext@)
+  - System.Collections.Generic.IEnumerable{`0}.Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1
+  - System.Collections.Generic.IEnumerable{`0}.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{{T},System.Collections.Generic.IEnumerable{{T}}},System.Collections.Generic.IEqualityComparer{{T}},System.Boolean)
+  - System.Collections.Generic.IEnumerable{`0}.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1
+  - System.Collections.IEnumerable.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer
+  nameWithType.vb: IncrementalHashSet(Of T)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T)
+  name.vb: IncrementalHashSet(Of T)
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.#ctor(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.#ctor(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  id: '#ctor(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)'
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: IncrementalHashSet(ImmutableDictionary<T, bool>, bool)
+  nameWithType: IncrementalHashSet<T>.IncrementalHashSet(ImmutableDictionary<T, bool>, bool)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.IncrementalHashSet(System.Collections.Immutable.ImmutableDictionary<T, bool>, bool)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  syntax:
+    content: protected IncrementalHashSet(ImmutableDictionary<T, bool> dictionary, bool clear = false)
+    parameters:
+    - id: dictionary
+      type: System.Collections.Immutable.ImmutableDictionary{{T},System.Boolean}
+    - id: clear
+      type: System.Boolean
+    content.vb: Protected Sub New(dictionary As ImmutableDictionary(Of T, Boolean), clear As Boolean = False)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.#ctor*
+  nameWithType.vb: IncrementalHashSet(Of T).New(ImmutableDictionary(Of T, Boolean), Boolean)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).New(System.Collections.Immutable.ImmutableDictionary(Of T, Boolean), Boolean)
+  name.vb: New(ImmutableDictionary(Of T, Boolean), Boolean)
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Create(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Create(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  id: Create(System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean},System.Boolean)
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Create(ImmutableDictionary<T, bool>, bool)
+  nameWithType: IncrementalHashSet<T>.Create(ImmutableDictionary<T, bool>, bool)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Create(System.Collections.Immutable.ImmutableDictionary<T, bool>, bool)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  syntax:
+    content: protected virtual IncrementalHashSet<T> Create(ImmutableDictionary<T, bool> dictionary, bool clear = false)
+    parameters:
+    - id: dictionary
+      type: System.Collections.Immutable.ImmutableDictionary{{T},System.Boolean}
+    - id: clear
+      type: System.Boolean
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+    content.vb: Protected Overridable Function Create(dictionary As ImmutableDictionary(Of T, Boolean), clear As Boolean = False) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Create*
+  nameWithType.vb: IncrementalHashSet(Of T).Create(ImmutableDictionary(Of T, Boolean), Boolean)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Create(System.Collections.Immutable.ImmutableDictionary(Of T, Boolean), Boolean)
+  name.vb: Create(ImmutableDictionary(Of T, Boolean), Boolean)
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+  id: Add(`0)
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Add(T)
+  nameWithType: IncrementalHashSet<T>.Add(T)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Add(T)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Creates a new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the operation of adding an item to the collection,
+
+    in addition to any operations represented by the current collection.
+  remarks: This method does not modify the current instance; it returns a new instance with the combined operations.
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> Add(T item)
+    parameters:
+    - id: item
+      type: '{T}'
+      description: The item to add to the collection.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> with the additional add operation.
+    content.vb: Public Function Add(item As T) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Add*
+  nameWithType.vb: IncrementalHashSet(Of T).Add(T)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Add(T)
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Add(`0[])
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Add(`0[])
+  id: Add(`0[])
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Add(T[])
+  nameWithType: IncrementalHashSet<T>.Add(T[])
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Add(T[])
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Creates a new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the operation of adding items to
+
+    the collection, in addition to any operations represented by the current collection.
+  remarks: This method does not modify the current instance; it returns a new instance with the combined operations.
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> Add(T[] items)
+    parameters:
+    - id: items
+      type: '{T}[]'
+      description: The items to add to the collection.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> with the additional add operations.
+    content.vb: Public Function Add(items As T()) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Add*
+  nameWithType.vb: IncrementalHashSet(Of T).Add(T())
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Add(T())
+  name.vb: Add(T())
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Add(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Add(System.Collections.Generic.IEnumerable{`0})
+  id: Add(System.Collections.Generic.IEnumerable{`0})
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Add(IEnumerable<T>)
+  nameWithType: IncrementalHashSet<T>.Add(IEnumerable<T>)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Add(System.Collections.Generic.IEnumerable<T>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Creates a new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the operation of adding items to
+
+    the collection, in addition to any operations represented by the current collection.
+  remarks: This method does not modify the current instance; it returns a new instance with the combined operations.
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> Add(IEnumerable<T> items)
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: The items to add to the collection.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> with the additional add operations.
+    content.vb: Public Function Add(items As IEnumerable(Of T)) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Add*
+  nameWithType.vb: IncrementalHashSet(Of T).Add(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Add(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Add(IEnumerable(Of T))
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+  id: Remove(`0)
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Remove(T)
+  nameWithType: IncrementalHashSet<T>.Remove(T)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Remove(T)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Creates a new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the operation of removing an item
+
+    from the collection, in addition to any operations represented by the current object.
+  remarks: This method does not modify the current instance; it returns a new instance with the combined operations.
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> Remove(T item)
+    parameters:
+    - id: item
+      type: '{T}'
+      description: The item to remove from the collection.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> with the additional remove operation.
+    content.vb: Public Function Remove(item As T) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Remove*
+  nameWithType.vb: IncrementalHashSet(Of T).Remove(T)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Remove(T)
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0[])
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0[])
+  id: Remove(`0[])
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Remove(T[])
+  nameWithType: IncrementalHashSet<T>.Remove(T[])
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Remove(T[])
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Creates a new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the operation of removing items
+
+    from the collection, in addition to any operations represented by the current object.
+  remarks: This method does not modify the current instance; it returns a new instance with the combined operations.
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> Remove(T[] items)
+    parameters:
+    - id: items
+      type: '{T}[]'
+      description: The items to remove from the collection.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> with the additional remove operations.
+    content.vb: Public Function Remove(items As T()) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Remove*
+  nameWithType.vb: IncrementalHashSet(Of T).Remove(T())
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Remove(T())
+  name.vb: Remove(T())
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  id: Remove(System.Collections.Generic.IEnumerable{`0})
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Remove(IEnumerable<T>)
+  nameWithType: IncrementalHashSet<T>.Remove(IEnumerable<T>)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Remove(System.Collections.Generic.IEnumerable<T>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: >-
+    Creates a new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the operation of removing items
+
+    from the collection, in addition to any operations represented by the current object.
+  remarks: This method does not modify the current instance; it returns a new instance with the combined operations.
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> Remove(IEnumerable<T> items)
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: The items to remove from the collection.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> with the additional remove operations.
+    content.vb: Public Function Remove(items As IEnumerable(Of T)) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Remove*
+  nameWithType.vb: IncrementalHashSet(Of T).Remove(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Remove(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Remove(IEnumerable(Of T))
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.GetEnumerator
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.GetEnumerator
+  id: GetEnumerator
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: IncrementalHashSet<T>.GetEnumerator()
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.GetEnumerator()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: Returns an enumerator that iterates through the items in the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<T> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{{T}}
+      description: An enumerator for the items that are currently in the set (considering add and remove operations).
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{{T}}.GetEnumerator
+  nameWithType.vb: IncrementalHashSet(Of T).GetEnumerator()
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).GetEnumerator()
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+  id: ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: ApplyChanges(IncrementalHashSet<T>, in ApplyChangesContext)
+  nameWithType: IncrementalHashSet<T>.ApplyChanges(IncrementalHashSet<T>, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet<T>, in Metalama.Framework.Options.ApplyChangesContext)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: Merges the current collection layer with another collection layer and returns the result.
+  remarks: >-
+    If <code class="paramref">other</code> contains a clear operation, it takes precedence and the result contains only the operations from <code class="paramref">other</code>.
+
+    Otherwise, operations from both layers are combined. For any item that appears in both layers, the operation from <code class="paramref">other</code>
+
+    takes precedence (i.e., if the current layer adds an item and <code class="paramref">other</code> removes it, the final result will not contain the item).
+  example: []
+  syntax:
+    content: public IncrementalHashSet<T> ApplyChanges(IncrementalHashSet<T> other, in ApplyChangesContext context)
+    parameters:
+    - id: other
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: The collection layer to merge with the current layer.
+    - id: context
+      type: Metalama.Framework.Options.ApplyChangesContext
+      description: The context of the merge operation.
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+      description: A new <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> representing the merged result.
+    content.vb: Public Function ApplyChanges(other As IncrementalHashSet(Of T), context As ApplyChangesContext) As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges*
+  nameWithType.vb: IncrementalHashSet(Of T).ApplyChanges(IncrementalHashSet(Of T), ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).ApplyChanges(Metalama.Framework.Options.IncrementalHashSet(Of T), Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(IncrementalHashSet(Of T), ApplyChangesContext)
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Empty
+  commentId: P:Metalama.Framework.Options.IncrementalHashSet`1.Empty
+  id: Empty
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Empty
+  nameWithType: IncrementalHashSet<T>.Empty
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Empty
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: Gets an <xref href="Metalama.Framework.Options.IncrementalHashSet%601" data-throw-if-not-resolved="false"></xref> that represents the absence of any change in the collection.
+  remarks: >-
+    If you are looking for an object resulting in an empty collection even if the previous collection is not empty,
+
+    use <xref href="Metalama.Framework.Options.IncrementalHashSet.Clear%60%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static IncrementalHashSet<T> Empty { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Options.IncrementalHashSet`1
+    content.vb: Public Shared ReadOnly Property Empty As IncrementalHashSet(Of T)
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Empty*
+  nameWithType.vb: IncrementalHashSet(Of T).Empty
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Empty
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Count
+  commentId: P:Metalama.Framework.Options.IncrementalHashSet`1.Count
+  id: Count
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: IncrementalHashSet<T>.Count
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Count
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: Gets the number of items in the current collection layer.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: The count of items that are marked as added (not removed) in this incremental hash set layer.
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.Count*
+  implements:
+  - System.Collections.Generic.IReadOnlyCollection{{T}}.Count
+  nameWithType.vb: IncrementalHashSet(Of T).Count
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Count
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.IsEmpty
+  commentId: P:Metalama.Framework.Options.IncrementalHashSet`1.IsEmpty
+  id: IsEmpty
+  parent: Metalama.Framework.Options.IncrementalHashSet`1
+  langs:
+  - csharp
+  - vb
+  name: IsEmpty
+  nameWithType: IncrementalHashSet<T>.IsEmpty
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.IsEmpty
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Options
+  summary: Gets a value indicating whether this collection layer is empty.
+  example: []
+  syntax:
+    content: public bool IsEmpty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the collection layer has no items marked as added; otherwise, <code>false</code>.
+    content.vb: Public ReadOnly Property IsEmpty As Boolean
+  overload: Metalama.Framework.Options.IncrementalHashSet`1.IsEmpty*
+  nameWithType.vb: IncrementalHashSet(Of T).IsEmpty
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).IsEmpty
+references:
+- uid: Metalama.Framework.Options.IIncrementalObject
+  commentId: T:Metalama.Framework.Options.IIncrementalObject
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IIncrementalObject.html
+  name: IIncrementalObject
+  nameWithType: IIncrementalObject
+  fullName: Metalama.Framework.Options.IIncrementalObject
+- uid: Metalama.Framework.Options.IHierarchicalOptions
+  commentId: T:Metalama.Framework.Options.IHierarchicalOptions
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IHierarchicalOptions.html
+  name: IHierarchicalOptions
+  nameWithType: IHierarchicalOptions
+  fullName: Metalama.Framework.Options.IHierarchicalOptions
+- uid: Metalama.Framework.Options.IncrementalKeyedCollection`2
+  commentId: T:Metalama.Framework.Options.IncrementalKeyedCollection`2
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalKeyedCollection-2.html
+  name: IncrementalKeyedCollection<TKey, TValue>
+  nameWithType: IncrementalKeyedCollection<TKey, TValue>
+  fullName: Metalama.Framework.Options.IncrementalKeyedCollection<TKey, TValue>
+  nameWithType.vb: IncrementalKeyedCollection(Of TKey, TValue)
+  fullName.vb: Metalama.Framework.Options.IncrementalKeyedCollection(Of TKey, TValue)
+  name.vb: IncrementalKeyedCollection(Of TKey, TValue)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalKeyedCollection`2
+    name: IncrementalKeyedCollection
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalKeyedCollection-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalKeyedCollection`2
+    name: IncrementalKeyedCollection
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalKeyedCollection-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Metalama.Framework.Options.IHierarchicalOptions`1
+  commentId: T:Metalama.Framework.Options.IHierarchicalOptions`1
+  isExternal: true
+  href: Metalama.Framework.Options.IHierarchicalOptions-1.html
+  name: IHierarchicalOptions<T>
+  nameWithType: IHierarchicalOptions<T>
+  fullName: Metalama.Framework.Options.IHierarchicalOptions<T>
+  nameWithType.vb: IHierarchicalOptions(Of T)
+  fullName.vb: Metalama.Framework.Options.IHierarchicalOptions(Of T)
+  name.vb: IHierarchicalOptions(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IHierarchicalOptions`1
+    name: IHierarchicalOptions
+    isExternal: true
+    href: Metalama.Framework.Options.IHierarchicalOptions-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Options.IHierarchicalOptions`1
+    name: IHierarchicalOptions
+    isExternal: true
+    href: Metalama.Framework.Options.IHierarchicalOptions-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Add.html#Metalama_Framework_Options_IncrementalHashSet_1_Add__0_
+  name: Add(T)
+  nameWithType: IncrementalHashSet<T>.Add(T)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Add(T)
+  nameWithType.vb: IncrementalHashSet(Of T).Add(T)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Add(T)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.Add.html#Metalama_Framework_Options_IncrementalHashSet_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.Add.html#Metalama_Framework_Options_IncrementalHashSet_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Remove.html#Metalama_Framework_Options_IncrementalHashSet_1_Remove__0_
+  name: Remove(T)
+  nameWithType: IncrementalHashSet<T>.Remove(T)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Remove(T)
+  nameWithType.vb: IncrementalHashSet(Of T).Remove(T)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Remove(T)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.Remove.html#Metalama_Framework_Options_IncrementalHashSet_1_Remove__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.Remove.html#Metalama_Framework_Options_IncrementalHashSet_1_Remove__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet.Clear``1
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet.Clear``1
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet.Clear.html#Metalama_Framework_Options_IncrementalHashSet_Clear__1
+  name: Clear<T>()
+  nameWithType: IncrementalHashSet.Clear<T>()
+  fullName: Metalama.Framework.Options.IncrementalHashSet.Clear<T>()
+  nameWithType.vb: IncrementalHashSet.Clear(Of T)()
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet.Clear(Of T)()
+  name.vb: Clear(Of T)()
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalHashSet.Clear``1
+    name: Clear
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet.Clear.html#Metalama_Framework_Options_IncrementalHashSet_Clear__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalHashSet.Clear``1
+    name: Clear
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet.Clear.html#Metalama_Framework_Options_IncrementalHashSet_Clear__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1
+  commentId: T:Metalama.Framework.Options.IncrementalHashSet`1
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  name: IncrementalHashSet<T>
+  nameWithType: IncrementalHashSet<T>
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>
+  nameWithType.vb: IncrementalHashSet(Of T)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T)
+  name.vb: IncrementalHashSet(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.ApplyChanges.html#Metalama_Framework_Options_IncrementalHashSet_1_ApplyChanges_Metalama_Framework_Options_IncrementalHashSet__0__Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges(IncrementalHashSet<T>, in ApplyChangesContext)
+  nameWithType: IncrementalHashSet<T>.ApplyChanges(IncrementalHashSet<T>, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet<T>, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalHashSet(Of T).ApplyChanges(IncrementalHashSet(Of T), ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).ApplyChanges(Metalama.Framework.Options.IncrementalHashSet(Of T), Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(IncrementalHashSet(Of T), ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.ApplyChanges.html#Metalama_Framework_Options_IncrementalHashSet_1_ApplyChanges_Metalama_Framework_Options_IncrementalHashSet__0__Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.ApplyChanges.html#Metalama_Framework_Options_IncrementalHashSet_1_ApplyChanges_Metalama_Framework_Options_IncrementalHashSet__0__Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options
+  commentId: N:Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Options
+  nameWithType: Metalama.Framework.Options
+  fullName: Metalama.Framework.Options
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Options
+    name: Options
+    isExternal: true
+    href: Metalama.Framework.Options.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.IReadOnlyCollection{{T}}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Metalama.Framework.Serialization.ICompileTimeSerializable
+  commentId: T:Metalama.Framework.Serialization.ICompileTimeSerializable
+  parent: Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.Framework.Serialization.ICompileTimeSerializable.html
+  name: ICompileTimeSerializable
+  nameWithType: ICompileTimeSerializable
+  fullName: Metalama.Framework.Serialization.ICompileTimeSerializable
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Options.IncrementalHashSet{{T}},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IncrementalHashSet{{T}}}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IncrementalHashSet<T>>(IncrementalHashSet<T>, Func<IncrementalHashSet<T>, IEnumerable<IncrementalHashSet<T>>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IncrementalHashSet<T>>(IncrementalHashSet<T>, Func<IncrementalHashSet<T>, IEnumerable<IncrementalHashSet<T>>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Options.IncrementalHashSet<T>>(Metalama.Framework.Options.IncrementalHashSet<T>, System.Func<Metalama.Framework.Options.IncrementalHashSet<T>, System.Collections.Generic.IEnumerable<Metalama.Framework.Options.IncrementalHashSet<T>>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IncrementalHashSet(Of T))(IncrementalHashSet(Of T), Func(Of IncrementalHashSet(Of T), IEnumerable(Of IncrementalHashSet(Of T))), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Options.IncrementalHashSet(Of T))(Metalama.Framework.Options.IncrementalHashSet(Of T), System.Func(Of Metalama.Framework.Options.IncrementalHashSet(Of T), System.Collections.Generic.IEnumerable(Of Metalama.Framework.Options.IncrementalHashSet(Of T))), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IncrementalHashSet(Of T))(IncrementalHashSet(Of T), Func(Of IncrementalHashSet(Of T), IEnumerable(Of IncrementalHashSet(Of T))), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Options.IncrementalHashSet{`0},System.Func{Metalama.Framework.Options.IncrementalHashSet{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IncrementalHashSet{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Options.IncrementalHashSet{`0},System.Func{Metalama.Framework.Options.IncrementalHashSet{`0},System.Collections.Generic.IEnumerable{Metalama.Framework.Options.IncrementalHashSet{`0}}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IncrementalHashSet{{T}},Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IncrementalObjectExtensions
+  definition: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges<IncrementalHashSet<T>>(IncrementalHashSet<T>, IncrementalHashSet<T>, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChanges<IncrementalHashSet<T>>(IncrementalHashSet<T>, IncrementalHashSet<T>, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges<Metalama.Framework.Options.IncrementalHashSet<T>>(Metalama.Framework.Options.IncrementalHashSet<T>, Metalama.Framework.Options.IncrementalHashSet<T>, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChanges(Of IncrementalHashSet(Of T))(IncrementalHashSet(Of T), IncrementalHashSet(Of T), ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges(Of Metalama.Framework.Options.IncrementalHashSet(Of T))(Metalama.Framework.Options.IncrementalHashSet(Of T), Metalama.Framework.Options.IncrementalHashSet(Of T), Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(Of IncrementalHashSet(Of T))(IncrementalHashSet(Of T), IncrementalHashSet(Of T), ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IncrementalHashSet{{T}},Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  parent: Metalama.Framework.Options.IncrementalObjectExtensions
+  definition: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChangesSafe<IncrementalHashSet<T>>(IncrementalHashSet<T>, IncrementalHashSet<T>, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChangesSafe<IncrementalHashSet<T>>(IncrementalHashSet<T>, IncrementalHashSet<T>, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe<Metalama.Framework.Options.IncrementalHashSet<T>>(Metalama.Framework.Options.IncrementalHashSet<T>, Metalama.Framework.Options.IncrementalHashSet<T>, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChangesSafe(Of IncrementalHashSet(Of T))(IncrementalHashSet(Of T), IncrementalHashSet(Of T), ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe(Of Metalama.Framework.Options.IncrementalHashSet(Of T))(Metalama.Framework.Options.IncrementalHashSet(Of T), Metalama.Framework.Options.IncrementalHashSet(Of T), Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChangesSafe(Of IncrementalHashSet(Of T))(IncrementalHashSet(Of T), IncrementalHashSet(Of T), ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.IncrementalHashSet{`0},Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.IncrementalHashSet`1
+    name: IncrementalHashSet
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalHashSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{`0}.Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  name: Cache<T>(IEnumerable<T>)
+  nameWithType: EnumerableExtensions.Cache<T>(IEnumerable<T>)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache<T>(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: EnumerableExtensions.Cache(Of T)(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Cache(Of T)(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{`0})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{`0})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{`0}.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{{T},System.Collections.Generic.IEnumerable{{T}}},System.Collections.Generic.IEqualityComparer{{T}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(IEnumerable<T>, Func<T, IEnumerable<T>>, IEqualityComparer<T>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(IEnumerable<T>, Func<T, IEnumerable<T>>, IEqualityComparer<T>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, System.Collections.Generic.IEnumerable<T>>, System.Collections.Generic.IEqualityComparer<T>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(IEnumerable(Of T), Func(Of T, IEnumerable(Of T)), IEqualityComparer(Of T), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), System.Collections.Generic.IEqualityComparer(Of T), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(IEnumerable(Of T), Func(Of T, IEnumerable(Of T)), IEqualityComparer(Of T), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{`0},System.Func{`0,System.Collections.Generic.IEnumerable{`0}},System.Collections.Generic.IEqualityComparer{`0},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{`0},System.Func{`0,System.Collections.Generic.IEnumerable{`0}},System.Collections.Generic.IEqualityComparer{`0},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{`0}.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  parent: Metalama.Framework.RunTime.RunTimeAspectHelper
+  definition: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  name: Buffer<T>(IEnumerable<T>)
+  nameWithType: RunTimeAspectHelper.Buffer<T>(IEnumerable<T>)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer<T>(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RunTimeAspectHelper.Buffer(Of T)(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Buffer(Of T)(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{`0})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{`0})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable.Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  parent: Metalama.Framework.RunTime.RunTimeAspectHelper
+  definition: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  name: Buffer(IEnumerable)
+  nameWithType: RunTimeAspectHelper.Buffer(IEnumerable)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Metalama.Framework.Serialization
+  commentId: N:Metalama.Framework.Serialization
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Serialization
+  nameWithType: Metalama.Framework.Serialization
+  fullName: Metalama.Framework.Serialization
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Serialization
+    name: Serialization
+    isExternal: true
+    href: Metalama.Framework.Serialization.html
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges<T>(T, T, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChanges<T>(T, T, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges<T>(T, T, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChanges(Of T)(T, T, ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges(Of T)(T, T, Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChanges(Of T)(T, T, ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChanges
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChanges.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChanges__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalObjectExtensions
+  commentId: T:Metalama.Framework.Options.IncrementalObjectExtensions
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.html
+  name: IncrementalObjectExtensions
+  nameWithType: IncrementalObjectExtensions
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions
+- uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  commentId: M:Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChangesSafe<T>(T, T, in ApplyChangesContext)
+  nameWithType: IncrementalObjectExtensions.ApplyChangesSafe<T>(T, T, in ApplyChangesContext)
+  fullName: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe<T>(T, T, in Metalama.Framework.Options.ApplyChangesContext)
+  nameWithType.vb: IncrementalObjectExtensions.ApplyChangesSafe(Of T)(T, T, ApplyChangesContext)
+  fullName.vb: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe(Of T)(T, T, Metalama.Framework.Options.ApplyChangesContext)
+  name.vb: ApplyChangesSafe(Of T)(T, T, ApplyChangesContext)
+  spec.csharp:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe``1(``0,``0,Metalama.Framework.Options.ApplyChangesContext@)
+    name: ApplyChangesSafe
+    isExternal: true
+    href: Metalama.Framework.Options.IncrementalObjectExtensions.ApplyChangesSafe.html#Metalama_Framework_Options_IncrementalObjectExtensions_ApplyChangesSafe__1___0___0_Metalama_Framework_Options_ApplyChangesContext__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Options.ApplyChangesContext
+    name: ApplyChangesContext
+    isExternal: true
+    href: Metalama.Framework.Options.ApplyChangesContext.html
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  name: Cache<T>(IEnumerable<T>)
+  nameWithType: EnumerableExtensions.Cache<T>(IEnumerable<T>)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache<T>(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: EnumerableExtensions.Cache(Of T)(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Cache(Of T)(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache``1(System.Collections.Generic.IEnumerable{``0})
+    name: Cache
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.Cache.html#Metalama_Framework_Code_Collections_EnumerableExtensions_Cache__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(IEnumerable<T>, Func<T, IEnumerable<T>>, IEqualityComparer<T>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(IEnumerable<T>, Func<T, IEnumerable<T>>, IEqualityComparer<T>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, System.Collections.Generic.IEnumerable<T>>, System.Collections.Generic.IEqualityComparer<T>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(IEnumerable(Of T), Func(Of T, IEnumerable(Of T)), IEqualityComparer(Of T), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), System.Collections.Generic.IEqualityComparer(Of T), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(IEnumerable(Of T), Func(Of T, IEnumerable(Of T)), IEqualityComparer(Of T), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_IEnumerable___0___System_Collections_Generic_IEqualityComparer___0__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEqualityComparer`1
+    name: IEqualityComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iequalitycomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  name: Buffer<T>(IEnumerable<T>)
+  nameWithType: RunTimeAspectHelper.Buffer<T>(IEnumerable<T>)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer<T>(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RunTimeAspectHelper.Buffer(Of T)(IEnumerable(Of T))
+  fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Buffer(Of T)(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer``1(System.Collections.Generic.IEnumerable{``0})
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer__1_System_Collections_Generic_IEnumerable___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+  commentId: T:Metalama.Framework.RunTime.RunTimeAspectHelper
+  parent: Metalama.Framework.RunTime
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  name: RunTimeAspectHelper
+  nameWithType: RunTimeAspectHelper
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  name: Buffer(IEnumerable)
+  nameWithType: RunTimeAspectHelper.Buffer(IEnumerable)
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(System.Collections.IEnumerable)
+    name: Buffer
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer.html#Metalama_Framework_RunTime_RunTimeAspectHelper_Buffer_System_Collections_IEnumerable_
+  - name: (
+  - uid: System.Collections.IEnumerable
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  - name: )
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.RunTime
+  commentId: N:Metalama.Framework.RunTime
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.RunTime
+  nameWithType: Metalama.Framework.RunTime
+  fullName: Metalama.Framework.RunTime
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.RunTime
+    name: RunTime
+    isExternal: true
+    href: Metalama.Framework.RunTime.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.RunTime
+    name: RunTime
+    isExternal: true
+    href: Metalama.Framework.RunTime.html
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.#ctor*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.#ctor
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.-ctor.html#Metalama_Framework_Options_IncrementalHashSet_1__ctor_System_Collections_Immutable_ImmutableDictionary__0_System_Boolean__System_Boolean_
+  name: IncrementalHashSet
+  nameWithType: IncrementalHashSet<T>.IncrementalHashSet
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.IncrementalHashSet
+  nameWithType.vb: IncrementalHashSet(Of T).New
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).New
+  name.vb: New
+- uid: System.Collections.Immutable.ImmutableDictionary{{T},System.Boolean}
+  commentId: T:System.Collections.Immutable.ImmutableDictionary{`0,System.Boolean}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  name: ImmutableDictionary<T, bool>
+  nameWithType: ImmutableDictionary<T, bool>
+  fullName: System.Collections.Immutable.ImmutableDictionary<T, bool>
+  nameWithType.vb: ImmutableDictionary(Of T, Boolean)
+  fullName.vb: System.Collections.Immutable.ImmutableDictionary(Of T, Boolean)
+  name.vb: ImmutableDictionary(Of T, Boolean)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Immutable.ImmutableDictionary`2
+  commentId: T:System.Collections.Immutable.ImmutableDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  name: ImmutableDictionary<TKey, TValue>
+  nameWithType: ImmutableDictionary<TKey, TValue>
+  fullName: System.Collections.Immutable.ImmutableDictionary<TKey, TValue>
+  nameWithType.vb: ImmutableDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Immutable.ImmutableDictionary(Of TKey, TValue)
+  name.vb: ImmutableDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Create*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.Create
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Create.html#Metalama_Framework_Options_IncrementalHashSet_1_Create_System_Collections_Immutable_ImmutableDictionary__0_System_Boolean__System_Boolean_
+  name: Create
+  nameWithType: IncrementalHashSet<T>.Create
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Create
+  nameWithType.vb: IncrementalHashSet(Of T).Create
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Create
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Add*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.Add
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Add.html#Metalama_Framework_Options_IncrementalHashSet_1_Add__0_
+  name: Add
+  nameWithType: IncrementalHashSet<T>.Add
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Add
+  nameWithType.vb: IncrementalHashSet(Of T).Add
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Add
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Remove*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.Remove
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Remove.html#Metalama_Framework_Options_IncrementalHashSet_1_Remove__0_
+  name: Remove
+  nameWithType: IncrementalHashSet<T>.Remove
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Remove
+  nameWithType.vb: IncrementalHashSet(Of T).Remove
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Remove
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.GetEnumerator*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.GetEnumerator
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.GetEnumerator.html#Metalama_Framework_Options_IncrementalHashSet_1_GetEnumerator
+  name: GetEnumerator
+  nameWithType: IncrementalHashSet<T>.GetEnumerator
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.GetEnumerator
+  nameWithType.vb: IncrementalHashSet(Of T).GetEnumerator
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{{T}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{`0}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{{T}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{`0}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{`0}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{{T}}
+  commentId: T:System.Collections.Generic.IEnumerator{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.ApplyChanges
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.ApplyChanges.html#Metalama_Framework_Options_IncrementalHashSet_1_ApplyChanges_Metalama_Framework_Options_IncrementalHashSet__0__Metalama_Framework_Options_ApplyChangesContext__
+  name: ApplyChanges
+  nameWithType: IncrementalHashSet<T>.ApplyChanges
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.ApplyChanges
+  nameWithType.vb: IncrementalHashSet(Of T).ApplyChanges
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).ApplyChanges
+- uid: Metalama.Framework.Options.ApplyChangesContext
+  commentId: T:Metalama.Framework.Options.ApplyChangesContext
+  parent: Metalama.Framework.Options
+  isExternal: true
+  href: Metalama.Framework.Options.ApplyChangesContext.html
+  name: ApplyChangesContext
+  nameWithType: ApplyChangesContext
+  fullName: Metalama.Framework.Options.ApplyChangesContext
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Empty*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.Empty
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Empty.html#Metalama_Framework_Options_IncrementalHashSet_1_Empty
+  name: Empty
+  nameWithType: IncrementalHashSet<T>.Empty
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Empty
+  nameWithType.vb: IncrementalHashSet(Of T).Empty
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Empty
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.Count*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.Count
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.Count.html#Metalama_Framework_Options_IncrementalHashSet_1_Count
+  name: Count
+  nameWithType: IncrementalHashSet<T>.Count
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.Count
+  nameWithType.vb: IncrementalHashSet(Of T).Count
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).Count
+- uid: System.Collections.Generic.IReadOnlyCollection{{T}}.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection{`0}.Count
+  parent: System.Collections.Generic.IReadOnlyCollection{{T}}
+  definition: System.Collections.Generic.IReadOnlyCollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<T>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>.Count
+  nameWithType.vb: IReadOnlyCollection(Of T).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T).Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IReadOnlyCollection`1.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<T>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>.Count
+  nameWithType.vb: IReadOnlyCollection(Of T).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T).Count
+- uid: Metalama.Framework.Options.IncrementalHashSet`1.IsEmpty*
+  commentId: Overload:Metalama.Framework.Options.IncrementalHashSet`1.IsEmpty
+  isExternal: true
+  href: Metalama.Framework.Options.IncrementalHashSet-1.IsEmpty.html#Metalama_Framework_Options_IncrementalHashSet_1_IsEmpty
+  name: IsEmpty
+  nameWithType: IncrementalHashSet<T>.IsEmpty
+  fullName: Metalama.Framework.Options.IncrementalHashSet<T>.IsEmpty
+  nameWithType.vb: IncrementalHashSet(Of T).IsEmpty
+  fullName.vb: Metalama.Framework.Options.IncrementalHashSet(Of T).IsEmpty
+memberLayout: SeparatePages

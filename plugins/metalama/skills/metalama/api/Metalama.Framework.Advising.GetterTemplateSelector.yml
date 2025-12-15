@@ -1,0 +1,886 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.GetterTemplateSelector
+  commentId: T:Metalama.Framework.Advising.GetterTemplateSelector
+  id: GetterTemplateSelector
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.GetterTemplateSelector.#ctor(System.String,System.String,System.String,System.Boolean)
+  - Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  - Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  - Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  - Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  - Metalama.Framework.Advising.GetterTemplateSelector.op_Implicit(System.String)~Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: GetterTemplateSelector
+  nameWithType: GetterTemplateSelector
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Specifies which T# templates to use when overriding property or field getters, enabling automatic selection
+
+    of specialized templates for iterator getters.
+  remarks: >-
+    <p>
+        When overriding field or property accessors with <xref href="Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.IFieldOrProperty%7d%2cMetalama.Framework.Advising.GetterTemplateSelector%40%2cSystem.String%2cSystem.Object%2cSystem.Object)" data-throw-if-not-resolved="false"></xref>,
+        you can provide different templates for properties that return <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref>.
+        Template selection depends on the <xref href="Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> flag.
+        </p>
+    <p>
+      <b>Default behavior</b> (<xref href="Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is <code>false</code>): Templates are selected based
+        on how the getter is <i>implemented</i>:
+        <ul><li><xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref>/<xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref>: Getters using <code>yield</code> statements</li><li><xref href="Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate" data-throw-if-not-resolved="false"></xref>: All other getters (required if you want to override)</li></ul></p>
+    <p>
+      <b>When <xref href="Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> is <code>true</code></b>: Iterator templates are selected based on
+        the property's <i>return type</i> (e.g., <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref>, <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref>), regardless of whether
+        the getter uses <code>yield</code> statements.
+        </p>
+    <p>
+        This type has an implicit conversion from <xref href="System.String" data-throw-if-not-resolved="false"></xref>, so if you only need a default template,
+        you can pass the template name directly without constructing a <xref href="Metalama.Framework.Advising.GetterTemplateSelector" data-throw-if-not-resolved="false"></xref>.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct GetterTemplateSelector
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure GetterTemplateSelector
+  seealso:
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)
+  - linkId: Metalama.Framework.Advising.MethodTemplateSelector
+    commentId: T:Metalama.Framework.Advising.MethodTemplateSelector
+  - linkId: Metalama.Framework.Aspects.TemplateAttribute
+    commentId: T:Metalama.Framework.Aspects.TemplateAttribute
+  - linkId: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+    commentId: T:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+  - linkType: HRef
+    linkId: '@overriding-fields-or-properties'
+    altText: '@overriding-fields-or-properties'
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.#ctor(System.String,System.String,System.String,System.Boolean)
+  commentId: M:Metalama.Framework.Advising.GetterTemplateSelector.#ctor(System.String,System.String,System.String,System.Boolean)
+  id: '#ctor(System.String,System.String,System.String,System.Boolean)'
+  parent: Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: GetterTemplateSelector(string, string?, string?, bool)
+  nameWithType: GetterTemplateSelector.GetterTemplateSelector(string, string?, string?, bool)
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.GetterTemplateSelector(string, string?, string?, bool)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Initializes a new instance of the <xref href="Metalama.Framework.Advising.GetterTemplateSelector" data-throw-if-not-resolved="false"></xref> struct by specifying the name of the template methods to be applied. The named passed to this
+
+    constructor must be the name of methods of the current aspect class, and these methods must be annotated with the <xref href="Metalama.Framework.Aspects.TemplateAttribute" data-throw-if-not-resolved="false"></xref> custom attribute.
+
+    You can define several templates by passing a value to optional parameters. The appropriate template will be automatically selected according to
+
+    the method to which the advice is applied. If several templates are eligible for a method, the template that is the last in the list of parameters is selected.
+  remarks: >-
+    Note that this type has also an implicit conversion from <xref href="System.String" data-throw-if-not-resolved="false"></xref>.
+
+    If you only want to specify a default template, you can pass a string, without calling the constructor.
+  example: []
+  syntax:
+    content: public GetterTemplateSelector(string defaultTemplate, string? enumerableTemplate = null, string? enumeratorTemplate = null, bool useEnumerableTemplateForAnyEnumerable = false)
+    parameters:
+    - id: defaultTemplate
+      type: System.String
+      description: Name of the template that must be applied if no other template is applicable. This parameter is required.
+    - id: enumerableTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to iterator methods returning an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerable" data-throw-if-not-resolved="false"></xref>.
+                    See <xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: enumeratorTemplate
+      type: System.String
+      description: >-
+        Name of the template that must be applied to an iterator method returning an an <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref>.
+                    See <xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref> for details.
+    - id: useEnumerableTemplateForAnyEnumerable
+      type: System.Boolean
+      description: >-
+        Indicates whether the <xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref>
+                    must be applied to all methods returning compatible return type (if set to <code>true</code>), instead of only to methods using the <code>yield</code> statement.
+                    See <xref href="Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable" data-throw-if-not-resolved="false"></xref> for details.
+    content.vb: Public Sub New(defaultTemplate As String, enumerableTemplate As String = Nothing, enumeratorTemplate As String = Nothing, useEnumerableTemplateForAnyEnumerable As Boolean = False)
+  overload: Metalama.Framework.Advising.GetterTemplateSelector.#ctor*
+  nameWithType.vb: GetterTemplateSelector.New(String, String, String, Boolean)
+  fullName.vb: Metalama.Framework.Advising.GetterTemplateSelector.New(String, String, String, Boolean)
+  name.vb: New(String, String, String, Boolean)
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.op_Implicit(System.String)~Metalama.Framework.Advising.GetterTemplateSelector
+  commentId: M:Metalama.Framework.Advising.GetterTemplateSelector.op_Implicit(System.String)~Metalama.Framework.Advising.GetterTemplateSelector
+  id: op_Implicit(System.String)~Metalama.Framework.Advising.GetterTemplateSelector
+  parent: Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: implicit operator GetterTemplateSelector(string?)
+  nameWithType: GetterTemplateSelector.implicit operator GetterTemplateSelector(string?)
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.implicit operator Metalama.Framework.Advising.GetterTemplateSelector(string?)
+  type: Operator
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Converts a <xref href="System.String" data-throw-if-not-resolved="false"></xref> to a new instance of the <xref href="Metalama.Framework.Advising.GetterTemplateSelector" data-throw-if-not-resolved="false"></xref> where the <xref href="Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate" data-throw-if-not-resolved="false"></xref> property is
+
+    set to this string.
+  example: []
+  syntax:
+    content: public static implicit operator GetterTemplateSelector(string? defaultTemplate)
+    parameters:
+    - id: defaultTemplate
+      type: System.String
+      description: Name of the default template.
+    return:
+      type: Metalama.Framework.Advising.GetterTemplateSelector
+      description: A new <xref href="Metalama.Framework.Advising.GetterTemplateSelector" data-throw-if-not-resolved="false"></xref> with the specified default template.
+    content.vb: Public Shared Widening Operator CType(defaultTemplate As String) As GetterTemplateSelector
+  overload: Metalama.Framework.Advising.GetterTemplateSelector.op_Implicit*
+  nameWithType.vb: GetterTemplateSelector.CType(String)
+  fullName.vb: Metalama.Framework.Advising.GetterTemplateSelector.CType(String)
+  name.vb: CType(String)
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  id: DefaultTemplate
+  parent: Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: DefaultTemplate
+  nameWithType: GetterTemplateSelector.DefaultTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the name of the template that must be applied if no other template is applicable. This property is required if you want to
+
+    override the getter.
+  example: []
+  syntax:
+    content: public string? DefaultTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DefaultTemplate As String
+  overload: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate*
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  id: EnumerableTemplate
+  parent: Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: EnumerableTemplate
+  nameWithType: GetterTemplateSelector.EnumerableTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Gets the name of the template that must be applied to iterator getters returning an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerable" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public string? EnumerableTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property EnumerableTemplate As String
+  overload: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate*
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  id: EnumeratorTemplate
+  parent: Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: EnumeratorTemplate
+  nameWithType: GetterTemplateSelector.EnumeratorTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: Gets the name of the template that must be applied to iterator getters returning an <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref> or <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public string? EnumeratorTemplate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property EnumeratorTemplate As String
+  overload: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate*
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  id: UseEnumerableTemplateForAnyEnumerable
+  parent: Metalama.Framework.Advising.GetterTemplateSelector
+  langs:
+  - csharp
+  - vb
+  name: UseEnumerableTemplateForAnyEnumerable
+  nameWithType: GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a value indicating whether the <xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate" data-throw-if-not-resolved="false"></xref>
+
+    must be applied to all methods returning compatible return type, instead of only to methods using the <code>yield</code> statement.
+  example: []
+  syntax:
+    content: public bool UseEnumerableTemplateForAnyEnumerable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property UseEnumerableTemplateForAnyEnumerable As Boolean
+  overload: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable*
+references:
+- uid: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors.html#Metalama_Framework_Aspects_AdviserExtensions_OverrideAccessors_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IFieldOrProperty__Metalama_Framework_Advising_GetterTemplateSelector__System_String_System_Object_System_Object_
+  name: OverrideAccessors(IAdviser<IFieldOrProperty>, in GetterTemplateSelector, string, object, object)
+  nameWithType: AdviserExtensions.OverrideAccessors(IAdviser<IFieldOrProperty>, in GetterTemplateSelector, string, object, object)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IFieldOrProperty>, in Metalama.Framework.Advising.GetterTemplateSelector, string, object, object)
+  nameWithType.vb: AdviserExtensions.OverrideAccessors(IAdviser(Of IFieldOrProperty), GetterTemplateSelector, String, Object, Object)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IFieldOrProperty), Metalama.Framework.Advising.GetterTemplateSelector, String, Object, Object)
+  name.vb: OverrideAccessors(IAdviser(Of IFieldOrProperty), GetterTemplateSelector, String, Object, Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)
+    name: OverrideAccessors
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors.html#Metalama_Framework_Aspects_AdviserExtensions_OverrideAccessors_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IFieldOrProperty__Metalama_Framework_Advising_GetterTemplateSelector__System_String_System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IFieldOrProperty
+    name: IFieldOrProperty
+    isExternal: true
+    href: Metalama.Framework.Code.IFieldOrProperty.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: in
+  - name: " "
+  - uid: Metalama.Framework.Advising.GetterTemplateSelector
+    name: GetterTemplateSelector
+    isExternal: true
+    href: Metalama.Framework.Advising.GetterTemplateSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)
+    name: OverrideAccessors
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.OverrideAccessors.html#Metalama_Framework_Aspects_AdviserExtensions_OverrideAccessors_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IFieldOrProperty__Metalama_Framework_Advising_GetterTemplateSelector__System_String_System_Object_System_Object_
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser`1
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IFieldOrProperty
+    name: IFieldOrProperty
+    isExternal: true
+    href: Metalama.Framework.Code.IFieldOrProperty.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.GetterTemplateSelector
+    name: GetterTemplateSelector
+    isExternal: true
+    href: Metalama.Framework.Advising.GetterTemplateSelector.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Advising.MethodTemplateSelector
+  commentId: T:Metalama.Framework.Advising.MethodTemplateSelector
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.MethodTemplateSelector.html
+  name: MethodTemplateSelector
+  nameWithType: MethodTemplateSelector
+  fullName: Metalama.Framework.Advising.MethodTemplateSelector
+- uid: Metalama.Framework.Aspects.TemplateAttribute
+  commentId: T:Metalama.Framework.Aspects.TemplateAttribute
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.TemplateAttribute.html
+  name: TemplateAttribute
+  nameWithType: TemplateAttribute
+  fullName: Metalama.Framework.Aspects.TemplateAttribute
+- uid: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+  commentId: T:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+  isExternal: true
+  href: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.html
+  name: OverrideFieldOrPropertyAspect
+  nameWithType: OverrideFieldOrPropertyAspect
+  fullName: Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable.html#Metalama_Framework_Advising_GetterTemplateSelector_UseEnumerableTemplateForAnyEnumerable
+  name: UseEnumerableTemplateForAnyEnumerable
+  nameWithType: GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate.html#Metalama_Framework_Advising_GetterTemplateSelector_EnumerableTemplate
+  name: EnumerableTemplate
+  nameWithType: GetterTemplateSelector.EnumerableTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate.html#Metalama_Framework_Advising_GetterTemplateSelector_EnumeratorTemplate
+  name: EnumeratorTemplate
+  nameWithType: GetterTemplateSelector.EnumeratorTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  commentId: P:Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate.html#Metalama_Framework_Advising_GetterTemplateSelector_DefaultTemplate
+  name: DefaultTemplate
+  nameWithType: GetterTemplateSelector.DefaultTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Framework.Advising.GetterTemplateSelector
+  commentId: T:Metalama.Framework.Advising.GetterTemplateSelector
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.html
+  name: GetterTemplateSelector
+  nameWithType: GetterTemplateSelector
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector
+- uid: Metalama.Framework.Advising
+  commentId: N:Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Advising
+  nameWithType: Metalama.Framework.Advising
+  fullName: Metalama.Framework.Advising
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Advising
+    name: Advising
+    isExternal: true
+    href: Metalama.Framework.Advising.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.#ctor*
+  commentId: Overload:Metalama.Framework.Advising.GetterTemplateSelector.#ctor
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.-ctor.html#Metalama_Framework_Advising_GetterTemplateSelector__ctor_System_String_System_String_System_String_System_Boolean_
+  name: GetterTemplateSelector
+  nameWithType: GetterTemplateSelector.GetterTemplateSelector
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.GetterTemplateSelector
+  nameWithType.vb: GetterTemplateSelector.New
+  fullName.vb: Metalama.Framework.Advising.GetterTemplateSelector.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.op_Implicit*
+  commentId: Overload:Metalama.Framework.Advising.GetterTemplateSelector.op_Implicit
+  name: implicit operator
+  nameWithType: GetterTemplateSelector.implicit operator
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.implicit operator
+  nameWithType.vb: GetterTemplateSelector.CType
+  fullName.vb: Metalama.Framework.Advising.GetterTemplateSelector.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate*
+  commentId: Overload:Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate.html#Metalama_Framework_Advising_GetterTemplateSelector_DefaultTemplate
+  name: DefaultTemplate
+  nameWithType: GetterTemplateSelector.DefaultTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.DefaultTemplate
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate*
+  commentId: Overload:Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate.html#Metalama_Framework_Advising_GetterTemplateSelector_EnumerableTemplate
+  name: EnumerableTemplate
+  nameWithType: GetterTemplateSelector.EnumerableTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.EnumerableTemplate
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate*
+  commentId: Overload:Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate.html#Metalama_Framework_Advising_GetterTemplateSelector_EnumeratorTemplate
+  name: EnumeratorTemplate
+  nameWithType: GetterTemplateSelector.EnumeratorTemplate
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.EnumeratorTemplate
+- uid: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable*
+  commentId: Overload:Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  isExternal: true
+  href: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable.html#Metalama_Framework_Advising_GetterTemplateSelector_UseEnumerableTemplateForAnyEnumerable
+  name: UseEnumerableTemplateForAnyEnumerable
+  nameWithType: GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+  fullName: Metalama.Framework.Advising.GetterTemplateSelector.UseEnumerableTemplateForAnyEnumerable
+memberLayout: SeparatePages

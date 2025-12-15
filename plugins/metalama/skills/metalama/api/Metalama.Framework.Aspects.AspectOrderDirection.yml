@@ -1,0 +1,148 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.AspectOrderDirection
+  commentId: T:Metalama.Framework.Aspects.AspectOrderDirection
+  id: AspectOrderDirection
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.AspectOrderDirection.CompileTime
+  - Metalama.Framework.Aspects.AspectOrderDirection.RunTime
+  langs:
+  - csharp
+  - vb
+  name: AspectOrderDirection
+  nameWithType: AspectOrderDirection
+  fullName: Metalama.Framework.Aspects.AspectOrderDirection
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Specifies the direction in which aspect types or aspect layers are ordered in <xref href="Metalama.Framework.Aspects.AspectOrderAttribute" data-throw-if-not-resolved="false"></xref>.
+
+    Choose between run-time execution order (outside-in) or compile-time application order (inside-out).
+  remarks: >-
+    <p>
+        Metalama follows the "matryoshka doll" model: source code is the innermost piece, and aspects are layered around it.
+        At build time, aspects are applied from the inside out. At runtime, aspects execute from the outside in.
+        Therefore, build-time order and run-time order are opposite.
+        </p>
+  example: []
+  syntax:
+    content: public enum AspectOrderDirection
+    content.vb: Public Enum AspectOrderDirection
+  seealso:
+  - linkId: Metalama.Framework.Aspects.AspectOrderAttribute
+    commentId: T:Metalama.Framework.Aspects.AspectOrderAttribute
+  - linkType: HRef
+    linkId: '@ordering-aspects'
+    altText: '@ordering-aspects'
+- uid: Metalama.Framework.Aspects.AspectOrderDirection.RunTime
+  commentId: F:Metalama.Framework.Aspects.AspectOrderDirection.RunTime
+  id: RunTime
+  parent: Metalama.Framework.Aspects.AspectOrderDirection
+  langs:
+  - csharp
+  - vb
+  name: RunTime
+  nameWithType: AspectOrderDirection.RunTime
+  fullName: Metalama.Framework.Aspects.AspectOrderDirection.RunTime
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Specifies the run-time execution order (outside-in), which is more intuitive to aspect users.
+
+    The first aspect in the list executes first at runtime.
+
+    Prior to Metalama 2024.2, this was the only available option.
+  example:
+  - >-
+    <code>[assembly: AspectOrder(AspectOrderDirection.RunTime, typeof(Cache), typeof(Logging), typeof(Retry))]</code>
+        means Cache executes first at runtime, then Logging, then Retry.
+  syntax:
+    content: RunTime = 0
+    return:
+      type: Metalama.Framework.Aspects.AspectOrderDirection
+- uid: Metalama.Framework.Aspects.AspectOrderDirection.CompileTime
+  commentId: F:Metalama.Framework.Aspects.AspectOrderDirection.CompileTime
+  id: CompileTime
+  parent: Metalama.Framework.Aspects.AspectOrderDirection
+  langs:
+  - csharp
+  - vb
+  name: CompileTime
+  nameWithType: AspectOrderDirection.CompileTime
+  fullName: Metalama.Framework.Aspects.AspectOrderDirection.CompileTime
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Specifies the compile-time application order (inside-out), which is more intuitive to aspect authors.
+
+    The first aspect in the list is applied first at compile time (closest to the source code).
+  example:
+  - >-
+    <code>[assembly: AspectOrder(AspectOrderDirection.CompileTime, typeof(Retry), typeof(Logging), typeof(Cache))]</code>
+        means Retry is applied first (innermost), then Logging, then Cache (outermost). At run-time, the aspects are typically executed in inverse 
+        order, i.e. first Cache, then Logging, then Retry.
+  syntax:
+    content: CompileTime = 1
+    return:
+      type: Metalama.Framework.Aspects.AspectOrderDirection
+references:
+- uid: Metalama.Framework.Aspects.AspectOrderAttribute
+  commentId: T:Metalama.Framework.Aspects.AspectOrderAttribute
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectOrderAttribute.html
+  name: AspectOrderAttribute
+  nameWithType: AspectOrderAttribute
+  fullName: Metalama.Framework.Aspects.AspectOrderAttribute
+- uid: Metalama.Framework.Aspects
+  commentId: N:Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Aspects
+  nameWithType: Metalama.Framework.Aspects
+  fullName: Metalama.Framework.Aspects
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Aspects
+    name: Aspects
+    isExternal: true
+    href: Metalama.Framework.Aspects.html
+- uid: Metalama.Framework.Aspects.AspectOrderDirection
+  commentId: T:Metalama.Framework.Aspects.AspectOrderDirection
+  parent: Metalama.Framework.Aspects
+  isExternal: true
+  href: Metalama.Framework.Aspects.AspectOrderDirection.html
+  name: AspectOrderDirection
+  nameWithType: AspectOrderDirection
+  fullName: Metalama.Framework.Aspects.AspectOrderDirection
+memberLayout: SeparatePages

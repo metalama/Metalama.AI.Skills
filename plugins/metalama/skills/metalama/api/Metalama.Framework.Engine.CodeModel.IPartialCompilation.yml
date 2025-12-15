@@ -1,0 +1,2386 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  commentId: T:Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  id: IPartialCompilation
+  parent: Metalama.Framework.Engine.CodeModel
+  children:
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  langs:
+  - csharp
+  - vb
+  name: IPartialCompilation
+  nameWithType: IPartialCompilation
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  type: Interface
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: >-
+    Represents a subset of a Roslyn <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref>, limited to specific syntax trees.
+
+    This interface provides an immutable view of the compilation that can be transformed by aspect weavers.
+  remarks: >-
+    <p>
+      <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> is the primary interface for manipulating compilations in <xref href="Metalama.Framework.Engine.AspectWeavers.IAspectWeaver" data-throw-if-not-resolved="false"></xref> implementations.
+        It wraps a Roslyn <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref> and provides methods to transform syntax trees.
+        </p>
+    <p>
+      <b>Compile-time vs design-time behavior:</b> At compile time, this always represents the complete compilation.
+        At design time (IDE), this represents only the inheritance closure of files that have been modified and need to be recompiled,
+        which is why the <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial" data-throw-if-not-resolved="false"></xref> property exists.
+        </p>
+    <p>
+        Key operations:
+        </p>
+    <ul><li>
+          <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList%7bMetalama.Compiler.SyntaxTreeTransformation%7d)" data-throw-if-not-resolved="false"></xref>: Apply syntax tree modifications (add, remove, replace).</li><li>
+          <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource%5b%5d)" data-throw-if-not-resolved="false"></xref>: Add managed resources to the compilation.</li></ul>
+    <p>
+        This interface is immutable. All modification methods return a new <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> instance.
+        </p>
+  example: []
+  syntax:
+    content: public interface IPartialCompilation
+    content.vb: Public Interface IPartialCompilation
+  seealso:
+  - linkId: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+    commentId: T:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  - linkId: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+    commentId: T:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  - linkType: HRef
+    linkId: '@aspect-weavers'
+    altText: '@aspect-weavers'
+  extensionMethods:
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.CodeModel.IPartialCompilation}},System.Boolean)
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Microsoft.CodeAnalysis.SyntaxTree[])
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  id: WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>?)
+  nameWithType: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>?)
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList<Metalama.Compiler.SyntaxTreeTransformation>?)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  syntax:
+    content: IPartialCompilation WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>? transformations = null)
+    parameters:
+    - id: transformations
+      type: System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation}
+    return:
+      type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    content.vb: Function WithSyntaxTreeTransformations(transformations As IReadOnlyList(Of SyntaxTreeTransformation) = Nothing) As IPartialCompilation
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations*
+  nameWithType.vb: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
+  fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList(Of Metalama.Compiler.SyntaxTreeTransformation))
+  name.vb: WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+  commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+  id: WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: WithAdditionalResources(params ManagedResource[])
+  nameWithType: IPartialCompilation.WithAdditionalResources(params ManagedResource[])
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(params Metalama.Compiler.ManagedResource[])
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  syntax:
+    content: IPartialCompilation WithAdditionalResources(params ManagedResource[] resources)
+    parameters:
+    - id: resources
+      type: Metalama.Compiler.ManagedResource[]
+    return:
+      type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    content.vb: Function WithAdditionalResources(ParamArray resources As ManagedResource()) As IPartialCompilation
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources*
+  nameWithType.vb: IPartialCompilation.WithAdditionalResources(ParamArray ManagedResource())
+  fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(ParamArray Metalama.Compiler.ManagedResource())
+  name.vb: WithAdditionalResources(ParamArray ManagedResource())
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation
+  id: Compilation
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: Compilation
+  nameWithType: IPartialCompilation.Compilation
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the underlying Roslyn <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: Compilation Compilation { get; }
+    parameters: []
+    return:
+      type: Microsoft.CodeAnalysis.Compilation
+    content.vb: ReadOnly Property Compilation As Compilation
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation*
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+  id: SyntaxTrees
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: SyntaxTrees
+  nameWithType: IPartialCompilation.SyntaxTrees
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the syntax trees in the current subset, keyed by file path.
+  example: []
+  syntax:
+    content: ImmutableDictionary<string, SyntaxTree> SyntaxTrees { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableDictionary{System.String,Microsoft.CodeAnalysis.SyntaxTree}
+    content.vb: ReadOnly Property SyntaxTrees As ImmutableDictionary(Of String, SyntaxTree)
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees*
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  id: IsPartial
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: IsPartial
+  nameWithType: IPartialCompilation.IsPartial
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: >-
+    Gets a value indicating whether this <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> represents a subset of the full compilation,
+
+    or the complete compilation.
+  example: []
+  syntax:
+    content: bool IsPartial { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <code>true</code> if this represents a partial view; <code>false</code> if it represents the complete compilation.
+    content.vb: ReadOnly Property IsPartial As Boolean
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial*
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+  id: Resources
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: Resources
+  nameWithType: IPartialCompilation.Resources
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the list of managed resources for the current compilation.
+  remarks: This property is only available at compile time, not at design time.
+  example: []
+  syntax:
+    content: ImmutableArray<ManagedResource> Resources { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Compiler.ManagedResource}
+    content.vb: ReadOnly Property Resources As ImmutableArray(Of ManagedResource)
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources*
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
+  id: Types
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: Types
+  nameWithType: IPartialCompilation.Types
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the named types declared in the syntax trees of this subset.
+  example: []
+  syntax:
+    content: ImmutableHashSet<INamedTypeSymbol> Types { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableHashSet{Microsoft.CodeAnalysis.INamedTypeSymbol}
+    content.vb: ReadOnly Property Types As ImmutableHashSet(Of INamedTypeSymbol)
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types*
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
+  id: Namespaces
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: Namespaces
+  nameWithType: IPartialCompilation.Namespaces
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the namespaces that contain types in this subset.
+  example: []
+  syntax:
+    content: ImmutableHashSet<INamespaceSymbol> Namespaces { get; }
+    parameters: []
+    return:
+      type: System.Collections.Immutable.ImmutableHashSet{Microsoft.CodeAnalysis.INamespaceSymbol}
+    content.vb: ReadOnly Property Namespaces As ImmutableHashSet(Of INamespaceSymbol)
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces*
+references:
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  commentId: T:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  parent: Metalama.Framework.Engine.CodeModel
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.html
+  name: PartialCompilationExtensions
+  nameWithType: PartialCompilationExtensions
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+- uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+  parent: Metalama.Framework.Engine.AspectWeavers
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.html
+  name: AspectWeaverContext
+  nameWithType: AspectWeaverContext
+  fullName: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext
+- uid: Microsoft.CodeAnalysis.Compilation
+  commentId: T:Microsoft.CodeAnalysis.Compilation
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.compilation
+  name: Compilation
+  nameWithType: Compilation
+  fullName: Microsoft.CodeAnalysis.Compilation
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  commentId: T:Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  parent: Metalama.Framework.Engine.CodeModel
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  name: IPartialCompilation
+  nameWithType: IPartialCompilation
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+- uid: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  commentId: T:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+  isExternal: true
+  href: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.html
+  name: IAspectWeaver
+  nameWithType: IAspectWeaver
+  fullName: Metalama.Framework.Engine.AspectWeavers.IAspectWeaver
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_IsPartial
+  name: IsPartial
+  nameWithType: IPartialCompilation.IsPartial
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  name: WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>)
+  nameWithType: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>)
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList<Metalama.Compiler.SyntaxTreeTransformation>)
+  nameWithType.vb: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
+  fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList(Of Metalama.Compiler.SyntaxTreeTransformation))
+  name.vb: WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+    name: WithSyntaxTreeTransformations
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  - name: (
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Metalama.Compiler.SyntaxTreeTransformation
+    name: SyntaxTreeTransformation
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
+    name: WithSyntaxTreeTransformations
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  - name: (
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Compiler.SyntaxTreeTransformation
+    name: SyntaxTreeTransformation
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+  commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithAdditionalResources_Metalama_Compiler_ManagedResource___
+  name: WithAdditionalResources(params ManagedResource[])
+  nameWithType: IPartialCompilation.WithAdditionalResources(params ManagedResource[])
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(params Metalama.Compiler.ManagedResource[])
+  nameWithType.vb: IPartialCompilation.WithAdditionalResources(ParamArray ManagedResource())
+  fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(ParamArray Metalama.Compiler.ManagedResource())
+  name.vb: WithAdditionalResources(ParamArray ManagedResource())
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+    name: WithAdditionalResources
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithAdditionalResources_Metalama_Compiler_ManagedResource___
+  - name: (
+  - name: params
+  - name: " "
+  - uid: Metalama.Compiler.ManagedResource
+    name: ManagedResource
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
+    name: WithAdditionalResources
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithAdditionalResources_Metalama_Compiler_ManagedResource___
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: Metalama.Compiler.ManagedResource
+    name: ManagedResource
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel
+  commentId: N:Metalama.Framework.Engine.CodeModel
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.CodeModel
+  nameWithType: Metalama.Framework.Engine.CodeModel
+  fullName: Metalama.Framework.Engine.CodeModel
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.CodeModel
+    name: CodeModel
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.CodeModel
+    name: CodeModel
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.html
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.CodeModel.IPartialCompilation}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<IPartialCompilation>(IPartialCompilation, Func<IPartialCompilation, IEnumerable<IPartialCompilation>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<IPartialCompilation>(IPartialCompilation, Func<IPartialCompilation, IEnumerable<IPartialCompilation>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Engine.CodeModel.IPartialCompilation>(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Collections.Generic.IEnumerable<Metalama.Framework.Engine.CodeModel.IPartialCompilation>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of IPartialCompilation)(IPartialCompilation, Func(Of IPartialCompilation, IEnumerable(Of IPartialCompilation)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Engine.CodeModel.IPartialCompilation)(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Engine.CodeModel.IPartialCompilation)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of IPartialCompilation)(IPartialCompilation, Func(Of IPartialCompilation, IEnumerable(Of IPartialCompilation)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.CodeModel.IPartialCompilation}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.CodeModel.IPartialCompilation}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Microsoft.CodeAnalysis.SyntaxTree[])
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_SyntaxTree___
+  name: AddSyntaxTrees(IPartialCompilation, params SyntaxTree[])
+  nameWithType: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, params SyntaxTree[])
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, params Microsoft.CodeAnalysis.SyntaxTree[])
+  nameWithType.vb: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, ParamArray SyntaxTree())
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, ParamArray Microsoft.CodeAnalysis.SyntaxTree())
+  name.vb: AddSyntaxTrees(IPartialCompilation, ParamArray SyntaxTree())
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_SyntaxTree___
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_SyntaxTree___
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_SyntaxTree__
+  name: AddSyntaxTrees(IPartialCompilation, IEnumerable<SyntaxTree>)
+  nameWithType: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, IEnumerable<SyntaxTree>)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Collections.Generic.IEnumerable<Microsoft.CodeAnalysis.SyntaxTree>)
+  nameWithType.vb: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, IEnumerable(Of SyntaxTree))
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Collections.Generic.IEnumerable(Of Microsoft.CodeAnalysis.SyntaxTree))
+  name.vb: AddSyntaxTrees(IPartialCompilation, IEnumerable(Of SyntaxTree))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_SyntaxTree__
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_SyntaxTree__
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_GetParseOptions_Metalama_Framework_Engine_CodeModel_IPartialCompilation_
+  name: GetParseOptions(IPartialCompilation)
+  nameWithType: PartialCompilationExtensions.GetParseOptions(IPartialCompilation)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+    name: GetParseOptions
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_GetParseOptions_Metalama_Framework_Engine_CodeModel_IPartialCompilation_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+    name: GetParseOptions
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_GetParseOptions_Metalama_Framework_Engine_CodeModel_IPartialCompilation_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  name: RewriteSyntaxTreesAsync(IPartialCompilation, CSharpSyntaxRewriter, ProjectServiceProvider, CancellationToken)
+  nameWithType: PartialCompilationExtensions.RewriteSyntaxTreesAsync(IPartialCompilation, CSharpSyntaxRewriter, ProjectServiceProvider, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter, Metalama.Framework.Engine.Services.ProjectServiceProvider, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter__Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  name: RewriteSyntaxTreesAsync(IPartialCompilation, Func<SyntaxNode, CSharpSyntaxRewriter>, ProjectServiceProvider, CancellationToken)
+  nameWithType: PartialCompilationExtensions.RewriteSyntaxTreesAsync(IPartialCompilation, Func<SyntaxNode, CSharpSyntaxRewriter>, ProjectServiceProvider, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter>, Metalama.Framework.Engine.Services.ProjectServiceProvider, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.RewriteSyntaxTreesAsync(IPartialCompilation, Func(Of SyntaxNode, CSharpSyntaxRewriter), ProjectServiceProvider, CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter), Metalama.Framework.Engine.Services.ProjectServiceProvider, System.Threading.CancellationToken)
+  name.vb: RewriteSyntaxTreesAsync(IPartialCompilation, Func(Of SyntaxNode, CSharpSyntaxRewriter), ProjectServiceProvider, CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter__Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter__Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxNode__System_Threading_CancellationToken_
+  name: UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxNode, CancellationToken, SyntaxNode>, CancellationToken)
+  nameWithType: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxNode, CancellationToken, SyntaxNode>, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxNode, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxNode>, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxNode, CancellationToken, SyntaxNode), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxNode, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxNode), System.Threading.CancellationToken)
+  name.vb: UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxNode, CancellationToken, SyntaxNode), CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxNode__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxNode__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  name: UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, SyntaxTree>, CancellationToken)
+  nameWithType: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, SyntaxTree>, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxTree, Microsoft.CodeAnalysis.SyntaxTree>, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, SyntaxTree), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxTree, Microsoft.CodeAnalysis.SyntaxTree), System.Threading.CancellationToken)
+  name.vb: UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, SyntaxTree), CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  parent: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
+  definition: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  name: UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, CancellationToken, SyntaxTree>, CancellationToken)
+  nameWithType: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, CancellationToken, SyntaxTree>, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxTree, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxTree>, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, CancellationToken, SyntaxTree), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxTree, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxTree), System.Threading.CancellationToken)
+  name.vb: UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, CancellationToken, SyntaxTree), CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.AspectWeavers
+  commentId: N:Metalama.Framework.Engine.AspectWeavers
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine.AspectWeavers
+  nameWithType: Metalama.Framework.Engine.AspectWeavers
+  fullName: Metalama.Framework.Engine.AspectWeavers
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.AspectWeavers
+    name: AspectWeavers
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  - name: .
+  - uid: Metalama.Framework.Engine.AspectWeavers
+    name: AspectWeavers
+    isExternal: true
+    href: Metalama.Framework.Engine.AspectWeavers.html
+- uid: Microsoft.CodeAnalysis
+  commentId: N:Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.CodeAnalysis
+  nameWithType: Microsoft.CodeAnalysis
+  fullName: Microsoft.CodeAnalysis
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_SyntaxTree___
+  name: AddSyntaxTrees(IPartialCompilation, params SyntaxTree[])
+  nameWithType: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, params SyntaxTree[])
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, params Microsoft.CodeAnalysis.SyntaxTree[])
+  nameWithType.vb: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, ParamArray SyntaxTree())
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, ParamArray Microsoft.CodeAnalysis.SyntaxTree())
+  name.vb: AddSyntaxTrees(IPartialCompilation, ParamArray SyntaxTree())
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_SyntaxTree___
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.SyntaxTree[])
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_SyntaxTree___
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: (
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_SyntaxTree__
+  name: AddSyntaxTrees(IPartialCompilation, IEnumerable<SyntaxTree>)
+  nameWithType: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, IEnumerable<SyntaxTree>)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Collections.Generic.IEnumerable<Microsoft.CodeAnalysis.SyntaxTree>)
+  nameWithType.vb: PartialCompilationExtensions.AddSyntaxTrees(IPartialCompilation, IEnumerable(Of SyntaxTree))
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Collections.Generic.IEnumerable(Of Microsoft.CodeAnalysis.SyntaxTree))
+  name.vb: AddSyntaxTrees(IPartialCompilation, IEnumerable(Of SyntaxTree))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_SyntaxTree__
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
+    name: AddSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_AddSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Collections_Generic_IEnumerable_Microsoft_CodeAnalysis_SyntaxTree__
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_GetParseOptions_Metalama_Framework_Engine_CodeModel_IPartialCompilation_
+  name: GetParseOptions(IPartialCompilation)
+  nameWithType: PartialCompilationExtensions.GetParseOptions(IPartialCompilation)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+    name: GetParseOptions
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_GetParseOptions_Metalama_Framework_Engine_CodeModel_IPartialCompilation_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions(Metalama.Framework.Engine.CodeModel.IPartialCompilation)
+    name: GetParseOptions
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_GetParseOptions_Metalama_Framework_Engine_CodeModel_IPartialCompilation_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  name: RewriteSyntaxTreesAsync(IPartialCompilation, CSharpSyntaxRewriter, ProjectServiceProvider, CancellationToken)
+  nameWithType: PartialCompilationExtensions.RewriteSyntaxTreesAsync(IPartialCompilation, CSharpSyntaxRewriter, ProjectServiceProvider, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter, Metalama.Framework.Engine.Services.ProjectServiceProvider, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter_Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter__Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  name: RewriteSyntaxTreesAsync(IPartialCompilation, Func<SyntaxNode, CSharpSyntaxRewriter>, ProjectServiceProvider, CancellationToken)
+  nameWithType: PartialCompilationExtensions.RewriteSyntaxTreesAsync(IPartialCompilation, Func<SyntaxNode, CSharpSyntaxRewriter>, ProjectServiceProvider, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter>, Metalama.Framework.Engine.Services.ProjectServiceProvider, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.RewriteSyntaxTreesAsync(IPartialCompilation, Func(Of SyntaxNode, CSharpSyntaxRewriter), ProjectServiceProvider, CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxNode, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter), Metalama.Framework.Engine.Services.ProjectServiceProvider, System.Threading.CancellationToken)
+  name.vb: RewriteSyntaxTreesAsync(IPartialCompilation, Func(Of SyntaxNode, CSharpSyntaxRewriter), ProjectServiceProvider, CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter__Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter},Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
+    name: RewriteSyntaxTreesAsync
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_RewriteSyntaxTreesAsync_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_Microsoft_CodeAnalysis_CSharp_CSharpSyntaxRewriter__Metalama_Framework_Engine_Services_ProjectServiceProvider_System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+    name: CSharpSyntaxRewriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpsyntaxrewriter
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Engine.Services.ProjectServiceProvider
+    name: ProjectServiceProvider
+    isExternal: true
+    href: Metalama.Framework.Engine.Services.ProjectServiceProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxNode__System_Threading_CancellationToken_
+  name: UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxNode, CancellationToken, SyntaxNode>, CancellationToken)
+  nameWithType: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxNode, CancellationToken, SyntaxNode>, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxNode, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxNode>, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxNode, CancellationToken, SyntaxNode), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxNode, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxNode), System.Threading.CancellationToken)
+  name.vb: UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxNode, CancellationToken, SyntaxNode), CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxNode__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxNode},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxNode_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxNode__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxNode
+    name: SyntaxNode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxnode
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  name: UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, SyntaxTree>, CancellationToken)
+  nameWithType: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, SyntaxTree>, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxTree, Microsoft.CodeAnalysis.SyntaxTree>, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, SyntaxTree), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxTree, Microsoft.CodeAnalysis.SyntaxTree), System.Threading.CancellationToken)
+  name.vb: UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, SyntaxTree), CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  name: UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, CancellationToken, SyntaxTree>, CancellationToken)
+  nameWithType: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func<SyntaxTree, CancellationToken, SyntaxTree>, CancellationToken)
+  fullName: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func<Microsoft.CodeAnalysis.SyntaxTree, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxTree>, System.Threading.CancellationToken)
+  nameWithType.vb: PartialCompilationExtensions.UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, CancellationToken, SyntaxTree), CancellationToken)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation, System.Func(Of Microsoft.CodeAnalysis.SyntaxTree, System.Threading.CancellationToken, Microsoft.CodeAnalysis.SyntaxTree), System.Threading.CancellationToken)
+  name.vb: UpdateSyntaxTrees(IPartialCompilation, Func(Of SyntaxTree, CancellationToken, SyntaxTree), CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees(Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Func{Microsoft.CodeAnalysis.SyntaxTree,System.Threading.CancellationToken,Microsoft.CodeAnalysis.SyntaxTree},System.Threading.CancellationToken)
+    name: UpdateSyntaxTrees
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.UpdateSyntaxTrees.html#Metalama_Framework_Engine_CodeModel_PartialCompilationExtensions_UpdateSyntaxTrees_Metalama_Framework_Engine_CodeModel_IPartialCompilation_System_Func_Microsoft_CodeAnalysis_SyntaxTree_System_Threading_CancellationToken_Microsoft_CodeAnalysis_SyntaxTree__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+    name: IPartialCompilation
+    isExternal: true
+    href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithSyntaxTreeTransformations_System_Collections_Generic_IReadOnlyList_Metalama_Compiler_SyntaxTreeTransformation__
+  name: WithSyntaxTreeTransformations
+  nameWithType: IPartialCompilation.WithSyntaxTreeTransformations
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations
+- uid: System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SyntaxTreeTransformation>
+  nameWithType: IReadOnlyList<SyntaxTreeTransformation>
+  fullName: System.Collections.Generic.IReadOnlyList<Metalama.Compiler.SyntaxTreeTransformation>
+  nameWithType.vb: IReadOnlyList(Of SyntaxTreeTransformation)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Metalama.Compiler.SyntaxTreeTransformation)
+  name.vb: IReadOnlyList(Of SyntaxTreeTransformation)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Metalama.Compiler.SyntaxTreeTransformation
+    name: SyntaxTreeTransformation
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Compiler.SyntaxTreeTransformation
+    name: SyntaxTreeTransformation
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_WithAdditionalResources_Metalama_Compiler_ManagedResource___
+  name: WithAdditionalResources
+  nameWithType: IPartialCompilation.WithAdditionalResources
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources
+- uid: Metalama.Compiler.ManagedResource[]
+  isExternal: true
+  href: Metalama.Compiler.ManagedResource.html
+  name: ManagedResource[]
+  nameWithType: ManagedResource[]
+  fullName: Metalama.Compiler.ManagedResource[]
+  nameWithType.vb: ManagedResource()
+  fullName.vb: Metalama.Compiler.ManagedResource()
+  name.vb: ManagedResource()
+  spec.csharp:
+  - uid: Metalama.Compiler.ManagedResource
+    name: ManagedResource
+    isExternal: true
+    href: Metalama.Compiler.ManagedResource.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Metalama.Compiler.ManagedResource
+    name: ManagedResource
+    isExternal: true
+    href: Metalama.Compiler.ManagedResource.html
+  - name: (
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_Compilation
+  name: Compilation
+  nameWithType: IPartialCompilation.Compilation
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Compilation
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_SyntaxTrees
+  name: SyntaxTrees
+  nameWithType: IPartialCompilation.SyntaxTrees
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+- uid: System.Collections.Immutable.ImmutableDictionary{System.String,Microsoft.CodeAnalysis.SyntaxTree}
+  commentId: T:System.Collections.Immutable.ImmutableDictionary{System.String,Microsoft.CodeAnalysis.SyntaxTree}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  name: ImmutableDictionary<string, SyntaxTree>
+  nameWithType: ImmutableDictionary<string, SyntaxTree>
+  fullName: System.Collections.Immutable.ImmutableDictionary<string, Microsoft.CodeAnalysis.SyntaxTree>
+  nameWithType.vb: ImmutableDictionary(Of String, SyntaxTree)
+  fullName.vb: System.Collections.Immutable.ImmutableDictionary(Of String, Microsoft.CodeAnalysis.SyntaxTree)
+  name.vb: ImmutableDictionary(Of String, SyntaxTree)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.SyntaxTree
+    name: SyntaxTree
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.syntaxtree
+  - name: )
+- uid: System.Collections.Immutable.ImmutableDictionary`2
+  commentId: T:System.Collections.Immutable.ImmutableDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  name: ImmutableDictionary<TKey, TValue>
+  nameWithType: ImmutableDictionary<TKey, TValue>
+  fullName: System.Collections.Immutable.ImmutableDictionary<TKey, TValue>
+  nameWithType.vb: ImmutableDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Immutable.ImmutableDictionary(Of TKey, TValue)
+  name.vb: ImmutableDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableDictionary`2
+    name: ImmutableDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Immutable
+  commentId: N:System.Collections.Immutable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Immutable
+  nameWithType: System.Collections.Immutable
+  fullName: System.Collections.Immutable
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Immutable
+    name: Immutable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_IsPartial
+  name: IsPartial
+  nameWithType: IPartialCompilation.IsPartial
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_Resources
+  name: Resources
+  nameWithType: IPartialCompilation.Resources
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+- uid: System.Collections.Immutable.ImmutableArray{Metalama.Compiler.ManagedResource}
+  commentId: T:System.Collections.Immutable.ImmutableArray{Metalama.Compiler.ManagedResource}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableArray`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<ManagedResource>
+  nameWithType: ImmutableArray<ManagedResource>
+  fullName: System.Collections.Immutable.ImmutableArray<Metalama.Compiler.ManagedResource>
+  nameWithType.vb: ImmutableArray(Of ManagedResource)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of Metalama.Compiler.ManagedResource)
+  name.vb: ImmutableArray(Of ManagedResource)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - uid: Metalama.Compiler.ManagedResource
+    name: ManagedResource
+    isExternal: true
+    href: Metalama.Compiler.ManagedResource.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Compiler.ManagedResource
+    name: ManagedResource
+    isExternal: true
+    href: Metalama.Compiler.ManagedResource.html
+  - name: )
+- uid: System.Collections.Immutable.ImmutableArray`1
+  commentId: T:System.Collections.Immutable.ImmutableArray`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  name: ImmutableArray<T>
+  nameWithType: ImmutableArray<T>
+  fullName: System.Collections.Immutable.ImmutableArray<T>
+  nameWithType.vb: ImmutableArray(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableArray(Of T)
+  name.vb: ImmutableArray(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableArray`1
+    name: ImmutableArray
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_Types
+  name: Types
+  nameWithType: IPartialCompilation.Types
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
+- uid: System.Collections.Immutable.ImmutableHashSet{Microsoft.CodeAnalysis.INamedTypeSymbol}
+  commentId: T:System.Collections.Immutable.ImmutableHashSet{Microsoft.CodeAnalysis.INamedTypeSymbol}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableHashSet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  name: ImmutableHashSet<INamedTypeSymbol>
+  nameWithType: ImmutableHashSet<INamedTypeSymbol>
+  fullName: System.Collections.Immutable.ImmutableHashSet<Microsoft.CodeAnalysis.INamedTypeSymbol>
+  nameWithType.vb: ImmutableHashSet(Of INamedTypeSymbol)
+  fullName.vb: System.Collections.Immutable.ImmutableHashSet(Of Microsoft.CodeAnalysis.INamedTypeSymbol)
+  name.vb: ImmutableHashSet(Of INamedTypeSymbol)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: <
+  - uid: Microsoft.CodeAnalysis.INamedTypeSymbol
+    name: INamedTypeSymbol
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.inamedtypesymbol
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.INamedTypeSymbol
+    name: INamedTypeSymbol
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.inamedtypesymbol
+  - name: )
+- uid: System.Collections.Immutable.ImmutableHashSet`1
+  commentId: T:System.Collections.Immutable.ImmutableHashSet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  name: ImmutableHashSet<T>
+  nameWithType: ImmutableHashSet<T>
+  fullName: System.Collections.Immutable.ImmutableHashSet<T>
+  nameWithType.vb: ImmutableHashSet(Of T)
+  fullName.vb: System.Collections.Immutable.ImmutableHashSet(Of T)
+  name.vb: ImmutableHashSet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces*
+  commentId: Overload:Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
+  isExternal: true
+  href: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces.html#Metalama_Framework_Engine_CodeModel_IPartialCompilation_Namespaces
+  name: Namespaces
+  nameWithType: IPartialCompilation.Namespaces
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
+- uid: System.Collections.Immutable.ImmutableHashSet{Microsoft.CodeAnalysis.INamespaceSymbol}
+  commentId: T:System.Collections.Immutable.ImmutableHashSet{Microsoft.CodeAnalysis.INamespaceSymbol}
+  parent: System.Collections.Immutable
+  definition: System.Collections.Immutable.ImmutableHashSet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  name: ImmutableHashSet<INamespaceSymbol>
+  nameWithType: ImmutableHashSet<INamespaceSymbol>
+  fullName: System.Collections.Immutable.ImmutableHashSet<Microsoft.CodeAnalysis.INamespaceSymbol>
+  nameWithType.vb: ImmutableHashSet(Of INamespaceSymbol)
+  fullName.vb: System.Collections.Immutable.ImmutableHashSet(Of Microsoft.CodeAnalysis.INamespaceSymbol)
+  name.vb: ImmutableHashSet(Of INamespaceSymbol)
+  spec.csharp:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: <
+  - uid: Microsoft.CodeAnalysis.INamespaceSymbol
+    name: INamespaceSymbol
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.inamespacesymbol
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Immutable.ImmutableHashSet`1
+    name: ImmutableHashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablehashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.CodeAnalysis.INamespaceSymbol
+    name: INamespaceSymbol
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.inamespacesymbol
+  - name: )
+memberLayout: SeparatePages
