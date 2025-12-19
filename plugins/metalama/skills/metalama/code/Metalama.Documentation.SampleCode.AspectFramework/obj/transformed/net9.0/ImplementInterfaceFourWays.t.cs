@@ -10,8 +10,7 @@ public partial class MyResource : IDisposable
     Console.WriteLine("Disposing...");
   }
   public void Reset()
-  {
-    // Option 1: this.Dispose()
+  { // Option 1: this.Dispose()
     Dispose();
     // Option 2: meta.This.Dispose()
     this.Dispose();

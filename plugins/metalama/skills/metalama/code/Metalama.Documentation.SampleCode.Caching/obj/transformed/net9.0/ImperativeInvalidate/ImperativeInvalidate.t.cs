@@ -16,7 +16,6 @@ public sealed partial class ProductCatalogue
   // [<snippet Cache>]
   [Cache]
   public decimal GetPrice(string productId)
-  // [<endsnippet Cache>]
   {
     // [<endsnippet Cache>]
     static object? Invoke(object? instance, object? [] args)

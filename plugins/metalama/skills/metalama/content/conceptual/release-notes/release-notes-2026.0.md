@@ -120,6 +120,32 @@ This advice kind allows you to implement aspects such as "safe events", where ev
 
 For comprehensive documentation, see <xref:overriding-events>.
 
+## Metrics
+
+Metalama 2026.0 enhances code metrics capabilities with new built-in metrics and improved API support for consuming metrics from standalone applications.
+
+### Lines of Code metric
+
+The `Metalama.Extensions.Metrics` package now includes a comprehensive <xref:Metalama.Extensions.Metrics.LinesOfCode> metric that provides three distinct measurements ([#1216](https://github.com/metalama/Metalama/issues/1216)):
+
+- **Logical**: Counts lines of substantive code, excluding braces, blank lines, and comments
+- **NonBlank**: Counts any line containing non-whitespace content
+- **Total**: Measures the total line span from the first to the last line of a declaration
+
+This metric complements the existing <xref:Metalama.Extensions.Metrics.StatementsCount> and <xref:Metalama.Extensions.Metrics.SyntaxNodesCount> metrics, enabling more nuanced code complexity analysis.
+
+### Workspaces API metrics support
+
+The <xref:Metalama.Framework.Workspaces> API now officially supports metrics consumption without requiring internal APIs ([#1209](https://github.com/metalama/Metalama/issues/1209)). The <xref:Metalama.Framework.Workspaces.ServiceProviderBuilder`1> class is now part of the public SDK namespace, enabling extension packages to provide clean integration methods:
+
+```csharp
+WorkspaceCollection.Default.ServiceBuilder.AddMetrics();
+```
+
+This eliminates previous workarounds involving internal API warnings and compile-time/run-time boundary violations, making it straightforward to consume metrics from standalone applications and build tools.
+
+For details on using metrics, see <xref:metrics>. For creating custom metrics, see <xref:custom-metrics>.
+
 ## Visual Studio Tools for Metalama: performance improvements
 
 Visual Studio Tools for Metalama includes refactored components that dramatically improve performance. It's now more stable, consumes less CPU, and makes better use of your cores.
@@ -143,7 +169,25 @@ Visual Studio Tools for Metalama includes refactored components that dramaticall
 - New article: <xref:type-system>.
 - Improved the chapter: <xref:templates>.
 - Improved the API documentation by adding elements from the conceptual documentation where relevant.
-- **Claude Code skill**: A new skill package is available to enhance [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) with Metalama-specific knowledge. See <xref:ide-claude-code> for installation instructions.
+- **Claude Code plugin**: A new plugin is available to enhance [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview), Anthropic's AI-powered coding assistant, with comprehensive Metalama knowledge. The plugin provides access to conceptual documentation, API references, sample code, and pattern libraries, enabling Claude to assist with aspect development, templates, fabrics, and the Metalama code model. Install from the [Metalama.AI.Skills marketplace](https://github.com/metalama/Metalama.AI.Skills). See <xref:ide-claude-code> for complete installation and usage instructions.
+
+## New APIs
+
+### Type System - Nullability Handling
+
+- **`IType.StripNullabilityAnnotation()`**: Strips the nullability annotation from a type, returning an unannotated version (where `IsNullable` is null). Type-specific overrides return `INamedType`, `IArrayType`, `IDynamicType`, and `ITypeParameter` respectively ([#1232](https://github.com/metalama/Metalama/issues/1232)).
+- **`ExpressionFactory.WithNullForgivingOperator(IExpression, bool force)`**: Adds the null-forgiving operator (!) to an expression ([#1232](https://github.com/metalama/Metalama/issues/1232)).
+
+### Extensibility APIs
+
+- **`IProjectServiceFactory`**: Interface allowing extensions to create project services loaded from external assemblies ([#1223](https://github.com/metalama/Metalama/pull/1223)).
+- **`ExtensionKinds.ServiceFactory`**: New flag enabling service factory extensions ([#1223](https://github.com/metalama/Metalama/pull/1223)).
+- **`TemplateAttribute.Id`**: Property for assigning stable identifiers to templates, enabling template lookup by ID in addition to member name ([#1223](https://github.com/metalama/Metalama/pull/1223)).
+
+### Code Model - Pseudo Members
+
+- **`IDeclaration.ImplementationKind`**: Property (moved from `IMemberOrNamedType` to the broader `IDeclaration` interface) that indicates whether a declaration represents a real symbol or a pseudo member ([#828](https://github.com/metalama/Metalama/issues/828)).
+- **`EligibilityExtensions.MustNotBePseudoMember()`**: Extension method for `IDeclaration` that filters out pseudo members from eligibility checks, preventing aspects from incorrectly flowing between real members and their pseudo counterparts ([#828](https://github.com/metalama/Metalama/issues/828)).
 
 ## Breaking changes
 
@@ -153,9 +197,10 @@ Visual Studio Tools for Metalama includes refactored components that dramaticall
 - <xref:Metalama.Framework.Aspects.IAdviser> and <xref:Metalama.Framework.Aspects.AdviserExtensions> have been moved to the `Metalama.Framework.Aspects` namespace.
 - `TypeKind.RecordClass` and `TypeKind.RecordStruct` have been removed and replaced by <xref:Metalama.Framework.Code.INamedType.IsRecord?text=INamedType.IsRecord>.
 - The `IntroduceConversionOperator` method now has an additional optional parameter to support `checked` operators.
-- **ServiceLocator self-registration removed**: The <xref:Metalama.Extensions.DependencyInjection.ServiceLocator> adapter no longer automatically registers itself via a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric>. Projects using this adapter must now explicitly register the <xref:Metalama.Extensions.DependencyInjection.ServiceLocator.ServiceLocatorDependencyInjectionFramework> it in their <xref:Metalama.Framework.Fabrics.ProjectFabric>.
+- **ServiceLocator self-registration removed**: The <xref:Metalama.Extensions.DependencyInjection.ServiceLocator> adapter no longer automatically registers itself via a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric>. Projects using this adapter must now explicitly configure the framework by creating a <xref:Metalama.Framework.Fabrics.ProjectFabric> class that calls `RegisterFramework<ServiceLocatorDependencyInjectionFramework>()` within the `ConfigureDependencyInjection` method.
 - **Elvis operator behavior change in templates**: The null-conditional operator (`?.`) is no longer simplified for non-nullable reference types in templates. It is still simplified for non-nullable value types. This may result in different generated code compared to previous versions.
-- **Test framework changes**: The `@AcceptInvalidInput` and `@ReportOutputWarnings` directives have been removed; both behaviors are now enabled by default.
+- **Test framework changes**: The `@AcceptInvalidInput` and `@ReportOutputWarnings` directives have been removed; both behaviors are now enabled by default. A new `@SkipDiffTool` annotation has been introduced to replace the previous mechanism for suppressing diff tool execution during tests.
+- **Field pseudo-accessor behavior change** ([#828](https://github.com/metalama/Metalama/issues/828)): The <xref:Metalama.Framework.Code.IDeclaration.IsImplicitlyDeclared?text=IsImplicitlyDeclared> property for field pseudo-accessors now returns `false` instead of `true`, since they represent explicitly declared fields. This may affect aspects that rely on `IsImplicitlyDeclared` for eligibility rules. Use the new <xref:Metalama.Framework.Code.IDeclaration.ImplementationKind> property or <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBePseudoMember*> method to explicitly filter pseudo members.
 
 > [!div class="see-also"]
 > <xref:release-notes>

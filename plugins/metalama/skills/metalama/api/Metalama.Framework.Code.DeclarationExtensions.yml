@@ -17,6 +17,7 @@ items:
   - Metalama.Framework.Code.DeclarationExtensions.GetMembers(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DeclarationKind)
   - Metalama.Framework.Code.DeclarationExtensions.GetNamespace(Metalama.Framework.Code.IDeclaration)
   - Metalama.Framework.Code.DeclarationExtensions.GetTopmostNamedType(Metalama.Framework.Code.IDeclaration)
+  - Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField(Metalama.Framework.Code.IField)
   - Metalama.Framework.Code.DeclarationExtensions.IsContainedIn(Metalama.Framework.Code.IDeclaration,Metalama.Framework.Code.IDeclaration)
   - Metalama.Framework.Code.DeclarationExtensions.IsMemberKind(Metalama.Framework.Code.DeclarationKind)
   - Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor(Metalama.Framework.Code.IConstructor)
@@ -585,6 +586,38 @@ items:
       description: An enumerable starting with the declaration itself, followed by all descendant declarations, recursively.
     content.vb: Public Shared Function ContainedDescendantsAndSelf(declaration As IDeclaration) As IEnumerable(Of IDeclaration)
   overload: Metalama.Framework.Code.DeclarationExtensions.ContainedDescendantsAndSelf*
+- uid: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField(Metalama.Framework.Code.IField)
+  commentId: M:Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField(Metalama.Framework.Code.IField)
+  id: IsAutoPropertyBackingField(Metalama.Framework.Code.IField)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.DeclarationExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsAutoPropertyBackingField(IField)
+  nameWithType: DeclarationExtensions.IsAutoPropertyBackingField(IField)
+  fullName: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField(Metalama.Framework.Code.IField)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Determines whether the specified field is a compiler-generated backing field for an auto-property.
+  remarks: >-
+    Compiler-generated backing fields follow the naming pattern <code>&lt;PropertyName&gt;k__BackingField</code>.
+
+    This method efficiently checks only the field name pattern.
+  example: []
+  syntax:
+    content: public static bool IsAutoPropertyBackingField(this IField field)
+    parameters:
+    - id: field
+      type: Metalama.Framework.Code.IField
+      description: The field to check.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the field is an auto-property backing field; otherwise, <code>false</code>.
+    content.vb: Public Shared Function IsAutoPropertyBackingField(field As IField) As Boolean
+  overload: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField*
 references:
 - uid: Metalama.Framework.Code.IDeclaration
   commentId: T:Metalama.Framework.Code.IDeclaration
@@ -1436,4 +1469,19 @@ references:
   name: ContainedDescendantsAndSelf
   nameWithType: DeclarationExtensions.ContainedDescendantsAndSelf
   fullName: Metalama.Framework.Code.DeclarationExtensions.ContainedDescendantsAndSelf
+- uid: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField*
+  commentId: Overload:Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField.html#Metalama_Framework_Code_DeclarationExtensions_IsAutoPropertyBackingField_Metalama_Framework_Code_IField_
+  name: IsAutoPropertyBackingField
+  nameWithType: DeclarationExtensions.IsAutoPropertyBackingField
+  fullName: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField
+- uid: Metalama.Framework.Code.IField
+  commentId: T:Metalama.Framework.Code.IField
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IField.html
+  name: IField
+  nameWithType: IField
+  fullName: Metalama.Framework.Code.IField
 memberLayout: SeparatePages
