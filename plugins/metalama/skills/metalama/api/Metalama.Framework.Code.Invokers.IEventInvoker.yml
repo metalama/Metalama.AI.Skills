@@ -7,6 +7,7 @@ items:
   children:
   - Metalama.Framework.Code.Invokers.IEventInvoker.Add(Metalama.Framework.Code.IExpression)
   - Metalama.Framework.Code.Invokers.IEventInvoker.Add(System.Object)
+  - Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
   - Metalama.Framework.Code.Invokers.IEventInvoker.Raise(Metalama.Framework.Code.IExpression[])
   - Metalama.Framework.Code.Invokers.IEventInvoker.Raise(System.Object[])
   - Metalama.Framework.Code.Invokers.IEventInvoker.Remove(Metalama.Framework.Code.IExpression)
@@ -453,6 +454,39 @@ items:
   nameWithType.vb: IEventInvoker.With(Object, InvokerOptions)
   fullName.vb: Metalama.Framework.Code.Invokers.IEventInvoker.With(Object, Metalama.Framework.Code.Invokers.InvokerOptions)
   name.vb: With(Object, InvokerOptions)
+- uid: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+  commentId: P:Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+  id: CanRaise
+  parent: Metalama.Framework.Code.Invokers.IEventInvoker
+  langs:
+  - csharp
+  - vb
+  name: CanRaise
+  nameWithType: IEventInvoker.CanRaise
+  fullName: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Gets a value indicating whether the event can be raised.
+  remarks: >-
+    <p>
+        In C#, only field-like events (events without explicit <code>add</code>/<code>remove</code> accessors) can be raised
+        because they have a backing delegate field that can be invoked. For non-field-like events (events with explicit accessors),
+        there is no backing delegate to invoke, so this property returns <code>false</code>.
+        </p>
+    <p>
+        When this property returns <code>false</code>, calling <xref href="Metalama.Framework.Code.Invokers.IEventInvoker.Raise(System.Object%5b%5d)" data-throw-if-not-resolved="false"></xref> will throw an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref>,
+        and <xref href="Metalama.Framework.Code.IEvent.RaiseMethod" data-throw-if-not-resolved="false"></xref> will return <code>null</code>.
+        </p>
+  example: []
+  syntax:
+    content: bool CanRaise { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CanRaise As Boolean
+  overload: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise*
 references:
 - uid: Metalama.Framework.Code.IEvent
   commentId: T:Metalama.Framework.Code.IEvent
@@ -1068,4 +1102,43 @@ references:
   name: With
   nameWithType: IEventInvoker.With
   fullName: Metalama.Framework.Code.Invokers.IEventInvoker.With
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Metalama.Framework.Code.IEvent.RaiseMethod
+  commentId: P:Metalama.Framework.Code.IEvent.RaiseMethod
+  isExternal: true
+  href: Metalama.Framework.Code.IEvent.RaiseMethod.html#Metalama_Framework_Code_IEvent_RaiseMethod
+  name: RaiseMethod
+  nameWithType: IEvent.RaiseMethod
+  fullName: Metalama.Framework.Code.IEvent.RaiseMethod
+- uid: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise*
+  commentId: Overload:Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise.html#Metalama_Framework_Code_Invokers_IEventInvoker_CanRaise
+  name: CanRaise
+  nameWithType: IEventInvoker.CanRaise
+  fullName: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
 memberLayout: SeparatePages
