@@ -25,6 +25,8 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceConversionOperator(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IType,System.Boolean,System.Boolean,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceEvent(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEventBuilder},System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceEvent(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,System.String,System.String,System.String,System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEventBuilder},System.Object,System.Object)
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.IType,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.Type,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceField(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder},System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceField(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder},System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceField(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,System.Type,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder},System.Object)
@@ -327,7 +329,10 @@ items:
     Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> method to apply the advice to a different type than the current one.
   example: []
   syntax:
-    content: public static IIntroductionAdviceResult<IMethod> IntroduceUnaryOperator(this IAdviser<INamedType> adviser, string template, IType inputType, IType resultType, OperatorKind kind, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IMethodBuilder>? buildOperator = null, object? args = null, object? tags = null)
+    content: >-
+      [Obsolete("Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.")]
+
+      public static IIntroductionAdviceResult<IMethod> IntroduceUnaryOperator(this IAdviser<INamedType> adviser, string template, IType inputType, IType resultType, OperatorKind kind, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IMethodBuilder>? buildOperator = null, object? args = null, object? tags = null)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType}
@@ -363,7 +368,10 @@ items:
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IMethod}
       description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced or overriding <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Shared Function IntroduceUnaryOperator(adviser As IAdviser(Of INamedType), template As String, inputType As IType, resultType As IType, kind As OperatorKind, whenExists As OverrideStrategy = OverrideStrategy.Default, buildOperator As Action(Of IMethodBuilder) = Nothing, args As Object = Nothing, tags As Object = Nothing) As IIntroductionAdviceResult(Of IMethod)
+    content.vb: >-
+      <Obsolete("Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.")>
+
+      Public Shared Function IntroduceUnaryOperator(adviser As IAdviser(Of INamedType), template As String, inputType As IType, resultType As IType, kind As OperatorKind, whenExists As OverrideStrategy = OverrideStrategy.Default, buildOperator As Action(Of IMethodBuilder) = Nothing, args As Object = Nothing, tags As Object = Nothing) As IIntroductionAdviceResult(Of IMethod)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnaryOperator*
   seealso:
   - linkType: HRef
@@ -372,6 +380,12 @@ items:
   - linkType: HRef
     linkId: '@sharing-state-with-advice'
     altText: '@sharing-state-with-advice'
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.
   nameWithType.vb: AdviserExtensions.IntroduceUnaryOperator(IAdviser(Of INamedType), String, IType, IType, OperatorKind, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnaryOperator(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.IType, Metalama.Framework.Code.OperatorKind, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder), Object, Object)
   name.vb: IntroduceUnaryOperator(IAdviser(Of INamedType), String, IType, IType, OperatorKind, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
@@ -396,7 +410,10 @@ items:
     Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> method to apply the advice to a different type than the current one.
   example: []
   syntax:
-    content: public static IIntroductionAdviceResult<IMethod> IntroduceBinaryOperator(this IAdviser<INamedType> adviser, string template, IType leftType, IType rightType, IType resultType, OperatorKind kind, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IMethodBuilder>? buildOperator = null, object? args = null, object? tags = null)
+    content: >-
+      [Obsolete("Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.")]
+
+      public static IIntroductionAdviceResult<IMethod> IntroduceBinaryOperator(this IAdviser<INamedType> adviser, string template, IType leftType, IType rightType, IType resultType, OperatorKind kind, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IMethodBuilder>? buildOperator = null, object? args = null, object? tags = null)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType}
@@ -435,7 +452,10 @@ items:
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IMethod}
       description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced or overriding <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Shared Function IntroduceBinaryOperator(adviser As IAdviser(Of INamedType), template As String, leftType As IType, rightType As IType, resultType As IType, kind As OperatorKind, whenExists As OverrideStrategy = OverrideStrategy.Default, buildOperator As Action(Of IMethodBuilder) = Nothing, args As Object = Nothing, tags As Object = Nothing) As IIntroductionAdviceResult(Of IMethod)
+    content.vb: >-
+      <Obsolete("Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.")>
+
+      Public Shared Function IntroduceBinaryOperator(adviser As IAdviser(Of INamedType), template As String, leftType As IType, rightType As IType, resultType As IType, kind As OperatorKind, whenExists As OverrideStrategy = OverrideStrategy.Default, buildOperator As Action(Of IMethodBuilder) = Nothing, args As Object = Nothing, tags As Object = Nothing) As IIntroductionAdviceResult(Of IMethod)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceBinaryOperator*
   seealso:
   - linkType: HRef
@@ -444,6 +464,12 @@ items:
   - linkType: HRef
     linkId: '@sharing-state-with-advice'
     altText: '@sharing-state-with-advice'
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.
   nameWithType.vb: AdviserExtensions.IntroduceBinaryOperator(IAdviser(Of INamedType), String, IType, IType, IType, OperatorKind, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceBinaryOperator(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.IType, Metalama.Framework.Code.IType, Metalama.Framework.Code.OperatorKind, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder), Object, Object)
   name.vb: IntroduceBinaryOperator(IAdviser(Of INamedType), String, IType, IType, IType, OperatorKind, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
@@ -468,7 +494,10 @@ items:
     Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> method to apply the advice to a different type than the current one.
   example: []
   syntax:
-    content: public static IIntroductionAdviceResult<IMethod> IntroduceConversionOperator(this IAdviser<INamedType> adviser, string template, IType fromType, IType toType, bool isImplicit = false, bool isChecked = false, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IMethodBuilder>? buildOperator = null, object? args = null, object? tags = null)
+    content: >-
+      [Obsolete("Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.")]
+
+      public static IIntroductionAdviceResult<IMethod> IntroduceConversionOperator(this IAdviser<INamedType> adviser, string template, IType fromType, IType toType, bool isImplicit = false, bool isChecked = false, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IMethodBuilder>? buildOperator = null, object? args = null, object? tags = null)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType}
@@ -507,7 +536,10 @@ items:
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IMethod}
       description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced or overriding <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Shared Function IntroduceConversionOperator(adviser As IAdviser(Of INamedType), template As String, fromType As IType, toType As IType, isImplicit As Boolean = False, isChecked As Boolean = False, whenExists As OverrideStrategy = OverrideStrategy.Default, buildOperator As Action(Of IMethodBuilder) = Nothing, args As Object = Nothing, tags As Object = Nothing) As IIntroductionAdviceResult(Of IMethod)
+    content.vb: >-
+      <Obsolete("Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.")>
+
+      Public Shared Function IntroduceConversionOperator(adviser As IAdviser(Of INamedType), template As String, fromType As IType, toType As IType, isImplicit As Boolean = False, isChecked As Boolean = False, whenExists As OverrideStrategy = OverrideStrategy.Default, buildOperator As Action(Of IMethodBuilder) = Nothing, args As Object = Nothing, tags As Object = Nothing) As IIntroductionAdviceResult(Of IMethod)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceConversionOperator*
   seealso:
   - linkType: HRef
@@ -516,6 +548,12 @@ items:
   - linkType: HRef
     linkId: '@sharing-state-with-advice'
     altText: '@sharing-state-with-advice'
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use IntroduceMethod with the buildMethod callback and set IMethodBuilder.OperatorKind instead.
   nameWithType.vb: AdviserExtensions.IntroduceConversionOperator(IAdviser(Of INamedType), String, IType, IType, Boolean, Boolean, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceConversionOperator(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.IType, Boolean, Boolean, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder), Object, Object)
   name.vb: IntroduceConversionOperator(IAdviser(Of INamedType), String, IType, IType, Boolean, Boolean, OverrideStrategy, Action(Of IMethodBuilder), Object, Object)
@@ -2862,6 +2900,103 @@ items:
   nameWithType.vb: AdviserExtensions.IntroduceInterface(IAdviser(Of INamespaceOrNamedType), String, OverrideStrategy, Action(Of INamedTypeBuilder))
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder))
   name.vb: IntroduceInterface(IAdviser(Of INamespaceOrNamedType), String, OverrideStrategy, Action(Of INamedTypeBuilder))
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.IType,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.IType,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  id: IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.IType,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceExtensionBlock(IAdviser<INamedType>, IType, string?, Action<IExtensionBlockBuilder>?)
+  nameWithType: AdviserExtensions.IntroduceExtensionBlock(IAdviser<INamedType>, IType, string?, Action<IExtensionBlockBuilder>?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, Metalama.Framework.Code.IType, string?, System.Action<Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder>?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new extension block into a static class. Extension blocks allow adding
+
+    extension members (methods, properties, indexers) to a type (represented as an <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>). Requires C# 14+ and Roslyn 5.0+.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<IExtensionBlock> IntroduceExtensionBlock(this IAdviser<INamedType> adviser, IType receiverType, string? receiverParameterName = null, Action<IExtensionBlockBuilder>? buildExtensionBlock = null)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType}
+      description: An adviser for a named type. Must be a static class.
+    - id: receiverType
+      type: Metalama.Framework.Code.IType
+      description: >-
+        The type being extended. Members introduced into this extension block
+                        will appear as members of this type.
+    - id: receiverParameterName
+      type: System.String
+      description: >-
+        The name of the receiver parameter. Set to <code>null</code> or empty
+                        for a static extension (members appear as static members of the extended type).
+                        Set to a non-empty string (e.g., "self", "value") for an instance extension.
+    - id: buildExtensionBlock
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder}
+      description: >-
+        An optional callback that allows you to configure the extension block,
+                        such as adding type parameters or attributes to the receiver parameter.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IExtensionBlock}
+      description: >-
+        An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> representing the result of the advice.
+                        The <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601.Declaration" data-throw-if-not-resolved="false"></xref> property provides access to the introduced extension block.
+                        The result also implements <xref href="Metalama.Framework.Aspects.IAdviser%601" data-throw-if-not-resolved="false"></xref> and can be used to introduce members.
+    content.vb: Public Shared Function IntroduceExtensionBlock(adviser As IAdviser(Of INamedType), receiverType As IType, receiverParameterName As String = Nothing, buildExtensionBlock As Action(Of IExtensionBlockBuilder) = Nothing) As IIntroductionAdviceResult(Of IExtensionBlock)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock*
+  nameWithType.vb: AdviserExtensions.IntroduceExtensionBlock(IAdviser(Of INamedType), IType, String, Action(Of IExtensionBlockBuilder))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), Metalama.Framework.Code.IType, String, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder))
+  name.vb: IntroduceExtensionBlock(IAdviser(Of INamedType), IType, String, Action(Of IExtensionBlockBuilder))
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.Type,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.Type,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  id: IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.Type,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceExtensionBlock(IAdviser<INamedType>, Type, string?, Action<IExtensionBlockBuilder>?)
+  nameWithType: AdviserExtensions.IntroduceExtensionBlock(IAdviser<INamedType>, Type, string?, Action<IExtensionBlockBuilder>?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, System.Type, string?, System.Action<Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder>?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new extension block into the target static class. Extension blocks allow adding
+
+    extension members (methods, properties, indexers) to a type (represented as an <xref href="System.Type" data-throw-if-not-resolved="false"></xref>). Requires C# 14+ and Roslyn 5.0+.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<IExtensionBlock> IntroduceExtensionBlock(this IAdviser<INamedType> adviser, Type receiverType, string? receiverParameterName = null, Action<IExtensionBlockBuilder>? buildExtensionBlock = null)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType}
+      description: An adviser for the target static class.
+    - id: receiverType
+      type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> being extended.
+    - id: receiverParameterName
+      type: System.String
+      description: >-
+        The name of the receiver parameter. Set to <code>null</code> or empty
+                        for a static extension. Set to a non-empty string for an instance extension.
+    - id: buildExtensionBlock
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder}
+      description: An optional callback to configure the extension block.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IExtensionBlock}
+    content.vb: Public Shared Function IntroduceExtensionBlock(adviser As IAdviser(Of INamedType), receiverType As Type, receiverParameterName As String = Nothing, buildExtensionBlock As Action(Of IExtensionBlockBuilder) = Nothing) As IIntroductionAdviceResult(Of IExtensionBlock)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock*
+  nameWithType.vb: AdviserExtensions.IntroduceExtensionBlock(IAdviser(Of INamedType), Type, String, Action(Of IExtensionBlockBuilder))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), System.Type, String, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder))
+  name.vb: IntroduceExtensionBlock(IAdviser(Of INamedType), Type, String, Action(Of IExtensionBlockBuilder))
 - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Aspects.IAspect{``0})
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Aspects.IAspect{``0})
   id: AddAspect``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Aspects.IAspect{``0})
@@ -6625,6 +6760,7 @@ references:
   - name: )
 - uid: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder
   commentId: T:Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder
+  parent: Metalama.Framework.Code.DeclarationBuilders
   isExternal: true
   href: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.html
   name: INamedTypeBuilder
@@ -6749,6 +6885,92 @@ references:
   name: IntroduceInterface
   nameWithType: AdviserExtensions.IntroduceInterface
   fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface
+- uid: Metalama.Framework.Advising.IIntroductionAdviceResult`1.Declaration
+  commentId: P:Metalama.Framework.Advising.IIntroductionAdviceResult`1.Declaration
+  isExternal: true
+  href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.Declaration.html#Metalama_Framework_Advising_IIntroductionAdviceResult_1_Declaration
+  name: Declaration
+  nameWithType: IIntroductionAdviceResult<T>.Declaration
+  fullName: Metalama.Framework.Advising.IIntroductionAdviceResult<T>.Declaration
+  nameWithType.vb: IIntroductionAdviceResult(Of T).Declaration
+  fullName.vb: Metalama.Framework.Advising.IIntroductionAdviceResult(Of T).Declaration
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock*
+  commentId: Overload:Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceExtensionBlock_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__Metalama_Framework_Code_IType_System_String_System_Action_Metalama_Framework_Code_DeclarationBuilders_IExtensionBlockBuilder__
+  name: IntroduceExtensionBlock
+  nameWithType: AdviserExtensions.IntroduceExtensionBlock
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock
+- uid: System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder}
+  commentId: T:System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<IExtensionBlockBuilder>
+  nameWithType: Action<IExtensionBlockBuilder>
+  fullName: System.Action<Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder>
+  nameWithType.vb: Action(Of IExtensionBlockBuilder)
+  fullName.vb: System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder)
+  name.vb: Action(Of IExtensionBlockBuilder)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder
+    name: IExtensionBlockBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder
+    name: IExtensionBlockBuilder
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder.html
+  - name: )
+- uid: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IExtensionBlock}
+  commentId: T:Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IExtensionBlock}
+  parent: Metalama.Framework.Advising
+  definition: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+  href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.html
+  name: IIntroductionAdviceResult<IExtensionBlock>
+  nameWithType: IIntroductionAdviceResult<IExtensionBlock>
+  fullName: Metalama.Framework.Advising.IIntroductionAdviceResult<Metalama.Framework.Code.IExtensionBlock>
+  nameWithType.vb: IIntroductionAdviceResult(Of IExtensionBlock)
+  fullName.vb: Metalama.Framework.Advising.IIntroductionAdviceResult(Of Metalama.Framework.Code.IExtensionBlock)
+  name.vb: IIntroductionAdviceResult(Of IExtensionBlock)
+  spec.csharp:
+  - uid: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+    name: IIntroductionAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.html
+  - name: <
+  - uid: Metalama.Framework.Code.IExtensionBlock
+    name: IExtensionBlock
+    isExternal: true
+    href: Metalama.Framework.Code.IExtensionBlock.html
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.Advising.IIntroductionAdviceResult`1
+    name: IIntroductionAdviceResult
+    isExternal: true
+    href: Metalama.Framework.Advising.IIntroductionAdviceResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IExtensionBlock
+    name: IExtensionBlock
+    isExternal: true
+    href: Metalama.Framework.Code.IExtensionBlock.html
+  - name: )
 - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAspect*
   commentId: Overload:Metalama.Framework.Aspects.AdviserExtensions.AddAspect
   isExternal: true

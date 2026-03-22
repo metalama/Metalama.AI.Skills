@@ -90,6 +90,7 @@ items:
   - Metalama.Framework.Code.Invokers.IEventInvoker.WithObject(System.Object)
   - Metalama.Framework.Code.Invokers.IEventInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   - Metalama.Framework.Code.Invokers.IEventInvoker.With(System.Object,Metalama.Framework.Code.Invokers.InvokerOptions)
+  - Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
   - Metalama.Framework.Code.DeclarationBuilders.IHasTypeBuilder.RefKind
   extensionMethods:
   - Metalama.Framework.Code.DeclarationBuilders.IEventBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.DeclarationBuilders.IEventBuilder,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.IEventBuilder}},System.Boolean)
@@ -207,10 +208,13 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code.DeclarationBuilders
-  summary: Gets the <xref href="Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder" data-throw-if-not-resolved="false"></xref> for the event raiser.
+  summary: >-
+    Gets the <xref href="Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder" data-throw-if-not-resolved="false"></xref> for the event raiser, or <code>null</code> if the event cannot be raised
+
+    (i.e. for non-field-like events with explicit add/remove accessors).
   example: []
   syntax:
-    content: IMethodBuilder RaiseMethod { get; }
+    content: IMethodBuilder? RaiseMethod { get; }
     parameters: []
     return:
       type: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
@@ -1317,6 +1321,14 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.Invokers.InvokerOptions.html
   - name: )
+- uid: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+  commentId: P:Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
+  parent: Metalama.Framework.Code.Invokers.IEventInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise.html#Metalama_Framework_Code_Invokers_IEventInvoker_CanRaise
+  name: CanRaise
+  nameWithType: IEventInvoker.CanRaise
+  fullName: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
 - uid: Metalama.Framework.Code.DeclarationBuilders.IHasTypeBuilder.RefKind
   commentId: P:Metalama.Framework.Code.DeclarationBuilders.IHasTypeBuilder.RefKind
   parent: Metalama.Framework.Code.DeclarationBuilders.IHasTypeBuilder

@@ -125,13 +125,14 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.RunTime
   summary: >-
-    Evaluates an <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref>, stores the result into a <xref href="System.Collections.Generic.List%601" data-throw-if-not-resolved="false"></xref> and returns an enumerator for this list.
+    Evaluates an <xref href="System.Collections.Generic.IEnumerator%601" data-throw-if-not-resolved="false"></xref>, stores the result into a <xref href="System.Collections.Generic.List%601" data-throw-if-not-resolved="false"></xref> and returns a resettable enumerator for this list.
 
-    If the enumerator is already a list enumerator, returns the input  enumerator.
-     The intended side effect of this method is to completely evaluate the input enumerator.
+    If the enumerator is already buffered, resets it and returns the same instance.
+
+    The intended side effect of this method is to completely evaluate the input enumerator.
   example: []
   syntax:
-    content: public static List<T>.Enumerator Buffer<T>(this IEnumerator<T> enumerator)
+    content: public static RunTimeAspectHelper.Enumerator<T> Buffer<T>(this IEnumerator<T> enumerator)
     parameters:
     - id: enumerator
       type: System.Collections.Generic.IEnumerator{{T}}
@@ -140,11 +141,9 @@ items:
     - id: T
       description: ''
     return:
-      type: System.Collections.Generic.List{{T}}.Enumerator
-      description: >-
-        An enumerator on a <xref href="System.Collections.Generic.List%601" data-throw-if-not-resolved="false"></xref> made from the items of <code class="paramref">enumerator</code>, or the <code class="paramref">enumerator</code> object itself
-                    it is already a <xref href="System.Collections.Generic.List%601" data-throw-if-not-resolved="false"></xref> enumerator.
-    content.vb: Public Shared Function Buffer(Of T)(enumerator As IEnumerator(Of T)) As List(Of T).Enumerator
+      type: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator{{T}}
+      description: An <xref href="Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator%601" data-throw-if-not-resolved="false"></xref> that supports <xref href="System.Collections.IEnumerator.Reset" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function Buffer(Of T)(enumerator As IEnumerator(Of T)) As RunTimeAspectHelper.Enumerator(Of T)
   overload: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer*
   nameWithType.vb: RunTimeAspectHelper.Buffer(Of T)(IEnumerator(Of T))
   fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer(Of T)(System.Collections.Generic.IEnumerator(Of T))
@@ -165,23 +164,22 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.RunTime
   summary: >-
-    Evaluates an <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref>, stores the result into a <code>List&lt;object&gt;</code> and returns an enumerator for this list.
+    Evaluates an <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref>, stores the result into a <code>List&lt;object?&gt;</code> and returns a resettable enumerator for this list.
 
-    If the enumerator is already a list enumerator, returns the input  enumerator.
-     The intended side effect of this method is to completely evaluate the input enumerator.
+    If the enumerator is already buffered, resets it and returns the same instance.
+
+    The intended side effect of this method is to completely evaluate the input enumerator.
   example: []
   syntax:
-    content: public static List<object?>.Enumerator Buffer(this IEnumerator enumerator)
+    content: public static RunTimeAspectHelper.Enumerator Buffer(this IEnumerator enumerator)
     parameters:
     - id: enumerator
       type: System.Collections.IEnumerator
       description: An enumerator.
     return:
-      type: System.Collections.Generic.List{System.Object}.Enumerator
-      description: >-
-        An enumerator on a <code>List&lt;object&gt;</code> made from the items of <code class="paramref">enumerator</code>, or the <code class="paramref">enumerator</code> object itself
-                    it is already a <code>List&lt;object&gt;</code> enumerator.
-    content.vb: Public Shared Function Buffer(enumerator As IEnumerator) As List(Of Object).Enumerator
+      type: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator
+      description: An <xref href="Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator" data-throw-if-not-resolved="false"></xref> that supports <xref href="System.Collections.IEnumerator.Reset" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function Buffer(enumerator As IEnumerator) As RunTimeAspectHelper.Enumerator
   overload: Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer*
 - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Threading.CancellationToken)
   commentId: M:Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Threading.CancellationToken)
@@ -230,7 +228,7 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.RunTime
   syntax:
-    content: public static ValueTask<AsyncEnumerableList<T>.AsyncEnumerator> BufferAsync<T>(this IAsyncEnumerator<T> enumerator, CancellationToken cancellationToken = default)
+    content: public static ValueTask<RunTimeAspectHelper.AsyncEnumerator<T>> BufferAsync<T>(this IAsyncEnumerator<T> enumerator, CancellationToken cancellationToken = default)
     parameters:
     - id: enumerator
       type: System.Collections.Generic.IAsyncEnumerator{{T}}
@@ -239,8 +237,8 @@ items:
     typeParameters:
     - id: T
     return:
-      type: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.AsyncEnumerableList{{T}}.AsyncEnumerator}
-    content.vb: Public Shared Function BufferAsync(Of T)(enumerator As IAsyncEnumerator(Of T), cancellationToken As CancellationToken = Nothing) As ValueTask(Of AsyncEnumerableList(Of T).AsyncEnumerator)
+      type: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator{{T}}}
+    content.vb: Public Shared Function BufferAsync(Of T)(enumerator As IAsyncEnumerator(Of T), cancellationToken As CancellationToken = Nothing) As ValueTask(Of RunTimeAspectHelper.AsyncEnumerator(Of T))
   overload: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*
   nameWithType.vb: RunTimeAspectHelper.BufferAsync(Of T)(IAsyncEnumerator(Of T), CancellationToken)
   fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync(Of T)(System.Collections.Generic.IAsyncEnumerator(Of T), System.Threading.CancellationToken)
@@ -807,6 +805,66 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
+  commentId: T:Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  name: RunTimeAspectHelper.Enumerator<T>
+  nameWithType: RunTimeAspectHelper.Enumerator<T>
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator<T>
+  nameWithType.vb: RunTimeAspectHelper.Enumerator(Of T)
+  fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator(Of T)
+  name.vb: RunTimeAspectHelper.Enumerator(Of T)
+  spec.csharp:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
+    name: Enumerator
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
+    name: Enumerator
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.IEnumerator.Reset
+  commentId: M:System.Collections.IEnumerator.Reset
+  parent: System.Collections.IEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.reset
+  name: Reset()
+  nameWithType: IEnumerator.Reset()
+  fullName: System.Collections.IEnumerator.Reset()
+  spec.csharp:
+  - uid: System.Collections.IEnumerator.Reset
+    name: Reset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerator.Reset
+    name: Reset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.reset
+  - name: (
+  - name: )
 - uid: System.Collections.Generic.IEnumerator{{T}}
   commentId: T:System.Collections.Generic.IEnumerator{`0}
   parent: System.Collections.Generic
@@ -836,83 +894,45 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Collections.Generic.List{{T}}.Enumerator
-  commentId: T:System.Collections.Generic.List{``0}.Enumerator
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1.Enumerator
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>.Enumerator
-  nameWithType: List<T>.Enumerator
-  fullName: System.Collections.Generic.List<T>.Enumerator
-  nameWithType.vb: List(Of T).Enumerator
-  fullName.vb: System.Collections.Generic.List(Of T).Enumerator
-  name.vb: List(Of T).Enumerator
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator{{T}}
+  commentId: T:Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator{``0}
+  parent: Metalama.Framework.RunTime
+  definition: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  name: RunTimeAspectHelper.Enumerator<T>
+  nameWithType: RunTimeAspectHelper.Enumerator<T>
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator<T>
+  nameWithType.vb: RunTimeAspectHelper.Enumerator(Of T)
+  fullName.vb: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator(Of T)
+  name.vb: RunTimeAspectHelper.Enumerator(Of T)
   spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
+    name: Enumerator
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator-1.html
   - name: <
   - name: T
   - name: '>'
+  spec.vb:
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
   - name: .
-  - uid: System.Collections.Generic.List{``0}.Enumerator
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator`1
     name: Enumerator
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.enumerator
-  spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator-1.html
   - name: (
   - name: Of
   - name: " "
   - name: T
   - name: )
-  - name: .
-  - uid: System.Collections.Generic.List{``0}.Enumerator
-    name: Enumerator
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.enumerator
-- uid: System.Collections.Generic.List`1.Enumerator
-  commentId: T:System.Collections.Generic.List`1.Enumerator
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>.Enumerator
-  nameWithType: List<T>.Enumerator
-  fullName: System.Collections.Generic.List<T>.Enumerator
-  nameWithType.vb: List(Of T).Enumerator
-  fullName.vb: System.Collections.Generic.List(Of T).Enumerator
-  name.vb: List(Of T).Enumerator
-  spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: .
-  - uid: System.Collections.Generic.List`1.Enumerator
-    name: Enumerator
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.enumerator
-  spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: .
-  - uid: System.Collections.Generic.List`1.Enumerator
-    name: Enumerator
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.enumerator
 - uid: System.Collections.IEnumerator
   commentId: T:System.Collections.IEnumerator
   parent: System.Collections
@@ -921,51 +941,34 @@ references:
   name: IEnumerator
   nameWithType: IEnumerator
   fullName: System.Collections.IEnumerator
-- uid: System.Collections.Generic.List{System.Object}.Enumerator
-  commentId: T:System.Collections.Generic.List{System.Object}.Enumerator
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1.Enumerator
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<object>.Enumerator
-  nameWithType: List<object>.Enumerator
-  fullName: System.Collections.Generic.List<object>.Enumerator
-  nameWithType.vb: List(Of Object).Enumerator
-  fullName.vb: System.Collections.Generic.List(Of Object).Enumerator
-  name.vb: List(Of Object).Enumerator
+- uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator
+  commentId: T:Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator
+  parent: Metalama.Framework.RunTime
+  isExternal: true
+  href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  name: RunTimeAspectHelper.Enumerator
+  nameWithType: RunTimeAspectHelper.Enumerator
+  fullName: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator
   spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: '>'
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
   - name: .
-  - uid: System.Collections.Generic.List{System.Object}.Enumerator
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator
     name: Enumerator
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.enumerator
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator.html
   spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
   - name: .
-  - uid: System.Collections.Generic.List{System.Object}.Enumerator
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator
     name: Enumerator
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.enumerator
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.Enumerator.html
 - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*
   commentId: Overload:Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync
   isExternal: true
@@ -1202,35 +1205,35 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.AsyncEnumerableList{{T}}.AsyncEnumerator}
-  commentId: T:System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.AsyncEnumerableList{``0}.AsyncEnumerator}
+- uid: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator{{T}}}
+  commentId: T:System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator{``0}}
   parent: System.Threading.Tasks
   definition: System.Threading.Tasks.ValueTask`1
   href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
-  name: ValueTask<AsyncEnumerableList<T>.AsyncEnumerator>
-  nameWithType: ValueTask<AsyncEnumerableList<T>.AsyncEnumerator>
-  fullName: System.Threading.Tasks.ValueTask<Metalama.Framework.RunTime.AsyncEnumerableList<T>.AsyncEnumerator>
-  nameWithType.vb: ValueTask(Of AsyncEnumerableList(Of T).AsyncEnumerator)
-  fullName.vb: System.Threading.Tasks.ValueTask(Of Metalama.Framework.RunTime.AsyncEnumerableList(Of T).AsyncEnumerator)
-  name.vb: ValueTask(Of AsyncEnumerableList(Of T).AsyncEnumerator)
+  name: ValueTask<RunTimeAspectHelper.AsyncEnumerator<T>>
+  nameWithType: ValueTask<RunTimeAspectHelper.AsyncEnumerator<T>>
+  fullName: System.Threading.Tasks.ValueTask<Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator<T>>
+  nameWithType.vb: ValueTask(Of RunTimeAspectHelper.AsyncEnumerator(Of T))
+  fullName.vb: System.Threading.Tasks.ValueTask(Of Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator(Of T))
+  name.vb: ValueTask(Of RunTimeAspectHelper.AsyncEnumerator(Of T))
   spec.csharp:
   - uid: System.Threading.Tasks.ValueTask`1
     name: ValueTask
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
   - name: <
-  - uid: Metalama.Framework.RunTime.AsyncEnumerableList`1
-    name: AsyncEnumerableList
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
     isExternal: true
-    href: Metalama.Framework.RunTime.AsyncEnumerableList-1.html
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator`1
+    name: AsyncEnumerator
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator-1.html
   - name: <
   - name: T
   - name: '>'
-  - name: .
-  - uid: Metalama.Framework.RunTime.AsyncEnumerableList{``0}.AsyncEnumerator
-    name: AsyncEnumerator
-    isExternal: true
-    href: Metalama.Framework.RunTime.AsyncEnumerableList-1.AsyncEnumerator.html
   - name: '>'
   spec.vb:
   - uid: System.Threading.Tasks.ValueTask`1
@@ -1240,20 +1243,20 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.RunTime.AsyncEnumerableList`1
-    name: AsyncEnumerableList
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper
+    name: RunTimeAspectHelper
     isExternal: true
-    href: Metalama.Framework.RunTime.AsyncEnumerableList-1.html
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.html
+  - name: .
+  - uid: Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator`1
+    name: AsyncEnumerator
+    isExternal: true
+    href: Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator-1.html
   - name: (
   - name: Of
   - name: " "
   - name: T
   - name: )
-  - name: .
-  - uid: Metalama.Framework.RunTime.AsyncEnumerableList{``0}.AsyncEnumerator
-    name: AsyncEnumerator
-    isExternal: true
-    href: Metalama.Framework.RunTime.AsyncEnumerableList-1.AsyncEnumerator.html
   - name: )
 - uid: System.Collections.Generic.IAsyncEnumerator`1
   commentId: T:System.Collections.Generic.IAsyncEnumerator`1

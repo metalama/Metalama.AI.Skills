@@ -11,6 +11,8 @@ items:
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.Equals(Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.Equals(System.Object)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.GetHashCode
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.MaxKeySize
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.PrintMembers(System.Text.StringBuilder)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.ToString
@@ -302,6 +304,8 @@ items:
   assemblies:
   - Metalama.Patterns.Caching
   namespace: Metalama.Patterns.Caching.Formatters
+  summary: Gets or sets the maximum size of the cache key before compression. Default is 1024.
+  example: []
   syntax:
     content: public int MaxKeySize { get; init; }
     parameters: []
@@ -309,6 +313,60 @@ items:
       type: System.Int32
     content.vb: Public Property MaxKeySize As Integer
   overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.MaxKeySize*
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  id: HashingAlgorithm
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+  langs:
+  - csharp
+  - vb
+  name: HashingAlgorithm
+  nameWithType: CacheKeyBuilderOptions.HashingAlgorithm
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: >-
+    Gets or sets the hashing algorithm used to compress keys when their length exceeds <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold" data-throw-if-not-resolved="false"></xref>.
+
+    Default is <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public CacheKeyHashingAlgorithm HashingAlgorithm { get; init; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
+    content.vb: Public Property HashingAlgorithm As CacheKeyHashingAlgorithm
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm*
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+  id: KeyCompressingThreshold
+  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
+  langs:
+  - csharp
+  - vb
+  name: KeyCompressingThreshold
+  nameWithType: CacheKeyBuilderOptions.KeyCompressingThreshold
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching
+  namespace: Metalama.Patterns.Caching.Formatters
+  summary: >-
+    Gets or sets the length threshold above which a key will be compressed using <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm" data-throw-if-not-resolved="false"></xref>.
+
+    Only effective when <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm" data-throw-if-not-resolved="false"></xref> is not <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None" data-throw-if-not-resolved="false"></xref>.
+
+    Default is 0 (compress all keys when hashing is enabled).
+  example: []
+  syntax:
+    content: public int KeyCompressingThreshold { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property KeyCompressingThreshold As Integer
+  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold*
 references:
 - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
   commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
@@ -1143,4 +1201,47 @@ references:
   name: MaxKeySize
   nameWithType: CacheKeyBuilderOptions.MaxKeySize
   fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.MaxKeySize
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_KeyCompressingThreshold
+  name: KeyCompressingThreshold
+  nameWithType: CacheKeyBuilderOptions.KeyCompressingThreshold
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None
+  commentId: F:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyHashingAlgorithm_None
+  name: None
+  nameWithType: CacheKeyHashingAlgorithm.None
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_HashingAlgorithm
+  name: HashingAlgorithm
+  nameWithType: CacheKeyBuilderOptions.HashingAlgorithm
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
+  commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
+  parent: Metalama.Patterns.Caching.Formatters
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.html
+  name: CacheKeyHashingAlgorithm
+  nameWithType: CacheKeyHashingAlgorithm
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_HashingAlgorithm
+  name: HashingAlgorithm
+  nameWithType: CacheKeyBuilderOptions.HashingAlgorithm
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.HashingAlgorithm
+- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold*
+  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
+  isExternal: true
+  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilderOptions_KeyCompressingThreshold
+  name: KeyCompressingThreshold
+  nameWithType: CacheKeyBuilderOptions.KeyCompressingThreshold
+  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions.KeyCompressingThreshold
 memberLayout: SeparatePages
