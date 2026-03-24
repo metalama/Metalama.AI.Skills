@@ -17,6 +17,17 @@ public partial class Greeter
       _logger.Log("Leaving Greeter.SayHello()");
     }
   }
+  private ILogger _logger1 = default !;
   [Import]
-  public ILogger _logger { get; set; }
+  public ILogger _logger
+  {
+    get
+    {
+      return _logger1;
+    }
+    set
+    {
+      _logger1 = value;
+    }
+  }
 }

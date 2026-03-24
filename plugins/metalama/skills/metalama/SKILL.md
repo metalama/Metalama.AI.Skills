@@ -1,5 +1,5 @@
 ---
-name: metalama-2026.1
+name: metalama-2026.0
 description: Complete Metalama documentation for aspect-oriented programming in C#. Use when writing aspects, templates, fabrics, or meta-programming code with Metalama.
 ---
 
@@ -7,7 +7,7 @@ description: Complete Metalama documentation for aspect-oriented programming in 
 
 This skill contains the complete Metalama documentation including conceptual guides, API reference, and sample code.
 
-This skill pertains to Metalama 2026.1.
+This skill pertains to Metalama 2026.0.
 
 ## Directory Structure
 

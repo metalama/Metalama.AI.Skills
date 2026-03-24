@@ -18,13 +18,16 @@ public class Program
   public static async Task<int> AsyncMethod()
   {
     Console.WriteLine("AsyncMethod: start");
-    int result;
+    var result = await AsyncMethod_Source();
+    Console.WriteLine($"AsyncMethod: returning {result}.");
+    return result;
+  }
+  private static async Task<int> AsyncMethod_Source()
+  {
     Console.WriteLine("  Task.Yield");
     await Task.Yield();
     Console.WriteLine("  Resuming");
-    result = 5;
-    Console.WriteLine($"AsyncMethod: returning {result}.");
-    return result;
+    return 5;
   }
   [Log]
   public static IEnumerable<int> EnumerableMethod()
