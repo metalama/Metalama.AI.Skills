@@ -41,8 +41,14 @@ items:
     <p>To invalidate a cached method, see <xref href="Metalama.Patterns.Caching.Aspects.InvalidateCacheAttribute" data-throw-if-not-resolved="false"></xref> and the <xref href="Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate%60%602(Metalama.Patterns.Caching.ICachingService%2cSystem.Func%7b%60%601%2c%60%600%7d%2c%60%601)" data-throw-if-not-resolved="false"></xref> method.</p>
   example: []
   syntax:
-    content: 'public sealed class CacheAttribute : CachingBaseAttribute, IHierarchicalOptionsProvider, IAspect<IMethod>, IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible<IMethod>'
-    content.vb: Public NotInheritable Class CacheAttribute Inherits CachingBaseAttribute Implements IHierarchicalOptionsProvider, IAspect(Of IMethod), IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible(Of IMethod)
+    content: >-
+      [AttributeUsage(AttributeTargets.Method)]
+
+      public sealed class CacheAttribute : CachingBaseAttribute, IHierarchicalOptionsProvider, IAspect<IMethod>, IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible<IMethod>
+    content.vb: >-
+      <AttributeUsage(AttributeTargets.Method)>
+
+      Public NotInheritable Class CacheAttribute Inherits CachingBaseAttribute Implements IHierarchicalOptionsProvider, IAspect(Of IMethod), IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible(Of IMethod)
   inheritance:
   - System.Object
   - System.Attribute
@@ -106,6 +112,12 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   extensionMethods:
   - Metalama.Patterns.Caching.Aspects.CacheAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Aspects.CacheAttribute,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Aspects.CacheAttribute}},System.Boolean)
+  attributes:
+  - type: System.AttributeUsageAttribute
+    ctor: System.AttributeUsageAttribute.#ctor(System.AttributeTargets)
+    arguments:
+    - type: System.AttributeTargets
+      value: 64
 - uid: Metalama.Patterns.Caching.Aspects.CacheAttribute.OverrideMethod``1(Metalama.Framework.Code.IField,Metalama.Framework.Code.IField)
   commentId: M:Metalama.Patterns.Caching.Aspects.CacheAttribute.OverrideMethod``1(Metalama.Framework.Code.IField,Metalama.Framework.Code.IField)
   id: OverrideMethod``1(Metalama.Framework.Code.IField,Metalama.Framework.Code.IField)
