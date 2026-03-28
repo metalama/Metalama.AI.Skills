@@ -12,6 +12,8 @@ items:
   - Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IIndexerCollection,System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType},System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind})
   - Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,Metalama.Framework.Code.IMethod,System.Boolean)
   - Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType},System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind},System.Nullable{System.Boolean})
+  - Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Collections.Generic.IReadOnlyList{System.Type},System.Nullable{System.Boolean})
+  - Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Int32,System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType},System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind},System.Nullable{System.Boolean})
   - Metalama.Framework.Code.MethodCollectionExtensions.OfKind(Metalama.Framework.Code.Collections.IMethodCollection,Metalama.Framework.Code.MethodKind)
   langs:
   - csharp
@@ -225,6 +227,97 @@ items:
   nameWithType.vb: MethodCollectionExtensions.OfCompatibleSignature(IMethodCollection, String, IReadOnlyList(Of IType), IReadOnlyList(Of RefKind), Boolean?, ConversionKind)
   fullName.vb: Metalama.Framework.Code.MethodCollectionExtensions.OfCompatibleSignature(Metalama.Framework.Code.Collections.IMethodCollection, String, System.Collections.Generic.IReadOnlyList(Of Metalama.Framework.Code.IType), System.Collections.Generic.IReadOnlyList(Of Metalama.Framework.Code.RefKind), Boolean?, Metalama.Framework.Code.ConversionKind)
   name.vb: OfCompatibleSignature(IMethodCollection, String, IReadOnlyList(Of IType), IReadOnlyList(Of RefKind), Boolean?, ConversionKind)
+- uid: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Int32,System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType},System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind},System.Nullable{System.Boolean})
+  commentId: M:Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Int32,System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType},System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind},System.Nullable{System.Boolean})
+  id: OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Int32,System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType},System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind},System.Nullable{System.Boolean})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MethodCollectionExtensions
+  langs:
+  - csharp
+  - vb
+  name: OfExactSignature(IMethodCollection, string, int, IReadOnlyList<IType>, IReadOnlyList<RefKind>?, bool?)
+  nameWithType: MethodCollectionExtensions.OfExactSignature(IMethodCollection, string, int, IReadOnlyList<IType>, IReadOnlyList<RefKind>?, bool?)
+  fullName: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection, string, int, System.Collections.Generic.IReadOnlyList<Metalama.Framework.Code.IType>, System.Collections.Generic.IReadOnlyList<Metalama.Framework.Code.RefKind>?, bool?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Gets a method that exactly matches the specified signature, including the number of generic type parameters.
+  example: []
+  syntax:
+    content: public static IMethod? OfExactSignature(this IMethodCollection methods, string name, int typeParameterCount, IReadOnlyList<IType> parameterTypes, IReadOnlyList<RefKind>? refKinds = null, bool? isStatic = null)
+    parameters:
+    - id: methods
+      type: Metalama.Framework.Code.Collections.IMethodCollection
+      description: A collection of methods.
+    - id: name
+      type: System.String
+      description: Name of the method.
+    - id: typeParameterCount
+      type: System.Int32
+      description: Required number of generic type parameters.
+    - id: parameterTypes
+      type: System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType}
+      description: List of parameter types.
+    - id: refKinds
+      type: System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.RefKind}
+      description: List of parameter reference kinds, or <code>null</code> if all parameters should be by-value.
+    - id: isStatic
+      type: System.Nullable{System.Boolean}
+      description: Staticity of the method.
+    return:
+      type: Metalama.Framework.Code.IMethod
+      description: A <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref> that matches the given signature, or <code>null</code> if no match is found.
+    content.vb: Public Shared Function OfExactSignature(methods As IMethodCollection, name As String, typeParameterCount As Integer, parameterTypes As IReadOnlyList(Of IType), refKinds As IReadOnlyList(Of RefKind) = Nothing, isStatic As Boolean? = Nothing) As IMethod
+  overload: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature*
+  nameWithType.vb: MethodCollectionExtensions.OfExactSignature(IMethodCollection, String, Integer, IReadOnlyList(Of IType), IReadOnlyList(Of RefKind), Boolean?)
+  fullName.vb: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection, String, Integer, System.Collections.Generic.IReadOnlyList(Of Metalama.Framework.Code.IType), System.Collections.Generic.IReadOnlyList(Of Metalama.Framework.Code.RefKind), Boolean?)
+  name.vb: OfExactSignature(IMethodCollection, String, Integer, IReadOnlyList(Of IType), IReadOnlyList(Of RefKind), Boolean?)
+- uid: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Collections.Generic.IReadOnlyList{System.Type},System.Nullable{System.Boolean})
+  commentId: M:Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Collections.Generic.IReadOnlyList{System.Type},System.Nullable{System.Boolean})
+  id: OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,System.String,System.Collections.Generic.IReadOnlyList{System.Type},System.Nullable{System.Boolean})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MethodCollectionExtensions
+  langs:
+  - csharp
+  - vb
+  name: OfExactSignature(IMethodCollection, string, IReadOnlyList<Type>, bool?)
+  nameWithType: MethodCollectionExtensions.OfExactSignature(IMethodCollection, string, IReadOnlyList<Type>, bool?)
+  fullName: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection, string, System.Collections.Generic.IReadOnlyList<System.Type>, bool?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets a method that exactly matches the specified signature given using the <code>System.Reflection</code> API.
+
+    By-ref reflection types (<xref href="System.Type.IsByRef" data-throw-if-not-resolved="false"></xref> == <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>) do not match any parameter.
+
+    Non-by-ref reflection types match parameters with <xref href="Metalama.Framework.Code.RefKind.None" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.RefKind.In" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static IMethod? OfExactSignature(this IMethodCollection methods, string name, IReadOnlyList<Type> parameterTypes, bool? isStatic = null)
+    parameters:
+    - id: methods
+      type: Metalama.Framework.Code.Collections.IMethodCollection
+      description: A collection of methods.
+    - id: name
+      type: System.String
+      description: Name of the method.
+    - id: parameterTypes
+      type: System.Collections.Generic.IReadOnlyList{System.Type}
+      description: List of parameter types as reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref> objects.
+    - id: isStatic
+      type: System.Nullable{System.Boolean}
+      description: Staticity of the method.
+    return:
+      type: Metalama.Framework.Code.IMethod
+      description: A <xref href="Metalama.Framework.Code.IMethod" data-throw-if-not-resolved="false"></xref> that matches the given signature.
+    content.vb: Public Shared Function OfExactSignature(methods As IMethodCollection, name As String, parameterTypes As IReadOnlyList(Of Type), isStatic As Boolean? = Nothing) As IMethod
+  overload: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature*
+  nameWithType.vb: MethodCollectionExtensions.OfExactSignature(IMethodCollection, String, IReadOnlyList(Of Type), Boolean?)
+  fullName.vb: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection, String, System.Collections.Generic.IReadOnlyList(Of System.Type), Boolean?)
+  name.vb: OfExactSignature(IMethodCollection, String, IReadOnlyList(Of Type), Boolean?)
 - uid: Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,Metalama.Framework.Code.IMethod,System.Boolean)
   commentId: M:Metalama.Framework.Code.MethodCollectionExtensions.OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,Metalama.Framework.Code.IMethod,System.Boolean)
   id: OfExactSignature(Metalama.Framework.Code.Collections.IMethodCollection,Metalama.Framework.Code.IMethod,System.Boolean)
@@ -1167,6 +1260,46 @@ references:
   name: Default
   nameWithType: ConversionKind.Default
   fullName: Metalama.Framework.Code.ConversionKind.Default
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Type.IsByRef
+  commentId: P:System.Type.IsByRef
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type.isbyref
+  name: IsByRef
+  nameWithType: Type.IsByRef
+  fullName: System.Type.IsByRef
+- uid: Metalama.Framework.Code.RefKind.None
+  commentId: F:Metalama.Framework.Code.RefKind.None
+  isExternal: true
+  href: Metalama.Framework.Code.RefKind.html#Metalama_Framework_Code_RefKind_None
+  name: None
+  nameWithType: RefKind.None
+  fullName: Metalama.Framework.Code.RefKind.None
+- uid: Metalama.Framework.Code.RefKind.In
+  commentId: F:Metalama.Framework.Code.RefKind.In
+  isExternal: true
+  href: Metalama.Framework.Code.RefKind.html#Metalama_Framework_Code_RefKind_In
+  name: In
+  nameWithType: RefKind.In
+  fullName: Metalama.Framework.Code.RefKind.In
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

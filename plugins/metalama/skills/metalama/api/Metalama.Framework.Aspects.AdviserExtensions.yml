@@ -8,6 +8,7 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.AddAnnotation``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Code.IAnnotation{``0},System.Boolean)
   - Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser)
   - Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser{``0},Metalama.Framework.Aspects.IAspect{``0})
+  - Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
   - Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrPropertyOrIndexer},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.AddContract(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IParameter},System.String,Metalama.Framework.Aspects.ContractDirection,System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},Metalama.Framework.Code.SyntaxBuilders.IStatement)
@@ -55,6 +56,7 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.RemoveAttributes(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IDeclaration},System.Type)
   - Metalama.Framework.Aspects.AdviserExtensions.RequireAspect(Metalama.Framework.Aspects.IAdviser,System.Type)
   - Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Aspects.IAdviser)
+  - Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
   - Metalama.Framework.Aspects.AdviserExtensions.WithChildNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespace},System.String)
   - Metalama.Framework.Aspects.AdviserExtensions.WithDeclaringType(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMember})
   - Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.ICompilation},System.String)
@@ -3133,6 +3135,76 @@ items:
       description: The aspect type. It must have a default constructor.
     content.vb: Public Shared Sub RequireAspect(adviser As IAdviser, aspectType As Type)
   overload: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect*
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
+  id: AddAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAspect<TAspect>(ITypeAmender)
+  nameWithType: AdviserExtensions.AddAspect<TAspect>(ITypeAmender)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddAspect<TAspect>(Metalama.Framework.Fabrics.ITypeAmender)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the target type, using the aspect type's default constructor.
+  remarks: >-
+    This overload resolves the ambiguity between <xref href="Metalama.Framework.Aspects.AdviserExtensions.AddAspect%60%601(Metalama.Framework.Aspects.IAdviser)" data-throw-if-not-resolved="false"></xref> and <code>AspectQueryExtensions.AddAspect</code>
+
+    for <xref href="Metalama.Framework.Fabrics.ITypeAmender" data-throw-if-not-resolved="false"></xref>, which implements both <xref href="Metalama.Framework.Aspects.IAdviser" data-throw-if-not-resolved="false"></xref> and <code>IQuery</code>.
+  example: []
+  syntax:
+    content: 'public static void AddAspect<TAspect>(this ITypeAmender amender) where TAspect : class, IAspect, new()'
+    parameters:
+    - id: amender
+      type: Metalama.Framework.Fabrics.ITypeAmender
+      description: The type amender.
+    typeParameters:
+    - id: TAspect
+      description: The aspect type. It must have a default constructor.
+    content.vb: Public Shared Sub AddAspect(Of TAspect As {Class, IAspect, New})(amender As ITypeAmender)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.AddAspect*
+  nameWithType.vb: AdviserExtensions.AddAspect(Of TAspect)(ITypeAmender)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddAspect(Of TAspect)(Metalama.Framework.Fabrics.ITypeAmender)
+  name.vb: AddAspect(Of TAspect)(ITypeAmender)
+- uid: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
+  id: RequireAspect``1(Metalama.Framework.Fabrics.ITypeAmender)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: RequireAspect<TAspect>(ITypeAmender)
+  nameWithType: AdviserExtensions.RequireAspect<TAspect>(ITypeAmender)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect<TAspect>(Metalama.Framework.Fabrics.ITypeAmender)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Adds an aspect to the target type, unless there is already an aspect of that type on the declaration.
+  remarks: >-
+    This overload resolves the ambiguity between <xref href="Metalama.Framework.Aspects.AdviserExtensions.RequireAspect%60%601(Metalama.Framework.Aspects.IAdviser)" data-throw-if-not-resolved="false"></xref> and <code>AspectQueryExtensions.RequireAspect</code>
+
+    for <xref href="Metalama.Framework.Fabrics.ITypeAmender" data-throw-if-not-resolved="false"></xref>, which implements both <xref href="Metalama.Framework.Aspects.IAdviser" data-throw-if-not-resolved="false"></xref> and <code>IQuery</code>.
+  example: []
+  syntax:
+    content: 'public static void RequireAspect<TAspect>(this ITypeAmender amender) where TAspect : class, IAspect, new()'
+    parameters:
+    - id: amender
+      type: Metalama.Framework.Fabrics.ITypeAmender
+      description: The type amender.
+    typeParameters:
+    - id: TAspect
+      description: The aspect type. It must have a default constructor.
+    content.vb: Public Shared Sub RequireAspect(Of TAspect As {Class, IAspect, New})(amender As ITypeAmender)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect*
+  nameWithType.vb: AdviserExtensions.RequireAspect(Of TAspect)(ITypeAmender)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect(Of TAspect)(Metalama.Framework.Fabrics.ITypeAmender)
+  name.vb: RequireAspect(Of TAspect)(ITypeAmender)
 - uid: Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.ICompilation},System.String)
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.ICompilation},System.String)
   id: WithNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.ICompilation},System.String)
@@ -7079,6 +7151,131 @@ references:
   name: RequireAspect
   nameWithType: AdviserExtensions.RequireAspect
   fullName: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddAspect.html#Metalama_Framework_Aspects_AdviserExtensions_AddAspect__1_Metalama_Framework_Aspects_IAdviser_
+  name: AddAspect<TAspect>(IAdviser)
+  nameWithType: AdviserExtensions.AddAspect<TAspect>(IAdviser)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddAspect<TAspect>(Metalama.Framework.Aspects.IAdviser)
+  nameWithType.vb: AdviserExtensions.AddAspect(Of TAspect)(IAdviser)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddAspect(Of TAspect)(Metalama.Framework.Aspects.IAdviser)
+  name.vb: AddAspect(Of TAspect)(IAdviser)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser)
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddAspect.html#Metalama_Framework_Aspects_AdviserExtensions_AddAspect__1_Metalama_Framework_Aspects_IAdviser_
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddAspect``1(Metalama.Framework.Aspects.IAdviser)
+    name: AddAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddAspect.html#Metalama_Framework_Aspects_AdviserExtensions_AddAspect__1_Metalama_Framework_Aspects_IAdviser_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser.html
+  - name: )
+- uid: Metalama.Framework.Fabrics.ITypeAmender
+  commentId: T:Metalama.Framework.Fabrics.ITypeAmender
+  parent: Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.Framework.Fabrics.ITypeAmender.html
+  name: ITypeAmender
+  nameWithType: ITypeAmender
+  fullName: Metalama.Framework.Fabrics.ITypeAmender
+- uid: Metalama.Framework.Fabrics
+  commentId: N:Metalama.Framework.Fabrics
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Fabrics
+  nameWithType: Metalama.Framework.Fabrics
+  fullName: Metalama.Framework.Fabrics
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Fabrics
+    name: Fabrics
+    isExternal: true
+    href: Metalama.Framework.Fabrics.html
+- uid: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Aspects.IAdviser)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Aspects.IAdviser)
+  isExternal: true
+  href: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect.html#Metalama_Framework_Aspects_AdviserExtensions_RequireAspect__1_Metalama_Framework_Aspects_IAdviser_
+  name: RequireAspect<TAspect>(IAdviser)
+  nameWithType: AdviserExtensions.RequireAspect<TAspect>(IAdviser)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect<TAspect>(Metalama.Framework.Aspects.IAdviser)
+  nameWithType.vb: AdviserExtensions.RequireAspect(Of TAspect)(IAdviser)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect(Of TAspect)(Metalama.Framework.Aspects.IAdviser)
+  name.vb: RequireAspect(Of TAspect)(IAdviser)
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Aspects.IAdviser)
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect.html#Metalama_Framework_Aspects_AdviserExtensions_RequireAspect__1_Metalama_Framework_Aspects_IAdviser_
+  - name: <
+  - name: TAspect
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect``1(Metalama.Framework.Aspects.IAdviser)
+    name: RequireAspect
+    isExternal: true
+    href: Metalama.Framework.Aspects.AdviserExtensions.RequireAspect.html#Metalama_Framework_Aspects_AdviserExtensions_RequireAspect__1_Metalama_Framework_Aspects_IAdviser_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAspect
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Aspects.IAdviser
+    name: IAdviser
+    isExternal: true
+    href: Metalama.Framework.Aspects.IAdviser.html
+  - name: )
 - uid: Metalama.Framework.Aspects.AdviserExtensions.WithNamespace*
   commentId: Overload:Metalama.Framework.Aspects.AdviserExtensions.WithNamespace
   isExternal: true
