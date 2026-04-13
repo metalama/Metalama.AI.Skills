@@ -6,6 +6,8 @@ items:
   parent: Metalama.Framework.Code.DeclarationBuilders
   children:
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttribute(Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction)
+  - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.Freeze
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.IsFrozen
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
@@ -117,6 +119,67 @@ items:
       description: The attribute to add.
     content.vb: Sub AddAttribute(attribute As AttributeConstruction)
   overload: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttribute*
+- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  id: AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddAttributes(IEnumerable<AttributeConstruction>)
+  nameWithType: IDeclarationBuilder.AddAttributes(IEnumerable<AttributeConstruction>)
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.DeclarationBuilders
+  summary: Adds custom attributes to the current declaration.
+  example: []
+  syntax:
+    content: void AddAttributes(IEnumerable<AttributeConstruction> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: The attribute constructions to add.
+    content.vb: Sub AddAttributes(attributes As IEnumerable(Of AttributeConstruction))
+  overload: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes*
+  nameWithType.vb: IDeclarationBuilder.AddAttributes(IEnumerable(Of AttributeConstruction))
+  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
+  name.vb: AddAttributes(IEnumerable(Of AttributeConstruction))
+- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+  id: AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+  parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddAttributes(IEnumerable<IAttribute>)
+  nameWithType: IDeclarationBuilder.AddAttributes(IEnumerable<IAttribute>)
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IAttribute>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.DeclarationBuilders
+  summary: >-
+    Adds custom attributes to the current declaration by copying them from existing <xref href="Metalama.Framework.Code.IAttribute" data-throw-if-not-resolved="false"></xref> instances.
+
+    This is useful when replacing or introducing a declaration and copying the attributes from the original declaration.
+
+    Callers can filter the sequence (e.g. using LINQ <code>Where</code>) before passing it.
+  example: []
+  syntax:
+    content: void AddAttributes(IEnumerable<IAttribute> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute}
+      description: >-
+        The attributes to copy. Each attribute is converted to an <xref href="Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction" data-throw-if-not-resolved="false"></xref>
+                    via <xref href="Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction(Metalama.Framework.Code.IAttribute)" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Sub AddAttributes(attributes As IEnumerable(Of IAttribute))
+  overload: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes*
+  nameWithType.vb: IDeclarationBuilder.AddAttributes(IEnumerable(Of IAttribute))
+  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IAttribute))
+  name.vb: AddAttributes(IEnumerable(Of IAttribute))
 - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   id: RemoveAttributes(Metalama.Framework.Code.INamedType)
@@ -2613,6 +2676,185 @@ references:
   name: AddAttribute
   nameWithType: IDeclarationBuilder.AddAttribute
   fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttribute
+- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes*
+  commentId: Overload:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  name: AddAttributes
+  nameWithType: IDeclarationBuilder.AddAttributes
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<AttributeConstruction>
+  nameWithType: IEnumerable<AttributeConstruction>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>
+  nameWithType.vb: IEnumerable(Of AttributeConstruction)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction)
+  name.vb: IEnumerable(Of AttributeConstruction)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Code.IAttribute
+  commentId: T:Metalama.Framework.Code.IAttribute
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Metalama.Framework.Code.IAttribute
+- uid: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction(Metalama.Framework.Code.IAttribute)
+  commentId: M:Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction(Metalama.Framework.Code.IAttribute)
+  isExternal: true
+  href: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction.html#Metalama_Framework_Code_AttributeExtensions_ToAttributeConstruction_Metalama_Framework_Code_IAttribute_
+  name: ToAttributeConstruction(IAttribute)
+  nameWithType: AttributeExtensions.ToAttributeConstruction(IAttribute)
+  fullName: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction(Metalama.Framework.Code.IAttribute)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction(Metalama.Framework.Code.IAttribute)
+    name: ToAttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction.html#Metalama_Framework_Code_AttributeExtensions_ToAttributeConstruction_Metalama_Framework_Code_IAttribute_
+  - name: (
+  - uid: Metalama.Framework.Code.IAttribute
+    name: IAttribute
+    isExternal: true
+    href: Metalama.Framework.Code.IAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction(Metalama.Framework.Code.IAttribute)
+    name: ToAttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.AttributeExtensions.ToAttributeConstruction.html#Metalama_Framework_Code_AttributeExtensions_ToAttributeConstruction_Metalama_Framework_Code_IAttribute_
+  - name: (
+  - uid: Metalama.Framework.Code.IAttribute
+    name: IAttribute
+    isExternal: true
+    href: Metalama.Framework.Code.IAttribute.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IAttribute>
+  nameWithType: IEnumerable<IAttribute>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IAttribute>
+  nameWithType.vb: IEnumerable(Of IAttribute)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IAttribute)
+  name.vb: IEnumerable(Of IAttribute)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IAttribute
+    name: IAttribute
+    isExternal: true
+    href: Metalama.Framework.Code.IAttribute.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IAttribute
+    name: IAttribute
+    isExternal: true
+    href: Metalama.Framework.Code.IAttribute.html
+  - name: )
 - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes*
   commentId: Overload:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes
   isExternal: true

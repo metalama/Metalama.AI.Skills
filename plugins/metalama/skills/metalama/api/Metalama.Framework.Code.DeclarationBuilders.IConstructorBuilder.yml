@@ -37,8 +37,8 @@ items:
     commentId: T:Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder
   - linkId: Metalama.Framework.Aspects.AdviserExtensions.IntroduceConstructor(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder},System.Object,System.Object)
     commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceConstructor(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder},System.Object,System.Object)
-  - linkId: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - linkId: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+    commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
   - linkId: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Object,System.Object)
     commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Object,System.Object)
   - linkType: HRef
@@ -82,6 +82,8 @@ items:
   - Metalama.Framework.Code.IMemberOrNamedType.ExecutionScope
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.Freeze
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttribute(Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction)
+  - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.IsFrozen
   - Metalama.Framework.Code.IDeclaration.ToSerializableId
@@ -104,6 +106,7 @@ items:
   - Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder.Metalama.Framework.Code.DeclarationExtensions.ForCompilation``1(Metalama.Framework.Code.ICompilation)
   - Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder.Metalama.Framework.Code.DeclarationExtensions.TryForCompilation``1(Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder@)
   - Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder.Metalama.Framework.Metrics.MetricsExtensions.Metrics``1
+  - Metalama.Framework.Code.IConstructor.Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor
   - Metalama.Framework.Code.IConstructor.Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor
   - Metalama.Framework.Code.IConstructor.Metalama.Framework.Code.GenericExtensions.ForTypeInstance(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.IConstructor.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
@@ -331,21 +334,21 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
   isExternal: true
-  href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
-  name: IntroduceParameter(IAdviser<IConstructor>, string, IType, TypedConstant, IPullStrategy, ImmutableArray<AttributeConstruction>)
-  nameWithType: AdviserExtensions.IntroduceParameter(IAdviser<IConstructor>, string, IType, TypedConstant, IPullStrategy, ImmutableArray<AttributeConstruction>)
-  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IConstructor>, string, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
-  nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
-  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
-  name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+  href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__Metalama_Framework_Advising_IConstructorOverloadingStrategy_
+  name: IntroduceParameter(IAdviser<IConstructor>, string, IType, IPullStrategy, ImmutableArray<AttributeConstruction>, IConstructorOverloadingStrategy)
+  nameWithType: AdviserExtensions.IntroduceParameter(IAdviser<IConstructor>, string, IType, IPullStrategy, ImmutableArray<AttributeConstruction>, IConstructorOverloadingStrategy)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IConstructor>, string, Metalama.Framework.Code.IType, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>, Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction), Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
   spec.csharp:
-  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
     name: IntroduceParameter
     isExternal: true
-    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__Metalama_Framework_Advising_IConstructorOverloadingStrategy_
   - name: (
   - uid: Metalama.Framework.Aspects.IAdviser`1
     name: IAdviser
@@ -371,12 +374,6 @@ references:
     href: Metalama.Framework.Code.IType.html
   - name: ','
   - name: " "
-  - uid: Metalama.Framework.Code.TypedConstant
-    name: TypedConstant
-    isExternal: true
-    href: Metalama.Framework.Code.TypedConstant.html
-  - name: ','
-  - name: " "
   - uid: Metalama.Framework.Advising.IPullStrategy
     name: IPullStrategy
     isExternal: true
@@ -393,12 +390,18 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
   - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    name: IConstructorOverloadingStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IConstructorOverloadingStrategy.html
   - name: )
   spec.vb:
-  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
     name: IntroduceParameter
     isExternal: true
-    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_TypedConstant_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+    href: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter.html#Metalama_Framework_Aspects_AdviserExtensions_IntroduceParameter_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_IConstructor__System_String_Metalama_Framework_Code_IType_Metalama_Framework_Advising_IPullStrategy_System_Collections_Immutable_ImmutableArray_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__Metalama_Framework_Advising_IConstructorOverloadingStrategy_
   - name: (
   - uid: Metalama.Framework.Aspects.IAdviser`1
     name: IAdviser
@@ -426,12 +429,6 @@ references:
     href: Metalama.Framework.Code.IType.html
   - name: ','
   - name: " "
-  - uid: Metalama.Framework.Code.TypedConstant
-    name: TypedConstant
-    isExternal: true
-    href: Metalama.Framework.Code.TypedConstant.html
-  - name: ','
-  - name: " "
   - uid: Metalama.Framework.Advising.IPullStrategy
     name: IPullStrategy
     isExternal: true
@@ -450,6 +447,12 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
   - name: )
+  - name: ','
+  - name: " "
+  - uid: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    name: IConstructorOverloadingStrategy
+    isExternal: true
+    href: Metalama.Framework.Advising.IConstructorOverloadingStrategy.html
   - name: )
 - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Object,System.Object)
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Object,System.Object)
@@ -1372,6 +1375,100 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
   - name: )
+- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  name: AddAttributes(IEnumerable<AttributeConstruction>)
+  nameWithType: IDeclarationBuilder.AddAttributes(IEnumerable<AttributeConstruction>)
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
+  nameWithType.vb: IDeclarationBuilder.AddAttributes(IEnumerable(Of AttributeConstruction))
+  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
+  name.vb: AddAttributes(IEnumerable(Of AttributeConstruction))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: AddAttributes
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+    name: AddAttributes
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
+    name: AttributeConstruction
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+  parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IAttribute__
+  name: AddAttributes(IEnumerable<IAttribute>)
+  nameWithType: IDeclarationBuilder.AddAttributes(IEnumerable<IAttribute>)
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IAttribute>)
+  nameWithType.vb: IDeclarationBuilder.AddAttributes(IEnumerable(Of IAttribute))
+  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IAttribute))
+  name.vb: AddAttributes(IEnumerable(Of IAttribute))
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+    name: AddAttributes
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IAttribute__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IAttribute
+    name: IAttribute
+    isExternal: true
+    href: Metalama.Framework.Code.IAttribute.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
+    name: AddAttributes
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IAttribute__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IAttribute
+    name: IAttribute
+    isExternal: true
+    href: Metalama.Framework.Code.IAttribute.html
+  - name: )
+  - name: )
 - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
@@ -1930,6 +2027,36 @@ references:
     name: IConstructorBuilder
     isExternal: true
     href: Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder.html
+  - name: )
+- uid: Metalama.Framework.Code.IConstructor.Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor
+  commentId: M:Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  parent: Metalama.Framework.Code.ConstructorExtensions
+  definition: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
+  name: IsSourceCompatibilityConstructor(IConstructor)
+  nameWithType: ConstructorExtensions.IsSourceCompatibilityConstructor(IConstructor)
+  fullName: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+    name: IsSourceCompatibilityConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+    name: IsSourceCompatibilityConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
   - name: )
 - uid: Metalama.Framework.Code.IConstructor.Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor
   commentId: M:Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor(Metalama.Framework.Code.IConstructor)
@@ -3413,6 +3540,43 @@ references:
   name: MetricsExtensions
   nameWithType: MetricsExtensions
   fullName: Metalama.Framework.Metrics.MetricsExtensions
+- uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  commentId: M:Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  isExternal: true
+  href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
+  name: IsSourceCompatibilityConstructor(IConstructor)
+  nameWithType: ConstructorExtensions.IsSourceCompatibilityConstructor(IConstructor)
+  fullName: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+    name: IsSourceCompatibilityConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+    name: IsSourceCompatibilityConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
+  - name: (
+  - uid: Metalama.Framework.Code.IConstructor
+    name: IConstructor
+    isExternal: true
+    href: Metalama.Framework.Code.IConstructor.html
+  - name: )
+- uid: Metalama.Framework.Code.ConstructorExtensions
+  commentId: T:Metalama.Framework.Code.ConstructorExtensions
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.ConstructorExtensions.html
+  name: ConstructorExtensions
+  nameWithType: ConstructorExtensions
+  fullName: Metalama.Framework.Code.ConstructorExtensions
 - uid: Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor(Metalama.Framework.Code.IConstructor)
   commentId: M:Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor(Metalama.Framework.Code.IConstructor)
   isExternal: true

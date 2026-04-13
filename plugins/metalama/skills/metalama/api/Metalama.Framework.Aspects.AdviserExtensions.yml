@@ -14,7 +14,7 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},Metalama.Framework.Code.SyntaxBuilders.IStatement)
   - Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
-  - Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
+  - Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
   - Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.INamedType,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.Type,Metalama.Framework.Aspects.OverrideStrategy,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceAttribute(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IDeclaration},Metalama.Framework.Code.IAttributeData,Metalama.Framework.Aspects.OverrideStrategy)
@@ -38,8 +38,10 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceIndexer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.Type,System.String,System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder},System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.TypedConstant,System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction},System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Code.TypedConstant,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Code.TypedConstant,System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction},System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceProperty(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder},System.Object)
@@ -2097,17 +2099,17 @@ items:
   nameWithType.vb: AdviserExtensions.ImplementInterface(IAdviser(Of INamedType), Type, OverrideStrategy, Object)
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), System.Type, Metalama.Framework.Aspects.OverrideStrategy, Object)
   name.vb: ImplementInterface(IAdviser(Of INamedType), Type, OverrideStrategy, Object)
-- uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
-  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
-  id: AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
+  id: AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
   isExtensionMethod: true
   parent: Metalama.Framework.Aspects.AdviserExtensions
   langs:
   - csharp
   - vb
-  name: AddInitializer(IAdviser<INamedType>, string, InitializerKind, object?, object?)
-  nameWithType: AdviserExtensions.AddInitializer(IAdviser<INamedType>, string, InitializerKind, object?, object?)
-  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, string, Metalama.Framework.Advising.InitializerKind, object?, object?)
+  name: AddInitializer(IAdviser<INamedType>, string, InitializerKind, object?, object?, IEnumerable<IField>?)
+  nameWithType: AdviserExtensions.AddInitializer(IAdviser<INamedType>, string, InitializerKind, object?, object?, IEnumerable<IField>?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, string, Metalama.Framework.Advising.InitializerKind, object?, object?, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IField>?)
   type: Method
   assemblies:
   - Metalama.Framework
@@ -2133,7 +2135,7 @@ items:
         </p>
   example: []
   syntax:
-    content: public static IAddInitializerAdviceResult AddInitializer(this IAdviser<INamedType> adviser, string template, InitializerKind kind, object? args = null, object? tags = null)
+    content: public static IAddInitializerAdviceResult AddInitializer(this IAdviser<INamedType> adviser, string template, InitializerKind kind, object? args = null, object? tags = null, IEnumerable<IField>? slotFields = null)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType}
@@ -2150,10 +2152,12 @@ items:
     - id: tags
       type: System.Object
       description: An optional object (typically of anonymous type) passed to the template and accessible via <code>meta.Tags</code>. See <a href="@sharing-state-with-advice">@sharing-state-with-advice</a> for details.
+    - id: slotFields
+      type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField}
     return:
       type: Metalama.Framework.Advising.IAddInitializerAdviceResult
       description: An <xref href="Metalama.Framework.Advising.IAddInitializerAdviceResult" data-throw-if-not-resolved="false"></xref> exposing the added initializer.
-    content.vb: Public Shared Function AddInitializer(adviser As IAdviser(Of INamedType), template As String, kind As InitializerKind, args As Object = Nothing, tags As Object = Nothing) As IAddInitializerAdviceResult
+    content.vb: Public Shared Function AddInitializer(adviser As IAdviser(Of INamedType), template As String, kind As InitializerKind, args As Object = Nothing, tags As Object = Nothing, slotFields As IEnumerable(Of IField) = Nothing) As IAddInitializerAdviceResult
   overload: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer*
   seealso:
   - linkId: Metalama.Framework.Advising.InitializerKind
@@ -2164,9 +2168,9 @@ items:
   - linkType: HRef
     linkId: '@sharing-state-with-advice'
     altText: '@sharing-state-with-advice'
-  nameWithType.vb: AdviserExtensions.AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object)
-  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Advising.InitializerKind, Object, Object)
-  name.vb: AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object)
+  nameWithType.vb: AdviserExtensions.AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object, IEnumerable(Of IField))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Advising.InitializerKind, Object, Object, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IField))
+  name.vb: AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object, IEnumerable(Of IField))
 - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
   id: AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.SyntaxBuilders.IStatement,Metalama.Framework.Advising.InitializerKind)
@@ -2189,7 +2193,7 @@ items:
   remarks: >-
     This overload allows you to inject a programmatically constructed statement instead of using a template.
 
-    See <xref href="Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cSystem.String%2cMetalama.Framework.Advising.InitializerKind%2cSystem.Object%2cSystem.Object)" data-throw-if-not-resolved="false"></xref> for more details on initialization timing.
+    See <xref href="Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cSystem.String%2cMetalama.Framework.Advising.InitializerKind%2cSystem.Object%2cSystem.Object%2cSystem.Collections.Generic.IEnumerable%7bMetalama.Framework.Code.IField%7d)" data-throw-if-not-resolved="false"></xref> for more details on initialization timing.
   example: []
   syntax:
     content: public static IAddInitializerAdviceResult AddInitializer(this IAdviser<INamedType> adviser, IStatement statement, InitializerKind kind)
@@ -2714,6 +2718,43 @@ items:
   nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
   name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  id: IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceParameter(IAdviser<IConstructor>, string, IType, IPullStrategy?, ImmutableArray<AttributeConstruction>, IConstructorOverloadingStrategy?)
+  nameWithType: AdviserExtensions.IntroduceParameter(IAdviser<IConstructor>, string, IType, IPullStrategy?, ImmutableArray<AttributeConstruction>, IConstructorOverloadingStrategy?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IConstructor>, string, Metalama.Framework.Code.IType, Metalama.Framework.Advising.IPullStrategy?, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>, Metalama.Framework.Advising.IConstructorOverloadingStrategy?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  syntax:
+    content: public static IIntroductionAdviceResult<IParameter> IntroduceParameter(this IAdviser<IConstructor> adviser, string parameterName, IType parameterType, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default, IConstructorOverloadingStrategy? overloadingStrategy = null)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+    - id: parameterName
+      type: System.String
+    - id: parameterType
+      type: Metalama.Framework.Code.IType
+    - id: pullStrategy
+      type: Metalama.Framework.Advising.IPullStrategy
+    - id: attributes
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+    - id: overloadingStrategy
+      type: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+    content.vb: Public Shared Function IntroduceParameter(adviser As IAdviser(Of IConstructor), parameterName As String, parameterType As IType, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing, overloadingStrategy As IConstructorOverloadingStrategy = Nothing) As IIntroductionAdviceResult(Of IParameter)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter*
+  nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction), Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
 - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Code.TypedConstant,System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction},System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Code.TypedConstant,System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction},System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
   id: IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Code.TypedConstant,System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction},System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
@@ -2800,6 +2841,43 @@ items:
   nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, Type, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, System.Type, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
   name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, Type, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  id: IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Advising.IPullStrategy,System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction},Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceParameter(IAdviser<IConstructor>, string, Type, IPullStrategy?, ImmutableArray<AttributeConstruction>, IConstructorOverloadingStrategy?)
+  nameWithType: AdviserExtensions.IntroduceParameter(IAdviser<IConstructor>, string, Type, IPullStrategy?, ImmutableArray<AttributeConstruction>, IConstructorOverloadingStrategy?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.IConstructor>, string, System.Type, Metalama.Framework.Advising.IPullStrategy?, System.Collections.Immutable.ImmutableArray<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>, Metalama.Framework.Advising.IConstructorOverloadingStrategy?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  syntax:
+    content: public static IIntroductionAdviceResult<IParameter> IntroduceParameter(this IAdviser<IConstructor> adviser, string parameterName, Type parameterType, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default, IConstructorOverloadingStrategy? overloadingStrategy = null)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+    - id: parameterName
+      type: System.String
+    - id: parameterType
+      type: System.Type
+    - id: pullStrategy
+      type: Metalama.Framework.Advising.IPullStrategy
+    - id: attributes
+      type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+    - id: overloadingStrategy
+      type: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+    content.vb: Public Shared Function IntroduceParameter(adviser As IAdviser(Of IConstructor), parameterName As String, parameterType As Type, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing, overloadingStrategy As IConstructorOverloadingStrategy = Nothing) As IIntroductionAdviceResult(Of IParameter)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter*
+  nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, Type, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, System.Type, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction), Metalama.Framework.Advising.IConstructorOverloadingStrategy)
+  name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, Type, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
 - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceClass(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceClass(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   id: IntroduceClass(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
@@ -5781,10 +5859,73 @@ references:
 - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer*
   commentId: Overload:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer
   isExternal: true
-  href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IField__
   name: AddInitializer
   nameWithType: AdviserExtensions.AddInitializer
   fullName: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer
+- uid: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField}
+  commentId: T:System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IField>
+  nameWithType: IEnumerable<IField>
+  fullName: System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IField>
+  nameWithType.vb: IEnumerable(Of IField)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IField)
+  name.vb: IEnumerable(Of IField)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IField
+    name: IField
+    isExternal: true
+    href: Metalama.Framework.Code.IField.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IField
+    name: IField
+    isExternal: true
+    href: Metalama.Framework.Code.IField.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Metalama.Framework.Code.SyntaxBuilders.IStatement
   commentId: T:Metalama.Framework.Code.SyntaxBuilders.IStatement
   parent: Metalama.Framework.Code.SyntaxBuilders
@@ -5793,21 +5934,21 @@ references:
   name: IStatement
   nameWithType: IStatement
   fullName: Metalama.Framework.Code.SyntaxBuilders.IStatement
-- uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
-  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
+- uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
   isExternal: true
-  href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_
-  name: AddInitializer(IAdviser<INamedType>, string, InitializerKind, object, object)
-  nameWithType: AdviserExtensions.AddInitializer(IAdviser<INamedType>, string, InitializerKind, object, object)
-  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, string, Metalama.Framework.Advising.InitializerKind, object, object)
-  nameWithType.vb: AdviserExtensions.AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object)
-  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Advising.InitializerKind, Object, Object)
-  name.vb: AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object)
+  href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IField__
+  name: AddInitializer(IAdviser<INamedType>, string, InitializerKind, object, object, IEnumerable<IField>)
+  nameWithType: AdviserExtensions.AddInitializer(IAdviser<INamedType>, string, InitializerKind, object, object, IEnumerable<IField>)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamedType>, string, Metalama.Framework.Advising.InitializerKind, object, object, System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IField>)
+  nameWithType.vb: AdviserExtensions.AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object, IEnumerable(Of IField))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamedType), String, Metalama.Framework.Advising.InitializerKind, Object, Object, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IField))
+  name.vb: AddInitializer(IAdviser(Of INamedType), String, InitializerKind, Object, Object, IEnumerable(Of IField))
   spec.csharp:
-  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
     name: AddInitializer
     isExternal: true
-    href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IField__
   - name: (
   - uid: Metalama.Framework.Aspects.IAdviser`1
     name: IAdviser
@@ -5843,12 +5984,24 @@ references:
     name: object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Framework.Code.IField
+    name: IField
+    isExternal: true
+    href: Metalama.Framework.Code.IField.html
+  - name: '>'
   - name: )
   spec.vb:
-  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object)
+  - uid: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Advising.InitializerKind,System.Object,System.Object,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IField})
     name: AddInitializer
     isExternal: true
-    href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_
+    href: Metalama.Framework.Aspects.AdviserExtensions.AddInitializer.html#Metalama_Framework_Aspects_AdviserExtensions_AddInitializer_Metalama_Framework_Aspects_IAdviser_Metalama_Framework_Code_INamedType__System_String_Metalama_Framework_Advising_InitializerKind_System_Object_System_Object_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IField__
   - name: (
   - uid: Metalama.Framework.Aspects.IAdviser`1
     name: IAdviser
@@ -5886,6 +6039,20 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IField
+    name: IField
+    isExternal: true
+    href: Metalama.Framework.Code.IField.html
+  - name: )
   - name: )
 - uid: Metalama.Framework.Code.SyntaxBuilders
   commentId: N:Metalama.Framework.Code.SyntaxBuilders
@@ -6772,6 +6939,14 @@ references:
   name: IPullStrategy
   nameWithType: IPullStrategy
   fullName: Metalama.Framework.Advising.IPullStrategy
+- uid: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  commentId: T:Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  parent: Metalama.Framework.Advising
+  isExternal: true
+  href: Metalama.Framework.Advising.IConstructorOverloadingStrategy.html
+  name: IConstructorOverloadingStrategy
+  nameWithType: IConstructorOverloadingStrategy
+  fullName: Metalama.Framework.Advising.IConstructorOverloadingStrategy
 - uid: Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.ICompilation},System.String)
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.ICompilation},System.String)
   isExternal: true
