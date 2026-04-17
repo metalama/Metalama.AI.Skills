@@ -1,49 +1,61 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-  commentId: T:Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-  id: SourceCompatibilityConstructorAttribute
-  parent: Metalama.Framework.RunTime
+- uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+  commentId: T:Metalama.Testing.AspectTesting.CurrentProjectAttribute
+  id: CurrentProjectAttribute
+  parent: Metalama.Testing.AspectTesting
   children:
-  - Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.#ctor
+  - Metalama.Testing.AspectTesting.CurrentProjectAttribute.#ctor
+  - Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData(System.Reflection.MethodInfo)
   langs:
   - csharp
   - vb
-  name: SourceCompatibilityConstructorAttribute
-  nameWithType: SourceCompatibilityConstructorAttribute
-  fullName: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
+  name: CurrentProjectAttribute
+  nameWithType: CurrentProjectAttribute
+  fullName: Metalama.Testing.AspectTesting.CurrentProjectAttribute
   type: Class
   assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.RunTime
-  summary: >-
-    A custom attribute added by the framework to a source-compatibility <em>forwarding constructor</em>: a compile-time stub that keeps
-
-    the pre-mutation signature of an aspect-mutated constructor callable so that existing call sites continue to
-
-    compile and existing assemblies that link against the type continue to bind. The source-compatibility forwarding constructor preserves
-
-    both source and binary compatibility with the source constructor; it chains, via <code>: this(...)</code>,
-
-    to the constructor that <xref href="Metalama.Framework.Advising.IAdviceFactory" data-throw-if-not-resolved="false"></xref> has mutated with an appended parameter.
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: An xUnit data attribute that generates test cases from all snapshot test files in the current project.
   remarks: >-
-    Aspect authors should not add this attribute directly. Use
-                <xref href="Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)" data-throw-if-not-resolved="false"></xref> from a custom
-                <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> to detect such constructors.
+    <p>
+        Use this attribute with <code>[Theory]</code> to automatically discover all test files (<code>*.cs</code>) in the project
+        and generate a test case for each file. Unlike <xref href="Metalama.Testing.AspectTesting.CurrentDirectoryAttribute" data-throw-if-not-resolved="false"></xref>, this attribute
+        discovers files across the entire project rather than a specific directory.
+        </p>
+    <p>
+        The attribute excludes:
+        <ul><li>Subdirectories that contain a file named <code>_Runner.cs</code> (which indicates a separate test class)</li><li>Files marked with <code>// @Skipped</code> directive</li></ul></p>
+    <p>
+        Test discovery respects options from <code>metalamaTests.json</code> configuration files.
+        </p>
   example: []
   syntax:
     content: >-
-      [AttributeUsage(AttributeTargets.Constructor)]
+      [Obsolete("This class is obsolete. Use the default snapshot test project setup provided by Metalama.Testing.AspectTesting instead.")]
 
-      public sealed class SourceCompatibilityConstructorAttribute : Attribute
+      public sealed class CurrentProjectAttribute : DataAttribute
     content.vb: >-
-      <AttributeUsage(AttributeTargets.Constructor)>
+      <Obsolete("This class is obsolete. Use the default snapshot test project setup provided by Metalama.Testing.AspectTesting instead.")>
 
-      Public NotInheritable Class SourceCompatibilityConstructorAttribute Inherits Attribute
+      Public NotInheritable Class CurrentProjectAttribute Inherits DataAttribute
+  seealso:
+  - linkId: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    commentId: T:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+  - linkId: Metalama.Testing.AspectTesting.AspectTestClass
+    commentId: T:Metalama.Testing.AspectTesting.AspectTestClass
+  - linkId: Metalama.Testing.AspectTesting.TestOptions
+    commentId: T:Metalama.Testing.AspectTesting.TestOptions
+  - linkType: HRef
+    linkId: '@aspect-testing'
+    altText: '@aspect-testing'
   inheritance:
   - System.Object
   - System.Attribute
+  - Xunit.Sdk.DataAttribute
   inheritedMembers:
+  - Xunit.Sdk.DataAttribute.Skip
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
@@ -86,117 +98,125 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.ReferenceEquals(System.Object,System.Object)
   extensionMethods:
-  - Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute}},System.Boolean)
+  - Metalama.Testing.AspectTesting.CurrentProjectAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.AspectTesting.CurrentProjectAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentProjectAttribute}},System.Boolean)
   attributes:
-  - type: System.AttributeUsageAttribute
-    ctor: System.AttributeUsageAttribute.#ctor(System.AttributeTargets)
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
     arguments:
-    - type: System.AttributeTargets
-      value: 32
-- uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.#ctor
-  commentId: M:Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.#ctor
-  id: '#ctor'
-  parent: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
+    - type: System.String
+      value: This class is obsolete. Use the default snapshot test project setup provided by Metalama.Testing.AspectTesting instead.
+- uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData(System.Reflection.MethodInfo)
+  commentId: M:Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData(System.Reflection.MethodInfo)
+  id: GetData(System.Reflection.MethodInfo)
+  parent: Metalama.Testing.AspectTesting.CurrentProjectAttribute
   langs:
   - csharp
   - vb
-  name: SourceCompatibilityConstructorAttribute()
-  nameWithType: SourceCompatibilityConstructorAttribute.SourceCompatibilityConstructorAttribute()
-  fullName: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.SourceCompatibilityConstructorAttribute()
+  name: GetData(MethodInfo)
+  nameWithType: CurrentProjectAttribute.GetData(MethodInfo)
+  fullName: Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData(System.Reflection.MethodInfo)
+  type: Method
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Returns the data to be used to test the theory.
+  example: []
+  syntax:
+    content: public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+    parameters:
+    - id: testMethod
+      type: System.Reflection.MethodInfo
+      description: The method that is being tested
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Object[]}
+      description: >-
+        One or more sets of theory data. Each invocation of the test method
+                    is represented by a single object array.
+    content.vb: Public Overrides Function GetData(testMethod As MethodInfo) As IEnumerable(Of Object())
+  overridden: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  overload: Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData*
+- uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute.#ctor
+  commentId: M:Metalama.Testing.AspectTesting.CurrentProjectAttribute.#ctor
+  id: '#ctor'
+  parent: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+  langs:
+  - csharp
+  - vb
+  name: CurrentProjectAttribute()
+  nameWithType: CurrentProjectAttribute.CurrentProjectAttribute()
+  fullName: Metalama.Testing.AspectTesting.CurrentProjectAttribute.CurrentProjectAttribute()
   type: Constructor
   assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.RunTime
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
   syntax:
-    content: public SourceCompatibilityConstructorAttribute()
+    content: public CurrentProjectAttribute()
     content.vb: Public Sub New()
-  overload: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.#ctor*
-  nameWithType.vb: SourceCompatibilityConstructorAttribute.New()
-  fullName.vb: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.New()
+  overload: Metalama.Testing.AspectTesting.CurrentProjectAttribute.#ctor*
+  nameWithType.vb: CurrentProjectAttribute.New()
+  fullName.vb: Metalama.Testing.AspectTesting.CurrentProjectAttribute.New()
   name.vb: New()
 references:
-- uid: Metalama.Framework.Advising.IAdviceFactory
-  commentId: T:Metalama.Framework.Advising.IAdviceFactory
-  parent: Metalama.Framework.Advising
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+  commentId: T:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
   isExternal: true
-  href: Metalama.Framework.Advising.IAdviceFactory.html
-  name: IAdviceFactory
-  nameWithType: IAdviceFactory
-  fullName: Metalama.Framework.Advising.IAdviceFactory
-- uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
-  commentId: M:Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
+  href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
+  name: CurrentDirectoryAttribute
+  nameWithType: CurrentDirectoryAttribute
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+- uid: Metalama.Testing.AspectTesting.AspectTestClass
+  commentId: T:Metalama.Testing.AspectTesting.AspectTestClass
+  parent: Metalama.Testing.AspectTesting
   isExternal: true
-  href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
-  name: IsSourceCompatibilityConstructor(IConstructor)
-  nameWithType: ConstructorExtensions.IsSourceCompatibilityConstructor(IConstructor)
-  fullName: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
-    name: IsSourceCompatibilityConstructor
-    isExternal: true
-    href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
-  - name: (
-  - uid: Metalama.Framework.Code.IConstructor
-    name: IConstructor
-    isExternal: true
-    href: Metalama.Framework.Code.IConstructor.html
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor(Metalama.Framework.Code.IConstructor)
-    name: IsSourceCompatibilityConstructor
-    isExternal: true
-    href: Metalama.Framework.Code.ConstructorExtensions.IsSourceCompatibilityConstructor.html#Metalama_Framework_Code_ConstructorExtensions_IsSourceCompatibilityConstructor_Metalama_Framework_Code_IConstructor_
-  - name: (
-  - uid: Metalama.Framework.Code.IConstructor
-    name: IConstructor
-    isExternal: true
-    href: Metalama.Framework.Code.IConstructor.html
-  - name: )
-- uid: Metalama.Framework.Advising.IPullStrategy
-  commentId: T:Metalama.Framework.Advising.IPullStrategy
-  parent: Metalama.Framework.Advising
+  href: Metalama.Testing.AspectTesting.AspectTestClass.html
+  name: AspectTestClass
+  nameWithType: AspectTestClass
+  fullName: Metalama.Testing.AspectTesting.AspectTestClass
+- uid: Metalama.Testing.AspectTesting.TestOptions
+  commentId: T:Metalama.Testing.AspectTesting.TestOptions
+  parent: Metalama.Testing.AspectTesting
   isExternal: true
-  href: Metalama.Framework.Advising.IPullStrategy.html
-  name: IPullStrategy
-  nameWithType: IPullStrategy
-  fullName: Metalama.Framework.Advising.IPullStrategy
-- uid: Metalama.Framework.RunTime
-  commentId: N:Metalama.Framework.RunTime
+  href: Metalama.Testing.AspectTesting.TestOptions.html
+  name: TestOptions
+  nameWithType: TestOptions
+  fullName: Metalama.Testing.AspectTesting.TestOptions
+- uid: Metalama.Testing.AspectTesting
+  commentId: N:Metalama.Testing.AspectTesting
   isExternal: true
   href: Metalama.html
-  name: Metalama.Framework.RunTime
-  nameWithType: Metalama.Framework.RunTime
-  fullName: Metalama.Framework.RunTime
+  name: Metalama.Testing.AspectTesting
+  nameWithType: Metalama.Testing.AspectTesting
+  fullName: Metalama.Testing.AspectTesting
   spec.csharp:
   - uid: Metalama
     name: Metalama
     isExternal: true
     href: Metalama.html
   - name: .
-  - uid: Metalama.Framework
-    name: Framework
+  - uid: Metalama.Testing
+    name: Testing
     isExternal: true
-    href: Metalama.Framework.html
+    href: Metalama.Testing.html
   - name: .
-  - uid: Metalama.Framework.RunTime
-    name: RunTime
+  - uid: Metalama.Testing.AspectTesting
+    name: AspectTesting
     isExternal: true
-    href: Metalama.Framework.RunTime.html
+    href: Metalama.Testing.AspectTesting.html
   spec.vb:
   - uid: Metalama
     name: Metalama
     isExternal: true
     href: Metalama.html
   - name: .
-  - uid: Metalama.Framework
-    name: Framework
+  - uid: Metalama.Testing
+    name: Testing
     isExternal: true
-    href: Metalama.Framework.html
+    href: Metalama.Testing.html
   - name: .
-  - uid: Metalama.Framework.RunTime
-    name: RunTime
+  - uid: Metalama.Testing.AspectTesting
+    name: AspectTesting
     isExternal: true
-    href: Metalama.Framework.RunTime.html
+    href: Metalama.Testing.AspectTesting.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -216,6 +236,20 @@ references:
   name: Attribute
   nameWithType: Attribute
   fullName: System.Attribute
+- uid: Xunit.Sdk.DataAttribute
+  commentId: T:Xunit.Sdk.DataAttribute
+  parent: Xunit.Sdk
+  isExternal: true
+  name: DataAttribute
+  nameWithType: DataAttribute
+  fullName: Xunit.Sdk.DataAttribute
+- uid: Xunit.Sdk.DataAttribute.Skip
+  commentId: P:Xunit.Sdk.DataAttribute.Skip
+  parent: Xunit.Sdk.DataAttribute
+  isExternal: true
+  name: Skip
+  nameWithType: DataAttribute.Skip
+  fullName: Xunit.Sdk.DataAttribute.Skip
 - uid: System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   commentId: M:System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   parent: System.Attribute
@@ -1960,33 +1994,33 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute}},System.Boolean)
+- uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.AspectTesting.CurrentProjectAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentProjectAttribute}},System.Boolean)
   commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   parent: Metalama.Framework.Code.Collections.EnumerableExtensions
   definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  name: SelectManyRecursiveDistinct<SourceCompatibilityConstructorAttribute>(SourceCompatibilityConstructorAttribute, Func<SourceCompatibilityConstructorAttribute, IEnumerable<SourceCompatibilityConstructorAttribute>>, bool)
-  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<SourceCompatibilityConstructorAttribute>(SourceCompatibilityConstructorAttribute, Func<SourceCompatibilityConstructorAttribute, IEnumerable<SourceCompatibilityConstructorAttribute>>, bool)
-  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute>(Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute, System.Func<Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute, System.Collections.Generic.IEnumerable<Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute>>, bool)
-  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of SourceCompatibilityConstructorAttribute)(SourceCompatibilityConstructorAttribute, Func(Of SourceCompatibilityConstructorAttribute, IEnumerable(Of SourceCompatibilityConstructorAttribute)), Boolean)
-  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute)(Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute, System.Func(Of Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute, System.Collections.Generic.IEnumerable(Of Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute)), Boolean)
-  name.vb: SelectManyRecursiveDistinct(Of SourceCompatibilityConstructorAttribute)(SourceCompatibilityConstructorAttribute, Func(Of SourceCompatibilityConstructorAttribute, IEnumerable(Of SourceCompatibilityConstructorAttribute)), Boolean)
+  name: SelectManyRecursiveDistinct<CurrentProjectAttribute>(CurrentProjectAttribute, Func<CurrentProjectAttribute, IEnumerable<CurrentProjectAttribute>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<CurrentProjectAttribute>(CurrentProjectAttribute, Func<CurrentProjectAttribute, IEnumerable<CurrentProjectAttribute>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Testing.AspectTesting.CurrentProjectAttribute>(Metalama.Testing.AspectTesting.CurrentProjectAttribute, System.Func<Metalama.Testing.AspectTesting.CurrentProjectAttribute, System.Collections.Generic.IEnumerable<Metalama.Testing.AspectTesting.CurrentProjectAttribute>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of CurrentProjectAttribute)(CurrentProjectAttribute, Func(Of CurrentProjectAttribute, IEnumerable(Of CurrentProjectAttribute)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Testing.AspectTesting.CurrentProjectAttribute)(Metalama.Testing.AspectTesting.CurrentProjectAttribute, System.Func(Of Metalama.Testing.AspectTesting.CurrentProjectAttribute, System.Collections.Generic.IEnumerable(Of Metalama.Testing.AspectTesting.CurrentProjectAttribute)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of CurrentProjectAttribute)(CurrentProjectAttribute, Func(Of CurrentProjectAttribute, IEnumerable(Of CurrentProjectAttribute)), Boolean)
   spec.csharp:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute,System.Func{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute}},System.Boolean)
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.AspectTesting.CurrentProjectAttribute,System.Func{Metalama.Testing.AspectTesting.CurrentProjectAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentProjectAttribute}},System.Boolean)
     name: SelectManyRecursiveDistinct
     isExternal: true
     href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
   - name: <
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: '>'
   - name: (
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: ','
   - name: " "
   - uid: System.Func`2
@@ -1994,10 +2028,10 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.func-2
   - name: <
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: ','
   - name: " "
   - uid: System.Collections.Generic.IEnumerable`1
@@ -2005,10 +2039,10 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: '>'
   - name: '>'
   - name: ','
@@ -2019,23 +2053,23 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
   spec.vb:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute,System.Func{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute}},System.Boolean)
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.AspectTesting.CurrentProjectAttribute,System.Func{Metalama.Testing.AspectTesting.CurrentProjectAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentProjectAttribute}},System.Boolean)
     name: SelectManyRecursiveDistinct
     isExternal: true
     href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: )
   - name: (
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: ','
   - name: " "
   - uid: System.Func`2
@@ -2045,10 +2079,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: ','
   - name: " "
   - uid: System.Collections.Generic.IEnumerable`1
@@ -2058,10 +2092,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute
-    name: SourceCompatibilityConstructorAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute
+    name: CurrentProjectAttribute
     isExternal: true
-    href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.html
   - name: )
   - name: )
   - name: ','
@@ -2071,43 +2105,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: Metalama.Framework.Advising
-  commentId: N:Metalama.Framework.Advising
-  isExternal: true
-  href: Metalama.html
-  name: Metalama.Framework.Advising
-  nameWithType: Metalama.Framework.Advising
-  fullName: Metalama.Framework.Advising
-  spec.csharp:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Advising
-    name: Advising
-    isExternal: true
-    href: Metalama.Framework.Advising.html
-  spec.vb:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Advising
-    name: Advising
-    isExternal: true
-    href: Metalama.Framework.Advising.html
 - uid: System
   commentId: N:System
   isExternal: true
@@ -2115,6 +2112,28 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Xunit.Sdk
+  commentId: N:Xunit.Sdk
+  isExternal: true
+  name: Xunit.Sdk
+  nameWithType: Xunit.Sdk
+  fullName: Xunit.Sdk
+  spec.csharp:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Sdk
+    name: Sdk
+    isExternal: true
+  spec.vb:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Sdk
+    name: Sdk
+    isExternal: true
 - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   isExternal: true
@@ -2256,14 +2275,188 @@ references:
     name: Collections
     isExternal: true
     href: Metalama.Framework.Code.Collections.html
-- uid: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.#ctor*
-  commentId: Overload:Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.#ctor
+- uid: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  commentId: M:Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  parent: Xunit.Sdk.DataAttribute
   isExternal: true
-  href: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.-ctor.html#Metalama_Framework_RunTime_SourceCompatibilityConstructorAttribute__ctor
-  name: SourceCompatibilityConstructorAttribute
-  nameWithType: SourceCompatibilityConstructorAttribute.SourceCompatibilityConstructorAttribute
-  fullName: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.SourceCompatibilityConstructorAttribute
-  nameWithType.vb: SourceCompatibilityConstructorAttribute.New
-  fullName.vb: Metalama.Framework.RunTime.SourceCompatibilityConstructorAttribute.New
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: GetData(MethodInfo)
+  nameWithType: DataAttribute.GetData(MethodInfo)
+  fullName: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  spec.csharp:
+  - uid: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+    name: GetData
+    isExternal: true
+  - name: (
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  - name: )
+  spec.vb:
+  - uid: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+    name: GetData
+    isExternal: true
+  - name: (
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  - name: )
+- uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData*
+  commentId: Overload:Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData
+  isExternal: true
+  href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData.html#Metalama_Testing_AspectTesting_CurrentProjectAttribute_GetData_System_Reflection_MethodInfo_
+  name: GetData
+  nameWithType: CurrentProjectAttribute.GetData
+  fullName: Metalama.Testing.AspectTesting.CurrentProjectAttribute.GetData
+- uid: System.Reflection.MethodInfo
+  commentId: T:System.Reflection.MethodInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: System.Reflection.MethodInfo
+- uid: System.Collections.Generic.IEnumerable{System.Object[]}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Object[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<object[]>
+  nameWithType: IEnumerable<object[]>
+  fullName: System.Collections.Generic.IEnumerable<object[]>
+  nameWithType.vb: IEnumerable(Of Object())
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Object())
+  name.vb: IEnumerable(Of Object())
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Testing.AspectTesting.CurrentProjectAttribute.#ctor*
+  commentId: Overload:Metalama.Testing.AspectTesting.CurrentProjectAttribute.#ctor
+  isExternal: true
+  href: Metalama.Testing.AspectTesting.CurrentProjectAttribute.-ctor.html#Metalama_Testing_AspectTesting_CurrentProjectAttribute__ctor
+  name: CurrentProjectAttribute
+  nameWithType: CurrentProjectAttribute.CurrentProjectAttribute
+  fullName: Metalama.Testing.AspectTesting.CurrentProjectAttribute.CurrentProjectAttribute
+  nameWithType.vb: CurrentProjectAttribute.New
+  fullName.vb: Metalama.Testing.AspectTesting.CurrentProjectAttribute.New
   name.vb: New
 memberLayout: SeparatePages

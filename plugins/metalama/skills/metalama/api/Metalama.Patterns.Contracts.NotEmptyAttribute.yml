@@ -7,7 +7,6 @@ items:
   children:
   - Metalama.Patterns.Contracts.NotEmptyAttribute.#ctor
   - Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IFieldOrPropertyOrIndexer})
-  - Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
   - Metalama.Patterns.Contracts.NotEmptyAttribute.Validate(System.Object)
   langs:
   - csharp
@@ -61,6 +60,7 @@ items:
   - Metalama.Framework.Aspects.ContractAspect.BuildLayer
   - Metalama.Framework.Aspects.ContractAspect.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{Metalama.Framework.Code.IFieldOrPropertyOrIndexer})
   - Metalama.Framework.Aspects.ContractAspect.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder{Metalama.Framework.Code.IParameter})
+  - Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
   - Metalama.Framework.Aspects.ContractAspect.RedirectContracts(Metalama.Framework.Aspects.IAspectBuilder,Metalama.Framework.Code.IFieldOrPropertyOrIndexer,Metalama.Framework.Code.IParameter)
   - Metalama.Framework.Aspects.Aspect.ToString
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
@@ -189,67 +189,6 @@ items:
   nameWithType.vb: NotEmptyAttribute.BuildEligibility(IEligibilityBuilder(Of IFieldOrPropertyOrIndexer))
   fullName.vb: Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IFieldOrPropertyOrIndexer))
   name.vb: BuildEligibility(IEligibilityBuilder(Of IFieldOrPropertyOrIndexer))
-- uid: Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-  commentId: M:Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-  id: BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-  parent: Metalama.Patterns.Contracts.NotEmptyAttribute
-  langs:
-  - csharp
-  - vb
-  name: BuildEligibility(IEligibilityBuilder<IParameter>)
-  nameWithType: NotEmptyAttribute.BuildEligibility(IEligibilityBuilder<IParameter>)
-  fullName: Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IParameter>)
-  type: Method
-  assemblies:
-  - Metalama.Patterns.Contracts
-  namespace: Metalama.Patterns.Contracts
-  summary: >-
-    Configures the eligibility of the aspect or attribute by defining rules that determine which declarations
-
-    the aspect can be applied to.
-  remarks: >-
-    <p>
-      <strong>Important:</strong> Do not reference instance class members in your implementation of <xref href="Metalama.Framework.Eligibility.IEligible%601.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref>.
-        This method is called on an instance obtained using <xref href="System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)" data-throw-if-not-resolved="false"></xref>, that is,
-        <i>without invoking the class constructor</i>.
-        </p>
-    <p>
-        Implementations must call the base class implementation if one exists.
-        </p>
-    <p>
-        Use <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d%2cSystem.Predicate%7b%60%600%7d%2cSystem.Func%7bMetalama.Framework.Eligibility.IDescribedObject%7b%60%600%7d%2cSystem.FormattableString%7d)" data-throw-if-not-resolved="false"></xref> to define custom eligibility conditions when standard methods
-        like <code>MustNotBeStatic</code> or <code>MustNotBeAbstract</code> are insufficient. You can also validate related declarations
-        such as the declaring type (using <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d)" data-throw-if-not-resolved="false"></xref>), return type
-        (using <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IMethod%7d)" data-throw-if-not-resolved="false"></xref>), or parameters (using <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.Parameter(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IHasParameters%7d%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>).
-        </p>
-    <p>
-        When implementing <xref href="Metalama.Framework.Eligibility.IEligible%601.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> manually (instead of inheriting from built-in aspect classes like
-        <xref href="Metalama.Framework.Aspects.OverrideMethodAspect" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect" data-throw-if-not-resolved="false"></xref>), you can use
-        <xref href="Metalama.Framework.Eligibility.EligibilityRuleFactory.GetAdviceEligibilityRule(Metalama.Framework.Advising.AdviceKind)" data-throw-if-not-resolved="false"></xref> to retrieve the default eligibility rules for specific
-        advice kinds and then add only the rules that are specific to your aspect.
-        </p>
-  example: []
-  syntax:
-    content: public override void BuildEligibility(IEligibilityBuilder<IParameter> builder)
-    parameters:
-    - id: builder
-      type: Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter}
-      description: >-
-        An object that allows defining eligibility rules using methods from <xref href="Metalama.Framework.Eligibility.EligibilityExtensions" data-throw-if-not-resolved="false"></xref>,
-                    such as <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeStatic(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IMemberOrNamedType%7d)" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IMemberOrNamedType%7d)" data-throw-if-not-resolved="false"></xref>,
-                    or <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy%60%601(Metalama.Framework.Eligibility.IEligibilityBuilder%7b%60%600%7d%2cSystem.Predicate%7b%60%600%7d%2cSystem.Func%7bMetalama.Framework.Eligibility.IDescribedObject%7b%60%600%7d%2cSystem.FormattableString%7d)" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Overrides Sub BuildEligibility(builder As IEligibilityBuilder(Of IParameter))
-  overridden: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-  overload: Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility*
-  seealso:
-  - linkId: Metalama.Framework.Eligibility.EligibilityRuleFactory
-    commentId: T:Metalama.Framework.Eligibility.EligibilityRuleFactory
-  - linkType: HRef
-    linkId: '@eligibility'
-    altText: '@eligibility'
-  nameWithType.vb: NotEmptyAttribute.BuildEligibility(IEligibilityBuilder(Of IParameter))
-  fullName.vb: Metalama.Patterns.Contracts.NotEmptyAttribute.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IParameter))
-  name.vb: BuildEligibility(IEligibilityBuilder(Of IParameter))
 - uid: Metalama.Patterns.Contracts.NotEmptyAttribute.Validate(System.Object)
   commentId: M:Metalama.Patterns.Contracts.NotEmptyAttribute.Validate(System.Object)
   id: Validate(System.Object)
@@ -752,6 +691,46 @@ references:
   - name: (
   - uid: Metalama.Framework.Aspects.IAspectBuilder`1
     name: IAspectBuilder
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
+  commentId: M:Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
+  parent: Metalama.Framework.Aspects.ContractAspect
+  isExternal: true
+  name: BuildEligibility(IEligibilityBuilder<IParameter>)
+  nameWithType: ContractAspect.BuildEligibility(IEligibilityBuilder<IParameter>)
+  fullName: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IParameter>)
+  nameWithType.vb: ContractAspect.BuildEligibility(IEligibilityBuilder(Of IParameter))
+  fullName.vb: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IParameter))
+  name.vb: BuildEligibility(IEligibilityBuilder(Of IParameter))
+  spec.csharp:
+  - uid: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
+    name: BuildEligibility
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
+    isExternal: true
+  - name: <
+  - uid: Metalama.Framework.Code.IParameter
+    name: IParameter
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
+    name: BuildEligibility
+    isExternal: true
+  - name: (
+  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
+    name: IEligibilityBuilder
     isExternal: true
   - name: (
   - name: Of
@@ -3620,81 +3599,6 @@ references:
   - name: Of
   - name: " "
   - name: T
-  - name: )
-- uid: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-  commentId: M:Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-  parent: Metalama.Framework.Aspects.ContractAspect
-  isExternal: true
-  name: BuildEligibility(IEligibilityBuilder<IParameter>)
-  nameWithType: ContractAspect.BuildEligibility(IEligibilityBuilder<IParameter>)
-  fullName: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IParameter>)
-  nameWithType.vb: ContractAspect.BuildEligibility(IEligibilityBuilder(Of IParameter))
-  fullName.vb: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IParameter))
-  name.vb: BuildEligibility(IEligibilityBuilder(Of IParameter))
-  spec.csharp:
-  - uid: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-    name: BuildEligibility
-    isExternal: true
-  - name: (
-  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
-    name: IEligibilityBuilder
-    isExternal: true
-  - name: <
-  - uid: Metalama.Framework.Code.IParameter
-    name: IParameter
-    isExternal: true
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Aspects.ContractAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter})
-    name: BuildEligibility
-    isExternal: true
-  - name: (
-  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
-    name: IEligibilityBuilder
-    isExternal: true
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Framework.Code.IParameter
-    name: IParameter
-    isExternal: true
-  - name: )
-  - name: )
-- uid: Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter}
-  commentId: T:Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IParameter}
-  parent: Metalama.Framework.Eligibility
-  definition: Metalama.Framework.Eligibility.IEligibilityBuilder`1
-  href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
-  name: IEligibilityBuilder<IParameter>
-  nameWithType: IEligibilityBuilder<IParameter>
-  fullName: Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IParameter>
-  nameWithType.vb: IEligibilityBuilder(Of IParameter)
-  fullName.vb: Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IParameter)
-  name.vb: IEligibilityBuilder(Of IParameter)
-  spec.csharp:
-  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
-    name: IEligibilityBuilder
-    isExternal: true
-    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
-  - name: <
-  - uid: Metalama.Framework.Code.IParameter
-    name: IParameter
-    isExternal: true
-    href: Metalama.Framework.Code.IParameter.html
-  - name: '>'
-  spec.vb:
-  - uid: Metalama.Framework.Eligibility.IEligibilityBuilder`1
-    name: IEligibilityBuilder
-    isExternal: true
-    href: Metalama.Framework.Eligibility.IEligibilityBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Framework.Code.IParameter
-    name: IParameter
-    isExternal: true
-    href: Metalama.Framework.Code.IParameter.html
   - name: )
 - uid: Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)
   commentId: M:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection(Metalama.Framework.Aspects.IAspectBuilder)

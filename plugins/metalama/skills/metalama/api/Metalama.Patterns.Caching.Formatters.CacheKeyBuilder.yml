@@ -7,20 +7,15 @@ items:
   children:
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor(Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendArgument(Flashtrace.Formatters.UnsafeStringBuilder,System.Type,System.Object)
-  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash(System.Text.StringBuilder,System.ReadOnlySpan{System.Byte})
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendMethod(Flashtrace.Formatters.UnsafeStringBuilder,System.Reflection.MethodInfo)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder,System.Object)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendType(Flashtrace.Formatters.UnsafeStringBuilder,System.Type)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
-  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey(Flashtrace.Formatters.UnsafeStringBuilder,System.Boolean,System.Int32)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(System.Boolean)
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Formatters
-  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength(Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm)
-  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
-  - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
   - Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
   langs:
   - csharp
@@ -34,40 +29,9 @@ items:
   namespace: Metalama.Patterns.Caching.Formatters
   summary: Default implementation of <xref href="Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder" data-throw-if-not-resolved="false"></xref> that builds cache item keys and dependency keys.
   remarks: >-
-    <h4>Key Building Strategy</h4>
+    <p>This class generates cache keys by combining method signature information with formatted argument values.
 
-    <p>This class generates cache keys by combining method signature information with formatted argument values.</p>
-
-    <p><b>Method keys</b> follow this format:</p>
-
-
-    <pre><code class="lang-csharp">Namespace.DeclaringType.MethodName&lt;GenericArgs&gt;(this={instance}, (ParamType) paramValue, ...)</code></pre>
-
-    <p>For example: <code>MyApp.Services.UserService.GetUser(this={MyApp.Services.UserService}, (int) 42)</code></p>
-
-    <p><b>Dependency keys</b> are formatted representations of the dependency object using the registered formatters.</p>
-
-
-    <h4>Key Compression (Hashing)</h4>
-
-    <p>When <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm" data-throw-if-not-resolved="false"></xref> is set to <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash64" data-throw-if-not-resolved="false"></xref> or
-
-    <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash128" data-throw-if-not-resolved="false"></xref>, keys exceeding <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold" data-throw-if-not-resolved="false"></xref> characters
-
-    are compressed using a hash. This is useful for backends with key length limits (e.g., Redis, Memcached).</p>
-
-    <p><b>For method keys:</b> The class and method name are preserved as a prefix (with generic arguments stripped),
-
-    followed by a tilde (<code>~</code>) and the base64-encoded hash of the full key.</p>
-
-    <p>Example: <code>MyApp.Services.UserService.GetUser~9XwmlUowFDE</code></p>
-
-    <p><b>For dependency keys:</b> The entire key is replaced with the base64-encoded hash (no prefix).</p>
-
-    <p>XxHash64 produces ~11 character hashes; XxHash128 produces ~22 character hashes.</p>
-
-
-    <h4>Customization</h4>
+    The format includes the declaring type, method name, generic arguments, and parameter values.</p>
 
     <p>To customize key generation, either derive from this class and override the virtual methods,
 
@@ -83,8 +47,6 @@ items:
     commentId: T:Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder
   - linkId: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
     commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
-  - linkId: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
-    commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
   - linkType: HRef
     linkId: '@caching-keys'
     altText: '@caching-keys'
@@ -118,7 +80,7 @@ items:
   - Metalama.Patterns.Caching
   namespace: Metalama.Patterns.Caching.Formatters
   summary: >-
-    Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder" data-throw-if-not-resolved="false"></xref> class specifying the maximal key size
+    Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder" data-throw-if-not-resolved="false"></xref> class specifying the maximal key size 
 
     and optionally a <xref href="Flashtrace.Formatters.IFormatterRepository" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -130,7 +92,6 @@ items:
       description: The <xref href="Flashtrace.Formatters.IFormatterRepository" data-throw-if-not-resolved="false"></xref> from which to obtain formatters.
     - id: options
       type: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
-      description: Options for the cache key builder.
     content.vb: Public Sub New(formatterRepository As IFormatterRepository, options As CacheKeyBuilderOptions)
   overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.#ctor*
   nameWithType.vb: CacheKeyBuilder.New(IFormatterRepository, CacheKeyBuilderOptions)
@@ -326,101 +287,6 @@ items:
   nameWithType.vb: CacheKeyBuilder.AppendObject(UnsafeStringBuilder, Object)
   fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject(Flashtrace.Formatters.UnsafeStringBuilder, Object)
   name.vb: AppendObject(UnsafeStringBuilder, Object)
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength(Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm)
-  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength(Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm)
-  id: GetHashLength(Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm)
-  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
-  langs:
-  - csharp
-  - vb
-  name: GetHashLength(CacheKeyHashingAlgorithm)
-  nameWithType: CacheKeyBuilder.GetHashLength(CacheKeyHashingAlgorithm)
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength(Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm)
-  type: Method
-  assemblies:
-  - Metalama.Patterns.Caching
-  namespace: Metalama.Patterns.Caching.Formatters
-  summary: Gets the maximum length of the hash string for the specified algorithm.
-  example: []
-  syntax:
-    content: public static int GetHashLength(CacheKeyHashingAlgorithm algorithm)
-    parameters:
-    - id: algorithm
-      type: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
-      description: The hashing algorithm.
-    return:
-      type: System.Int32
-      description: The maximum hash string length (XxHash64 = 11, XxHash128 = 22).
-    content.vb: Public Shared Function GetHashLength(algorithm As CacheKeyHashingAlgorithm) As Integer
-  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength*
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash(System.Text.StringBuilder,System.ReadOnlySpan{System.Byte})
-  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash(System.Text.StringBuilder,System.ReadOnlySpan{System.Byte})
-  id: AppendBufferHash(System.Text.StringBuilder,System.ReadOnlySpan{System.Byte})
-  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
-  langs:
-  - csharp
-  - vb
-  name: AppendBufferHash(StringBuilder, ReadOnlySpan<byte>)
-  nameWithType: CacheKeyBuilder.AppendBufferHash(StringBuilder, ReadOnlySpan<byte>)
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash(System.Text.StringBuilder, System.ReadOnlySpan<byte>)
-  type: Method
-  assemblies:
-  - Metalama.Patterns.Caching
-  namespace: Metalama.Patterns.Caching.Formatters
-  summary: Hashes a buffer using <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm" data-throw-if-not-resolved="false"></xref> and appends the result to a <xref href="System.Text.StringBuilder" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: protected virtual void AppendBufferHash(StringBuilder stringBuilder, ReadOnlySpan<byte> buffer)
-    parameters:
-    - id: stringBuilder
-      type: System.Text.StringBuilder
-      description: The <xref href="System.Text.StringBuilder" data-throw-if-not-resolved="false"></xref> to append the hash to.
-    - id: buffer
-      type: System.ReadOnlySpan{System.Byte}
-      description: The buffer to hash.
-    content.vb: Protected Overridable Sub AppendBufferHash(stringBuilder As StringBuilder, buffer As ReadOnlySpan(Of Byte))
-  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash*
-  nameWithType.vb: CacheKeyBuilder.AppendBufferHash(StringBuilder, ReadOnlySpan(Of Byte))
-  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash(System.Text.StringBuilder, System.ReadOnlySpan(Of Byte))
-  name.vb: AppendBufferHash(StringBuilder, ReadOnlySpan(Of Byte))
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey(Flashtrace.Formatters.UnsafeStringBuilder,System.Boolean,System.Int32)
-  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey(Flashtrace.Formatters.UnsafeStringBuilder,System.Boolean,System.Int32)
-  id: CompressKey(Flashtrace.Formatters.UnsafeStringBuilder,System.Boolean,System.Int32)
-  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
-  langs:
-  - csharp
-  - vb
-  name: CompressKey(UnsafeStringBuilder, bool, int)
-  nameWithType: CacheKeyBuilder.CompressKey(UnsafeStringBuilder, bool, int)
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey(Flashtrace.Formatters.UnsafeStringBuilder, bool, int)
-  type: Method
-  assemblies:
-  - Metalama.Patterns.Caching
-  namespace: Metalama.Patterns.Caching.Formatters
-  summary: Compresses the key if necessary.
-  example: []
-  syntax:
-    content: protected virtual string CompressKey(UnsafeStringBuilder stringBuilder, bool useMethodNameAsPrefix, int threshold)
-    parameters:
-    - id: stringBuilder
-      type: Flashtrace.Formatters.UnsafeStringBuilder
-      description: The uncompressed key.
-    - id: useMethodNameAsPrefix
-      type: System.Boolean
-      description: >-
-        <code>true</code> if the key is from <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata%2cSystem.Object%2cSystem.Collections.Generic.IList%7bSystem.Object%7d)" data-throw-if-not-resolved="false"></xref>, <code>false</code> when it is from <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)" data-throw-if-not-resolved="false"></xref>.
-                    In method keys, the method name is kept as a prefix, but parameters and type parameters are stripped.
-    - id: threshold
-      type: System.Int32
-      description: The minimal key length above which compression is applied.
-    return:
-      type: System.String
-      description: The compressed key.
-    content.vb: Protected Overridable Function CompressKey(stringBuilder As UnsafeStringBuilder, useMethodNameAsPrefix As Boolean, threshold As Integer) As String
-  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey*
-  nameWithType.vb: CacheKeyBuilder.CompressKey(UnsafeStringBuilder, Boolean, Integer)
-  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey(Flashtrace.Formatters.UnsafeStringBuilder, Boolean, Integer)
-  name.vb: CompressKey(UnsafeStringBuilder, Boolean, Integer)
 - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(System.Boolean)
   commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -515,52 +381,6 @@ items:
       type: System.Object
     content.vb: Protected ReadOnly Property IgnoredParameterSentinel As Object
   overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel*
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-  id: HashingAlgorithm
-  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
-  langs:
-  - csharp
-  - vb
-  name: HashingAlgorithm
-  nameWithType: CacheKeyBuilder.HashingAlgorithm
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-  type: Property
-  assemblies:
-  - Metalama.Patterns.Caching
-  namespace: Metalama.Patterns.Caching.Formatters
-  summary: Gets the algorithm used to compress the key if its length is above <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: public CacheKeyHashingAlgorithm HashingAlgorithm { get; }
-    parameters: []
-    return:
-      type: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
-    content.vb: Public ReadOnly Property HashingAlgorithm As CacheKeyHashingAlgorithm
-  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm*
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
-  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
-  id: KeyCompressingThreshold
-  parent: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder
-  langs:
-  - csharp
-  - vb
-  name: KeyCompressingThreshold
-  nameWithType: CacheKeyBuilder.KeyCompressingThreshold
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
-  type: Property
-  assemblies:
-  - Metalama.Patterns.Caching
-  namespace: Metalama.Patterns.Caching.Formatters
-  summary: Gets the length above which a key will be compressed if <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm" data-throw-if-not-resolved="false"></xref> is not <xref href="Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: public int KeyCompressingThreshold { get; }
-    parameters: []
-    return:
-      type: System.Int32
-    content.vb: Public ReadOnly Property KeyCompressingThreshold As Integer
-  overload: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold*
 - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
   commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
   id: MaxKeySize
@@ -601,42 +421,6 @@ references:
   name: CacheKeyBuilderOptions
   nameWithType: CacheKeyBuilderOptions
   fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
-  commentId: T:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
-  parent: Metalama.Patterns.Caching.Formatters
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.html
-  name: CacheKeyHashingAlgorithm
-  nameWithType: CacheKeyHashingAlgorithm
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_HashingAlgorithm
-  name: HashingAlgorithm
-  nameWithType: CacheKeyBuilder.HashingAlgorithm
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash64
-  commentId: F:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash64
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyHashingAlgorithm_XxHash64
-  name: XxHash64
-  nameWithType: CacheKeyHashingAlgorithm.XxHash64
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash64
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash128
-  commentId: F:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash128
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyHashingAlgorithm_XxHash128
-  name: XxHash128
-  nameWithType: CacheKeyHashingAlgorithm.XxHash128
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.XxHash128
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
-  commentId: P:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_KeyCompressingThreshold
-  name: KeyCompressingThreshold
-  nameWithType: CacheKeyBuilder.KeyCompressingThreshold
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
 - uid: Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func{Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions,Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder})
   commentId: M:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilder(System.Func{Flashtrace.Formatters.IFormatterRepository,Metalama.Patterns.Caching.Formatters.CacheKeyBuilderOptions,Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder})
   isExternal: true
@@ -1654,249 +1438,6 @@ references:
   name: AppendObject
   nameWithType: CacheKeyBuilder.AppendObject
   fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendObject
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength*
-  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_GetHashLength_Metalama_Patterns_Caching_Formatters_CacheKeyHashingAlgorithm_
-  name: GetHashLength
-  nameWithType: CacheKeyBuilder.GetHashLength
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.GetHashLength
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: System.Text.StringBuilder
-  commentId: T:System.Text.StringBuilder
-  parent: System.Text
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
-  name: StringBuilder
-  nameWithType: StringBuilder
-  fullName: System.Text.StringBuilder
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash*
-  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_AppendBufferHash_System_Text_StringBuilder_System_ReadOnlySpan_System_Byte__
-  name: AppendBufferHash
-  nameWithType: CacheKeyBuilder.AppendBufferHash
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.AppendBufferHash
-- uid: System.ReadOnlySpan{System.Byte}
-  commentId: T:System.ReadOnlySpan{System.Byte}
-  parent: System
-  definition: System.ReadOnlySpan`1
-  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  name: ReadOnlySpan<byte>
-  nameWithType: ReadOnlySpan<byte>
-  fullName: System.ReadOnlySpan<byte>
-  nameWithType.vb: ReadOnlySpan(Of Byte)
-  fullName.vb: System.ReadOnlySpan(Of Byte)
-  name.vb: ReadOnlySpan(Of Byte)
-  spec.csharp:
-  - uid: System.ReadOnlySpan`1
-    name: ReadOnlySpan
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  - name: <
-  - uid: System.Byte
-    name: byte
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.byte
-  - name: '>'
-  spec.vb:
-  - uid: System.ReadOnlySpan`1
-    name: ReadOnlySpan
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Byte
-    name: Byte
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.byte
-  - name: )
-- uid: System.Text
-  commentId: N:System.Text
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Text
-  nameWithType: System.Text
-  fullName: System.Text
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Text
-    name: Text
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Text
-    name: Text
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text
-- uid: System.ReadOnlySpan`1
-  commentId: T:System.ReadOnlySpan`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  name: ReadOnlySpan<T>
-  nameWithType: ReadOnlySpan<T>
-  fullName: System.ReadOnlySpan<T>
-  nameWithType.vb: ReadOnlySpan(Of T)
-  fullName.vb: System.ReadOnlySpan(Of T)
-  name.vb: ReadOnlySpan(Of T)
-  spec.csharp:
-  - uid: System.ReadOnlySpan`1
-    name: ReadOnlySpan
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.ReadOnlySpan`1
-    name: ReadOnlySpan
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
-  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
-  name: BuildMethodKey(CachedMethodMetadata, object, IList<object>)
-  nameWithType: CacheKeyBuilder.BuildMethodKey(CachedMethodMetadata, object, IList<object>)
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata, object, System.Collections.Generic.IList<object>)
-  nameWithType.vb: CacheKeyBuilder.BuildMethodKey(CachedMethodMetadata, Object, IList(Of Object))
-  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata, Object, System.Collections.Generic.IList(Of Object))
-  name.vb: BuildMethodKey(CachedMethodMetadata, Object, IList(Of Object))
-  spec.csharp:
-  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
-    name: BuildMethodKey
-    isExternal: true
-    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
-  - name: (
-  - uid: Metalama.Patterns.Caching.CachedMethodMetadata
-    name: CachedMethodMetadata
-    isExternal: true
-    href: Metalama.Patterns.Caching.CachedMethodMetadata.html
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.IList`1
-    name: IList
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: <
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey(Metalama.Patterns.Caching.CachedMethodMetadata,System.Object,System.Collections.Generic.IList{System.Object})
-    name: BuildMethodKey
-    isExternal: true
-    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildMethodKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildMethodKey_Metalama_Patterns_Caching_CachedMethodMetadata_System_Object_System_Collections_Generic_IList_System_Object__
-  - name: (
-  - uid: Metalama.Patterns.Caching.CachedMethodMetadata
-    name: CachedMethodMetadata
-    isExternal: true
-    href: Metalama.Patterns.Caching.CachedMethodMetadata.html
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.IList`1
-    name: IList
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  - name: )
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
-  commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildDependencyKey_System_Object_
-  name: BuildDependencyKey(object)
-  nameWithType: CacheKeyBuilder.BuildDependencyKey(object)
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(object)
-  nameWithType.vb: CacheKeyBuilder.BuildDependencyKey(Object)
-  fullName.vb: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(Object)
-  name.vb: BuildDependencyKey(Object)
-  spec.csharp:
-  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
-    name: BuildDependencyKey
-    isExternal: true
-    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildDependencyKey_System_Object_
-  - name: (
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  spec.vb:
-  - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey(System.Object)
-    name: BuildDependencyKey
-    isExternal: true
-    href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.BuildDependencyKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_BuildDependencyKey_System_Object_
-  - name: (
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey*
-  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_CompressKey_Flashtrace_Formatters_UnsafeStringBuilder_System_Boolean_System_Int32_
-  name: CompressKey
-  nameWithType: CacheKeyBuilder.CompressKey
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.CompressKey
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
 - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
   commentId: M:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
   isExternal: true
@@ -1925,6 +1466,17 @@ references:
   name: Dispose
   nameWithType: CacheKeyBuilder.Dispose
   fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: System.IDisposable.Dispose
   commentId: M:System.IDisposable.Dispose
   parent: System.IDisposable
@@ -1961,27 +1513,6 @@ references:
   name: IgnoredParameterSentinel
   nameWithType: CacheKeyBuilder.IgnoredParameterSentinel
   fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.IgnoredParameterSentinel
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm*
-  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_HashingAlgorithm
-  name: HashingAlgorithm
-  nameWithType: CacheKeyBuilder.HashingAlgorithm
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.HashingAlgorithm
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None
-  commentId: F:Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.html#Metalama_Patterns_Caching_Formatters_CacheKeyHashingAlgorithm_None
-  name: None
-  nameWithType: CacheKeyHashingAlgorithm.None
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyHashingAlgorithm.None
-- uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold*
-  commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
-  isExternal: true
-  href: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold.html#Metalama_Patterns_Caching_Formatters_CacheKeyBuilder_KeyCompressingThreshold
-  name: KeyCompressingThreshold
-  nameWithType: CacheKeyBuilder.KeyCompressingThreshold
-  fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.KeyCompressingThreshold
 - uid: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize*
   commentId: Overload:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
   isExternal: true
@@ -1989,4 +1520,15 @@ references:
   name: MaxKeySize
   nameWithType: CacheKeyBuilder.MaxKeySize
   fullName: Metalama.Patterns.Caching.Formatters.CacheKeyBuilder.MaxKeySize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 memberLayout: SeparatePages
