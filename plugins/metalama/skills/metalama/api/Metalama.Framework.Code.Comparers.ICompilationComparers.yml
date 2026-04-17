@@ -6,6 +6,8 @@ items:
   parent: Metalama.Framework.Code.Comparers
   children:
   - Metalama.Framework.Code.Comparers.ICompilationComparers.Default
+  - Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder
+  - Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder
   - Metalama.Framework.Code.Comparers.ICompilationComparers.GetTypeComparer(Metalama.Framework.Code.Comparers.TypeComparison)
   - Metalama.Framework.Code.Comparers.ICompilationComparers.IncludeNullability
   langs:
@@ -128,6 +130,66 @@ items:
       type: Metalama.Framework.Code.Comparers.ITypeComparer
     content.vb: ReadOnly Property IncludeNullability As ITypeComparer
   overload: Metalama.Framework.Code.Comparers.ICompilationComparers.IncludeNullability*
+- uid: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder
+  commentId: P:Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder
+  id: DeterministicDeclarationOrder
+  parent: Metalama.Framework.Code.Comparers.ICompilationComparers
+  langs:
+  - csharp
+  - vb
+  name: DeterministicDeclarationOrder
+  nameWithType: ICompilationComparers.DeterministicDeclarationOrder
+  fullName: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Comparers
+  summary: >-
+    Gets a deterministic ordering comparer for <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref>. The specific order produced by the
+
+    comparer is an implementation detail — it is guaranteed to be stable across builds of the same compilation
+
+    but the exact ordering is not part of the public contract. Sort key: depth, then containing declaration
+
+    (recursively), then name, then signature (for overloadable members).
+  example: []
+  syntax:
+    content: IComparer<IDeclaration> DeterministicDeclarationOrder { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IComparer{Metalama.Framework.Code.IDeclaration}
+    content.vb: ReadOnly Property DeterministicDeclarationOrder As IComparer(Of IDeclaration)
+  overload: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder*
+- uid: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder
+  commentId: P:Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder
+  id: DeterministicTypeOrder
+  parent: Metalama.Framework.Code.Comparers.ICompilationComparers
+  langs:
+  - csharp
+  - vb
+  name: DeterministicTypeOrder
+  nameWithType: ICompilationComparers.DeterministicTypeOrder
+  fullName: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Comparers
+  summary: >-
+    Gets a deterministic ordering comparer for <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>. Sort key: kind, then — for named types —
+
+    containing namespace, declaring type, name, and type arguments; arrays by rank and element type; pointers
+
+    by pointed-at type; type parameters by kind and index. The specific order is an implementation detail
+
+    but is stable.
+  example: []
+  syntax:
+    content: IComparer<IType> DeterministicTypeOrder { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IComparer{Metalama.Framework.Code.IType}
+    content.vb: ReadOnly Property DeterministicTypeOrder As IComparer(Of IType)
+  overload: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder*
 references:
 - uid: Metalama.Framework.Code.Comparers.IDeclarationComparer
   commentId: T:Metalama.Framework.Code.Comparers.IDeclarationComparer
@@ -508,4 +570,206 @@ references:
   name: IncludeNullability
   nameWithType: ICompilationComparers.IncludeNullability
   fullName: Metalama.Framework.Code.Comparers.ICompilationComparers.IncludeNullability
+- uid: Metalama.Framework.Code.IDeclaration
+  commentId: T:Metalama.Framework.Code.IDeclaration
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IDeclaration.html
+  name: IDeclaration
+  nameWithType: IDeclaration
+  fullName: Metalama.Framework.Code.IDeclaration
+- uid: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder*
+  commentId: Overload:Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder
+  isExternal: true
+  href: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder.html#Metalama_Framework_Code_Comparers_ICompilationComparers_DeterministicDeclarationOrder
+  name: DeterministicDeclarationOrder
+  nameWithType: ICompilationComparers.DeterministicDeclarationOrder
+  fullName: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicDeclarationOrder
+- uid: System.Collections.Generic.IComparer{Metalama.Framework.Code.IDeclaration}
+  commentId: T:System.Collections.Generic.IComparer{Metalama.Framework.Code.IDeclaration}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IComparer`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  name: IComparer<IDeclaration>
+  nameWithType: IComparer<IDeclaration>
+  fullName: System.Collections.Generic.IComparer<Metalama.Framework.Code.IDeclaration>
+  nameWithType.vb: IComparer(Of IDeclaration)
+  fullName.vb: System.Collections.Generic.IComparer(Of Metalama.Framework.Code.IDeclaration)
+  name.vb: IComparer(Of IDeclaration)
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: <
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IDeclaration
+    name: IDeclaration
+    isExternal: true
+    href: Metalama.Framework.Code.IDeclaration.html
+  - name: )
+- uid: Metalama.Framework.Code
+  commentId: N:Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code
+  nameWithType: Metalama.Framework.Code
+  fullName: Metalama.Framework.Code
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+- uid: System.Collections.Generic.IComparer`1
+  commentId: T:System.Collections.Generic.IComparer`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  name: IComparer<T>
+  nameWithType: IComparer<T>
+  fullName: System.Collections.Generic.IComparer<T>
+  nameWithType.vb: IComparer(Of T)
+  fullName.vb: System.Collections.Generic.IComparer(Of T)
+  name.vb: IComparer(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Framework.Code.IType
+  commentId: T:Metalama.Framework.Code.IType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IType.html
+  name: IType
+  nameWithType: IType
+  fullName: Metalama.Framework.Code.IType
+- uid: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder*
+  commentId: Overload:Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder
+  isExternal: true
+  href: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder.html#Metalama_Framework_Code_Comparers_ICompilationComparers_DeterministicTypeOrder
+  name: DeterministicTypeOrder
+  nameWithType: ICompilationComparers.DeterministicTypeOrder
+  fullName: Metalama.Framework.Code.Comparers.ICompilationComparers.DeterministicTypeOrder
+- uid: System.Collections.Generic.IComparer{Metalama.Framework.Code.IType}
+  commentId: T:System.Collections.Generic.IComparer{Metalama.Framework.Code.IType}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IComparer`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  name: IComparer<IType>
+  nameWithType: IComparer<IType>
+  fullName: System.Collections.Generic.IComparer<Metalama.Framework.Code.IType>
+  nameWithType.vb: IComparer(Of IType)
+  fullName.vb: System.Collections.Generic.IComparer(Of Metalama.Framework.Code.IType)
+  name.vb: IComparer(Of IType)
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: <
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IType
+    name: IType
+    isExternal: true
+    href: Metalama.Framework.Code.IType.html
+  - name: )
 memberLayout: SeparatePages

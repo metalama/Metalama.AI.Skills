@@ -45,7 +45,10 @@ items:
   - Metalama.Patterns.Caching.Aspects
   namespace: Metalama.Patterns.Caching.Aspects.Helpers
   syntax:
-    content: public static MethodInfo ThrowIfMissing(this MethodInfo? methodInfo, string methodSignature)
+    content: >-
+      [Obsolete("This method is no longer necessary because Metalama now generates the null check automatically.")]
+
+      public static MethodInfo ThrowIfMissing(this MethodInfo? methodInfo, string methodSignature)
     parameters:
     - id: methodInfo
       type: System.Reflection.MethodInfo
@@ -53,8 +56,17 @@ items:
       type: System.String
     return:
       type: System.Reflection.MethodInfo
-    content.vb: Public Shared Function ThrowIfMissing(methodInfo As MethodInfo, methodSignature As String) As MethodInfo
+    content.vb: >-
+      <Obsolete("This method is no longer necessary because Metalama now generates the null check automatically.")>
+
+      Public Shared Function ThrowIfMissing(methodInfo As MethodInfo, methodSignature As String) As MethodInfo
   overload: Metalama.Patterns.Caching.Aspects.Helpers.RunTimeHelpers.ThrowIfMissing*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: This method is no longer necessary because Metalama now generates the null check automatically.
   nameWithType.vb: RunTimeHelpers.ThrowIfMissing(MethodInfo, String)
   fullName.vb: Metalama.Patterns.Caching.Aspects.Helpers.RunTimeHelpers.ThrowIfMissing(System.Reflection.MethodInfo, String)
   name.vb: ThrowIfMissing(MethodInfo, String)

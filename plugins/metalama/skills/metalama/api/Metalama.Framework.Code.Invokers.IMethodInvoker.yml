@@ -5,6 +5,7 @@ items:
   id: IMethodInvoker
   parent: Metalama.Framework.Code.Invokers
   children:
+  - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
   - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{System.Object})
   - Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
@@ -309,6 +310,64 @@ items:
   nameWithType.vb: IMethodInvoker.CreateInvokeExpression(IEnumerable(Of Object))
   fullName.vb: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable(Of Object))
   name.vb: CreateInvokeExpression(IEnumerable(Of Object))
+- uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  id: CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  parent: Metalama.Framework.Code.Invokers.IMethodInvoker
+  langs:
+  - csharp
+  - vb
+  name: CreateDelegateExpression(INamedType?)
+  nameWithType: IMethodInvoker.CreateDelegateExpression(INamedType?)
+  fullName: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Invokers
+  summary: Creates an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> that represents the current method as a delegate.
+  remarks: >-
+    <p>
+        When the method has no overloads and no <code class="paramref">delegateType</code> is specified, this generates a simple
+        method group expression (e.g. <code>this.Method</code>).
+        </p>
+    <p>
+        When the method has overloads, the generated code depends on the <code class="paramref">delegateType</code> and the target type context:
+        </p>
+    <ul><li>If <code class="paramref">delegateType</code> is specified, it is used to select the appropriate overload. The generated expression
+        may use an explicit delegate-construction expression (e.g. <code>new MyDelegate(this.Method)</code>) or a bare method group when the
+        surrounding target typing already enforces the same delegate type.</li><li>If the expression is assigned to a variable of a specific delegate type (e.g. <code>EventHandler</code>, or a custom delegate),
+        and that delegate type is compatible with the method's signature, the target delegate type is used for disambiguation. The resulting
+        code may similarly be either an explicit delegate-construction expression or a bare method group, depending on what is required
+        by the C# compiler to resolve the overload.</li><li>Otherwise, <code>Action&lt;&gt;</code> or <code>Func&lt;&gt;</code> is used for disambiguation
+        (e.g. <code>new Action&lt;int&gt;(this.Method)</code>).</li></ul>
+    <p>
+        If the method has overloads and its signature contains <code>out</code>, <code>in</code>, or <code>ref</code> parameters,
+        and neither <code class="paramref">delegateType</code> nor a compatible target delegate type is available,
+        an exception is thrown because <code>Action&lt;&gt;</code>/<code>Func&lt;&gt;</code> cannot represent such signatures.
+        </p>
+    <p>
+        By default, the delegate references the method on the current object (<code>this</code>), unless the method is static.
+        Use <xref href="Metalama.Framework.Code.Invokers.IMethodInvoker.WithObject(System.Object)" data-throw-if-not-resolved="false"></xref> to specify a different target instance before calling this method.
+        </p>
+  example: []
+  syntax:
+    content: IExpression CreateDelegateExpression(INamedType? delegateType = null)
+    parameters:
+    - id: delegateType
+      type: Metalama.Framework.Code.INamedType
+      description: >-
+        An optional delegate type to use for disambiguation when the method has overloads.
+                    When specified, this type is used to wrap the method group expression (e.g. <code>new MyDelegate(this.Method)</code>),
+                    regardless of the target type context. No compatibility verification is performed between the method's signature
+                    and the specified delegate type — any mismatch will result in a C# compilation error in the generated code.
+    return:
+      type: Metalama.Framework.Code.IExpression
+      description: An <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> whose <xref href="Metalama.Framework.Code.IExpression.Value" data-throw-if-not-resolved="false"></xref> represents a delegate pointing to the current method.
+    content.vb: Function CreateDelegateExpression(delegateType As INamedType = Nothing) As IExpression
+  overload: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression*
+  nameWithType.vb: IMethodInvoker.CreateDelegateExpression(INamedType)
+  fullName.vb: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  name.vb: CreateDelegateExpression(INamedType)
 - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   id: With(Metalama.Framework.Code.Invokers.InvokerOptions)
@@ -1086,6 +1145,29 @@ references:
   - name: Object
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: Metalama.Framework.Code.IExpression.Value
+  commentId: P:Metalama.Framework.Code.IExpression.Value
+  parent: Metalama.Framework.Code.IExpression
+  isExternal: true
+  href: Metalama.Framework.Code.IExpression.Value.html#Metalama_Framework_Code_IExpression_Value
+  name: Value
+  nameWithType: IExpression.Value
+  fullName: Metalama.Framework.Code.IExpression.Value
+- uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression*
+  commentId: Overload:Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
+  name: CreateDelegateExpression
+  nameWithType: IMethodInvoker.CreateDelegateExpression
+  fullName: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
 - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.With*
   commentId: Overload:Metalama.Framework.Code.Invokers.IMethodInvoker.With
   isExternal: true

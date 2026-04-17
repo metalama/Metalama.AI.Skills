@@ -20,6 +20,9 @@ items:
   - Metalama.Framework.Code.TypedConstant.IsArray
   - Metalama.Framework.Code.TypedConstant.IsInitialized
   - Metalama.Framework.Code.TypedConstant.IsNullOrDefault
+  - Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.IField)
+  - Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.INamedType,System.String)
+  - Metalama.Framework.Code.TypedConstant.NamedConstant(System.Type,System.String)
   - Metalama.Framework.Code.TypedConstant.RawValue
   - Metalama.Framework.Code.TypedConstant.ToString
   - Metalama.Framework.Code.TypedConstant.TryConvertFromExpression(Metalama.Framework.Code.IExpression,System.Nullable{Metalama.Framework.Code.TypedConstant}@)
@@ -321,6 +324,120 @@ items:
       description: A <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> representing the field reference.
     content.vb: Public Shared Function Create(field As IField) As TypedConstant
   overload: Metalama.Framework.Code.TypedConstant.Create*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">field</code> is not a constant field.
+- uid: Metalama.Framework.Code.TypedConstant.NamedConstant(System.Type,System.String)
+  commentId: M:Metalama.Framework.Code.TypedConstant.NamedConstant(System.Type,System.String)
+  id: NamedConstant(System.Type,System.String)
+  parent: Metalama.Framework.Code.TypedConstant
+  langs:
+  - csharp
+  - vb
+  name: NamedConstant(Type, string)
+  nameWithType: TypedConstant.NamedConstant(Type, string)
+  fullName: Metalama.Framework.Code.TypedConstant.NamedConstant(System.Type, string)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Creates a <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> that references a named constant (such as an enum member or a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/const">const</a> field) by name.
+
+    When rendered to code, this produces a reference to the field (e.g., <code>MyEnum.MyValue</code> or <code>MyClass.MyConst</code>).
+  example: []
+  syntax:
+    content: public static TypedConstant NamedConstant(Type declaringType, string memberName)
+    parameters:
+    - id: declaringType
+      type: System.Type
+      description: The reflection <xref href="Metalama.Framework.Code.TypedConstant.Type" data-throw-if-not-resolved="false"></xref> of the type declaring the constant. Must be a named type.
+    - id: memberName
+      type: System.String
+      description: The name of the constant field or enum member.
+    return:
+      type: Metalama.Framework.Code.TypedConstant
+      description: A <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> representing the named constant reference.
+    content.vb: Public Shared Function NamedConstant(declaringType As Type, memberName As String) As TypedConstant
+  overload: Metalama.Framework.Code.TypedConstant.NamedConstant*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">memberName</code> does not correspond to a constant member of the type.
+  nameWithType.vb: TypedConstant.NamedConstant(Type, String)
+  fullName.vb: Metalama.Framework.Code.TypedConstant.NamedConstant(System.Type, String)
+  name.vb: NamedConstant(Type, String)
+- uid: Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.INamedType,System.String)
+  commentId: M:Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.INamedType,System.String)
+  id: NamedConstant(Metalama.Framework.Code.INamedType,System.String)
+  parent: Metalama.Framework.Code.TypedConstant
+  langs:
+  - csharp
+  - vb
+  name: NamedConstant(INamedType, string)
+  nameWithType: TypedConstant.NamedConstant(INamedType, string)
+  fullName: Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.INamedType, string)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Creates a <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> that references a named constant (such as an enum member or a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/const">const</a> field) by name.
+
+    When rendered to code, this produces a reference to the field (e.g., <code>MyEnum.MyValue</code> or <code>MyClass.MyConst</code>).
+  example: []
+  syntax:
+    content: public static TypedConstant NamedConstant(INamedType declaringType, string memberName)
+    parameters:
+    - id: declaringType
+      type: Metalama.Framework.Code.INamedType
+      description: The <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> of the type declaring the constant.
+    - id: memberName
+      type: System.String
+      description: The name of the constant field or enum member.
+    return:
+      type: Metalama.Framework.Code.TypedConstant
+      description: A <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> representing the named constant reference.
+    content.vb: Public Shared Function NamedConstant(declaringType As INamedType, memberName As String) As TypedConstant
+  overload: Metalama.Framework.Code.TypedConstant.NamedConstant*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">memberName</code> does not correspond to a constant member of the type.
+  nameWithType.vb: TypedConstant.NamedConstant(INamedType, String)
+  fullName.vb: Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.INamedType, String)
+  name.vb: NamedConstant(INamedType, String)
+- uid: Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.IField)
+  commentId: M:Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.IField)
+  id: NamedConstant(Metalama.Framework.Code.IField)
+  parent: Metalama.Framework.Code.TypedConstant
+  langs:
+  - csharp
+  - vb
+  name: NamedConstant(IField)
+  nameWithType: TypedConstant.NamedConstant(IField)
+  fullName: Metalama.Framework.Code.TypedConstant.NamedConstant(Metalama.Framework.Code.IField)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Creates a <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> that references a constant field. This is equivalent to <xref href="Metalama.Framework.Code.TypedConstant.Create(Metalama.Framework.Code.IField)" data-throw-if-not-resolved="false"></xref>.
+
+    When rendered to code, this produces a reference to the field (e.g., <code>MyEnum.MyValue</code> or <code>MyClass.MyConst</code>).
+  example: []
+  syntax:
+    content: public static TypedConstant NamedConstant(IField field)
+    parameters:
+    - id: field
+      type: Metalama.Framework.Code.IField
+      description: A constant field, i.e., <xref href="Metalama.Framework.Code.IField.ConstantValue" data-throw-if-not-resolved="false"></xref> must not be <code>null</code>.
+    return:
+      type: Metalama.Framework.Code.TypedConstant
+      description: A <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> representing the named constant reference.
+    content.vb: Public Shared Function NamedConstant(field As IField) As TypedConstant
+  overload: Metalama.Framework.Code.TypedConstant.NamedConstant*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
@@ -1722,6 +1839,50 @@ references:
   name: IField
   nameWithType: IField
   fullName: Metalama.Framework.Code.IField
+- uid: Metalama.Framework.Code.TypedConstant.NamedConstant*
+  commentId: Overload:Metalama.Framework.Code.TypedConstant.NamedConstant
+  isExternal: true
+  href: Metalama.Framework.Code.TypedConstant.NamedConstant.html#Metalama_Framework_Code_TypedConstant_NamedConstant_System_Type_System_String_
+  name: NamedConstant
+  nameWithType: TypedConstant.NamedConstant
+  fullName: Metalama.Framework.Code.TypedConstant.NamedConstant
+- uid: Metalama.Framework.Code.INamedType
+  commentId: T:Metalama.Framework.Code.INamedType
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.INamedType.html
+  name: INamedType
+  nameWithType: INamedType
+  fullName: Metalama.Framework.Code.INamedType
+- uid: Metalama.Framework.Code.TypedConstant.Create(Metalama.Framework.Code.IField)
+  commentId: M:Metalama.Framework.Code.TypedConstant.Create(Metalama.Framework.Code.IField)
+  isExternal: true
+  href: Metalama.Framework.Code.TypedConstant.Create.html#Metalama_Framework_Code_TypedConstant_Create_Metalama_Framework_Code_IField_
+  name: Create(IField)
+  nameWithType: TypedConstant.Create(IField)
+  fullName: Metalama.Framework.Code.TypedConstant.Create(Metalama.Framework.Code.IField)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.TypedConstant.Create(Metalama.Framework.Code.IField)
+    name: Create
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.Create.html#Metalama_Framework_Code_TypedConstant_Create_Metalama_Framework_Code_IField_
+  - name: (
+  - uid: Metalama.Framework.Code.IField
+    name: IField
+    isExternal: true
+    href: Metalama.Framework.Code.IField.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.TypedConstant.Create(Metalama.Framework.Code.IField)
+    name: Create
+    isExternal: true
+    href: Metalama.Framework.Code.TypedConstant.Create.html#Metalama_Framework_Code_TypedConstant_Create_Metalama_Framework_Code_IField_
+  - name: (
+  - uid: Metalama.Framework.Code.IField
+    name: IField
+    isExternal: true
+    href: Metalama.Framework.Code.IField.html
+  - name: )
 - uid: Metalama.Framework.Code.TypedConstant.ForCompilation*
   commentId: Overload:Metalama.Framework.Code.TypedConstant.ForCompilation
   isExternal: true

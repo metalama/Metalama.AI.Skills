@@ -146,9 +146,9 @@ items:
   langs:
   - csharp
   - vb
-  name: GetFromCacheOrExecute<TResult>(CachedMethodMetadata, object?, object?[], Func<object?, object?[], object?>, CacheItemConfiguration?, CancellationToken)
-  nameWithType: NullCachingService.GetFromCacheOrExecute<TResult>(CachedMethodMetadata, object?, object?[], Func<object?, object?[], object?>, CacheItemConfiguration?, CancellationToken)
-  fullName: Metalama.Patterns.Caching.NullCachingService.GetFromCacheOrExecute<TResult>(Metalama.Patterns.Caching.CachedMethodMetadata, object?, object?[], System.Func<object?, object?[], object?>, Metalama.Patterns.Caching.CacheItemConfiguration?, System.Threading.CancellationToken)
+  name: GetFromCacheOrExecute<TResult>(CachedMethodMetadata?, object?, object?[], Func<object?, object?[], object?>, CacheItemConfiguration?, CancellationToken)
+  nameWithType: NullCachingService.GetFromCacheOrExecute<TResult>(CachedMethodMetadata?, object?, object?[], Func<object?, object?[], object?>, CacheItemConfiguration?, CancellationToken)
+  fullName: Metalama.Patterns.Caching.NullCachingService.GetFromCacheOrExecute<TResult>(Metalama.Patterns.Caching.CachedMethodMetadata?, object?, object?[], System.Func<object?, object?[], object?>, Metalama.Patterns.Caching.CacheItemConfiguration?, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - Metalama.Patterns.Caching
@@ -159,11 +159,14 @@ items:
     This method is called by the generated code of the <code>CacheAttribute</code> aspect.
   example: []
   syntax:
-    content: public TResult? GetFromCacheOrExecute<TResult>(CachedMethodMetadata metadata, object? instance, object?[] args, Func<object?, object?[], object?> func, CacheItemConfiguration? configuration = null, CancellationToken cancellationToken = default)
+    content: public TResult? GetFromCacheOrExecute<TResult>(CachedMethodMetadata? metadata, object? instance, object?[] args, Func<object?, object?[], object?> func, CacheItemConfiguration? configuration = null, CancellationToken cancellationToken = default)
     parameters:
     - id: metadata
       type: Metalama.Patterns.Caching.CachedMethodMetadata
-      description: Metadata about the cached method.
+      description: >-
+        Metadata about the cached method, or <code>null</code> if the cache registration
+                    has not been initialized yet (e.g., when a cached method is called from a static field initializer).
+                    When <code>null</code>, caching is bypassed and the original method is called directly.
     - id: instance
       type: System.Object
       description: The instance on which the method is called, or <code>null</code> for static methods.
@@ -199,9 +202,9 @@ items:
   langs:
   - csharp
   - vb
-  name: GetFromCacheOrExecuteTaskAsync<TTaskResultType>(CachedMethodMetadata, object?, object?[], Func<object?, object?[], CancellationToken, Task<object?>>, CacheItemConfiguration?, CancellationToken)
-  nameWithType: NullCachingService.GetFromCacheOrExecuteTaskAsync<TTaskResultType>(CachedMethodMetadata, object?, object?[], Func<object?, object?[], CancellationToken, Task<object?>>, CacheItemConfiguration?, CancellationToken)
-  fullName: Metalama.Patterns.Caching.NullCachingService.GetFromCacheOrExecuteTaskAsync<TTaskResultType>(Metalama.Patterns.Caching.CachedMethodMetadata, object?, object?[], System.Func<object?, object?[], System.Threading.CancellationToken, System.Threading.Tasks.Task<object?>>, Metalama.Patterns.Caching.CacheItemConfiguration?, System.Threading.CancellationToken)
+  name: GetFromCacheOrExecuteTaskAsync<TTaskResultType>(CachedMethodMetadata?, object?, object?[], Func<object?, object?[], CancellationToken, Task<object?>>, CacheItemConfiguration?, CancellationToken)
+  nameWithType: NullCachingService.GetFromCacheOrExecuteTaskAsync<TTaskResultType>(CachedMethodMetadata?, object?, object?[], Func<object?, object?[], CancellationToken, Task<object?>>, CacheItemConfiguration?, CancellationToken)
+  fullName: Metalama.Patterns.Caching.NullCachingService.GetFromCacheOrExecuteTaskAsync<TTaskResultType>(Metalama.Patterns.Caching.CachedMethodMetadata?, object?, object?[], System.Func<object?, object?[], System.Threading.CancellationToken, System.Threading.Tasks.Task<object?>>, Metalama.Patterns.Caching.CacheItemConfiguration?, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - Metalama.Patterns.Caching
@@ -212,11 +215,14 @@ items:
     This method is called by the generated code of the <code>CacheAttribute</code> aspect.
   example: []
   syntax:
-    content: public Task<TTaskResultType?> GetFromCacheOrExecuteTaskAsync<TTaskResultType>(CachedMethodMetadata metadata, object? instance, object?[] args, Func<object?, object?[], CancellationToken, Task<object?>> func, CacheItemConfiguration? configuration = null, CancellationToken cancellationToken = default)
+    content: public Task<TTaskResultType?> GetFromCacheOrExecuteTaskAsync<TTaskResultType>(CachedMethodMetadata? metadata, object? instance, object?[] args, Func<object?, object?[], CancellationToken, Task<object?>> func, CacheItemConfiguration? configuration = null, CancellationToken cancellationToken = default)
     parameters:
     - id: metadata
       type: Metalama.Patterns.Caching.CachedMethodMetadata
-      description: Metadata about the cached method.
+      description: >-
+        Metadata about the cached method, or <code>null</code> if the cache registration
+                    has not been initialized yet (e.g., when a cached method is called from a static field initializer).
+                    When <code>null</code>, caching is bypassed and the original method is called directly.
     - id: instance
       type: System.Object
       description: The instance on which the method is called, or <code>null</code> for static methods.
@@ -252,9 +258,9 @@ items:
   langs:
   - csharp
   - vb
-  name: GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(CachedMethodMetadata, object?, object?[], Func<object?, object?[], CancellationToken, ValueTask<object?>>, CacheItemConfiguration?, CancellationToken)
-  nameWithType: NullCachingService.GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(CachedMethodMetadata, object?, object?[], Func<object?, object?[], CancellationToken, ValueTask<object?>>, CacheItemConfiguration?, CancellationToken)
-  fullName: Metalama.Patterns.Caching.NullCachingService.GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(Metalama.Patterns.Caching.CachedMethodMetadata, object?, object?[], System.Func<object?, object?[], System.Threading.CancellationToken, System.Threading.Tasks.ValueTask<object?>>, Metalama.Patterns.Caching.CacheItemConfiguration?, System.Threading.CancellationToken)
+  name: GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(CachedMethodMetadata?, object?, object?[], Func<object?, object?[], CancellationToken, ValueTask<object?>>, CacheItemConfiguration?, CancellationToken)
+  nameWithType: NullCachingService.GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(CachedMethodMetadata?, object?, object?[], Func<object?, object?[], CancellationToken, ValueTask<object?>>, CacheItemConfiguration?, CancellationToken)
+  fullName: Metalama.Patterns.Caching.NullCachingService.GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(Metalama.Patterns.Caching.CachedMethodMetadata?, object?, object?[], System.Func<object?, object?[], System.Threading.CancellationToken, System.Threading.Tasks.ValueTask<object?>>, Metalama.Patterns.Caching.CacheItemConfiguration?, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - Metalama.Patterns.Caching
@@ -265,11 +271,14 @@ items:
     This method is called by the generated code of the <code>CacheAttribute</code> aspect.
   example: []
   syntax:
-    content: public ValueTask<TTaskResultType?> GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(CachedMethodMetadata metadata, object? instance, object?[] args, Func<object?, object?[], CancellationToken, ValueTask<object?>> func, CacheItemConfiguration? configuration = null, CancellationToken cancellationToken = default)
+    content: public ValueTask<TTaskResultType?> GetFromCacheOrExecuteValueTaskAsync<TTaskResultType>(CachedMethodMetadata? metadata, object? instance, object?[] args, Func<object?, object?[], CancellationToken, ValueTask<object?>> func, CacheItemConfiguration? configuration = null, CancellationToken cancellationToken = default)
     parameters:
     - id: metadata
       type: Metalama.Patterns.Caching.CachedMethodMetadata
-      description: Metadata about the cached method.
+      description: >-
+        Metadata about the cached method, or <code>null</code> if the cache registration
+                    has not been initialized yet (e.g., when a cached method is called from a static field initializer).
+                    When <code>null</code>, caching is bypassed and the original method is called directly.
     - id: instance
       type: System.Object
       description: The instance on which the method is called, or <code>null</code> for static methods.
