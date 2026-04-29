@@ -607,7 +607,7 @@ items:
   summary: Gets a cache item given its key.
   example: []
   syntax:
-    content: public CacheItem? GetItem(string key, bool includeDependencies = false)
+    content: public CacheItem? GetItem(string key, bool includeDependencies = true)
     parameters:
     - id: key
       type: System.String
@@ -620,7 +620,7 @@ items:
     return:
       type: Metalama.Patterns.Caching.Implementation.CacheItem
       description: A <xref href="Metalama.Patterns.Caching.Implementation.CacheItem" data-throw-if-not-resolved="false"></xref>, or <code>null</code> if there is no item in cache of the given <code class="paramref">key</code>.
-    content.vb: Public Function GetItem(key As String, includeDependencies As Boolean = False) As CacheItem
+    content.vb: Public Function GetItem(key As String, includeDependencies As Boolean = True) As CacheItem
   overload: Metalama.Patterns.Caching.Backends.CachingBackend.GetItem*
   nameWithType.vb: CachingBackend.GetItem(String, Boolean)
   fullName.vb: Metalama.Patterns.Caching.Backends.CachingBackend.GetItem(String, Boolean)
@@ -642,7 +642,7 @@ items:
   summary: Asynchronously gets a cache item given its key.
   example: []
   syntax:
-    content: public ValueTask<CacheItem?> GetItemAsync(string key, bool includeDependencies = false, CancellationToken cancellationToken = default)
+    content: public ValueTask<CacheItem?> GetItemAsync(string key, bool includeDependencies = true, CancellationToken cancellationToken = default)
     parameters:
     - id: key
       type: System.String
@@ -658,7 +658,7 @@ items:
     return:
       type: System.Threading.Tasks.ValueTask{Metalama.Patterns.Caching.Implementation.CacheItem}
       description: A <xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref> evaluating to a <xref href="Metalama.Patterns.Caching.Implementation.CacheItem" data-throw-if-not-resolved="false"></xref>, or evaluating to <code>null</code> if there is no item in cache of the given <code class="paramref">key</code>.
-    content.vb: Public Function GetItemAsync(key As String, includeDependencies As Boolean = False, cancellationToken As CancellationToken = Nothing) As ValueTask(Of CacheItem)
+    content.vb: Public Function GetItemAsync(key As String, includeDependencies As Boolean = True, cancellationToken As CancellationToken = Nothing) As ValueTask(Of CacheItem)
   overload: Metalama.Patterns.Caching.Backends.CachingBackend.GetItemAsync*
   nameWithType.vb: CachingBackend.GetItemAsync(String, Boolean, CancellationToken)
   fullName.vb: Metalama.Patterns.Caching.Backends.CachingBackend.GetItemAsync(String, Boolean, System.Threading.CancellationToken)

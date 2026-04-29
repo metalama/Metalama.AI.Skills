@@ -7,7 +7,6 @@ items:
   children:
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(System.String)
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.IsReadOnly
-  - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.ReturnParameter
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.ReturnType
   langs:
@@ -43,7 +42,7 @@ items:
   - Metalama.Framework.Code.IMethod.OverriddenMethod
   - Metalama.Framework.Code.IMethod.ExplicitInterfaceImplementations
   - Metalama.Framework.Code.IMethod.DeclaringMember
-  - Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+  - Metalama.Framework.Code.IMethod.OperatorKind
   - Metalama.Framework.Code.IMethod.Definition
   - Metalama.Framework.Code.IGeneric.TypeParameters
   - Metalama.Framework.Code.IGeneric.TypeArguments
@@ -56,13 +55,10 @@ items:
   - Metalama.Framework.Code.Invokers.IMethodInvoker.WithObject(System.Object)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
   - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{System.Object})
-  - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.With(System.Object,Metalama.Framework.Code.Invokers.InvokerOptions)
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.AddParameter(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.AddParameter(System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-  - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-  - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   - Metalama.Framework.Code.IMethodBase.ToMethodBase
   - Metalama.Framework.Code.DeclarationBuilders.IHasParametersBuilder.Parameters
   - Metalama.Framework.Code.DeclarationBuilders.IMemberBuilder.IsVirtual
@@ -84,8 +80,6 @@ items:
   - Metalama.Framework.Code.IMemberOrNamedType.ExecutionScope
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.Freeze
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttribute(Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction)
-  - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-  - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.IsFrozen
   - Metalama.Framework.Code.IDeclaration.ToSerializableId
@@ -125,7 +119,6 @@ items:
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsAspectEligible(System.Type,Metalama.Framework.Eligibility.EligibleScenarios)
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsAspectEligible``1(Metalama.Framework.Eligibility.EligibleScenarios)
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsContractAdviceEligible(Metalama.Framework.Aspects.ContractDirection)
-  - Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.HasReceiver
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.IsOverridable
@@ -249,34 +242,6 @@ items:
       type: System.Boolean
     content.vb: Property IsReadOnly As Boolean
   overload: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.IsReadOnly*
-- uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
-  commentId: P:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
-  id: OperatorKind
-  parent: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
-  langs:
-  - csharp
-  - vb
-  name: OperatorKind
-  nameWithType: IMethodBuilder.OperatorKind
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code.DeclarationBuilders
-  summary: >-
-    Gets or sets the operator kind. When set to a value other than <xref href="Metalama.Framework.Code.OperatorKind.None" data-throw-if-not-resolved="false"></xref>,
-
-    the method becomes an operator. The name and <xref href="Metalama.Framework.Code.IMemberOrNamedType.IsStatic" data-throw-if-not-resolved="false"></xref>
-
-    properties are automatically set based on the operator kind. This property can only be set once.
-  example: []
-  syntax:
-    content: OperatorKind OperatorKind { get; set; }
-    parameters: []
-    return:
-      type: Metalama.Framework.Code.OperatorKind
-    content.vb: Property OperatorKind As OperatorKind
-  overload: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind*
 references:
 - uid: Metalama.Framework.Code.IMethod
   commentId: T:Metalama.Framework.Code.IMethod
@@ -596,14 +561,14 @@ references:
   name: DeclaringMember
   nameWithType: IMethod.DeclaringMember
   fullName: Metalama.Framework.Code.IMethod.DeclaringMember
-- uid: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
-  commentId: P:Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+- uid: Metalama.Framework.Code.IMethod.OperatorKind
+  commentId: P:Metalama.Framework.Code.IMethod.OperatorKind
   parent: Metalama.Framework.Code.IMethod
   isExternal: true
-  href: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod.html#Metalama_Framework_Code_IMethod_ExtensionImplementationMethod
-  name: ExtensionImplementationMethod
-  nameWithType: IMethod.ExtensionImplementationMethod
-  fullName: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+  href: Metalama.Framework.Code.IMethod.OperatorKind.html#Metalama_Framework_Code_IMethod_OperatorKind
+  name: OperatorKind
+  nameWithType: IMethod.OperatorKind
+  fullName: Metalama.Framework.Code.IMethod.OperatorKind
 - uid: Metalama.Framework.Code.IMethod.Definition
   commentId: P:Metalama.Framework.Code.IMethod.Definition
   parent: Metalama.Framework.Code.IMethod
@@ -911,36 +876,6 @@ references:
   - name: Object
   - name: )
   - name: )
-- uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
-  commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
-  parent: Metalama.Framework.Code.Invokers.IMethodInvoker
-  isExternal: true
-  href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
-  name: CreateDelegateExpression(INamedType)
-  nameWithType: IMethodInvoker.CreateDelegateExpression(INamedType)
-  fullName: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
-    name: CreateDelegateExpression
-    isExternal: true
-    href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
-  - name: (
-  - uid: Metalama.Framework.Code.INamedType
-    name: INamedType
-    isExternal: true
-    href: Metalama.Framework.Code.INamedType.html
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
-    name: CreateDelegateExpression
-    isExternal: true
-    href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
-  - name: (
-  - uid: Metalama.Framework.Code.INamedType
-    name: INamedType
-    isExternal: true
-    href: Metalama.Framework.Code.INamedType.html
-  - name: )
 - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   parent: Metalama.Framework.Code.Invokers.IMethodInvoker
@@ -1130,172 +1065,6 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.AddParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_AddParameter_System_String_System_Type_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
   - name: (
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Type
-    name: Type
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.type
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.RefKind
-    name: RefKind
-    isExternal: true
-    href: Metalama.Framework.Code.RefKind.html
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.TypedConstant
-    name: TypedConstant
-    isExternal: true
-    href: Metalama.Framework.Code.TypedConstant.html
-  - name: '?'
-  - name: )
-- uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-  parent: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_InsertParameter_System_Int32_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
-  name: InsertParameter(int, string, IType, RefKind, TypedConstant?)
-  nameWithType: IMethodBaseBuilder.InsertParameter(int, string, IType, RefKind, TypedConstant?)
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(int, string, Metalama.Framework.Code.IType, Metalama.Framework.Code.RefKind, Metalama.Framework.Code.TypedConstant?)
-  nameWithType.vb: IMethodBaseBuilder.InsertParameter(Integer, String, IType, RefKind, TypedConstant?)
-  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(Integer, String, Metalama.Framework.Code.IType, Metalama.Framework.Code.RefKind, Metalama.Framework.Code.TypedConstant?)
-  name.vb: InsertParameter(Integer, String, IType, RefKind, TypedConstant?)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-    name: InsertParameter
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_InsertParameter_System_Int32_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
-  - name: (
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.IType
-    name: IType
-    isExternal: true
-    href: Metalama.Framework.Code.IType.html
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.RefKind
-    name: RefKind
-    isExternal: true
-    href: Metalama.Framework.Code.RefKind.html
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.TypedConstant
-    name: TypedConstant
-    isExternal: true
-    href: Metalama.Framework.Code.TypedConstant.html
-  - name: '?'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-    name: InsertParameter
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_InsertParameter_System_Int32_System_String_Metalama_Framework_Code_IType_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
-  - name: (
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.IType
-    name: IType
-    isExternal: true
-    href: Metalama.Framework.Code.IType.html
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.RefKind
-    name: RefKind
-    isExternal: true
-    href: Metalama.Framework.Code.RefKind.html
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.TypedConstant
-    name: TypedConstant
-    isExternal: true
-    href: Metalama.Framework.Code.TypedConstant.html
-  - name: '?'
-  - name: )
-- uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-  parent: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_InsertParameter_System_Int32_System_String_System_Type_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
-  name: InsertParameter(int, string, Type, RefKind, TypedConstant?)
-  nameWithType: IMethodBaseBuilder.InsertParameter(int, string, Type, RefKind, TypedConstant?)
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(int, string, System.Type, Metalama.Framework.Code.RefKind, Metalama.Framework.Code.TypedConstant?)
-  nameWithType.vb: IMethodBaseBuilder.InsertParameter(Integer, String, Type, RefKind, TypedConstant?)
-  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(Integer, String, System.Type, Metalama.Framework.Code.RefKind, Metalama.Framework.Code.TypedConstant?)
-  name.vb: InsertParameter(Integer, String, Type, RefKind, TypedConstant?)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-    name: InsertParameter
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_InsertParameter_System_Int32_System_String_System_Type_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
-  - name: (
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Type
-    name: Type
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.type
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.RefKind
-    name: RefKind
-    isExternal: true
-    href: Metalama.Framework.Code.RefKind.html
-  - name: ','
-  - name: " "
-  - uid: Metalama.Framework.Code.TypedConstant
-    name: TypedConstant
-    isExternal: true
-    href: Metalama.Framework.Code.TypedConstant.html
-  - name: '?'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
-    name: InsertParameter
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBaseBuilder_InsertParameter_System_Int32_System_String_System_Type_Metalama_Framework_Code_RefKind_System_Nullable_Metalama_Framework_Code_TypedConstant__
-  - name: (
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
   - uid: System.String
     name: String
     isExternal: true
@@ -1551,100 +1320,6 @@ references:
     name: AttributeConstruction
     isExternal: true
     href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
-  - name: )
-- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-  parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
-  name: AddAttributes(IEnumerable<AttributeConstruction>)
-  nameWithType: IDeclarationBuilder.AddAttributes(IEnumerable<AttributeConstruction>)
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction>)
-  nameWithType.vb: IDeclarationBuilder.AddAttributes(IEnumerable(Of AttributeConstruction))
-  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
-  name.vb: AddAttributes(IEnumerable(Of AttributeConstruction))
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-    name: AddAttributes
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
-  - name: (
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: <
-  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
-    name: AttributeConstruction
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
-    name: AddAttributes
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_DeclarationBuilders_AttributeConstruction__
-  - name: (
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction
-    name: AttributeConstruction
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction.html
-  - name: )
-  - name: )
-- uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
-  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
-  parent: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IAttribute__
-  name: AddAttributes(IEnumerable<IAttribute>)
-  nameWithType: IDeclarationBuilder.AddAttributes(IEnumerable<IAttribute>)
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable<Metalama.Framework.Code.IAttribute>)
-  nameWithType.vb: IDeclarationBuilder.AddAttributes(IEnumerable(Of IAttribute))
-  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable(Of Metalama.Framework.Code.IAttribute))
-  name.vb: AddAttributes(IEnumerable(Of IAttribute))
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
-    name: AddAttributes
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IAttribute__
-  - name: (
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: <
-  - uid: Metalama.Framework.Code.IAttribute
-    name: IAttribute
-    isExternal: true
-    href: Metalama.Framework.Code.IAttribute.html
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IAttribute})
-    name: AddAttributes
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.AddAttributes.html#Metalama_Framework_Code_DeclarationBuilders_IDeclarationBuilder_AddAttributes_System_Collections_Generic_IEnumerable_Metalama_Framework_Code_IAttribute__
-  - name: (
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Framework.Code.IAttribute
-    name: IAttribute
-    isExternal: true
-    href: Metalama.Framework.Code.IAttribute.html
-  - name: )
   - name: )
 - uid: Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
   commentId: M:Metalama.Framework.Code.DeclarationBuilders.IDeclarationBuilder.RemoveAttributes(Metalama.Framework.Code.INamedType)
@@ -2827,36 +2502,6 @@ references:
     name: ContractDirection
     isExternal: true
     href: Metalama.Framework.Aspects.ContractDirection.html
-  - name: )
-- uid: Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
-  commentId: M:Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  parent: Metalama.Framework.Code.DeclarationExtensions
-  definition: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  name: GetEffectiveAccessibility(IMember)
-  nameWithType: DeclarationExtensions.GetEffectiveAccessibility(IMember)
-  fullName: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
   - name: )
 - uid: Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   commentId: M:Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
@@ -4865,35 +4510,6 @@ references:
     isExternal: true
     href: Metalama.Framework.Aspects.ContractDirection.html
   - name: )
-- uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  commentId: M:Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  name: GetEffectiveAccessibility(IMember)
-  nameWithType: DeclarationExtensions.GetEffectiveAccessibility(IMember)
-  fullName: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
-  - name: )
 - uid: Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
   commentId: M:Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
   isExternal: true
@@ -6064,34 +5680,4 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: Metalama.Framework.Code.OperatorKind.None
-  commentId: F:Metalama.Framework.Code.OperatorKind.None
-  isExternal: true
-  href: Metalama.Framework.Code.OperatorKind.html#Metalama_Framework_Code_OperatorKind_None
-  name: None
-  nameWithType: OperatorKind.None
-  fullName: Metalama.Framework.Code.OperatorKind.None
-- uid: Metalama.Framework.Code.IMemberOrNamedType.IsStatic
-  commentId: P:Metalama.Framework.Code.IMemberOrNamedType.IsStatic
-  parent: Metalama.Framework.Code.IMemberOrNamedType
-  isExternal: true
-  href: Metalama.Framework.Code.IMemberOrNamedType.IsStatic.html#Metalama_Framework_Code_IMemberOrNamedType_IsStatic
-  name: IsStatic
-  nameWithType: IMemberOrNamedType.IsStatic
-  fullName: Metalama.Framework.Code.IMemberOrNamedType.IsStatic
-- uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind*
-  commentId: Overload:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind.html#Metalama_Framework_Code_DeclarationBuilders_IMethodBuilder_OperatorKind
-  name: OperatorKind
-  nameWithType: IMethodBuilder.OperatorKind
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
-- uid: Metalama.Framework.Code.OperatorKind
-  commentId: T:Metalama.Framework.Code.OperatorKind
-  parent: Metalama.Framework.Code
-  isExternal: true
-  href: Metalama.Framework.Code.OperatorKind.html
-  name: OperatorKind
-  nameWithType: OperatorKind
-  fullName: Metalama.Framework.Code.OperatorKind
 memberLayout: SeparatePages

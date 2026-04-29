@@ -89,7 +89,6 @@ items:
   - Metalama.Framework.Code.Invokers.IEventInvoker.WithObject(System.Object)
   - Metalama.Framework.Code.Invokers.IEventInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   - Metalama.Framework.Code.Invokers.IEventInvoker.With(System.Object,Metalama.Framework.Code.Invokers.InvokerOptions)
-  - Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
   extensionMethods:
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Code.DeclarationExtensions.ContainedChildren
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Code.DeclarationExtensions.ContainedDescendants
@@ -115,7 +114,6 @@ items:
   - Metalama.Framework.Code.IEvent.Metalama.Framework.Code.GenericExtensions.ForTypeInstance(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.IEvent.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   - Metalama.Framework.Code.IEvent.Metalama.Framework.Metrics.MetricsExtensions.Metrics``1
-  - Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.HasReceiver
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.IsOverridable
@@ -309,20 +307,12 @@ items:
   summary: >-
     Gets an object that represents the <code>raise</code> semantic and allows to add aspects and advice
 
-    as with a normal method, or <code>null</code> if the event cannot be raised.
-  remarks: >-
-    <p>
-        In C#, only field-like events (events without explicit <code>add</code>/<code>remove</code> accessors) can be raised
-        because they have a backing delegate field. For non-field-like events (events with explicit accessors),
-        there is no backing delegate to invoke, so this property returns <code>null</code>.
-        </p>
-    <p>
-        Use the <xref href="Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise" data-throw-if-not-resolved="false"></xref> property to programmatically check whether an event can be raised
-        before attempting to use this property or the <xref href="Metalama.Framework.Code.Invokers.IEventInvoker.Raise(System.Object%5b%5d)" data-throw-if-not-resolved="false"></xref> method.
-        </p>
+    as with a normal method. In case of non-field-like events that were not overridden, this property cannot be used
+
+    for invocation.
   example: []
   syntax:
-    content: IMethod? RaiseMethod { get; }
+    content: IMethod RaiseMethod { get; }
     parameters: []
     return:
       type: Metalama.Framework.Code.IMethod
@@ -1233,14 +1223,6 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.Invokers.InvokerOptions.html
   - name: )
-- uid: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
-  commentId: P:Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
-  parent: Metalama.Framework.Code.Invokers.IEventInvoker
-  isExternal: true
-  href: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise.html#Metalama_Framework_Code_Invokers_IEventInvoker_CanRaise
-  name: CanRaise
-  nameWithType: IEventInvoker.CanRaise
-  fullName: Metalama.Framework.Code.Invokers.IEventInvoker.CanRaise
 - uid: Metalama.Framework.Code.IDeclaration.Metalama.Framework.Code.DeclarationExtensions.ContainedChildren
   commentId: M:Metalama.Framework.Code.DeclarationExtensions.ContainedChildren(Metalama.Framework.Code.IDeclaration)
   parent: Metalama.Framework.Code.DeclarationExtensions
@@ -2272,36 +2254,6 @@ references:
     name: IEvent
     isExternal: true
     href: Metalama.Framework.Code.IEvent.html
-  - name: )
-- uid: Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
-  commentId: M:Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  parent: Metalama.Framework.Code.DeclarationExtensions
-  definition: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  name: GetEffectiveAccessibility(IMember)
-  nameWithType: DeclarationExtensions.GetEffectiveAccessibility(IMember)
-  fullName: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
   - name: )
 - uid: Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   commentId: M:Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
@@ -3745,35 +3697,6 @@ references:
   name: MetricsExtensions
   nameWithType: MetricsExtensions
   fullName: Metalama.Framework.Metrics.MetricsExtensions
-- uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  commentId: M:Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  name: GetEffectiveAccessibility(IMember)
-  nameWithType: DeclarationExtensions.GetEffectiveAccessibility(IMember)
-  fullName: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
-    name: GetEffectiveAccessibility
-    isExternal: true
-    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
-  - name: (
-  - uid: Metalama.Framework.Code.IMember
-    name: IMember
-    isExternal: true
-    href: Metalama.Framework.Code.IMember.html
-  - name: )
 - uid: Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
   commentId: M:Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
   isExternal: true

@@ -1,64 +1,59 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-  commentId: T:Metalama.Framework.Aspects.CompiledTemplateAttribute
-  id: CompiledTemplateAttribute
-  parent: Metalama.Framework.Aspects
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+  commentId: T:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+  id: CurrentDirectoryAttribute
+  parent: Metalama.Testing.AspectTesting
   children:
-  - Metalama.Framework.Aspects.CompiledTemplateAttribute.#ctor
-  - Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility
-  - Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync
-  - Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod
+  - Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.#ctor(System.String,System.String)
+  - Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory
+  - Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData(System.Reflection.MethodInfo)
   langs:
   - csharp
   - vb
-  name: CompiledTemplateAttribute
-  nameWithType: CompiledTemplateAttribute
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute
+  name: CurrentDirectoryAttribute
+  nameWithType: CurrentDirectoryAttribute
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
   type: Class
   assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Aspects
-  summary: Internal attribute added by Metalama during compilation to preserve the original characteristics of templates.
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: An xUnit data attribute that generates test cases from snapshot test files in the current directory.
   remarks: >-
     <p>
-        This attribute is internal to the Metalama infrastructure and should not be used in user code. When Metalama compiles
-        T# templates into standard C# code that generates run-time code using the Roslyn API, some characteristics of the
-        template methods (such as accessibility, async state, and iterator state) may be modified during the compilation
-        process. This attribute stores the original values so they can be referenced during template expansion.
+        This attribute is used with <code>[Theory]</code> to automatically discover test files (typically <code>*.cs</code> files) in a directory
+        and generate a test case for each file. Use this in conjunction with <xref href="Metalama.Testing.AspectTesting.AspectTestClass" data-throw-if-not-resolved="false"></xref>.
         </p>
     <p>
-        As part of the T# compilation process, Metalama separates compile-time code from run-time code and embeds the
-        compile-time code (including compiled templates) as a managed resource in the run-time assembly. This attribute
-        ensures that template metadata remains accurate throughout this transformation.
+        The attribute excludes:
+        <ul><li>Subdirectories that contain a file named <code>_Runner.cs</code></li><li>Subdirectories covered by another test method in the same class</li></ul></p>
+    <p>
+        Test discovery respects options from <code>metalamaTests.json</code> files.
         </p>
   example: []
   syntax:
     content: >-
-      [CompileTime]
+      [Obsolete("This class is obsolete. Use the default snapshot test project setup provided by Metalama.Testing.AspectTesting instead.")]
 
-      [AttributeUsage(AttributeTargets.Method|AttributeTargets.Property|AttributeTargets.Field|AttributeTargets.Event)]
-
-      public sealed class CompiledTemplateAttribute : Attribute
+      public sealed class CurrentDirectoryAttribute : DataAttribute
     content.vb: >-
-      <CompileTime>
+      <Obsolete("This class is obsolete. Use the default snapshot test project setup provided by Metalama.Testing.AspectTesting instead.")>
 
-      <AttributeUsage(AttributeTargets.MethodOrAttributeTargets.PropertyOrAttributeTargets.FieldOrAttributeTargets.Event)>
-
-      Public NotInheritable Class CompiledTemplateAttribute Inherits Attribute
+      Public NotInheritable Class CurrentDirectoryAttribute Inherits DataAttribute
   seealso:
-  - linkId: Metalama.Framework.Aspects.TemplateAttribute
-    commentId: T:Metalama.Framework.Aspects.TemplateAttribute
+  - linkId: Metalama.Testing.AspectTesting.AspectTestClass
+    commentId: T:Metalama.Testing.AspectTesting.AspectTestClass
+  - linkId: Metalama.Testing.AspectTesting.TestOptions
+    commentId: T:Metalama.Testing.AspectTesting.TestOptions
   - linkType: HRef
-    linkId: '@template-overview'
-    altText: '@template-overview'
-  - linkType: HRef
-    linkId: '@templates'
-    altText: '@templates'
+    linkId: '@aspect-testing'
+    altText: '@aspect-testing'
   inheritance:
   - System.Object
   - System.Attribute
+  - Xunit.Sdk.DataAttribute
   inheritedMembers:
+  - Xunit.Sdk.DataAttribute.Skip
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
@@ -101,146 +96,149 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.ReferenceEquals(System.Object,System.Object)
   extensionMethods:
-  - Metalama.Framework.Aspects.CompiledTemplateAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.CompiledTemplateAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.CompiledTemplateAttribute}},System.Boolean)
+  - Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute}},System.Boolean)
   attributes:
-  - type: Metalama.Framework.Aspects.CompileTimeAttribute
-    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
-    arguments: []
-  - type: System.AttributeUsageAttribute
-    ctor: System.AttributeUsageAttribute.#ctor(System.AttributeTargets)
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
     arguments:
-    - type: System.AttributeTargets
-      value: 960
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.#ctor
-  commentId: M:Metalama.Framework.Aspects.CompiledTemplateAttribute.#ctor
-  id: '#ctor'
-  parent: Metalama.Framework.Aspects.CompiledTemplateAttribute
+    - type: System.String
+      value: This class is obsolete. Use the default snapshot test project setup provided by Metalama.Testing.AspectTesting instead.
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.#ctor(System.String,System.String)
+  commentId: M:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
   langs:
   - csharp
   - vb
-  name: CompiledTemplateAttribute()
-  nameWithType: CompiledTemplateAttribute.CompiledTemplateAttribute()
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.CompiledTemplateAttribute()
+  name: CurrentDirectoryAttribute(string?, string?)
+  nameWithType: CurrentDirectoryAttribute.CurrentDirectoryAttribute(string?, string?)
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.CurrentDirectoryAttribute(string?, string?)
   type: Constructor
   assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Aspects
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Initializes a new instance of the <xref href="Metalama.Testing.AspectTesting.CurrentDirectoryAttribute" data-throw-if-not-resolved="false"></xref> class.
+  example: []
   syntax:
-    content: public CompiledTemplateAttribute()
-    content.vb: Public Sub New()
-  overload: Metalama.Framework.Aspects.CompiledTemplateAttribute.#ctor*
-  nameWithType.vb: CompiledTemplateAttribute.New()
-  fullName.vb: Metalama.Framework.Aspects.CompiledTemplateAttribute.New()
-  name.vb: New()
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility
-  commentId: P:Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility
-  id: Accessibility
-  parent: Metalama.Framework.Aspects.CompiledTemplateAttribute
+    content: public CurrentDirectoryAttribute(string? subdirectory = null, string? callerPath = null)
+    parameters:
+    - id: subdirectory
+      type: System.String
+      description: Optionally, the directory containing the tests to execute, relatively to the directory of the caller source file.
+    - id: callerPath
+      type: System.String
+    content.vb: Public Sub New(subdirectory As String = Nothing, callerPath As String = Nothing)
+  overload: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.#ctor*
+  nameWithType.vb: CurrentDirectoryAttribute.New(String, String)
+  fullName.vb: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.New(String, String)
+  name.vb: New(String, String)
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData(System.Reflection.MethodInfo)
+  commentId: M:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData(System.Reflection.MethodInfo)
+  id: GetData(System.Reflection.MethodInfo)
+  parent: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
   langs:
   - csharp
   - vb
-  name: Accessibility
-  nameWithType: CompiledTemplateAttribute.Accessibility
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility
-  type: Property
+  name: GetData(MethodInfo)
+  nameWithType: CurrentDirectoryAttribute.GetData(MethodInfo)
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData(System.Reflection.MethodInfo)
+  type: Method
   assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Aspects
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Returns the data to be used to test the theory.
+  example: []
   syntax:
-    content: public Accessibility Accessibility { get; set; }
-    parameters: []
+    content: public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+    parameters:
+    - id: testMethod
+      type: System.Reflection.MethodInfo
+      description: The method that is being tested
     return:
-      type: Metalama.Framework.Code.Accessibility
-    content.vb: Public Property Accessibility As Accessibility
-  overload: Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility*
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod
-  commentId: P:Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod
-  id: IsIteratorMethod
-  parent: Metalama.Framework.Aspects.CompiledTemplateAttribute
+      type: System.Collections.Generic.IEnumerable{System.Object[]}
+      description: >-
+        One or more sets of theory data. Each invocation of the test method
+                    is represented by a single object array.
+    content.vb: Public Overrides Function GetData(testMethod As MethodInfo) As IEnumerable(Of Object())
+  overridden: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  overload: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData*
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory
+  commentId: P:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory
+  id: Directory
+  parent: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
   langs:
   - csharp
   - vb
-  name: IsIteratorMethod
-  nameWithType: CompiledTemplateAttribute.IsIteratorMethod
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod
+  name: Directory
+  nameWithType: CurrentDirectoryAttribute.Directory
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory
   type: Property
   assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Aspects
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Gets the root directory of test files for the current test methods.
+  example: []
   syntax:
-    content: public bool IsIteratorMethod { get; set; }
+    content: public string Directory { get; }
     parameters: []
     return:
-      type: System.Boolean
-    content.vb: Public Property IsIteratorMethod As Boolean
-  overload: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod*
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync
-  commentId: P:Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync
-  id: IsAsync
-  parent: Metalama.Framework.Aspects.CompiledTemplateAttribute
-  langs:
-  - csharp
-  - vb
-  name: IsAsync
-  nameWithType: CompiledTemplateAttribute.IsAsync
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Aspects
-  syntax:
-    content: public bool IsAsync { get; set; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: Public Property IsAsync As Boolean
-  overload: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync*
+      type: System.String
+    content.vb: Public ReadOnly Property Directory As String
+  overload: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory*
 references:
-- uid: Metalama.Framework.Aspects.TemplateAttribute
-  commentId: T:Metalama.Framework.Aspects.TemplateAttribute
-  parent: Metalama.Framework.Aspects
+- uid: Metalama.Testing.AspectTesting.AspectTestClass
+  commentId: T:Metalama.Testing.AspectTesting.AspectTestClass
+  parent: Metalama.Testing.AspectTesting
   isExternal: true
-  href: Metalama.Framework.Aspects.TemplateAttribute.html
-  name: TemplateAttribute
-  nameWithType: TemplateAttribute
-  fullName: Metalama.Framework.Aspects.TemplateAttribute
-- uid: Metalama.Framework.Aspects
-  commentId: N:Metalama.Framework.Aspects
+  href: Metalama.Testing.AspectTesting.AspectTestClass.html
+  name: AspectTestClass
+  nameWithType: AspectTestClass
+  fullName: Metalama.Testing.AspectTesting.AspectTestClass
+- uid: Metalama.Testing.AspectTesting.TestOptions
+  commentId: T:Metalama.Testing.AspectTesting.TestOptions
+  parent: Metalama.Testing.AspectTesting
+  isExternal: true
+  href: Metalama.Testing.AspectTesting.TestOptions.html
+  name: TestOptions
+  nameWithType: TestOptions
+  fullName: Metalama.Testing.AspectTesting.TestOptions
+- uid: Metalama.Testing.AspectTesting
+  commentId: N:Metalama.Testing.AspectTesting
   isExternal: true
   href: Metalama.html
-  name: Metalama.Framework.Aspects
-  nameWithType: Metalama.Framework.Aspects
-  fullName: Metalama.Framework.Aspects
+  name: Metalama.Testing.AspectTesting
+  nameWithType: Metalama.Testing.AspectTesting
+  fullName: Metalama.Testing.AspectTesting
   spec.csharp:
   - uid: Metalama
     name: Metalama
     isExternal: true
     href: Metalama.html
   - name: .
-  - uid: Metalama.Framework
-    name: Framework
+  - uid: Metalama.Testing
+    name: Testing
     isExternal: true
-    href: Metalama.Framework.html
+    href: Metalama.Testing.html
   - name: .
-  - uid: Metalama.Framework.Aspects
-    name: Aspects
+  - uid: Metalama.Testing.AspectTesting
+    name: AspectTesting
     isExternal: true
-    href: Metalama.Framework.Aspects.html
+    href: Metalama.Testing.AspectTesting.html
   spec.vb:
   - uid: Metalama
     name: Metalama
     isExternal: true
     href: Metalama.html
   - name: .
-  - uid: Metalama.Framework
-    name: Framework
+  - uid: Metalama.Testing
+    name: Testing
     isExternal: true
-    href: Metalama.Framework.html
+    href: Metalama.Testing.html
   - name: .
-  - uid: Metalama.Framework.Aspects
-    name: Aspects
+  - uid: Metalama.Testing.AspectTesting
+    name: AspectTesting
     isExternal: true
-    href: Metalama.Framework.Aspects.html
+    href: Metalama.Testing.AspectTesting.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -260,6 +258,20 @@ references:
   name: Attribute
   nameWithType: Attribute
   fullName: System.Attribute
+- uid: Xunit.Sdk.DataAttribute
+  commentId: T:Xunit.Sdk.DataAttribute
+  parent: Xunit.Sdk
+  isExternal: true
+  name: DataAttribute
+  nameWithType: DataAttribute
+  fullName: Xunit.Sdk.DataAttribute
+- uid: Xunit.Sdk.DataAttribute.Skip
+  commentId: P:Xunit.Sdk.DataAttribute.Skip
+  parent: Xunit.Sdk.DataAttribute
+  isExternal: true
+  name: Skip
+  nameWithType: DataAttribute.Skip
+  fullName: Xunit.Sdk.DataAttribute.Skip
 - uid: System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   commentId: M:System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   parent: System.Attribute
@@ -2004,33 +2016,33 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.CompiledTemplateAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.CompiledTemplateAttribute}},System.Boolean)
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute}},System.Boolean)
   commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   parent: Metalama.Framework.Code.Collections.EnumerableExtensions
   definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  name: SelectManyRecursiveDistinct<CompiledTemplateAttribute>(CompiledTemplateAttribute, Func<CompiledTemplateAttribute, IEnumerable<CompiledTemplateAttribute>>, bool)
-  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<CompiledTemplateAttribute>(CompiledTemplateAttribute, Func<CompiledTemplateAttribute, IEnumerable<CompiledTemplateAttribute>>, bool)
-  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Framework.Aspects.CompiledTemplateAttribute>(Metalama.Framework.Aspects.CompiledTemplateAttribute, System.Func<Metalama.Framework.Aspects.CompiledTemplateAttribute, System.Collections.Generic.IEnumerable<Metalama.Framework.Aspects.CompiledTemplateAttribute>>, bool)
-  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of CompiledTemplateAttribute)(CompiledTemplateAttribute, Func(Of CompiledTemplateAttribute, IEnumerable(Of CompiledTemplateAttribute)), Boolean)
-  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Framework.Aspects.CompiledTemplateAttribute)(Metalama.Framework.Aspects.CompiledTemplateAttribute, System.Func(Of Metalama.Framework.Aspects.CompiledTemplateAttribute, System.Collections.Generic.IEnumerable(Of Metalama.Framework.Aspects.CompiledTemplateAttribute)), Boolean)
-  name.vb: SelectManyRecursiveDistinct(Of CompiledTemplateAttribute)(CompiledTemplateAttribute, Func(Of CompiledTemplateAttribute, IEnumerable(Of CompiledTemplateAttribute)), Boolean)
+  name: SelectManyRecursiveDistinct<CurrentDirectoryAttribute>(CurrentDirectoryAttribute, Func<CurrentDirectoryAttribute, IEnumerable<CurrentDirectoryAttribute>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<CurrentDirectoryAttribute>(CurrentDirectoryAttribute, Func<CurrentDirectoryAttribute, IEnumerable<CurrentDirectoryAttribute>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Testing.AspectTesting.CurrentDirectoryAttribute>(Metalama.Testing.AspectTesting.CurrentDirectoryAttribute, System.Func<Metalama.Testing.AspectTesting.CurrentDirectoryAttribute, System.Collections.Generic.IEnumerable<Metalama.Testing.AspectTesting.CurrentDirectoryAttribute>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of CurrentDirectoryAttribute)(CurrentDirectoryAttribute, Func(Of CurrentDirectoryAttribute, IEnumerable(Of CurrentDirectoryAttribute)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Testing.AspectTesting.CurrentDirectoryAttribute)(Metalama.Testing.AspectTesting.CurrentDirectoryAttribute, System.Func(Of Metalama.Testing.AspectTesting.CurrentDirectoryAttribute, System.Collections.Generic.IEnumerable(Of Metalama.Testing.AspectTesting.CurrentDirectoryAttribute)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of CurrentDirectoryAttribute)(CurrentDirectoryAttribute, Func(Of CurrentDirectoryAttribute, IEnumerable(Of CurrentDirectoryAttribute)), Boolean)
   spec.csharp:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.CompiledTemplateAttribute,System.Func{Metalama.Framework.Aspects.CompiledTemplateAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.CompiledTemplateAttribute}},System.Boolean)
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.AspectTesting.CurrentDirectoryAttribute,System.Func{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute}},System.Boolean)
     name: SelectManyRecursiveDistinct
     isExternal: true
     href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
   - name: <
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: '>'
   - name: (
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: ','
   - name: " "
   - uid: System.Func`2
@@ -2038,10 +2050,10 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.func-2
   - name: <
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: ','
   - name: " "
   - uid: System.Collections.Generic.IEnumerable`1
@@ -2049,10 +2061,10 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: '>'
   - name: '>'
   - name: ','
@@ -2063,23 +2075,23 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
   spec.vb:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Framework.Aspects.CompiledTemplateAttribute,System.Func{Metalama.Framework.Aspects.CompiledTemplateAttribute,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.CompiledTemplateAttribute}},System.Boolean)
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Testing.AspectTesting.CurrentDirectoryAttribute,System.Func{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute,System.Collections.Generic.IEnumerable{Metalama.Testing.AspectTesting.CurrentDirectoryAttribute}},System.Boolean)
     name: SelectManyRecursiveDistinct
     isExternal: true
     href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: )
   - name: (
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: ','
   - name: " "
   - uid: System.Func`2
@@ -2089,10 +2101,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: ','
   - name: " "
   - uid: System.Collections.Generic.IEnumerable`1
@@ -2102,10 +2114,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Metalama.Framework.Aspects.CompiledTemplateAttribute
-    name: CompiledTemplateAttribute
+  - uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+    name: CurrentDirectoryAttribute
     isExternal: true
-    href: Metalama.Framework.Aspects.CompiledTemplateAttribute.html
+    href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
   - name: )
   - name: )
   - name: ','
@@ -2122,6 +2134,28 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Xunit.Sdk
+  commentId: N:Xunit.Sdk
+  isExternal: true
+  name: Xunit.Sdk
+  nameWithType: Xunit.Sdk
+  fullName: Xunit.Sdk
+  spec.csharp:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Sdk
+    name: Sdk
+    isExternal: true
+  spec.vb:
+  - uid: Xunit
+    name: Xunit
+    isExternal: true
+  - name: .
+  - uid: Xunit.Sdk
+    name: Sdk
+    isExternal: true
 - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   isExternal: true
@@ -2263,91 +2297,213 @@ references:
     name: Collections
     isExternal: true
     href: Metalama.Framework.Code.Collections.html
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.#ctor*
-  commentId: Overload:Metalama.Framework.Aspects.CompiledTemplateAttribute.#ctor
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+  commentId: T:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
   isExternal: true
-  href: Metalama.Framework.Aspects.CompiledTemplateAttribute.-ctor.html#Metalama_Framework_Aspects_CompiledTemplateAttribute__ctor
-  name: CompiledTemplateAttribute
-  nameWithType: CompiledTemplateAttribute.CompiledTemplateAttribute
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.CompiledTemplateAttribute
-  nameWithType.vb: CompiledTemplateAttribute.New
-  fullName.vb: Metalama.Framework.Aspects.CompiledTemplateAttribute.New
+  href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.html
+  name: CurrentDirectoryAttribute
+  nameWithType: CurrentDirectoryAttribute
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.#ctor*
+  commentId: Overload:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.#ctor
+  isExternal: true
+  href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.-ctor.html#Metalama_Testing_AspectTesting_CurrentDirectoryAttribute__ctor_System_String_System_String_
+  name: CurrentDirectoryAttribute
+  nameWithType: CurrentDirectoryAttribute.CurrentDirectoryAttribute
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.CurrentDirectoryAttribute
+  nameWithType.vb: CurrentDirectoryAttribute.New
+  fullName.vb: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.New
   name.vb: New
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility*
-  commentId: Overload:Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility
-  isExternal: true
-  href: Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility.html#Metalama_Framework_Aspects_CompiledTemplateAttribute_Accessibility
-  name: Accessibility
-  nameWithType: CompiledTemplateAttribute.Accessibility
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.Accessibility
-- uid: Metalama.Framework.Code.Accessibility
-  commentId: T:Metalama.Framework.Code.Accessibility
-  parent: Metalama.Framework.Code
-  isExternal: true
-  href: Metalama.Framework.Code.Accessibility.html
-  name: Accessibility
-  nameWithType: Accessibility
-  fullName: Metalama.Framework.Code.Accessibility
-- uid: Metalama.Framework.Code
-  commentId: N:Metalama.Framework.Code
-  isExternal: true
-  href: Metalama.html
-  name: Metalama.Framework.Code
-  nameWithType: Metalama.Framework.Code
-  fullName: Metalama.Framework.Code
-  spec.csharp:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Code
-    name: Code
-    isExternal: true
-    href: Metalama.Framework.Code.html
-  spec.vb:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Code
-    name: Code
-    isExternal: true
-    href: Metalama.Framework.Code.html
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod*
-  commentId: Overload:Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod
-  isExternal: true
-  href: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod.html#Metalama_Framework_Aspects_CompiledTemplateAttribute_IsIteratorMethod
-  name: IsIteratorMethod
-  nameWithType: CompiledTemplateAttribute.IsIteratorMethod
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsIteratorMethod
-- uid: System.Boolean
-  commentId: T:System.Boolean
+- uid: System.String
+  commentId: T:System.String
   parent: System
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
-- uid: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync*
-  commentId: Overload:Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  commentId: M:Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  parent: Xunit.Sdk.DataAttribute
   isExternal: true
-  href: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync.html#Metalama_Framework_Aspects_CompiledTemplateAttribute_IsAsync
-  name: IsAsync
-  nameWithType: CompiledTemplateAttribute.IsAsync
-  fullName: Metalama.Framework.Aspects.CompiledTemplateAttribute.IsAsync
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: GetData(MethodInfo)
+  nameWithType: DataAttribute.GetData(MethodInfo)
+  fullName: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+  spec.csharp:
+  - uid: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+    name: GetData
+    isExternal: true
+  - name: (
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  - name: )
+  spec.vb:
+  - uid: Xunit.Sdk.DataAttribute.GetData(System.Reflection.MethodInfo)
+    name: GetData
+    isExternal: true
+  - name: (
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  - name: )
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData*
+  commentId: Overload:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData
+  isExternal: true
+  href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData.html#Metalama_Testing_AspectTesting_CurrentDirectoryAttribute_GetData_System_Reflection_MethodInfo_
+  name: GetData
+  nameWithType: CurrentDirectoryAttribute.GetData
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.GetData
+- uid: System.Reflection.MethodInfo
+  commentId: T:System.Reflection.MethodInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: System.Reflection.MethodInfo
+- uid: System.Collections.Generic.IEnumerable{System.Object[]}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Object[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<object[]>
+  nameWithType: IEnumerable<object[]>
+  fullName: System.Collections.Generic.IEnumerable<object[]>
+  nameWithType.vb: IEnumerable(Of Object())
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Object())
+  name.vb: IEnumerable(Of Object())
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory*
+  commentId: Overload:Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory
+  isExternal: true
+  href: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory.html#Metalama_Testing_AspectTesting_CurrentDirectoryAttribute_Directory
+  name: Directory
+  nameWithType: CurrentDirectoryAttribute.Directory
+  fullName: Metalama.Testing.AspectTesting.CurrentDirectoryAttribute.Directory
 memberLayout: SeparatePages
