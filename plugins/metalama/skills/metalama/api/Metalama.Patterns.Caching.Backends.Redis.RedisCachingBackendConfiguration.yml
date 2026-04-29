@@ -9,16 +9,24 @@ items:
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.#ctor(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.#ctor(StackExchange.Redis.ConfigurationOptions,System.String)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.#ctor(StackExchange.Redis.IConnectionMultiplexer,StackExchange.Redis.ConfigurationOptions,System.String)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Connection
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ConnectionTimeout
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.CreateSerializer
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Database
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DefaultExpiration
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.EqualityContract
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Equals(Metalama.Patterns.Caching.Backends.CachingBackendConfiguration)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Equals(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Equals(System.Object)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.GetHashCode
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyPrefix
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.LogRedisConnection
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.NewConnectionOptions
@@ -27,8 +35,11 @@ items:
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ReadCommandFlags
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.RunGarbageCollector
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ToString
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionMaxRetries
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.WriteCommandFlags
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.op_Equality(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.op_Inequality(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)
@@ -66,6 +77,10 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   extensionMethods:
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration}},System.Boolean)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration})
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.#ctor
   commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.#ctor
   id: '#ctor'
@@ -611,12 +626,211 @@ items:
     is raised. The default value is <code>5</code>.
   example: []
   syntax:
-    content: public int TransactionMaxRetries { get; init; }
+    content: >-
+      [Obsolete("Use TransactionRetryPolicy property instead.")]
+
+      public int TransactionMaxRetries { get; init; }
     parameters: []
     return:
       type: System.Int32
-    content.vb: Public Property TransactionMaxRetries As Integer
+    content.vb: >-
+      <Obsolete("Use TransactionRetryPolicy property instead.")>
+
+      Public Property TransactionMaxRetries As Integer
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionMaxRetries*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use TransactionRetryPolicy property instead.
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  id: TransactionRetryPolicy
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: TransactionRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.TransactionRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> that handles the retry loop of Redis transactions.
+
+    The default value is the default instance of the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public IRetryPolicy TransactionRetryPolicy { get; init; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+    content.vb: Public Property TransactionRetryPolicy As IRetryPolicy
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+  id: BackgroundTasksRetryPolicy
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BackgroundTasksRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> that handles the retries of background (non-blocking) operations.
+
+    The default value is the default instance of the <xref href="Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public IRetryPolicy BackgroundTasksRetryPolicy { get; init; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+    content.vb: Public Property BackgroundTasksRetryPolicy As IRetryPolicy
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  id: BackgroundRecoveryRetryPolicy
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BackgroundRecoveryRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> that handles the retry loop of background recovery actions
+
+    (see <xref href="Metalama.Patterns.Caching.Resilience.RecoveryAction.InvalidateDependencyInBackground" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Patterns.Caching.Resilience.RecoveryAction.RemoveItemInBackground" data-throw-if-not-resolved="false"></xref>).
+
+    The default value is the default instance of the <xref href="Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public IRetryPolicy BackgroundRecoveryRetryPolicy { get; init; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+    content.vb: Public Property BackgroundRecoveryRetryPolicy As IRetryPolicy
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  id: BackgroundTasksMaxConcurrency
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BackgroundTasksMaxConcurrency
+  nameWithType: RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the maximal number of concurrent background tasks. This number must be kept low
+
+    to avoid overloading the system or the cache with bursts, for instance when Redis processes evictions. The default value is 25.
+  example: []
+  syntax:
+    content: public int BackgroundTasksMaxConcurrency { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BackgroundTasksMaxConcurrency As Integer
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  id: BackgroundTasksOverloadedThreshold
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BackgroundTasksOverloadedThreshold
+  nameWithType: RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the number of tasks over which the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend" data-throw-if-not-resolved="false"></xref> notifies its state as overloaded
+
+    through the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloaded" data-throw-if-not-resolved="false"></xref> property and the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged" data-throw-if-not-resolved="false"></xref>
+
+    event. The default value is 125. The <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref> component stops processing real-time eviction and expiration
+
+    notifications when the component is overloaded.
+  example: []
+  syntax:
+    content: public int BackgroundTasksOverloadedThreshold { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BackgroundTasksOverloadedThreshold As Integer
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+  id: ExceptionHandlingPolicy
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ExceptionHandlingPolicy
+  nameWithType: RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the <xref href="Metalama.Patterns.Caching.Resilience.IExceptionHandlingPolicy" data-throw-if-not-resolved="false"></xref>, which determines how exceptions in the
+
+    <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend" data-throw-if-not-resolved="false"></xref> component are handled. The default value is an instance of the <xref href="Metalama.Patterns.Caching.Resilience.DefaultExceptionHandlingPolicy" data-throw-if-not-resolved="false"></xref>
+
+    class.
+  example: []
+  syntax:
+    content: public IExceptionHandlingPolicy ExceptionHandlingPolicy { get; init; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Resilience.IExceptionHandlingPolicy
+    content.vb: Public Property ExceptionHandlingPolicy As IExceptionHandlingPolicy
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold
+  id: KeyCompressingThreshold
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: KeyCompressingThreshold
+  nameWithType: RedisCachingBackendConfiguration.KeyCompressingThreshold
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: Gets or sets the length threshold over which cache keys are hashed. The default value is 128.
+  example: []
+  syntax:
+    content: public int KeyCompressingThreshold { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property KeyCompressingThreshold As Integer
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold*
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies
   commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies
   id: SupportsDependencies
@@ -645,6 +859,29 @@ items:
       type: System.Boolean
     content.vb: Public Property SupportsDependencies As Boolean
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents
+  id: SupportsEvents
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: SupportsEvents
+  nameWithType: RedisCachingBackendConfiguration.SupportsEvents
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: Determines if the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend" data-throw-if-not-resolved="false"></xref> supports raising events. It is disabled by default.
+  example: []
+  syntax:
+    content: public bool SupportsEvents { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SupportsEvents As Boolean
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents*
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.RunGarbageCollector
   commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.RunGarbageCollector
   id: RunGarbageCollector
@@ -808,6 +1045,92 @@ items:
       type: StackExchange.Redis.CommandFlags
     content.vb: Public Property WriteCommandFlags As CommandFlags
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.WriteCommandFlags*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout
+  id: DisposeTimeout
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: DisposeTimeout
+  nameWithType: RedisCachingBackendConfiguration.DisposeTimeout
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the timeout of the Dispose methods if no cancellation token is provided.
+
+    The default is 30 seconds. Note that there are still some situations where the Dispose operation cannot be cancelled
+
+    or timed out.
+  example: []
+  syntax:
+    content: public TimeSpan DisposeTimeout { get; init; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property DisposeTimeout As TimeSpan
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  id: InvalidationMaxConcurrency
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: InvalidationMaxConcurrency
+  nameWithType: RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets the maximum number of items that can be invalidated concurrently by a single call of the <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(System.String)" data-throw-if-not-resolved="false"></xref>,
+
+    <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(System.String)" data-throw-if-not-resolved="false"></xref>, or <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(System.String%2cMetalama.Patterns.Caching.Implementation.CacheItem)" data-throw-if-not-resolved="false"></xref> method (or their async equivalent). The aim of this setting is to
+
+    prevent the invalidation of large graphs from overloading the system. Instead, only the expensive invalidation operations will be throttled.
+  example: []
+  syntax:
+    content: public int InvalidationMaxConcurrency { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property InvalidationMaxConcurrency As Integer
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
+  id: VerifyGraphBeforeDisposing
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+  langs:
+  - csharp
+  - vb
+  name: VerifyGraphBeforeDisposing
+  nameWithType: RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Gets or sets a value indicating whether to verify the dependency graph consistency before disposing.
+
+    When enabled, <xref href="Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend.CleanUpAsync(Metalama.Patterns.Caching.Implementation.CacheCleanupOptions%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> is called during disposal to detect
+
+    any graph defects, which are reported through the <xref href="Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect(Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs)" data-throw-if-not-resolved="false"></xref> callback.
+
+    The default value is <code>false</code>. This is primarily intended for testing.
+  example: []
+  syntax:
+    content: public bool VerifyGraphBeforeDisposing { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property VerifyGraphBeforeDisposing As Boolean
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing*
 references:
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend
   commentId: T:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend
@@ -1255,6 +1578,238 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<RedisCachingBackendConfiguration>(RedisCachingBackendConfiguration, Predicate<RedisCachingBackendConfiguration>)
+  nameWithType: Invariant.Assert<RedisCachingBackendConfiguration>(RedisCachingBackendConfiguration, Predicate<RedisCachingBackendConfiguration>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration>(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, System.Predicate<Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration>)
+  nameWithType.vb: Invariant.Assert(Of RedisCachingBackendConfiguration)(RedisCachingBackendConfiguration, Predicate(Of RedisCachingBackendConfiguration))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, System.Predicate(Of Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration))
+  name.vb: Assert(Of RedisCachingBackendConfiguration)(RedisCachingBackendConfiguration, Predicate(Of RedisCachingBackendConfiguration))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: )
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<RedisCachingBackendConfiguration>(RedisCachingBackendConfiguration, string)
+  nameWithType: Invariant.AssertNotNull<RedisCachingBackendConfiguration>(RedisCachingBackendConfiguration, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration>(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of RedisCachingBackendConfiguration)(RedisCachingBackendConfiguration, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, String)
+  name.vb: AssertNotNull(Of RedisCachingBackendConfiguration)(RedisCachingBackendConfiguration, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<RedisCachingBackendConfiguration>(RedisCachingBackendConfiguration, string)
+  nameWithType: Invariant.CanBeNull<RedisCachingBackendConfiguration>(RedisCachingBackendConfiguration, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration>(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, string)
+  nameWithType.vb: Invariant.CanBeNull(Of RedisCachingBackendConfiguration)(RedisCachingBackendConfiguration, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, String)
+  name.vb: CanBeNull(Of RedisCachingBackendConfiguration)(RedisCachingBackendConfiguration, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
+    name: RedisCachingBackendConfiguration
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: StackExchange.Redis
   commentId: N:StackExchange.Redis
   isExternal: true
@@ -1453,6 +2008,200 @@ references:
   name: EnumerableExtensions
   nameWithType: EnumerableExtensions
   fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<T>(T, Predicate<T>)
+  nameWithType: Invariant.Assert<T>(T, Predicate<T>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<T>(T, System.Predicate<T>)
+  nameWithType.vb: Invariant.Assert(Of T)(T, Predicate(Of T))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of T)(T, System.Predicate(Of T))
+  name.vb: Assert(Of T)(T, Predicate(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant
+  commentId: T:Metalama.Framework.Engine.Invariant
+  parent: Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.html
+  name: Invariant
+  nameWithType: Invariant
+  fullName: Metalama.Framework.Engine.Invariant
+- uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<T>(T, string)
+  nameWithType: Invariant.AssertNotNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<T>(T, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of T)(T, String)
+  name.vb: AssertNotNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<T>(T, string)
+  nameWithType: Invariant.CanBeNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<T>(T, string)
+  nameWithType.vb: Invariant.CanBeNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of T)(T, String)
+  name.vb: CanBeNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Metalama.Framework.Code.Collections
   commentId: N:Metalama.Framework.Code.Collections
   isExternal: true
@@ -1500,6 +2249,43 @@ references:
     name: Collections
     isExternal: true
     href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine
+  commentId: N:Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine
+  nameWithType: Metalama.Framework.Engine
+  fullName: Metalama.Framework.Engine
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
   commentId: T:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
   parent: Metalama.Patterns.Caching.Backends.Redis
@@ -2010,6 +2796,170 @@ references:
   name: TransactionMaxRetries
   nameWithType: RedisCachingBackendConfiguration.TransactionMaxRetries
   fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionMaxRetries
+- uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  parent: Metalama.Patterns.Caching.Resilience
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.IRetryPolicy.html
+  name: IRetryPolicy
+  nameWithType: IRetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_TransactionRetryPolicy
+  name: TransactionRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.TransactionRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_TransactionRetryPolicy
+  name: TransactionRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.TransactionRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.TransactionRetryPolicy
+- uid: Metalama.Patterns.Caching.Resilience
+  commentId: N:Metalama.Patterns.Caching.Resilience
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching.Resilience
+  nameWithType: Metalama.Patterns.Caching.Resilience
+  fullName: Metalama.Patterns.Caching.Resilience
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Resilience
+    name: Resilience
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Resilience
+    name: Resilience
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.html
+- uid: Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy.html
+  name: BackgroundRetryPolicy
+  nameWithType: BackgroundRetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_BackgroundTasksRetryPolicy
+  name: BackgroundTasksRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksRetryPolicy
+- uid: Metalama.Patterns.Caching.Resilience.RecoveryAction.InvalidateDependencyInBackground
+  commentId: F:Metalama.Patterns.Caching.Resilience.RecoveryAction.InvalidateDependencyInBackground
+  isExternal: true
+  name: InvalidateDependencyInBackground
+  nameWithType: RecoveryAction.InvalidateDependencyInBackground
+  fullName: Metalama.Patterns.Caching.Resilience.RecoveryAction.InvalidateDependencyInBackground
+- uid: Metalama.Patterns.Caching.Resilience.RecoveryAction.RemoveItemInBackground
+  commentId: F:Metalama.Patterns.Caching.Resilience.RecoveryAction.RemoveItemInBackground
+  isExternal: true
+  name: RemoveItemInBackground
+  nameWithType: RecoveryAction.RemoveItemInBackground
+  fullName: Metalama.Patterns.Caching.Resilience.RecoveryAction.RemoveItemInBackground
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_BackgroundRecoveryRetryPolicy
+  name: BackgroundRecoveryRetryPolicy
+  nameWithType: RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundRecoveryRetryPolicy
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_BackgroundTasksMaxConcurrency
+  name: BackgroundTasksMaxConcurrency
+  nameWithType: RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksMaxConcurrency
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloaded
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloaded
+  isExternal: true
+  name: IsBackgroundTaskQueueOverloaded
+  nameWithType: RedisCachingBackend.IsBackgroundTaskQueueOverloaded
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloaded
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged
+  commentId: E:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged
+  isExternal: true
+  name: IsBackgroundTaskQueueOverloadedChanged
+  nameWithType: RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  commentId: T:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  name: RedisCacheDependencyGarbageCollector
+  nameWithType: RedisCacheDependencyGarbageCollector
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_BackgroundTasksOverloadedThreshold
+  name: BackgroundTasksOverloadedThreshold
+  nameWithType: RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.BackgroundTasksOverloadedThreshold
+- uid: Metalama.Patterns.Caching.Resilience.IExceptionHandlingPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.IExceptionHandlingPolicy
+  parent: Metalama.Patterns.Caching.Resilience
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.IExceptionHandlingPolicy.html
+  name: IExceptionHandlingPolicy
+  nameWithType: IExceptionHandlingPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.IExceptionHandlingPolicy
+- uid: Metalama.Patterns.Caching.Resilience.DefaultExceptionHandlingPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.DefaultExceptionHandlingPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.DefaultExceptionHandlingPolicy.html
+  name: DefaultExceptionHandlingPolicy
+  nameWithType: DefaultExceptionHandlingPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.DefaultExceptionHandlingPolicy
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_ExceptionHandlingPolicy
+  name: ExceptionHandlingPolicy
+  nameWithType: RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ExceptionHandlingPolicy
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_KeyCompressingThreshold
+  name: KeyCompressingThreshold
+  nameWithType: RedisCachingBackendConfiguration.KeyCompressingThreshold
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyCompressingThreshold
 - uid: Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend
   commentId: T:Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend
   isExternal: true
@@ -2030,6 +2980,13 @@ references:
   name: SupportsDependencies
   nameWithType: RedisCachingBackendConfiguration.SupportsDependencies
   fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_SupportsEvents
+  name: SupportsEvents
+  nameWithType: RedisCachingBackendConfiguration.SupportsEvents
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsEvents
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies
   commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies
   isExternal: true
@@ -2160,4 +3117,202 @@ references:
   name: WriteCommandFlags
   nameWithType: RedisCachingBackendConfiguration.WriteCommandFlags
   fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.WriteCommandFlags
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_DisposeTimeout
+  name: DisposeTimeout
+  nameWithType: RedisCachingBackendConfiguration.DisposeTimeout
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.DisposeTimeout
+- uid: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(System.String)
+  commentId: M:Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(System.String)
+  parent: Metalama.Patterns.Caching.Backends.CachingBackend
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency.html#Metalama_Patterns_Caching_Backends_CachingBackend_InvalidateDependency_System_String_
+  name: InvalidateDependency(string)
+  nameWithType: CachingBackend.InvalidateDependency(string)
+  fullName: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(string)
+  nameWithType.vb: CachingBackend.InvalidateDependency(String)
+  fullName.vb: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(String)
+  name.vb: InvalidateDependency(String)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(System.String)
+    name: InvalidateDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency.html#Metalama_Patterns_Caching_Backends_CachingBackend_InvalidateDependency_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency(System.String)
+    name: InvalidateDependency
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.CachingBackend.InvalidateDependency.html#Metalama_Patterns_Caching_Backends_CachingBackend_InvalidateDependency_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(System.String)
+  commentId: M:Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(System.String)
+  parent: Metalama.Patterns.Caching.Backends.CachingBackend
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem.html#Metalama_Patterns_Caching_Backends_CachingBackend_RemoveItem_System_String_
+  name: RemoveItem(string)
+  nameWithType: CachingBackend.RemoveItem(string)
+  fullName: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(string)
+  nameWithType.vb: CachingBackend.RemoveItem(String)
+  fullName.vb: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(String)
+  name.vb: RemoveItem(String)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(System.String)
+    name: RemoveItem
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem.html#Metalama_Patterns_Caching_Backends_CachingBackend_RemoveItem_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem(System.String)
+    name: RemoveItem
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.CachingBackend.RemoveItem.html#Metalama_Patterns_Caching_Backends_CachingBackend_RemoveItem_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(System.String,Metalama.Patterns.Caching.Implementation.CacheItem)
+  commentId: M:Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(System.String,Metalama.Patterns.Caching.Implementation.CacheItem)
+  parent: Metalama.Patterns.Caching.Backends.CachingBackend
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem.html#Metalama_Patterns_Caching_Backends_CachingBackend_SetItem_System_String_Metalama_Patterns_Caching_Implementation_CacheItem_
+  name: SetItem(string, CacheItem)
+  nameWithType: CachingBackend.SetItem(string, CacheItem)
+  fullName: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(string, Metalama.Patterns.Caching.Implementation.CacheItem)
+  nameWithType.vb: CachingBackend.SetItem(String, CacheItem)
+  fullName.vb: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(String, Metalama.Patterns.Caching.Implementation.CacheItem)
+  name.vb: SetItem(String, CacheItem)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(System.String,Metalama.Patterns.Caching.Implementation.CacheItem)
+    name: SetItem
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem.html#Metalama_Patterns_Caching_Backends_CachingBackend_SetItem_System_String_Metalama_Patterns_Caching_Implementation_CacheItem_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Implementation.CacheItem
+    name: CacheItem
+    isExternal: true
+    href: Metalama.Patterns.Caching.Implementation.CacheItem.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem(System.String,Metalama.Patterns.Caching.Implementation.CacheItem)
+    name: SetItem
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.CachingBackend.SetItem.html#Metalama_Patterns_Caching_Backends_CachingBackend_SetItem_System_String_Metalama_Patterns_Caching_Implementation_CacheItem_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Implementation.CacheItem
+    name: CacheItem
+    isExternal: true
+    href: Metalama.Patterns.Caching.Implementation.CacheItem.html
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_InvalidationMaxConcurrency
+  name: InvalidationMaxConcurrency
+  nameWithType: RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.InvalidationMaxConcurrency
+- uid: Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend.CleanUpAsync(Metalama.Patterns.Caching.Implementation.CacheCleanupOptions,System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend.CleanUpAsync(Metalama.Patterns.Caching.Implementation.CacheCleanupOptions,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CleanUpAsync(CacheCleanupOptions, CancellationToken)
+  nameWithType: DependenciesRedisCachingBackend.CleanUpAsync(CacheCleanupOptions, CancellationToken)
+  fullName: Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend.CleanUpAsync(Metalama.Patterns.Caching.Implementation.CacheCleanupOptions, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend.CleanUpAsync(Metalama.Patterns.Caching.Implementation.CacheCleanupOptions,System.Threading.CancellationToken)
+    name: CleanUpAsync
+    isExternal: true
+  - name: (
+  - uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+    name: CacheCleanupOptions
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.DependenciesRedisCachingBackend.CleanUpAsync(Metalama.Patterns.Caching.Implementation.CacheCleanupOptions,System.Threading.CancellationToken)
+    name: CleanUpAsync
+    isExternal: true
+  - name: (
+  - uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+    name: CacheCleanupOptions
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect(Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs)
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect(Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs)
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect.html#Metalama_Patterns_Caching_Backends_Redis_Observing_RedisBackendObserver_OnGraphDefect_Metalama_Patterns_Caching_Backends_Redis_Observing_GraphDefectArgs_
+  name: OnGraphDefect(GraphDefectArgs)
+  nameWithType: RedisBackendObserver.OnGraphDefect(GraphDefectArgs)
+  fullName: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect(Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect(Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs)
+    name: OnGraphDefect
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect.html#Metalama_Patterns_Caching_Backends_Redis_Observing_RedisBackendObserver_OnGraphDefect_Metalama_Patterns_Caching_Backends_Redis_Observing_GraphDefectArgs_
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs
+    name: GraphDefectArgs
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect(Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs)
+    name: OnGraphDefect
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.Observing.RedisBackendObserver.OnGraphDefect.html#Metalama_Patterns_Caching_Backends_Redis_Observing_RedisBackendObserver_OnGraphDefect_Metalama_Patterns_Caching_Backends_Redis_Observing_GraphDefectArgs_
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs
+    name: GraphDefectArgs
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.Observing.GraphDefectArgs.html
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing.html#Metalama_Patterns_Caching_Backends_Redis_RedisCachingBackendConfiguration_VerifyGraphBeforeDisposing
+  name: VerifyGraphBeforeDisposing
+  nameWithType: RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.VerifyGraphBeforeDisposing
 memberLayout: SeparatePages

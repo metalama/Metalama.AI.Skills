@@ -13,17 +13,17 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyMetadataAttribute("DefineConstants", ("TRACE;RELEASE;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_O" +
     "R_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR" +
     "_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("ProjectDirectory", "C:\\wk2\\5c86513c3c7d4f3b\\code\\Metalama.Documentation.SampleCode.Wpf")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("ProjectPath", ("C:\\wk2\\5c86513c3c7d4f3b\\code\\Metalama.Documentation.SampleCode.Wpf\\Metalama.Docum" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("ProjectDirectory", "C:\\wk2\\4ba62fe30723d0ed\\code\\Metalama.Documentation.SampleCode.Wpf")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("ProjectPath", ("C:\\wk2\\4ba62fe30723d0ed\\code\\Metalama.Documentation.SampleCode.Wpf\\Metalama.Docum" +
     "entation.SampleCode.Wpf.csproj"))]
 [assembly: Xunit.TestFrameworkAttribute("Metalama.Testing.AspectTesting.AspectTestFramework", "Metalama.Testing.AspectTesting")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("ReferenceAssemblyList", ("C:\\wk2\\5c86513c3c7d4f3b\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("ReferenceAssemblyList", ("C:\\wk2\\4ba62fe30723d0ed\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
     "t9.0-windows\\assemblies.txt"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("CompileTimeAssemblyList", ("C:\\wk2\\5c86513c3c7d4f3b\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("CompileTimeAssemblyList", ("C:\\wk2\\4ba62fe30723d0ed\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
     "t9.0-windows\\compile-time-assemblies.txt"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("ExtensionAssemblyList", ("C:\\wk2\\5c86513c3c7d4f3b\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("ExtensionAssemblyList", ("C:\\wk2\\4ba62fe30723d0ed\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
     "t9.0-windows\\extensions.txt"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("PlugInList", ("C:\\wk2\\5c86513c3c7d4f3b\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("PlugInList", ("C:\\wk2\\4ba62fe30723d0ed\\code\\Metalama.Documentation.SampleCode.Wpf\\obj\\Release\\ne" +
     "t9.0-windows\\plugins.txt"))]
 [assembly: System.Reflection.AssemblyMetadataAttribute("MetalamaDebugTestFramework", "")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("GlobalUsingsFile", ("obj\\Release\\net9.0-windows\\Metalama.Documentation.SampleCode.Wpf.GlobalUsings.g.c" +
@@ -36,11 +36,11 @@ using System.Reflection;
             VSTHRD106;VSTHRD111;VSTHRD113;VSTHRD200")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Metalama.Documentation.SampleCode.Wpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("2026.0.20.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2026.0.20+458b5e92980a084115b4e20bc16eb607f50d2596")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("2026.1.10.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2026.1.10-preview+2bc263ce951b0f907223cfe87bb0596975343ef2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Metalama.Documentation.SampleCode.Wpf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Metalama.Documentation.SampleCode.Wpf")]
-[assembly: System.Reflection.AssemblyVersionAttribute("2026.0.20.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("2026.1.10.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
