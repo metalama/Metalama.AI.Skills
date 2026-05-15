@@ -7,7 +7,6 @@ items:
   children:
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.AddRedisCacheDependencyGarbageCollector(Microsoft.Extensions.DependencyInjection.IServiceCollection,Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.AddRedisCacheDependencyGarbageCollector(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration})
-  - Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions,System.IServiceProvider)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,System.IServiceProvider)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis(Metalama.Patterns.Caching.Building.CachingBackendBuilder,Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.WithRedisSynchronization(Metalama.Patterns.Caching.Building.MemoryCachingBackendBuilder,Metalama.Patterns.Caching.Backends.Redis.RedisCacheSynchronizerConfiguration)
@@ -196,57 +195,22 @@ items:
   summary: >-
     Creates an instance of the garbage collector service described in <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.AddRedisCacheDependencyGarbageCollector(Microsoft.Extensions.DependencyInjection.IServiceCollection%2cMetalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)" data-throw-if-not-resolved="false"></xref>.
 
-    To start the instance, call <xref href="Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
+    So start the instance, use <xref href="Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public static IRedisCacheDependencyGarbageCollector CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration configuration, IServiceProvider? serviceProvider = null)
+    content: public static IHostedService CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration configuration, IServiceProvider? serviceProvider = null)
     parameters:
     - id: configuration
       type: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
     - id: serviceProvider
       type: System.IServiceProvider
     return:
-      type: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
-    content.vb: Public Shared Function CreateRedisCacheDependencyGarbageCollector(configuration As RedisCachingBackendConfiguration, serviceProvider As IServiceProvider = Nothing) As IRedisCacheDependencyGarbageCollector
+      type: Microsoft.Extensions.Hosting.IHostedService
+    content.vb: Public Shared Function CreateRedisCacheDependencyGarbageCollector(configuration As RedisCachingBackendConfiguration, serviceProvider As IServiceProvider = Nothing) As IHostedService
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector*
   nameWithType.vb: RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration, IServiceProvider)
   fullName.vb: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, System.IServiceProvider)
   name.vb: CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration, IServiceProvider)
-- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions,System.IServiceProvider)
-  commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions,System.IServiceProvider)
-  id: CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration,Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions,System.IServiceProvider)
-  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory
-  langs:
-  - csharp
-  - vb
-  name: CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration, RedisCacheDependencyGarbageCollectorOptions, IServiceProvider?)
-  nameWithType: RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration, RedisCacheDependencyGarbageCollectorOptions, IServiceProvider?)
-  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions, System.IServiceProvider?)
-  type: Method
-  assemblies:
-  - Metalama.Patterns.Caching.Backends.Redis
-  namespace: Metalama.Patterns.Caching.Backends.Redis
-  summary: >-
-    Creates an instance of the garbage collector service described in <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.AddRedisCacheDependencyGarbageCollector(Microsoft.Extensions.DependencyInjection.IServiceCollection%2cMetalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration)" data-throw-if-not-resolved="false"></xref>.
-
-    To start the instance, call <xref href="Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: public static IRedisCacheDependencyGarbageCollector CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration configuration, RedisCacheDependencyGarbageCollectorOptions options, IServiceProvider? serviceProvider = null)
-    parameters:
-    - id: configuration
-      type: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration
-    - id: options
-      type: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
-    - id: serviceProvider
-      type: System.IServiceProvider
-    return:
-      type: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
-    content.vb: Public Shared Function CreateRedisCacheDependencyGarbageCollector(configuration As RedisCachingBackendConfiguration, options As RedisCacheDependencyGarbageCollectorOptions, serviceProvider As IServiceProvider = Nothing) As IRedisCacheDependencyGarbageCollector
-  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector*
-  nameWithType.vb: RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration, RedisCacheDependencyGarbageCollectorOptions, IServiceProvider)
-  fullName.vb: Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.CreateRedisCacheDependencyGarbageCollector(Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration, Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions, System.IServiceProvider)
-  name.vb: CreateRedisCacheDependencyGarbageCollector(RedisCachingBackendConfiguration, RedisCacheDependencyGarbageCollectorOptions, IServiceProvider)
 references:
 - uid: Metalama.Patterns.Caching.Building.CachingBackendBuilder
   commentId: T:Metalama.Patterns.Caching.Building.CachingBackendBuilder
@@ -962,7 +926,6 @@ references:
   - name: )
 - uid: Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
   commentId: M:Microsoft.Extensions.Hosting.IHostedService.StartAsync(System.Threading.CancellationToken)
-  parent: Microsoft.Extensions.Hosting.IHostedService
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.ihostedservice.startasync
   name: StartAsync(CancellationToken)
@@ -1005,20 +968,4 @@ references:
   name: IServiceProvider
   nameWithType: IServiceProvider
   fullName: System.IServiceProvider
-- uid: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
-  commentId: T:Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
-  parent: Metalama.Patterns.Caching.Backends.Redis
-  isExternal: true
-  href: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.html
-  name: IRedisCacheDependencyGarbageCollector
-  nameWithType: IRedisCacheDependencyGarbageCollector
-  fullName: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
-- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
-  commentId: T:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
-  parent: Metalama.Patterns.Caching.Backends.Redis
-  isExternal: true
-  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions.html
-  name: RedisCacheDependencyGarbageCollectorOptions
-  nameWithType: RedisCacheDependencyGarbageCollectorOptions
-  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
 memberLayout: SeparatePages

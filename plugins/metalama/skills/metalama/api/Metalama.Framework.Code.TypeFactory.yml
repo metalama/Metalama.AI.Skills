@@ -23,7 +23,6 @@ items:
   - Metalama.Framework.Code.TypeFactory.ToNullableType(Metalama.Framework.Code.IType)
   - Metalama.Framework.Code.TypeFactory.ToNullableType(Metalama.Framework.Code.Types.IArrayType)
   - Metalama.Framework.Code.TypeFactory.ToNullableType(Metalama.Framework.Code.Types.IDynamicType)
-  - Metalama.Framework.Code.TypeFactory.TryGetType(System.String,Metalama.Framework.Code.INamedType@)
   langs:
   - csharp
   - vb
@@ -159,7 +158,7 @@ items:
         For generic type definitions, this requires using <code>`</code>, e.g. to get <code>List&lt;T&gt;</code>, use <code>System.Collections.Generic.List`1</code>.
         </p>
     <p>
-        Constructed generic types (e.g. <code>List&lt;int&gt;</code>) are not supported, for those, use <xref href="Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType%2cMetalama.Framework.Code.IType%5b%5d)" data-throw-if-not-resolved="false"></xref>.
+        Constructed generic types (e.g. <code>List&lt;int&gt;</code>) are not supported, for those, use <xref href="Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod%2cMetalama.Framework.Code.IType%5b%5d)" data-throw-if-not-resolved="false"></xref>.
         </p>
   example: []
   syntax:
@@ -174,55 +173,6 @@ items:
   nameWithType.vb: TypeFactory.GetType(String)
   fullName.vb: Metalama.Framework.Code.TypeFactory.GetType(String)
   name.vb: GetType(String)
-- uid: Metalama.Framework.Code.TypeFactory.TryGetType(System.String,Metalama.Framework.Code.INamedType@)
-  commentId: M:Metalama.Framework.Code.TypeFactory.TryGetType(System.String,Metalama.Framework.Code.INamedType@)
-  id: TryGetType(System.String,Metalama.Framework.Code.INamedType@)
-  parent: Metalama.Framework.Code.TypeFactory
-  langs:
-  - csharp
-  - vb
-  name: TryGetType(string, out INamedType?)
-  nameWithType: TypeFactory.TryGetType(string, out INamedType?)
-  fullName: Metalama.Framework.Code.TypeFactory.TryGetType(string, out Metalama.Framework.Code.INamedType?)
-  type: Method
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code
-  summary: Attempts to get a type based on its full name, as used in reflection.
-  remarks: >-
-    <p>
-        For nested types, this means using <code>+</code>, e.g. to get <xref href="System.Environment.SpecialFolder" data-throw-if-not-resolved="false"></xref>, use <code>System.Environment+SpecialFolder</code>.
-        </p>
-    <p>
-        For generic type definitions, this requires using <code>`</code>, e.g. to get <code>List&lt;T&gt;</code>, use <code>System.Collections.Generic.List`1</code>.
-        </p>
-    <p>
-        Constructed generic types (e.g. <code>List&lt;int&gt;</code>) are not supported, for those, use <xref href="Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType%2cMetalama.Framework.Code.IType%5b%5d)" data-throw-if-not-resolved="false"></xref>.
-        </p>
-  example: []
-  syntax:
-    content: public static bool TryGetType(string typeName, out INamedType? namedType)
-    parameters:
-    - id: typeName
-      type: System.String
-      description: The full name of the type in reflection format.
-    - id: namedType
-      type: Metalama.Framework.Code.INamedType
-      description: When this method returns, contains the <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> if the type was found; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
-      attributes:
-      - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
-        ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
-        arguments:
-        - type: System.Boolean
-          value: true
-    return:
-      type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the type was found; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
-    content.vb: Public Shared Function TryGetType(typeName As String, namedType As INamedType) As Boolean
-  overload: Metalama.Framework.Code.TypeFactory.TryGetType*
-  nameWithType.vb: TypeFactory.TryGetType(String, INamedType)
-  fullName.vb: Metalama.Framework.Code.TypeFactory.TryGetType(String, Metalama.Framework.Code.INamedType)
-  name.vb: TryGetType(String, INamedType)
 - uid: Metalama.Framework.Code.TypeFactory.GetType(Metalama.Framework.Code.SpecialType)
   commentId: M:Metalama.Framework.Code.TypeFactory.GetType(Metalama.Framework.Code.SpecialType)
   id: GetType(Metalama.Framework.Code.SpecialType)
@@ -1335,26 +1285,26 @@ references:
     name: SpecialFolder
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.environment.specialfolder
-- uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.IType[])
-  commentId: M:Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.IType[])
+- uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
+  commentId: M:Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
   isExternal: true
-  href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_IType___
-  name: WithTypeArguments(INamedType, params IType[])
-  nameWithType: GenericExtensions.WithTypeArguments(INamedType, params IType[])
-  fullName: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType, params Metalama.Framework.Code.IType[])
-  nameWithType.vb: GenericExtensions.WithTypeArguments(INamedType, ParamArray IType())
-  fullName.vb: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType, ParamArray Metalama.Framework.Code.IType())
-  name.vb: WithTypeArguments(INamedType, ParamArray IType())
+  href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_IMethod_Metalama_Framework_Code_IType___
+  name: WithTypeArguments(IMethod, params IType[])
+  nameWithType: GenericExtensions.WithTypeArguments(IMethod, params IType[])
+  fullName: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod, params Metalama.Framework.Code.IType[])
+  nameWithType.vb: GenericExtensions.WithTypeArguments(IMethod, ParamArray IType())
+  fullName.vb: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod, ParamArray Metalama.Framework.Code.IType())
+  name.vb: WithTypeArguments(IMethod, ParamArray IType())
   spec.csharp:
-  - uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.IType[])
+  - uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
     name: WithTypeArguments
     isExternal: true
-    href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_IType___
+    href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_IMethod_Metalama_Framework_Code_IType___
   - name: (
-  - uid: Metalama.Framework.Code.INamedType
-    name: INamedType
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
     isExternal: true
-    href: Metalama.Framework.Code.INamedType.html
+    href: Metalama.Framework.Code.IMethod.html
   - name: ','
   - name: " "
   - name: params
@@ -1367,15 +1317,15 @@ references:
   - name: ']'
   - name: )
   spec.vb:
-  - uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.IType[])
+  - uid: Metalama.Framework.Code.GenericExtensions.WithTypeArguments(Metalama.Framework.Code.IMethod,Metalama.Framework.Code.IType[])
     name: WithTypeArguments
     isExternal: true
-    href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_INamedType_Metalama_Framework_Code_IType___
+    href: Metalama.Framework.Code.GenericExtensions.WithTypeArguments.html#Metalama_Framework_Code_GenericExtensions_WithTypeArguments_Metalama_Framework_Code_IMethod_Metalama_Framework_Code_IType___
   - name: (
-  - uid: Metalama.Framework.Code.INamedType
-    name: INamedType
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
     isExternal: true
-    href: Metalama.Framework.Code.INamedType.html
+    href: Metalama.Framework.Code.IMethod.html
   - name: ','
   - name: " "
   - name: ParamArray
@@ -1398,24 +1348,6 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: Metalama.Framework.Code.TypeFactory.TryGetType*
-  commentId: Overload:Metalama.Framework.Code.TypeFactory.TryGetType
-  isExternal: true
-  href: Metalama.Framework.Code.TypeFactory.TryGetType.html#Metalama_Framework_Code_TypeFactory_TryGetType_System_String_Metalama_Framework_Code_INamedType__
-  name: TryGetType
-  nameWithType: TypeFactory.TryGetType
-  fullName: Metalama.Framework.Code.TypeFactory.TryGetType
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
 - uid: Metalama.Framework.Code.SpecialType
   commentId: T:Metalama.Framework.Code.SpecialType
   parent: Metalama.Framework.Code
