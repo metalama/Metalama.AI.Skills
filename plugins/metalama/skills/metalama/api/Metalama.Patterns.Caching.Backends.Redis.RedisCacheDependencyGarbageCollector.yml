@@ -11,7 +11,10 @@ items:
   - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.DisposeAsync(System.Threading.CancellationToken)
   - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize
   - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options
   - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.PerformFullCollectionAsync(System.Threading.CancellationToken)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
   langs:
   - csharp
   - vb
@@ -22,24 +25,53 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    A background service that cleans up orphaned dependency keys in a Redis-based caching backend.
+
+    This garbage collector runs periodically to detect and remove keys that are no longer valid,
+
+    such as forward and backward dependency keys whose associated value keys have expired or been evicted.
+  remarks: >-
+    <p>
+
+    The garbage collector operates by subscribing to Redis keyevent notifications for expired and evicted keys,
+
+    and by periodically running a full cleanup scan. When a value key is evicted or expires, the collector
+
+    removes the associated version, forward dependency, and backward dependency keys.
+
+    </p>
+
+    <p>
+
+    This class implements <xref href="Microsoft.Extensions.Hosting.IHostedService" data-throw-if-not-resolved="false"></xref> and can be registered as a hosted service in ASP.NET Core
+
+    applications, or manually initialized using <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+  example: []
   syntax:
-    content: 'public sealed class RedisCacheDependencyGarbageCollector : IHostedService, IDisposable, IAsyncDisposable'
-    content.vb: Public NotInheritable Class RedisCacheDependencyGarbageCollector Implements IHostedService, IDisposable, IAsyncDisposable
+    content: 'public sealed class RedisCacheDependencyGarbageCollector : IRedisCacheDependencyGarbageCollector, IHostedService, IAsyncDisposable, IDisposable'
+    content.vb: Public NotInheritable Class RedisCacheDependencyGarbageCollector Implements IRedisCacheDependencyGarbageCollector, IHostedService, IAsyncDisposable, IDisposable
   inheritance:
   - System.Object
   implements:
+  - Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
   - Microsoft.Extensions.Hosting.IHostedService
-  - System.IDisposable
   - System.IAsyncDisposable
+  - System.IDisposable
   inheritedMembers:
   - System.Object.GetType
-  - System.Object.ToString
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.GetHashCode
   extensionMethods:
   - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector}},System.Boolean)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector})
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Dispose
   commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Dispose
   id: Dispose
@@ -103,10 +135,19 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Initializes the garbage collector synchronously. This method must be called before the garbage collector
+
+    can process eviction notifications or perform cleanup operations.
+  example: []
   syntax:
     content: public void Initialize()
     content.vb: Public Sub Initialize()
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The garbage collector does not own its backend and the backend has not been initialized.
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
   commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
   id: InitializeAsync(System.Threading.CancellationToken)
@@ -121,15 +162,26 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Initializes the garbage collector asynchronously. This method must be called before the garbage collector
+
+    can process eviction notifications or perform cleanup operations.
+  example: []
   syntax:
     content: public Task InitializeAsync(CancellationToken cancellationToken = default)
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.Threading.Tasks.Task
+      description: A <xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref> representing the asynchronous operation.
     content.vb: Public Function InitializeAsync(cancellationToken As CancellationToken = Nothing) As Task
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The garbage collector does not own its backend and the backend has not been initialized.
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.PerformFullCollectionAsync(System.Threading.CancellationToken)
   commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.PerformFullCollectionAsync(System.Threading.CancellationToken)
   id: PerformFullCollectionAsync(System.Threading.CancellationToken)
@@ -144,15 +196,50 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: >-
+    Performs a full garbage collection scan of all Redis keys. This method initializes the backend if necessary
+
+    and then scans all keys to detect and fix orphaned dependency entries.
+  example: []
   syntax:
     content: public Task PerformFullCollectionAsync(CancellationToken cancellationToken = default)
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.Threading.Tasks.Task
+      description: A <xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref> representing the asynchronous operation.
     content.vb: Public Function PerformFullCollectionAsync(cancellationToken As CancellationToken = Nothing) As Task
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.PerformFullCollectionAsync*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  id: WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  langs:
+  - csharp
+  - vb
+  name: WhenBackgroundTasksCompleted(CancellationToken)
+  nameWithType: RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(CancellationToken)
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: Awaits until all background tasks have completed.
+  example: []
+  syntax:
+    content: public Task WhenBackgroundTasksCompleted(CancellationToken cancellationToken = default)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function WhenBackgroundTasksCompleted(cancellationToken As CancellationToken = Nothing) As Task
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted*
+  implements:
+  - Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.DisposeAsync
   commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.DisposeAsync
   id: DisposeAsync
@@ -167,15 +254,62 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: Asynchronously disposes the current object using the default cancellation token.
   example: []
   syntax:
     content: public ValueTask DisposeAsync()
     return:
       type: System.Threading.Tasks.ValueTask
+      description: A <xref href="System.Threading.Tasks.ValueTask" data-throw-if-not-resolved="false"></xref> representing the asynchronous operation.
     content.vb: Public Function DisposeAsync() As ValueTask
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.DisposeAsync*
   implements:
   - System.IAsyncDisposable.DisposeAsync
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString
+  id: ToString
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: RedisCacheDependencyGarbageCollector.ToString()
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString()
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString*
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options
+  commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options
+  id: Options
+  parent: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: RedisCacheDependencyGarbageCollector.Options
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backends.Redis
+  namespace: Metalama.Patterns.Caching.Backends.Redis
+  summary: Gets the options for the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public RedisCacheDependencyGarbageCollectorOptions Options { get; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
+    content.vb: Public ReadOnly Property Options As RedisCacheDependencyGarbageCollectorOptions
+  overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options*
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Database
   commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Database
   id: Database
@@ -200,6 +334,64 @@ items:
     content.vb: Public ReadOnly Property Database As IDatabase
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Database*
 references:
+- uid: Microsoft.Extensions.Hosting.IHostedService
+  commentId: T:Microsoft.Extensions.Hosting.IHostedService
+  parent: Microsoft.Extensions.Hosting
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.ihostedservice
+  name: IHostedService
+  nameWithType: IHostedService
+  fullName: Microsoft.Extensions.Hosting.IHostedService
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_Initialize
+  name: Initialize()
+  nameWithType: RedisCacheDependencyGarbageCollector.Initialize()
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize()
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize
+    name: Initialize
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize
+    name: Initialize
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_Initialize
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_InitializeAsync_System_Threading_CancellationToken_
+  name: InitializeAsync(CancellationToken)
+  nameWithType: RedisCacheDependencyGarbageCollector.InitializeAsync(CancellationToken)
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
+    name: InitializeAsync
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_InitializeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync(System.Threading.CancellationToken)
+    name: InitializeAsync
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.InitializeAsync.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_InitializeAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
 - uid: Metalama.Patterns.Caching.Backends.Redis
   commentId: N:Metalama.Patterns.Caching.Backends.Redis
   isExternal: true
@@ -268,22 +460,14 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
-- uid: Microsoft.Extensions.Hosting.IHostedService
-  commentId: T:Microsoft.Extensions.Hosting.IHostedService
-  parent: Microsoft.Extensions.Hosting
+- uid: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
+  commentId: T:Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
+  parent: Metalama.Patterns.Caching.Backends.Redis
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting.ihostedservice
-  name: IHostedService
-  nameWithType: IHostedService
-  fullName: Microsoft.Extensions.Hosting.IHostedService
-- uid: System.IDisposable
-  commentId: T:System.IDisposable
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable
-  name: IDisposable
-  nameWithType: IDisposable
-  fullName: System.IDisposable
+  href: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.html
+  name: IRedisCacheDependencyGarbageCollector
+  nameWithType: IRedisCacheDependencyGarbageCollector
+  fullName: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
 - uid: System.IAsyncDisposable
   commentId: T:System.IAsyncDisposable
   parent: System
@@ -292,6 +476,14 @@ references:
   name: IAsyncDisposable
   nameWithType: IAsyncDisposable
   fullName: System.IAsyncDisposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
 - uid: System.Object.GetType
   commentId: M:System.Object.GetType
   parent: System.Object
@@ -314,30 +506,6 @@ references:
     name: GetType
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object.gettype
-  - name: (
-  - name: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  name: ToString()
-  nameWithType: object.ToString()
-  fullName: object.ToString()
-  nameWithType.vb: Object.ToString()
-  fullName.vb: Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
 - uid: System.Object.Equals(System.Object)
@@ -598,13 +766,238 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<RedisCacheDependencyGarbageCollector>(RedisCacheDependencyGarbageCollector, Predicate<RedisCacheDependencyGarbageCollector>)
+  nameWithType: Invariant.Assert<RedisCacheDependencyGarbageCollector>(RedisCacheDependencyGarbageCollector, Predicate<RedisCacheDependencyGarbageCollector>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector>(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector, System.Predicate<Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector>)
+  nameWithType.vb: Invariant.Assert(Of RedisCacheDependencyGarbageCollector)(RedisCacheDependencyGarbageCollector, Predicate(Of RedisCacheDependencyGarbageCollector))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector)(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector, System.Predicate(Of Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector))
+  name.vb: Assert(Of RedisCacheDependencyGarbageCollector)(RedisCacheDependencyGarbageCollector, Predicate(Of RedisCacheDependencyGarbageCollector))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.Predicate{Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: )
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<RedisCacheDependencyGarbageCollector>(RedisCacheDependencyGarbageCollector, string)
+  nameWithType: Invariant.AssertNotNull<RedisCacheDependencyGarbageCollector>(RedisCacheDependencyGarbageCollector, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector>(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of RedisCacheDependencyGarbageCollector)(RedisCacheDependencyGarbageCollector, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector)(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector, String)
+  name.vb: AssertNotNull(Of RedisCacheDependencyGarbageCollector)(RedisCacheDependencyGarbageCollector, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<RedisCacheDependencyGarbageCollector>(RedisCacheDependencyGarbageCollector, string)
+  nameWithType: Invariant.CanBeNull<RedisCacheDependencyGarbageCollector>(RedisCacheDependencyGarbageCollector, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector>(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector, string)
+  nameWithType.vb: Invariant.CanBeNull(Of RedisCacheDependencyGarbageCollector)(RedisCacheDependencyGarbageCollector, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector)(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector, String)
+  name.vb: CanBeNull(Of RedisCacheDependencyGarbageCollector)(RedisCacheDependencyGarbageCollector, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+    name: RedisCacheDependencyGarbageCollector
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Microsoft.Extensions.Hosting
   commentId: N:Microsoft.Extensions.Hosting
   isExternal: true
@@ -642,6 +1035,13 @@ references:
     name: Hosting
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.hosting
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
 - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
   isExternal: true
@@ -736,6 +1136,200 @@ references:
   name: EnumerableExtensions
   nameWithType: EnumerableExtensions
   fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<T>(T, Predicate<T>)
+  nameWithType: Invariant.Assert<T>(T, Predicate<T>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<T>(T, System.Predicate<T>)
+  nameWithType.vb: Invariant.Assert(Of T)(T, Predicate(Of T))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of T)(T, System.Predicate(Of T))
+  name.vb: Assert(Of T)(T, Predicate(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant
+  commentId: T:Metalama.Framework.Engine.Invariant
+  parent: Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.html
+  name: Invariant
+  nameWithType: Invariant
+  fullName: Metalama.Framework.Engine.Invariant
+- uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<T>(T, string)
+  nameWithType: Invariant.AssertNotNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<T>(T, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of T)(T, String)
+  name.vb: AssertNotNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<T>(T, string)
+  nameWithType: Invariant.CanBeNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<T>(T, string)
+  nameWithType.vb: Invariant.CanBeNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of T)(T, String)
+  name.vb: CanBeNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Metalama.Framework.Code.Collections
   commentId: N:Metalama.Framework.Code.Collections
   isExternal: true
@@ -783,6 +1377,43 @@ references:
     name: Collections
     isExternal: true
     href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine
+  commentId: N:Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine
+  nameWithType: Metalama.Framework.Engine
+  fullName: Metalama.Framework.Engine
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Dispose*
   commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Dispose
   isExternal: true
@@ -907,6 +1538,13 @@ references:
     name: Tasks
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize*
   commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Initialize
   isExternal: true
@@ -928,6 +1566,43 @@ references:
   name: PerformFullCollectionAsync
   nameWithType: RedisCacheDependencyGarbageCollector.PerformFullCollectionAsync
   fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.PerformFullCollectionAsync
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_WhenBackgroundTasksCompleted_System_Threading_CancellationToken_
+  name: WhenBackgroundTasksCompleted
+  nameWithType: RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted
+- uid: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  parent: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted.html#Metalama_Patterns_Caching_Backends_Redis_IRedisCacheDependencyGarbageCollector_WhenBackgroundTasksCompleted_System_Threading_CancellationToken_
+  name: WhenBackgroundTasksCompleted(CancellationToken)
+  nameWithType: IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(CancellationToken)
+  fullName: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+    name: WhenBackgroundTasksCompleted
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted.html#Metalama_Patterns_Caching_Backends_Redis_IRedisCacheDependencyGarbageCollector_WhenBackgroundTasksCompleted_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+    name: WhenBackgroundTasksCompleted
+    isExternal: true
+    href: Metalama.Patterns.Caching.Backends.Redis.IRedisCacheDependencyGarbageCollector.WhenBackgroundTasksCompleted.html#Metalama_Patterns_Caching_Backends_Redis_IRedisCacheDependencyGarbageCollector_WhenBackgroundTasksCompleted_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
 - uid: System.IAsyncDisposable.DisposeAsync
   commentId: M:System.IAsyncDisposable.DisposeAsync
   parent: System.IAsyncDisposable
@@ -950,6 +1625,70 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable.disposeasync
   - name: (
   - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_ToString
+  name: ToString
+  nameWithType: RedisCacheDependencyGarbageCollector.ToString
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  commentId: T:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.html
+  name: RedisCacheDependencyGarbageCollector
+  nameWithType: RedisCacheDependencyGarbageCollector
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options*
+  commentId: Overload:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options.html#Metalama_Patterns_Caching_Backends_Redis_RedisCacheDependencyGarbageCollector_Options
+  name: Options
+  nameWithType: RedisCacheDependencyGarbageCollector.Options
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector.Options
+- uid: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
+  commentId: T:Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
+  parent: Metalama.Patterns.Caching.Backends.Redis
+  isExternal: true
+  href: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions.html
+  name: RedisCacheDependencyGarbageCollectorOptions
+  nameWithType: RedisCacheDependencyGarbageCollectorOptions
+  fullName: Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollectorOptions
 - uid: StackExchange.Redis.IDatabase
   commentId: T:StackExchange.Redis.IDatabase
   parent: StackExchange.Redis
