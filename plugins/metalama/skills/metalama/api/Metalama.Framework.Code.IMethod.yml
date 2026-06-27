@@ -8,6 +8,7 @@ items:
   - Metalama.Framework.Code.IMethod.DeclaringMember
   - Metalama.Framework.Code.IMethod.Definition
   - Metalama.Framework.Code.IMethod.ExplicitInterfaceImplementations
+  - Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
   - Metalama.Framework.Code.IMethod.IsReadOnly
   - Metalama.Framework.Code.IMethod.MakeGenericInstance(System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType})
   - Metalama.Framework.Code.IMethod.MethodKind
@@ -93,6 +94,7 @@ items:
   - Metalama.Framework.Code.Invokers.IMethodInvoker.WithObject(System.Object)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression})
   - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression(System.Collections.Generic.IEnumerable{System.Object})
+  - Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   - Metalama.Framework.Code.Invokers.IMethodInvoker.With(System.Object,Metalama.Framework.Code.Invokers.InvokerOptions)
   extensionMethods:
@@ -113,6 +115,7 @@ items:
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsAspectEligible(System.Type,Metalama.Framework.Eligibility.EligibleScenarios)
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsAspectEligible``1(Metalama.Framework.Eligibility.EligibleScenarios)
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsContractAdviceEligible(Metalama.Framework.Aspects.ContractDirection)
+  - Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.HasReceiver
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.IsOverridable
@@ -138,7 +141,11 @@ items:
   - Metalama.Framework.Code.IMethod.Metalama.Framework.Code.MethodExtensions.GetAsyncInfo
   - Metalama.Framework.Code.IMethod.Metalama.Framework.Code.MethodExtensions.GetIteratorInfo
   - Metalama.Framework.Code.IMethod.Metalama.Framework.Code.MethodExtensions.HasCovariantReturnType
+  - Metalama.Framework.Code.IMethod.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Code.IMethod})
+  - Metalama.Framework.Code.IMethod.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.Code.IMethod.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - Metalama.Framework.Code.IMethod.Metalama.Framework.Metrics.MetricsExtensions.Metrics``1
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
 - uid: Metalama.Framework.Code.IMethod.ToMethodInfo
   commentId: M:Metalama.Framework.Code.IMethod.ToMethodInfo
   id: ToMethodInfo
@@ -399,6 +406,37 @@ items:
       type: Metalama.Framework.Code.IHasAccessors
     content.vb: ReadOnly Property DeclaringMember As IHasAccessors
   overload: Metalama.Framework.Code.IMethod.DeclaringMember*
+- uid: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+  commentId: P:Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+  id: ExtensionImplementationMethod
+  parent: Metalama.Framework.Code.IMethod
+  langs:
+  - csharp
+  - vb
+  name: ExtensionImplementationMethod
+  nameWithType: IMethod.ExtensionImplementationMethod
+  fullName: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the implicit static method that implements this extension member, or <code>null</code> if the current
+
+    method is not an extension member. For methods in extension blocks, the compiler generates an implicit
+
+    static method in the parent type that serves as the actual implementation.
+  example: []
+  syntax:
+    content: IMethod? ExtensionImplementationMethod { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMethod
+    content.vb: ReadOnly Property ExtensionImplementationMethod As IMethod
+  overload: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod*
+  seealso:
+  - linkId: Metalama.Framework.Code.IExtensionBlock
+    commentId: T:Metalama.Framework.Code.IExtensionBlock
 - uid: Metalama.Framework.Code.IMethod.IsReadOnly
   commentId: P:Metalama.Framework.Code.IMethod.IsReadOnly
   id: IsReadOnly
@@ -1220,6 +1258,36 @@ references:
   - name: Object
   - name: )
   - name: )
+- uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  parent: Metalama.Framework.Code.Invokers.IMethodInvoker
+  isExternal: true
+  href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
+  name: CreateDelegateExpression(INamedType)
+  nameWithType: IMethodInvoker.CreateDelegateExpression(INamedType)
+  fullName: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+    name: CreateDelegateExpression
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression(Metalama.Framework.Code.INamedType)
+    name: CreateDelegateExpression
+    isExternal: true
+    href: Metalama.Framework.Code.Invokers.IMethodInvoker.CreateDelegateExpression.html#Metalama_Framework_Code_Invokers_IMethodInvoker_CreateDelegateExpression_Metalama_Framework_Code_INamedType_
+  - name: (
+  - uid: Metalama.Framework.Code.INamedType
+    name: INamedType
+    isExternal: true
+    href: Metalama.Framework.Code.INamedType.html
+  - name: )
 - uid: Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   commentId: M:Metalama.Framework.Code.Invokers.IMethodInvoker.With(Metalama.Framework.Code.Invokers.InvokerOptions)
   parent: Metalama.Framework.Code.Invokers.IMethodInvoker
@@ -1913,6 +1981,36 @@ references:
     name: ContractDirection
     isExternal: true
     href: Metalama.Framework.Aspects.ContractDirection.html
+  - name: )
+- uid: Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
+  commentId: M:Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+  parent: Metalama.Framework.Code.DeclarationExtensions
+  definition: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+  href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
+  name: GetEffectiveAccessibility(IMember)
+  nameWithType: DeclarationExtensions.GetEffectiveAccessibility(IMember)
+  fullName: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+    name: GetEffectiveAccessibility
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
+  - name: (
+  - uid: Metalama.Framework.Code.IMember
+    name: IMember
+    isExternal: true
+    href: Metalama.Framework.Code.IMember.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+    name: GetEffectiveAccessibility
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
+  - name: (
+  - uid: Metalama.Framework.Code.IMember
+    name: IMember
+    isExternal: true
+    href: Metalama.Framework.Code.IMember.html
   - name: )
 - uid: Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
   commentId: M:Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
@@ -3110,6 +3208,197 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.IMethod.html
   - name: )
+- uid: Metalama.Framework.Code.IMethod.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Code.IMethod})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<IMethod>(IMethod, Predicate<IMethod>)
+  nameWithType: Invariant.Assert<IMethod>(IMethod, Predicate<IMethod>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<Metalama.Framework.Code.IMethod>(Metalama.Framework.Code.IMethod, System.Predicate<Metalama.Framework.Code.IMethod>)
+  nameWithType.vb: Invariant.Assert(Of IMethod)(IMethod, Predicate(Of IMethod))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of Metalama.Framework.Code.IMethod)(Metalama.Framework.Code.IMethod, System.Predicate(Of Metalama.Framework.Code.IMethod))
+  name.vb: Assert(Of IMethod)(IMethod, Predicate(Of IMethod))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Framework.Code.IMethod,System.Predicate{Metalama.Framework.Code.IMethod})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Framework.Code.IMethod,System.Predicate{Metalama.Framework.Code.IMethod})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Code.IMethod.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<IMethod>(IMethod, string)
+  nameWithType: Invariant.AssertNotNull<IMethod>(IMethod, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<Metalama.Framework.Code.IMethod>(Metalama.Framework.Code.IMethod, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of IMethod)(IMethod, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of Metalama.Framework.Code.IMethod)(Metalama.Framework.Code.IMethod, String)
+  name.vb: AssertNotNull(Of IMethod)(IMethod, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Framework.Code.IMethod,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Framework.Code.IMethod,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Code.IMethod.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<IMethod>(IMethod, string)
+  nameWithType: Invariant.CanBeNull<IMethod>(IMethod, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<Metalama.Framework.Code.IMethod>(Metalama.Framework.Code.IMethod, string)
+  nameWithType.vb: Invariant.CanBeNull(Of IMethod)(IMethod, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of Metalama.Framework.Code.IMethod)(Metalama.Framework.Code.IMethod, String)
+  name.vb: CanBeNull(Of IMethod)(IMethod, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Framework.Code.IMethod,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Framework.Code.IMethod,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: )
+  - name: (
+  - uid: Metalama.Framework.Code.IMethod
+    name: IMethod
+    isExternal: true
+    href: Metalama.Framework.Code.IMethod.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
 - uid: Metalama.Framework.Code.IMethod.Metalama.Framework.Metrics.MetricsExtensions.Metrics``1
   commentId: M:Metalama.Framework.Metrics.MetricsExtensions.Metrics``1(``0)
   parent: Metalama.Framework.Metrics.MetricsExtensions
@@ -3156,6 +3445,47 @@ references:
     name: IMethod
     isExternal: true
     href: Metalama.Framework.Code.IMethod.html
+  - name: )
+- uid: System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
 - uid: Metalama.Framework.Code.IMethod
   commentId: T:Metalama.Framework.Code.IMethod
@@ -4010,6 +4340,35 @@ references:
     name: ContractDirection
     isExternal: true
     href: Metalama.Framework.Aspects.ContractDirection.html
+  - name: )
+- uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+  commentId: M:Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+  isExternal: true
+  href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
+  name: GetEffectiveAccessibility(IMember)
+  nameWithType: DeclarationExtensions.GetEffectiveAccessibility(IMember)
+  fullName: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+    name: GetEffectiveAccessibility
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
+  - name: (
+  - uid: Metalama.Framework.Code.IMember
+    name: IMember
+    isExternal: true
+    href: Metalama.Framework.Code.IMember.html
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
+    name: GetEffectiveAccessibility
+    isExternal: true
+    href: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility.html#Metalama_Framework_Code_DeclarationExtensions_GetEffectiveAccessibility_Metalama_Framework_Code_IMember_
+  - name: (
+  - uid: Metalama.Framework.Code.IMember
+    name: IMember
+    isExternal: true
+    href: Metalama.Framework.Code.IMember.html
   - name: )
 - uid: Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
   commentId: M:Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition(Metalama.Framework.Code.IMember)
@@ -5124,6 +5483,160 @@ references:
     isExternal: true
     href: Metalama.Framework.Code.IMethod.html
   - name: )
+- uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<T>(T, Predicate<T>)
+  nameWithType: Invariant.Assert<T>(T, Predicate<T>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<T>(T, System.Predicate<T>)
+  nameWithType.vb: Invariant.Assert(Of T)(T, Predicate(Of T))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of T)(T, System.Predicate(Of T))
+  name.vb: Assert(Of T)(T, Predicate(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant
+  commentId: T:Metalama.Framework.Engine.Invariant
+  parent: Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.html
+  name: Invariant
+  nameWithType: Invariant
+  fullName: Metalama.Framework.Engine.Invariant
+- uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<T>(T, string)
+  nameWithType: Invariant.AssertNotNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<T>(T, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of T)(T, String)
+  name.vb: AssertNotNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<T>(T, string)
+  nameWithType: Invariant.CanBeNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<T>(T, string)
+  nameWithType.vb: Invariant.CanBeNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of T)(T, String)
+  name.vb: CanBeNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
 - uid: Metalama.Framework.Metrics.MetricsExtensions.Metrics``1(``0)
   commentId: M:Metalama.Framework.Metrics.MetricsExtensions.Metrics``1(``0)
   isExternal: true
@@ -5166,6 +5679,46 @@ references:
   name: MetricsExtensions
   nameWithType: MetricsExtensions
   fullName: Metalama.Framework.Metrics.MetricsExtensions
+- uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System.IEquatable`1
   commentId: T:System.IEquatable`1
   isExternal: true
@@ -5285,6 +5838,43 @@ references:
     name: Collections
     isExternal: true
     href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine
+  commentId: N:Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine
+  nameWithType: Metalama.Framework.Engine
+  fullName: Metalama.Framework.Engine
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
 - uid: Metalama.Framework.Metrics
   commentId: N:Metalama.Framework.Metrics
   isExternal: true
@@ -5848,6 +6438,21 @@ references:
   name: IHasAccessors
   nameWithType: IHasAccessors
   fullName: Metalama.Framework.Code.IHasAccessors
+- uid: Metalama.Framework.Code.IExtensionBlock
+  commentId: T:Metalama.Framework.Code.IExtensionBlock
+  parent: Metalama.Framework.Code
+  isExternal: true
+  href: Metalama.Framework.Code.IExtensionBlock.html
+  name: IExtensionBlock
+  nameWithType: IExtensionBlock
+  fullName: Metalama.Framework.Code.IExtensionBlock
+- uid: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod*
+  commentId: Overload:Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
+  isExternal: true
+  href: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod.html#Metalama_Framework_Code_IMethod_ExtensionImplementationMethod
+  name: ExtensionImplementationMethod
+  nameWithType: IMethod.ExtensionImplementationMethod
+  fullName: Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
 - uid: Metalama.Framework.Code.IMethod.IsReadOnly*
   commentId: Overload:Metalama.Framework.Code.IMethod.IsReadOnly
   isExternal: true

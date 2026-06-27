@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using Metalama.Framework.RunTime.Initialization;
+namespace Doc.MixedInitialization;
+[TrackLifecycle]
+public sealed partial class Customer : IInitializable
+{
+  private List<string>? _tags = new();
+  public Customer(int id, InitializationContext context = default)
+  {
+    LifecycleRegistry.SetState(this, LifecycleState.BeingConstructed);
+    this.Id = id;
+    this.OnConstructed(context);
+  }
+  public int Id { get; }
+  public string FirstName { get; init; } = "";
+  public string LastName { get; init; } = "";
+  public string Email { get; init; } = "";
+  public IReadOnlyList<string> Tags { get; private set; } = null !;
+  public void OnConstructed(InitializationContext context = default)
+  {
+    // Once all constructors have run, the tag list is frozen.
+    this.Tags = (this._tags ?? new List<string>()).AsReadOnly();
+    this._tags = null;
+    LifecycleRegistry.SetState(this, LifecycleState.Constructed);
+  }
+  public void Initialize(InitializationContext context = default)
+  {
+    // Cross-property validation: identity requires Email, or both names.
+    var hasEmail = !string.IsNullOrEmpty(this.Email);
+    var hasFullName = !string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName);
+    if (!hasEmail && !hasFullName)
+    {
+      throw new InvalidOperationException("A customer needs either an Email or both FirstName and LastName.");
+    }
+    LifecycleRegistry.SetState(this, LifecycleState.FullyInitialized);
+  }
+}

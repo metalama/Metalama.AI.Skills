@@ -14,8 +14,10 @@ keywords:
   - IAspect
   - AdviserExtensions
   - introduce member
+  - introduce operator
+  - OperatorKind
 created-date: 2023-02-17
-modified-date: 2025-11-30
+modified-date: 2026-04-13
 ---
 
 # Introducing members
@@ -96,6 +98,30 @@ There are two ways to make a member `partial` or `abstract`:
 
 The implementation body of the template will be ignored if you set the `IsAbstract` or `IsPartial` property, so any implementation will do. However, if you don't want to have _any_ body, you can use the `extern` keyword on the template member. This keyword will be removed during compilation, and dummy implementations will be provided.
 
+## Introducing operators
+
+To introduce an operator to a type, use <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod*> and set the <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind> property in the `buildMethod` callback.
+
+When you set `OperatorKind` to a value other than `None`:
+
+- The method **name** is automatically set to the correct operator name (e.g., `op_Addition`).
+- The method is automatically made **static**.
+- Both `Name` and `IsStatic` become **read-only** after `OperatorKind` is set.
+
+The template must have the correct number of parameters for the operator category:
+
+- **Binary operators** (e.g., `Addition`, `Subtraction`): two parameters.
+- **Unary operators** (e.g., `UnaryNegation`, `Increment`): one parameter.
+- **Conversion operators** (e.g., `ImplicitConversion`, `ExplicitConversion`): one parameter.
+
+Use the `buildMethod` callback to set parameter types and the return type as needed.
+
+### Example: Introducing operators
+
+The following aspect implements `IEquatable<T>` including `==` and `!=` operators and `GetHashCode`, comparing all public automatic properties and fields using the default comparer:
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceOperator.cs name="Introduce operators"]
+
 ## Overriding existing implementations
 
 ### Specifying the override strategy
@@ -148,7 +174,7 @@ For more details, see <xref:Metalama.Framework.Code.Invokers>.
 The following example shows a `DirtyTracking` aspect that introduces an `IsDirty` property and a virtual `OnPropertyChanged` method. The aspect uses `WhenExists = OverrideStrategy.Override` so it can override an existing `OnPropertyChanged` in a base class while also introducing the method when no base exists.
 
 > [!NOTE]
-> An optimal dirty-tracking implementation would automatically instrument property setters to call `OnPropertyChanged`. This example assumes you don't own the properties—for instance, they might be in a base class you can't modify—so the aspect only introduces the `OnPropertyChanged` hook and relies on existing code to call it. For a complete change-tracking implementation that instruments properties automatically, see [Change Tracking](https://samples.metalama.net/change-tracking).
+> An optimal dirty-tracking implementation would automatically instrument property setters to call `OnPropertyChanged`. This example assumes you don't own the properties—for instance, they might be in a base class you can't modify—so the aspect only introduces the `OnPropertyChanged` hook and relies on existing code to call it. For a complete change-tracking implementation that instruments properties automatically, see <xref:sample-dirty>.
 
 - `Entity` is a base class without the aspect but with its own `OnPropertyChanged` implementation.
 - `Customer` derives from `Entity` and has the aspect. The aspect overrides `OnPropertyChanged` and calls `base.OnPropertyChanged`.

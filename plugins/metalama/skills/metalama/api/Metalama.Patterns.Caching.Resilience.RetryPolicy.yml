@@ -1,0 +1,1729 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.RetryPolicy
+  id: RetryPolicy
+  parent: Metalama.Patterns.Caching.Resilience
+  children:
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: RetryPolicy
+  nameWithType: RetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  type: Class
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    The default implementation of <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref>, implementing
+
+    an exponential back-off with jitter effect. It can be configured by setting
+
+    the properties.
+  example: []
+  syntax:
+    content: 'public class RetryPolicy : IRetryPolicy'
+    content.vb: Public Class RetryPolicy Implements IRetryPolicy
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy
+  - Metalama.Patterns.Caching.Resilience.TransactionRetryPolicy
+  implements:
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Resilience.RetryPolicy}},System.Boolean)
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Resilience.RetryPolicy})
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  id: TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: TryAsync(OperationKind, int, Exception?, ref object?, CancellationToken)
+  nameWithType: RetryPolicy.TryAsync(OperationKind, int, Exception?, ref object?, CancellationToken)
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, int, System.Exception?, ref object?, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Determines if a Redis transaction should be tried, and throws a <xref href="Metalama.Patterns.Caching.CachingException" data-throw-if-not-resolved="false"></xref> if it cannot.
+  example: []
+  syntax:
+    content: public virtual ValueTask<bool> TryAsync(OperationKind kind, int attempt, Exception? exception, ref object? state, CancellationToken cancellationToken)
+    parameters:
+    - id: kind
+      type: Metalama.Patterns.Caching.Resilience.OperationKind
+      description: The transaction kind.
+    - id: attempt
+      type: System.Int32
+      description: The index of the attempt. <code>0</code> indicates the first attempt, i.e. not a retry.
+    - id: exception
+      type: System.Exception
+      description: The <xref href="System.Exception" data-throw-if-not-resolved="false"></xref> of the previous attempt, if any.
+    - id: state
+      type: System.Object
+      description: >-
+        A to an optional state of the operation, optionally set by the <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> implementation and
+                    opaque to the caller.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Threading.Tasks.ValueTask{System.Boolean}
+      description: Always <code>true</code>. Must throw an exception if it cannot retry.
+    content.vb: Public Overridable Function TryAsync(kind As OperationKind, attempt As Integer, exception As Exception, state As Object, cancellationToken As CancellationToken) As ValueTask(Of Boolean)
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync*
+  implements:
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  nameWithType.vb: RetryPolicy.TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+  fullName.vb: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, Integer, System.Exception, Object, System.Threading.CancellationToken)
+  name.vb: TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  commentId: M:Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  id: '#ctor'
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: RetryPolicy()
+  nameWithType: RetryPolicy.RetryPolicy()
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryPolicy()
+  type: Constructor
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  syntax:
+    content: public RetryPolicy()
+    content.vb: Public Sub New()
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor*
+  nameWithType.vb: RetryPolicy.New()
+  fullName.vb: Metalama.Patterns.Caching.Resilience.RetryPolicy.New()
+  name.vb: New()
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  id: BaseDelay
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: BaseDelay
+  nameWithType: RetryPolicy.BaseDelay
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the base delay between attempt.
+  example: []
+  syntax:
+    content: public TimeSpan BaseDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property BaseDelay As TimeSpan
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  id: Multiplier
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: Multiplier
+  nameWithType: RetryPolicy.Multiplier
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the multiplier (under the exponent).
+  example: []
+  syntax:
+    content: public double Multiplier { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Multiplier As Double
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  id: MaxDelay
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: MaxDelay
+  nameWithType: RetryPolicy.MaxDelay
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the maximum delay.
+  example: []
+  syntax:
+    content: public TimeSpan MaxDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property MaxDelay As TimeSpan
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  id: JitterFactor
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: JitterFactor
+  nameWithType: RetryPolicy.JitterFactor
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the jitter factor, i.e. a randomness value between 0 and 1.
+  example: []
+  syntax:
+    content: public double JitterFactor { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property JitterFactor As Double
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  id: MaxAttempts
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: MaxAttempts
+  nameWithType: RetryPolicy.MaxAttempts
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the maximum number of attempts.
+  example: []
+  syntax:
+    content: public int MaxAttempts { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxAttempts As Integer
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  id: NoDelayAttempts
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: NoDelayAttempts
+  nameWithType: RetryPolicy.NoDelayAttempts
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    Gets or sets the number of initial attempts (including the first attempt) that should not be delayed.
+
+    Must be &gt;= 1.
+  example: []
+  syntax:
+    content: public int NoDelayAttempts { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property NoDelayAttempts As Integer
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  id: RetryableExceptionTypes
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: RetryableExceptionTypes
+  nameWithType: RetryPolicy.RetryableExceptionTypes
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    Gets or sets an array of exception types that can be retried. A <code>null</code> entry means that non-exception failures
+
+    (such as transaction retries) will be retried. By default, all exception types and non-exceptions are retried.
+  example: []
+  syntax:
+    content: public Type?[] RetryableExceptionTypes { get; set; }
+    parameters: []
+    return:
+      type: System.Type[]
+    content.vb: Public Property RetryableExceptionTypes As Type()
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes*
+references:
+- uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  parent: Metalama.Patterns.Caching.Resilience
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.IRetryPolicy.html
+  name: IRetryPolicy
+  nameWithType: IRetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+- uid: Metalama.Patterns.Caching.Resilience
+  commentId: N:Metalama.Patterns.Caching.Resilience
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching.Resilience
+  nameWithType: Metalama.Patterns.Caching.Resilience
+  fullName: Metalama.Patterns.Caching.Resilience
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Resilience
+    name: Resilience
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  - name: .
+  - uid: Metalama.Patterns.Caching.Resilience
+    name: Resilience
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Resilience.RetryPolicy}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
+  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<RetryPolicy>(RetryPolicy, Func<RetryPolicy, IEnumerable<RetryPolicy>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<RetryPolicy>(RetryPolicy, Func<RetryPolicy, IEnumerable<RetryPolicy>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Patterns.Caching.Resilience.RetryPolicy>(Metalama.Patterns.Caching.Resilience.RetryPolicy, System.Func<Metalama.Patterns.Caching.Resilience.RetryPolicy, System.Collections.Generic.IEnumerable<Metalama.Patterns.Caching.Resilience.RetryPolicy>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of RetryPolicy)(RetryPolicy, Func(Of RetryPolicy, IEnumerable(Of RetryPolicy)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Patterns.Caching.Resilience.RetryPolicy)(Metalama.Patterns.Caching.Resilience.RetryPolicy, System.Func(Of Metalama.Patterns.Caching.Resilience.RetryPolicy, System.Collections.Generic.IEnumerable(Of Metalama.Patterns.Caching.Resilience.RetryPolicy)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of RetryPolicy)(RetryPolicy, Func(Of RetryPolicy, IEnumerable(Of RetryPolicy)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Func{Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Resilience.RetryPolicy}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Func{Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Resilience.RetryPolicy}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Resilience.RetryPolicy})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<RetryPolicy>(RetryPolicy, Predicate<RetryPolicy>)
+  nameWithType: Invariant.Assert<RetryPolicy>(RetryPolicy, Predicate<RetryPolicy>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<Metalama.Patterns.Caching.Resilience.RetryPolicy>(Metalama.Patterns.Caching.Resilience.RetryPolicy, System.Predicate<Metalama.Patterns.Caching.Resilience.RetryPolicy>)
+  nameWithType.vb: Invariant.Assert(Of RetryPolicy)(RetryPolicy, Predicate(Of RetryPolicy))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of Metalama.Patterns.Caching.Resilience.RetryPolicy)(Metalama.Patterns.Caching.Resilience.RetryPolicy, System.Predicate(Of Metalama.Patterns.Caching.Resilience.RetryPolicy))
+  name.vb: Assert(Of RetryPolicy)(RetryPolicy, Predicate(Of RetryPolicy))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Predicate{Metalama.Patterns.Caching.Resilience.RetryPolicy})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Predicate{Metalama.Patterns.Caching.Resilience.RetryPolicy})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: )
+  - name: )
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<RetryPolicy>(RetryPolicy, string)
+  nameWithType: Invariant.AssertNotNull<RetryPolicy>(RetryPolicy, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<Metalama.Patterns.Caching.Resilience.RetryPolicy>(Metalama.Patterns.Caching.Resilience.RetryPolicy, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of RetryPolicy)(RetryPolicy, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of Metalama.Patterns.Caching.Resilience.RetryPolicy)(Metalama.Patterns.Caching.Resilience.RetryPolicy, String)
+  name.vb: AssertNotNull(Of RetryPolicy)(RetryPolicy, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<RetryPolicy>(RetryPolicy, string)
+  nameWithType: Invariant.CanBeNull<RetryPolicy>(RetryPolicy, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<Metalama.Patterns.Caching.Resilience.RetryPolicy>(Metalama.Patterns.Caching.Resilience.RetryPolicy, string)
+  nameWithType.vb: Invariant.CanBeNull(Of RetryPolicy)(RetryPolicy, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of Metalama.Patterns.Caching.Resilience.RetryPolicy)(Metalama.Patterns.Caching.Resilience.RetryPolicy, String)
+  name.vb: CanBeNull(Of RetryPolicy)(RetryPolicy, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: '>'
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(Metalama.Patterns.Caching.Resilience.RetryPolicy,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: )
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+    name: RetryPolicy
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.RetryPolicy.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  parent: Metalama.Framework.Engine.Invariant
+  definition: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
+  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
+  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
+  spec.csharp:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
+    name: SelectManyRecursiveDistinct
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
+  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
+  parent: Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
+- uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  commentId: M:Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  name: Assert<T>(T, Predicate<T>)
+  nameWithType: Invariant.Assert<T>(T, Predicate<T>)
+  fullName: Metalama.Framework.Engine.Invariant.Assert<T>(T, System.Predicate<T>)
+  nameWithType.vb: Invariant.Assert(Of T)(T, Predicate(Of T))
+  fullName.vb: Metalama.Framework.Engine.Invariant.Assert(Of T)(T, System.Predicate(Of T))
+  name.vb: Assert(Of T)(T, Predicate(Of T))
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.Assert``1(``0,System.Predicate{``0})
+    name: Assert
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.Assert.html#Metalama_Framework_Engine_Invariant_Assert__1___0_System_Predicate___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant
+  commentId: T:Metalama.Framework.Engine.Invariant
+  parent: Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.html
+  name: Invariant
+  nameWithType: Invariant
+  fullName: Metalama.Framework.Engine.Invariant
+- uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  name: AssertNotNull<T>(T, string)
+  nameWithType: Invariant.AssertNotNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.AssertNotNull<T>(T, string)
+  nameWithType.vb: Invariant.AssertNotNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertNotNull(Of T)(T, String)
+  name.vb: AssertNotNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertNotNull``1(``0,System.String)
+    name: AssertNotNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertNotNull.html#Metalama_Framework_Engine_Invariant_AssertNotNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  commentId: M:Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  name: CanBeNull<T>(T, string)
+  nameWithType: Invariant.CanBeNull<T>(T, string)
+  fullName: Metalama.Framework.Engine.Invariant.CanBeNull<T>(T, string)
+  nameWithType.vb: Invariant.CanBeNull(Of T)(T, String)
+  fullName.vb: Metalama.Framework.Engine.Invariant.CanBeNull(Of T)(T, String)
+  name.vb: CanBeNull(Of T)(T, String)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.CanBeNull``1(``0,System.String)
+    name: CanBeNull
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.CanBeNull.html#Metalama_Framework_Engine_Invariant_CanBeNull__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  commentId: M:Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+  isExternal: true
+  href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  name: AssertCast<T>(object)
+  nameWithType: Invariant.AssertCast<T>(object)
+  fullName: Metalama.Framework.Engine.Invariant.AssertCast<T>(object)
+  nameWithType.vb: Invariant.AssertCast(Of T)(Object)
+  fullName.vb: Metalama.Framework.Engine.Invariant.AssertCast(Of T)(Object)
+  name.vb: AssertCast(Of T)(Object)
+  spec.csharp:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Metalama.Framework.Engine.Invariant.AssertCast``1(System.Object)
+    name: AssertCast
+    isExternal: true
+    href: Metalama.Framework.Engine.Invariant.AssertCast.html#Metalama_Framework_Engine_Invariant_AssertCast__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Metalama.Framework.Code.Collections
+  commentId: N:Metalama.Framework.Code.Collections
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Code.Collections
+  nameWithType: Metalama.Framework.Code.Collections
+  fullName: Metalama.Framework.Code.Collections
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Code
+    name: Code
+    isExternal: true
+    href: Metalama.Framework.Code.html
+  - name: .
+  - uid: Metalama.Framework.Code.Collections
+    name: Collections
+    isExternal: true
+    href: Metalama.Framework.Code.Collections.html
+- uid: Metalama.Framework.Engine
+  commentId: N:Metalama.Framework.Engine
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Framework.Engine
+  nameWithType: Metalama.Framework.Engine
+  fullName: Metalama.Framework.Engine
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Framework
+    name: Framework
+    isExternal: true
+    href: Metalama.Framework.html
+  - name: .
+  - uid: Metalama.Framework.Engine
+    name: Engine
+    isExternal: true
+    href: Metalama.Framework.Engine.html
+- uid: Metalama.Patterns.Caching.CachingException
+  commentId: T:Metalama.Patterns.Caching.CachingException
+  parent: Metalama.Patterns.Caching
+  isExternal: true
+  href: Metalama.Patterns.Caching.CachingException.html
+  name: CachingException
+  nameWithType: CachingException
+  fullName: Metalama.Patterns.Caching.CachingException
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_TryAsync_Metalama_Patterns_Caching_Resilience_OperationKind_System_Int32_System_Exception_System_Object__System_Threading_CancellationToken_
+  name: TryAsync
+  nameWithType: RetryPolicy.TryAsync
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync
+- uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  parent: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync.html#Metalama_Patterns_Caching_Resilience_IRetryPolicy_TryAsync_Metalama_Patterns_Caching_Resilience_OperationKind_System_Int32_System_Exception_System_Object__System_Threading_CancellationToken_
+  name: TryAsync(OperationKind, int, Exception, ref object, CancellationToken)
+  nameWithType: IRetryPolicy.TryAsync(OperationKind, int, Exception, ref object, CancellationToken)
+  fullName: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, int, System.Exception, ref object, System.Threading.CancellationToken)
+  nameWithType.vb: IRetryPolicy.TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+  fullName.vb: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, Integer, System.Exception, Object, System.Threading.CancellationToken)
+  name.vb: TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+  spec.csharp:
+  - uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+    name: TryAsync
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync.html#Metalama_Patterns_Caching_Resilience_IRetryPolicy_TryAsync_Metalama_Patterns_Caching_Resilience_OperationKind_System_Int32_System_Exception_System_Object__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.OperationKind
+    name: OperationKind
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.OperationKind.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+    name: TryAsync
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync.html#Metalama_Patterns_Caching_Resilience_IRetryPolicy_TryAsync_Metalama_Patterns_Caching_Resilience_OperationKind_System_Int32_System_Exception_System_Object__System_Threading_CancellationToken_
+  - name: (
+  - uid: Metalama.Patterns.Caching.Resilience.OperationKind
+    name: OperationKind
+    isExternal: true
+    href: Metalama.Patterns.Caching.Resilience.OperationKind.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Metalama.Patterns.Caching.Resilience.OperationKind
+  commentId: T:Metalama.Patterns.Caching.Resilience.OperationKind
+  parent: Metalama.Patterns.Caching.Resilience
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.OperationKind.html
+  name: OperationKind
+  nameWithType: OperationKind
+  fullName: Metalama.Patterns.Caching.Resilience.OperationKind
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.ValueTask{System.Boolean}
+  commentId: T:System.Threading.Tasks.ValueTask{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.ValueTask`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<bool>
+  nameWithType: ValueTask<bool>
+  fullName: System.Threading.Tasks.ValueTask<bool>
+  nameWithType.vb: ValueTask(Of Boolean)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of Boolean)
+  name.vb: ValueTask(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Metalama.Patterns.Caching
+  commentId: N:Metalama.Patterns.Caching
+  isExternal: true
+  href: Metalama.html
+  name: Metalama.Patterns.Caching
+  nameWithType: Metalama.Patterns.Caching
+  fullName: Metalama.Patterns.Caching
+  spec.csharp:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+  spec.vb:
+  - uid: Metalama
+    name: Metalama
+    isExternal: true
+    href: Metalama.html
+  - name: .
+  - uid: Metalama.Patterns
+    name: Patterns
+    isExternal: true
+    href: Metalama.Patterns.html
+  - name: .
+  - uid: Metalama.Patterns.Caching
+    name: Caching
+    isExternal: true
+    href: Metalama.Patterns.Caching.html
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.ValueTask`1
+  commentId: T:System.Threading.Tasks.ValueTask`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<TResult>
+  nameWithType: ValueTask<TResult>
+  fullName: System.Threading.Tasks.ValueTask<TResult>
+  nameWithType.vb: ValueTask(Of TResult)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of TResult)
+  name.vb: ValueTask(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.-ctor.html#Metalama_Patterns_Caching_Resilience_RetryPolicy__ctor
+  name: RetryPolicy
+  nameWithType: RetryPolicy.RetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryPolicy
+  nameWithType.vb: RetryPolicy.New
+  fullName.vb: Metalama.Patterns.Caching.Resilience.RetryPolicy.New
+  name.vb: New
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_BaseDelay
+  name: BaseDelay
+  nameWithType: RetryPolicy.BaseDelay
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_Multiplier
+  name: Multiplier
+  nameWithType: RetryPolicy.Multiplier
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_MaxDelay
+  name: MaxDelay
+  nameWithType: RetryPolicy.MaxDelay
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_JitterFactor
+  name: JitterFactor
+  nameWithType: RetryPolicy.JitterFactor
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_MaxAttempts
+  name: MaxAttempts
+  nameWithType: RetryPolicy.MaxAttempts
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_NoDelayAttempts
+  name: NoDelayAttempts
+  nameWithType: RetryPolicy.NoDelayAttempts
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes*
+  commentId: Overload:Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  isExternal: true
+  href: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes.html#Metalama_Patterns_Caching_Resilience_RetryPolicy_RetryableExceptionTypes
+  name: RetryableExceptionTypes
+  nameWithType: RetryPolicy.RetryableExceptionTypes
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+- uid: System.Type[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  nameWithType.vb: Type()
+  fullName.vb: System.Type()
+  name.vb: Type()
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: (
+  - name: )
+memberLayout: SeparatePages
