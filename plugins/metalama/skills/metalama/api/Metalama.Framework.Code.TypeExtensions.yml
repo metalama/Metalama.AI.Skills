@@ -16,7 +16,7 @@ items:
   - Metalama.Framework.Code.TypeExtensions.IsConvertibleTo(Metalama.Framework.Code.IType,Metalama.Framework.Code.SpecialType,Metalama.Framework.Code.ConversionKind)
   - Metalama.Framework.Code.TypeExtensions.IsConvertibleTo(Metalama.Framework.Code.IType,System.Type,Metalama.Framework.Code.ConversionKind,Metalama.Framework.Code.Comparers.TypeComparison)
   - Metalama.Framework.Code.TypeExtensions.ToSerializableId(Metalama.Framework.Code.IType)
-  - Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType,System.Boolean)
+  - Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType)
   langs:
   - csharp
   - vb
@@ -460,17 +460,17 @@ items:
       description: A <xref href="Metalama.Framework.Code.SerializableTypeId" data-throw-if-not-resolved="false"></xref> representing the type.
     content.vb: Public Shared Function ToSerializableId(type As IType) As SerializableTypeId
   overload: Metalama.Framework.Code.TypeExtensions.ToSerializableId*
-- uid: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType,System.Boolean)
-  commentId: M:Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType,System.Boolean)
-  id: ToTypeOfExpression(Metalama.Framework.Code.IType,System.Boolean)
+- uid: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType)
+  id: ToTypeOfExpression(Metalama.Framework.Code.IType)
   isExtensionMethod: true
   parent: Metalama.Framework.Code.TypeExtensions
   langs:
   - csharp
   - vb
-  name: ToTypeOfExpression(IType, bool)
-  nameWithType: TypeExtensions.ToTypeOfExpression(IType, bool)
-  fullName: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType, bool)
+  name: ToTypeOfExpression(IType)
+  nameWithType: TypeExtensions.ToTypeOfExpression(IType)
+  fullName: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType)
   type: Method
   assemblies:
   - Metalama.Framework
@@ -478,33 +478,16 @@ items:
   summary: Gets an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> representing 'typeof' expression for the given type.
   example: []
   syntax:
-    content: public static IExpression ToTypeOfExpression(this IType type, bool preferConstructedType = false)
+    content: public static IExpression ToTypeOfExpression(this IType type)
     parameters:
     - id: type
       type: Metalama.Framework.Code.IType
       description: The type.
-    - id: preferConstructedType
-      type: System.Boolean
-      description: >-
-        When <code>true</code> and <code class="paramref">type</code> is a generic type whose type arguments are its own type
-
-        parameters (e.g. <code>List&lt;T&gt;</code> where <code>T</code> is <code>List</code>'s type parameter), the generated
-
-        <code>typeof</code> expression keeps the constructed form (e.g. <code>typeof(List&lt;T&gt;)</code>) instead of
-
-        emitting the unbound generic type (e.g. <code>typeof(List&lt;&gt;)</code>). Use this only when the type
-
-        parameters are in scope at the emission site. The default is <code>false</code>, which emits the unbound
-
-        generic type for such inputs.
     return:
       type: Metalama.Framework.Code.IExpression
       description: An <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> representing <code>typeof(type)</code>.
-    content.vb: Public Shared Function ToTypeOfExpression(type As IType, preferConstructedType As Boolean = False) As IExpression
+    content.vb: Public Shared Function ToTypeOfExpression(type As IType) As IExpression
   overload: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression*
-  nameWithType.vb: TypeExtensions.ToTypeOfExpression(IType, Boolean)
-  fullName.vb: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression(Metalama.Framework.Code.IType, Boolean)
-  name.vb: ToTypeOfExpression(IType, Boolean)
 references:
 - uid: Metalama.Framework.Code.IType
   commentId: T:Metalama.Framework.Code.IType
@@ -972,7 +955,7 @@ references:
 - uid: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression*
   commentId: Overload:Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression
   isExternal: true
-  href: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression.html#Metalama_Framework_Code_TypeExtensions_ToTypeOfExpression_Metalama_Framework_Code_IType_System_Boolean_
+  href: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression.html#Metalama_Framework_Code_TypeExtensions_ToTypeOfExpression_Metalama_Framework_Code_IType_
   name: ToTypeOfExpression
   nameWithType: TypeExtensions.ToTypeOfExpression
   fullName: Metalama.Framework.Code.TypeExtensions.ToTypeOfExpression
