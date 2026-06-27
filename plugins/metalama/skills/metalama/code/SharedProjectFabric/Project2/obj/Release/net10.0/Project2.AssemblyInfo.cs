@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Project2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2026.1.19.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2026.1.19+04575a9cd22dbc6088c80ffc13ded9ab41119efa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2026.1.19+bb3d7532af00cfce106841eb675c31d40b236fa6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Project2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Project2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2026.1.19.0")]
