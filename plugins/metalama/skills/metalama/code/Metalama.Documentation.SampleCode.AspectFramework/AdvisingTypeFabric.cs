@@ -1,6 +1,5 @@
 ﻿// This is public domain Metalama sample code.
 
-using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 
@@ -20,7 +19,8 @@ internal class MyClass
         {
             for ( var i = 0; i < 10; i++ )
             {
-                amender.IntroduceMethod(
+                amender.Advice.IntroduceMethod(
+                    amender.Type,
                     nameof(this.MethodTemplate),
                     args: new { index = i },
                     buildMethod: m => m.Name = "Method" + i );

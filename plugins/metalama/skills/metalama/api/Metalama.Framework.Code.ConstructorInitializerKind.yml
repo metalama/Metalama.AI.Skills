@@ -63,11 +63,9 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
   summary: >-
-    The constructor has no initializer calling a base or sibling constructor. This applies to value types (structs)
+    The constructor has no explicit initializer (no <code>: base(...)</code> or <code>: this(...)</code> clause).
 
-    and static constructors, which never have a <code>base</code> or <code>this</code> initializer. For instance constructors of reference types (classes),
-
-    the C# compiler always implicitly calls a base constructor, so <xref href="Metalama.Framework.Code.ConstructorInitializerKind.Base" data-throw-if-not-resolved="false"></xref> is returned instead.
+    The C# compiler implicitly calls the parameterless base class constructor.
   example: []
   syntax:
     content: None = 0
@@ -87,10 +85,7 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
-  summary: >-
-    The constructor invokes a constructor of the base class, either explicitly via a <code>: base(...)</code> initializer
-
-    or implicitly when the instance constructor has no explicit initializer and the declaring type is a reference type.
+  summary: 'The constructor has a <code>: base(...)</code> initializer that invokes a constructor of the base class.'
   example: []
   syntax:
     content: Base = 1
