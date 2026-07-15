@@ -1,0 +1,307 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext
+  commentId: T:Metalama.Framework.RunTime.Initialization.InitializationContext
+  id: InitializationContext
+  parent: Metalama.Framework.RunTime.Initialization
+  children:
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.Create(Metalama.Framework.RunTime.Initialization.InitializationMetadata)
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.Default
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.Descend(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.Intent
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.IsHandled(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.Metadata
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.Modify
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.WillCallOnInitialized
+  - Metalama.Framework.RunTime.Initialization.InitializationContext.WillInitialize
+  langs:
+  - csharp
+  - vb
+  name: InitializationContext
+  nameWithType: InitializationContext
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    A context passed to constructors and <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> methods to coordinate
+
+    post-initialization behavior. Carries the caller's intent, aspect behavior slots,
+
+    and optional metadata.
+  remarks: >-
+    <p>
+        This struct is 16 bytes on x64 (no wasted padding): a <xref href="Metalama.Framework.RunTime.Initialization.CallerIntent" data-throw-if-not-resolved="false"></xref> byte,
+        a <code>uint</code> slot bitmask, and an optional <xref href="Metalama.Framework.RunTime.Initialization.InitializationMetadata" data-throw-if-not-resolved="false"></xref> reference.
+        </p>
+    <p>
+      <code>default(InitializationContext)</code> is valid and equivalent to <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.Default" data-throw-if-not-resolved="false"></xref>:
+        <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.Intent" data-throw-if-not-resolved="false"></xref> is <xref href="Metalama.Framework.RunTime.Initialization.CallerIntent.None" data-throw-if-not-resolved="false"></xref>, no slots, no metadata.
+        </p>
+  example: []
+  syntax:
+    content: public readonly struct InitializationContext
+    content.vb: Public Structure InitializationContext
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.Create(Metalama.Framework.RunTime.Initialization.InitializationMetadata)
+  commentId: M:Metalama.Framework.RunTime.Initialization.InitializationContext.Create(Metalama.Framework.RunTime.Initialization.InitializationMetadata)
+  id: Create(Metalama.Framework.RunTime.Initialization.InitializationMetadata)
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: Create(InitializationMetadata)
+  nameWithType: InitializationContext.Create(InitializationMetadata)
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.Create(Metalama.Framework.RunTime.Initialization.InitializationMetadata)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Creates a context with the given metadata. Used when calling <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref>
+
+    directly (not via a constructor), e.g., after deserialization or a <code>with</code> expression.
+
+    The resulting context has <xref href="Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize" data-throw-if-not-resolved="false"></xref>, signaling to descendants
+
+    that <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> is being invoked.
+  example: []
+  syntax:
+    content: public static InitializationContext Create(InitializationMetadata metadata)
+    parameters:
+    - id: metadata
+      type: Metalama.Framework.RunTime.Initialization.InitializationMetadata
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationContext
+    content.vb: Public Shared Function Create(metadata As InitializationMetadata) As InitializationContext
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.Create*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.IsHandled(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  commentId: M:Metalama.Framework.RunTime.Initialization.InitializationContext.IsHandled(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  id: IsHandled(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: IsHandled(InitializationSlot)
+  nameWithType: InitializationContext.IsHandled(InitializationSlot)
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.IsHandled(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Returns <code>true</code> when the given <xref href="Metalama.Framework.RunTime.Initialization.InitializationSlot" data-throw-if-not-resolved="false"></xref> is set in this context, meaning a
+
+    derived type has guaranteed it will handle the corresponding concern itself. Aspects whose templates
+
+    share a slot use this to skip work that a more-derived layer has already taken responsibility for.
+  example: []
+  syntax:
+    content: public bool IsHandled(InitializationSlot slot)
+    parameters:
+    - id: slot
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsHandled(slot As InitializationSlot) As Boolean
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.IsHandled*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.Descend(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  commentId: M:Metalama.Framework.RunTime.Initialization.InitializationContext.Descend(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  id: Descend(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: Descend(InitializationSlot)
+  nameWithType: InitializationContext.Descend(InitializationSlot)
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.Descend(Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Returns a copy of the current context with the given slots added to the handled set, suitable for
+
+    passing to <code>base.Initialize(...)</code> from a derived <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> override.
+
+    Each slot tells the base layer that the derived type will handle the corresponding concern itself.
+  remarks: >-
+    <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.Intent" data-throw-if-not-resolved="false"></xref> is normalized to <xref href="Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize" data-throw-if-not-resolved="false"></xref> to preserve the promise
+        that <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> is being invoked, and <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.Metadata" data-throw-if-not-resolved="false"></xref> is propagated
+        unchanged from the current context.
+  example: []
+  syntax:
+    content: public InitializationContext Descend(InitializationSlot slots = default)
+    parameters:
+    - id: slots
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+      description: >-
+        The aspect-coordination slots to mark as handled. Combine multiple slots with the
+                    <code>|</code> operator on <xref href="Metalama.Framework.RunTime.Initialization.InitializationSlot" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationContext
+    content.vb: Public Function Descend(slots As InitializationSlot = Nothing) As InitializationContext
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.Descend*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.Default
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationContext.Default
+  id: Default
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: InitializationContext.Default
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.Default
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: The default context — <xref href="Metalama.Framework.RunTime.Initialization.CallerIntent.None" data-throw-if-not-resolved="false"></xref>, no slots, no metadata.
+  example: []
+  syntax:
+    content: public static InitializationContext Default { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationContext
+    content.vb: Public Shared ReadOnly Property [Default] As InitializationContext
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.Default*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.WillInitialize
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationContext.WillInitialize
+  id: WillInitialize
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: WillInitialize
+  nameWithType: InitializationContext.WillInitialize
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.WillInitialize
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    A context signaling that the caller will call <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> after construction
+
+    (e.g., after an object initializer).
+  example: []
+  syntax:
+    content: public static InitializationContext WillInitialize { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationContext
+    content.vb: Public Shared ReadOnly Property WillInitialize As InitializationContext
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.WillInitialize*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.Modify
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationContext.Modify
+  id: Modify
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: Modify
+  nameWithType: InitializationContext.Modify
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.Modify
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    A context for <code>with</code> expressions or clone operations. The
+
+    <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> method (typically invoked via
+
+    <xref href="Metalama.Framework.RunTime.Initialization.InitializableExtensions.WithInitialize%60%601(%60%600%2cMetalama.Framework.RunTime.Initialization.InitializationMetadata)" data-throw-if-not-resolved="false"></xref>) should revalidate invariants
+
+    and reinitialize derived state.
+  example: []
+  syntax:
+    content: public static InitializationContext Modify { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationContext
+    content.vb: Public Shared ReadOnly Property Modify As InitializationContext
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.Modify*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.Intent
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationContext.Intent
+  id: Intent
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: Intent
+  nameWithType: InitializationContext.Intent
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.Intent
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: The caller's intent regarding <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> invocation.
+  example: []
+  syntax:
+    content: public CallerIntent Intent { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.RunTime.Initialization.CallerIntent
+    content.vb: Public ReadOnly Property Intent As CallerIntent
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.Intent*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.WillCallOnInitialized
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationContext.WillCallOnInitialized
+  id: WillCallOnInitialized
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: WillCallOnInitialized
+  nameWithType: InitializationContext.WillCallOnInitialized
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.WillCallOnInitialized
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Whether <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> will be called by the caller.
+
+    <code>true</code> when <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.Intent" data-throw-if-not-resolved="false"></xref> is <xref href="Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool WillCallOnInitialized { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property WillCallOnInitialized As Boolean
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.WillCallOnInitialized*
+- uid: Metalama.Framework.RunTime.Initialization.InitializationContext.Metadata
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationContext.Metadata
+  id: Metadata
+  parent: Metalama.Framework.RunTime.Initialization.InitializationContext
+  langs:
+  - csharp
+  - vb
+  name: Metadata
+  nameWithType: InitializationContext.Metadata
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationContext.Metadata
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Optional metadata describing the initialization context. Typically a singleton.
+
+    Returns <code>null</code> for default construction (equivalent to
+
+    <xref href="Metalama.Framework.RunTime.Initialization.InitializationMetadata.Default" data-throw-if-not-resolved="false"></xref>).
+  example: []
+  syntax:
+    content: public InitializationMetadata? Metadata { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationMetadata
+    content.vb: Public ReadOnly Property Metadata As InitializationMetadata
+  overload: Metalama.Framework.RunTime.Initialization.InitializationContext.Metadata*

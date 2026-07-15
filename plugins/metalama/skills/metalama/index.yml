@@ -18,6 +18,10 @@
         path: content/conceptual/requirements.md
         summary: Requirements for using Metalama, including build environment, supported IDEs, target frameworks, and version synchronization guidelines.
         keywords: Metalama, .NET SDK, Roslyn-based IDEs, Visual Studio, version synchronization, build environment, compatibility issues, C# features, SDK-style projects, target frameworks
+      - name: Metalama 2026.1
+        path: content/conceptual/release-notes/release-notes-2026.1.md
+        summary: Metalama 2026.1 completes C# 14 support, extends initialization advice, brings major Redis caching improvements, reduces third-party dependencies, and closes most of the bug backlog.
+        keywords: Metalama 2026.1, release notes, C# 14, extension blocks, operator introduction, initialization, dependency injection, Redis caching, System.Text.Json
       - name: Metalama 2026.0
         path: content/conceptual/release-notes/release-notes-2026.0.md
         summary: Metalama 2026.0 provides full C# 14 and .NET 10 SDK support, introduces first-class tuple types, and enables event handler invocation overriding.
@@ -101,10 +105,10 @@
           path: content/conceptual/using/ide/rider.md
           summary: Configure JetBrains Rider for use with Metalama, including aspect testing and diagnostics.
           keywords: Metalama Rider, Rider configuration, aspect testing Rider, xUnit Rider, test discovery Rider
-        - name: Claude Code
-          path: content/conceptual/using/ide/claude-code.md
-          summary: Configure Claude Code with Metalama documentation to get AI-assisted aspect development.
-          keywords: Claude Code, Metalama AI, AI coding assistant, Claude plugin, aspect development
+        - name: AI agents
+          path: content/conceptual/using/ide/ai-agents.md
+          summary: Install the Metalama plugin for AI coding agents such as Claude Code and OpenAI Codex to get AI-assisted aspect development.
+          keywords: Claude Code, OpenAI Codex, Metalama AI, AI coding agent, Claude plugin, Codex plugin, aspect development
       - name: Getting aspects
         path: content/conceptual/using/getting-aspects.md
         summary: The document provides information about using pre-built aspects in projects, including demo aspects and those from the Metalama community, without altering source code.
@@ -131,12 +135,12 @@
         keywords: fabrics, Metalama Framework, add aspects, logging, profiling, ProjectFabric, AmendProject method, AddAspectIfEligible
       - name: More about fabrics
         path: content/conceptual/using/fabrics.md
-        summary: The document discusses fabrics in the Metalama framework, which are unique classes that execute at compile time. They can add aspects, configure libraries, and implement architecture rules.
-        keywords: fabrics, Metalama framework, configure libraries, architecture rules, ProjectFabric, Namespace Fabric, Type Fabric, Transitive Project Fabrics
+        summary: The document discusses fabrics in Metalama, which are unique classes that execute at compile time. They can add aspects, configure libraries, and implement architecture rules.
+        keywords: fabrics, Metalama, configure libraries, architecture rules, ProjectFabric, Namespace Fabric, Type Fabric, Transitive Project Fabrics
       - name: Configuring aspect libraries
         path: content/conceptual/using/configuring.md
-        summary: The document provides a guide on how to configure aspects with fabrics in the Metalama framework, detailing the process steps, example configurations, and information about inheritance of configuration options.
-        keywords: configuration, Metalama framework, IHierarchicalOptions, SetOptions, compile-time configuration
+        summary: The document provides a guide on how to configure aspects with fabrics in Metalama, detailing the process steps, example configurations, and information about inheritance of configuration options.
+        keywords: configuration, Metalama, IHierarchicalOptions, SetOptions, compile-time configuration
       - name: Amending many projects at once
         path: content/conceptual/using/amending-many-projects.md
         summary: The document provides instructions on how to add aspects to multiple projects in a repository using transitive project fabrics and common project fabrics, including their execution order.
@@ -222,8 +226,8 @@
             keywords: cache dependencies, Metalama Caching, string dependencies, ICacheDependency interface, cache invalidation, object-oriented cache dependencies, ICachingService, caching backend, AddDependency method, Invalidate method
           - name: Distributed caching with Redis
             path: content/patterns/caching/redis.md
-            summary: The document provides a guide on how to use Redis as a distributed server for caching in a Metalama application, including configuration, enabling local in-memory cache, and handling dependencies.
-            keywords: Redis caching, distributed caching, in-memory L1 cache, Metalama, StackExchange.Redis, Azure Redis Cache, Redis Pub/Sub, caching backend configuration
+            summary: The document provides a guide on how to use Redis as a distributed server for caching in a Metalama application, including configuration, resilience policies, key compression, and handling dependencies.
+            keywords: Redis caching, distributed caching, in-memory L1 cache, Metalama, StackExchange.Redis, Azure Redis Cache, Redis Pub/Sub, caching backend configuration, retry policy, exception handling, key hashing, resilience
           - name: Synchronizing local in-memory caches for multiple nodes
             path: content/patterns/caching/pubsub.md
             summary: The document provides a guide on synchronizing local in-memory caches across multiple servers using Metalama's publish/subscribe (Pub/Sub) message bus. It details the process using Azure Service Bus and Redis Pub/Sub.
@@ -360,16 +364,16 @@
           keywords: Metalama Framework, implementing interfaces, programmatic advising API, AdviserExtensions.ImplementInterface, OverrideStrategy, InterfaceMemberAttribute
         - name: Introducing types
           path: content/conceptual/aspects/advising/introducing-types.md
-          summary: This article explains how to introduce new types (nested or top-level classes and interfaces) using the Metalama Framework, including how to add members, base types, and implemented interfaces.
-          keywords: IntroduceClass, Metalama, nested class, non-nested class, IAdviser, INamespace, BuildAspect, introduce members, Builder pattern, introduce types
+          summary: This article explains how to introduce new types (nested or top-level classes, interfaces, and extension blocks) using the Metalama Framework, including how to add members, base types, and implemented interfaces.
+          keywords: IntroduceClass, IntroduceExtensionBlock, Metalama, nested class, non-nested class, extension block, IAdviser, INamespace, BuildAspect, introduce members, Builder pattern, introduce types
         - name: Adding initializers
           path: content/conceptual/aspects/advising/initializers.md
           summary: The document provides instructions on how to add initializers to fields, properties, object constructors, and type constructors using the Metalama Framework. It includes examples for each case.
-          keywords: initializers, fields, properties, Metalama Framework, initialization, declarative advice, programmatic advice, constructors, object constructors, type constructors
+          keywords: initializers, fields, properties, Metalama Framework, initialization, declarative advice, programmatic advice, constructors, object constructors, type constructors, AfterObjectInitializer, AfterLastInstanceConstructor, InitializerPosition, BeforeBase, AfterBase, IInitializable, records, InitializationSlot, slotFields, IsHandled, InitializationContext, Descend
         - name: Introducing constructor parameters
           path: content/conceptual/aspects/advising/introducing-constructor-parameters.md
-          summary: The document explains how to introduce a parameter to a constructor using the Metalama.Extensions.DependencyInjection framework, specifically the AdviserExtensions.IntroduceParameter method. It also provides a relevant example.
-          keywords: IntroduceParameter, constructor parameter, dependency injection, Metalama.Extensions.DependencyInjection, IConstructor, AdviserExtensions, default value, pullStrategy, IInstanceRegistry, Register method
+          summary: This article explains how to introduce parameters to constructors, either by adding an optional parameter with a default value or by adding a forwarding constructor that preserves binary compatibility.
+          keywords: IntroduceParameter, constructor parameter, dependency injection, IConstructor, AdviserExtensions, default value, pullStrategy, optional parameter, forwarding constructor, ForwardSourceConstructors, ConstructorOverloadingStrategy, binary compatibility, source compatibility
         - name: Overriding constructors
           path: content/conceptual/aspects/advising/overriding-constructors.md
           summary: This article explains how to override constructors in Metalama, including when to use this approach versus alternatives like initializers or constructor parameters.
@@ -466,11 +470,11 @@
         - name: Snapshot testing
           path: content/conceptual/aspects/testing/snapshot-testing.md
           summary: This article provides a comprehensive guide on snapshot testing of aspects using the Metalama.Testing.AspectTesting package. It details the steps to create a test project, add a test case, run the test case, and copy the test output to the expected output. It also includes advanced features and customizations.
-          keywords: snapshot testing, Metalama.Testing.AspectTesting, aspect testing, .NET, create test project, run test case, verify transformed code, expected output, xUnit test project, Metalama framework
+          keywords: snapshot testing, Metalama.Testing.AspectTesting, aspect testing, .NET, create test project, run test case, verify transformed code, expected output, xUnit test project, Metalama, Metalama.Extensions.HtmlWriter, Metalama.Extensions.DiffEngine, WriteInputHtml, WriteOutputHtml
         - name: Configuring the external diff tool
           path: content/conceptual/aspects/testing/diff-tool.md
           summary: This article explains how to configure the external diff tool used when aspect tests fail, including supported tools, DiffEngineTray, and CI/CD considerations.
-          keywords: diff tool, DiffEngine, DiffEngineTray, aspect testing, snapshot testing, test failure, visual diff
+          keywords: diff tool, DiffEngine, DiffEngineTray, aspect testing, snapshot testing, test failure, visual diff, Metalama.Extensions.DiffEngine
         - name: Unit-testing run-time behavior
           path: content/conceptual/aspects/testing/run-time-testing.md
           summary: The document discusses the approach of applying an aspect to a target code and creating unit tests to verify the resulting code's behavior, using a logging aspect as an example.
@@ -485,8 +489,8 @@
           keywords: debug compile-time logic, design-time logic, aspect-oriented programming, breakpoints, Debugger.Break(), meta.DebugBreak(), attach debugger, Metalama Command Line Tool, RoslynCodeAnalysisService, MetalamaDebugCompiler
       - name: Advising a single type with a fabric
         path: content/conceptual/aspects/fabrics-advising.md
-        summary: The document provides a guide on how to advise a type using a type fabric, a compile-time nested class, in the Metalama Framework. It includes a step-by-step process and an example.
-        keywords: type fabric, Metalama Framework, compile-time nested class, type-level aspect, AmendType method, IAspectBuilder.Advice, advanced aspects, member introductions, helper aspect, target type
+        summary: The document provides a guide on how to advise a type using a type fabric, a compile-time nested class, in the Metalama Framework. It includes a step-by-step process and examples.
+        keywords: type fabric, Metalama Framework, compile-time nested class, type-level aspect, AmendType method, ITypeAmender, IAdviser, advanced aspects, member introductions, helper aspect, target type, ScopedDiagnostics
       - name: Decoupling attributes from their implementation
         path: content/conceptual/aspects/decoupling-from-attributes.md
         summary: This article explains how to separate the aspect implementation from its custom attribute contract, enabling scenarios like using third-party attributes, preparing for migration away from Metalama, or having different implementations per project.
@@ -524,7 +528,7 @@
         - name: NuGet packages
           path: content/conceptual/configuration/packages.md
           summary: This article lists NuGet packages for Metalama, detailing their uses and descriptions. It also includes package diagrams for building, executing, testing, introspection, and SDK.
-          keywords: NuGet packages, Metalama, Metalama.Framework, Metalama.Compiler, testing, introspection
+          keywords: NuGet packages, Metalama, Metalama.Framework, Metalama.Compiler, testing, introspection, Metalama.Extensions.HtmlWriter, Metalama.Extensions.DiffEngine
         - name: Aspect serialization
           path: content/conceptual/implementation/aspect-serialization.md
           summary: Metalama uses serialization to handle situations where an aspect has cross-project effects, affecting not only the current project but also referencing projects transitively.
@@ -590,8 +594,8 @@
         keywords: unattended build, build server, logging, process dumps, diagnostics.json, environment variable, METALAMA_DIAGNOSTICS, METALAMA_CONSOLE_TRACE, dotnet build, msbuild
       - name: Telemetry
         path: content/conceptual/configuration/telemetry.md
-        summary: This article explains what data Metalama collects, how to modify its settings, and how to disable telemetry or reset the device ID. It also explains the conditions for license auditing.
-        keywords: telemetry, Metalama, disable telemetry, reset device id, license audit, Metalama command-line tools, environment variable, Visual Studio Tools, performance degradation, exception report
+        summary: This article explains what data Metalama collects, how to review exception reports before they are sent, and how to disable telemetry per machine or per repository, reset the device ID, and check the current telemetry status.
+        keywords: telemetry, Metalama, disable telemetry, reset device id, license audit, metalama.json, exception report, performance report, privacy, environment variable, telemetry status, news feed, rss
     - name: Querying and analyzing code
       path: content/conceptual/introspection/introspection.md
       summary: This section explains how to query and analyze your source code using Metalama's introspection APIs, including the Workspaces API and LINQPad integration.
@@ -768,3 +772,38 @@
     path: content/api/migration-api.md
     summary: Mapping from the PostSharp API to its Metalama equivalent for migration purposes.
     keywords: migration, PostSharp API, Metalama, API mapping, .NET, PostSharp to Metalama
+- name: Contributing
+  items:
+  - name: Contributing
+    path: content/contributing/contributing.md
+    summary: Contribute to Metalama by spreading awareness, answering questions, sharing aspects, building libraries, and improving documentation and core projects.
+    keywords: contributing, Metalama, open source, community, aspects, marketplace, documentation, core projects
+    items:
+    - name: How to file an issue
+      path: content/contributing/file-an-issue.md
+      summary: This document outlines how to file issues and bug reports for Metalama using GitHub, including necessary information and repositories.
+      keywords: bug reports, GitHub issues, Metalama, exception, error message, binary build log, crash report, profiling snapshot
+    - name: How to contribute code
+      path: content/contributing/contribute-code.md
+      summary: This document outlines the steps for contributing code into Metalama repositories, including feature implementation, testing, formatting, and submitting a pull request.
+      keywords: contributing code, Metalama, testing, formatting, pull request, build repository, unit tests, Contributor License Agreement
+    - name: How to contribute documentation
+      path: content/contributing/contribute-docs.md
+      summary: This document guides on contributing to Metalama's documentation using DocFx, including cloning, building, authoring, updating, and preparing a PR.
+      keywords: DocFx, Metalama, documentation, authoring sample code, Metalama.Testing.AspectTesting, authoring documentation article, update documentation, prepare PR
+    - name: How to build from source
+      path: content/contributing/build-from-source.md
+      summary: This document provides instructions for building Metalama from source, including environment setup, cloning, building, testing, and using Docker.
+      keywords: Metalama build, source code, clone repo, build script, local dependencies, Docker build, multi-repo build
+    - name: Coding standard
+      path: content/contributing/coding-standard.md
+      summary: This document outlines the coding standards to follow when contributing to the Metalama project.
+      keywords: coding standard, coding conventions
+    - name: Branching strategy
+      path: content/contributing/branching.md
+      summary: The document outlines Metalama's Git flow strategy involving concurrent version branches, continuous integration, and specific branch naming conventions.
+      keywords: Git flow strategy, version branches, continuous integration, branch naming conventions, version control, Metalama, .NET, TeamCity, versioning
+    - name: Contribution License Agreement
+      path: content/contributing/cla.md
+      summary: The Contribution License Agreement requires contributors to grant SharpCrafters s.r.o. rights to use and distribute their submissions legally.
+      keywords: Contribution License Agreement, Contributor License Agreement, open source, legal rights, submissions, code, licenses

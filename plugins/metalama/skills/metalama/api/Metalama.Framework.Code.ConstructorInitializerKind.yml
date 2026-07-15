@@ -63,9 +63,11 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
   summary: >-
-    The constructor has no explicit initializer (no <code>: base(...)</code> or <code>: this(...)</code> clause).
+    The constructor has no initializer calling a base or sibling constructor. This applies to value types (structs)
 
-    The C# compiler implicitly calls the parameterless base class constructor.
+    and static constructors, which never have a <code>base</code> or <code>this</code> initializer. For instance constructors of reference types (classes),
+
+    the C# compiler always implicitly calls a base constructor, so <xref href="Metalama.Framework.Code.ConstructorInitializerKind.Base" data-throw-if-not-resolved="false"></xref> is returned instead.
   example: []
   syntax:
     content: None = 0
@@ -85,7 +87,10 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
-  summary: 'The constructor has a <code>: base(...)</code> initializer that invokes a constructor of the base class.'
+  summary: >-
+    The constructor invokes a constructor of the base class, either explicitly via a <code>: base(...)</code> initializer
+
+    or implicitly when the instance constructor has no explicit initializer and the declaring type is a reference type.
   example: []
   syntax:
     content: Base = 1
@@ -111,79 +116,3 @@ items:
     content: This = 2
     return:
       type: Metalama.Framework.Code.ConstructorInitializerKind
-references:
-- uid: Metalama.Framework.Code.IConstructor
-  commentId: T:Metalama.Framework.Code.IConstructor
-  parent: Metalama.Framework.Code
-  isExternal: true
-  href: Metalama.Framework.Code.IConstructor.html
-  name: IConstructor
-  nameWithType: IConstructor
-  fullName: Metalama.Framework.Code.IConstructor
-- uid: Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder
-  commentId: T:Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder
-  isExternal: true
-  href: Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder.html
-  name: IConstructorBuilder
-  nameWithType: IConstructorBuilder
-  fullName: Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder
-- uid: Metalama.Framework.Code.ConstructorInitializerKind.Base
-  commentId: F:Metalama.Framework.Code.ConstructorInitializerKind.Base
-  isExternal: true
-  href: Metalama.Framework.Code.ConstructorInitializerKind.html#Metalama_Framework_Code_ConstructorInitializerKind_Base
-  name: Base
-  nameWithType: ConstructorInitializerKind.Base
-  fullName: Metalama.Framework.Code.ConstructorInitializerKind.Base
-- uid: Metalama.Framework.Code.ConstructorInitializerKind.This
-  commentId: F:Metalama.Framework.Code.ConstructorInitializerKind.This
-  isExternal: true
-  href: Metalama.Framework.Code.ConstructorInitializerKind.html#Metalama_Framework_Code_ConstructorInitializerKind_This
-  name: This
-  nameWithType: ConstructorInitializerKind.This
-  fullName: Metalama.Framework.Code.ConstructorInitializerKind.This
-- uid: Metalama.Framework.Code
-  commentId: N:Metalama.Framework.Code
-  isExternal: true
-  href: Metalama.html
-  name: Metalama.Framework.Code
-  nameWithType: Metalama.Framework.Code
-  fullName: Metalama.Framework.Code
-  spec.csharp:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Code
-    name: Code
-    isExternal: true
-    href: Metalama.Framework.Code.html
-  spec.vb:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Code
-    name: Code
-    isExternal: true
-    href: Metalama.Framework.Code.html
-- uid: Metalama.Framework.Code.ConstructorInitializerKind
-  commentId: T:Metalama.Framework.Code.ConstructorInitializerKind
-  parent: Metalama.Framework.Code
-  isExternal: true
-  href: Metalama.Framework.Code.ConstructorInitializerKind.html
-  name: ConstructorInitializerKind
-  nameWithType: ConstructorInitializerKind
-  fullName: Metalama.Framework.Code.ConstructorInitializerKind
-memberLayout: SeparatePages

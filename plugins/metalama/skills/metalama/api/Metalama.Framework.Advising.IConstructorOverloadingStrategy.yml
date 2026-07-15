@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  commentId: T:Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  id: IConstructorOverloadingStrategy
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.IConstructorOverloadingStrategy.GetConstructorOverloadingAction(Metalama.Framework.Code.IConstructor,Metalama.Framework.Code.IParameter)
+  langs:
+  - csharp
+  - vb
+  name: IConstructorOverloadingStrategy
+  nameWithType: IConstructorOverloadingStrategy
+  fullName: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    A strategy that decides whether the framework should generate an additional <em>forwarding constructor</em>
+
+    when <xref href="Metalama.Framework.Advising.IAdviceFactory.IntroduceParameter(Metalama.Framework.Code.IConstructor%2cSystem.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Advising.IPullStrategy%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d%2cMetalama.Framework.Advising.IConstructorOverloadingStrategy)" data-throw-if-not-resolved="false"></xref>
+
+    mutates a constructor with a required parameter. A forwarding constructor is a compile-time stub that keeps
+
+    the pre-mutation signature callable and chains via <code>: this(...)</code> to the now-mutated constructor,
+
+    preserving both source and binary compatibility. For the standard implementation see
+
+    <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+      <strong>Cross-Project Operation:</strong> Overloading strategies operate across project boundaries. Custom
+        implementations must be serializable because the strategy is persisted in the transitive advice metadata and
+        invoked again in projects that reference the project where the parameter was introduced. For example, when a
+        parameter is introduced on a base-class constructor in project A and a derived class in project B has its
+        constructor mutated as a result of the pull walk, the same overloading strategy decides whether project B's
+        derived constructor should also receive a forwarding constructor.
+        </p>
+  example: []
+  syntax:
+    content: 'public interface IConstructorOverloadingStrategy : ICompileTimeSerializable'
+    content.vb: Public Interface IConstructorOverloadingStrategy Inherits ICompileTimeSerializable
+  seealso:
+  - linkId: Metalama.Framework.Advising.ConstructorOverloadingStrategy
+    commentId: T:Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  - linkId: Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IExpression,System.Boolean,System.Boolean)
+    commentId: M:Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IExpression,Metalama.Framework.Code.IExpression,System.Boolean,System.Boolean)
+  extensionMethods:
+  - Metalama.Framework.Advising.IConstructorOverloadingStrategy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Advising.IConstructorOverloadingStrategy,System.Collections.Generic.IEnumerable{Metalama.Framework.Advising.IConstructorOverloadingStrategy}},System.Boolean)
+  - Metalama.Framework.Advising.IConstructorOverloadingStrategy.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Advising.IConstructorOverloadingStrategy})
+  - Metalama.Framework.Advising.IConstructorOverloadingStrategy.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.Advising.IConstructorOverloadingStrategy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Framework.Advising.IConstructorOverloadingStrategy.GetConstructorOverloadingAction(Metalama.Framework.Code.IConstructor,Metalama.Framework.Code.IParameter)
+  commentId: M:Metalama.Framework.Advising.IConstructorOverloadingStrategy.GetConstructorOverloadingAction(Metalama.Framework.Code.IConstructor,Metalama.Framework.Code.IParameter)
+  id: GetConstructorOverloadingAction(Metalama.Framework.Code.IConstructor,Metalama.Framework.Code.IParameter)
+  parent: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  langs:
+  - csharp
+  - vb
+  name: GetConstructorOverloadingAction(IConstructor, IParameter)
+  nameWithType: IConstructorOverloadingStrategy.GetConstructorOverloadingAction(IConstructor, IParameter)
+  fullName: Metalama.Framework.Advising.IConstructorOverloadingStrategy.GetConstructorOverloadingAction(Metalama.Framework.Code.IConstructor, Metalama.Framework.Code.IParameter)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets the action the framework should apply when a constructor has just been mutated: generate a forwarding
+
+    constructor (optionally decorated with <xref href="System.ObsoleteAttribute" data-throw-if-not-resolved="false"></xref>), or do nothing.
+  example: []
+  syntax:
+    content: ConstructorOverloadingAction GetConstructorOverloadingAction(IConstructor mutatedConstructor, IParameter introducedParameter)
+    parameters:
+    - id: mutatedConstructor
+      type: Metalama.Framework.Code.IConstructor
+      description: The constructor immediately after the new parameter has been appended.
+    - id: introducedParameter
+      type: Metalama.Framework.Code.IParameter
+      description: The parameter that was just introduced.
+    return:
+      type: Metalama.Framework.Advising.ConstructorOverloadingAction
+      description: >-
+        A <xref href="Metalama.Framework.Advising.ConstructorOverloadingAction" data-throw-if-not-resolved="false"></xref> describing the decision; when
+                    <xref href="Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(System.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> is used, it also carries the
+                    <code>[Obsolete]</code> metadata to emit on the generated forwarding constructor.
+    content.vb: Function GetConstructorOverloadingAction(mutatedConstructor As IConstructor, introducedParameter As IParameter) As ConstructorOverloadingAction
+  overload: Metalama.Framework.Advising.IConstructorOverloadingStrategy.GetConstructorOverloadingAction*

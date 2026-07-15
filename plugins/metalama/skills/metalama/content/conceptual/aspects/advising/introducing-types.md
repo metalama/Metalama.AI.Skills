@@ -1,10 +1,10 @@
 ---
 uid: introducing-types
 level: 300
-summary: "This article explains how to introduce new types (nested or top-level classes and interfaces) using the Metalama Framework, including how to add members, base types, and implemented interfaces."
-keywords: "IntroduceClass, Metalama, nested class, non-nested class, IAdviser, INamespace, BuildAspect, introduce members, Builder pattern, introduce types"
+summary: "This article explains how to introduce new types (nested or top-level classes, interfaces, and extension blocks) using the Metalama Framework, including how to add members, base types, and implemented interfaces."
+keywords: "IntroduceClass, IntroduceExtensionBlock, Metalama, nested class, non-nested class, extension block, IAdviser, INamespace, BuildAspect, introduce members, Builder pattern, introduce types"
 created-date: 2024-11-06
-modified-date: 2025-11-30
+modified-date: 2026-07-03
 ---
 
 # Introducing types
@@ -12,7 +12,7 @@ modified-date: 2025-11-30
 Many patterns require you to create new types. This is the case, for instance, with the Memento, Enum View-Model, or Builder patterns. You can do this by calling the <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceClass*> or <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface*> advice method from your `BuildAspect` implementation.
 
 > [!NOTE]
-> The current version of Metalama allows you to introduce classes and interfaces. Support for structs, delegates, and enums will be added in a future release.
+> The current version of Metalama allows you to introduce classes, interfaces, and extension blocks. Support for structs, delegates, and enums will be added in a future release.
 
 ## Introducing a nested class
 
@@ -49,7 +49,7 @@ By default, the <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceClas
 
 In the following aspect, we continue the nested type example, make it `public`, and set its base type to the `Builder` nested type of the base class, if any.
 
-[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceNestedClass.cs name="Introducing a nested class"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceNestedClass_BaseClass.cs name="Setting up the type"]
 
 ## Adding class members
 
@@ -72,6 +72,24 @@ The following aspect copies the properties of the source object into the introdu
 
 To add interface implementations to an introduced type, use the <xref:Metalama.Framework.Aspects.AdviserExtensions.ImplementInterface*> method as mentioned in <xref:implementing-interfaces>.
 
+## Introducing extension blocks
+
+Starting with Metalama 2026.1, you can introduce C# 14 extension blocks using the <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock*> method. Extension blocks allow you to add extension members (methods, static methods, properties, and operators) to any type. Fields, events, indexers, constructors, and nested types are not supported inside an extension block and are rejected by Metalama with LAMA0041.
+
+To introduce an extension block:
+
+1. Ensure the extension block is introduced into a **static class** (extension blocks must be defined in static classes). The aspect itself can be applied to any supported target type and can introduce that static class if needed.
+2. Call <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock*> on that static class, specifying the receiver type (the type being extended) and an optional receiver parameter name.
+3. Use the returned <xref:Metalama.Framework.Advising.IIntroductionAdviceResult`1> to introduce members into the extension block, just as you would with an introduced class.
+
+Setting the `receiverParameterName` to a non-empty string (e.g., `"self"`) creates an _instance_ extension block, where introduced members appear as instance members of the extended type. Setting it to `null` or an empty string creates a _static_ extension block.
+
+### Example: Extension block
+
+In the following example, the `[GenerateToDisplayString]` aspect is applied to an enum type. It introduces a new top-level static class `FruitExtensions`, adds an extension block for the `Fruit` enum, and introduces a `ToDisplayString()` extension method.
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceExtensionBlock.cs name="Introducing an extension block"]
+
 ### Final example: The Builder pattern
 
 Let's finish this article with a complete implementation of the `Builder` pattern, a few fragments of which were illustrated above.
@@ -82,8 +100,8 @@ The Builder aspect generates the following artifacts:
 
 * A `Builder` nested class with:
   * A public constructor accepting all required properties.
-  * Writable properties corresponding to all automatic properties of the source class.
-  * A `Build` method that instantiates the source type.
+  * Public writable properties corresponding to all automatic properties of the source class.
+  * A parameterless `Build` method that instantiates the source type.
 * A private constructor in the source class that's called by the `Builder.Build` method.
 
 Ideally, the aspect should also test that the source type does not have another constructor or any settable property, but this is skipped in this example.
@@ -91,6 +109,8 @@ Ideally, the aspect should also test that the source type does not have another 
 A key element of the design in the aspect is the `PropertyMapping` record, which maps a property of the source type to the corresponding property in the `Builder` type, the corresponding constructor parameter in the `Builder` type, and the corresponding parameter in the source type. We build this list in the `BuildAspect` method.
 
 We use the `aspectBuilder.Tags` property to share this list with the template implementations, which can then read it from `meta.Tags.Source`.
+
+The `Program` class at the bottom of the example demonstrates how to use the generated builder.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Builder.cs name="The Builder pattern"]
 
@@ -102,3 +122,4 @@ We use the `aspectBuilder.Tags` property to share this list with the template im
 > <xref:implementing-interfaces>
 > <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceClass*>
 > <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface*>
+> <xref:Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock*>

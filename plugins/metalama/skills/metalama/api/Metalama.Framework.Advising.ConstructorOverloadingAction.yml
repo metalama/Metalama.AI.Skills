@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.ConstructorOverloadingAction
+  commentId: T:Metalama.Framework.Advising.ConstructorOverloadingAction
+  id: ConstructorOverloadingAction
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.ConstructorOverloadingAction.Forward
+  - Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(System.String,System.Boolean)
+  - Metalama.Framework.Advising.ConstructorOverloadingAction.None
+  langs:
+  - csharp
+  - vb
+  name: ConstructorOverloadingAction
+  nameWithType: ConstructorOverloadingAction
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingAction
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Describes what an <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> wants the framework to do with
+
+    a mutated constructor: do nothing, generate a forwarding constructor to keep source and binary compatibility with the original constructor,
+
+    or generate a forwarding constructor decorated with <xref href="System.ObsoleteAttribute" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public readonly struct ConstructorOverloadingAction
+    content.vb: >-
+      <CompileTime>
+
+      Public Structure ConstructorOverloadingAction
+  seealso:
+  - linkId: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    commentId: T:Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  - linkId: Metalama.Framework.Advising.ConstructorOverloadingStrategy
+    commentId: T:Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(System.String,System.Boolean)
+  commentId: M:Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(System.String,System.Boolean)
+  id: ForwardAndMarkObsolete(System.String,System.Boolean)
+  parent: Metalama.Framework.Advising.ConstructorOverloadingAction
+  langs:
+  - csharp
+  - vb
+  name: ForwardAndMarkObsolete(string?, bool)
+  nameWithType: ConstructorOverloadingAction.ForwardAndMarkObsolete(string?, bool)
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(string?, bool)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Creates a <xref href="Metalama.Framework.Advising.ConstructorOverloadingAction" data-throw-if-not-resolved="false"></xref> that means the framework should generate a
+
+    forwarding constructor and decorate it with <xref href="System.ObsoleteAttribute" data-throw-if-not-resolved="false"></xref> so
+
+    downstream callers see a deprecation warning (or error) when they use the pre-mutation signature.
+  example: []
+  syntax:
+    content: public static ConstructorOverloadingAction ForwardAndMarkObsolete(string? description = null, bool isError = false)
+    parameters:
+    - id: description
+      type: System.String
+      description: >-
+        Optional deprecation message displayed at the call site. When <code>null</code>,
+                    the <code>[Obsolete]</code> attribute is emitted without a message.
+    - id: isError
+      type: System.Boolean
+      description: >-
+        When <code>true</code>, using the forwarding constructor is a compiler
+                    error instead of a warning.
+    return:
+      type: Metalama.Framework.Advising.ConstructorOverloadingAction
+    content.vb: Public Shared Function ForwardAndMarkObsolete(description As String = Nothing, isError As Boolean = False) As ConstructorOverloadingAction
+  overload: Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete*
+  nameWithType.vb: ConstructorOverloadingAction.ForwardAndMarkObsolete(String, Boolean)
+  fullName.vb: Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(String, Boolean)
+  name.vb: ForwardAndMarkObsolete(String, Boolean)
+- uid: Metalama.Framework.Advising.ConstructorOverloadingAction.None
+  commentId: P:Metalama.Framework.Advising.ConstructorOverloadingAction.None
+  id: None
+  parent: Metalama.Framework.Advising.ConstructorOverloadingAction
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: ConstructorOverloadingAction.None
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingAction.None
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a <xref href="Metalama.Framework.Advising.ConstructorOverloadingAction" data-throw-if-not-resolved="false"></xref> that means no forwarding constructor should
+
+    be generated for the mutated constructor.
+  remarks: >-
+    <strong>This is a source-breaking change.</strong> Existing C# call sites that match the pre-mutation
+        signature will fail to compile because no overload with the original parameter list remains on the type.
+        Choose this action only when you intentionally want to force callers to update their code (for example,
+        in an internal codebase where every caller can be migrated in lockstep, or as the final step of a
+        multi-release deprecation rolled out via <xref href="Metalama.Framework.Advising.ConstructorOverloadingAction.ForwardAndMarkObsolete(System.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>).
+  example: []
+  syntax:
+    content: public static ConstructorOverloadingAction None { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.ConstructorOverloadingAction
+    content.vb: Public Shared ReadOnly Property None As ConstructorOverloadingAction
+  overload: Metalama.Framework.Advising.ConstructorOverloadingAction.None*
+- uid: Metalama.Framework.Advising.ConstructorOverloadingAction.Forward
+  commentId: P:Metalama.Framework.Advising.ConstructorOverloadingAction.Forward
+  id: Forward
+  parent: Metalama.Framework.Advising.ConstructorOverloadingAction
+  langs:
+  - csharp
+  - vb
+  name: Forward
+  nameWithType: ConstructorOverloadingAction.Forward
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingAction.Forward
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a <xref href="Metalama.Framework.Advising.ConstructorOverloadingAction" data-throw-if-not-resolved="false"></xref> that means the framework should generate a
+
+    forwarding constructor that chains to the mutated constructor via <code>: this(...)</code>.
+  example: []
+  syntax:
+    content: public static ConstructorOverloadingAction Forward { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.ConstructorOverloadingAction
+    content.vb: Public Shared ReadOnly Property Forward As ConstructorOverloadingAction
+  overload: Metalama.Framework.Advising.ConstructorOverloadingAction.Forward*

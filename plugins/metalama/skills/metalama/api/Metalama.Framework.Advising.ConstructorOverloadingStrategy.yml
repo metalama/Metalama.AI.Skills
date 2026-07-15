@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  commentId: T:Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  id: ConstructorOverloadingStrategy
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardDefaultConstructor
+  - Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors
+  langs:
+  - csharp
+  - vb
+  name: ConstructorOverloadingStrategy
+  nameWithType: ConstructorOverloadingStrategy
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Provides factory access to the standard implementations of the <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref>
+
+    interface. Each factory returns a <xref href="Metalama.Framework.Advising.ForwardConstructorStrategy" data-throw-if-not-resolved="false"></xref> whose
+
+    <xref href="Metalama.Framework.Advising.ForwardConstructorStrategy.WithObsoleteAttribute(System.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> method can be used to additionally decorate
+
+    the generated forwarding constructor with <xref href="System.ObsoleteAttribute" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static class ConstructorOverloadingStrategy
+    content.vb: Public Module ConstructorOverloadingStrategy
+  seealso:
+  - linkId: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    commentId: T:Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  - linkId: Metalama.Framework.Advising.ForwardConstructorStrategy
+    commentId: T:Metalama.Framework.Advising.ForwardConstructorStrategy
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors
+  commentId: P:Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors
+  id: ForwardSourceConstructors
+  parent: Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  langs:
+  - csharp
+  - vb
+  name: ForwardSourceConstructors
+  nameWithType: ConstructorOverloadingStrategy.ForwardSourceConstructors
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a strategy that generates a forwarding constructor for every source constructor
+
+    that the framework mutates. Aspect-introduced constructors are not themselves overloaded. Call
+
+    <xref href="Metalama.Framework.Advising.ForwardConstructorStrategy.WithObsoleteAttribute(System.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> on the returned instance to additionally
+
+    decorate the generated forwarding constructor with <xref href="System.ObsoleteAttribute" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static ForwardConstructorStrategy ForwardSourceConstructors { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.ForwardConstructorStrategy
+    content.vb: Public Shared ReadOnly Property ForwardSourceConstructors As ForwardConstructorStrategy
+  overload: Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors*
+- uid: Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardDefaultConstructor
+  commentId: P:Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardDefaultConstructor
+  id: ForwardDefaultConstructor
+  parent: Metalama.Framework.Advising.ConstructorOverloadingStrategy
+  langs:
+  - csharp
+  - vb
+  name: ForwardDefaultConstructor
+  nameWithType: ConstructorOverloadingStrategy.ForwardDefaultConstructor
+  fullName: Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardDefaultConstructor
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Gets a strategy that generates a forwarding constructor only when the mutated constructor is
+
+    the parameterless constructor, if it exists. This is the typical choice for types that must remain
+
+    constructible via <xref href="System.Activator.CreateInstance%60%601" data-throw-if-not-resolved="false"></xref> or a <code>new()</code> generic constraint
+
+    while the aspect enriches the constructor signature with additional parameters. Call
+
+    <xref href="Metalama.Framework.Advising.ForwardConstructorStrategy.WithObsoleteAttribute(System.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> on the returned instance to additionally
+
+    decorate the generated forwarding constructor with <xref href="System.ObsoleteAttribute" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static ForwardConstructorStrategy ForwardDefaultConstructor { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Advising.ForwardConstructorStrategy
+    content.vb: Public Shared ReadOnly Property ForwardDefaultConstructor As ForwardConstructorStrategy
+  overload: Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardDefaultConstructor*

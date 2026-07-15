@@ -1,0 +1,315 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.RetryPolicy
+  id: RetryPolicy
+  parent: Metalama.Patterns.Caching.Resilience
+  children:
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: RetryPolicy
+  nameWithType: RetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  type: Class
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    The default implementation of <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref>, implementing
+
+    an exponential back-off with jitter effect. It can be configured by setting
+
+    the properties.
+  example: []
+  syntax:
+    content: 'public class RetryPolicy : IRetryPolicy'
+    content.vb: Public Class RetryPolicy Implements IRetryPolicy
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Metalama.Patterns.Caching.Resilience.BackgroundRetryPolicy
+  - Metalama.Patterns.Caching.Resilience.TransactionRetryPolicy
+  implements:
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Resilience.RetryPolicy,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Resilience.RetryPolicy}},System.Boolean)
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Resilience.RetryPolicy})
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Resilience.RetryPolicy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  id: TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: TryAsync(OperationKind, int, Exception?, ref object?, CancellationToken)
+  nameWithType: RetryPolicy.TryAsync(OperationKind, int, Exception?, ref object?, CancellationToken)
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, int, System.Exception?, ref object?, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Determines if a Redis transaction should be tried, and throws a <xref href="Metalama.Patterns.Caching.CachingException" data-throw-if-not-resolved="false"></xref> if it cannot.
+  example: []
+  syntax:
+    content: public virtual ValueTask<bool> TryAsync(OperationKind kind, int attempt, Exception? exception, ref object? state, CancellationToken cancellationToken)
+    parameters:
+    - id: kind
+      type: Metalama.Patterns.Caching.Resilience.OperationKind
+      description: The transaction kind.
+    - id: attempt
+      type: System.Int32
+      description: The index of the attempt. <code>0</code> indicates the first attempt, i.e. not a retry.
+    - id: exception
+      type: System.Exception
+      description: The <xref href="System.Exception" data-throw-if-not-resolved="false"></xref> of the previous attempt, if any.
+    - id: state
+      type: System.Object
+      description: >-
+        A to an optional state of the operation, optionally set by the <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> implementation and
+                    opaque to the caller.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Threading.Tasks.ValueTask{System.Boolean}
+      description: Always <code>true</code>. Must throw an exception if it cannot retry.
+    content.vb: Public Overridable Function TryAsync(kind As OperationKind, attempt As Integer, exception As Exception, state As Object, cancellationToken As CancellationToken) As ValueTask(Of Boolean)
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync*
+  implements:
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  nameWithType.vb: RetryPolicy.TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+  fullName.vb: Metalama.Patterns.Caching.Resilience.RetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, Integer, System.Exception, Object, System.Threading.CancellationToken)
+  name.vb: TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  commentId: M:Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor
+  id: '#ctor'
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: RetryPolicy()
+  nameWithType: RetryPolicy.RetryPolicy()
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryPolicy()
+  type: Constructor
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  syntax:
+    content: public RetryPolicy()
+    content.vb: Public Sub New()
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.#ctor*
+  nameWithType.vb: RetryPolicy.New()
+  fullName.vb: Metalama.Patterns.Caching.Resilience.RetryPolicy.New()
+  name.vb: New()
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  id: BaseDelay
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: BaseDelay
+  nameWithType: RetryPolicy.BaseDelay
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the base delay between attempt.
+  example: []
+  syntax:
+    content: public TimeSpan BaseDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property BaseDelay As TimeSpan
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.BaseDelay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  id: Multiplier
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: Multiplier
+  nameWithType: RetryPolicy.Multiplier
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the multiplier (under the exponent).
+  example: []
+  syntax:
+    content: public double Multiplier { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Multiplier As Double
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.Multiplier*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  id: MaxDelay
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: MaxDelay
+  nameWithType: RetryPolicy.MaxDelay
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the maximum delay.
+  example: []
+  syntax:
+    content: public TimeSpan MaxDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property MaxDelay As TimeSpan
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxDelay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  id: JitterFactor
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: JitterFactor
+  nameWithType: RetryPolicy.JitterFactor
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the jitter factor, i.e. a randomness value between 0 and 1.
+  example: []
+  syntax:
+    content: public double JitterFactor { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property JitterFactor As Double
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.JitterFactor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  id: MaxAttempts
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: MaxAttempts
+  nameWithType: RetryPolicy.MaxAttempts
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Gets or sets the maximum number of attempts.
+  example: []
+  syntax:
+    content: public int MaxAttempts { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxAttempts As Integer
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.MaxAttempts*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  id: NoDelayAttempts
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: NoDelayAttempts
+  nameWithType: RetryPolicy.NoDelayAttempts
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    Gets or sets the number of initial attempts (including the first attempt) that should not be delayed.
+
+    Must be &gt;= 1.
+  example: []
+  syntax:
+    content: public int NoDelayAttempts { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property NoDelayAttempts As Integer
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.NoDelayAttempts*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+- uid: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  commentId: P:Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  id: RetryableExceptionTypes
+  parent: Metalama.Patterns.Caching.Resilience.RetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: RetryableExceptionTypes
+  nameWithType: RetryPolicy.RetryableExceptionTypes
+  fullName: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    Gets or sets an array of exception types that can be retried. A <code>null</code> entry means that non-exception failures
+
+    (such as transaction retries) will be retried. By default, all exception types and non-exceptions are retried.
+  example: []
+  syntax:
+    content: public Type?[] RetryableExceptionTypes { get; set; }
+    parameters: []
+    return:
+      type: System.Type[]
+    content.vb: Public Property RetryableExceptionTypes As Type()
+  overload: Metalama.Patterns.Caching.Resilience.RetryPolicy.RetryableExceptionTypes*

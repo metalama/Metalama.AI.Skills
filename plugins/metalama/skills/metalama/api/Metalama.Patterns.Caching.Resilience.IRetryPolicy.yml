@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  commentId: T:Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  id: IRetryPolicy
+  parent: Metalama.Patterns.Caching.Resilience
+  children:
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IRetryPolicy
+  nameWithType: IRetryPolicy
+  fullName: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  type: Interface
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: >-
+    Defines a <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind%2cSystem.Int32%2cSystem.Exception%2cSystem.Object%40%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> method that determines if a Redis transaction or operation should be retried if it fails.
+
+    The default implementation is <xref href="Metalama.Patterns.Caching.Resilience.RetryPolicy" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public interface IRetryPolicy
+    content.vb: Public Interface IRetryPolicy
+  extensionMethods:
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Resilience.IRetryPolicy,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Resilience.IRetryPolicy}},System.Boolean)
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Resilience.IRetryPolicy})
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Resilience.IRetryPolicy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  id: TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind,System.Int32,System.Exception,System.Object@,System.Threading.CancellationToken)
+  parent: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+  langs:
+  - csharp
+  - vb
+  name: TryAsync(OperationKind, int, Exception?, ref object?, CancellationToken)
+  nameWithType: IRetryPolicy.TryAsync(OperationKind, int, Exception?, ref object?, CancellationToken)
+  fullName: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, int, System.Exception?, ref object?, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Resilience
+  summary: Determines if a Redis transaction should be tried, and throws a <xref href="Metalama.Patterns.Caching.CachingException" data-throw-if-not-resolved="false"></xref> if it cannot.
+  example: []
+  syntax:
+    content: ValueTask<bool> TryAsync(OperationKind kind, int attempt, Exception? exception, ref object? state, CancellationToken cancellationToken = default)
+    parameters:
+    - id: kind
+      type: Metalama.Patterns.Caching.Resilience.OperationKind
+      description: The transaction kind.
+    - id: attempt
+      type: System.Int32
+      description: The index of the attempt. <code>0</code> indicates the first attempt, i.e. not a retry.
+    - id: exception
+      type: System.Exception
+      description: The <xref href="System.Exception" data-throw-if-not-resolved="false"></xref> of the previous attempt, if any.
+    - id: state
+      type: System.Object
+      description: >-
+        A to an optional state of the operation, optionally set by the <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> implementation and
+                    opaque to the caller.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Threading.Tasks.ValueTask{System.Boolean}
+      description: Always <code>true</code>. Must throw an exception if it cannot retry.
+    content.vb: Function TryAsync(kind As OperationKind, attempt As Integer, exception As Exception, state As Object, cancellationToken As CancellationToken = Nothing) As ValueTask(Of Boolean)
+  overload: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync*
+  nameWithType.vb: IRetryPolicy.TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)
+  fullName.vb: Metalama.Patterns.Caching.Resilience.IRetryPolicy.TryAsync(Metalama.Patterns.Caching.Resilience.OperationKind, Integer, System.Exception, Object, System.Threading.CancellationToken)
+  name.vb: TryAsync(OperationKind, Integer, Exception, Object, CancellationToken)

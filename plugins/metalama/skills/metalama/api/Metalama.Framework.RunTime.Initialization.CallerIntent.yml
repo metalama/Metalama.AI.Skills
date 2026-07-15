@@ -1,0 +1,80 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.RunTime.Initialization.CallerIntent
+  commentId: T:Metalama.Framework.RunTime.Initialization.CallerIntent
+  id: CallerIntent
+  parent: Metalama.Framework.RunTime.Initialization
+  children:
+  - Metalama.Framework.RunTime.Initialization.CallerIntent.None
+  - Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize
+  langs:
+  - csharp
+  - vb
+  name: CallerIntent
+  nameWithType: CallerIntent
+  fullName: Metalama.Framework.RunTime.Initialization.CallerIntent
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Specifies the caller's intent regarding <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> invocation.
+
+    Values are mutually exclusive (not a flags enum).
+  remarks: >-
+    This value is carried by <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.Intent" data-throw-if-not-resolved="false"></xref> and indicates whether
+
+    the caller has committed to invoking <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> after construction.
+  example: []
+  syntax:
+    content: 'public enum CallerIntent : byte'
+    content.vb: Public Enum CallerIntent As Byte
+  seealso:
+  - linkId: Metalama.Framework.RunTime.Initialization.InitializationContext
+    commentId: T:Metalama.Framework.RunTime.Initialization.InitializationContext
+- uid: Metalama.Framework.RunTime.Initialization.CallerIntent.None
+  commentId: F:Metalama.Framework.RunTime.Initialization.CallerIntent.None
+  id: None
+  parent: Metalama.Framework.RunTime.Initialization.CallerIntent
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: CallerIntent.None
+  fullName: Metalama.Framework.RunTime.Initialization.CallerIntent.None
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    No guarantee that <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> will be called.
+
+    Used by non-instrumented callers (generated overload).
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Metalama.Framework.RunTime.Initialization.CallerIntent
+- uid: Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize
+  commentId: F:Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize
+  id: WillInitialize
+  parent: Metalama.Framework.RunTime.Initialization.CallerIntent
+  langs:
+  - csharp
+  - vb
+  name: WillInitialize
+  nameWithType: CallerIntent.WillInitialize
+  fullName: Metalama.Framework.RunTime.Initialization.CallerIntent.WillInitialize
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    The caller will call <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> after construction
+
+    (e.g., after an object initializer completes).
+  example: []
+  syntax:
+    content: WillInitialize = 1
+    return:
+      type: Metalama.Framework.RunTime.Initialization.CallerIntent

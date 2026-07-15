@@ -1,0 +1,111 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Advising.InitializerPosition
+  commentId: T:Metalama.Framework.Advising.InitializerPosition
+  id: InitializerPosition
+  parent: Metalama.Framework.Advising
+  children:
+  - Metalama.Framework.Advising.InitializerPosition.AfterBase
+  - Metalama.Framework.Advising.InitializerPosition.BeforeBase
+  langs:
+  - csharp
+  - vb
+  name: InitializerPosition
+  nameWithType: InitializerPosition
+  fullName: Metalama.Framework.Advising.InitializerPosition
+  type: Enum
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    Specifies the position of an initializer relative to the call to the base initializer, in advice operations
+
+    that support it, i.e. <xref href="Metalama.Framework.Advising.InitializerKind.AfterObjectInitializer" data-throw-if-not-resolved="false"></xref> and
+
+    <xref href="Metalama.Framework.Advising.InitializerKind.AfterLastInstanceConstructor" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+        Initialization advice of those kinds emits a method (<code>Initialize</code> or <code>OnConstructed</code>) that
+        calls <code>base.Initialize(...)</code> or <code>base.OnConstructed(...)</code> when applicable. Templates can be
+        placed before or after that base call, matching the matryoshka-doll convention used throughout Metalama
+        for ordering aspects: outer aspects observe inner aspects' effects both before and after the call.
+        </p>
+    <p>
+        Across aspect instances, <xref href="Metalama.Framework.Advising.InitializerPosition.AfterBase" data-throw-if-not-resolved="false"></xref> templates run in compile-time order (first-applied aspect
+        first, innermost layer of the matryoshka), while <xref href="Metalama.Framework.Advising.InitializerPosition.BeforeBase" data-throw-if-not-resolved="false"></xref> templates run in run-time order
+        (last-applied aspect first, outermost layer). Within a single aspect instance, multiple
+        <code>AddInitializer</code> calls preserve their programmatic add-order in both positions.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum InitializerPosition
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum InitializerPosition
+  seealso:
+  - linkId: Metalama.Framework.Advising.InitializerKind
+    commentId: T:Metalama.Framework.Advising.InitializerKind
+  - linkId: Metalama.Framework.Advising.IAddInitializerAdviceResult
+    commentId: T:Metalama.Framework.Advising.IAddInitializerAdviceResult
+  - linkType: HRef
+    linkId: '@initializers'
+    altText: '@initializers'
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Advising.InitializerPosition.AfterBase
+  commentId: F:Metalama.Framework.Advising.InitializerPosition.AfterBase
+  id: AfterBase
+  parent: Metalama.Framework.Advising.InitializerPosition
+  langs:
+  - csharp
+  - vb
+  name: AfterBase
+  nameWithType: InitializerPosition.AfterBase
+  fullName: Metalama.Framework.Advising.InitializerPosition.AfterBase
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: >-
+    The initializer runs after the call to the base initializer (<code>base.Initialize(...)</code> or
+
+    <code>base.OnConstructed(...)</code>). This is the default.
+  example: []
+  syntax:
+    content: AfterBase = 0
+    return:
+      type: Metalama.Framework.Advising.InitializerPosition
+  seealso:
+  - linkType: HRef
+    linkId: '@initializers'
+    altText: '@initializers'
+- uid: Metalama.Framework.Advising.InitializerPosition.BeforeBase
+  commentId: F:Metalama.Framework.Advising.InitializerPosition.BeforeBase
+  id: BeforeBase
+  parent: Metalama.Framework.Advising.InitializerPosition
+  langs:
+  - csharp
+  - vb
+  name: BeforeBase
+  nameWithType: InitializerPosition.BeforeBase
+  fullName: Metalama.Framework.Advising.InitializerPosition.BeforeBase
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Advising
+  summary: The initializer runs before the call to the base initializer.
+  example: []
+  syntax:
+    content: BeforeBase = 1
+    return:
+      type: Metalama.Framework.Advising.InitializerPosition
+  seealso:
+  - linkType: HRef
+    linkId: '@initializers'
+    altText: '@initializers'

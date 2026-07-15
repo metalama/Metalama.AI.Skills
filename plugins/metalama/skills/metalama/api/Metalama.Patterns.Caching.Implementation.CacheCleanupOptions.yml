@@ -1,0 +1,186 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  commentId: T:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  id: CacheCleanupOptions
+  parent: Metalama.Patterns.Caching.Implementation
+  children:
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.#ctor
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Default
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Dry
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.MaxConcurrency
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.RemediationDelay
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.WaitDelay
+  langs:
+  - csharp
+  - vb
+  name: CacheCleanupOptions
+  nameWithType: CacheCleanupOptions
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  type: Class
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Options for cache cleanup operations.
+  example: []
+  syntax:
+    content: public sealed class CacheCleanupOptions
+    content.vb: Public NotInheritable Class CacheCleanupOptions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Implementation.CacheCleanupOptions,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Implementation.CacheCleanupOptions}},System.Boolean)
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Implementation.CacheCleanupOptions})
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.#ctor
+  commentId: M:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.#ctor
+  id: '#ctor'
+  parent: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  langs:
+  - csharp
+  - vb
+  name: CacheCleanupOptions()
+  nameWithType: CacheCleanupOptions.CacheCleanupOptions()
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.CacheCleanupOptions()
+  type: Constructor
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  syntax:
+    content: public CacheCleanupOptions()
+    content.vb: Public Sub New()
+  overload: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.#ctor*
+  nameWithType.vb: CacheCleanupOptions.New()
+  fullName.vb: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.New()
+  name.vb: New()
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.WaitDelay
+  commentId: P:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.WaitDelay
+  id: WaitDelay
+  parent: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  langs:
+  - csharp
+  - vb
+  name: WaitDelay
+  nameWithType: CacheCleanupOptions.WaitDelay
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.WaitDelay
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Gets or sets the delay between the processing of two keys. The default value is 0.
+  remarks: >-
+    With the Redis backend, when a cluster is used, all servers are processed concurrently and the delay applies while processing the requests
+                of a single server.
+  example: []
+  syntax:
+    content: public TimeSpan WaitDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property WaitDelay As TimeSpan
+  overload: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.WaitDelay*
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.RemediationDelay
+  commentId: P:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.RemediationDelay
+  id: RemediationDelay
+  parent: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  langs:
+  - csharp
+  - vb
+  name: RemediationDelay
+  nameWithType: CacheCleanupOptions.RemediationDelay
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.RemediationDelay
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Gets or sets the delay between the moment an inconsistency is detected and moment a remediation is attempted. The default value is 10 seconds.
+  remarks: >-
+    In distributed caching, there might be a slight delay between the changes are replicated among all nodes.
+
+    These inconsistencies are harmless. This is why we test for a consistency a second time after some delay when we find some problem.
+  example: []
+  syntax:
+    content: public TimeSpan RemediationDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property RemediationDelay As TimeSpan
+  overload: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.RemediationDelay*
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Dry
+  commentId: P:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Dry
+  id: Dry
+  parent: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  langs:
+  - csharp
+  - vb
+  name: Dry
+  nameWithType: CacheCleanupOptions.Dry
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Dry
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Gets or sets a value indicating whether the cleanup operation should report errors but not attempt to fix them.
+  example: []
+  syntax:
+    content: public bool Dry { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Dry As Boolean
+  overload: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Dry*
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.MaxConcurrency
+  commentId: P:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.MaxConcurrency
+  id: MaxConcurrency
+  parent: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxConcurrency
+  nameWithType: CacheCleanupOptions.MaxConcurrency
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.MaxConcurrency
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Gets or sets the maximum number of keys being analyzed and cleaned up concurrently. The default value is 20.
+  example: []
+  syntax:
+    content: public int MaxConcurrency { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxConcurrency As Integer
+  overload: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.MaxConcurrency*
+- uid: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Default
+  commentId: P:Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Default
+  id: Default
+  parent: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: CacheCleanupOptions.Default
+  fullName: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Default
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Get the default options.
+  example: []
+  syntax:
+    content: public static CacheCleanupOptions Default { get; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions
+    content.vb: Public Shared ReadOnly Property [Default] As CacheCleanupOptions
+  overload: Metalama.Patterns.Caching.Implementation.CacheCleanupOptions.Default*

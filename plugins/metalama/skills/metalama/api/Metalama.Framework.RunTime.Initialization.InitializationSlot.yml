@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.RunTime.Initialization.InitializationSlot
+  commentId: T:Metalama.Framework.RunTime.Initialization.InitializationSlot
+  id: InitializationSlot
+  parent: Metalama.Framework.RunTime.Initialization
+  children:
+  - Metalama.Framework.RunTime.Initialization.InitializationSlot.Allocate
+  - Metalama.Framework.RunTime.Initialization.InitializationSlot.OnConstructed
+  - Metalama.Framework.RunTime.Initialization.InitializationSlot.op_BitwiseOr(Metalama.Framework.RunTime.Initialization.InitializationSlot,Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  langs:
+  - csharp
+  - vb
+  name: InitializationSlot
+  nameWithType: InitializationSlot
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationSlot
+  type: Struct
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    A strongly-typed bitmask representing a single aspect behavior slot for cross-layer coordination.
+
+    Each aspect type that needs coordination allocates one slot at class initialization time.
+  remarks: >-
+    <p>
+        Slots are needed only by aspect types that address the telescoping constructor problem —
+        i.e., aspects whose <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> behavior must be skipped when a derived type
+        guarantees it will handle the same concern.
+        </p>
+    <p>
+        A maximum of 32 slots can be allocated per <xref href="Metalama.Framework.RunTime.Initialization.InitializationSlotFactory" data-throw-if-not-resolved="false"></xref> (or per
+        AppDomain when using the default factory via <xref href="Metalama.Framework.RunTime.Initialization.InitializationSlot.Allocate" data-throw-if-not-resolved="false"></xref>). In practice, very few
+        aspect types need slots (likely fewer than half a dozen in a typical application).
+        </p>
+  example: []
+  syntax:
+    content: public readonly struct InitializationSlot
+    content.vb: Public Structure InitializationSlot
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Metalama.Framework.RunTime.Initialization.InitializationSlot.op_BitwiseOr(Metalama.Framework.RunTime.Initialization.InitializationSlot,Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  commentId: M:Metalama.Framework.RunTime.Initialization.InitializationSlot.op_BitwiseOr(Metalama.Framework.RunTime.Initialization.InitializationSlot,Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  id: op_BitwiseOr(Metalama.Framework.RunTime.Initialization.InitializationSlot,Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  parent: Metalama.Framework.RunTime.Initialization.InitializationSlot
+  langs:
+  - csharp
+  - vb
+  name: operator |(InitializationSlot, InitializationSlot)
+  nameWithType: InitializationSlot.operator |(InitializationSlot, InitializationSlot)
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationSlot.operator |(Metalama.Framework.RunTime.Initialization.InitializationSlot, Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  type: Operator
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: Combines two slots into one.
+  example: []
+  syntax:
+    content: public static InitializationSlot operator |(InitializationSlot a, InitializationSlot b)
+    parameters:
+    - id: a
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+    - id: b
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+    content.vb: Public Shared Operator Or(a As InitializationSlot, b As InitializationSlot) As InitializationSlot
+  overload: Metalama.Framework.RunTime.Initialization.InitializationSlot.op_BitwiseOr*
+  nameWithType.vb: InitializationSlot.Or(InitializationSlot, InitializationSlot)
+  fullName.vb: Metalama.Framework.RunTime.Initialization.InitializationSlot.Or(Metalama.Framework.RunTime.Initialization.InitializationSlot, Metalama.Framework.RunTime.Initialization.InitializationSlot)
+  name.vb: Or(InitializationSlot, InitializationSlot)
+- uid: Metalama.Framework.RunTime.Initialization.InitializationSlot.Allocate
+  commentId: M:Metalama.Framework.RunTime.Initialization.InitializationSlot.Allocate
+  id: Allocate
+  parent: Metalama.Framework.RunTime.Initialization.InitializationSlot
+  langs:
+  - csharp
+  - vb
+  name: Allocate()
+  nameWithType: InitializationSlot.Allocate()
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationSlot.Allocate()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: Allocates a new slot from the default global factory. Maximum 32 slots per AppDomain.
+  example: []
+  syntax:
+    content: public static InitializationSlot Allocate()
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+      description: A new <xref href="Metalama.Framework.RunTime.Initialization.InitializationSlot" data-throw-if-not-resolved="false"></xref> with a unique bit position.
+    content.vb: Public Shared Function Allocate() As InitializationSlot
+  overload: Metalama.Framework.RunTime.Initialization.InitializationSlot.Allocate*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when the maximum of 32 slots has been exceeded.
+- uid: Metalama.Framework.RunTime.Initialization.InitializationSlot.OnConstructed
+  commentId: P:Metalama.Framework.RunTime.Initialization.InitializationSlot.OnConstructed
+  id: OnConstructed
+  parent: Metalama.Framework.RunTime.Initialization.InitializationSlot
+  langs:
+  - csharp
+  - vb
+  name: OnConstructed
+  nameWithType: InitializationSlot.OnConstructed
+  fullName: Metalama.Framework.RunTime.Initialization.InitializationSlot.OnConstructed
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Slot used by the engine's <code>OnConstructed</code> mechanism to coordinate multi-level
+
+    inheritance. Derived constructors descend their context with this slot before calling the
+
+    base constructor; base constructors guard the <code>OnConstructed</code> call with
+
+    <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext.IsHandled(Metalama.Framework.RunTime.Initialization.InitializationSlot)" data-throw-if-not-resolved="false"></xref> against this slot. Not intended for direct
+
+    use by aspects.
+  example: []
+  syntax:
+    content: public static InitializationSlot OnConstructed { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.RunTime.Initialization.InitializationSlot
+    content.vb: Public Shared ReadOnly Property OnConstructed As InitializationSlot
+  overload: Metalama.Framework.RunTime.Initialization.InitializationSlot.OnConstructed*

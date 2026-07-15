@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.RunTime.Initialization.IInitializable
+  commentId: T:Metalama.Framework.RunTime.Initialization.IInitializable
+  id: IInitializable
+  parent: Metalama.Framework.RunTime.Initialization
+  children:
+  - Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)
+  langs:
+  - csharp
+  - vb
+  name: IInitializable
+  nameWithType: IInitializable
+  fullName: Metalama.Framework.RunTime.Initialization.IInitializable
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: >-
+    Marks a type as having a post-initialization hook. The <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> method
+
+    is called after all constructors and object/collection initializers have completed,
+
+    ensuring that all properties (including <code>init</code>-only and <code>required</code> members)
+
+    are set before validation or derived value computation runs.
+  remarks: >-
+    <p>
+        The Metalama Linker automatically rewrites call sites (<code>new T()</code>, <code>new T { ... }</code>,
+        <code>with { ... }</code>) to invoke <xref href="Metalama.Framework.RunTime.Initialization.InitializableExtensions.WithInitialize%60%601(%60%600%2cMetalama.Framework.RunTime.Initialization.InitializationMetadata)" data-throw-if-not-resolved="false"></xref> after construction.
+        </p>
+    <p>
+        Implementing classes should declare <xref href="Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)" data-throw-if-not-resolved="false"></xref> as <code>public virtual</code>
+        (or <code>override</code>) on non-sealed classes to allow derived types to extend initialization behavior.
+        </p>
+  example: []
+  syntax:
+    content: public interface IInitializable
+    content.vb: Public Interface IInitializable
+  extensionMethods:
+  - Metalama.Framework.RunTime.Initialization.IInitializable.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.RunTime.Initialization.IInitializable,System.Collections.Generic.IEnumerable{Metalama.Framework.RunTime.Initialization.IInitializable}},System.Boolean)
+  - Metalama.Framework.RunTime.Initialization.IInitializable.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.RunTime.Initialization.IInitializable})
+  - Metalama.Framework.RunTime.Initialization.IInitializable.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.RunTime.Initialization.IInitializable.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - Metalama.Framework.RunTime.Initialization.IInitializable.Metalama.Framework.RunTime.Initialization.InitializableExtensions.WithInitialize``1(Metalama.Framework.RunTime.Initialization.InitializationMetadata)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)
+  commentId: M:Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)
+  id: Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)
+  parent: Metalama.Framework.RunTime.Initialization.IInitializable
+  langs:
+  - csharp
+  - vb
+  name: Initialize(InitializationContext)
+  nameWithType: IInitializable.Initialize(InitializationContext)
+  fullName: Metalama.Framework.RunTime.Initialization.IInitializable.Initialize(Metalama.Framework.RunTime.Initialization.InitializationContext)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.RunTime.Initialization
+  summary: Called after all constructors and object/collection initializers have completed.
+  example: []
+  syntax:
+    content: void Initialize(InitializationContext context = default)
+    parameters:
+    - id: context
+      type: Metalama.Framework.RunTime.Initialization.InitializationContext
+      description: The initialization context carrying caller intent, aspect behavior slots, and optional metadata.
+    content.vb: Sub Initialize(context As InitializationContext = Nothing)
+  overload: Metalama.Framework.RunTime.Initialization.IInitializable.Initialize*

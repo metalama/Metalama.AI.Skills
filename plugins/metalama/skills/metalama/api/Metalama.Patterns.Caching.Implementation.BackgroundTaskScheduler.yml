@@ -5,13 +5,18 @@ items:
   id: BackgroundTaskScheduler
   parent: Metalama.Patterns.Caching.Implementation
   children:
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor(System.IServiceProvider,Metalama.Patterns.Caching.Resilience.IRetryPolicy,System.Boolean,System.Int32,System.Int32)
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor(System.IServiceProvider,System.Boolean)
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskEnqueued
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskExceptions
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Cancel
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose(System.Threading.CancellationToken)
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync(System.Threading.CancellationToken)
-  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Threading.CancellationToken)
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask})
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloadedChanged
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
   langs:
@@ -24,14 +29,93 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Implementation
+  summary: >-
+    Schedules and manages background tasks for caching operations. This class provides a robust
+
+    infrastructure for executing cache-related background work with support for concurrency control,
+
+    retry policies, and overload detection.
+  remarks: >-
+    <p>
+
+    <b>Execution Modes:</b>
+
+    <ul><li><b>Parallel mode</b> (default): Tasks run concurrently up to the <code>maxConcurrency</code> limit.
+
+    Additional tasks queue until a slot becomes available.</li><li><b>Sequential mode</b> (<code>sequential=true</code>): Tasks execute strictly one after another
+
+    in enqueue order. Useful for operations that must not overlap.</li></ul>
+
+    </p>
+
+    <p>
+
+    <b>Concurrency Control:</b>
+
+    The scheduler uses an internal <xref href="System.Threading.SemaphoreSlim" data-throw-if-not-resolved="false"></xref> to throttle execution. The default
+
+    <code>maxConcurrency</code> is 50, meaning up to 50 tasks can execute simultaneously in parallel mode.
+
+    Additional tasks wait in a queue until a semaphore slot becomes available.
+
+    </p>
+
+    <p>
+
+    <b>Overload Detection:</b>
+
+    When the number of queued tasks exceeds the <code>overloadThreshold</code> (default: 500) above the
+
+    <code>maxConcurrency</code>, the scheduler enters an overloaded state. The <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded" data-throw-if-not-resolved="false"></xref>
+
+    property reflects this state, and the <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloadedChanged" data-throw-if-not-resolved="false"></xref> event fires on state transitions.
+
+    </p>
+
+    <p>
+
+    <b>Retry Policy:</b>
+
+    An optional <xref href="Metalama.Patterns.Caching.Resilience.IRetryPolicy" data-throw-if-not-resolved="false"></xref> can be provided to enable automatic retries for failed tasks.
+
+    During retry delays, the semaphore is released to allow other tasks to proceed, then re-acquired
+
+    before the next attempt.
+
+    </p>
+
+    <p>
+
+    <b>Cancellation:</b>
+
+    The scheduler supports two cancellation mechanisms:
+
+    <ul><li>Global cancellation via <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Cancel" data-throw-if-not-resolved="false"></xref>: Cancels all pending and running tasks.</li><li>Per-task cancellation: Each enqueued task can have its own <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>
+
+    that is combined with the global token.</li></ul>
+
+    </p>
+
+    <p>
+
+    <b>Disposal:</b>
+
+    The <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> methods wait for all pending tasks
+
+    to complete before releasing resources. Use the overload with a <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>
+
+    to abort waiting if needed.
+
+    </p>
+  example: []
   syntax:
-    content: 'public sealed class BackgroundTaskScheduler : IDisposable, IAsyncDisposable'
-    content.vb: Public NotInheritable Class BackgroundTaskScheduler Implements IDisposable, IAsyncDisposable
+    content: 'public sealed class BackgroundTaskScheduler : IAsyncDisposable, IDisposable'
+    content.vb: Public NotInheritable Class BackgroundTaskScheduler Implements IAsyncDisposable, IDisposable
   inheritance:
   - System.Object
   implements:
-  - System.IDisposable
   - System.IAsyncDisposable
+  - System.IDisposable
   inheritedMembers:
   - System.Object.GetType
   - System.Object.ToString
@@ -41,6 +125,10 @@ items:
   - System.Object.GetHashCode
   extensionMethods:
   - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler}},System.Boolean)
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler})
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
 - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor(System.IServiceProvider,System.Boolean)
   commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor(System.IServiceProvider,System.Boolean)
   id: '#ctor(System.IServiceProvider,System.Boolean)'
@@ -55,18 +143,81 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Implementation
+  summary: Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler" data-throw-if-not-resolved="false"></xref> class.
+  example: []
   syntax:
     content: public BackgroundTaskScheduler(IServiceProvider? serviceProvider, bool sequential = false)
     parameters:
     - id: serviceProvider
       type: System.IServiceProvider
+      description: The service provider.
     - id: sequential
       type: System.Boolean
+      description: If <code>true</code>, tasks are executed sequentially.
     content.vb: Public Sub New(serviceProvider As IServiceProvider, sequential As Boolean = False)
   overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor*
   nameWithType.vb: BackgroundTaskScheduler.New(IServiceProvider, Boolean)
   fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.New(System.IServiceProvider, Boolean)
   name.vb: New(IServiceProvider, Boolean)
+- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor(System.IServiceProvider,Metalama.Patterns.Caching.Resilience.IRetryPolicy,System.Boolean,System.Int32,System.Int32)
+  commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor(System.IServiceProvider,Metalama.Patterns.Caching.Resilience.IRetryPolicy,System.Boolean,System.Int32,System.Int32)
+  id: '#ctor(System.IServiceProvider,Metalama.Patterns.Caching.Resilience.IRetryPolicy,System.Boolean,System.Int32,System.Int32)'
+  parent: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
+  langs:
+  - csharp
+  - vb
+  name: BackgroundTaskScheduler(IServiceProvider?, IRetryPolicy?, bool, int, int)
+  nameWithType: BackgroundTaskScheduler.BackgroundTaskScheduler(IServiceProvider?, IRetryPolicy?, bool, int, int)
+  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskScheduler(System.IServiceProvider?, Metalama.Patterns.Caching.Resilience.IRetryPolicy?, bool, int, int)
+  type: Constructor
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public BackgroundTaskScheduler(IServiceProvider? serviceProvider, IRetryPolicy? retryPolicy, bool sequential, int maxConcurrency = 50, int overloadThreshold = 500)
+    parameters:
+    - id: serviceProvider
+      type: System.IServiceProvider
+      description: The service provider.
+    - id: retryPolicy
+      type: Metalama.Patterns.Caching.Resilience.IRetryPolicy
+      description: Optional retry policy for background tasks. If <code>null</code>, tasks are not retried.
+    - id: sequential
+      type: System.Boolean
+      description: If <code>true</code>, tasks are executed sequentially.
+    - id: maxConcurrency
+      type: System.Int32
+      description: The maximum number of concurrent background tasks. Default is 50.
+    - id: overloadThreshold
+      type: System.Int32
+      description: The number of queued tasks above <code class="paramref">maxConcurrency</code> at which the scheduler is considered overloaded. Default is 500.
+    content.vb: Public Sub New(serviceProvider As IServiceProvider, retryPolicy As IRetryPolicy, sequential As Boolean, maxConcurrency As Integer = 50, overloadThreshold As Integer = 500)
+  overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor*
+  nameWithType.vb: BackgroundTaskScheduler.New(IServiceProvider, IRetryPolicy, Boolean, Integer, Integer)
+  fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.New(System.IServiceProvider, Metalama.Patterns.Caching.Resilience.IRetryPolicy, Boolean, Integer, Integer)
+  name.vb: New(IServiceProvider, IRetryPolicy, Boolean, Integer, Integer)
+- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Cancel
+  commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Cancel
+  id: Cancel
+  parent: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: BackgroundTaskScheduler.Cancel()
+  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Cancel()
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Cancels all pending background tasks.
+  example: []
+  syntax:
+    content: public void Cancel()
+    content.vb: Public Sub Cancel()
+  overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Cancel*
 - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks
   commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks
   id: StopAcceptingBackgroundTasks
@@ -101,26 +252,29 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Implementation
+  summary: Enqueues a background task.
+  example: []
   syntax:
     content: public void EnqueueBackgroundTask(Func<CancellationToken, ValueTask> task)
     parameters:
     - id: task
       type: System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask}
+      description: A function creating a <xref href="System.Threading.Tasks.ValueTask" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub EnqueueBackgroundTask(task As Func(Of CancellationToken, ValueTask))
   overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask*
   nameWithType.vb: BackgroundTaskScheduler.EnqueueBackgroundTask(Func(Of CancellationToken, ValueTask))
   fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func(Of System.Threading.CancellationToken, System.Threading.Tasks.ValueTask))
   name.vb: EnqueueBackgroundTask(Func(Of CancellationToken, ValueTask))
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})
-  commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})
-  id: EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})
+- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Threading.CancellationToken)
+  commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Threading.CancellationToken)
+  id: EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Threading.CancellationToken)
   parent: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
   langs:
   - csharp
   - vb
-  name: EnqueueBackgroundTask(Func<CancellationToken, Task>)
-  nameWithType: BackgroundTaskScheduler.EnqueueBackgroundTask(Func<CancellationToken, Task>)
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task>)
+  name: EnqueueBackgroundTask(Func<CancellationToken, Task>, CancellationToken)
+  nameWithType: BackgroundTaskScheduler.EnqueueBackgroundTask(Func<CancellationToken, Task>, CancellationToken)
+  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task>, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - Metalama.Patterns.Caching.Backend
@@ -128,16 +282,19 @@ items:
   summary: Enqueues a background task.
   example: []
   syntax:
-    content: public void EnqueueBackgroundTask(Func<CancellationToken, Task> task)
+    content: public void EnqueueBackgroundTask(Func<CancellationToken, Task> task, CancellationToken cancellationToken = default)
     parameters:
     - id: task
       type: System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task}
       description: A function creating a <xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Sub EnqueueBackgroundTask(task As Func(Of CancellationToken, Task))
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref> for this specific task.
+    content.vb: Public Sub EnqueueBackgroundTask(task As Func(Of CancellationToken, Task), cancellationToken As CancellationToken = Nothing)
   overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask*
-  nameWithType.vb: BackgroundTaskScheduler.EnqueueBackgroundTask(Func(Of CancellationToken, Task))
-  fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func(Of System.Threading.CancellationToken, System.Threading.Tasks.Task))
-  name.vb: EnqueueBackgroundTask(Func(Of CancellationToken, Task))
+  nameWithType.vb: BackgroundTaskScheduler.EnqueueBackgroundTask(Func(Of CancellationToken, Task), CancellationToken)
+  fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func(Of System.Threading.CancellationToken, System.Threading.Tasks.Task), System.Threading.CancellationToken)
+  name.vb: EnqueueBackgroundTask(Func(Of CancellationToken, Task), CancellationToken)
 - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
   commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
   id: WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
@@ -159,7 +316,7 @@ items:
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: A <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeCancellationToken" data-throw-if-not-resolved="false"></xref>.
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.Threading.Tasks.Task
       description: A <xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref> that completes when all enqueued background tasks complete.
@@ -200,11 +357,14 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Implementation
+  summary: Disposes the scheduler, waiting for all tasks to complete.
+  example: []
   syntax:
     content: public void Dispose(CancellationToken cancellationToken)
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub Dispose(cancellationToken As CancellationToken)
   overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose*
 - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync(System.Threading.CancellationToken)
@@ -221,11 +381,14 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Implementation
+  summary: Disposes the scheduler asynchronously, waiting for all tasks to complete.
+  example: []
   syntax:
     content: public Task DisposeAsync(CancellationToken cancellationToken = default)
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Public Function DisposeAsync(cancellationToken As CancellationToken = Nothing) As Task
@@ -244,6 +407,8 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Implementation
+  summary: Gets the number of background task exceptions that occurred.
+  example: []
   syntax:
     content: public int BackgroundTaskExceptions { get; }
     parameters: []
@@ -251,906 +416,68 @@ items:
       type: System.Int32
     content.vb: Public ReadOnly Property BackgroundTaskExceptions As Integer
   overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskExceptions*
-references:
-- uid: Metalama.Patterns.Caching.Implementation
-  commentId: N:Metalama.Patterns.Caching.Implementation
-  isExternal: true
-  href: Metalama.html
-  name: Metalama.Patterns.Caching.Implementation
-  nameWithType: Metalama.Patterns.Caching.Implementation
-  fullName: Metalama.Patterns.Caching.Implementation
-  spec.csharp:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Patterns
-    name: Patterns
-    isExternal: true
-    href: Metalama.Patterns.html
-  - name: .
-  - uid: Metalama.Patterns.Caching
-    name: Caching
-    isExternal: true
-    href: Metalama.Patterns.Caching.html
-  - name: .
-  - uid: Metalama.Patterns.Caching.Implementation
-    name: Implementation
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.html
-  spec.vb:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Patterns
-    name: Patterns
-    isExternal: true
-    href: Metalama.Patterns.html
-  - name: .
-  - uid: Metalama.Patterns.Caching
-    name: Caching
-    isExternal: true
-    href: Metalama.Patterns.Caching.html
-  - name: .
-  - uid: Metalama.Patterns.Caching.Implementation
-    name: Implementation
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.html
-- uid: System.Object
-  commentId: T:System.Object
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object
-  name: object
-  nameWithType: object
-  fullName: object
-  nameWithType.vb: Object
-  fullName.vb: Object
-  name.vb: Object
-- uid: System.IDisposable
-  commentId: T:System.IDisposable
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable
-  name: IDisposable
-  nameWithType: IDisposable
-  fullName: System.IDisposable
-- uid: System.IAsyncDisposable
-  commentId: T:System.IAsyncDisposable
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
-  name: IAsyncDisposable
-  nameWithType: IAsyncDisposable
-  fullName: System.IAsyncDisposable
-- uid: System.Object.GetType
-  commentId: M:System.Object.GetType
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
-  name: GetType()
-  nameWithType: object.GetType()
-  fullName: object.GetType()
-  nameWithType.vb: Object.GetType()
-  fullName.vb: Object.GetType()
-  spec.csharp:
-  - uid: System.Object.GetType
-    name: GetType
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.Object.GetType
-    name: GetType
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
-  - name: (
-  - name: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  name: ToString()
-  nameWithType: object.ToString()
-  fullName: object.ToString()
-  nameWithType.vb: Object.ToString()
-  fullName.vb: Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  - name: (
-  - name: )
-- uid: System.Object.Equals(System.Object)
-  commentId: M:System.Object.Equals(System.Object)
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
-  name: Equals(object)
-  nameWithType: object.Equals(object)
-  fullName: object.Equals(object)
-  nameWithType.vb: Object.Equals(Object)
-  fullName.vb: Object.Equals(Object)
-  name.vb: Equals(Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
-  - name: (
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
-  - name: (
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-- uid: System.Object.Equals(System.Object,System.Object)
-  commentId: M:System.Object.Equals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
-  name: Equals(object, object)
-  nameWithType: object.Equals(object, object)
-  fullName: object.Equals(object, object)
-  nameWithType.vb: Object.Equals(Object, Object)
-  fullName.vb: Object.Equals(Object, Object)
-  name.vb: Equals(Object, Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
-  - name: (
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
-  - name: (
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
-  name: ReferenceEquals(object, object)
-  nameWithType: object.ReferenceEquals(object, object)
-  fullName: object.ReferenceEquals(object, object)
-  nameWithType.vb: Object.ReferenceEquals(Object, Object)
-  fullName.vb: Object.ReferenceEquals(Object, Object)
-  name.vb: ReferenceEquals(Object, Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
-  - name: (
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
-  - name: (
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-- uid: System.Object.GetHashCode
-  commentId: M:System.Object.GetHashCode
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
-  name: GetHashCode()
-  nameWithType: object.GetHashCode()
-  fullName: object.GetHashCode()
-  nameWithType.vb: Object.GetHashCode()
-  fullName.vb: Object.GetHashCode()
-  spec.csharp:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
-  - name: (
-  - name: )
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler}},System.Boolean)
-  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
-  parent: Metalama.Framework.Code.Collections.EnumerableExtensions
-  definition: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
-  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  name: SelectManyRecursiveDistinct<BackgroundTaskScheduler>(BackgroundTaskScheduler, Func<BackgroundTaskScheduler, IEnumerable<BackgroundTaskScheduler>>, bool)
-  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<BackgroundTaskScheduler>(BackgroundTaskScheduler, Func<BackgroundTaskScheduler, IEnumerable<BackgroundTaskScheduler>>, bool)
-  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler>(Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler, System.Func<Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler, System.Collections.Generic.IEnumerable<Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler>>, bool)
-  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of BackgroundTaskScheduler)(BackgroundTaskScheduler, Func(Of BackgroundTaskScheduler, IEnumerable(Of BackgroundTaskScheduler)), Boolean)
-  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler)(Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler, System.Func(Of Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler, System.Collections.Generic.IEnumerable(Of Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler)), Boolean)
-  name.vb: SelectManyRecursiveDistinct(Of BackgroundTaskScheduler)(BackgroundTaskScheduler, Func(Of BackgroundTaskScheduler, IEnumerable(Of BackgroundTaskScheduler)), Boolean)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler,System.Func{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler}},System.Boolean)
-    name: SelectManyRecursiveDistinct
-    isExternal: true
-    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  - name: <
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: '>'
-  - name: (
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: ','
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: <
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: '>'
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler,System.Func{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler}},System.Boolean)
-    name: SelectManyRecursiveDistinct
-    isExternal: true
-    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: )
-  - name: (
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: ','
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
-    name: BackgroundTaskScheduler
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.html
-  - name: )
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
-- uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
-  commentId: M:Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
-  isExternal: true
-  href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  name: SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
-  nameWithType: EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, Func<T, IEnumerable<T>>, bool)
-  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct<T>(T, System.Func<T, System.Collections.Generic.IEnumerable<T>>, bool)
-  nameWithType.vb: EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
-  fullName.vb: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct(Of T)(T, System.Func(Of T, System.Collections.Generic.IEnumerable(Of T)), Boolean)
-  name.vb: SelectManyRecursiveDistinct(Of T)(T, Func(Of T, IEnumerable(Of T)), Boolean)
-  spec.csharp:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
-    name: SelectManyRecursiveDistinct
-    isExternal: true
-    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  - name: <
-  - name: T
-  - name: '>'
-  - name: (
-  - name: T
-  - name: ','
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-  spec.vb:
-  - uid: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)
-    name: SelectManyRecursiveDistinct
-    isExternal: true
-    href: Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct.html#Metalama_Framework_Code_Collections_EnumerableExtensions_SelectManyRecursiveDistinct__1___0_System_Func___0_System_Collections_Generic_IEnumerable___0___System_Boolean_
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: (
-  - name: T
-  - name: ','
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.IEnumerable`1
-    name: IEnumerable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Metalama.Framework.Code.Collections.EnumerableExtensions
-  commentId: T:Metalama.Framework.Code.Collections.EnumerableExtensions
-  parent: Metalama.Framework.Code.Collections
-  isExternal: true
-  href: Metalama.Framework.Code.Collections.EnumerableExtensions.html
-  name: EnumerableExtensions
-  nameWithType: EnumerableExtensions
-  fullName: Metalama.Framework.Code.Collections.EnumerableExtensions
-- uid: Metalama.Framework.Code.Collections
-  commentId: N:Metalama.Framework.Code.Collections
-  isExternal: true
-  href: Metalama.html
-  name: Metalama.Framework.Code.Collections
-  nameWithType: Metalama.Framework.Code.Collections
-  fullName: Metalama.Framework.Code.Collections
-  spec.csharp:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Code
-    name: Code
-    isExternal: true
-    href: Metalama.Framework.Code.html
-  - name: .
-  - uid: Metalama.Framework.Code.Collections
-    name: Collections
-    isExternal: true
-    href: Metalama.Framework.Code.Collections.html
-  spec.vb:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Code
-    name: Code
-    isExternal: true
-    href: Metalama.Framework.Code.html
-  - name: .
-  - uid: Metalama.Framework.Code.Collections
-    name: Collections
-    isExternal: true
-    href: Metalama.Framework.Code.Collections.html
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.#ctor
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.-ctor.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler__ctor_System_IServiceProvider_System_Boolean_
-  name: BackgroundTaskScheduler
-  nameWithType: BackgroundTaskScheduler.BackgroundTaskScheduler
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskScheduler
-  nameWithType.vb: BackgroundTaskScheduler.New
-  fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.New
-  name.vb: New
-- uid: System.IServiceProvider
-  commentId: T:System.IServiceProvider
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
-  name: IServiceProvider
-  nameWithType: IServiceProvider
-  fullName: System.IServiceProvider
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask})
-  commentId: M:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask})
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_EnqueueBackgroundTask_System_Func_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask__
-  name: EnqueueBackgroundTask(Func<CancellationToken, ValueTask>)
-  nameWithType: BackgroundTaskScheduler.EnqueueBackgroundTask(Func<CancellationToken, ValueTask>)
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.ValueTask>)
-  nameWithType.vb: BackgroundTaskScheduler.EnqueueBackgroundTask(Func(Of CancellationToken, ValueTask))
-  fullName.vb: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func(Of System.Threading.CancellationToken, System.Threading.Tasks.ValueTask))
-  name.vb: EnqueueBackgroundTask(Func(Of CancellationToken, ValueTask))
-  spec.csharp:
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask})
-    name: EnqueueBackgroundTask
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_EnqueueBackgroundTask_System_Func_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask__
-  - name: (
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: ','
-  - name: " "
-  - uid: System.Threading.Tasks.ValueTask
-    name: ValueTask
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask})
-    name: EnqueueBackgroundTask
-    isExternal: true
-    href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_EnqueueBackgroundTask_System_Func_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask__
-  - name: (
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: ','
-  - name: " "
-  - uid: System.Threading.Tasks.ValueTask
-    name: ValueTask
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
-  - name: )
-  - name: )
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_StopAcceptingBackgroundTasks
-  name: StopAcceptingBackgroundTasks
-  nameWithType: BackgroundTaskScheduler.StopAcceptingBackgroundTasks
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.StopAcceptingBackgroundTasks
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_EnqueueBackgroundTask_System_Func_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask__
-  name: EnqueueBackgroundTask
-  nameWithType: BackgroundTaskScheduler.EnqueueBackgroundTask
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.EnqueueBackgroundTask
-- uid: System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask}
-  commentId: T:System.Func{System.Threading.CancellationToken,System.Threading.Tasks.ValueTask}
-  parent: System
-  definition: System.Func`2
-  href: https://learn.microsoft.com/dotnet/api/system.func-2
-  name: Func<CancellationToken, ValueTask>
-  nameWithType: Func<CancellationToken, ValueTask>
-  fullName: System.Func<System.Threading.CancellationToken, System.Threading.Tasks.ValueTask>
-  nameWithType.vb: Func(Of CancellationToken, ValueTask)
-  fullName.vb: System.Func(Of System.Threading.CancellationToken, System.Threading.Tasks.ValueTask)
-  name.vb: Func(Of CancellationToken, ValueTask)
-  spec.csharp:
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: ','
-  - name: " "
-  - uid: System.Threading.Tasks.ValueTask
-    name: ValueTask
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
-  - name: '>'
-  spec.vb:
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: ','
-  - name: " "
-  - uid: System.Threading.Tasks.ValueTask
-    name: ValueTask
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask
-  - name: )
-- uid: System.Func`2
-  commentId: T:System.Func`2
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.func-2
-  name: Func<T, TResult>
-  nameWithType: Func<T, TResult>
-  fullName: System.Func<T, TResult>
-  nameWithType.vb: Func(Of T, TResult)
-  fullName.vb: System.Func(Of T, TResult)
-  name.vb: Func(Of T, TResult)
-  spec.csharp:
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: TResult
-  - name: '>'
-  spec.vb:
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: TResult
-  - name: )
-- uid: System.Threading.Tasks.Task
-  commentId: T:System.Threading.Tasks.Task
-  parent: System.Threading.Tasks
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
-  name: Task
-  nameWithType: Task
-  fullName: System.Threading.Tasks.Task
-- uid: System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task}
-  commentId: T:System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task}
-  parent: System
-  definition: System.Func`2
-  href: https://learn.microsoft.com/dotnet/api/system.func-2
-  name: Func<CancellationToken, Task>
-  nameWithType: Func<CancellationToken, Task>
-  fullName: System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task>
-  nameWithType.vb: Func(Of CancellationToken, Task)
-  fullName.vb: System.Func(Of System.Threading.CancellationToken, System.Threading.Tasks.Task)
-  name.vb: Func(Of CancellationToken, Task)
-  spec.csharp:
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: ','
-  - name: " "
-  - uid: System.Threading.Tasks.Task
-    name: Task
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
-  - name: '>'
-  spec.vb:
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: ','
-  - name: " "
-  - uid: System.Threading.Tasks.Task
-    name: Task
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
-  - name: )
-- uid: System.Threading.Tasks
-  commentId: N:System.Threading.Tasks
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Threading.Tasks
-  nameWithType: System.Threading.Tasks
-  fullName: System.Threading.Tasks
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Threading
-    name: Threading
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading
-  - name: .
-  - uid: System.Threading.Tasks
-    name: Tasks
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Threading
-    name: Threading
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading
-  - name: .
-  - uid: System.Threading.Tasks
-    name: Tasks
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeCancellationToken
-  commentId: P:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeCancellationToken
-  isExternal: true
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_WhenBackgroundTasksCompleted_System_Threading_CancellationToken_
-  name: WhenBackgroundTasksCompleted
-  nameWithType: BackgroundTaskScheduler.WhenBackgroundTasksCompleted
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.WhenBackgroundTasksCompleted
-- uid: System.Threading.CancellationToken
-  commentId: T:System.Threading.CancellationToken
-  parent: System.Threading
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  name: CancellationToken
-  nameWithType: CancellationToken
-  fullName: System.Threading.CancellationToken
-- uid: System.Threading
-  commentId: N:System.Threading
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Threading
-  nameWithType: System.Threading
-  fullName: System.Threading
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Threading
-    name: Threading
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Threading
-    name: Threading
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_Dispose
-  name: Dispose
-  nameWithType: BackgroundTaskScheduler.Dispose
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.Dispose
-- uid: System.IDisposable.Dispose
-  commentId: M:System.IDisposable.Dispose
-  parent: System.IDisposable
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
-  name: Dispose()
-  nameWithType: IDisposable.Dispose()
-  fullName: System.IDisposable.Dispose()
-  spec.csharp:
-  - uid: System.IDisposable.Dispose
-    name: Dispose
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.IDisposable.Dispose
-    name: Dispose
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
-  - name: (
-  - name: )
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_DisposeAsync_System_Threading_CancellationToken_
-  name: DisposeAsync
-  nameWithType: BackgroundTaskScheduler.DisposeAsync
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.DisposeAsync
-- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskExceptions*
-  commentId: Overload:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskExceptions
-  isExternal: true
-  href: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskExceptions.html#Metalama_Patterns_Caching_Implementation_BackgroundTaskScheduler_BackgroundTaskExceptions
-  name: BackgroundTaskExceptions
-  nameWithType: BackgroundTaskScheduler.BackgroundTaskExceptions
-  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskExceptions
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-memberLayout: SeparatePages
+- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded
+  commentId: P:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded
+  id: IsOverloaded
+  parent: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
+  langs:
+  - csharp
+  - vb
+  name: IsOverloaded
+  nameWithType: BackgroundTaskScheduler.IsOverloaded
+  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Gets a value indicating whether the scheduler is overloaded with pending tasks.
+  example: []
+  syntax:
+    content: public bool IsOverloaded { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsOverloaded As Boolean
+  overload: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded*
+- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloadedChanged
+  commentId: E:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloadedChanged
+  id: IsOverloadedChanged
+  parent: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
+  langs:
+  - csharp
+  - vb
+  name: IsOverloadedChanged
+  nameWithType: BackgroundTaskScheduler.IsOverloadedChanged
+  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloadedChanged
+  type: Event
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Event raised when the <xref href="Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.IsOverloaded" data-throw-if-not-resolved="false"></xref> property changes.
+  example: []
+  syntax:
+    content: public event Action? IsOverloadedChanged
+    return:
+      type: System.Action
+    content.vb: Public Event IsOverloadedChanged As Action
+- uid: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskEnqueued
+  commentId: E:Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskEnqueued
+  id: BackgroundTaskEnqueued
+  parent: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler
+  langs:
+  - csharp
+  - vb
+  name: BackgroundTaskEnqueued
+  nameWithType: BackgroundTaskScheduler.BackgroundTaskEnqueued
+  fullName: Metalama.Patterns.Caching.Implementation.BackgroundTaskScheduler.BackgroundTaskEnqueued
+  type: Event
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Event raised when a background task is enqueued.
+  example: []
+  syntax:
+    content: public event Action? BackgroundTaskEnqueued
+    return:
+      type: System.Action
+    content.vb: Public Event BackgroundTaskEnqueued As Action

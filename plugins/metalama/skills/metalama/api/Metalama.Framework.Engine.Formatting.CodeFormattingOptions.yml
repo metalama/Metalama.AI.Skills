@@ -23,6 +23,9 @@ items:
   syntax:
     content: public enum CodeFormattingOptions
     content.vb: Public Enum CodeFormattingOptions
+  extensionMethods:
+  - System.Enum.Metalama.Framework.Engine.Utilities.EnumExtensions.ToStringSafe
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
 - uid: Metalama.Framework.Engine.Formatting.CodeFormattingOptions.Default
   commentId: F:Metalama.Framework.Engine.Formatting.CodeFormattingOptions.Default
   id: Default
@@ -57,7 +60,16 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
-  summary: No text output is required, only a syntax tree.
+  summary: >-
+    The resulting tree is not safe to textualize. Only a syntax tree is produced:
+
+    tokens may be left adjacent with no separator trivia, so
+
+    <xref href="Microsoft.CodeAnalysis.SyntaxNode.ToFullString" data-throw-if-not-resolved="false"></xref> generally will not round-trip through the
+
+    parser. Use this only for AST-level analysis (for example, test validation of
+
+    well-formedness).
   example: []
   syntax:
     content: None = 1
@@ -83,60 +95,3 @@ items:
     content: Formatted = 2
     return:
       type: Metalama.Framework.Engine.Formatting.CodeFormattingOptions
-references:
-- uid: Metalama.Framework.Engine.Formatting
-  commentId: N:Metalama.Framework.Engine.Formatting
-  isExternal: true
-  href: Metalama.html
-  name: Metalama.Framework.Engine.Formatting
-  nameWithType: Metalama.Framework.Engine.Formatting
-  fullName: Metalama.Framework.Engine.Formatting
-  spec.csharp:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Engine
-    name: Engine
-    isExternal: true
-    href: Metalama.Framework.Engine.html
-  - name: .
-  - uid: Metalama.Framework.Engine.Formatting
-    name: Formatting
-    isExternal: true
-    href: Metalama.Framework.Engine.Formatting.html
-  spec.vb:
-  - uid: Metalama
-    name: Metalama
-    isExternal: true
-    href: Metalama.html
-  - name: .
-  - uid: Metalama.Framework
-    name: Framework
-    isExternal: true
-    href: Metalama.Framework.html
-  - name: .
-  - uid: Metalama.Framework.Engine
-    name: Engine
-    isExternal: true
-    href: Metalama.Framework.Engine.html
-  - name: .
-  - uid: Metalama.Framework.Engine.Formatting
-    name: Formatting
-    isExternal: true
-    href: Metalama.Framework.Engine.Formatting.html
-- uid: Metalama.Framework.Engine.Formatting.CodeFormattingOptions
-  commentId: T:Metalama.Framework.Engine.Formatting.CodeFormattingOptions
-  parent: Metalama.Framework.Engine.Formatting
-  isExternal: true
-  href: Metalama.Framework.Engine.Formatting.CodeFormattingOptions.html
-  name: CodeFormattingOptions
-  nameWithType: CodeFormattingOptions
-  fullName: Metalama.Framework.Engine.Formatting.CodeFormattingOptions
-memberLayout: SeparatePages

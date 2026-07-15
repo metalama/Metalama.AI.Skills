@@ -1,1 +1,0 @@
-// Error LAMA0037 on `Log`: `The aspect 'Log' cannot be applied to the method 'SomeClass.SomeMethod()' because the declaring type 'SomeClass' must not be a record type.`
