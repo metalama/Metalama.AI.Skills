@@ -529,6 +529,10 @@
           path: content/conceptual/configuration/packages.md
           summary: This article lists NuGet packages for Metalama, detailing their uses and descriptions. It also includes package diagrams for building, executing, testing, introspection, and SDK.
           keywords: NuGet packages, Metalama, Metalama.Framework, Metalama.Compiler, testing, introspection, Metalama.Extensions.HtmlWriter, Metalama.Extensions.DiffEngine
+        - name: Restoring compile-time dependencies
+          path: content/conceptual/implementation/compile-time-dependencies.md
+          summary: This article explains how Metalama determines which APIs are available to compile-time code, by restoring and building a small project of its own, how that result is cached, and how to configure and troubleshoot it.
+          keywords: compile-time dependencies, reference assemblies, restore, nuget.config, cache, MetalamaCompileTimeTargetFrameworks, MetalamaReferenceAssemblyRestoreTimeout, LAMA0082, LAMA0083
         - name: Aspect serialization
           path: content/conceptual/implementation/aspect-serialization.md
           summary: Metalama uses serialization to handle situations where an aspect has cross-project effects, affecting not only the current project but also referencing projects transitively.
@@ -569,13 +573,13 @@
         keywords: custom validation rules, Metalama, usage verification, custom predicates, Metalama.Extensions.Architecture, ReferencePredicate, validation rules, codebase validation
     - name: Configuring and troubleshooting
       path: content/conceptual/configuration/configuration.md
-      summary: This section provides guidance on configuring Metalama, covering topics like telemetry, MSBuild properties, logging, process dumps, performance data collection, unattended build troubleshooting, and NuGet packages.
-      keywords: configuration, troubleshooting, Metalama, telemetry, MSBuild, logging, process dumps, performance, NuGet packages
+      summary: This section provides guidance on configuring Metalama, covering topics like telemetry, MSBuild properties, logging, process dumps, performance data collection, memory leak diagnostics, unattended build troubleshooting, and NuGet packages.
+      keywords: configuration, troubleshooting, Metalama, telemetry, MSBuild, logging, process dumps, performance, memory leaks, NuGet packages
       items:
       - name: MSBuild properties and items
         path: content/conceptual/configuration/msbuild-properties.md
         summary: This article lists MSBuild properties and environment variables, including their types, descriptions, and default values, related to the Metalama compiler.
-        keywords: MSBuild properties, Metalama, environment variables, temporary directory, execution order, transformers, debug transformed code, transformed code files, output path
+        keywords: MSBuild properties, Metalama, environment variables, temporary directory, execution order, transformers, debug transformed code, transformed code files, output path, memory leaks
       - name: Enabling logging
         path: content/conceptual/configuration/creating-logs.md
         summary: This article shows how to generate log files for reporting Metalama bugs, including installing the CLI tool, editing diagnostics.json, restarting processes, executing Metalama, and accessing the log file.
@@ -592,10 +596,14 @@
         path: content/conceptual/configuration/troubleshooting-unattended-build.md
         summary: This article shows how to enable logging and process dumps for an unattended build on a build server without installing the metalama tool.
         keywords: unattended build, build server, logging, process dumps, diagnostics.json, environment variable, METALAMA_DIAGNOSTICS, METALAMA_CONSOLE_TRACE, dotnet build, msbuild
+      - name: Diagnosing memory leaks
+        path: content/conceptual/configuration/diagnosing-memory-leaks.md
+        summary: This article explains how to find out which of your compile-time objects keeps a project snapshot in memory, causing the IDE to grow while you edit, using the MetalamaDiagnoseMemoryLeaks MSBuild property.
+        keywords: memory leak, design time, Visual Studio memory, project snapshot, fabric, inheritable aspect, MetalamaDiagnoseMemoryLeaks, LAMA0085, LAMA0086, durable reference, IDurableRef, ToDurableRef, ToDurable, ToSerializableId
       - name: Telemetry
         path: content/conceptual/configuration/telemetry.md
         summary: This article explains what data Metalama collects, how to review exception reports before they are sent, and how to disable telemetry per machine or per repository, reset the device ID, and check the current telemetry status.
-        keywords: telemetry, Metalama, disable telemetry, reset device id, license audit, metalama.json, exception report, performance report, privacy, environment variable, telemetry status, news feed, rss
+        keywords: telemetry, Metalama, disable telemetry, reset device id, license audit, metalama.json, exception report, performance report, privacy, environment variable, telemetry status, news feed, rss, never report this error
     - name: Querying and analyzing code
       path: content/conceptual/introspection/introspection.md
       summary: This section explains how to query and analyze your source code using Metalama's introspection APIs, including the Workspaces API and LINQPad integration.

@@ -9,7 +9,9 @@ items:
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Namespaces
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Resources
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTreeCollection
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.TryGetSyntaxTree(Metalama.Framework.Engine.CodeModel.DocumentKey,Microsoft.CodeAnalysis.SyntaxTree@)
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Types
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources(Metalama.Compiler.ManagedResource[])
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
@@ -48,8 +50,14 @@ items:
         </p>
   example: []
   syntax:
-    content: public interface IPartialCompilation
-    content.vb: Public Interface IPartialCompilation
+    content: >-
+      [InternalImplement]
+
+      public interface IPartialCompilation
+    content.vb: >-
+      <InternalImplement>
+
+      Public Interface IPartialCompilation
   seealso:
   - linkId: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
     commentId: T:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions
@@ -60,6 +68,7 @@ items:
     altText: '@aspect-weavers'
   extensionMethods:
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Engine.CodeModel.IPartialCompilation,System.Collections.Generic.IEnumerable{Metalama.Framework.Engine.CodeModel.IPartialCompilation}},System.Boolean)
+  - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.DocumentKeyExtensions.TryGetSyntaxTreeByPath(System.String,Microsoft.CodeAnalysis.SyntaxTree@)
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(Microsoft.CodeAnalysis.SyntaxTree[])
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.AddSyntaxTrees(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree})
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.GetParseOptions
@@ -72,6 +81,38 @@ items:
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Framework.Engine.CodeModel.IPartialCompilation.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.TryGetSyntaxTree(Metalama.Framework.Engine.CodeModel.DocumentKey,Microsoft.CodeAnalysis.SyntaxTree@)
+  commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.TryGetSyntaxTree(Metalama.Framework.Engine.CodeModel.DocumentKey,Microsoft.CodeAnalysis.SyntaxTree@)
+  id: TryGetSyntaxTree(Metalama.Framework.Engine.CodeModel.DocumentKey,Microsoft.CodeAnalysis.SyntaxTree@)
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: TryGetSyntaxTree(DocumentKey, out SyntaxTree?)
+  nameWithType: IPartialCompilation.TryGetSyntaxTree(DocumentKey, out SyntaxTree?)
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.TryGetSyntaxTree(Metalama.Framework.Engine.CodeModel.DocumentKey, out Microsoft.CodeAnalysis.SyntaxTree?)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  syntax:
+    content: bool TryGetSyntaxTree(DocumentKey documentKey, out SyntaxTree? syntaxTree)
+    parameters:
+    - id: documentKey
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    - id: syntaxTree
+      type: Microsoft.CodeAnalysis.SyntaxTree
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetSyntaxTree(documentKey As DocumentKey, syntaxTree As SyntaxTree) As Boolean
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.TryGetSyntaxTree*
+  nameWithType.vb: IPartialCompilation.TryGetSyntaxTree(DocumentKey, SyntaxTree)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.TryGetSyntaxTree(Metalama.Framework.Engine.CodeModel.DocumentKey, Microsoft.CodeAnalysis.SyntaxTree)
+  name.vb: TryGetSyntaxTree(DocumentKey, SyntaxTree)
 - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
   commentId: M:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
   id: WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation})
@@ -164,12 +205,53 @@ items:
   summary: Gets the syntax trees in the current subset, keyed by file path.
   example: []
   syntax:
-    content: ImmutableDictionary<string, SyntaxTree> SyntaxTrees { get; }
+    content: >-
+      [Obsolete("Use SyntaxTreeCollection to enumerate the syntax trees, or TryGetSyntaxTree to find one by its DocumentKey.")]
+
+      ImmutableDictionary<string, SyntaxTree> SyntaxTrees { get; }
     parameters: []
     return:
       type: System.Collections.Immutable.ImmutableDictionary{System.String,Microsoft.CodeAnalysis.SyntaxTree}
-    content.vb: ReadOnly Property SyntaxTrees As ImmutableDictionary(Of String, SyntaxTree)
+    content.vb: >-
+      <Obsolete("Use SyntaxTreeCollection to enumerate the syntax trees, or TryGetSyntaxTree to find one by its DocumentKey.")>
+
+      ReadOnly Property SyntaxTrees As ImmutableDictionary(Of String, SyntaxTree)
   overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use SyntaxTreeCollection to enumerate the syntax trees, or TryGetSyntaxTree to find one by its DocumentKey.
+- uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTreeCollection
+  commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTreeCollection
+  id: SyntaxTreeCollection
+  parent: Metalama.Framework.Engine.CodeModel.IPartialCompilation
+  langs:
+  - csharp
+  - vb
+  name: SyntaxTreeCollection
+  nameWithType: IPartialCompilation.SyntaxTreeCollection
+  fullName: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTreeCollection
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the syntax trees in the current subset.
+  remarks: >-
+    Replaces <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTrees" data-throw-if-not-resolved="false"></xref> for the majority of uses, which enumerate the trees and never read the path
+
+    that keyed them. The collection is identified by the trees themselves, so it costs no string hashing, and it is
+
+    not an <xref href="System.Collections.Immutable.ImmutableDictionary%602" data-throw-if-not-resolved="false"></xref>, which is only useful to a caller building a modified copy.
+  example: []
+  syntax:
+    content: IReadOnlyCollection<SyntaxTree> SyntaxTreeCollection { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{Microsoft.CodeAnalysis.SyntaxTree}
+    content.vb: ReadOnly Property SyntaxTreeCollection As IReadOnlyCollection(Of SyntaxTree)
+  overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.SyntaxTreeCollection*
 - uid: Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
   commentId: P:Metalama.Framework.Engine.CodeModel.IPartialCompilation.IsPartial
   id: IsPartial

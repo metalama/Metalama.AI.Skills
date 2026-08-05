@@ -5,6 +5,7 @@ items:
   id: DefaultParameterPullStrategy
   parent: Metalama.Extensions.DependencyInjection.Implementation
   children:
+  - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IDurableRef{Metalama.Framework.Code.IType},System.String)
   - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)
   - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
   - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.GetExistingParameter(Metalama.Framework.Code.IConstructor)
@@ -77,6 +78,36 @@ items:
   - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IDurableRef{Metalama.Framework.Code.IType},System.String)
+  commentId: M:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IDurableRef{Metalama.Framework.Code.IType},System.String)
+  id: '#ctor(Metalama.Framework.Code.IDurableRef{Metalama.Framework.Code.IType},System.String)'
+  parent: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy
+  langs:
+  - csharp
+  - vb
+  name: DefaultParameterPullStrategy(IDurableRef<IType>, string)
+  nameWithType: DefaultParameterPullStrategy.DefaultParameterPullStrategy(IDurableRef<IType>, string)
+  fullName: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DefaultParameterPullStrategy(Metalama.Framework.Code.IDurableRef<Metalama.Framework.Code.IType>, string)
+  type: Constructor
+  assemblies:
+  - Metalama.Extensions.DependencyInjection
+  namespace: Metalama.Extensions.DependencyInjection.Implementation
+  summary: Initializes a new instance of the <xref href="Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public DefaultParameterPullStrategy(IDurableRef<IType> parameterType, string dependencyName)
+    parameters:
+    - id: parameterType
+      type: Metalama.Framework.Code.IDurableRef{Metalama.Framework.Code.IType}
+      description: A reference to the type of the constructor parameter.
+    - id: dependencyName
+      type: System.String
+      description: The name of the dependency, used to derive the parameter name.
+    content.vb: Public Sub New(parameterType As IDurableRef(Of IType), dependencyName As String)
+  overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor*
+  nameWithType.vb: DefaultParameterPullStrategy.New(IDurableRef(Of IType), String)
+  fullName.vb: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.New(Metalama.Framework.Code.IDurableRef(Of Metalama.Framework.Code.IType), String)
+  name.vb: New(IDurableRef(Of IType), String)
 - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)
   commentId: M:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)
   id: '#ctor(Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType},System.String)'
@@ -91,19 +122,27 @@ items:
   assemblies:
   - Metalama.Extensions.DependencyInjection
   namespace: Metalama.Extensions.DependencyInjection.Implementation
-  summary: Initializes a new instance of the <xref href="Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy" data-throw-if-not-resolved="false"></xref> class.
-  example: []
   syntax:
-    content: public DefaultParameterPullStrategy(IRef<IType> parameterType, string dependencyName)
+    content: >-
+      [Obsolete("Pass an IDurableRef<IType>.")]
+
+      public DefaultParameterPullStrategy(IRef<IType> parameterType, string dependencyName)
     parameters:
     - id: parameterType
       type: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType}
-      description: A reference to the type of the constructor parameter.
     - id: dependencyName
       type: System.String
-      description: The name of the dependency, used to derive the parameter name.
-    content.vb: Public Sub New(parameterType As IRef(Of IType), dependencyName As String)
+    content.vb: >-
+      <Obsolete("Pass an IDurableRef<IType>.")>
+
+      Public Sub New(parameterType As IRef(Of IType), dependencyName As String)
   overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.#ctor*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Pass an IDurableRef<IType>.
   nameWithType.vb: DefaultParameterPullStrategy.New(IRef(Of IType), String)
   fullName.vb: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.New(Metalama.Framework.Code.IRef(Of Metalama.Framework.Code.IType), String)
   name.vb: New(IRef(Of IType), String)

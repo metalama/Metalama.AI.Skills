@@ -15,6 +15,7 @@ items:
   - Metalama.Compiler.TransformerContext.Compilation
   - Metalama.Compiler.TransformerContext.LoadReferencedAssembly(Microsoft.CodeAnalysis.IAssemblySymbol)
   - Metalama.Compiler.TransformerContext.Options
+  - Metalama.Compiler.TransformerContext.OutputPath
   - Metalama.Compiler.TransformerContext.RegisterDiagnosticFilter(Metalama.Compiler.DiagnosticFilter@)
   - Metalama.Compiler.TransformerContext.ReplaceSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree)
   - Metalama.Compiler.TransformerContext.ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic)
@@ -378,6 +379,38 @@ items:
       type: Microsoft.CodeAnalysis.Diagnostics.AnalyzerConfigOptionsProvider
     content.vb: Public ReadOnly Property AnalyzerConfigOptionsProvider As AnalyzerConfigOptionsProvider
   overload: Metalama.Compiler.TransformerContext.AnalyzerConfigOptionsProvider*
+- uid: Metalama.Compiler.TransformerContext.OutputPath
+  commentId: P:Metalama.Compiler.TransformerContext.OutputPath
+  id: OutputPath
+  parent: Metalama.Compiler.TransformerContext
+  langs:
+  - csharp
+  - vb
+  name: OutputPath
+  nameWithType: TransformerContext.OutputPath
+  fullName: Metalama.Compiler.TransformerContext.OutputPath
+  type: Property
+  assemblies:
+  - Metalama.Compiler.Interface
+  namespace: Metalama.Compiler
+  summary: >-
+    Gets the path of the output assembly, built from the <code>/out</code> file name and the output directory, or
+
+    <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if no output path was specified. The path is normally absolute but may be relative,
+
+    depending on how the compiler was invoked. This allows a transformer to identify the kind of compilation it
+
+    is transforming even when no <code>.editorconfig</code> option is available (for example, the Razor
+
+    <code>RazorCompileComponentDeclaration</code> pass, whose <code>Csc</code> invocation forwards no <code>/analyzerconfig</code>).
+  example: []
+  syntax:
+    content: public string? OutputPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property OutputPath As String
+  overload: Metalama.Compiler.TransformerContext.OutputPath*
 - uid: Metalama.Compiler.TransformerContext.Resources
   commentId: P:Metalama.Compiler.TransformerContext.Resources
   id: Resources

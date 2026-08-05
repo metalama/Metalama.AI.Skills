@@ -16,6 +16,8 @@ items:
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider
   - Metalama.Testing.UnitTesting.UnitTestClass.Dispose
   - Metalama.Testing.UnitTesting.UnitTestClass.TestOutput
   langs:
@@ -127,6 +129,56 @@ items:
       type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
     content.vb: Protected Overridable Sub ConfigureServices(services As IAdditionalServiceCollection)
   overload: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider
+  id: CreateTestSynchronizationProvider
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateTestSynchronizationProvider()
+  nameWithType: UnitTestClass.CreateTestSynchronizationProvider()
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider()
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Creates the <xref href="Metalama.Testing.Hooks.TestSynchronizationProvider" data-throw-if-not-resolved="false"></xref> of each test context created by this class. A derived
+
+    class can override this method to supply a differently configured provider.
+  example: []
+  syntax:
+    content: protected virtual TestSynchronizationProvider CreateTestSynchronizationProvider()
+    return:
+      type: Metalama.Testing.Hooks.TestSynchronizationProvider
+    content.vb: Protected Overridable Function CreateTestSynchronizationProvider() As TestSynchronizationProvider
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider*
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector
+  id: CreateTestFaultInjector
+  parent: Metalama.Testing.UnitTesting.UnitTestClass
+  langs:
+  - csharp
+  - vb
+  name: CreateTestFaultInjector()
+  nameWithType: UnitTestClass.CreateTestFaultInjector()
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector()
+  type: Method
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Creates the <xref href="Metalama.Testing.Hooks.TestFaultInjector" data-throw-if-not-resolved="false"></xref> of each test context created by this class. A derived class can
+
+    override this method to supply a differently configured injector, for instance one with a fault already armed.
+  example: []
+  syntax:
+    content: protected virtual TestFaultInjector CreateTestFaultInjector()
+    return:
+      type: Metalama.Testing.Hooks.TestFaultInjector
+    content.vb: Protected Overridable Function CreateTestFaultInjector() As TestFaultInjector
+  overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector*
 - uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
   commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
   id: ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)

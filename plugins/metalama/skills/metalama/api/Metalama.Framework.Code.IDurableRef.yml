@@ -1,0 +1,81 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.IDurableRef
+  commentId: T:Metalama.Framework.Code.IDurableRef
+  id: IDurableRef
+  parent: Metalama.Framework.Code
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IDurableRef
+  nameWithType: IDurableRef
+  fullName: Metalama.Framework.Code.IDurableRef
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    An <xref href="Metalama.Framework.Code.IRef" data-throw-if-not-resolved="false"></xref> that stores only a string identifier and therefore does not keep the compilation it came
+
+    from in memory. Its <xref href="Metalama.Framework.Code.IRef.IsDurable" data-throw-if-not-resolved="false"></xref> property is always <code>true</code>.
+  remarks: >-
+    <p>
+        Use this type in the signature of anything that stores a reference for longer than a single pipeline run: a field
+        of a fabric, a field of an inheritable aspect, or a parameter of an API that keeps what it is given. The compiler
+        then enforces what would otherwise only be a comment, because an ordinary <xref href="Metalama.Framework.Code.IRef%601" data-throw-if-not-resolved="false"></xref> obtained from
+        <xref href="Metalama.Framework.Code.IDeclaration.ToRef" data-throw-if-not-resolved="false"></xref> holds the compilation and cannot be converted implicitly.
+        </p>
+    <p>
+        Call <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> on a declaration or a type to obtain one, or
+        <xref href="Metalama.Framework.Code.IRef.ToDurable" data-throw-if-not-resolved="false"></xref> when a reference is already at hand. Resolving a durable reference costs an
+        identifier lookup, which is why references are not durable by default.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IDurableRef : IRef, IEquatable<IRef>
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IDurableRef Inherits IRef, IEquatable(Of IRef)
+  seealso:
+  - linkId: Metalama.Framework.Code.IDurableRef`1
+    commentId: T:Metalama.Framework.Code.IDurableRef`1
+  - linkId: Metalama.Framework.Code.IRef.IsDurable
+    commentId: P:Metalama.Framework.Code.IRef.IsDurable
+  - linkId: Metalama.Framework.Code.IRef.ToDurable
+    commentId: M:Metalama.Framework.Code.IRef.ToDurable
+  - linkId: Metalama.Framework.Code.RefExtensions.ToDurableRef``1(``0)
+    commentId: M:Metalama.Framework.Code.RefExtensions.ToDurableRef``1(``0)
+  inheritedMembers:
+  - Metalama.Framework.Code.IRef.ToSerializableId
+  - Metalama.Framework.Code.IRef.As``1
+  - Metalama.Framework.Code.IRef.ToDurable
+  - Metalama.Framework.Code.IRef.Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.RefComparison)
+  - Metalama.Framework.Code.IRef.GetHashCode(Metalama.Framework.Code.RefComparison)
+  - Metalama.Framework.Code.IRef.GetTargetInterface(Metalama.Framework.Code.ICompilation,System.Type,Metalama.Framework.Code.IGenericContext,System.Boolean)
+  - Metalama.Framework.Code.IRef.IsDurable
+  - System.IEquatable{Metalama.Framework.Code.IRef}.Equals(Metalama.Framework.Code.IRef)
+  extensionMethods:
+  - Metalama.Framework.Code.IDurableRef.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IDurableRef,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDurableRef}},System.Boolean)
+  - Metalama.Framework.Code.IDurableRef.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Code.IDurableRef})
+  - Metalama.Framework.Code.IDurableRef.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.Code.IDurableRef.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - Metalama.Framework.Code.IRef.Metalama.Framework.Code.RefExtensions.Equals(Metalama.Framework.Code.IRef,System.Boolean)
+  - Metalama.Framework.Code.IRef.Metalama.Framework.Code.RefExtensions.GetTarget(Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  - Metalama.Framework.Code.IRef.Metalama.Framework.Code.RefExtensions.GetTargetOrNull(Metalama.Framework.Code.ICompilation,Metalama.Framework.Code.IGenericContext,System.Type)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []

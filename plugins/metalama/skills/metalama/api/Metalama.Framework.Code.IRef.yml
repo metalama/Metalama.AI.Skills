@@ -10,6 +10,7 @@ items:
   - Metalama.Framework.Code.IRef.GetHashCode(Metalama.Framework.Code.RefComparison)
   - Metalama.Framework.Code.IRef.GetTargetInterface(Metalama.Framework.Code.ICompilation,System.Type,Metalama.Framework.Code.IGenericContext,System.Boolean)
   - Metalama.Framework.Code.IRef.IsDurable
+  - Metalama.Framework.Code.IRef.ToDurable
   - Metalama.Framework.Code.IRef.ToSerializableId
   langs:
   - csharp
@@ -153,6 +154,52 @@ items:
   nameWithType.vb: IRef.As(Of TOut)()
   fullName.vb: Metalama.Framework.Code.IRef.As(Of TOut)()
   name.vb: As(Of TOut)()
+- uid: Metalama.Framework.Code.IRef.ToDurable
+  commentId: M:Metalama.Framework.Code.IRef.ToDurable
+  id: ToDurable
+  parent: Metalama.Framework.Code.IRef
+  langs:
+  - csharp
+  - vb
+  name: ToDurable()
+  nameWithType: IRef.ToDurable()
+  fullName: Metalama.Framework.Code.IRef.ToDurable()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Returns a reference to the same declaration that stores only a string identifier, and therefore does not keep
+
+    the compilation in memory. Returns the current instance when it is already durable.
+  remarks: >-
+    <p>
+        Call this method before storing a reference in an object that outlives the current pipeline run, such as a
+        field of a fabric or of an inheritable aspect. Resolving the result costs an identifier lookup, which is why
+        references are not durable by default. When the declaration itself is at hand, call
+        <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> instead, which does not create the intermediate non-durable
+        reference.
+        </p>
+    <p>
+        A reference that cannot be represented by an identifier, such as a reference to an attribute, does not
+        support this method.
+        </p>
+  example: []
+  syntax:
+    content: IDurableRef ToDurable()
+    return:
+      type: Metalama.Framework.Code.IDurableRef
+    content.vb: Function ToDurable() As IDurableRef
+  overload: Metalama.Framework.Code.IRef.ToDurable*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The reference cannot be made durable.
+  seealso:
+  - linkId: Metalama.Framework.Code.IRef.IsDurable
+    commentId: P:Metalama.Framework.Code.IRef.IsDurable
+  - linkId: Metalama.Framework.Code.IDurableRef
+    commentId: T:Metalama.Framework.Code.IDurableRef
 - uid: Metalama.Framework.Code.IRef.Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.RefComparison)
   commentId: M:Metalama.Framework.Code.IRef.Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.RefComparison)
   id: Equals(Metalama.Framework.Code.IRef,Metalama.Framework.Code.RefComparison)
@@ -287,9 +334,7 @@ items:
   summary: >-
     Gets a value indicating whether the reference stores only a string identifier rather than holding
 
-    a reference to the compilation state. This is an internal concept with no user-facing scenario;
-
-    there is no public API to create durable references.
+    a reference to the compilation state.
   remarks: >-
     <p>
       <b>Non-durable references</b> (when <code>IsDurable</code> is <code>false</code>) are bound to a specific compilation
@@ -299,9 +344,14 @@ items:
         </p>
     <p>
       <b>Durable references</b> (when <code>IsDurable</code> is <code>true</code>) store only a string-based identifier.
-        They are slower to resolve but do not hold any reference to the compilation. There is no public API
-        to create durable references; they are used internally at design time to persist references between
-        IDE compilation updates without causing memory leaks.
+        They are slower to resolve but do not hold any reference to the compilation. Call <xref href="Metalama.Framework.Code.IRef.ToDurable" data-throw-if-not-resolved="false"></xref>
+        or <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> to obtain one, and prefer the <xref href="Metalama.Framework.Code.IDurableRef" data-throw-if-not-resolved="false"></xref> or
+        <xref href="Metalama.Framework.Code.IDurableRef%601" data-throw-if-not-resolved="false"></xref> type over this property when the requirement can be expressed in a signature.
+        </p>
+    <p>
+        A reference that is stored for longer than a single pipeline run must be durable. The design-time pipeline
+        keeps the objects that fabrics and aspects leave behind across many compilations, so a non-durable reference
+        held by one of them keeps a whole version of the project in memory for as long as the solution is open.
         </p>
   example: []
   syntax:
@@ -311,3 +361,8 @@ items:
       type: System.Boolean
     content.vb: ReadOnly Property IsDurable As Boolean
   overload: Metalama.Framework.Code.IRef.IsDurable*
+  seealso:
+  - linkId: Metalama.Framework.Code.IRef.ToDurable
+    commentId: M:Metalama.Framework.Code.IRef.ToDurable
+  - linkId: Metalama.Framework.Code.IDurableRef
+    commentId: T:Metalama.Framework.Code.IDurableRef

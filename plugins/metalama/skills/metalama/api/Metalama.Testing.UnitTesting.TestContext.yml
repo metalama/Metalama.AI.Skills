@@ -23,6 +23,7 @@ items:
   - Metalama.Testing.UnitTesting.TestContext.Dispose
   - Metalama.Testing.UnitTesting.TestContext.Dispose(System.Boolean)
   - Metalama.Testing.UnitTesting.TestContext.ExpectsReportedExceptions
+  - Metalama.Testing.UnitTesting.TestContext.FaultInjector
   - Metalama.Testing.UnitTesting.TestContext.Finalize
   - Metalama.Testing.UnitTesting.TestContext.GetCompilationOptions(Microsoft.CodeAnalysis.OutputKind,System.Collections.Immutable.ImmutableArray{System.String},Microsoft.CodeAnalysis.NullableContextOptions,System.Boolean)
   - Metalama.Testing.UnitTesting.TestContext.GetCompilationParseOptions(System.Collections.Generic.IEnumerable{System.String})
@@ -32,6 +33,7 @@ items:
   - Metalama.Testing.UnitTesting.TestContext.ProjectOptions
   - Metalama.Testing.UnitTesting.TestContext.ReportedTelemetryExceptions
   - Metalama.Testing.UnitTesting.TestContext.ServiceProvider
+  - Metalama.Testing.UnitTesting.TestContext.SyncProvider
   - Metalama.Testing.UnitTesting.TestContext.TestName
   - Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation,System.String)
   langs:
@@ -889,6 +891,68 @@ items:
       type: System.Threading.CancellationToken
     content.vb: Public ReadOnly Property CancellationToken As CancellationToken
   overload: Metalama.Testing.UnitTesting.TestContext.CancellationToken*
+- uid: Metalama.Testing.UnitTesting.TestContext.SyncProvider
+  commentId: P:Metalama.Testing.UnitTesting.TestContext.SyncProvider
+  id: SyncProvider
+  parent: Metalama.Testing.UnitTesting.TestContext
+  langs:
+  - csharp
+  - vb
+  name: SyncProvider
+  nameWithType: TestContext.SyncProvider
+  fullName: Metalama.Testing.UnitTesting.TestContext.SyncProvider
+  type: Property
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Gets the provider of the synchronization points that the code under test reaches, which lets the test drive
+
+    concurrent code into a specific interleaving. All of its synchronization points are released when this context
+
+    is disposed, so a failing test does not hang.
+  remarks: >-
+    The provider is registered by <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider" data-throw-if-not-resolved="false"></xref>, so this property is
+
+    available only in a context created by <xref href="Metalama.Testing.UnitTesting.UnitTestClass" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public TestSynchronizationProvider SyncProvider { get; }
+    parameters: []
+    return:
+      type: Metalama.Testing.Hooks.TestSynchronizationProvider
+    content.vb: Public ReadOnly Property SyncProvider As TestSynchronizationProvider
+  overload: Metalama.Testing.UnitTesting.TestContext.SyncProvider*
+- uid: Metalama.Testing.UnitTesting.TestContext.FaultInjector
+  commentId: P:Metalama.Testing.UnitTesting.TestContext.FaultInjector
+  id: FaultInjector
+  parent: Metalama.Testing.UnitTesting.TestContext
+  langs:
+  - csharp
+  - vb
+  name: FaultInjector
+  nameWithType: TestContext.FaultInjector
+  fullName: Metalama.Testing.UnitTesting.TestContext.FaultInjector
+  type: Property
+  assemblies:
+  - Metalama.Testing.UnitTesting
+  namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Gets the injector of the fault injection points that the code under test reaches, which lets the test make
+
+    production code throw at a chosen place.
+  remarks: >-
+    The injector is registered by <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector" data-throw-if-not-resolved="false"></xref>, so this property is available
+
+    only in a context created by <xref href="Metalama.Testing.UnitTesting.UnitTestClass" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public TestFaultInjector FaultInjector { get; }
+    parameters: []
+    return:
+      type: Metalama.Testing.Hooks.TestFaultInjector
+    content.vb: Public ReadOnly Property FaultInjector As TestFaultInjector
+  overload: Metalama.Testing.UnitTesting.TestContext.FaultInjector*
 - uid: Metalama.Testing.UnitTesting.TestContext.PlugIns
   commentId: P:Metalama.Testing.UnitTesting.TestContext.PlugIns
   id: PlugIns

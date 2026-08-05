@@ -1,0 +1,372 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey
+  commentId: T:Metalama.Framework.Engine.CodeModel.DocumentKey
+  id: DocumentKey
+  parent: Metalama.Framework.Engine.CodeModel
+  children:
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.CompareTo(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(System.Object)
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(System.String)
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.FromSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree)
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.GetHashCode
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.IsDefault
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.Path
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.ToString
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.op_Equality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  - Metalama.Framework.Engine.CodeModel.DocumentKey.op_Inequality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  langs:
+  - csharp
+  - vb
+  name: DocumentKey
+  nameWithType: DocumentKey
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey
+  type: Struct
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: >-
+    Identifies a document of a project across the compilations of that project. This is the key of every design-time
+
+    cache that has to survive an edit.
+  remarks: >-
+    <p>
+        A <xref href="Microsoft.CodeAnalysis.SyntaxTree" data-throw-if-not-resolved="false"></xref> is a transient artifact: the IDE produces a new <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref> holding new
+        trees on every keystroke, so reference identity distinguishes trees only <em>within</em> one compilation and cannot
+        key a cache that outlives it. The permanent identity of a document is therefore needed, and
+        <xref href="Microsoft.CodeAnalysis.SyntaxTree.FilePath" data-throw-if-not-resolved="false"></xref> is the only candidate reachable where it is needed: a Roslyn analyzer callback
+        carries a <xref href="Microsoft.CodeAnalysis.SemanticModel" data-throw-if-not-resolved="false"></xref> and nothing else, the cross-process contract passes a path, and
+        <code>WorkspaceProvider</code> returns no workspace at all in a supported host, so no <code>DocumentId</code> is available. See
+        issue #1742.
+        </p>
+    <p>
+        This type exists because a bare <xref href="System.String" data-throw-if-not-resolved="false"></xref> made two mistakes easy. It let the comparer be chosen per
+        dictionary, which is how the design-time indexes came to compare paths ordinally while the command-line compiler
+        deduplicates them with <xref href="System.StringComparer.OrdinalIgnoreCase" data-throw-if-not-resolved="false"></xref>. And it let one key space be confused with
+        another, because a document path, an introduced syntax tree name and a source generator hint name are all strings;
+        the duplicate-introduction assertion of <code>DesignTimeAspectPipelineResult</code> was exactly such a confusion. Keeping
+        document paths in a distinct type makes both a compile error.
+        </p>
+    <p>
+        The comparison is ordinal. Case-insensitive comparison would match the command-line compiler on Windows and be
+        wrong on Linux, where two paths differing in case are two files.
+        </p>
+    <p>
+        The hash code is computed once, on construction. These keys are long strings compared and hashed on every lookup of
+        the design-time hot path, so caching the hash is why this type is not slower than the string it replaces.
+        </p>
+    <p>
+        A key is a value, not a reference into a compilation. It does not guarantee that the document exists in any given
+        compilation, and it deliberately does not carry the <xref href="Microsoft.CodeAnalysis.SyntaxTree" data-throw-if-not-resolved="false"></xref>: a cache entry that held one would
+        root the syntax tree of an earlier compilation.
+        </p>
+  example: []
+  syntax:
+    content: 'public readonly struct DocumentKey : IEquatable<DocumentKey>, IComparable<DocumentKey>'
+    content.vb: Public Structure DocumentKey Implements IEquatable(Of DocumentKey), IComparable(Of DocumentKey)
+  implements:
+  - System.IEquatable{Metalama.Framework.Engine.CodeModel.DocumentKey}
+  - System.IComparable{Metalama.Framework.Engine.CodeModel.DocumentKey}
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(System.String)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(System.String)
+  id: FromPath(System.String)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: FromPath(string)
+  nameWithType: DocumentKey.FromPath(string)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(string)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the key of the document at a given path.
+  example: []
+  syntax:
+    content: public static DocumentKey FromPath(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    content.vb: Public Shared Function FromPath(path As String) As DocumentKey
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath*
+  nameWithType.vb: DocumentKey.FromPath(String)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(String)
+  name.vb: FromPath(String)
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.FromSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.FromSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree)
+  id: FromSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: FromSyntaxTree(SyntaxTree)
+  nameWithType: DocumentKey.FromSyntaxTree(SyntaxTree)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.FromSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  syntax:
+    content: public static DocumentKey FromSyntaxTree(SyntaxTree syntaxTree)
+    parameters:
+    - id: syntaxTree
+      type: Microsoft.CodeAnalysis.SyntaxTree
+    return:
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    content.vb: Public Shared Function FromSyntaxTree(syntaxTree As SyntaxTree) As DocumentKey
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.FromSyntaxTree*
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  id: Equals(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: Equals(DocumentKey)
+  nameWithType: DocumentKey.Equals(DocumentKey)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  example: []
+  syntax:
+    content: public bool Equals(DocumentKey other)
+    parameters:
+    - id: other
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As DocumentKey) As Boolean
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals*
+  implements:
+  - System.IEquatable{Metalama.Framework.Engine.CodeModel.DocumentKey}.Equals(Metalama.Framework.Engine.CodeModel.DocumentKey)
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(System.Object)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: DocumentKey.Equals(object?)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(object?)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals*
+  nameWithType.vb: DocumentKey.Equals(Object)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.DocumentKey.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.CompareTo(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.CompareTo(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  id: CompareTo(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: CompareTo(DocumentKey)
+  nameWithType: DocumentKey.CompareTo(DocumentKey)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.CompareTo(Metalama.Framework.Engine.CodeModel.DocumentKey)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Compares two keys by path, ordinally.
+  remarks: >-
+    Ordering exists so that anything enumerating a key-indexed collection can produce a stable sequence: test
+
+    baselines, trace output and the manifest indexes all depend on an order that does not vary between runs.
+  example: []
+  syntax:
+    content: public int CompareTo(DocumentKey other)
+    parameters:
+    - id: other
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    return:
+      type: System.Int32
+    content.vb: Public Function CompareTo(other As DocumentKey) As Integer
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.CompareTo*
+  implements:
+  - System.IComparable{Metalama.Framework.Engine.CodeModel.DocumentKey}.CompareTo(Metalama.Framework.Engine.CodeModel.DocumentKey)
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.GetHashCode
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.GetHashCode
+  id: GetHashCode
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: DocumentKey.GetHashCode()
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.GetHashCode()
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.GetHashCode*
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.op_Equality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.op_Equality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  id: op_Equality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: operator ==(DocumentKey, DocumentKey)
+  nameWithType: DocumentKey.operator ==(DocumentKey, DocumentKey)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.operator ==(Metalama.Framework.Engine.CodeModel.DocumentKey, Metalama.Framework.Engine.CodeModel.DocumentKey)
+  type: Operator
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  syntax:
+    content: public static bool operator ==(DocumentKey left, DocumentKey right)
+    parameters:
+    - id: left
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    - id: right
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(left As DocumentKey, right As DocumentKey) As Boolean
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.op_Equality*
+  nameWithType.vb: DocumentKey.=(DocumentKey, DocumentKey)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.DocumentKey.=(Metalama.Framework.Engine.CodeModel.DocumentKey, Metalama.Framework.Engine.CodeModel.DocumentKey)
+  name.vb: =(DocumentKey, DocumentKey)
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.op_Inequality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.op_Inequality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  id: op_Inequality(Metalama.Framework.Engine.CodeModel.DocumentKey,Metalama.Framework.Engine.CodeModel.DocumentKey)
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: operator !=(DocumentKey, DocumentKey)
+  nameWithType: DocumentKey.operator !=(DocumentKey, DocumentKey)
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.operator !=(Metalama.Framework.Engine.CodeModel.DocumentKey, Metalama.Framework.Engine.CodeModel.DocumentKey)
+  type: Operator
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  syntax:
+    content: public static bool operator !=(DocumentKey left, DocumentKey right)
+    parameters:
+    - id: left
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    - id: right
+      type: Metalama.Framework.Engine.CodeModel.DocumentKey
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(left As DocumentKey, right As DocumentKey) As Boolean
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.op_Inequality*
+  nameWithType.vb: DocumentKey.<>(DocumentKey, DocumentKey)
+  fullName.vb: Metalama.Framework.Engine.CodeModel.DocumentKey.<>(Metalama.Framework.Engine.CodeModel.DocumentKey, Metalama.Framework.Engine.CodeModel.DocumentKey)
+  name.vb: <>(DocumentKey, DocumentKey)
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.ToString
+  commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.ToString
+  id: ToString
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DocumentKey.ToString()
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.ToString()
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.ToString*
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.Path
+  commentId: P:Metalama.Framework.Engine.CodeModel.DocumentKey.Path
+  id: Path
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: Path
+  nameWithType: DocumentKey.Path
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.Path
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: >-
+    Gets the path of the document, which is the <xref href="Microsoft.CodeAnalysis.SyntaxTree.FilePath" data-throw-if-not-resolved="false"></xref> of every syntax tree that
+
+    represents it.
+  example: []
+  syntax:
+    content: public string Path { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Path As String
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.Path*
+- uid: Metalama.Framework.Engine.CodeModel.DocumentKey.IsDefault
+  commentId: P:Metalama.Framework.Engine.CodeModel.DocumentKey.IsDefault
+  id: IsDefault
+  parent: Metalama.Framework.Engine.CodeModel.DocumentKey
+  langs:
+  - csharp
+  - vb
+  name: IsDefault
+  nameWithType: DocumentKey.IsDefault
+  fullName: Metalama.Framework.Engine.CodeModel.DocumentKey.IsDefault
+  type: Property
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: >-
+    Gets a value indicating whether this key is the default value, which identifies no document. This is the key
+
+    under which a design-time cache files what belongs to the compilation rather than to any document.
+  remarks: >-
+    The default key cannot collide with a document, which is the reason it, rather than a key over the empty path,
+
+    marks the absence of one. It wraps a null path, and no key of a document can: <xref href="Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(System.String)" data-throw-if-not-resolved="false"></xref> rejects
+
+    null and <xref href="Metalama.Framework.Engine.CodeModel.DocumentKey.FromSyntaxTree(Microsoft.CodeAnalysis.SyntaxTree)" data-throw-if-not-resolved="false"></xref> reads <xref href="Microsoft.CodeAnalysis.SyntaxTree.FilePath" data-throw-if-not-resolved="false"></xref>, which Roslyn never returns as
+
+    null. The empty path carries no such guarantee, because a syntax tree may have one.
+  example: []
+  syntax:
+    content: public bool IsDefault { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsDefault As Boolean
+  overload: Metalama.Framework.Engine.CodeModel.DocumentKey.IsDefault*
