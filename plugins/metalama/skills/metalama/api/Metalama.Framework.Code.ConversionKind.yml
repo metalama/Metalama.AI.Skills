@@ -6,6 +6,7 @@ items:
   parent: Metalama.Framework.Code
   children:
   - Metalama.Framework.Code.ConversionKind.Default
+  - Metalama.Framework.Code.ConversionKind.Equal
   - Metalama.Framework.Code.ConversionKind.Identical
   - Metalama.Framework.Code.ConversionKind.Implicit
   - Metalama.Framework.Code.ConversionKind.ImplicitReference
@@ -139,10 +140,46 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
-  summary: Requires the types to be exactly identical (type equality). No conversions are accepted.
+  summary: >-
+    Accepts only the types between which the language defines an identity conversion. As in the language, the
+
+    nullability of a reference type and the names of the elements of a tuple do not take part, so
+
+    <code>object</code> and <code>object?</code>, and <code>(int A, int B)</code> and <code>(int, int)</code>, are accepted.
+  remarks: >-
+    This is the comparison to use to match a signature, because overload resolution ignores both. Use
+
+    <xref href="Metalama.Framework.Code.ConversionKind.Equal" data-throw-if-not-resolved="false"></xref> to require the types to be equal, which is a stricter question and the one the
+
+    comparers of <xref href="Metalama.Framework.Code.Comparers.ICompilationComparers" data-throw-if-not-resolved="false"></xref> answer.
   example: []
   syntax:
     content: Identical = 4
+    return:
+      type: Metalama.Framework.Code.ConversionKind
+- uid: Metalama.Framework.Code.ConversionKind.Equal
+  commentId: F:Metalama.Framework.Code.ConversionKind.Equal
+  id: Equal
+  parent: Metalama.Framework.Code.ConversionKind
+  langs:
+  - csharp
+  - vb
+  name: Equal
+  nameWithType: ConversionKind.Equal
+  fullName: Metalama.Framework.Code.ConversionKind.Equal
+  type: Field
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Accepts only the types that are equal, as the comparer that is being used defines equality. Unlike
+
+    <xref href="Metalama.Framework.Code.ConversionKind.Identical" data-throw-if-not-resolved="false"></xref>, the names of the elements of a tuple take part, and the nullability of a
+
+    reference type takes part when the comparer is <xref href="Metalama.Framework.Code.Comparers.ICompilationComparers.IncludeNullability" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: Equal = 5
     return:
       type: Metalama.Framework.Code.ConversionKind
 - uid: Metalama.Framework.Code.ConversionKind.ImplicitReference
