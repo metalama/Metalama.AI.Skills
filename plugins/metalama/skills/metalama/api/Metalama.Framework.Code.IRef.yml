@@ -169,14 +169,16 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
   summary: >-
-    Returns a reference to the same declaration that stores only a string identifier, and therefore does not keep
+    Returns a reference to the same declaration that may be stored in an object outliving the current run
 
-    the compilation in memory. Returns the current instance when it is already durable.
+    without keeping a version of the compilation in memory. Returns the current instance when it is already
+
+    durable.
   remarks: >-
     <p>
         Call this method before storing a reference in an object that outlives the current pipeline run, such as a
-        field of a fabric or of an inheritable aspect. Resolving the result costs an identifier lookup, which is why
-        references are not durable by default. When the declaration itself is at hand, call
+        field of a fabric or of an inheritable aspect. Resolving the result may cost an identifier lookup, which is
+        why references are not durable by default. When the declaration itself is at hand, call
         <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> instead, which does not create the intermediate non-durable
         reference.
         </p>
@@ -332,9 +334,9 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
   summary: >-
-    Gets a value indicating whether the reference stores only a string identifier rather than holding
+    Gets a value indicating whether the reference may be stored in an object that outlives the run that produced
 
-    a reference to the compilation state.
+    it, without keeping a version of the compilation in memory for as long as it is held.
   remarks: >-
     <p>
       <b>Non-durable references</b> (when <code>IsDurable</code> is <code>false</code>) are bound to a specific compilation
@@ -343,10 +345,18 @@ items:
         References returned by <xref href="Metalama.Framework.Code.IDeclaration.ToRef" data-throw-if-not-resolved="false"></xref> are always non-durable.
         </p>
     <p>
-      <b>Durable references</b> (when <code>IsDurable</code> is <code>true</code>) store only a string-based identifier.
-        They are slower to resolve but do not hold any reference to the compilation. Call <xref href="Metalama.Framework.Code.IRef.ToDurable" data-throw-if-not-resolved="false"></xref>
-        or <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> to obtain one, and prefer the <xref href="Metalama.Framework.Code.IDurableRef" data-throw-if-not-resolved="false"></xref> or
-        <xref href="Metalama.Framework.Code.IDurableRef%601" data-throw-if-not-resolved="false"></xref> type over this property when the requirement can be expressed in a signature.
+      <b>Durable references</b> (when <code>IsDurable</code> is <code>true</code>) may be held for as long as the object that
+        holds them lives. Call <xref href="Metalama.Framework.Code.IRef.ToDurable" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> to obtain one,
+        and prefer the <xref href="Metalama.Framework.Code.IDurableRef" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.IDurableRef%601" data-throw-if-not-resolved="false"></xref> type over this property when the
+        requirement can be expressed in a signature.
+        </p>
+    <p>
+        The representation of a durable reference depends on the kind of compilation. At design time, the analysis
+        process is long-lived and receives a new compilation after each modification of the source code. A durable
+        reference then stores only a string identifier and holds no other object, and resolving it costs a lookup in
+        the symbol table. A batch compilation processes a single compilation, which lives until the build ends. A
+        durable reference then stores the reference it was created from, and computes its identifier only when the
+        identifier is requested, for instance during serialization.
         </p>
     <p>
         A reference that is stored for longer than a single pipeline run must be durable. The design-time pipeline
