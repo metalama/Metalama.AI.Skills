@@ -5,7 +5,7 @@ items:
   id: CacheItemSerializer
   parent: Metalama.Patterns.Caching.Serializers
   children:
-  - Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer)
+  - Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer,System.TimeProvider)
   - Metalama.Patterns.Caching.Serializers.CacheItemSerializer.Deserialize(System.IO.BinaryReader,System.Collections.Immutable.ImmutableArray{System.String})
   - Metalama.Patterns.Caching.Serializers.CacheItemSerializer.Serialize(Metalama.Patterns.Caching.Implementation.CacheItem,System.IO.BinaryWriter)
   langs:
@@ -47,16 +47,16 @@ items:
   - Metalama.Patterns.Caching.Serializers.CacheItemSerializer.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Patterns.Caching.Serializers.CacheItemSerializer.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
-- uid: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer)
-  commentId: M:Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer)
-  id: '#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer)'
+- uid: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer,System.TimeProvider)
+  commentId: M:Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer,System.TimeProvider)
+  id: '#ctor(Metalama.Patterns.Caching.Serializers.ICachingSerializer,System.TimeProvider)'
   parent: Metalama.Patterns.Caching.Serializers.CacheItemSerializer
   langs:
   - csharp
   - vb
-  name: CacheItemSerializer(ICachingSerializer)
-  nameWithType: CacheItemSerializer.CacheItemSerializer(ICachingSerializer)
-  fullName: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.CacheItemSerializer(Metalama.Patterns.Caching.Serializers.ICachingSerializer)
+  name: CacheItemSerializer(ICachingSerializer, TimeProvider?)
+  nameWithType: CacheItemSerializer.CacheItemSerializer(ICachingSerializer, TimeProvider?)
+  fullName: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.CacheItemSerializer(Metalama.Patterns.Caching.Serializers.ICachingSerializer, System.TimeProvider?)
   type: Constructor
   assemblies:
   - Metalama.Patterns.Caching.Backend
@@ -64,16 +64,22 @@ items:
   summary: Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Serializers.CacheItemSerializer" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public CacheItemSerializer(ICachingSerializer serializer)
+    content: public CacheItemSerializer(ICachingSerializer serializer, TimeProvider? timeProvider = null)
     parameters:
     - id: serializer
       type: Metalama.Patterns.Caching.Serializers.ICachingSerializer
       description: The underlying serializer used for the cached value.
-    content.vb: Public Sub New(serializer As ICachingSerializer)
+    - id: timeProvider
+      type: System.TimeProvider
+      description: >-
+        The clock used to convert the absolute expiration of a deserialized cache item back into a relative one,
+
+        or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> to use <xref href="System.TimeProvider.System" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Sub New(serializer As ICachingSerializer, timeProvider As TimeProvider = Nothing)
   overload: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.#ctor*
-  nameWithType.vb: CacheItemSerializer.New(ICachingSerializer)
-  fullName.vb: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.New(Metalama.Patterns.Caching.Serializers.ICachingSerializer)
-  name.vb: New(ICachingSerializer)
+  nameWithType.vb: CacheItemSerializer.New(ICachingSerializer, TimeProvider)
+  fullName.vb: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.New(Metalama.Patterns.Caching.Serializers.ICachingSerializer, System.TimeProvider)
+  name.vb: New(ICachingSerializer, TimeProvider)
 - uid: Metalama.Patterns.Caching.Serializers.CacheItemSerializer.Serialize(Metalama.Patterns.Caching.Implementation.CacheItem,System.IO.BinaryWriter)
   commentId: M:Metalama.Patterns.Caching.Serializers.CacheItemSerializer.Serialize(Metalama.Patterns.Caching.Implementation.CacheItem,System.IO.BinaryWriter)
   id: Serialize(Metalama.Patterns.Caching.Implementation.CacheItem,System.IO.BinaryWriter)

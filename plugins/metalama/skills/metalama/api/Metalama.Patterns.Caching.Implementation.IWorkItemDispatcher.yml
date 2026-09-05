@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher
+  commentId: T:Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher
+  id: IWorkItemDispatcher
+  parent: Metalama.Patterns.Caching.Implementation
+  children:
+  - Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Dispatch(System.Threading.WaitCallback,System.Object,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: IWorkItemDispatcher
+  nameWithType: IWorkItemDispatcher
+  fullName: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher
+  type: Interface
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Dispatches a work item for execution outside of the calling thread.
+  remarks: >-
+    <p>
+
+    The caching backends dispatch every event and every background operation through this interface. The default
+
+    implementation is <xref href="Metalama.Patterns.Caching.Implementation.ThreadPoolWorkItemDispatcher" data-throw-if-not-resolved="false"></xref>, which queues the work item to the thread pool.
+
+    A different implementation is supplied by registering it in the service provider of the backend.
+
+    </p>
+
+    <p>
+
+    The interface only queues. The ability to wait for the completion of the pending work items belongs to the
+
+    implementation that a test substitutes, not to this interface.
+
+    </p>
+  example: []
+  syntax:
+    content: public interface IWorkItemDispatcher
+    content.vb: Public Interface IWorkItemDispatcher
+  extensionMethods:
+  - Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher,System.Collections.Generic.IEnumerable{Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher}},System.Boolean)
+  - Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher})
+  - Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+- uid: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Dispatch(System.Threading.WaitCallback,System.Object,System.Boolean)
+  commentId: M:Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Dispatch(System.Threading.WaitCallback,System.Object,System.Boolean)
+  id: Dispatch(System.Threading.WaitCallback,System.Object,System.Boolean)
+  parent: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher
+  langs:
+  - csharp
+  - vb
+  name: Dispatch(WaitCallback, object?, bool)
+  nameWithType: IWorkItemDispatcher.Dispatch(WaitCallback, object?, bool)
+  fullName: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Dispatch(System.Threading.WaitCallback, object?, bool)
+  type: Method
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Implementation
+  summary: Queues a work item.
+  example: []
+  syntax:
+    content: void Dispatch(WaitCallback workItem, object? state, bool flowExecutionContext = true)
+    parameters:
+    - id: workItem
+      type: System.Threading.WaitCallback
+      description: The delegate to execute.
+    - id: state
+      type: System.Object
+      description: The object passed to <code class="paramref">workItem</code>.
+    - id: flowExecutionContext
+      type: System.Boolean
+      description: >-
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to flow the execution context of the calling thread to the work item,
+
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to execute the work item without it.
+    content.vb: Sub Dispatch(workItem As WaitCallback, state As Object, flowExecutionContext As Boolean = True)
+  overload: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Dispatch*
+  nameWithType.vb: IWorkItemDispatcher.Dispatch(WaitCallback, Object, Boolean)
+  fullName.vb: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher.Dispatch(System.Threading.WaitCallback, Object, Boolean)
+  name.vb: Dispatch(WaitCallback, Object, Boolean)

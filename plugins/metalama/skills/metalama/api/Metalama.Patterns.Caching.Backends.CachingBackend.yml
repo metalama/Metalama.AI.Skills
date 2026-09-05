@@ -64,8 +64,10 @@ items:
   - Metalama.Patterns.Caching.Backends.CachingBackend.SetItemCore(System.String,Metalama.Patterns.Caching.Implementation.CacheItem)
   - Metalama.Patterns.Caching.Backends.CachingBackend.Status
   - Metalama.Patterns.Caching.Backends.CachingBackend.SupportedFeatures
+  - Metalama.Patterns.Caching.Backends.CachingBackend.TimeProvider
   - Metalama.Patterns.Caching.Backends.CachingBackend.ToString
   - Metalama.Patterns.Caching.Backends.CachingBackend.WhenBackgroundTasksCompleted(System.Threading.CancellationToken)
+  - Metalama.Patterns.Caching.Backends.CachingBackend.WorkItemDispatcher
   langs:
   - csharp
   - vb
@@ -1638,6 +1640,60 @@ items:
       type: System.IServiceProvider
     content.vb: Public ReadOnly Property ServiceProvider As IServiceProvider
   overload: Metalama.Patterns.Caching.Backends.CachingBackend.ServiceProvider*
+- uid: Metalama.Patterns.Caching.Backends.CachingBackend.TimeProvider
+  commentId: P:Metalama.Patterns.Caching.Backends.CachingBackend.TimeProvider
+  id: TimeProvider
+  parent: Metalama.Patterns.Caching.Backends.CachingBackend
+  langs:
+  - csharp
+  - vb
+  name: TimeProvider
+  nameWithType: CachingBackend.TimeProvider
+  fullName: Metalama.Patterns.Caching.Backends.CachingBackend.TimeProvider
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Backends
+  summary: >-
+    Gets the clock of the backend. It is <xref href="System.TimeProvider.System" data-throw-if-not-resolved="false"></xref> unless the service provider
+
+    supplies another <xref href="System.TimeProvider" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected TimeProvider TimeProvider { get; }
+    parameters: []
+    return:
+      type: System.TimeProvider
+    content.vb: Protected ReadOnly Property TimeProvider As TimeProvider
+  overload: Metalama.Patterns.Caching.Backends.CachingBackend.TimeProvider*
+- uid: Metalama.Patterns.Caching.Backends.CachingBackend.WorkItemDispatcher
+  commentId: P:Metalama.Patterns.Caching.Backends.CachingBackend.WorkItemDispatcher
+  id: WorkItemDispatcher
+  parent: Metalama.Patterns.Caching.Backends.CachingBackend
+  langs:
+  - csharp
+  - vb
+  name: WorkItemDispatcher
+  nameWithType: CachingBackend.WorkItemDispatcher
+  fullName: Metalama.Patterns.Caching.Backends.CachingBackend.WorkItemDispatcher
+  type: Property
+  assemblies:
+  - Metalama.Patterns.Caching.Backend
+  namespace: Metalama.Patterns.Caching.Backends
+  summary: >-
+    Gets the object that dispatches the work items of the backend, in particular the events that the backend
+
+    raises. It is <xref href="Metalama.Patterns.Caching.Implementation.ThreadPoolWorkItemDispatcher" data-throw-if-not-resolved="false"></xref> unless the service provider supplies another
+
+    <xref href="Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected IWorkItemDispatcher WorkItemDispatcher { get; }
+    parameters: []
+    return:
+      type: Metalama.Patterns.Caching.Implementation.IWorkItemDispatcher
+    content.vb: Protected ReadOnly Property WorkItemDispatcher As IWorkItemDispatcher
+  overload: Metalama.Patterns.Caching.Backends.CachingBackend.WorkItemDispatcher*
 - uid: Metalama.Patterns.Caching.Backends.CachingBackend.Configuration
   commentId: P:Metalama.Patterns.Caching.Backends.CachingBackend.Configuration
   id: Configuration
