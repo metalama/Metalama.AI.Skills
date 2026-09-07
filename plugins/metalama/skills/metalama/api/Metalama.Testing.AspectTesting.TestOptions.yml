@@ -8,6 +8,7 @@ items:
   - Metalama.Testing.AspectTesting.TestOptions.#ctor
   - Metalama.Testing.AspectTesting.TestOptions.AddHtmlTitles
   - Metalama.Testing.AspectTesting.TestOptions.AllowCompileTimeDynamicCode
+  - Metalama.Testing.AspectTesting.TestOptions.AllowPreviewLanguageFeatures
   - Metalama.Testing.AspectTesting.TestOptions.AppliedCodeFixIndex
   - Metalama.Testing.AspectTesting.TestOptions.CheckMemoryLeaks
   - Metalama.Testing.AspectTesting.TestOptions.ClearIgnoredDiagnostics
@@ -1014,6 +1015,38 @@ items:
       type: System.Collections.Immutable.ImmutableDictionary{System.String,System.String}
     content.vb: Public Property LanguageFeatures As ImmutableDictionary(Of String, String)
   overload: Metalama.Testing.AspectTesting.TestOptions.LanguageFeatures*
+- uid: Metalama.Testing.AspectTesting.TestOptions.AllowPreviewLanguageFeatures
+  commentId: P:Metalama.Testing.AspectTesting.TestOptions.AllowPreviewLanguageFeatures
+  id: AllowPreviewLanguageFeatures
+  parent: Metalama.Testing.AspectTesting.TestOptions
+  langs:
+  - csharp
+  - vb
+  name: AllowPreviewLanguageFeatures
+  nameWithType: TestOptions.AllowPreviewLanguageFeatures
+  fullName: Metalama.Testing.AspectTesting.TestOptions.AllowPreviewLanguageFeatures
+  type: Property
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: >-
+    Gets or sets a value indicating whether the test may be compiled at the preview version of the C# language.
+
+    Without this option the pipeline reports <code>LAMA0051</code> for a test that requests the preview version, which
+
+    is the behavior of a user project that does not set the <code>MetalamaAllowPreviewLanguageFeatures</code> MSBuild
+
+    property. Combine it with <code>// @LanguageVersion(preview)</code>.
+
+    To enable this option in a test, add this comment to your test file: <code>// @AllowPreviewLanguageFeatures</code>.
+  example: []
+  syntax:
+    content: public bool? AllowPreviewLanguageFeatures { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property AllowPreviewLanguageFeatures As Boolean?
+  overload: Metalama.Testing.AspectTesting.TestOptions.AllowPreviewLanguageFeatures*
 - uid: Metalama.Testing.AspectTesting.TestOptions.RequireOrderedAspects
   commentId: P:Metalama.Testing.AspectTesting.TestOptions.RequireOrderedAspects
   id: RequireOrderedAspects

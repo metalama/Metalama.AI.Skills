@@ -222,13 +222,17 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
   summary: Gets the expression to use for pulling the dependency when <xref href="Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)" data-throw-if-not-resolved="false"></xref> is used.
+  remarks: >-
+    Durable, because a pull action is held by the pull strategy of an aspect, which must survive an edit. Call
+
+    <xref href="Metalama.Framework.Code.IDurableExpression.ToExpression(Metalama.Framework.Code.ICompilation)" data-throw-if-not-resolved="false"></xref> with the compilation in which the expression is to be used.
   example: []
   syntax:
-    content: public IExpression? Expression { get; }
+    content: public IDurableExpression? Expression { get; }
     parameters: []
     return:
-      type: Metalama.Framework.Code.IExpression
-    content.vb: Public ReadOnly Property Expression As IExpression
+      type: Metalama.Framework.Code.IDurableExpression
+    content.vb: Public ReadOnly Property Expression As IDurableExpression
   overload: Metalama.Framework.Advising.PullAction.Expression*
 - uid: Metalama.Framework.Advising.PullAction.None
   commentId: P:Metalama.Framework.Advising.PullAction.None
