@@ -7,7 +7,7 @@ description: Complete Metalama documentation for aspect-oriented programming and
 
 This skill contains the complete Metalama documentation including conceptual guides, API reference, and sample code.
 
-This skill pertains to Metalama 2027.0.
+This skill pertains to Metalama 2026.1.
 
 ## Before you write code (read this first)
 
@@ -34,7 +34,7 @@ As a last resort, grep the manifest and read the listed `.yml` file:
 grep -i "OverrideMethodAspect" api/.manifest      # find the YML file
 ```
 
-If the user's project references a **different** Metalama version than this skill, prefer the actual referenced version. Its XML docs ship in the NuGet cache (e.g. `~/.nuget/packages/metalama.framework/2027.0/lib/**/*.xml`).
+If the user's project references a **different** Metalama version than this skill, prefer the actual referenced version. Its XML docs ship in the NuGet cache (e.g. `~/.nuget/packages/metalama.framework/2026.1/lib/**/*.xml`).
 
 ### 2. See the generated code — you have no IDE diff preview
 
