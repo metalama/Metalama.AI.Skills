@@ -7,6 +7,7 @@ items:
   children:
   - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.AddTypeParameter(System.String)
   - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.BaseType
+  - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed
   - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsPartial
   langs:
   - csharp
@@ -74,9 +75,13 @@ items:
   - Metalama.Framework.Code.INamedType.StaticConstructor
   - Metalama.Framework.Code.INamedType.Finalizer
   - Metalama.Framework.Code.INamedType.ExtensionBlocks
+  - Metalama.Framework.Code.INamedType.Facets
   - Metalama.Framework.Code.INamedType.IsReadOnly
   - Metalama.Framework.Code.INamedType.IsRef
   - Metalama.Framework.Code.INamedType.IsRecord
+  - Metalama.Framework.Code.INamedType.IsDelegate
+  - Metalama.Framework.Code.INamedType.IsEnum
+  - Metalama.Framework.Code.INamedType.IsUnion
   - Metalama.Framework.Code.INamedType.TypeDefinition
   - Metalama.Framework.Code.INamedType.Definition
   - Metalama.Framework.Code.INamedType.UnderlyingType
@@ -237,6 +242,48 @@ items:
       type: System.Boolean
     content.vb: Property IsPartial As Boolean
   overload: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsPartial*
+- uid: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed
+  commentId: P:Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed
+  id: IsClosed
+  parent: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder
+  langs:
+  - csharp
+  - vb
+  name: IsClosed
+  nameWithType: INamedTypeBuilder.IsClosed
+  fullName: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.DeclarationBuilders
+  summary: Gets or sets a value indicating whether the type is declared with the <code>closed</code> modifier of C# 15.
+  remarks: >-
+    <p>
+        The language allows the <code>closed</code> modifier on a class only, and forbids it on a sealed class and on a
+        static class. The setter throws an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref> when one of these restrictions is
+        not met.
+        </p>
+    <p>
+        A closed class is implicitly abstract, so <xref href="Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.IsAbstract" data-throw-if-not-resolved="false"></xref> reports
+        <code>true</code> as soon as this property is set, and the generated declaration carries the <code>closed</code> keyword
+        instead of the <code>abstract</code> keyword. Setting <xref href="Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.IsAbstract" data-throw-if-not-resolved="false"></xref> to
+        <code>false</code> on a closed type throws an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref>.
+        </p>
+    <p>
+        Metalama runs inside a host, which is the compiler during a build and the integrated development environment
+        at design time, and the host supplies the version of Roslyn that Metalama uses. Setting this property to
+        <code>true</code> throws an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref> when that version does not offer C# 15, because
+        the <code>closed</code> keyword cannot be generated then. A host that supplies such a version does not support the
+        language feature at all, so it cannot compile a closed class either.
+        </p>
+  example: []
+  syntax:
+    content: bool IsClosed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsClosed As Boolean
+  overload: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed*
 - uid: Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.BaseType
   commentId: P:Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.BaseType
   id: BaseType

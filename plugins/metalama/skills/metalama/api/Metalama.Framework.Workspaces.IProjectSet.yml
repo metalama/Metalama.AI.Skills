@@ -73,13 +73,17 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: Returns a subset of the current project set based on a filter predicate.
+  example: []
   syntax:
     content: IProjectSet GetSubset(Predicate<Project> filter)
     parameters:
     - id: filter
       type: System.Predicate{Metalama.Framework.Workspaces.Project}
+      description: A predicate that determines whether a project should be included in the subset.
     return:
       type: Metalama.Framework.Workspaces.IProjectSet
+      description: A new <xref href="Metalama.Framework.Workspaces.IProjectSet" data-throw-if-not-resolved="false"></xref> containing only the projects that match the filter.
     content.vb: Function GetSubset(filter As Predicate(Of Project)) As IProjectSet
   overload: Metalama.Framework.Workspaces.IProjectSet.GetSubset*
   nameWithType.vb: IProjectSet.GetSubset(Predicate(Of Project))
@@ -99,19 +103,26 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: Gets a declaration in the current project set by its serialized identifier.
+  example: []
   syntax:
     content: IDeclaration? GetDeclaration(string projectName, string targetFramework, string declarationId, bool metalamaOutput)
     parameters:
     - id: projectName
       type: System.String
+      description: The name of the project.
     - id: targetFramework
       type: System.String
+      description: The target framework, or an empty string.
     - id: declarationId
       type: System.String
+      description: The serialized identifier of the declaration, obtained with <xref href="Metalama.Framework.Code.IRef.ToSerializableId" data-throw-if-not-resolved="false"></xref>.
     - id: metalamaOutput
       type: System.Boolean
+      description: Indicates whether to look for the declaration in Metalama's transformed output (<code>true</code>) or in the source code (<code>false</code>).
     return:
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration, or <code>null</code> if not found.
     content.vb: Function GetDeclaration(projectName As String, targetFramework As String, declarationId As String, metalamaOutput As Boolean) As IDeclaration
   overload: Metalama.Framework.Workspaces.IProjectSet.GetDeclaration*
   nameWithType.vb: IProjectSet.GetDeclaration(String, String, String, Boolean)

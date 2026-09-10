@@ -119,6 +119,8 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Determines whether a <xref href="Metalama.Framework.Code.DeclarationKind" data-throw-if-not-resolved="false"></xref> represents an <xref href="Metalama.Framework.Code.IMember" data-throw-if-not-resolved="false"></xref> (event, field, finalizer, property, indexer, constructor, operator, or method).
+  example: []
   syntax:
     content: public static bool get_IsMember(DeclarationKind kind)
     parameters:
@@ -126,6 +128,7 @@ items:
       type: Metalama.Framework.Code.DeclarationKind
     return:
       type: System.Boolean
+      description: <code>true</code> if the declaration kind represents a member; otherwise, <code>false</code>.
     content.vb: Public Shared Function get_IsMember(kind As DeclarationKind) As Boolean
   overload: Metalama.Framework.Code.DeclarationExtensions.get_IsMember*
 - uid: Metalama.Framework.Code.DeclarationExtensions.get_IsMemberOrNamedType(Metalama.Framework.Code.DeclarationKind)
@@ -142,6 +145,8 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Determines whether a <xref href="Metalama.Framework.Code.DeclarationKind" data-throw-if-not-resolved="false"></xref> represents an <xref href="Metalama.Framework.Code.IMember" data-throw-if-not-resolved="false"></xref> or a <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static bool get_IsMemberOrNamedType(DeclarationKind kind)
     parameters:
@@ -149,6 +154,7 @@ items:
       type: Metalama.Framework.Code.DeclarationKind
     return:
       type: System.Boolean
+      description: <code>true</code> if the declaration kind represents a member or named type; otherwise, <code>false</code>.
     content.vb: Public Shared Function get_IsMemberOrNamedType(kind As DeclarationKind) As Boolean
   overload: Metalama.Framework.Code.DeclarationExtensions.get_IsMemberOrNamedType*
 - uid: Metalama.Framework.Code.DeclarationExtensions.get_IsType(Metalama.Framework.Code.DeclarationKind)
@@ -165,6 +171,8 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Determines whether a <xref href="Metalama.Framework.Code.DeclarationKind" data-throw-if-not-resolved="false"></xref> represents an <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static bool get_IsType(DeclarationKind kind)
     parameters:
@@ -172,6 +180,7 @@ items:
       type: Metalama.Framework.Code.DeclarationKind
     return:
       type: System.Boolean
+      description: <code>true</code> if the declaration kind represents a type; otherwise, <code>false</code>.
     content.vb: Public Shared Function get_IsType(kind As DeclarationKind) As Boolean
   overload: Metalama.Framework.Code.DeclarationExtensions.get_IsType*
 - uid: Metalama.Framework.Code.DeclarationExtensions.get_IsAssembly(Metalama.Framework.Code.DeclarationKind)
@@ -188,6 +197,11 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets a value indicating whether the declaration kind represents an assembly
+
+    (compilation or assembly reference).
+  example: []
   syntax:
     content: public static bool get_IsAssembly(DeclarationKind kind)
     parameters:
@@ -211,6 +225,11 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets a value indicating whether the declaration kind represents a named declaration
+
+    (method, property, field, event, parameter, type parameter, named type, or namespace).
+  example: []
   syntax:
     content: public static bool get_IsNamedDeclaration(DeclarationKind kind)
     parameters:
@@ -235,13 +254,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets all containing ancestors, i.e. <code>declaration.ContainingDeclaration</code>, <code>declaration.ContainingDeclaration.ContainingDeclaration</code>,
+
+    <code>declaration.ContainingDeclaration.ContainingDeclaration.ContainingDeclaration</code>...
+  example: []
   syntax:
     content: public static IEnumerable<IDeclaration> ContainingAncestors(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration whose ancestors to retrieve.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclaration}
+      description: An enumerable of all containing ancestors, from the immediate parent to the root.
     content.vb: Public Shared Function ContainingAncestors(declaration As IDeclaration) As IEnumerable(Of IDeclaration)
   overload: Metalama.Framework.Code.DeclarationExtensions.ContainingAncestors*
 - uid: Metalama.Framework.Code.DeclarationExtensions.ContainingAncestorsAndSelf(Metalama.Framework.Code.IDeclaration)
@@ -259,13 +285,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets all containing ancestors including the current declaration, i.e. <code>declaration</code>, <code>declaration.ContainingDeclaration</code>, <code>declaration.ContainingDeclaration.ContainingDeclaration</code>,
+
+    <code>declaration.ContainingDeclaration.ContainingDeclaration.ContainingDeclaration</code>...
+  example: []
   syntax:
     content: public static IEnumerable<IDeclaration> ContainingAncestorsAndSelf(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration whose ancestors (and itself) to retrieve.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclaration}
+      description: An enumerable starting with the declaration itself, followed by all containing ancestors.
     content.vb: Public Shared Function ContainingAncestorsAndSelf(declaration As IDeclaration) As IEnumerable(Of IDeclaration)
   overload: Metalama.Framework.Code.DeclarationExtensions.ContainingAncestorsAndSelf*
 - uid: Metalama.Framework.Code.DeclarationExtensions.Enhancements``1(``0)
@@ -283,15 +316,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Gets an object that gives access to the aspects, options and annotations on the current declaration.
+  example: []
   syntax:
     content: 'public static DeclarationEnhancements<T> Enhancements<T>(this T declaration) where T : class, IDeclaration'
     parameters:
     - id: declaration
       type: '{T}'
+      description: The declaration.
     typeParameters:
     - id: T
+      description: The type of the declaration.
     return:
       type: Metalama.Framework.Code.DeclarationEnhancements{{T}}
+      description: A <xref href="Metalama.Framework.Code.DeclarationEnhancements%601" data-throw-if-not-resolved="false"></xref> object for accessing aspects, options, and annotations.
     content.vb: Public Shared Function Enhancements(Of T As {Class, IDeclaration})(declaration As T) As DeclarationEnhancements(Of T)
   overload: Metalama.Framework.Code.DeclarationExtensions.Enhancements*
   nameWithType.vb: DeclarationExtensions.Enhancements(Of T)(T)
@@ -312,13 +350,17 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Gets the declaring <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> of a given declaration if the declaration is not an <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>, or the <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> itself if the given declaration is itself an <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static INamedType? GetClosestNamedType(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration.
     return:
       type: Metalama.Framework.Code.INamedType
+      description: The closest named type, or <code>null</code> if none is found.
     content.vb: Public Shared Function GetClosestNamedType(declaration As IDeclaration) As INamedType
   overload: Metalama.Framework.Code.DeclarationExtensions.GetClosestNamedType*
 - uid: Metalama.Framework.Code.DeclarationExtensions.GetClosestMemberOrNamedType(Metalama.Framework.Code.IDeclaration)
@@ -336,13 +378,17 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Gets the declaring <xref href="Metalama.Framework.Code.IMemberOrNamedType" data-throw-if-not-resolved="false"></xref> of a given declaration if the declaration if not an <xref href="Metalama.Framework.Code.IMemberOrNamedType" data-throw-if-not-resolved="false"></xref>, or the <xref href="Metalama.Framework.Code.IMemberOrNamedType" data-throw-if-not-resolved="false"></xref> itself if the given declaration is itself an <xref href="Metalama.Framework.Code.IMemberOrNamedType" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static IMemberOrNamedType? GetClosestMemberOrNamedType(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration.
     return:
       type: Metalama.Framework.Code.IMemberOrNamedType
+      description: The closest member or named type, or <code>null</code> if none is found.
     content.vb: Public Shared Function GetClosestMemberOrNamedType(declaration As IDeclaration) As IMemberOrNamedType
   overload: Metalama.Framework.Code.DeclarationExtensions.GetClosestMemberOrNamedType*
 - uid: Metalama.Framework.Code.DeclarationExtensions.GetMembers(Metalama.Framework.Code.INamedType,Metalama.Framework.Code.DeclarationKind)
@@ -360,13 +406,19 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Gets the collection of members of a specific <xref href="Metalama.Framework.Code.DeclarationKind" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static IMemberCollection<IMember> GetMembers(this INamedType namedType, DeclarationKind kind)
     parameters:
     - id: namedType
       type: Metalama.Framework.Code.INamedType
+      description: A named type.
     - id: kind
       type: Metalama.Framework.Code.DeclarationKind
+      description: >-
+        <xref href="Metalama.Framework.Code.DeclarationKind.Method" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.DeclarationKind.Field" data-throw-if-not-resolved="false"></xref>,
+            <xref href="Metalama.Framework.Code.DeclarationKind.Property" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Framework.Code.DeclarationKind.Event" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Code.DeclarationKind.Constructor" data-throw-if-not-resolved="false"></xref>.
     return:
       type: Metalama.Framework.Code.Collections.IMemberCollection{Metalama.Framework.Code.IMember}
     content.vb: Public Shared Function GetMembers(namedType As INamedType, kind As DeclarationKind) As IMemberCollection(Of IMember)
@@ -386,13 +438,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the topmost type of a nested type, i.e. a type that is not contained in any other type. If the given type is not a nested type,
+
+    returns the given type itself.
+  example: []
   syntax:
     content: public static INamedType? GetTopmostNamedType(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration.
     return:
       type: Metalama.Framework.Code.INamedType
+      description: The topmost named type in the nesting hierarchy, or <code>null</code> if none is found.
     content.vb: Public Shared Function GetTopmostNamedType(declaration As IDeclaration) As INamedType
   overload: Metalama.Framework.Code.DeclarationExtensions.GetTopmostNamedType*
 - uid: Metalama.Framework.Code.DeclarationExtensions.GetNamespace(Metalama.Framework.Code.IDeclaration)
@@ -410,13 +469,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the namespace of a given declaration, i.e. the namespace itself if the given declaration is a namespace,
+
+    the closest containing namespace, or the global namespace if an <xref href="Metalama.Framework.Code.ICompilation" data-throw-if-not-resolved="false"></xref> is given.
+  example: []
   syntax:
     content: public static INamespace? GetNamespace(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration.
     return:
       type: Metalama.Framework.Code.INamespace
+      description: The namespace, or <code>null</code> if none is found.
     content.vb: Public Shared Function GetNamespace(declaration As IDeclaration) As INamespace
   overload: Metalama.Framework.Code.DeclarationExtensions.GetNamespace*
 - uid: Metalama.Framework.Code.DeclarationExtensions.ForCompilation``1(``0,Metalama.Framework.Code.ICompilation)
@@ -434,17 +500,23 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Gets a representation of the current declaration in a different version of the compilation.
+  example: []
   syntax:
     content: 'public static T? ForCompilation<T>(this T? compilationElement, ICompilation compilation) where T : class, ICompilationElement'
     parameters:
     - id: compilationElement
       type: '{T}'
+      description: The compilation element to translate.
     - id: compilation
       type: Metalama.Framework.Code.ICompilation
+      description: The target compilation.
     typeParameters:
     - id: T
+      description: The type of compilation element.
     return:
       type: '{T}'
+      description: The compilation element in the context of the target compilation.
       attributes:
       - type: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute
         ctor: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)
@@ -453,6 +525,10 @@ items:
           value: compilationElement
     content.vb: Public Shared Function ForCompilation(Of T As {Class, ICompilationElement})(compilationElement As T, compilation As ICompilation) As T
   overload: Metalama.Framework.Code.DeclarationExtensions.ForCompilation*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The declaration does not exist in the requested compilation. Use <xref href="Metalama.Framework.Code.DeclarationExtensions.TryForCompilation%60%601(%60%600%2cMetalama.Framework.Code.ICompilation%2c%60%600%40)" data-throw-if-not-resolved="false"></xref> to avoid this exception.
   nameWithType.vb: DeclarationExtensions.ForCompilation(Of T)(T, ICompilation)
   fullName.vb: Metalama.Framework.Code.DeclarationExtensions.ForCompilation(Of T)(T, Metalama.Framework.Code.ICompilation)
   name.vb: ForCompilation(Of T)(T, ICompilation)
@@ -471,15 +547,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Tries to get a representation of the current declaration in a different version of the compilation.
+  example: []
   syntax:
     content: 'public static bool TryForCompilation<T>(this T? compilationElement, ICompilation compilation, out T? translated) where T : class, ICompilationElement'
     parameters:
     - id: compilationElement
       type: '{T}'
+      description: The compilation element to translate.
     - id: compilation
       type: Metalama.Framework.Code.ICompilation
+      description: The target compilation.
     - id: translated
       type: '{T}'
+      description: When this method returns <code>true</code>, contains the translated compilation element; otherwise, <code>null</code>.
       attributes:
       - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
         ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
@@ -488,8 +569,10 @@ items:
           value: true
     typeParameters:
     - id: T
+      description: The type of compilation element.
     return:
       type: System.Boolean
+      description: <code>true</code> if the compilation element exists in the target compilation; otherwise, <code>false</code>.
     content.vb: Public Shared Function TryForCompilation(Of T As {Class, ICompilationElement})(compilationElement As T, compilation As ICompilation, translated As T) As Boolean
   overload: Metalama.Framework.Code.DeclarationExtensions.TryForCompilation*
   nameWithType.vb: DeclarationExtensions.TryForCompilation(Of T)(T, ICompilation, T)
@@ -510,13 +593,17 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Determines whether a constructor is a compiler-generated record copy constructor.
+  example: []
   syntax:
     content: public static bool IsRecordCopyConstructor(this IConstructor constructor)
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor to check.
     return:
       type: System.Boolean
+      description: <code>true</code> if the constructor is a record copy constructor; otherwise, <code>false</code>.
     content.vb: Public Shared Function IsRecordCopyConstructor(constructor As IConstructor) As Boolean
   overload: Metalama.Framework.Code.DeclarationExtensions.IsRecordCopyConstructor*
 - uid: Metalama.Framework.Code.DeclarationExtensions.ContainedChildren(Metalama.Framework.Code.IDeclaration)
@@ -534,13 +621,18 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Gets the declarations (namespaces, types, methods, properties, fields, constructors, events, indexers) directly contained in the given declaration.
+  remarks: The method does not descent into accessors, custom attributes, parameters, or type parameters.
+  example: []
   syntax:
     content: public static IEnumerable<IDeclaration> ContainedChildren(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration whose children to retrieve.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclaration}
+      description: An enumerable of all directly contained declarations.
     content.vb: Public Shared Function ContainedChildren(declaration As IDeclaration) As IEnumerable(Of IDeclaration)
   overload: Metalama.Framework.Code.DeclarationExtensions.ContainedChildren*
 - uid: Metalama.Framework.Code.DeclarationExtensions.ContainedDescendants(Metalama.Framework.Code.IDeclaration)
@@ -558,13 +650,21 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the declarations (namespaces, types, methods, properties, fields, constructors, events, indexers) in the given declaration
+
+    and in any child of the declaration.
+  remarks: The method does not descent into accessors, custom attributes, parameters, or type parameters.
+  example: []
   syntax:
     content: public static IEnumerable<IDeclaration> ContainedDescendants(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration whose descendants to retrieve.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclaration}
+      description: An enumerable of all descendant declarations, recursively.
     content.vb: Public Shared Function ContainedDescendants(declaration As IDeclaration) As IEnumerable(Of IDeclaration)
   overload: Metalama.Framework.Code.DeclarationExtensions.ContainedDescendants*
 - uid: Metalama.Framework.Code.DeclarationExtensions.ContainedDescendantsAndSelf(Metalama.Framework.Code.IDeclaration)
@@ -582,13 +682,21 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the declarations (namespaces, types, methods, properties, fields, constructors, events, indexers) in the given declaration
+
+    and in any child of the declaration, plus the given declaration.
+  remarks: The method does not descent into accessors, custom attributes, parameters, or type parameters.
+  example: []
   syntax:
     content: public static IEnumerable<IDeclaration> ContainedDescendantsAndSelf(this IDeclaration declaration)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
+      description: The declaration whose descendants (and itself) to retrieve.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclaration}
+      description: An enumerable starting with the declaration itself, followed by all descendant declarations, recursively.
     content.vb: Public Shared Function ContainedDescendantsAndSelf(declaration As IDeclaration) As IEnumerable(Of IDeclaration)
   overload: Metalama.Framework.Code.DeclarationExtensions.ContainedDescendantsAndSelf*
 - uid: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField(Metalama.Framework.Code.IField)
@@ -606,13 +714,21 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: Determines whether the specified field is a compiler-generated backing field for an auto-property.
+  remarks: >-
+    Compiler-generated backing fields follow the naming pattern <code>&lt;PropertyName&gt;k__BackingField</code>.
+
+    This method efficiently checks only the field name pattern.
+  example: []
   syntax:
     content: public static bool IsAutoPropertyBackingField(this IField field)
     parameters:
     - id: field
       type: Metalama.Framework.Code.IField
+      description: The field to check.
     return:
       type: System.Boolean
+      description: <code>true</code> if the field is an auto-property backing field; otherwise, <code>false</code>.
     content.vb: Public Shared Function IsAutoPropertyBackingField(field As IField) As Boolean
   overload: Metalama.Framework.Code.DeclarationExtensions.IsAutoPropertyBackingField*
 - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IMember)
@@ -630,13 +746,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the effective accessibility of a member, taking into account the accessibility of all containing types.
+
+    For example, a <code>public</code> method inside an <code>internal</code> class has an effective accessibility of <code>internal</code>.
+  example: []
   syntax:
     content: public static Accessibility GetEffectiveAccessibility(this IMember member)
     parameters:
     - id: member
       type: Metalama.Framework.Code.IMember
+      description: The member.
     return:
       type: Metalama.Framework.Code.Accessibility
+      description: The effective (minimum) accessibility considering all containing types.
     content.vb: Public Shared Function GetEffectiveAccessibility(member As IMember) As Accessibility
   overload: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility*
 - uid: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility(Metalama.Framework.Code.IType)
@@ -654,13 +777,20 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the effective accessibility of a type, taking into account the accessibility of containing types,
+
+    element types (for arrays and pointers), and type arguments (for generic types).
+  example: []
   syntax:
     content: public static Accessibility GetEffectiveAccessibility(this IType type)
     parameters:
     - id: type
       type: Metalama.Framework.Code.IType
+      description: The type.
     return:
       type: Metalama.Framework.Code.Accessibility
+      description: The minimum effective accessibility across all component types.
     content.vb: Public Shared Function GetEffectiveAccessibility(type As IType) As Accessibility
   overload: Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility*
 - uid: Metalama.Framework.Code.DeclarationExtensions.WithDeterministicOrder``1(System.Collections.Generic.IEnumerable{``0})
@@ -678,15 +808,29 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Sorts a sequence of <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref> in a deterministic order. The specific order is an
+
+    implementation detail; it is guaranteed to be stable across builds but is not part of the public
+
+    contract. Sort key: <xref href="Metalama.Framework.Code.IDeclaration.Depth" data-throw-if-not-resolved="false"></xref>, then containing declaration (recursively),
+
+    then name, then signature (for overloadable members). Useful in aspects to make generated code
+
+    independent of source declaration order.
+  example: []
   syntax:
     content: 'public static IOrderedEnumerable<T> WithDeterministicOrder<T>(this IEnumerable<T> source) where T : class, IDeclaration'
     parameters:
     - id: source
       type: System.Collections.Generic.IEnumerable{{T}}
+      description: The sequence to sort.
     typeParameters:
     - id: T
+      description: The element type, which must implement <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.Linq.IOrderedEnumerable{{T}}
+      description: A new sequence sorted in deterministic order.
     content.vb: Public Shared Function WithDeterministicOrder(Of T As {Class, IDeclaration})(source As IEnumerable(Of T)) As IOrderedEnumerable(Of T)
   overload: Metalama.Framework.Code.DeclarationExtensions.WithDeterministicOrder*
   nameWithType.vb: DeclarationExtensions.WithDeterministicOrder(Of T)(IEnumerable(Of T))

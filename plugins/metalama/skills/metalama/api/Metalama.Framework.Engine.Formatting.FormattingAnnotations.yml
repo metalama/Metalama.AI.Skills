@@ -106,15 +106,25 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
+  summary: >-
+    Annotates a syntax node with an annotation meaning that the syntax node and all its children are generated.
+
+    The annotation is typically obtained from <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation" data-throw-if-not-resolved="false"></xref>, but it can also
+
+    be created from <xref href="Metalama.Compiler.MetalamaCompilerAnnotations.CreateGeneratedCodeAnnotation(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static SyntaxToken WithGeneratedCodeAnnotation(this SyntaxToken node, SyntaxAnnotation annotation)
     parameters:
     - id: node
       type: Microsoft.CodeAnalysis.SyntaxToken
+      description: The input node.
     - id: annotation
       type: Microsoft.CodeAnalysis.SyntaxAnnotation
+      description: A <xref href="Microsoft.CodeAnalysis.SyntaxAnnotation" data-throw-if-not-resolved="false"></xref> of kind <xref href="Metalama.Compiler.MetalamaCompilerAnnotations.GeneratedCodeAnnotationKind" data-throw-if-not-resolved="false"></xref>.
     return:
       type: Microsoft.CodeAnalysis.SyntaxToken
+      description: The annotated node.
     content.vb: Public Shared Function WithGeneratedCodeAnnotation(node As SyntaxToken, annotation As SyntaxAnnotation) As SyntaxToken
   overload: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation*
 - uid: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation``1(``0,Microsoft.CodeAnalysis.SyntaxAnnotation)
@@ -132,17 +142,27 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
+  summary: >-
+    Annotates a syntax node with an annotation meaning that the syntax node and all its children are generated, except whose marked with <xref href="Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithSourceCodeAnnotation%60%601(%60%600)" data-throw-if-not-resolved="false"></xref>.
+
+    The annotation is typically obtained from <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation" data-throw-if-not-resolved="false"></xref>, but it can also
+
+    be created from <xref href="Metalama.Compiler.MetalamaCompilerAnnotations.CreateGeneratedCodeAnnotation(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: 'public static T? WithGeneratedCodeAnnotation<T>(this T? node, SyntaxAnnotation annotation) where T : SyntaxNode'
     parameters:
     - id: node
       type: '{T}'
+      description: The input node.
     - id: annotation
       type: Microsoft.CodeAnalysis.SyntaxAnnotation
+      description: A <xref href="Microsoft.CodeAnalysis.SyntaxAnnotation" data-throw-if-not-resolved="false"></xref> of kind <xref href="Metalama.Compiler.MetalamaCompilerAnnotations.GeneratedCodeAnnotationKind" data-throw-if-not-resolved="false"></xref>.
     typeParameters:
     - id: T
     return:
       type: '{T}'
+      description: The annotated node.
     content.vb: Public Shared Function WithGeneratedCodeAnnotation(Of T As SyntaxNode)(node As T, annotation As SyntaxAnnotation) As T
   overload: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation*
   nameWithType.vb: FormattingAnnotations.WithGeneratedCodeAnnotation(Of T)(T, SyntaxAnnotation)
@@ -163,15 +183,20 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
+  summary: Annotates a syntax trivia with an annotation meaning that it is generated code.
+  example: []
   syntax:
     content: public static SyntaxTrivia WithGeneratedCodeAnnotation(this in SyntaxTrivia trivia, SyntaxAnnotation annotation)
     parameters:
     - id: trivia
       type: Microsoft.CodeAnalysis.SyntaxTrivia
+      description: The trivia to annotate.
     - id: annotation
       type: Microsoft.CodeAnalysis.SyntaxAnnotation
+      description: The generated code annotation, typically from <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.GeneratedCodeAnnotation" data-throw-if-not-resolved="false"></xref>.
     return:
       type: Microsoft.CodeAnalysis.SyntaxTrivia
+      description: The annotated trivia.
     content.vb: Public Shared Function WithGeneratedCodeAnnotation(trivia As SyntaxTrivia, annotation As SyntaxAnnotation) As SyntaxTrivia
   overload: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithGeneratedCodeAnnotation*
   nameWithType.vb: FormattingAnnotations.WithGeneratedCodeAnnotation(SyntaxTrivia, SyntaxAnnotation)
@@ -264,17 +289,23 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
+  summary: Copies the formatting annotations (source or generated code) from one node to another.
+  example: []
   syntax:
     content: 'public static T WithFormattingAnnotationsFrom<T>(this T node, SyntaxNode source) where T : SyntaxNode'
     parameters:
     - id: node
       type: '{T}'
+      description: The node to annotate.
     - id: source
       type: Microsoft.CodeAnalysis.SyntaxNode
+      description: The node to copy annotations from.
     typeParameters:
     - id: T
+      description: The type of syntax node.
     return:
       type: '{T}'
+      description: The target node with the same formatting annotations as the source node.
     content.vb: Public Shared Function WithFormattingAnnotationsFrom(Of T As SyntaxNode)(node As T, source As SyntaxNode) As T
   overload: Metalama.Framework.Engine.Formatting.FormattingAnnotations.WithFormattingAnnotationsFrom*
   nameWithType.vb: FormattingAnnotations.WithFormattingAnnotationsFrom(Of T)(T, SyntaxNode)

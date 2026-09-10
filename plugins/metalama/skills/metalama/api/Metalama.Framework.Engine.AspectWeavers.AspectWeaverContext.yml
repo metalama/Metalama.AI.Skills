@@ -122,13 +122,23 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Rewrites all syntax trees in the compilation using a shared <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    This method processes all syntax trees in the compilation in parallel and automatically updates the <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation" data-throw-if-not-resolved="false"></xref> property.
+
+    Use this when you need to transform code throughout the entire compilation, not just aspect targets.
+  example: []
   syntax:
     content: public Task RewriteSyntaxTreesAsync(CSharpSyntaxRewriter rewriter, CancellationToken cancellationToken = default)
     parameters:
     - id: rewriter
       type: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+      description: >-
+        A thread-safe <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter" data-throw-if-not-resolved="false"></xref>. Since syntax trees are processed in parallel,
+                    this rewriter must be safe to call concurrently from multiple threads.
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken" data-throw-if-not-resolved="false"></xref> to cancel the operation.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Public Function RewriteSyntaxTreesAsync(rewriter As CSharpSyntaxRewriter, cancellationToken As CancellationToken = Nothing) As Task
@@ -147,13 +157,24 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Rewrites all syntax trees in the compilation using a factory that creates a <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter" data-throw-if-not-resolved="false"></xref> per syntax tree.
+  remarks: >-
+    <p>This method processes all syntax trees in the compilation in parallel and automatically updates the <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation" data-throw-if-not-resolved="false"></xref> property.</p>
+
+    <p>Use this overload when each syntax tree requires its own rewriter state. For a shared rewriter, use <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.</p>
+  example: []
   syntax:
     content: public Task RewriteSyntaxTreesAsync(Func<SyntaxNode, CSharpSyntaxRewriter> rewriterFactory, CancellationToken cancellationToken = default)
     parameters:
     - id: rewriterFactory
       type: System.Func{Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter}
+      description: >-
+        A delegate that creates a <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter" data-throw-if-not-resolved="false"></xref> given the root <xref href="Microsoft.CodeAnalysis.SyntaxNode" data-throw-if-not-resolved="false"></xref> of a syntax tree.
+                    Called once for each <xref href="Microsoft.CodeAnalysis.SyntaxTree" data-throw-if-not-resolved="false"></xref> in the compilation.
+                    If the delegate returns the same rewriter instance for multiple trees, that instance must be thread-safe.
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken" data-throw-if-not-resolved="false"></xref> to cancel the operation.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Public Function RewriteSyntaxTreesAsync(rewriterFactory As Func(Of SyntaxNode, CSharpSyntaxRewriter), cancellationToken As CancellationToken = Nothing) As Task
@@ -175,13 +196,26 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Rewrites only the syntax nodes targeted by aspects, using a thread-safe <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>This method is more efficient than <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> when you only need to transform
+        declarations that have the aspect applied, because it only visits targeted declarations rather than the entire syntax tree.</p>
+    <p>The method processes syntax trees in parallel. Your rewriter must be thread-safe.</p>
+
+    <p>The <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation" data-throw-if-not-resolved="false"></xref> property is automatically updated after the transformation.</p>
+  example: []
   syntax:
     content: public Task RewriteAspectTargetsAsync(CSharpSyntaxRewriter rewriter, CancellationToken cancellationToken = default)
     parameters:
     - id: rewriter
       type: Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter
+      description: >-
+        A thread-safe <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter" data-throw-if-not-resolved="false"></xref> whose <code>Visit</code> method is invoked for each declaration
+                    that is the target of an aspect in <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances" data-throw-if-not-resolved="false"></xref>. For partial classes or methods, the <code>Visit</code> method is invoked
+                    for each partial declaration separately.
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A <xref href="Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.CancellationToken" data-throw-if-not-resolved="false"></xref> to cancel the operation.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Public Function RewriteAspectTargetsAsync(rewriter As CSharpSyntaxRewriter, cancellationToken As CancellationToken = Nothing) As Task
@@ -200,11 +234,14 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.AspectWeavers
+  summary: Reports a <xref href="Microsoft.CodeAnalysis.Diagnostic" data-throw-if-not-resolved="false"></xref> (error, warning, or informational message) to the compilation.
+  example: []
   syntax:
     content: public void ReportDiagnostic(Diagnostic diagnostic)
     parameters:
     - id: diagnostic
       type: Microsoft.CodeAnalysis.Diagnostic
+      description: The diagnostic to report. Create using <code>Diagnostic.Create()</code> with a <xref href="Microsoft.CodeAnalysis.DiagnosticDescriptor" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub ReportDiagnostic(diagnostic As Diagnostic)
   overload: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ReportDiagnostic*
 - uid: Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.ServiceProvider

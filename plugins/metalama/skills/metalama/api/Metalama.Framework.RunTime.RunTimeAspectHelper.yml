@@ -196,17 +196,28 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.RunTime
+  summary: >-
+    Evaluates an <xref href="System.Collections.Generic.IAsyncEnumerable%601" data-throw-if-not-resolved="false"></xref> and stores the result into an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref>. If the enumerable is already
+
+    an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref>, returns the input list.
+     The intended side effect of this method is to completely evaluate the input enumerable.
+  example: []
   syntax:
     content: public static ValueTask<AsyncEnumerableList<T>> BufferAsync<T>(this IAsyncEnumerable<T> enumerable, CancellationToken cancellationToken = default)
     parameters:
     - id: enumerable
       type: System.Collections.Generic.IAsyncEnumerable{{T}}
+      description: An enumerable.
     - id: cancellationToken
       type: System.Threading.CancellationToken
     typeParameters:
     - id: T
+      description: ''
     return:
       type: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.AsyncEnumerableList{{T}}}
+      description: >-
+        A <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> made from the items of <code class="paramref">enumerable</code>, or the <code class="paramref">enumerable</code> object itself
+                    it is already an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function BufferAsync(Of T)(enumerable As IAsyncEnumerable(Of T), cancellationToken As CancellationToken = Nothing) As ValueTask(Of AsyncEnumerableList(Of T))
   overload: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*
   nameWithType.vb: RunTimeAspectHelper.BufferAsync(Of T)(IAsyncEnumerable(Of T), CancellationToken)
@@ -227,17 +238,27 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.RunTime
+  summary: >-
+    Evaluates an <xref href="System.Collections.Generic.IAsyncEnumerator%601" data-throw-if-not-resolved="false"></xref>, stores the result into an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> and returns a resettable async enumerator for this object.
+
+    If the enumerator is already buffered, resets it and returns the same instance.
+
+    The intended side effect of this method is to completely evaluate the input enumerator.
+  example: []
   syntax:
     content: public static ValueTask<RunTimeAspectHelper.AsyncEnumerator<T>> BufferAsync<T>(this IAsyncEnumerator<T> enumerator, CancellationToken cancellationToken = default)
     parameters:
     - id: enumerator
       type: System.Collections.Generic.IAsyncEnumerator{{T}}
+      description: An enumerator.
     - id: cancellationToken
       type: System.Threading.CancellationToken
     typeParameters:
     - id: T
+      description: ''
     return:
       type: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator{{T}}}
+      description: An <xref href="Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator%601" data-throw-if-not-resolved="false"></xref> that supports <xref href="Metalama.Framework.RunTime.RunTimeAspectHelper.AsyncEnumerator%601.Reset" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function BufferAsync(Of T)(enumerator As IAsyncEnumerator(Of T), cancellationToken As CancellationToken = Nothing) As ValueTask(Of RunTimeAspectHelper.AsyncEnumerator(Of T))
   overload: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*
   nameWithType.vb: RunTimeAspectHelper.BufferAsync(Of T)(IAsyncEnumerator(Of T), CancellationToken)
@@ -258,17 +279,29 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.RunTime
+  summary: >-
+    Evaluates an <xref href="System.Collections.Generic.IAsyncEnumerator%601" data-throw-if-not-resolved="false"></xref>, stores the result into an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> and returns the list.
+
+    If the enumerator is already an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> enumerator, returns the parent <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref>.
+     The intended side effect of this method is to completely evaluate the input enumerator.
+  example: []
   syntax:
     content: public static ValueTask<AsyncEnumerableList<T>> BufferToListAsync<T>(this IAsyncEnumerator<T> enumerator, CancellationToken cancellationToken = default)
     parameters:
     - id: enumerator
       type: System.Collections.Generic.IAsyncEnumerator{{T}}
+      description: An enumerator.
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A cancellation token.
     typeParameters:
     - id: T
+      description: ''
     return:
       type: System.Threading.Tasks.ValueTask{Metalama.Framework.RunTime.AsyncEnumerableList{{T}}}
+      description: >-
+        An <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> made from the items of <code class="paramref">enumerator</code>, or the parent <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> object
+                    if the <code class="paramref">enumerator</code> object itself it is already an <xref href="Metalama.Framework.RunTime.AsyncEnumerableList%601" data-throw-if-not-resolved="false"></xref> enumerator.
     content.vb: Public Shared Function BufferToListAsync(Of T)(enumerator As IAsyncEnumerator(Of T), cancellationToken As CancellationToken = Nothing) As ValueTask(Of AsyncEnumerableList(Of T))
   overload: Metalama.Framework.RunTime.RunTimeAspectHelper.BufferToListAsync*
   nameWithType.vb: RunTimeAspectHelper.BufferToListAsync(Of T)(IAsyncEnumerator(Of T), CancellationToken)

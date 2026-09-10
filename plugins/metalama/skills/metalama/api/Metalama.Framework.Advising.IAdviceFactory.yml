@@ -2164,6 +2164,8 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: Appends a parameter to a constructor by specifying its name and <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: >-
       [Obsolete("This overload does not work across project boundaries. Use an overload that accepts an IIntroduceConstructorParameterPullStrategy.")]
@@ -2172,16 +2174,26 @@ items:
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor into which the new parameter will be appended.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter. It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullAction
       type: System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction}
+      description: >-
+        An optional delegate that returns a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> specifying how to pull the new parameter from other child constructors.
+                        A <code>null</code> value is equivalent to <xref href="Metalama.Framework.Advising.PullAction.None" data-throw-if-not-resolved="false"></xref>, i.e. <code class="paramref">defaultValue</code> of the parameter will be used.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: ''
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
     content.vb: >-
@@ -2212,21 +2224,40 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: >-
+    Appends an optional parameter (i.e. one that has a compile-time-constant default value) to a constructor by specifying its name
+
+    and <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>. The new parameter is added directly to the existing constructor; existing callers can omit the
+
+    argument, so source compatibility is preserved. Binary compatibility is not preserved. Because the constructor count
+
+    is unchanged, this overload is the right choice for dependency-injection scenarios where the container requires exactly one
+
+    applicable constructor (for example, <code>Microsoft.Extensions.DependencyInjection.ActivatorUtilities</code>).
+  example: []
   syntax:
     content: IIntroductionAdviceResult<IParameter> IntroduceParameter(IConstructor constructor, string parameterName, IType parameterType, TypedConstant defaultValue, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default)
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor into which the new parameter will be appended.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter. It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to pull the new parameter from chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
     content.vb: Function IntroduceParameter(constructor As IConstructor, parameterName As String, parameterType As IType, defaultValue As TypedConstant, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing) As IIntroductionAdviceResult(Of IParameter)
@@ -2248,21 +2279,57 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: >-
+    Appends a required parameter (i.e. one that has no default value) to a constructor by specifying its name and <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>.
+
+    The framework also emits a <em>forwarding constructor</em>: a compile-time stub with the pre-mutation signature that chains
+
+    via <code>: this(...)</code> to the now-mutated constructor. The forwarding constructor obtains the new parameter's value from the
+
+    supplied <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> (for example, <xref href="Metalama.Framework.Advising.PullStrategy.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> for a non-constant
+
+    expression such as <code>DateTime.Now</code>, or <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Boolean%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>
+
+    to cascade a dependency into chained and derived constructors). Because the pre-mutation signature remains callable, both
+
+    source and binary compatibility are preserved. This overload is the right choice when binary compatibility matters, when the
+
+    default must be a non-constant expression, or when a parameterless constructor must remain callable (for example, through
+
+    <xref href="System.Activator.CreateInstance%60%601" data-throw-if-not-resolved="false"></xref> or the <code>new()</code> generic constraint). Pass a custom
+
+    <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> to scope which constructors receive a forwarding constructor, or to opt out
+
+    entirely.
+  example: []
   syntax:
     content: IIntroductionAdviceResult<IParameter> IntroduceParameter(IConstructor constructor, string parameterName, IType parameterType, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default, IConstructorOverloadingStrategy? overloadingStrategy = null)
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor into which the new parameter will be appended.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: The type of the parameter.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to supply the new parameter's value in the forwarding constructor
+                        and in chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     - id: overloadingStrategy
       type: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> that decides, per mutated constructor, whether the framework
+                        should generate a forwarding constructor preserving the pre-mutation signature. A <code>null</code> value (the default) is interpreted as
+                        <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors" data-throw-if-not-resolved="false"></xref>, which is the safe default. The value passed for the introduced
+                        parameter inside the generated forwarder is controlled by <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Boolean%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>'s
+                        <code>forwarderExpression</code> argument.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
     content.vb: Function IntroduceParameter(constructor As IConstructor, parameterName As String, parameterType As IType, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing, overloadingStrategy As IConstructorOverloadingStrategy = Nothing) As IIntroductionAdviceResult(Of IParameter)
@@ -2284,6 +2351,8 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: Appends a parameter to a constructor by specifying its name and <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: >-
       [Obsolete("This overload does not work across project boundaries. Use an overload that accepts an IIntroduceConstructorParameterPullStrategy.")]
@@ -2292,16 +2361,26 @@ items:
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor into which the new parameter will be appended.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: System.Type
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter. It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullAction
       type: System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction}
+      description: >-
+        An optional delegate that returns a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> specifying how to pull the new parameter from other child constructors.
+                        A <code>null</code> value is equivalent to <xref href="Metalama.Framework.Advising.PullAction.None" data-throw-if-not-resolved="false"></xref>, i.e. <code class="paramref">defaultValue</code> of the parameter will be used.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: ''
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
     content.vb: >-
@@ -2332,21 +2411,40 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: >-
+    Appends an optional parameter (i.e. one that has a compile-time-constant default value) to a constructor by specifying its name
+
+    and <xref href="System.Type" data-throw-if-not-resolved="false"></xref>. The new parameter is added directly to the existing constructor; existing callers can omit the
+
+    argument, so source compatibility is preserved. Binary compatibility is not preserved. Because the constructor count
+
+    is unchanged, this overload is the right choice for dependency-injection scenarios where the container requires exactly one
+
+    applicable constructor (for example, <code>Microsoft.Extensions.DependencyInjection.ActivatorUtilities</code>).
+  example: []
   syntax:
     content: IIntroductionAdviceResult<IParameter> IntroduceParameter(IConstructor constructor, string parameterName, Type parameterType, TypedConstant defaultValue, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default)
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor into which the new parameter will be appended.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: System.Type
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter. It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to pull the new parameter from chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
     content.vb: Function IntroduceParameter(constructor As IConstructor, parameterName As String, parameterType As Type, defaultValue As TypedConstant, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing) As IIntroductionAdviceResult(Of IParameter)
@@ -2368,21 +2466,55 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: >-
+    Appends a required parameter (i.e. one that has no default value) to a constructor by specifying its name and <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+
+    The framework also emits a <em>forwarding constructor</em>: a compile-time stub with the pre-mutation signature that chains
+
+    via <code>: this(...)</code> to the now-mutated constructor. The forwarding constructor obtains the new parameter's value from the
+
+    supplied <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> (for example, <xref href="Metalama.Framework.Advising.PullStrategy.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> for a non-constant
+
+    expression such as <code>DateTime.Now</code>, or <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Boolean%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>
+
+    to cascade a dependency into chained and derived constructors). Because the pre-mutation signature remains callable, both
+
+    source and binary compatibility are preserved. This overload is the right choice when binary compatibility matters, when the
+
+    default must be a non-constant expression, or when a parameterless constructor must remain callable (for example, through
+
+    <xref href="System.Activator.CreateInstance%60%601" data-throw-if-not-resolved="false"></xref> or the <code>new()</code> generic constraint). Pass a custom
+
+    <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> to scope which constructors receive a forwarding constructor, or to opt out
+
+    entirely.
+  example: []
   syntax:
     content: IIntroductionAdviceResult<IParameter> IntroduceParameter(IConstructor constructor, string parameterName, Type parameterType, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default, IConstructorOverloadingStrategy? overloadingStrategy = null)
     parameters:
     - id: constructor
       type: Metalama.Framework.Code.IConstructor
+      description: The constructor into which the new parameter will be appended.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: System.Type
+      description: The type of the parameter.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to supply the new parameter's value in the forwarding constructor
+                        and in chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     - id: overloadingStrategy
       type: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> that decides, per mutated constructor, whether the framework
+                        should generate a forwarding constructor preserving the pre-mutation signature. A <code>null</code> value (the default) is interpreted as
+                        <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors" data-throw-if-not-resolved="false"></xref>, which is the safe default.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
     content.vb: Function IntroduceParameter(constructor As IConstructor, parameterName As String, parameterType As Type, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing, overloadingStrategy As IConstructorOverloadingStrategy = Nothing) As IIntroductionAdviceResult(Of IParameter)
@@ -2493,7 +2625,7 @@ items:
   summary: >-
     Introduces a new extension block into a static class. Extension blocks allow adding
 
-    extension members (methods, properties, operators) to a type (represented as an <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>). Requires C# 14+ and Roslyn 5.0+.
+    extension members (methods, properties, indexers, operators) to a type (represented as an <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>). Requires C# 14+ and Roslyn 5.0+, and C# 15+ for indexers.
   example: []
   syntax:
     content: IIntroductionAdviceResult<IExtensionBlock> IntroduceExtensionBlock(INamedType targetStaticClass, IType receiverType, string? receiverParameterName = null, Action<IExtensionBlockBuilder>? buildExtensionBlock = null)
@@ -2547,7 +2679,7 @@ items:
   summary: >-
     Introduces a new extension block into a static class. Extension blocks allow adding
 
-    extension members (methods, properties, operators) to a type  (represented as a <xref href="System.Type" data-throw-if-not-resolved="false"></xref>). Requires C# 14+ and Roslyn 5.0+.
+    extension members (methods, properties, indexers, operators) to a type  (represented as a <xref href="System.Type" data-throw-if-not-resolved="false"></xref>). Requires C# 14+ and Roslyn 5.0+, and C# 15+ for indexers.
   example: []
   syntax:
     content: IIntroductionAdviceResult<IExtensionBlock> IntroduceExtensionBlock(INamedType targetStaticClass, Type receiverType, string? receiverParameterName = null, Action<IExtensionBlockBuilder>? buildExtensionBlock = null)

@@ -121,6 +121,7 @@ items:
   - Metalama.Framework.Code.IEvent.Metalama.Framework.Metrics.MetricsExtensions.Metrics``1
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
+  - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.HasReceiver
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.IsOverridable
   - Metalama.Framework.Code.IMemberOrNamedType.Metalama.Framework.Code.GenericExtensions.ForTypeInstance(Metalama.Framework.Code.INamedType)
@@ -238,6 +239,19 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the <code>Invoke</code> method of the delegate type of the event, which carries the signature that a
+
+    handler of the event must have.
+  remarks: >-
+    <p>
+        This property is equivalent to <code>Type.Facets.Delegate.InvokeMethod</code>. It requires <xref href="Metalama.Framework.Code.IEvent.Type" data-throw-if-not-resolved="false"></xref> to
+        be a delegate, which the C# compiler guarantees for an event that it accepts, and it fails for the event
+        of a type that is not a delegate, which a compilation that contains errors can still produce. Read
+        <xref href="Metalama.Framework.Code.Collections.ITypeFacetCollection.Delegate" data-throw-if-not-resolved="false"></xref> instead of this property in code that has to
+        accept such an event.
+        </p>
+  example: []
   syntax:
     content: IMethod Signature { get; }
     parameters: []
@@ -245,6 +259,9 @@ items:
       type: Metalama.Framework.Code.IMethod
     content.vb: ReadOnly Property Signature As IMethod
   overload: Metalama.Framework.Code.IEvent.Signature*
+  seealso:
+  - linkId: Metalama.Framework.Code.Types.IDelegateFacet
+    commentId: T:Metalama.Framework.Code.Types.IDelegateFacet
 - uid: Metalama.Framework.Code.IEvent.AddMethod
   commentId: P:Metalama.Framework.Code.IEvent.AddMethod
   id: AddMethod
