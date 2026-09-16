@@ -85,14 +85,11 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Reports diagnostics to the console with color-coded output based on severity.
-  example: []
   syntax:
     content: public static void ReportToConsole(IReadOnlyList<IIntrospectionDiagnostic> diagnostics)
     parameters:
     - id: diagnostics
       type: System.Collections.Generic.IReadOnlyList{Metalama.Framework.Introspection.IIntrospectionDiagnostic}
-      description: The diagnostics to report.
     content.vb: Public Shared Sub ReportToConsole(diagnostics As IReadOnlyList(Of IIntrospectionDiagnostic))
   overload: Metalama.Framework.Workspaces.DiagnosticReporter.ReportToConsole*
   nameWithType.vb: DiagnosticReporter.ReportToConsole(IReadOnlyList(Of IIntrospectionDiagnostic))
@@ -113,26 +110,19 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Creates and reports diagnostics for a set of introspection references.
-  example: []
   syntax:
     content: public static IEnumerable<IIntrospectionDiagnostic> Report(this IEnumerable<IIntrospectionReference> references, Severity severity, string id, string message)
     parameters:
     - id: references
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionReference}
-      description: The references to report diagnostics for.
     - id: severity
       type: Metalama.Framework.Diagnostics.Severity
-      description: The severity of the diagnostics.
     - id: id
       type: System.String
-      description: The diagnostic identifier.
     - id: message
       type: System.String
-      description: The diagnostic message.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionDiagnostic}
-      description: An enumerable of diagnostics that were reported.
     content.vb: Public Shared Function Report(references As IEnumerable(Of IIntrospectionReference), severity As Severity, id As String, message As String) As IEnumerable(Of IIntrospectionDiagnostic)
   overload: Metalama.Framework.Workspaces.DiagnosticReporter.Report*
   nameWithType.vb: DiagnosticReporter.Report(IEnumerable(Of IIntrospectionReference), Severity, String, String)
@@ -153,26 +143,19 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Creates and reports diagnostics for a set of declarations.
-  example: []
   syntax:
     content: public static IEnumerable<IIntrospectionDiagnostic> Report(this IEnumerable<IDeclaration> declarations, Severity severity, string id, string message)
     parameters:
     - id: declarations
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IDeclaration}
-      description: The declarations to report diagnostics for.
     - id: severity
       type: Metalama.Framework.Diagnostics.Severity
-      description: The severity of the diagnostics.
     - id: id
       type: System.String
-      description: The diagnostic identifier.
     - id: message
       type: System.String
-      description: The diagnostic message.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionDiagnostic}
-      description: An enumerable of diagnostics that were reported.
     content.vb: Public Shared Function Report(declarations As IEnumerable(Of IDeclaration), severity As Severity, id As String, message As String) As IEnumerable(Of IIntrospectionDiagnostic)
   overload: Metalama.Framework.Workspaces.DiagnosticReporter.Report*
   nameWithType.vb: DiagnosticReporter.Report(IEnumerable(Of IDeclaration), Severity, String, String)
@@ -193,17 +176,13 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Reports a collection of diagnostics using the configured <xref href="Metalama.Framework.Workspaces.DiagnosticReporter.ReportAction" data-throw-if-not-resolved="false"></xref> and updates the diagnostic counters.
-  example: []
   syntax:
     content: public static IEnumerable<IIntrospectionDiagnostic> Report(this IEnumerable<IIntrospectionDiagnostic> diagnostics)
     parameters:
     - id: diagnostics
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionDiagnostic}
-      description: The diagnostics to report.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionDiagnostic}
-      description: A copy of the reported diagnostics.
     content.vb: Public Shared Function Report(diagnostics As IEnumerable(Of IIntrospectionDiagnostic)) As IEnumerable(Of IIntrospectionDiagnostic)
   overload: Metalama.Framework.Workspaces.DiagnosticReporter.Report*
   nameWithType.vb: DiagnosticReporter.Report(IEnumerable(Of IIntrospectionDiagnostic))

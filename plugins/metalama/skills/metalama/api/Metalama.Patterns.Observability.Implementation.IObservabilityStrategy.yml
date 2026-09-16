@@ -16,28 +16,12 @@ items:
   assemblies:
   - Metalama.Patterns.Observability
   namespace: Metalama.Patterns.Observability.Implementation
-  summary: Builds the <code>Observable</code> aspect.
-  remarks: >-
-    Durable and immutable because an options object is cached and reused across compilations. The two contracts are
-
-    what makes the separation from <xref href="Metalama.Patterns.Observability.Implementation.IObservabilityStrategyImplementation" data-throw-if-not-resolved="false"></xref> necessary: a per-target worker
-
-    holds an aspect builder and code model references, and could satisfy neither.
-  example: []
   syntax:
     content: >-
-      [Durable]
-
-      [ImmutableType]
-
       [CompileTime]
 
       public interface IObservabilityStrategy : ICompileTimeSerializable
     content.vb: >-
-      <Durable>
-
-      <ImmutableType>
-
       <CompileTime>
 
       Public Interface IObservabilityStrategy Inherits ICompileTimeSerializable
@@ -48,12 +32,6 @@ items:
   - Metalama.Patterns.Observability.Implementation.IObservabilityStrategy.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
   attributes:
-  - type: Metalama.Framework.Utilities.DurableAttribute
-    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
-    arguments: []
-  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
-    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
-    arguments: []
   - type: Metalama.Framework.Aspects.CompileTimeAttribute
     ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
     arguments: []

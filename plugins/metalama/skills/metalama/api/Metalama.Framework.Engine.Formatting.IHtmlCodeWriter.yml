@@ -46,26 +46,19 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
-  summary: Writes a document to HTML format.
-  example: []
   syntax:
     content: Task WriteAsync(Document document, TextWriter textWriter, HtmlCodeWriterOptions options, IEnumerable<Diagnostic>? diagnostics = null, CancellationToken cancellationToken = default)
     parameters:
     - id: document
       type: Microsoft.CodeAnalysis.Document
-      description: The document to write.
     - id: textWriter
       type: System.IO.TextWriter
-      description: The text writer to write to.
     - id: options
       type: Metalama.Framework.Engine.Formatting.HtmlCodeWriterOptions
-      description: HTML writing options.
     - id: diagnostics
       type: System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic}
-      description: Optional diagnostics to include in the output.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: Cancellation token.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Function WriteAsync(document As Document, textWriter As TextWriter, options As HtmlCodeWriterOptions, diagnostics As IEnumerable(Of Diagnostic) = Nothing, cancellationToken As CancellationToken = Nothing) As Task
@@ -87,35 +80,25 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
-  summary: Writes a diff between two documents to HTML format.
-  example: []
   syntax:
     content: Task WriteDiffAsync(Document inputDocument, Document outputDocument, TextWriter inputTextWriter, TextWriter outputTextWriter, HtmlCodeWriterOptions options, IEnumerable<Diagnostic>? inputDiagnostics, IEnumerable<Diagnostic>? outputDiagnostics, CancellationToken cancellationToken)
     parameters:
     - id: inputDocument
       type: Microsoft.CodeAnalysis.Document
-      description: The input (source) document.
     - id: outputDocument
       type: Microsoft.CodeAnalysis.Document
-      description: The output (transformed) document.
     - id: inputTextWriter
       type: System.IO.TextWriter
-      description: The text writer for the input document.
     - id: outputTextWriter
       type: System.IO.TextWriter
-      description: The text writer for the output document.
     - id: options
       type: Metalama.Framework.Engine.Formatting.HtmlCodeWriterOptions
-      description: HTML writing options.
     - id: inputDiagnostics
       type: System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic}
-      description: Diagnostics for the input document.
     - id: outputDiagnostics
       type: System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic}
-      description: Diagnostics for the output document.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: Cancellation token.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Function WriteDiffAsync(inputDocument As Document, outputDocument As Document, inputTextWriter As TextWriter, outputTextWriter As TextWriter, options As HtmlCodeWriterOptions, inputDiagnostics As IEnumerable(Of Diagnostic), outputDiagnostics As IEnumerable(Of Diagnostic), cancellationToken As CancellationToken) As Task
@@ -137,29 +120,21 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.Formatting
-  summary: Writes all diffs between input and output compilations to HTML format.
-  example: []
   syntax:
     content: Task WriteAllDiffAsync(IPartialCompilation inputCompilation, IPartialCompilation outputCompilation, HtmlCodeWriterOptions options, IEnumerable<Diagnostic>? additionalDiagnostics = null, Func<Diagnostic, Compilation, bool>? isSuppressed = null, CancellationToken cancellationToken = default)
     parameters:
     - id: inputCompilation
       type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
-      description: The input (source) compilation.
     - id: outputCompilation
       type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
-      description: The output (transformed) compilation.
     - id: options
       type: Metalama.Framework.Engine.Formatting.HtmlCodeWriterOptions
-      description: HTML writing options. Must include <xref href="Metalama.Framework.Engine.Formatting.HtmlCodeWriterOptions.ProjectPath" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Engine.Formatting.HtmlCodeWriterOptions.TargetFramework" data-throw-if-not-resolved="false"></xref>.
     - id: additionalDiagnostics
       type: System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic}
-      description: Additional diagnostics to include in the output.
     - id: isSuppressed
       type: System.Func{Microsoft.CodeAnalysis.Diagnostic,Microsoft.CodeAnalysis.Compilation,System.Boolean}
-      description: A predicate that determines whether a diagnostic is suppressed. If <code>null</code>, no diagnostics are suppressed.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: Cancellation token.
     return:
       type: System.Threading.Tasks.Task
     content.vb: Function WriteAllDiffAsync(inputCompilation As IPartialCompilation, outputCompilation As IPartialCompilation, options As HtmlCodeWriterOptions, additionalDiagnostics As IEnumerable(Of Diagnostic) = Nothing, isSuppressed As Func(Of Diagnostic, Compilation, Boolean) = Nothing, cancellationToken As CancellationToken = Nothing) As Task

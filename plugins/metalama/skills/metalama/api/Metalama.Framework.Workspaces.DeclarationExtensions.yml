@@ -58,26 +58,17 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: >-
-    Gets inbound declaration references, i.e. the list of declarations that use the given declaration,
-
-    in the projects loaded in the current <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>.
-  example: []
   syntax:
     content: public static IEnumerable<IIntrospectionReference> GetInboundReferences(this IDeclaration declaration, IntrospectionChildKinds childKinds = IntrospectionChildKinds.ContainingDeclaration, CancellationToken cancellationToken = default)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
-      description: The declaration to get inbound references for.
     - id: childKinds
       type: Metalama.Framework.Introspection.IntrospectionChildKinds
-      description: Specifies which kinds of child declarations to include.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: A cancellation token.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionReference}
-      description: An enumerable of inbound references.
     content.vb: Public Shared Function GetInboundReferences(declaration As IDeclaration, childKinds As IntrospectionChildKinds = IntrospectionChildKinds.ContainingDeclaration, cancellationToken As CancellationToken = Nothing) As IEnumerable(Of IIntrospectionReference)
   overload: Metalama.Framework.Workspaces.DeclarationExtensions.GetInboundReferences*
 - uid: Metalama.Framework.Workspaces.DeclarationExtensions.GetOutboundReferences(Metalama.Framework.Code.IDeclaration,System.Threading.CancellationToken)
@@ -95,23 +86,15 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: >-
-    Gets outbound declaration references, i.e. the list of declarations that the given declaration uses,
-
-    in the projects loaded in the current <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>.
-  example: []
   syntax:
     content: public static IEnumerable<IIntrospectionReference> GetOutboundReferences(this IDeclaration declaration, CancellationToken cancellationToken = default)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
-      description: The declaration to get outbound references for.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: A cancellation token.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Introspection.IIntrospectionReference}
-      description: An enumerable of outbound references.
     content.vb: Public Shared Function GetOutboundReferences(declaration As IDeclaration, cancellationToken As CancellationToken = Nothing) As IEnumerable(Of IIntrospectionReference)
   overload: Metalama.Framework.Workspaces.DeclarationExtensions.GetOutboundReferences*
 - uid: Metalama.Framework.Workspaces.DeclarationExtensions.GetDerivedTypes(Metalama.Framework.Code.INamedType,System.Boolean)
@@ -129,20 +112,15 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Get all types derived from a given type within the projects loaded in the current <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>.
-  example: []
   syntax:
     content: public static IEnumerable<INamedType> GetDerivedTypes(this INamedType type, bool directOnly = false)
     parameters:
     - id: type
       type: Metalama.Framework.Code.INamedType
-      description: The base type.
     - id: directOnly
       type: System.Boolean
-      description: If <code>true</code>, only types directly derived from <code class="paramref">type</code> are returned; otherwise, all derived types in the inheritance hierarchy are returned.
     return:
       type: System.Collections.Generic.IEnumerable{Metalama.Framework.Code.INamedType}
-      description: An enumerable of derived types.
     content.vb: Public Shared Function GetDerivedTypes(type As INamedType, directOnly As Boolean = False) As IEnumerable(Of INamedType)
   overload: Metalama.Framework.Workspaces.DeclarationExtensions.GetDerivedTypes*
   nameWithType.vb: DeclarationExtensions.GetDerivedTypes(INamedType, Boolean)

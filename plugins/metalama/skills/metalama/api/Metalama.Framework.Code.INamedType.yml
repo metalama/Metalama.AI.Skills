@@ -19,21 +19,16 @@ items:
   - Metalama.Framework.Code.INamedType.Definition
   - Metalama.Framework.Code.INamedType.Events
   - Metalama.Framework.Code.INamedType.ExtensionBlocks
-  - Metalama.Framework.Code.INamedType.Facets
   - Metalama.Framework.Code.INamedType.Fields
   - Metalama.Framework.Code.INamedType.FieldsAndProperties
   - Metalama.Framework.Code.INamedType.Finalizer
   - Metalama.Framework.Code.INamedType.HasDefaultConstructor
   - Metalama.Framework.Code.INamedType.ImplementedInterfaces
   - Metalama.Framework.Code.INamedType.Indexers
-  - Metalama.Framework.Code.INamedType.IsClosed
-  - Metalama.Framework.Code.INamedType.IsDelegate
-  - Metalama.Framework.Code.INamedType.IsEnum
   - Metalama.Framework.Code.INamedType.IsReadOnly
   - Metalama.Framework.Code.INamedType.IsRecord
   - Metalama.Framework.Code.INamedType.IsRef
   - Metalama.Framework.Code.INamedType.IsSubclassOf(Metalama.Framework.Code.INamedType)
-  - Metalama.Framework.Code.INamedType.IsUnion
   - Metalama.Framework.Code.INamedType.MakeGenericInstance(System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.IType})
   - Metalama.Framework.Code.INamedType.Methods
   - Metalama.Framework.Code.INamedType.Namespace
@@ -57,12 +52,8 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
-  summary: 'Represents a named type: class, struct, interface, enum, delegate, record, or union.'
+  summary: 'Represents a named type: class, struct, interface, enum, delegate, or record.'
   remarks: >-
-    <p>
-        A union has no <xref href="Metalama.Framework.Code.TypeKind" data-throw-if-not-resolved="false"></xref> value of its own. The compiler reports a union declaration as a struct,
-        and <xref href="Metalama.Framework.Code.INamedType.IsUnion" data-throw-if-not-resolved="false"></xref> is the property that tells a union from an ordinary class or struct.
-        </p>
     <p>
         Named types are the fundamental building blocks of C# programs. Unlike other types in the type system
         (such as arrays, pointers, or type parameters), named types have a fully qualified name, can contain members
@@ -1056,44 +1047,6 @@ items:
       type: Metalama.Framework.Code.Collections.IExtensionBlockCollection
     content.vb: ReadOnly Property ExtensionBlocks As IExtensionBlockCollection
   overload: Metalama.Framework.Code.INamedType.ExtensionBlocks*
-- uid: Metalama.Framework.Code.INamedType.Facets
-  commentId: P:Metalama.Framework.Code.INamedType.Facets
-  id: Facets
-  parent: Metalama.Framework.Code.INamedType
-  langs:
-  - csharp
-  - vb
-  name: Facets
-  nameWithType: INamedType.Facets
-  fullName: Metalama.Framework.Code.INamedType.Facets
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code
-  summary: >-
-    Gets the facets of the type, that is, the structure that the type has because of its kind and that other
-
-    named types do not have. The collection is empty for a type that has no such structure.
-  remarks: >-
-    <p>
-        A facet is read through its typed property, as in <code>type.Facets.Delegate?.ReturnType</code>. Enumerating the
-        collection yields exactly the typed properties that are not <code>null</code>.
-        </p>
-    <p>
-        This property returns an empty collection for a type introduced by an aspect, and for a type under
-        construction by a builder.
-        </p>
-  example: []
-  syntax:
-    content: ITypeFacetCollection Facets { get; }
-    parameters: []
-    return:
-      type: Metalama.Framework.Code.Collections.ITypeFacetCollection
-    content.vb: ReadOnly Property Facets As ITypeFacetCollection
-  overload: Metalama.Framework.Code.INamedType.Facets*
-  seealso:
-  - linkId: Metalama.Framework.Code.Collections.ITypeFacetCollection
-    commentId: T:Metalama.Framework.Code.Collections.ITypeFacetCollection
 - uid: Metalama.Framework.Code.INamedType.IsReadOnly
   commentId: P:Metalama.Framework.Code.INamedType.IsReadOnly
   id: IsReadOnly
@@ -1154,16 +1107,7 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
-  summary: >-
-    Gets a value indicating whether the type is a record, which covers a record class and a record struct.
-
-    Returns <code>false</code> for any other type.
-  remarks: >-
-    <p>
-        This property answers whether the type is a record without allocating anything. The members that the
-        compiler synthesizes for the record are read through <xref href="Metalama.Framework.Code.INamedType.Facets" data-throw-if-not-resolved="false"></xref>, as in
-        <code>type.Facets.Record?.PrintMembersMethod</code>.
-        </p>
+  summary: Gets a value indicating whether type is a record. Also returns <code>false</code> when the type neither a class nor a record.
   example: []
   syntax:
     content: bool IsRecord { get; }
@@ -1172,185 +1116,6 @@ items:
       type: System.Boolean
     content.vb: ReadOnly Property IsRecord As Boolean
   overload: Metalama.Framework.Code.INamedType.IsRecord*
-  seealso:
-  - linkId: Metalama.Framework.Code.INamedType.Facets
-    commentId: P:Metalama.Framework.Code.INamedType.Facets
-  - linkId: Metalama.Framework.Code.Types.IRecordFacet
-    commentId: T:Metalama.Framework.Code.Types.IRecordFacet
-- uid: Metalama.Framework.Code.INamedType.IsDelegate
-  commentId: P:Metalama.Framework.Code.INamedType.IsDelegate
-  id: IsDelegate
-  parent: Metalama.Framework.Code.INamedType
-  langs:
-  - csharp
-  - vb
-  name: IsDelegate
-  nameWithType: INamedType.IsDelegate
-  fullName: Metalama.Framework.Code.INamedType.IsDelegate
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code
-  summary: >-
-    Gets a value indicating whether the type is a delegate, which is equivalent to testing whether
-
-    <xref href="Metalama.Framework.Code.IType.TypeKind" data-throw-if-not-resolved="false"></xref> is <xref href="Metalama.Framework.Code.TypeKind.Delegate" data-throw-if-not-resolved="false"></xref>.
-  remarks: >-
-    <p>
-        This property answers whether the type is a delegate without allocating anything. The signature of the
-        delegate is read through <xref href="Metalama.Framework.Code.INamedType.Facets" data-throw-if-not-resolved="false"></xref>, as in <code>type.Facets.Delegate?.ReturnType</code>.
-        </p>
-  example: []
-  syntax:
-    content: bool IsDelegate { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property IsDelegate As Boolean
-  overload: Metalama.Framework.Code.INamedType.IsDelegate*
-  seealso:
-  - linkId: Metalama.Framework.Code.INamedType.Facets
-    commentId: P:Metalama.Framework.Code.INamedType.Facets
-  - linkId: Metalama.Framework.Code.Types.IDelegateFacet
-    commentId: T:Metalama.Framework.Code.Types.IDelegateFacet
-- uid: Metalama.Framework.Code.INamedType.IsEnum
-  commentId: P:Metalama.Framework.Code.INamedType.IsEnum
-  id: IsEnum
-  parent: Metalama.Framework.Code.INamedType
-  langs:
-  - csharp
-  - vb
-  name: IsEnum
-  nameWithType: INamedType.IsEnum
-  fullName: Metalama.Framework.Code.INamedType.IsEnum
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code
-  summary: >-
-    Gets a value indicating whether the type is an enum, which is equivalent to testing whether
-
-    <xref href="Metalama.Framework.Code.IType.TypeKind" data-throw-if-not-resolved="false"></xref> is <xref href="Metalama.Framework.Code.TypeKind.Enum" data-throw-if-not-resolved="false"></xref>.
-  remarks: >-
-    <p>
-        This property answers whether the type is an enum without allocating anything. The underlying type, the
-        members and the flags attribute of the enum are read through <xref href="Metalama.Framework.Code.INamedType.Facets" data-throw-if-not-resolved="false"></xref>, as in
-        <code>type.Facets.Enum?.UnderlyingType</code>.
-        </p>
-  example: []
-  syntax:
-    content: bool IsEnum { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property IsEnum As Boolean
-  overload: Metalama.Framework.Code.INamedType.IsEnum*
-  seealso:
-  - linkId: Metalama.Framework.Code.INamedType.Facets
-    commentId: P:Metalama.Framework.Code.INamedType.Facets
-  - linkId: Metalama.Framework.Code.Types.IEnumFacet
-    commentId: T:Metalama.Framework.Code.Types.IEnumFacet
-- uid: Metalama.Framework.Code.INamedType.IsClosed
-  commentId: P:Metalama.Framework.Code.INamedType.IsClosed
-  id: IsClosed
-  parent: Metalama.Framework.Code.INamedType
-  langs:
-  - csharp
-  - vb
-  name: IsClosed
-  nameWithType: INamedType.IsClosed
-  fullName: Metalama.Framework.Code.INamedType.IsClosed
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code
-  summary: >-
-    Gets a value indicating whether the type is declared with the <code>closed</code> modifier. Also returns <code>false</code>
-
-    when the type is not a class.
-  remarks: >-
-    <p>
-        A closed type is implicitly abstract, so <xref href="Metalama.Framework.Code.IMemberOrNamedType.IsAbstract" data-throw-if-not-resolved="false"></xref> is <code>true</code> and
-        <xref href="Metalama.Framework.Code.IMemberOrNamedType.IsSealed" data-throw-if-not-resolved="false"></xref> is <code>false</code> for it.
-        </p>
-    <p>
-        When the type is closed and is declared in the current compilation, the set returned by
-        <xref href="Metalama.Framework.Code.ICompilation.GetDerivedTypes(Metalama.Framework.Code.INamedType%2cMetalama.Framework.Code.DerivedTypesOptions)" data-throw-if-not-resolved="false"></xref> with
-        <xref href="Metalama.Framework.Code.DerivedTypesOptions.DirectOnly" data-throw-if-not-resolved="false"></xref> is the complete set of the direct subtypes of the type, because
-        the language requires every subtype of a closed type to be declared in the same module. That guarantee does
-        not extend to a closed type declared in a referenced assembly, and it does not hold when the compilation
-        model is built on a subset of the syntax trees of the project, which is the case at design time.
-        </p>
-    <p>
-        For a type introduced by an aspect, this property returns the value that the aspect set on
-        <xref href="Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed" data-throw-if-not-resolved="false"></xref>. For a type declared in source, it returns
-        <code>false</code> when the Metalama engine that runs the aspect cannot read the closed modifier, in which case
-        no such type is reported as closed. That is the case for the engine built for a Roslyn version that
-        predates C# 15, and, in the current preview, for the engine built for the latest Roslyn version, because
-        the Roslyn member that reports the modifier is still experimental there.
-        </p>
-  example: []
-  syntax:
-    content: bool IsClosed { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property IsClosed As Boolean
-  overload: Metalama.Framework.Code.INamedType.IsClosed*
-- uid: Metalama.Framework.Code.INamedType.IsUnion
-  commentId: P:Metalama.Framework.Code.INamedType.IsUnion
-  id: IsUnion
-  parent: Metalama.Framework.Code.INamedType
-  langs:
-  - csharp
-  - vb
-  name: IsUnion
-  nameWithType: INamedType.IsUnion
-  fullName: Metalama.Framework.Code.INamedType.IsUnion
-  type: Property
-  assemblies:
-  - Metalama.Framework
-  namespace: Metalama.Framework.Code
-  summary: >-
-    Gets a value indicating whether the type is a union. Also returns <code>false</code> when the type is not a class
-
-    or a struct.
-  remarks: >-
-    <p>
-        A union is written in one of two forms. The first is a declaration that uses the <code>union</code> keyword. The
-        second is a class or a struct that carries the <code>System.Runtime.CompilerServices.UnionAttribute</code>
-        attribute. This property is <code>true</code> for both, and <xref href="Metalama.Framework.Code.Types.IUnionFacet.UnionKind" data-throw-if-not-resolved="false"></xref> tells them apart.
-        </p>
-    <p>
-        This property answers whether the type is a union without allocating anything. The authoring form, the
-        cases and the <code>Value</code> property of the union are read through <xref href="Metalama.Framework.Code.INamedType.Facets" data-throw-if-not-resolved="false"></xref>, as in
-        <code>type.Facets.Union?.Cases</code>.
-        </p>
-    <p>
-        A union is independent of <xref href="Metalama.Framework.Code.IType.TypeKind" data-throw-if-not-resolved="false"></xref>. The compiler reports a union declaration as a
-        struct, and the attribute form is a union of the kind that its own declaration gives, so a union is not
-        necessarily a value type.
-        </p>
-    <p>
-        This property returns <code>false</code> for a type introduced by an aspect. It also returns <code>false</code> when the
-        Metalama engine that runs the aspect cannot read the union, in which case no type is reported as a union.
-        That is the case for the engine built for a Roslyn version that predates C# 15, and, in the current preview,
-        for the engine built for the latest Roslyn version, because the Roslyn member that reports the union is
-        still experimental there.
-        </p>
-  example: []
-  syntax:
-    content: bool IsUnion { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property IsUnion As Boolean
-  overload: Metalama.Framework.Code.INamedType.IsUnion*
-  seealso:
-  - linkId: Metalama.Framework.Code.INamedType.Facets
-    commentId: P:Metalama.Framework.Code.INamedType.Facets
-  - linkId: Metalama.Framework.Code.Types.IUnionFacet
-    commentId: T:Metalama.Framework.Code.Types.IUnionFacet
 - uid: Metalama.Framework.Code.INamedType.TypeDefinition
   commentId: P:Metalama.Framework.Code.INamedType.TypeDefinition
   id: TypeDefinition
@@ -1425,13 +1190,6 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Code
   summary: Gets the underlying type of an enum, the non-nullable type of a nullable reference type, or the current type.
-  remarks: >-
-    <p>
-        This property has three meanings, so the caller has to know the kind of the type to know which type it
-        returned. The underlying type of an enum is also exposed by <xref href="Metalama.Framework.Code.Types.IEnumFacet.UnderlyingType" data-throw-if-not-resolved="false"></xref>, which
-        has a single meaning. That facet is reached through <xref href="Metalama.Framework.Code.INamedType.Facets" data-throw-if-not-resolved="false"></xref>, and it is <code>null</code> for a type
-        that is not an enum.
-        </p>
   example: []
   syntax:
     content: INamedType UnderlyingType { get; }
@@ -1440,6 +1198,3 @@ items:
       type: Metalama.Framework.Code.INamedType
     content.vb: ReadOnly Property UnderlyingType As INamedType
   overload: Metalama.Framework.Code.INamedType.UnderlyingType*
-  seealso:
-  - linkId: Metalama.Framework.Code.Types.IEnumFacet.UnderlyingType
-    commentId: P:Metalama.Framework.Code.Types.IEnumFacet.UnderlyingType

@@ -121,23 +121,17 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets the Roslyn <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref> for a declaration reference in a specific compilation.
-  example: []
   syntax:
     content: public static ISymbol? GetSymbol(this IRef declaration, Compilation compilation, bool ignoreAssemblyKey = false)
     parameters:
     - id: declaration
       type: Metalama.Framework.Code.IRef
-      description: The declaration reference.
     - id: compilation
       type: Microsoft.CodeAnalysis.Compilation
-      description: The Roslyn compilation to resolve the symbol in.
     - id: ignoreAssemblyKey
       type: System.Boolean
-      description: If <code>true</code>, ignores assembly key when resolving.
     return:
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol, or <code>null</code> if not found.
     content.vb: Public Shared Function GetSymbol(declaration As IRef, compilation As Compilation, ignoreAssemblyKey As Boolean = False) As ISymbol
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetSymbol*
   nameWithType.vb: SymbolExtensions.GetSymbol(IRef, Compilation, Boolean)
@@ -464,20 +458,15 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets the member that the specified symbol overrides, if any.
-  example: []
   syntax:
     content: public static ISymbol? GetOverriddenMember(this ISymbol? symbol, bool returnNullIfMappingRequired = true)
     parameters:
     - id: symbol
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol (method, property, or event).
     - id: returnNullIfMappingRequired
       type: System.Boolean
-      description: Unused, for API consistency.
     return:
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The overridden member, or <code>null</code> if none or not applicable.
     content.vb: Public Shared Function GetOverriddenMember(symbol As ISymbol, returnNullIfMappingRequired As Boolean = True) As ISymbol
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetOverriddenMember*
   nameWithType.vb: SymbolExtensions.GetOverriddenMember(ISymbol, Boolean)
@@ -498,17 +487,13 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets the type of the expression represented by the symbol (e.g., the return type for a method, the field type for a field).
-  example: []
   syntax:
     content: public static ITypeSymbol? GetExpressionType(this ISymbol symbol)
     parameters:
     - id: symbol
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol.
     return:
       type: Microsoft.CodeAnalysis.ITypeSymbol
-      description: The expression type, or <code>null</code> if <code>void</code> or not applicable.
     content.vb: Public Shared Function GetExpressionType(symbol As ISymbol) As ITypeSymbol
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetExpressionType*
 - uid: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetRoslynCompilation(Metalama.Framework.Code.ICompilation)
@@ -552,20 +537,15 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets a cached <xref href="Microsoft.CodeAnalysis.SemanticModel" data-throw-if-not-resolved="false"></xref> for a syntax tree in the compilation.
-  example: []
   syntax:
     content: public static SemanticModel GetSemanticModel(this ICompilation compilation, SyntaxTree syntaxTree)
     parameters:
     - id: compilation
       type: Metalama.Framework.Code.ICompilation
-      description: The Metalama compilation.
     - id: syntaxTree
       type: Microsoft.CodeAnalysis.SyntaxTree
-      description: The syntax tree.
     return:
       type: Microsoft.CodeAnalysis.SemanticModel
-      description: The semantic model for the syntax tree.
     content.vb: Public Shared Function GetSemanticModel(compilation As ICompilation, syntaxTree As SyntaxTree) As SemanticModel
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetSemanticModel*
 - uid: Metalama.Framework.Engine.CodeModel.SymbolExtensions.TryGetDeclaration(Metalama.Framework.Code.ICompilation,Microsoft.CodeAnalysis.ISymbol,Metalama.Framework.Code.IDeclaration@)
@@ -583,23 +563,17 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Attempts to get the Metalama <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref> for a Roslyn <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref>.
-  example: []
   syntax:
     content: public static bool TryGetDeclaration(this ICompilation compilation, ISymbol symbol, out IDeclaration? declaration)
     parameters:
     - id: compilation
       type: Metalama.Framework.Code.ICompilation
-      description: The Metalama compilation.
     - id: symbol
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol.
     - id: declaration
       type: Metalama.Framework.Code.IDeclaration
-      description: When successful, the Metalama declaration.
     return:
       type: System.Boolean
-      description: <code>true</code> if the symbol was found in the compilation; otherwise <code>false</code>.
     content.vb: Public Shared Function TryGetDeclaration(compilation As ICompilation, symbol As ISymbol, declaration As IDeclaration) As Boolean
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.TryGetDeclaration*
   nameWithType.vb: SymbolExtensions.TryGetDeclaration(ICompilation, ISymbol, IDeclaration)
@@ -620,26 +594,17 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets the Metalama <xref href="Metalama.Framework.Code.IDeclaration" data-throw-if-not-resolved="false"></xref> for a Roslyn <xref href="Microsoft.CodeAnalysis.ISymbol" data-throw-if-not-resolved="false"></xref>.
-  example: []
   syntax:
     content: public static IDeclaration GetDeclaration(this ICompilation compilation, ISymbol symbol)
     parameters:
     - id: compilation
       type: Metalama.Framework.Code.ICompilation
-      description: The Metalama compilation.
     - id: symbol
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol.
     return:
       type: Metalama.Framework.Code.IDeclaration
-      description: The Metalama declaration.
     content.vb: Public Shared Function GetDeclaration(compilation As ICompilation, symbol As ISymbol) As IDeclaration
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetDeclaration*
-  exceptions:
-  - type: System.ArgumentOutOfRangeException
-    commentId: T:System.ArgumentOutOfRangeException
-    description: The symbol is not found in the compilation.
 - uid: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetRootDefinition(Microsoft.CodeAnalysis.ISymbol)
   commentId: M:Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetRootDefinition(Microsoft.CodeAnalysis.ISymbol)
   id: GetRootDefinition(Microsoft.CodeAnalysis.ISymbol)
@@ -655,17 +620,13 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets the root definition of a symbol (the original definition before any generic substitution).
-  example: []
   syntax:
     content: public static ISymbol GetRootDefinition(this ISymbol symbol)
     parameters:
     - id: symbol
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol.
     return:
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The original definition of the symbol.
     content.vb: Public Shared Function GetRootDefinition(symbol As ISymbol) As ISymbol
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetRootDefinition*
 - uid: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetRootDefinition(Microsoft.CodeAnalysis.IFieldSymbol)
@@ -683,17 +644,13 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Gets the root definition of a field symbol, handling tuple fields specially.
-  example: []
   syntax:
     content: public static IFieldSymbol GetRootDefinition(this IFieldSymbol symbol)
     parameters:
     - id: symbol
       type: Microsoft.CodeAnalysis.IFieldSymbol
-      description: The field symbol.
     return:
       type: Microsoft.CodeAnalysis.IFieldSymbol
-      description: The original definition of the field.
     content.vb: Public Shared Function GetRootDefinition(symbol As IFieldSymbol) As IFieldSymbol
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.GetRootDefinition*
 - uid: Metalama.Framework.Engine.CodeModel.SymbolExtensions.IsDefinitionSafe(Microsoft.CodeAnalysis.ISymbol)
@@ -711,20 +668,12 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Determines whether a symbol is its own definition, using equality comparison rather than identity.
-  remarks: >-
-    This method differs from <xref href="Microsoft.CodeAnalysis.ISymbol.IsDefinition" data-throw-if-not-resolved="false"></xref> in that it uses equality comparison,
-
-    making it tolerant to non-identical but equal symbol instances. Tuple types are always considered definitions.
-  example: []
   syntax:
     content: public static bool IsDefinitionSafe(this ISymbol symbol)
     parameters:
     - id: symbol
       type: Microsoft.CodeAnalysis.ISymbol
-      description: The Roslyn symbol.
     return:
       type: System.Boolean
-      description: <code>true</code> if the symbol is a definition; otherwise <code>false</code>.
     content.vb: Public Shared Function IsDefinitionSafe(symbol As ISymbol) As Boolean
   overload: Metalama.Framework.Engine.CodeModel.SymbolExtensions.IsDefinitionSafe*

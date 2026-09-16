@@ -108,17 +108,6 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: >-
-    Loads a set of projects of solutions into a <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>, or returns an existing workspace
-
-    if the method has been previously called with the exact same parameters.
-
-    This method creates the workspace in the default <xref href="Metalama.Framework.Workspaces.WorkspaceCollection" data-throw-if-not-resolved="false"></xref>.
-  remarks: >-
-    Use <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.Default" data-throw-if-not-resolved="false"></xref>.<xref href="Metalama.Framework.Workspaces.WorkspaceCollection.Load(System.String%5b%5d)" data-throw-if-not-resolved="false"></xref> instead.
-
-    To configure services such as metrics, call <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.WithServices(System.Action%7bMetalama.Framework.Workspaces.ServiceBuilder%7d)" data-throw-if-not-resolved="false"></xref> before loading.
-  example: []
   syntax:
     content: >-
       [Obsolete("Use WorkspaceCollection.Default.Load() instead.")]
@@ -127,10 +116,8 @@ items:
     parameters:
     - id: paths
       type: System.String[]
-      description: A list of project or solution paths.
     return:
       type: Metalama.Framework.Workspaces.Workspace
-      description: A <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref> where all specified project or solutions, and their dependencies, have been loaded.
     content.vb: >-
       <Obsolete("Use WorkspaceCollection.Default.Load() instead.")>
 
@@ -159,17 +146,6 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: >-
-    Asynchronously loads a set of projects of solutions into a <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>, or returns an existing workspace
-
-    if the method has been previously called with the exact same parameters.
-
-    This method creates the workspace in the default <xref href="Metalama.Framework.Workspaces.WorkspaceCollection" data-throw-if-not-resolved="false"></xref>.
-  remarks: >-
-    Use <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.Default" data-throw-if-not-resolved="false"></xref>.<xref href="Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync(System.String%5b%5d)" data-throw-if-not-resolved="false"></xref> instead.
-
-    To configure services such as metrics, call <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.WithServices(System.Action%7bMetalama.Framework.Workspaces.ServiceBuilder%7d)" data-throw-if-not-resolved="false"></xref> before loading.
-  example: []
   syntax:
     content: >-
       [Obsolete("Use WorkspaceCollection.Default.LoadAsync() instead.")]
@@ -178,10 +154,8 @@ items:
     parameters:
     - id: paths
       type: System.String[]
-      description: A list of project or solution paths.
     return:
       type: System.Threading.Tasks.Task{Metalama.Framework.Workspaces.Workspace}
-      description: A <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref> where all specified project or solutions, and their dependencies, have been loaded.
     content.vb: >-
       <Obsolete("Use WorkspaceCollection.Default.LoadAsync() instead.")>
 
@@ -292,24 +266,13 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: >-
-    Filters the <xref href="Metalama.Framework.Workspaces.Workspace.Projects" data-throw-if-not-resolved="false"></xref> collection with a given predicate.
-
-    This allows filtering the output of methods such as <xref href="Metalama.Framework.Workspaces.DeclarationExtensions.GetInboundReferences(Metalama.Framework.Code.IDeclaration%2cMetalama.Framework.Introspection.IntrospectionChildKinds%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>
-
-    or <xref href="Metalama.Framework.Workspaces.DeclarationExtensions.GetDerivedTypes(Metalama.Framework.Code.INamedType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> to the filtered subset.
-  example: []
   syntax:
     content: public void ApplyFilter(Predicate<Project> filter)
     parameters:
     - id: filter
       type: System.Predicate{Metalama.Framework.Workspaces.Project}
-      description: A predicate that determines which projects to include in the filtered collection.
     content.vb: Public Sub ApplyFilter(filter As Predicate(Of Project))
   overload: Metalama.Framework.Workspaces.Workspace.ApplyFilter*
-  seealso:
-  - linkId: Metalama.Framework.Workspaces.Workspace.ClearFilters
-    commentId: M:Metalama.Framework.Workspaces.Workspace.ClearFilters
   nameWithType.vb: Workspace.ApplyFilter(Predicate(Of Project))
   fullName.vb: Metalama.Framework.Workspaces.Workspace.ApplyFilter(System.Predicate(Of Metalama.Framework.Workspaces.Project))
   name.vb: ApplyFilter(Predicate(Of Project))
@@ -327,25 +290,17 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Asynchronously reloads all projects in the current workspace.
-  example: []
   syntax:
     content: public Task<Workspace> ReloadAsync(bool restore = true, CancellationToken cancellationToken = default)
     parameters:
     - id: restore
       type: System.Boolean
-      description: Indicates whether to run <code>dotnet restore</code> before loading projects. The default is <code>true</code>.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: A cancellation token.
     return:
       type: System.Threading.Tasks.Task{Metalama.Framework.Workspaces.Workspace}
-      description: The current workspace instance after reloading.
     content.vb: Public Function ReloadAsync(restore As Boolean = True, cancellationToken As CancellationToken = Nothing) As Task(Of Workspace)
   overload: Metalama.Framework.Workspaces.Workspace.ReloadAsync*
-  seealso:
-  - linkId: Metalama.Framework.Workspaces.Workspace.Reload(System.Boolean,System.Threading.CancellationToken)
-    commentId: M:Metalama.Framework.Workspaces.Workspace.Reload(System.Boolean,System.Threading.CancellationToken)
   nameWithType.vb: Workspace.ReloadAsync(Boolean, CancellationToken)
   fullName.vb: Metalama.Framework.Workspaces.Workspace.ReloadAsync(Boolean, System.Threading.CancellationToken)
   name.vb: ReloadAsync(Boolean, CancellationToken)
@@ -363,25 +318,17 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Synchronously reloads all projects in the current workspace.
-  example: []
   syntax:
     content: public Workspace Reload(bool restore = true, CancellationToken cancellationToken = default)
     parameters:
     - id: restore
       type: System.Boolean
-      description: Indicates whether to run <code>dotnet restore</code> before loading projects. The default is <code>true</code>.
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: A cancellation token.
     return:
       type: Metalama.Framework.Workspaces.Workspace
-      description: The current workspace instance after reloading.
     content.vb: Public Function Reload(restore As Boolean = True, cancellationToken As CancellationToken = Nothing) As Workspace
   overload: Metalama.Framework.Workspaces.Workspace.Reload*
-  seealso:
-  - linkId: Metalama.Framework.Workspaces.Workspace.ReloadAsync(System.Boolean,System.Threading.CancellationToken)
-    commentId: M:Metalama.Framework.Workspaces.Workspace.ReloadAsync(System.Boolean,System.Threading.CancellationToken)
   nameWithType.vb: Workspace.Reload(Boolean, CancellationToken)
   fullName.vb: Metalama.Framework.Workspaces.Workspace.Reload(Boolean, System.Threading.CancellationToken)
   name.vb: Reload(Boolean, CancellationToken)
@@ -420,17 +367,14 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Returns a subset of the current project set based on a filter predicate.
   example: []
   syntax:
     content: public IProjectSet GetSubset(Predicate<Project> filter)
     parameters:
     - id: filter
       type: System.Predicate{Metalama.Framework.Workspaces.Project}
-      description: A predicate that determines whether a project should be included in the subset.
     return:
       type: Metalama.Framework.Workspaces.IProjectSet
-      description: A new <xref href="Metalama.Framework.Workspaces.IProjectSet" data-throw-if-not-resolved="false"></xref> containing only the projects that match the filter.
     content.vb: Public Function GetSubset(filter As Predicate(Of Project)) As IProjectSet
   overload: Metalama.Framework.Workspaces.Workspace.GetSubset*
   implements:
@@ -452,26 +396,20 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Gets a declaration in the current project set by its serialized identifier.
   example: []
   syntax:
     content: public IDeclaration GetDeclaration(string projectName, string targetFramework, string declarationId, bool metalamaOutput)
     parameters:
     - id: projectName
       type: System.String
-      description: The name of the project.
     - id: targetFramework
       type: System.String
-      description: The target framework, or an empty string.
     - id: declarationId
       type: System.String
-      description: The serialized identifier of the declaration, obtained with <xref href="Metalama.Framework.Code.IRef.ToSerializableId" data-throw-if-not-resolved="false"></xref>.
     - id: metalamaOutput
       type: System.Boolean
-      description: Indicates whether to look for the declaration in Metalama's transformed output (<code>true</code>) or in the source code (<code>false</code>).
     return:
       type: Metalama.Framework.Code.IDeclaration
-      description: The declaration, or <code>null</code> if not found.
     content.vb: Public Function GetDeclaration(projectName As String, targetFramework As String, declarationId As String, metalamaOutput As Boolean) As IDeclaration
   overload: Metalama.Framework.Workspaces.Workspace.GetDeclaration*
   implements:
@@ -493,29 +431,17 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Gets a project by name and optionally by target framework.
-  example: []
   syntax:
     content: public Project GetProject(string name, string? targetFramework = null)
     parameters:
     - id: name
       type: System.String
-      description: The project name (without extension).
     - id: targetFramework
       type: System.String
-      description: The target framework, or <code>null</code> to match any framework.
     return:
       type: Metalama.Framework.Workspaces.Project
-      description: The matching project.
     content.vb: Public Function GetProject(name As String, targetFramework As String = Nothing) As Project
   overload: Metalama.Framework.Workspaces.Workspace.GetProject*
-  exceptions:
-  - type: System.Collections.Generic.KeyNotFoundException
-    commentId: T:System.Collections.Generic.KeyNotFoundException
-    description: Thrown when no project with the specified name is found.
-  - type: System.InvalidOperationException
-    commentId: T:System.InvalidOperationException
-    description: Thrown when multiple projects match and no target framework is specified.
   nameWithType.vb: Workspace.GetProject(String, String)
   fullName.vb: Metalama.Framework.Workspaces.Workspace.GetProject(String, String)
   name.vb: GetProject(String, String)

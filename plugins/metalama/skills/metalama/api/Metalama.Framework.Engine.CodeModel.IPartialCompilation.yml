@@ -99,17 +99,6 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: >-
-    Gets the syntax tree of the current subset that represents a given document, and returns
-
-    <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if there is none.
-  remarks: >-
-    At most one syntax tree of an <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> represents a document. Roslyn does not guarantee
-
-    that of a <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref>, so Metalama establishes it: a tree whose path an
-
-    earlier tree already holds is removed from the compilation before the subset is built. See issue #1742.
-  example: []
   syntax:
     content: bool TryGetSyntaxTree(DocumentKey documentKey, out SyntaxTree? syntaxTree)
     parameters:
@@ -138,24 +127,15 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Returns a new <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> with the specified syntax tree transformations applied.
-  example: []
   syntax:
     content: IPartialCompilation WithSyntaxTreeTransformations(IReadOnlyList<SyntaxTreeTransformation>? transformations = null)
     parameters:
     - id: transformations
       type: System.Collections.Generic.IReadOnlyList{Metalama.Compiler.SyntaxTreeTransformation}
-      description: >-
-        The list of transformations to apply. Each <xref href="Metalama.Compiler.SyntaxTreeTransformation" data-throw-if-not-resolved="false"></xref>
-                    can add, remove, or replace a syntax tree. Pass <code>null</code> or empty list to return the same instance.
     return:
       type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
-      description: A new <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> with the transformations applied.
     content.vb: Function WithSyntaxTreeTransformations(transformations As IReadOnlyList(Of SyntaxTreeTransformation) = Nothing) As IPartialCompilation
   overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations*
-  seealso:
-  - linkId: Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
-    commentId: M:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync(Metalama.Framework.Engine.CodeModel.IPartialCompilation,Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter,Metalama.Framework.Engine.Services.ProjectServiceProvider,System.Threading.CancellationToken)
   nameWithType.vb: IPartialCompilation.WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
   fullName.vb: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations(System.Collections.Generic.IReadOnlyList(Of Metalama.Compiler.SyntaxTreeTransformation))
   name.vb: WithSyntaxTreeTransformations(IReadOnlyList(Of SyntaxTreeTransformation))
@@ -173,17 +153,13 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
-  summary: Returns a new <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> with additional managed resources.
-  example: []
   syntax:
     content: IPartialCompilation WithAdditionalResources(params ManagedResource[] resources)
     parameters:
     - id: resources
       type: Metalama.Compiler.ManagedResource[]
-      description: The resources to add to the compilation output.
     return:
       type: Metalama.Framework.Engine.CodeModel.IPartialCompilation
-      description: A new <xref href="Metalama.Framework.Engine.CodeModel.IPartialCompilation" data-throw-if-not-resolved="false"></xref> with the additional resources.
     content.vb: Function WithAdditionalResources(ParamArray resources As ManagedResource()) As IPartialCompilation
   overload: Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithAdditionalResources*
   nameWithType.vb: IPartialCompilation.WithAdditionalResources(ParamArray ManagedResource())
