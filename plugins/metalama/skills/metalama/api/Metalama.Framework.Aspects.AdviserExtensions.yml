@@ -25,6 +25,8 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceClass(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceConstructor(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder},System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceConversionOperator(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IType,System.Boolean,System.Boolean,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceDelegate(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceEnum(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder},Metalama.Framework.Aspects.OverrideStrategy)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceEvent(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEventBuilder},System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceEvent(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,System.String,System.String,System.String,System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEventBuilder},System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceExtensionBlock(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},Metalama.Framework.Code.IType,System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IExtensionBlockBuilder})
@@ -47,7 +49,10 @@ items:
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Type,Metalama.Framework.Code.TypedConstant,System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction},System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceProperty(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder},System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceProperty(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,System.String,System.String,Metalama.Framework.Aspects.IntroductionScope,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder},System.Object,System.Object)
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceRecord(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Code.RecordKind,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder})
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceStruct(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   - Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnaryOperator(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamedType},System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.IType,Metalama.Framework.Code.OperatorKind,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder},System.Object,System.Object)
+  - Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnion(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder},Metalama.Framework.Aspects.OverrideStrategy)
   - Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor},System.String,System.Object,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IFieldOrProperty},System.String,System.Object)
   - Metalama.Framework.Aspects.AdviserExtensions.Override(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IMethod},Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)
@@ -2708,6 +2713,11 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Aspects
+  summary: >-
+    Appends a parameter to a constructor by specifying its name and <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>.
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> method to introduce the parameter to a different constructor than the current one.
+  example: []
   syntax:
     content: >-
       [Obsolete("This overload does not work across project boundaries. Use an overload that accepts an IIntroduceConstructorParameterPullStrategy.")]
@@ -2716,18 +2726,29 @@ items:
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+      description: An adviser for a constructor.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter (required). It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullAction
       type: System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction}
+      description: >-
+        An optional delegate that returns a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> specifying how to pull the new parameter from other child constructors.
+                        A <code>null</code> value is equivalent to <xref href="Metalama.Framework.Advising.PullAction.None" data-throw-if-not-resolved="false"></xref>, i.e. <code class="paramref">defaultValue</code> of the parameter will be used.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>.
     content.vb: >-
       <Obsolete("This overload does not work across project boundaries. Use an overload that accepts an IIntroduceConstructorParameterPullStrategy.")>
 
@@ -2757,25 +2778,53 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Aspects
+  summary: >-
+    Appends an optional parameter (i.e. one that has a compile-time-constant default value) to a constructor by specifying its name
+
+    and <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>. The new parameter is added directly to the existing constructor; existing callers can omit the
+
+    argument, so source compatibility is preserved. Binary compatibility is not preserved. Because the constructor count is
+
+    unchanged, this overload is the right choice for dependency-injection scenarios where the container requires exactly one
+
+    applicable constructor (for example, <code>Microsoft.Extensions.DependencyInjection.ActivatorUtilities</code>).
+  example: []
   syntax:
     content: public static IIntroductionAdviceResult<IParameter> IntroduceParameter(this IAdviser<IConstructor> adviser, string parameterName, IType parameterType, TypedConstant defaultValue, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+      description: An adviser for a constructor.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter. It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to pull the new parameter from chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function IntroduceParameter(adviser As IAdviser(Of IConstructor), parameterName As String, parameterType As IType, defaultValue As TypedConstant, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing) As IIntroductionAdviceResult(Of IParameter)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter*
+  seealso:
+  - linkId: Metalama.Framework.Advising.PullAction
+    commentId: T:Metalama.Framework.Advising.PullAction
+  - linkId: Metalama.Framework.Advising.IPullStrategy
+    commentId: T:Metalama.Framework.Advising.IPullStrategy
+  - linkType: HRef
+    linkId: '@introducing-constructor-parameters'
+    altText: '@introducing-constructor-parameters'
   nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
   name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
@@ -2794,25 +2843,72 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Aspects
+  summary: >-
+    Appends a required parameter (i.e. one that has no default value) to a constructor by specifying its name and <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>.
+
+    The framework also emits a <em>forwarding constructor</em>: a compile-time stub with the pre-mutation signature that chains via
+
+    <code>: this(...)</code> to the now-mutated constructor. The forwarding constructor obtains the new parameter's value from the supplied
+
+    <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> (for example, <xref href="Metalama.Framework.Advising.PullStrategy.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> for a non-constant expression
+
+    such as <code>DateTime.Now</code>, or <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Boolean%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> to cascade a
+
+    dependency into chained and derived constructors). Because the pre-mutation signature remains callable, both source and binary
+
+    compatibility are preserved. This overload is the right choice when binary compatibility matters, when the default must be a
+
+    non-constant expression, or when a parameterless constructor must remain callable (for example, through
+
+    <xref href="System.Activator.CreateInstance%60%601" data-throw-if-not-resolved="false"></xref> or the <code>new()</code> generic constraint). Pass a custom
+
+    <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> to scope which constructors receive a forwarding constructor, or to opt out
+
+    entirely.
+  example: []
   syntax:
     content: public static IIntroductionAdviceResult<IParameter> IntroduceParameter(this IAdviser<IConstructor> adviser, string parameterName, IType parameterType, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default, IConstructorOverloadingStrategy? overloadingStrategy = null)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+      description: An adviser for a constructor.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: The type of the parameter.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to supply the new parameter's value in the forwarding constructor
+                        and in chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     - id: overloadingStrategy
       type: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> that decides, per mutated constructor, whether the framework
+                        should generate a forwarding constructor preserving the pre-mutation signature. A <code>null</code> value (the default) is interpreted as
+                        <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors" data-throw-if-not-resolved="false"></xref>, which is the safe default. The value passed for the introduced
+                        parameter inside the generated forwarder is controlled by <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Boolean%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>'s
+                        <code>forwarderExpression</code> argument.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function IntroduceParameter(adviser As IAdviser(Of IConstructor), parameterName As String, parameterType As IType, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing, overloadingStrategy As IConstructorOverloadingStrategy = Nothing) As IIntroductionAdviceResult(Of IParameter)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter*
+  seealso:
+  - linkId: Metalama.Framework.Advising.PullAction
+    commentId: T:Metalama.Framework.Advising.PullAction
+  - linkId: Metalama.Framework.Advising.IPullStrategy
+    commentId: T:Metalama.Framework.Advising.IPullStrategy
+  - linkId: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    commentId: T:Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  - linkType: HRef
+    linkId: '@introducing-constructor-parameters'
+    altText: '@introducing-constructor-parameters'
   nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, IType, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, Metalama.Framework.Code.IType, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction), Metalama.Framework.Advising.IConstructorOverloadingStrategy)
   name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, IType, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
@@ -2831,6 +2927,11 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Aspects
+  summary: >-
+    Appends a parameter to a constructor by specifying its name and <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> method to apply the advice to another constructor than the current one.
+  example: []
   syntax:
     content: >-
       [Obsolete("This overload does not work across project boundaries. Use an overload that accepts an IIntroduceConstructorParameterPullStrategy.")]
@@ -2839,18 +2940,29 @@ items:
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+      description: An adviser for a constructor.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: System.Type
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter (required). It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullAction
       type: System.Func{Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IConstructor,Metalama.Framework.Advising.PullAction}
+      description: >-
+        An optional delegate that returns a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> specifying how to pull the new parameter from other child constructors.
+                        A <code>null</code> value is equivalent to <xref href="Metalama.Framework.Advising.PullAction.None" data-throw-if-not-resolved="false"></xref>, i.e. <code class="paramref">defaultValue</code> of the parameter will be used.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>.
     content.vb: >-
       <Obsolete("This overload does not work across project boundaries. Use an overload that accepts an IIntroduceConstructorParameterPullStrategy.")>
 
@@ -2880,25 +2992,53 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Aspects
+  summary: >-
+    Appends an optional parameter (i.e. one that has a compile-time-constant default value) to a constructor by specifying its name
+
+    and <xref href="System.Type" data-throw-if-not-resolved="false"></xref>. The new parameter is added directly to the existing constructor; existing callers can omit the
+
+    argument, so source compatibility is preserved. Binary compatibility is not preserved. Because the constructor count is
+
+    unchanged, this overload is the right choice for dependency-injection scenarios where the container requires exactly one
+
+    applicable constructor (for example, <code>Microsoft.Extensions.DependencyInjection.ActivatorUtilities</code>).
+  example: []
   syntax:
     content: public static IIntroductionAdviceResult<IParameter> IntroduceParameter(this IAdviser<IConstructor> adviser, string parameterName, Type parameterType, TypedConstant defaultValue, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+      description: An adviser for a constructor.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: System.Type
+      description: The type of the parameter.
     - id: defaultValue
       type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The default value of the parameter. It must be type-compatible with <code class="paramref">parameterType</code>.
+                        To specify <code>default</code> as the default value, use <xref href="Metalama.Framework.Code.TypedConstant.Default(Metalama.Framework.Code.IType%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref>.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to pull the new parameter from chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function IntroduceParameter(adviser As IAdviser(Of IConstructor), parameterName As String, parameterType As Type, defaultValue As TypedConstant, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing) As IIntroductionAdviceResult(Of IParameter)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter*
+  seealso:
+  - linkId: Metalama.Framework.Advising.PullAction
+    commentId: T:Metalama.Framework.Advising.PullAction
+  - linkId: Metalama.Framework.Advising.IPullStrategy
+    commentId: T:Metalama.Framework.Advising.IPullStrategy
+  - linkType: HRef
+    linkId: '@introducing-constructor-parameters'
+    altText: '@introducing-constructor-parameters'
   nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, Type, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, System.Type, Metalama.Framework.Code.TypedConstant, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction))
   name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, Type, TypedConstant, IPullStrategy, ImmutableArray(Of AttributeConstruction))
@@ -2917,25 +3057,70 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Aspects
+  summary: >-
+    Appends a required parameter (i.e. one that has no default value) to a constructor by specifying its name and <xref href="System.Type" data-throw-if-not-resolved="false"></xref>.
+
+    The framework also emits a <em>forwarding constructor</em>: a compile-time stub with the pre-mutation signature that chains via
+
+    <code>: this(...)</code> to the now-mutated constructor. The forwarding constructor obtains the new parameter's value from the supplied
+
+    <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> (for example, <xref href="Metalama.Framework.Advising.PullStrategy.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> for a non-constant expression
+
+    such as <code>DateTime.Now</code>, or <xref href="Metalama.Framework.Advising.PullStrategy.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Boolean%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> to cascade a
+
+    dependency into chained and derived constructors). Because the pre-mutation signature remains callable, both source and binary
+
+    compatibility are preserved. This overload is the right choice when binary compatibility matters, when the default must be a
+
+    non-constant expression, or when a parameterless constructor must remain callable (for example, through
+
+    <xref href="System.Activator.CreateInstance%60%601" data-throw-if-not-resolved="false"></xref> or the <code>new()</code> generic constraint). Pass a custom
+
+    <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> to scope which constructors receive a forwarding constructor, or to opt out
+
+    entirely.
+  example: []
   syntax:
     content: public static IIntroductionAdviceResult<IParameter> IntroduceParameter(this IAdviser<IConstructor> adviser, string parameterName, Type parameterType, IPullStrategy? pullStrategy = null, ImmutableArray<AttributeConstruction> attributes = default, IConstructorOverloadingStrategy? overloadingStrategy = null)
     parameters:
     - id: adviser
       type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.IConstructor}
+      description: An adviser for a constructor.
     - id: parameterName
       type: System.String
+      description: The name of the parameter.
     - id: parameterType
       type: System.Type
+      description: The type of the parameter.
     - id: pullStrategy
       type: Metalama.Framework.Advising.IPullStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IPullStrategy" data-throw-if-not-resolved="false"></xref> that specifies how to supply the new parameter's value in the forwarding constructor
+                        and in chained or derived constructors.
     - id: attributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: An optional list of custom attributes to add to the introduced parameter.
     - id: overloadingStrategy
       type: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+      description: >-
+        An optional <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> that decides, per mutated constructor, whether the framework
+                        should generate a forwarding constructor preserving the pre-mutation signature. A <code>null</code> value (the default) is interpreted as
+                        <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors" data-throw-if-not-resolved="false"></xref>, which is the safe default.
     return:
       type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.IParameter}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> exposing the introduced <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function IntroduceParameter(adviser As IAdviser(Of IConstructor), parameterName As String, parameterType As Type, pullStrategy As IPullStrategy = Nothing, attributes As ImmutableArray(Of AttributeConstruction) = Nothing, overloadingStrategy As IConstructorOverloadingStrategy = Nothing) As IIntroductionAdviceResult(Of IParameter)
   overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter*
+  seealso:
+  - linkId: Metalama.Framework.Advising.PullAction
+    commentId: T:Metalama.Framework.Advising.PullAction
+  - linkId: Metalama.Framework.Advising.IPullStrategy
+    commentId: T:Metalama.Framework.Advising.IPullStrategy
+  - linkId: Metalama.Framework.Advising.IConstructorOverloadingStrategy
+    commentId: T:Metalama.Framework.Advising.IConstructorOverloadingStrategy
+  - linkType: HRef
+    linkId: '@introducing-constructor-parameters'
+    altText: '@introducing-constructor-parameters'
   nameWithType.vb: AdviserExtensions.IntroduceParameter(IAdviser(Of IConstructor), String, Type, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceParameter(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.IConstructor), String, System.Type, Metalama.Framework.Advising.IPullStrategy, System.Collections.Immutable.ImmutableArray(Of Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction), Metalama.Framework.Advising.IConstructorOverloadingStrategy)
   name.vb: IntroduceParameter(IAdviser(Of IConstructor), String, Type, IPullStrategy, ImmutableArray(Of AttributeConstruction), IConstructorOverloadingStrategy)
@@ -2990,6 +3175,270 @@ items:
   nameWithType.vb: AdviserExtensions.IntroduceClass(IAdviser(Of INamespaceOrNamedType), String, OverrideStrategy, Action(Of INamedTypeBuilder))
   fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceClass(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder))
   name.vb: IntroduceClass(IAdviser(Of INamespaceOrNamedType), String, OverrideStrategy, Action(Of INamedTypeBuilder))
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceEnum(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceEnum(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  id: IntroduceEnum(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceEnum(IAdviser<INamespaceOrNamedType>, string, Action<IEnumBuilder>, OverrideStrategy)
+  nameWithType: AdviserExtensions.IntroduceEnum(IAdviser<INamespaceOrNamedType>, string, Action<IEnumBuilder>, OverrideStrategy)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceEnum(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamespaceOrNamedType>, string, System.Action<Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder>, Metalama.Framework.Aspects.OverrideStrategy)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new enum into the current namespace (as a top-level type) or type (as a nested type).
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.String)" data-throw-if-not-resolved="false"></xref> method to introduce the enum to a different type or namespace
+
+    than the current one.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<INamedType> IntroduceEnum(this IAdviser<INamespaceOrNamedType> adviser, string name, Action<IEnumBuilder> buildEnum, OverrideStrategy whenExists = OverrideStrategy.Default)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType}
+      description: An adviser for a named type or namespace.
+    - id: name
+      type: System.String
+      description: The enum name.
+    - id: buildEnum
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder}
+      description: >-
+        A callback that configures the introduced enum. It must add at least one member, because an enum that declares no member
+                        has no possible value, which is why this parameter is required and precedes <code class="paramref">whenExists</code>.
+    - id: whenExists
+      type: Metalama.Framework.Aspects.OverrideStrategy
+      description: >-
+        Determines the implementation strategy when a type of the same name is already declared in the target type or namespace.
+                        The default strategy is to fail with a compile-time error.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.INamedType}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> that exposes the outcome of the operation and the introduced <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function IntroduceEnum(adviser As IAdviser(Of INamespaceOrNamedType), name As String, buildEnum As Action(Of IEnumBuilder), whenExists As OverrideStrategy = OverrideStrategy.Default) As IIntroductionAdviceResult(Of INamedType)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceEnum*
+  seealso:
+  - linkType: HRef
+    linkId: '@introducing-types'
+    altText: '@introducing-types'
+  nameWithType.vb: AdviserExtensions.IntroduceEnum(IAdviser(Of INamespaceOrNamedType), String, Action(Of IEnumBuilder), OverrideStrategy)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceEnum(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IEnumBuilder), Metalama.Framework.Aspects.OverrideStrategy)
+  name.vb: IntroduceEnum(IAdviser(Of INamespaceOrNamedType), String, Action(Of IEnumBuilder), OverrideStrategy)
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceDelegate(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceDelegate(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  id: IntroduceDelegate(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceDelegate(IAdviser<INamespaceOrNamedType>, string, Action<IDelegateBuilder>, OverrideStrategy)
+  nameWithType: AdviserExtensions.IntroduceDelegate(IAdviser<INamespaceOrNamedType>, string, Action<IDelegateBuilder>, OverrideStrategy)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceDelegate(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamespaceOrNamedType>, string, System.Action<Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder>, Metalama.Framework.Aspects.OverrideStrategy)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new delegate into the current namespace (as a top-level type) or type (as a nested type).
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.String)" data-throw-if-not-resolved="false"></xref> method to introduce the delegate to a different type or namespace
+
+    than the current one.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<INamedType> IntroduceDelegate(this IAdviser<INamespaceOrNamedType> adviser, string name, Action<IDelegateBuilder> buildDelegate, OverrideStrategy whenExists = OverrideStrategy.Default)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType}
+      description: An adviser for a named type or namespace.
+    - id: name
+      type: System.String
+      description: The delegate name.
+    - id: buildDelegate
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder}
+      description: >-
+        A callback that modifies the <xref href="Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder" data-throw-if-not-resolved="false"></xref> that represents the introduced delegate. The signature of the
+                        introduced delegate is given through this callback, which is why this parameter is required and precedes <code class="paramref">whenExists</code>.
+    - id: whenExists
+      type: Metalama.Framework.Aspects.OverrideStrategy
+      description: >-
+        Determines the implementation strategy when a type of the same name is already declared in the target type or namespace.
+                        The default strategy is to fail with a compile-time error.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.INamedType}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> that exposes the outcome of the operation and the introduced <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function IntroduceDelegate(adviser As IAdviser(Of INamespaceOrNamedType), name As String, buildDelegate As Action(Of IDelegateBuilder), whenExists As OverrideStrategy = OverrideStrategy.Default) As IIntroductionAdviceResult(Of INamedType)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceDelegate*
+  seealso:
+  - linkType: HRef
+    linkId: '@introducing-types'
+    altText: '@introducing-types'
+  nameWithType.vb: AdviserExtensions.IntroduceDelegate(IAdviser(Of INamespaceOrNamedType), String, Action(Of IDelegateBuilder), OverrideStrategy)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceDelegate(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IDelegateBuilder), Metalama.Framework.Aspects.OverrideStrategy)
+  name.vb: IntroduceDelegate(IAdviser(Of INamespaceOrNamedType), String, Action(Of IDelegateBuilder), OverrideStrategy)
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceRecord(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Code.RecordKind,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceRecord(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Code.RecordKind,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder})
+  id: IntroduceRecord(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Code.RecordKind,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceRecord(IAdviser<INamespaceOrNamedType>, string, RecordKind, OverrideStrategy, Action<IRecordBuilder>?)
+  nameWithType: AdviserExtensions.IntroduceRecord(IAdviser<INamespaceOrNamedType>, string, RecordKind, OverrideStrategy, Action<IRecordBuilder>?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceRecord(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamespaceOrNamedType>, string, Metalama.Framework.Code.RecordKind, Metalama.Framework.Aspects.OverrideStrategy, System.Action<Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder>?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new record into the current namespace (as a top-level type) or type (as a nested type).
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.String)" data-throw-if-not-resolved="false"></xref> method to introduce the record to a different type or namespace
+
+    than the current one.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<INamedType> IntroduceRecord(this IAdviser<INamespaceOrNamedType> adviser, string name, RecordKind recordKind = RecordKind.Class, OverrideStrategy whenExists = OverrideStrategy.Default, Action<IRecordBuilder>? buildRecord = null)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType}
+      description: An adviser for a named type or namespace.
+    - id: name
+      type: System.String
+      description: The record name.
+    - id: recordKind
+      type: Metalama.Framework.Code.RecordKind
+      description: Whether the record is a record class or a record struct. The default is a record class.
+    - id: whenExists
+      type: Metalama.Framework.Aspects.OverrideStrategy
+      description: >-
+        Determines the implementation strategy when a type of the same name is already declared in the target type or namespace.
+                        The default strategy is to fail with a compile-time error.
+    - id: buildRecord
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder}
+      description: An optional delegate that modifies the <xref href="Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder" data-throw-if-not-resolved="false"></xref> that represents the introduced record.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.INamedType}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> that exposes the outcome of the operation and the introduced <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function IntroduceRecord(adviser As IAdviser(Of INamespaceOrNamedType), name As String, recordKind As RecordKind = RecordKind.Class, whenExists As OverrideStrategy = OverrideStrategy.Default, buildRecord As Action(Of IRecordBuilder) = Nothing) As IIntroductionAdviceResult(Of INamedType)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceRecord*
+  seealso:
+  - linkType: HRef
+    linkId: '@introducing-types'
+    altText: '@introducing-types'
+  nameWithType.vb: AdviserExtensions.IntroduceRecord(IAdviser(Of INamespaceOrNamedType), String, RecordKind, OverrideStrategy, Action(Of IRecordBuilder))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceRecord(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, Metalama.Framework.Code.RecordKind, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IRecordBuilder))
+  name.vb: IntroduceRecord(IAdviser(Of INamespaceOrNamedType), String, RecordKind, OverrideStrategy, Action(Of IRecordBuilder))
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnion(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnion(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  id: IntroduceUnion(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,System.Action{Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder},Metalama.Framework.Aspects.OverrideStrategy)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceUnion(IAdviser<INamespaceOrNamedType>, string, Action<IUnionBuilder>, OverrideStrategy)
+  nameWithType: AdviserExtensions.IntroduceUnion(IAdviser<INamespaceOrNamedType>, string, Action<IUnionBuilder>, OverrideStrategy)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnion(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamespaceOrNamedType>, string, System.Action<Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder>, Metalama.Framework.Aspects.OverrideStrategy)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new union, written with the <code>union</code> keyword, into the current namespace (as a top-level type) or type (as a nested type).
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.String)" data-throw-if-not-resolved="false"></xref> method to introduce the union to a different type or namespace
+
+    than the current one.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<INamedType> IntroduceUnion(this IAdviser<INamespaceOrNamedType> adviser, string name, Action<IUnionBuilder> buildUnion, OverrideStrategy whenExists = OverrideStrategy.Default)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType}
+      description: An adviser for a named type or namespace.
+    - id: name
+      type: System.String
+      description: The union name.
+    - id: buildUnion
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder}
+      description: >-
+        A callback that configures the introduced union. It must add at least one case, because the language requires a union to have
+                        one, which is why this parameter is required and precedes <code class="paramref">whenExists</code>.
+    - id: whenExists
+      type: Metalama.Framework.Aspects.OverrideStrategy
+      description: >-
+        Determines the implementation strategy when a type of the same name is already declared in the target type or namespace.
+                        The default strategy is to fail with a compile-time error.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.INamedType}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> that exposes the outcome of the operation and the introduced <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function IntroduceUnion(adviser As IAdviser(Of INamespaceOrNamedType), name As String, buildUnion As Action(Of IUnionBuilder), whenExists As OverrideStrategy = OverrideStrategy.Default) As IIntroductionAdviceResult(Of INamedType)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnion*
+  seealso:
+  - linkType: HRef
+    linkId: '@introducing-types'
+    altText: '@introducing-types'
+  nameWithType.vb: AdviserExtensions.IntroduceUnion(IAdviser(Of INamespaceOrNamedType), String, Action(Of IUnionBuilder), OverrideStrategy)
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceUnion(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.IUnionBuilder), Metalama.Framework.Aspects.OverrideStrategy)
+  name.vb: IntroduceUnion(IAdviser(Of INamespaceOrNamedType), String, Action(Of IUnionBuilder), OverrideStrategy)
+- uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceStruct(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
+  commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceStruct(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
+  id: IntroduceStruct(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Aspects.AdviserExtensions
+  langs:
+  - csharp
+  - vb
+  name: IntroduceStruct(IAdviser<INamespaceOrNamedType>, string, OverrideStrategy, Action<INamedTypeBuilder>?)
+  nameWithType: AdviserExtensions.IntroduceStruct(IAdviser<INamespaceOrNamedType>, string, OverrideStrategy, Action<INamedTypeBuilder>?)
+  fullName: Metalama.Framework.Aspects.AdviserExtensions.IntroduceStruct(Metalama.Framework.Aspects.IAdviser<Metalama.Framework.Code.INamespaceOrNamedType>, string, Metalama.Framework.Aspects.OverrideStrategy, System.Action<Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder>?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Introduces a new struct into the current namespace (as a top-level type) or type (as a nested type).
+
+    Use the <xref href="Metalama.Framework.Aspects.IAdviser.With%60%601(%60%600)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Aspects.AdviserExtensions.WithNamespace(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.String)" data-throw-if-not-resolved="false"></xref> method to introduce the struct to a different type or namespace
+
+    than the current one.
+  example: []
+  syntax:
+    content: public static IIntroductionAdviceResult<INamedType> IntroduceStruct(this IAdviser<INamespaceOrNamedType> adviser, string name, OverrideStrategy whenExists = OverrideStrategy.Default, Action<INamedTypeBuilder>? buildType = null)
+    parameters:
+    - id: adviser
+      type: Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType}
+      description: An adviser for a named type or namespace.
+    - id: name
+      type: System.String
+      description: The struct name.
+    - id: whenExists
+      type: Metalama.Framework.Aspects.OverrideStrategy
+      description: >-
+        Determines the implementation strategy when a struct of the same name is already declared in the target type or namespace.
+                        The default strategy is to fail with a compile-time error.
+    - id: buildType
+      type: System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder}
+      description: An optional delegate that modifies the <xref href="Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder" data-throw-if-not-resolved="false"></xref> that represents the introduced struct.
+    return:
+      type: Metalama.Framework.Advising.IIntroductionAdviceResult{Metalama.Framework.Code.INamedType}
+      description: An <xref href="Metalama.Framework.Advising.IIntroductionAdviceResult%601" data-throw-if-not-resolved="false"></xref> that exposes the outcome of the operation and the introduced <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function IntroduceStruct(adviser As IAdviser(Of INamespaceOrNamedType), name As String, whenExists As OverrideStrategy = OverrideStrategy.Default, buildType As Action(Of INamedTypeBuilder) = Nothing) As IIntroductionAdviceResult(Of INamedType)
+  overload: Metalama.Framework.Aspects.AdviserExtensions.IntroduceStruct*
+  seealso:
+  - linkType: HRef
+    linkId: '@introducing-types'
+    altText: '@introducing-types'
+  nameWithType.vb: AdviserExtensions.IntroduceStruct(IAdviser(Of INamespaceOrNamedType), String, OverrideStrategy, Action(Of INamedTypeBuilder))
+  fullName.vb: Metalama.Framework.Aspects.AdviserExtensions.IntroduceStruct(Metalama.Framework.Aspects.IAdviser(Of Metalama.Framework.Code.INamespaceOrNamedType), String, Metalama.Framework.Aspects.OverrideStrategy, System.Action(Of Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder))
+  name.vb: IntroduceStruct(IAdviser(Of INamespaceOrNamedType), String, OverrideStrategy, Action(Of INamedTypeBuilder))
 - uid: Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   commentId: M:Metalama.Framework.Aspects.AdviserExtensions.IntroduceInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})
   id: IntroduceInterface(Metalama.Framework.Aspects.IAdviser{Metalama.Framework.Code.INamespaceOrNamedType},System.String,Metalama.Framework.Aspects.OverrideStrategy,System.Action{Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder})

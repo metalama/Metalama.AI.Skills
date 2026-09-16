@@ -30,6 +30,7 @@ items:
   - Metalama.Testing.AspectTesting.TestOptions.IncludeDeclarationInDiagnosticReport
   - Metalama.Testing.AspectTesting.TestOptions.IncludeLineNumberInDiagnosticReport
   - Metalama.Testing.AspectTesting.TestOptions.IncludedFiles
+  - Metalama.Testing.AspectTesting.TestOptions.IncludedPolyfills
   - Metalama.Testing.AspectTesting.TestOptions.InvalidSourceOptions
   - Metalama.Testing.AspectTesting.TestOptions.IsSkipped
   - Metalama.Testing.AspectTesting.TestOptions.KeepDisabledCode
@@ -291,6 +292,36 @@ items:
       type: System.Collections.Generic.List{System.String}
     content.vb: Public ReadOnly Property IncludedFiles As List(Of String)
   overload: Metalama.Testing.AspectTesting.TestOptions.IncludedFiles*
+- uid: Metalama.Testing.AspectTesting.TestOptions.IncludedPolyfills
+  commentId: P:Metalama.Testing.AspectTesting.TestOptions.IncludedPolyfills
+  id: IncludedPolyfills
+  parent: Metalama.Testing.AspectTesting.TestOptions
+  langs:
+  - csharp
+  - vb
+  name: IncludedPolyfills
+  nameWithType: TestOptions.IncludedPolyfills
+  fullName: Metalama.Testing.AspectTesting.TestOptions.IncludedPolyfills
+  type: Property
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: >-
+    Gets the list of polyfills that must be declared in the test compilation. A polyfill is a system type that the
+
+    reference assemblies of the target framework do not declare. The only supported value is <code>Union</code>, which
+
+    declares <code>System.Runtime.CompilerServices.IUnion</code> and <code>System.Runtime.CompilerServices.UnionAttribute</code>.
+
+    To add items into this collection from a test, add this comment to your test file: <code>// @IncludePolyfill(name1,name2)</code>.
+  example: []
+  syntax:
+    content: public List<string> IncludedPolyfills { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public ReadOnly Property IncludedPolyfills As List(Of String)
+  overload: Metalama.Testing.AspectTesting.TestOptions.IncludedPolyfills*
 - uid: Metalama.Testing.AspectTesting.TestOptions.SkipAddingSystemFiles
   commentId: P:Metalama.Testing.AspectTesting.TestOptions.SkipAddingSystemFiles
   id: SkipAddingSystemFiles
@@ -306,9 +337,11 @@ items:
   - Metalama.Testing.AspectTesting
   namespace: Metalama.Testing.AspectTesting
   summary: >-
-    Gets or sets a value indicating whether adding system files to the test compilation should be skipped.
+    Gets or sets a value indicating whether adding the polyfill file to the test compilation should be skipped.
 
-    Namely, there is one file that adds the <code>System.Runtime.CompilerServices.IsExternalInit</code> type on .Net Framework.
+    That file adds the <code>System.Runtime.CompilerServices.IsExternalInit</code> type on .NET Framework, and the types
+
+    requested by <xref href="Metalama.Testing.AspectTesting.TestOptions.IncludedPolyfills" data-throw-if-not-resolved="false"></xref>.
 
     To enable this option in a test, add this comment to your test file: <code>// @SkipAddingSystemFiles</code>.
   example: []

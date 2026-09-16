@@ -113,23 +113,61 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
+  summary: Creates a <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that means that the dependency should be pulled from a new parameter of the calling constructor.
+  remarks: >-
+    <p>
+        This action propagates the parameter requirement to child constructors. A new parameter with the specified
+        name, type, and default value will be added to each child constructor, and its value will be passed to the
+        base/this constructor.
+        </p>
+    <p>
+      <strong>Cross-Project Support:</strong> This pull action operates across project boundaries. When a parameter
+        is introduced to a base class in one project, all derived classes in referencing projects will automatically
+        have the parameter added to their constructors. This makes it ideal for framework-level dependency injection.
+        </p>
+    <p>
+        This is the most common pull action for dependency injection scenarios where derived classes should also
+        receive and forward the dependency.
+        </p>
+  example: []
   syntax:
     content: public static PullAction IntroduceParameterAndPull(string parameterName, IType parameterType, IExpression? parameterDefaultValue, IExpression? forwarderExpression = null, ImmutableArray<AttributeConstruction> parameterAttributes = default, bool materializeOnRecord = false)
     parameters:
     - id: parameterName
       type: System.String
+      description: Name of the new parameter.
     - id: parameterType
       type: Metalama.Framework.Code.IType
+      description: Type of the new parameter.
     - id: parameterDefaultValue
       type: Metalama.Framework.Code.IExpression
+      description: >-
+        Optional default value for the new parameter. Must be a compile-time constant
+                        (or <code>null</code>), because it becomes the declared default of a parameter in the chained constructor.
     - id: forwarderExpression
       type: Metalama.Framework.Code.IExpression
+      description: >-
+        Optional expression to pass for the introduced parameter in the framework-emitted
+                        forwarding constructor (the stub that preserves the pre-mutation signature when the required-parameter overload
+                        is used). Unlike <code class="paramref">parameterDefaultValue</code>, this expression does not need to be a compile-time
+                        constant (e.g. <code>System.DateTime.Now</code> is valid). When a forwarder is emitted and this argument is <code>null</code>,
+                        <code class="paramref">parameterDefaultValue</code> is used if non-null; otherwise the framework falls back to <code>default(T)!</code>
+                        so the forwarder always compiles.
     - id: parameterAttributes
       type: System.Collections.Immutable.ImmutableArray{Metalama.Framework.Code.DeclarationBuilders.AttributeConstruction}
+      description: Optional attributes to apply to the new parameter.
     - id: materializeOnRecord
       type: System.Boolean
+      description: >-
+        When <code>true</code> and the target is a record, the parameter is appended to the positional (primary)
+                        constructor and therefore becomes part of the record's value shape: an auto-generated property, a new entry in
+                        <code>Equals</code>/<code>GetHashCode</code>/<code>ToString</code>, and a new <code>Deconstruct</code> overload. When <code>false</code> (the default),
+                        the parameter is carried on a non-primary sibling constructor synthesized by Metalama, and the record's positional list
+                        is left untouched. Ignored for non-record targets. Set this to <code>true</code> only if you deliberately want the pulled
+                        parameter to participate in the record's value identity.
     return:
       type: Metalama.Framework.Advising.PullAction
+      description: A <xref href="Metalama.Framework.Advising.PullAction" data-throw-if-not-resolved="false"></xref> that introduces a new parameter and pulls from it.
     content.vb: Public Shared Function IntroduceParameterAndPull(parameterName As String, parameterType As IType, parameterDefaultValue As IExpression, forwarderExpression As IExpression = Nothing, parameterAttributes As ImmutableArray(Of AttributeConstruction) = Nothing, materializeOnRecord As Boolean = False) As PullAction
   overload: Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull*
   nameWithType.vb: PullAction.IntroduceParameterAndPull(String, IType, IExpression, IExpression, ImmutableArray(Of AttributeConstruction), Boolean)
@@ -222,13 +260,17 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
   summary: Gets the expression to use for pulling the dependency when <xref href="Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)" data-throw-if-not-resolved="false"></xref> is used.
+  remarks: >-
+    Durable, because a pull action is held by the pull strategy of an aspect, which must survive an edit. Call
+
+    <xref href="Metalama.Framework.Code.IDurableExpression.ToExpression(Metalama.Framework.Code.ICompilation)" data-throw-if-not-resolved="false"></xref> with the compilation in which the expression is to be used.
   example: []
   syntax:
-    content: public IExpression? Expression { get; }
+    content: public IDurableExpression? Expression { get; }
     parameters: []
     return:
-      type: Metalama.Framework.Code.IExpression
-    content.vb: Public ReadOnly Property Expression As IExpression
+      type: Metalama.Framework.Code.IDurableExpression
+    content.vb: Public ReadOnly Property Expression As IDurableExpression
   overload: Metalama.Framework.Advising.PullAction.Expression*
 - uid: Metalama.Framework.Advising.PullAction.None
   commentId: P:Metalama.Framework.Advising.PullAction.None

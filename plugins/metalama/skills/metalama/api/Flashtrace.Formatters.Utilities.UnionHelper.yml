@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: Flashtrace.Formatters.Utilities.UnionHelper
+  commentId: T:Flashtrace.Formatters.Utilities.UnionHelper
+  id: UnionHelper
+  parent: Flashtrace.Formatters.Utilities
+  children:
+  - Flashtrace.Formatters.Utilities.UnionHelper.IsUnion(System.Type)
+  - Flashtrace.Formatters.Utilities.UnionHelper.TryGetValuePropertyGetter(System.Type,System.Func{System.Object,System.Object}@)
+  langs:
+  - csharp
+  - vb
+  name: UnionHelper
+  nameWithType: UnionHelper
+  fullName: Flashtrace.Formatters.Utilities.UnionHelper
+  type: Class
+  assemblies:
+  - Flashtrace.Formatters
+  namespace: Flashtrace.Formatters.Utilities
+  summary: >-
+    Recognizes a union of C# 15 at run time and reads its <code>Value</code> property, which holds the value of the case that
+
+    the union currently carries.
+  remarks: >-
+    <p>
+
+    The compiler makes every union implement <code>System.Runtime.CompilerServices.IUnion</code>, which declares the
+
+    <code>Value</code> property. That interface belongs to the base class library of .NET 11, while this assembly targets
+
+    .NET Framework 4.7.2, .NET Standard 2.0 and .NET 10, so it cannot be named in source. The interface is therefore
+
+    matched by its full name over the interfaces that the type implements, which gives the same answer when the .NET 10
+
+    assembly is loaded into a .NET 11 application.
+
+    </p>
+
+    <p>
+
+    A type of another assembly that declares an interface of the same full name is recognized as a union as well. That
+
+    is the cost of matching by name, and the name belongs to a namespace that the base class library reserves for the
+
+    compiler.
+
+    </p>
+
+    <p>
+
+    The results are cached per type, so a repeated query costs one dictionary lookup.
+
+    </p>
+  example: []
+  syntax:
+    content: public static class UnionHelper
+    content.vb: Public Module UnionHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Flashtrace.Formatters.Utilities.UnionHelper.TryGetValuePropertyGetter(System.Type,System.Func{System.Object,System.Object}@)
+  commentId: M:Flashtrace.Formatters.Utilities.UnionHelper.TryGetValuePropertyGetter(System.Type,System.Func{System.Object,System.Object}@)
+  id: TryGetValuePropertyGetter(System.Type,System.Func{System.Object,System.Object}@)
+  parent: Flashtrace.Formatters.Utilities.UnionHelper
+  langs:
+  - csharp
+  - vb
+  name: TryGetValuePropertyGetter(Type, out Func<object, object?>?)
+  nameWithType: UnionHelper.TryGetValuePropertyGetter(Type, out Func<object, object?>?)
+  fullName: Flashtrace.Formatters.Utilities.UnionHelper.TryGetValuePropertyGetter(System.Type, out System.Func<object, object?>?)
+  type: Method
+  assemblies:
+  - Flashtrace.Formatters
+  namespace: Flashtrace.Formatters.Utilities
+  summary: Gets a function that reads the <code>Value</code> property of a union.
+  example: []
+  syntax:
+    content: public static bool TryGetValuePropertyGetter(Type type, out Func<object, object?>? getter)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type to evaluate.
+    - id: getter
+      type: System.Func{System.Object,System.Object}
+      description: >-
+        When this method returns <code>true</code>, a function whose parameter is the union, boxed when
+                    it is a value type, and whose return value is the value of the case that the union currently carries; otherwise,
+                    <code>null</code>.
+      attributes:
+      - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+        ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
+        arguments:
+        - type: System.Boolean
+          value: true
+    return:
+      type: System.Boolean
+      description: <code>true</code> if <code class="paramref">type</code> is a union; otherwise, <code>false</code>.
+    content.vb: Public Shared Function TryGetValuePropertyGetter(type As Type, getter As Func(Of Object, Object)) As Boolean
+  overload: Flashtrace.Formatters.Utilities.UnionHelper.TryGetValuePropertyGetter*
+  nameWithType.vb: UnionHelper.TryGetValuePropertyGetter(Type, Func(Of Object, Object))
+  fullName.vb: Flashtrace.Formatters.Utilities.UnionHelper.TryGetValuePropertyGetter(System.Type, System.Func(Of Object, Object))
+  name.vb: TryGetValuePropertyGetter(Type, Func(Of Object, Object))
+- uid: Flashtrace.Formatters.Utilities.UnionHelper.IsUnion(System.Type)
+  commentId: M:Flashtrace.Formatters.Utilities.UnionHelper.IsUnion(System.Type)
+  id: IsUnion(System.Type)
+  parent: Flashtrace.Formatters.Utilities.UnionHelper
+  langs:
+  - csharp
+  - vb
+  name: IsUnion(Type)
+  nameWithType: UnionHelper.IsUnion(Type)
+  fullName: Flashtrace.Formatters.Utilities.UnionHelper.IsUnion(System.Type)
+  type: Method
+  assemblies:
+  - Flashtrace.Formatters
+  namespace: Flashtrace.Formatters.Utilities
+  summary: Determines whether a type is a union.
+  example: []
+  syntax:
+    content: public static bool IsUnion(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type to evaluate.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if <code class="paramref">type</code> is a union; otherwise, <code>false</code>.
+    content.vb: Public Shared Function IsUnion(type As Type) As Boolean
+  overload: Flashtrace.Formatters.Utilities.UnionHelper.IsUnion*

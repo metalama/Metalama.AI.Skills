@@ -65,6 +65,34 @@ items:
   - Metalama.Patterns.Immutability
   namespace: Metalama.Patterns.Immutability
   summary: Returns the <xref href="Metalama.Patterns.Immutability.ImmutabilityKind" data-throw-if-not-resolved="false"></xref> for a given type.
+  remarks: >-
+    <p>
+
+    The rule for a union rests on the definition that <xref href="Metalama.Patterns.Immutability.ImmutabilityKind.Shallow" data-throw-if-not-resolved="false"></xref> gives, which is about
+
+    instance fields and automatic property setters, and not on the type being declared <code>readonly</code>. A union
+
+    declaration satisfies that definition whether or not it carries the modifier, because its only instance field is
+
+    the read-only backing field of the synthesized get-only <code>Value</code> property, and the language reports an error
+
+    for an instance field, an automatic property or a field-like event declared in a union.
+
+    </p>
+
+    <p>
+
+    The rule applies to the declaration form only. A class or a struct that carries the
+
+    <code>System.Runtime.CompilerServices.UnionAttribute</code> attribute is also a union, its state is unconstrained, and
+
+    it is classified by the rules that apply to any other class or struct. A union read from a referenced assembly
+
+    is reported as the attribute form, because the compiled form of a union does not record whether the source used
+
+    the <code>union</code> keyword, so a union of another project is classified by those rules as well.
+
+    </p>
   example: []
   syntax:
     content: public static ImmutabilityKind GetImmutabilityKind(this IType type)
@@ -83,6 +111,10 @@ items:
 
         <xref href="Metalama.Patterns.Immutability.Configuration.ImmutabilityConfigurationExtensions.ConfigureImmutability(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.INamedType%7d%2cMetalama.Patterns.Immutability.ImmutabilityKind)" data-throw-if-not-resolved="false"></xref>.</li><li>The result of a configured <xref href="Metalama.Patterns.Immutability.Configuration.IImmutabilityClassifier" data-throw-if-not-resolved="false"></xref> if one is set.</li><li><xref href="Metalama.Patterns.Immutability.ImmutabilityKind.Deep" data-throw-if-not-resolved="false"></xref> for value types in the <code>System</code> namespace, except
 
-        <code>ValueTuple</code>, <code>Span</code>, <code>ReadOnlySpan</code>, <code>Memory</code>, and <code>ReadOnlyMemory</code>.</li><li><xref href="Metalama.Patterns.Immutability.ImmutabilityKind.Shallow" data-throw-if-not-resolved="false"></xref> for read-only structs.</li><li><xref href="Metalama.Patterns.Immutability.ImmutabilityKind.None" data-throw-if-not-resolved="false"></xref> for all other types.</li></ul>
+        <code>ValueTuple</code>, <code>Span</code>, <code>ReadOnlySpan</code>, <code>Memory</code>, and <code>ReadOnlyMemory</code>.</li><li><xref href="Metalama.Patterns.Immutability.ImmutabilityKind.Deep" data-throw-if-not-resolved="false"></xref> for a union declared with the <code>union</code> keyword whose
+
+        every case type is deeply immutable, and <xref href="Metalama.Patterns.Immutability.ImmutabilityKind.Shallow" data-throw-if-not-resolved="false"></xref> for any other such
+
+        union.</li><li><xref href="Metalama.Patterns.Immutability.ImmutabilityKind.Shallow" data-throw-if-not-resolved="false"></xref> for read-only structs.</li><li><xref href="Metalama.Patterns.Immutability.ImmutabilityKind.None" data-throw-if-not-resolved="false"></xref> for all other types.</li></ul>
     content.vb: Public Shared Function GetImmutabilityKind(type As IType) As ImmutabilityKind
   overload: Metalama.Patterns.Immutability.ImmutabilityExtensions.GetImmutabilityKind*

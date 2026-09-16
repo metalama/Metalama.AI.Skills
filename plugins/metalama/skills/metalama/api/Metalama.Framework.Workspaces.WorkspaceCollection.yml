@@ -77,11 +77,14 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Workspaces.WorkspaceCollection" data-throw-if-not-resolved="false"></xref> class.
+  example: []
   syntax:
     content: public WorkspaceCollection(GlobalServiceProvider? serviceProvider = null)
     parameters:
     - id: serviceProvider
       type: System.Nullable{Metalama.Framework.Engine.Services.GlobalServiceProvider}
+      description: The service provider to use, or <code>null</code> to use the default service provider.
     content.vb: Public Sub New(serviceProvider As GlobalServiceProvider? = Nothing)
   overload: Metalama.Framework.Workspaces.WorkspaceCollection.#ctor*
   nameWithType.vb: WorkspaceCollection.New(GlobalServiceProvider?)
@@ -101,15 +104,41 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: Configures additional services for this collection, resetting any previously registered services, and returns the current collection.
+  remarks: >-
+    <p>
+      <strong>Important:</strong> This method must be called <em>before</em> any call to <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.Load(System.String%5b%5d)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync(System.String%5b%5d)" data-throw-if-not-resolved="false"></xref>.
+        Services configured after loading have no effect on already-loaded workspaces.
+        </p>
+    <p>
+        This method first clears any previously registered services, then invokes the configure action
+        to register new services. Services are available for metric computations and other extensibility points.
+        </p>
+    <p>
+        Example usage with metrics:
+        </p>
+
+    <pre><code class="lang-csharp">WorkspaceCollection.Default
+        .WithServices(s =&gt; s.AddMetrics())
+        .Load("MySolution.sln")
+        .SourceCode
+        .Methods
+        .Select(m =&gt; m.Metrics().Get&lt;SyntaxNodesCount&gt;())</code></pre>
+  example: []
   syntax:
     content: public WorkspaceCollection WithServices(Action<ServiceBuilder> configure)
     parameters:
     - id: configure
       type: System.Action{Metalama.Framework.Workspaces.ServiceBuilder}
+      description: An action that configures services on the <xref href="Metalama.Framework.Workspaces.WorkspaceCollection.ServiceBuilder" data-throw-if-not-resolved="false"></xref>.
     return:
       type: Metalama.Framework.Workspaces.WorkspaceCollection
+      description: The current <xref href="Metalama.Framework.Workspaces.WorkspaceCollection" data-throw-if-not-resolved="false"></xref> instance for method chaining.
     content.vb: Public Function WithServices(configure As Action(Of ServiceBuilder)) As WorkspaceCollection
   overload: Metalama.Framework.Workspaces.WorkspaceCollection.WithServices*
+  seealso:
+  - linkId: Metalama.Framework.Workspaces.WorkspaceCollection.ServiceBuilder
+    commentId: P:Metalama.Framework.Workspaces.WorkspaceCollection.ServiceBuilder
   nameWithType.vb: WorkspaceCollection.WithServices(Action(Of ServiceBuilder))
   fullName.vb: Metalama.Framework.Workspaces.WorkspaceCollection.WithServices(System.Action(Of Metalama.Framework.Workspaces.ServiceBuilder))
   name.vb: WithServices(Action(Of ServiceBuilder))
@@ -127,15 +156,25 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Synchronously loads a set of projects or solutions into a <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>, or returns an existing workspace
+
+    if the method has been previously called with the exact same parameters.
+  example: []
   syntax:
     content: public Workspace Load(params string[] paths)
     parameters:
     - id: paths
       type: System.String[]
+      description: A list of project or solution paths.
     return:
       type: Metalama.Framework.Workspaces.Workspace
+      description: A <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref> where all specified projects or solutions, and their dependencies, have been loaded.
     content.vb: Public Function Load(ParamArray paths As String()) As Workspace
   overload: Metalama.Framework.Workspaces.WorkspaceCollection.Load*
+  seealso:
+  - linkId: Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync(System.String[])
+    commentId: M:Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync(System.String[])
   nameWithType.vb: WorkspaceCollection.Load(ParamArray String())
   fullName.vb: Metalama.Framework.Workspaces.WorkspaceCollection.Load(ParamArray String())
   name.vb: Load(ParamArray String())
@@ -153,15 +192,25 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Asynchronously loads a set of projects or solutions into a <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>, or returns an existing workspace
+
+    if the method has been previously called with the exact same parameters.
+  example: []
   syntax:
     content: public Task<Workspace> LoadAsync(params string[] paths)
     parameters:
     - id: paths
       type: System.String[]
+      description: A list of project or solution paths.
     return:
       type: System.Threading.Tasks.Task{Metalama.Framework.Workspaces.Workspace}
+      description: A <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref> where all specified projects or solutions, and their dependencies, have been loaded.
     content.vb: Public Function LoadAsync(ParamArray paths As String()) As Task(Of Workspace)
   overload: Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync*
+  seealso:
+  - linkId: Metalama.Framework.Workspaces.WorkspaceCollection.Load(System.String[])
+    commentId: M:Metalama.Framework.Workspaces.WorkspaceCollection.Load(System.String[])
   nameWithType.vb: WorkspaceCollection.LoadAsync(ParamArray String())
   fullName.vb: Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync(ParamArray String())
   name.vb: LoadAsync(ParamArray String())
@@ -179,19 +228,29 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Asynchronously loads a set of projects or solutions into a <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>, or returns an existing workspace
+
+    if the method has been previously called with the exact same parameters. This overload allows specifying MSBuild properties.
+  example: []
   syntax:
     content: public Task<Workspace> LoadAsync(ImmutableArray<string> paths, ImmutableDictionary<string, string>? properties = null, bool restore = true, CancellationToken cancellationToken = default)
     parameters:
     - id: paths
       type: System.Collections.Immutable.ImmutableArray{System.String}
+      description: A list of project or solution paths.
     - id: properties
       type: System.Collections.Immutable.ImmutableDictionary{System.String,System.String}
+      description: MSBuild properties to pass to the projects, or <code>null</code> to use default properties.
     - id: restore
       type: System.Boolean
+      description: Indicates whether to run <code>dotnet restore</code> before loading projects. The default is <code>true</code>.
     - id: cancellationToken
       type: System.Threading.CancellationToken
+      description: A cancellation token.
     return:
       type: System.Threading.Tasks.Task{Metalama.Framework.Workspaces.Workspace}
+      description: A <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref> where all specified projects or solutions, and their dependencies, have been loaded.
     content.vb: Public Function LoadAsync(paths As ImmutableArray(Of String), properties As ImmutableDictionary(Of String, String) = Nothing, restore As Boolean = True, cancellationToken As CancellationToken = Nothing) As Task(Of Workspace)
   overload: Metalama.Framework.Workspaces.WorkspaceCollection.LoadAsync*
   nameWithType.vb: WorkspaceCollection.LoadAsync(ImmutableArray(Of String), ImmutableDictionary(Of String, String), Boolean, CancellationToken)
@@ -211,13 +270,17 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
+  summary: Finds the <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Workspaces.Project" data-throw-if-not-resolved="false"></xref> that defines a given Roslyn <xref href="Microsoft.CodeAnalysis.Compilation" data-throw-if-not-resolved="false"></xref> in the current <xref href="Metalama.Framework.Workspaces.WorkspaceCollection" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public bool TryFindProject(Compilation compilation, out Workspace? workspace, out Project? project, out bool isMetalamaOutput)
     parameters:
     - id: compilation
       type: Microsoft.CodeAnalysis.Compilation
+      description: The Roslyn compilation to search for.
     - id: workspace
       type: Metalama.Framework.Workspaces.Workspace
+      description: When this method returns <code>true</code>, contains the workspace that contains the compilation.
       attributes:
       - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
         ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
@@ -226,6 +289,7 @@ items:
           value: true
     - id: project
       type: Metalama.Framework.Workspaces.Project
+      description: When this method returns <code>true</code>, contains the project that contains the compilation.
       attributes:
       - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
         ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
@@ -234,8 +298,10 @@ items:
           value: true
     - id: isMetalamaOutput
       type: System.Boolean
+      description: When this method returns <code>true</code>, indicates whether the compilation is Metalama's transformed output.
     return:
       type: System.Boolean
+      description: <code>true</code> if a matching project was found; otherwise, <code>false</code>.
     content.vb: Public Function TryFindProject(compilation As Compilation, workspace As Workspace, project As Project, isMetalamaOutput As Boolean) As Boolean
   overload: Metalama.Framework.Workspaces.WorkspaceCollection.TryFindProject*
   nameWithType.vb: WorkspaceCollection.TryFindProject(Compilation, Workspace, Project, Boolean)

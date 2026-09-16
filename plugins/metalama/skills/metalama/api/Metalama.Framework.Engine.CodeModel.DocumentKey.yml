@@ -63,8 +63,14 @@ items:
         </p>
   example: []
   syntax:
-    content: 'public readonly struct DocumentKey : IEquatable<DocumentKey>, IComparable<DocumentKey>'
-    content.vb: Public Structure DocumentKey Implements IEquatable(Of DocumentKey), IComparable(Of DocumentKey)
+    content: >-
+      [Durable]
+
+      public readonly struct DocumentKey : IEquatable<DocumentKey>, IComparable<DocumentKey>
+    content.vb: >-
+      <Durable>
+
+      Public Structure DocumentKey Implements IEquatable(Of DocumentKey), IComparable(Of DocumentKey)
   implements:
   - System.IEquatable{Metalama.Framework.Engine.CodeModel.DocumentKey}
   - System.IComparable{Metalama.Framework.Engine.CodeModel.DocumentKey}
@@ -74,6 +80,10 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   extensionMethods:
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
 - uid: Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(System.String)
   commentId: M:Metalama.Framework.Engine.CodeModel.DocumentKey.FromPath(System.String)
   id: FromPath(System.String)
@@ -116,6 +126,8 @@ items:
   assemblies:
   - Metalama.Framework.Sdk
   namespace: Metalama.Framework.Engine.CodeModel
+  summary: Gets the key of the document a <xref href="Microsoft.CodeAnalysis.SyntaxTree" data-throw-if-not-resolved="false"></xref> belongs to.
+  example: []
   syntax:
     content: public static DocumentKey FromSyntaxTree(SyntaxTree syntaxTree)
     parameters:
