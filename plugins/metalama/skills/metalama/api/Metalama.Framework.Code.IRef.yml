@@ -114,6 +114,12 @@ items:
     Returns a string that uniquely identifies the declaration represented by the current reference. This identifier can then be resolved using <xref href="Metalama.Framework.Code.IDeclarationFactory.GetDeclarationFromId(Metalama.Framework.Code.SerializableDeclarationId)" data-throw-if-not-resolved="false"></xref>, even in
 
     a different process or with a different version of Metalama than the one that created the id.
+  remarks: >-
+    For a declaration of a file-local type, resolution in another process holds on the machine that produced
+
+    the identifier, and on another machine only when both projects are built with the <code>pathmap</code> option, as
+
+    a deterministic build does. See <xref href="Metalama.Framework.Code.SerializableDeclarationId" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: SerializableDeclarationId ToSerializableId()

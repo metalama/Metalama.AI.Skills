@@ -26,6 +26,7 @@ items:
         </p>
     <p>
       <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> objects are two-way convertible with <code>dynamic</code>:
+
         <ul><li>When typed as <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>, expressions can be used in compile-time APIs that manipulate syntax</li><li>When accessed via the <xref href="Metalama.Framework.Code.IExpression.Value" data-throw-if-not-resolved="false"></xref> property (which returns <code>dynamic</code>), expressions can be used directly in template code as run-time expressions</li><li>A <code>dynamic</code> value from a template can be cast back to <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> to use it in compile-time APIs</li></ul></p>
     <p>
         To create expressions, use <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory" data-throw-if-not-resolved="false"></xref> for common scenarios or <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder" data-throw-if-not-resolved="false"></xref> for
@@ -41,8 +42,6 @@ items:
 
       [Hidden]
 
-      [ImmutableType]
-
       public interface IExpression : IHasType
     content.vb: >-
       <CompileTime>
@@ -50,8 +49,6 @@ items:
       <InternalImplement>
 
       <Hidden>
-
-      <ImmutableType>
 
       Public Interface IExpression Inherits IHasType
   seealso:
@@ -74,12 +71,13 @@ items:
   - linkType: HRef
     linkId: '@templates'
     altText: '@templates'
+  derivedClasses:
+  - Metalama.Framework.Code.TypedConstant
   inheritedMembers:
   - Metalama.Framework.Code.IHasType.Type
   - Metalama.Framework.Code.IHasType.RefKind
   extensionMethods:
   - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.IExpression,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IExpression}},System.Boolean)
-  - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.ExpressionExtensions.ToDurable
   - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(Metalama.Framework.Code.IType)
   - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo(System.Type)
   - Metalama.Framework.Code.IExpression.Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.CastTo``1
@@ -99,9 +97,6 @@ items:
     arguments: []
   - type: Metalama.Framework.Utilities.HiddenAttribute
     ctor: Metalama.Framework.Utilities.HiddenAttribute.#ctor
-    arguments: []
-  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
-    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
     arguments: []
 - uid: Metalama.Framework.Code.IExpression.IsAssignable
   commentId: P:Metalama.Framework.Code.IExpression.IsAssignable

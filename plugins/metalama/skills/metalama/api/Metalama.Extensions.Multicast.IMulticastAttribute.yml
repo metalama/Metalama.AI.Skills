@@ -63,6 +63,10 @@ items:
   - linkType: HRef
     linkId: '@multicast'
     altText: '@multicast'
+  derivedClasses:
+  - Metalama.Extensions.Multicast.MulticastAspect
+  - Metalama.Extensions.Multicast.OverrideFieldOrPropertyMulticastAspect
+  - Metalama.Extensions.Multicast.OverrideMethodMulticastAspect
   extensionMethods:
   - Metalama.Extensions.Multicast.IMulticastAttribute.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Multicast.IMulticastAttribute,System.Collections.Generic.IEnumerable{Metalama.Extensions.Multicast.IMulticastAttribute}},System.Boolean)
   - Metalama.Extensions.Multicast.IMulticastAttribute.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Multicast.IMulticastAttribute})
@@ -90,7 +94,7 @@ items:
   summary: Gets or sets the kind of elements to which this custom attributes applies.
   example: []
   syntax:
-    content: MulticastTargets AttributeTargetElements { get; init; }
+    content: MulticastTargets AttributeTargetElements { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastTargets
@@ -116,7 +120,7 @@ items:
     content: >-
       [Obsolete("Multicasting to external assemblies is not supported in Metalama.", true)]
 
-      string? AttributeTargetAssemblies { get; init; }
+      string? AttributeTargetAssemblies { get; set; }
     parameters: []
     return:
       type: System.String
@@ -164,12 +168,13 @@ items:
 
     <p>Examples:
 
+
     <ul><li>Namespace.OuterType`1+NestedType`2</li><li>regex:Namespace.*Nested.*</li></ul>
 
     </p>
   example: []
   syntax:
-    content: string? AttributeTargetTypes { get; init; }
+    content: string? AttributeTargetTypes { get; set; }
     parameters: []
     return:
       type: System.String
@@ -202,7 +207,7 @@ items:
       and generation are the only categories that are taken into account; attributes of other categories are ignored.
   example: []
   syntax:
-    content: MulticastAttributes AttributeTargetTypeAttributes { get; init; }
+    content: MulticastAttributes AttributeTargetTypeAttributes { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastAttributes
@@ -228,7 +233,7 @@ items:
     content: >-
       [Obsolete("Multicasting to external assemblies is not supported in Metalama.", true)]
 
-      MulticastAttributes AttributeTargetExternalTypeAttributes { get; init; }
+      MulticastAttributes AttributeTargetExternalTypeAttributes { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastAttributes
@@ -269,7 +274,7 @@ items:
     </p>
   example: []
   syntax:
-    content: string? AttributeTargetMembers { get; init; }
+    content: string? AttributeTargetMembers { get; set; }
     parameters: []
     return:
       type: System.String
@@ -326,7 +331,7 @@ items:
     </p>
   example: []
   syntax:
-    content: MulticastAttributes AttributeTargetMemberAttributes { get; init; }
+    content: MulticastAttributes AttributeTargetMemberAttributes { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastAttributes
@@ -352,7 +357,7 @@ items:
     content: >-
       [Obsolete("Multicasting to external assemblies is not supported in Metalama.", true)]
 
-      MulticastAttributes AttributeTargetExternalMemberAttributes { get; init; }
+      MulticastAttributes AttributeTargetExternalMemberAttributes { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastAttributes
@@ -393,7 +398,7 @@ items:
     </p>
   example: []
   syntax:
-    content: string? AttributeTargetParameters { get; init; }
+    content: string? AttributeTargetParameters { get; set; }
     parameters: []
     return:
       type: System.String
@@ -432,7 +437,7 @@ items:
     </p>
   example: []
   syntax:
-    content: MulticastAttributes AttributeTargetParameterAttributes { get; init; }
+    content: MulticastAttributes AttributeTargetParameterAttributes { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastAttributes
@@ -458,7 +463,7 @@ items:
     same attribute type from the set of elements defined by the current instance.
   example: []
   syntax:
-    content: bool AttributeExclude { get; init; }
+    content: bool AttributeExclude { get; set; }
     parameters: []
     return:
       type: System.Boolean
@@ -485,7 +490,7 @@ items:
   remarks: You should use only 16-bit values in user code. Top 16 bits are reserved for the system.
   example: []
   syntax:
-    content: int AttributePriority { get; init; }
+    content: int AttributePriority { get; set; }
     parameters: []
     return:
       type: System.Int32
@@ -511,7 +516,7 @@ items:
     content: >-
       [Obsolete("AttributeReplace is true by default and cannot be set to false.", true)]
 
-      bool AttributeReplace { get; init; }
+      bool AttributeReplace { get; set; }
     parameters: []
     return:
       type: System.Boolean
@@ -562,7 +567,7 @@ items:
     content: >-
       [Obsolete("Inheritance is decided at the class level using the [Inheritable] attribute.", true)]
 
-      MulticastInheritance AttributeInheritance { get; init; }
+      MulticastInheritance AttributeInheritance { get; set; }
     parameters: []
     return:
       type: Metalama.Extensions.Multicast.MulticastInheritance

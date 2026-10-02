@@ -30,7 +30,9 @@ items:
         </p>
     <p>
         It also includes a recursion guard to prevent <xref href="System.InsufficientExecutionStackException" data-throw-if-not-resolved="false"></xref> when processing
-        deeply nested syntax trees.
+        deeply nested syntax trees. When the remaining stack of the current thread becomes small, the guard continues the
+        processing of the current node on a thread of the thread pool and waits for its completion. Exceptions thrown on that
+        thread are rethrown to the caller.
         </p>
     <p>
         Use this class instead of directly inheriting from <xref href="Microsoft.CodeAnalysis.CSharp.CSharpSyntaxWalker" data-throw-if-not-resolved="false"></xref> in your aspect weaver implementations.
@@ -100,7 +102,6 @@ items:
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitRefTypeExpression(Microsoft.CodeAnalysis.CSharp.Syntax.RefTypeExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitRefValueExpression(Microsoft.CodeAnalysis.CSharp.Syntax.RefValueExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitCheckedExpression(Microsoft.CodeAnalysis.CSharp.Syntax.CheckedExpressionSyntax)
-  - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitUnsafeExpression(Microsoft.CodeAnalysis.CSharp.Syntax.UnsafeExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitDefaultExpression(Microsoft.CodeAnalysis.CSharp.Syntax.DefaultExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitTypeOfExpression(Microsoft.CodeAnalysis.CSharp.Syntax.TypeOfExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitSizeOfExpression(Microsoft.CodeAnalysis.CSharp.Syntax.SizeOfExpressionSyntax)
@@ -130,7 +131,6 @@ items:
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitCollectionExpression(Microsoft.CodeAnalysis.CSharp.Syntax.CollectionExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitExpressionElement(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionElementSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitSpreadElement(Microsoft.CodeAnalysis.CSharp.Syntax.SpreadElementSyntax)
-  - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitWithElement(Microsoft.CodeAnalysis.CSharp.Syntax.WithElementSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitQueryExpression(Microsoft.CodeAnalysis.CSharp.Syntax.QueryExpressionSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitQueryBody(Microsoft.CodeAnalysis.CSharp.Syntax.QueryBodySyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitFromClause(Microsoft.CodeAnalysis.CSharp.Syntax.FromClauseSyntax)
@@ -225,7 +225,6 @@ items:
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitTypeParameter(Microsoft.CodeAnalysis.CSharp.Syntax.TypeParameterSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitClassDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitStructDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax)
-  - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitUnionDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.UnionDeclarationSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitInterfaceDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitRecordDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.RecordDeclarationSyntax)
   - Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor.VisitEnumDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.EnumDeclarationSyntax)

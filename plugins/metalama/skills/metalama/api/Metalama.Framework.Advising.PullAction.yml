@@ -30,6 +30,7 @@ items:
         </p>
     <p>
         Common scenarios:
+
         <ul><li><xref href="Metalama.Framework.Advising.PullAction.None" data-throw-if-not-resolved="false"></xref> - Use the default value of the introduced parameter</li><li><xref href="Metalama.Framework.Advising.PullAction.UseExistingParameter(Metalama.Framework.Code.IParameter)" data-throw-if-not-resolved="false"></xref> - Forward an existing parameter from the child constructor</li><li><xref href="Metalama.Framework.Advising.PullAction.IntroduceParameterAndPull(System.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.IExpression%2cMetalama.Framework.Code.IExpression%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref> - Add a new parameter to the child constructor and forward its value</li><li><xref href="Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> - Pass a custom expression (e.g., a constant or field access)</li></ul></p>
   example: []
   syntax:
@@ -260,17 +261,13 @@ items:
   - Metalama.Framework
   namespace: Metalama.Framework.Advising
   summary: Gets the expression to use for pulling the dependency when <xref href="Metalama.Framework.Advising.PullAction.UseExpression(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Framework.Advising.PullAction.UseConstant(Metalama.Framework.Code.TypedConstant)" data-throw-if-not-resolved="false"></xref> is used.
-  remarks: >-
-    Durable, because a pull action is held by the pull strategy of an aspect, which must survive an edit. Call
-
-    <xref href="Metalama.Framework.Code.IDurableExpression.ToExpression(Metalama.Framework.Code.ICompilation)" data-throw-if-not-resolved="false"></xref> with the compilation in which the expression is to be used.
   example: []
   syntax:
-    content: public IDurableExpression? Expression { get; }
+    content: public IExpression? Expression { get; }
     parameters: []
     return:
-      type: Metalama.Framework.Code.IDurableExpression
-    content.vb: Public ReadOnly Property Expression As IDurableExpression
+      type: Metalama.Framework.Code.IExpression
+    content.vb: Public ReadOnly Property Expression As IExpression
   overload: Metalama.Framework.Advising.PullAction.Expression*
 - uid: Metalama.Framework.Advising.PullAction.None
   commentId: P:Metalama.Framework.Advising.PullAction.None

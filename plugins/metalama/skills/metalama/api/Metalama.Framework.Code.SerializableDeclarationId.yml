@@ -43,18 +43,22 @@ items:
       <b>Limitation:</b> The identifier may not be unique if the compilation contains several assemblies providing types
         with the same fully qualified name.
         </p>
+    <p>
+        The identifier of a declaration of a file-local type, that is, of a type declared with the <code>file</code> modifier,
+        carries the metadata name of that type, because the namespace and the name alone do not tell two such types apart.
+        The compiler derives that metadata name from the path of the declaring file, so the identifier is identical on
+        every machine when the projects are built with the <code>pathmap</code> option, as a deterministic build does, and is
+        specific to the local path otherwise. This is the same condition under which the assembly that the compiler emits
+        is itself identical on every machine.
+        </p>
   example: []
   syntax:
     content: >-
       [CompileTime]
 
-      [Durable]
-
       public readonly struct SerializableDeclarationId : IEquatable<SerializableDeclarationId>
     content.vb: >-
       <CompileTime>
-
-      <Durable>
 
       Public Structure SerializableDeclarationId Implements IEquatable(Of SerializableDeclarationId)
   seealso:
@@ -76,9 +80,6 @@ items:
   attributes:
   - type: Metalama.Framework.Aspects.CompileTimeAttribute
     ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
-    arguments: []
-  - type: Metalama.Framework.Utilities.DurableAttribute
-    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
     arguments: []
 - uid: Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
   commentId: M:Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
