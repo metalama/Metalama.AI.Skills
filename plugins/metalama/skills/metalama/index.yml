@@ -18,6 +18,10 @@
         path: content/conceptual/requirements.md
         summary: Requirements for using Metalama, including build environment, supported IDEs, target frameworks, and version synchronization guidelines.
         keywords: Metalama, .NET SDK, Roslyn-based IDEs, Visual Studio, version synchronization, build environment, compatibility issues, C# features, SDK-style projects, target frameworks
+      - name: Metalama 2027.0
+        path: content/conceptual/release-notes/release-notes-2027.0.md
+        summary: Metalama 2027.0 adds C# 15 and .NET 11 support, call-site interceptors, the introduction of structs, records, enums, delegates and unions, type facets in the code model, and analyzers that verify immutable and durable aspect code.
+        keywords: Metalama 2027.0, release notes, C# 15, .NET 11, unions, closed classes, extension indexers, interceptors, type introduction, type facets, immutable aspects
       - name: Metalama 2026.1
         path: content/conceptual/release-notes/release-notes-2026.1.md
         summary: Metalama 2026.1 completes C# 14 support, extends initialization advice, brings major Redis caching improvements, reduces third-party dependencies, and closes most of the bug backlog.
@@ -571,6 +575,44 @@
         path: content/conceptual/architecture/extending.md
         summary: Create custom validation rules in Metalama by extending usage verification with custom predicates or building new verification rules from scratch.
         keywords: custom validation rules, Metalama, usage verification, custom predicates, Metalama.Extensions.Architecture, ReferencePredicate, validation rules, codebase validation
+    - name: Interceptors
+      path: content/conceptual/interceptors/interceptors.md
+      summary: Intercept calls to methods of any assembly, including the .NET libraries and NuGet packages, and change their behavior in the code you choose, without editing the calling code.
+      keywords: interceptors, call-site interception, Metalama.Extensions.Interceptors, intercept calls, code you don't own, third-party API, InterceptMethods, RedirectToExistingMethod, RedirectToSynthesizedMethod
+      items:
+      - name: When to use interceptors
+        path: content/conceptual/interceptors/use-cases.md
+        summary: 'Decide whether Metalama interceptors fit your problem: the problems they solve well, the problems better solved another way, a comparison with other techniques, and the costs and risks.'
+        keywords: interceptors, use cases, when to use interceptors, legacy code, seams, telemetry, audit, resilience, test seams, C# interceptors, source generators, AI agents
+      - name: Redirecting calls to existing methods
+        path: content/conceptual/interceptors/existing-methods.md
+        summary: Redirect the calls to a method of any assembly to a static method that you write, from an aspect or a fabric, and pass additional values such as the caller's name or the calling object.
+        keywords: interceptors, RedirectToExistingMethod, InterceptMethods, existing method, static interceptor, WithArgs, caller information, ExcludeInterceptors, fabric, test seam, audit
+      - name: Generating interceptors with T# templates
+        path: content/conceptual/interceptors/templates.md
+        summary: 'Generate interceptors from T# templates to apply the same logic to calls to many methods with different signatures: reading the call with meta.Interception, async methods, template arguments, and choosing where the interceptors are generated.'
+        keywords: interceptors, T# template, RedirectToSynthesizedMethod, meta.Proceed, meta.Interception, MethodTemplateSelector, async interceptor, PlaceInCallingType, PlaceInStaticClass, Configure, granularity, tracing, retry
+        items:
+        - name: Writing generic interceptor templates
+          path: content/conceptual/interceptors/generic-templates.md
+          summary: 'Write generic T# templates for interceptors: reuse one template for methods of the same shape with different parameter types, and intercept generic methods with specialized or shared interceptors.'
+          keywords: interceptors, generic templates, methods of the same shape, generic methods, type arguments, run-time type parameter, compile-time type parameter, specialized interceptor, shared interceptor, SetTypeArgument, AddTypeParameter, boxing
+        - name: Interceptor deduplication rules
+          path: content/conceptual/interceptors/deduplication-rules.md
+          summary: 'Reference of the rules that decide when call sites share a method generated from a template: what the call sites must have in common, the granularity, the representative call site, and the names and accessibility of the generated methods.'
+          keywords: interceptors, deduplication, shared interceptor, granularity, InterceptorGranularity, Owner, representative call site, generated method names, accessibility, MetalamaInterceptors, WithGranularity
+      - name: Choosing which calls to intercept
+        path: content/conceptual/interceptors/selecting-calls.md
+        summary: 'Choose which calls Metalama intercepts: the intercepted methods, the calling code, the build configurations, and a decision for each call site, including method groups, event handlers and the projects that use your library.'
+        keywords: interceptors, scope, fabric, namespace fabric, ProjectFabric, TransitiveProjectFabric, Types, AllMethods, Where, IncludingInterfaceImplementations, ExcludingOverrides, ExcludeInterceptors, ForEachSite, Skip, MethodUseKind, method group, event handler, PreprocessorSymbols
+      - name: Interceptor binding rules
+        path: content/conceptual/interceptors/binding-rules.md
+        summary: Reference of the rules that bind the receiver, the arguments and the type arguments of an intercepted call to the parameters and type parameters of an existing interceptor method or of a method generated from a template.
+        keywords: interceptors, binding rules, parameter binding, type parameter binding, receiver, WithArgs, caller information, optional parameters, params, ref, out, in, struct receiver, generic interceptor, added parameters, SetArgument
+      - name: Interceptor limitations and troubleshooting
+        path: content/conceptual/interceptors/troubleshooting.md
+        summary: 'Understand why a call is not intercepted: calls that are not in the source code, calls outside the scope, calls that cannot be intercepted in this version, and the diagnostics that Metalama reports.'
+        keywords: interceptors, troubleshooting, limitations, call not intercepted, NonInterceptableReason, LAMA1012, LAMA1014, expression tree, ref return, source generators, transformed code
     - name: Configuring and troubleshooting
       path: content/conceptual/configuration/configuration.md
       summary: This section provides guidance on configuring Metalama, covering topics like telemetry, MSBuild properties, logging, process dumps, performance data collection, memory leak diagnostics, unattended build troubleshooting, and NuGet packages.
@@ -663,6 +705,1348 @@
       path: content/conceptual/divorcing/divorcing.md
       summary: The document explains the process of separating from the Metalama software framework, using the 'metalama divorce' command. It outlines the potential drawbacks and a seven-step procedure to ensure a smooth transition.
       keywords: metalama divorce, separating from Metalama, inject generated code, manual maintenance, boilerplate code, .NET, remove references
+- name: Errors and warnings
+  items:
+  - name: Errors and warnings
+    path: content/errors/errors.md
+    summary: Reference of the errors and warnings reported by Metalama, its extensions, and the Metalama.Patterns libraries, with an example of the problem and of its resolution for each diagnostic.
+    keywords: Metalama errors, Metalama warnings, LAMA diagnostics, error codes, diagnostic reference, build errors
+    items:
+    - name: General
+      path: content/errors/errors-general.md
+      summary: Reference of the general errors and warnings of Metalama. Diagnostics about applying aspects, aspect classes and their attributes, eligibility, aspect ordering, fabrics, and the compilation pipeline.
+      keywords: Metalama general errors and warnings, LAMA diagnostics, error codes, general
+      items:
+      - name: LAMA0001
+        path: content/errors/lama0001.md
+        summary: LAMA0001 is reported when Metalama itself fails with an unexpected exception while compiling a project. It indicates a bug in Metalama; the message gives the path of a crash report to attach to a bug report.
+        keywords: LAMA0001, unexpected exception, Metalama crash, crash report, internal error, report a bug, CrashReports
+      - name: LAMA0003
+        path: content/errors/lama0003.md
+        summary: LAMA0003 is reported when an aspect is applied to a kind of declaration that it doesn't support, that is, when the aspect class doesn't implement IAspect<T> for the kind of the target declaration. It typically happens with an aspect class that has no [AttributeUsage] restriction.
+        keywords: LAMA0003, aspect applied to incorrect declaration, IAspect<T>, AttributeUsage, wrong target kind, does not implement the interface
+      - name: LAMA0012
+        path: content/errors/lama0012.md
+        summary: LAMA0012 is reported when compile-time code invokes a method, constructor, or event through an invoker with a number of arguments that doesn't match the number of parameters of the member.
+        keywords: LAMA0012, invoker, wrong number of arguments, IMethodInvoker.Invoke, requires arguments, template invocation
+      - name: LAMA0013
+        path: content/errors/lama0013.md
+        summary: LAMA0013 is reported when compile-time code invokes a method or constructor that has a params parameter through an invoker, but passes fewer arguments than the number of parameters that precede the params parameter.
+        keywords: LAMA0013, invoker, params parameter, too few arguments, IMethodInvoker.Invoke, requires at least arguments
+      - name: LAMA0018
+        path: content/errors/lama0018.md
+        summary: LAMA0018 is reported when a template or compile-time code tries to generate an invocation of a local function through the code model, for instance with IMethod.Invoke. Code generated by an aspect can't call a local function of the source code.
+        keywords: LAMA0018, local function, invoker, IMethodInvoker, Invoke, cannot be invoked, instance
+      - name: LAMA0019
+        path: content/errors/lama0019.md
+        summary: LAMA0019 is reported when compile-time code uses an invoker to generate a call to a method with an out or ref parameter but passes, for this parameter, an expression that isn't a variable, for instance a property.
+        keywords: LAMA0019, out parameter, ref parameter, invoker, IMethodInvoker, Invoke, property, not a variable
+      - name: LAMA0020
+        path: content/errors/lama0020.md
+        summary: LAMA0020 is reported when compile-time code requests a type that Metalama can't find in the project or its references, typically because TypeFactory.GetType received a type name that isn't a valid reflection name.
+        keywords: LAMA0020, cannot find type, TypeFactory.GetType, reflection name, metadata name, nested type, generic type
+      - name: LAMA0021
+        path: content/errors/lama0021.md
+        summary: LAMA0021 is reported when the aspect ordering specifications of the project contradict each other, for instance when two AspectOrder attributes order the same aspects in opposite directions.
+        keywords: LAMA0021, aspect ordering, cycle, AspectOrder, AspectOrderAttribute, aspect layers, contradictory order
+      - name: LAMA0022
+        path: content/errors/lama0022.md
+        summary: LAMA0022 is reported when an aspect adds a child aspect whose aspect class is processed before the parent aspect class. It typically happens when the AspectOrder attribute orders the child aspect before the parent aspect at compile time.
+        keywords: LAMA0022, child aspect, AddAspect, aspect order, AspectOrder, AspectOrderDirection, processed before
+      - name: LAMA0025
+        path: content/errors/lama0025.md
+        summary: LAMA0025 is reported when an aspect passes the name of a template to an advice method, for instance Override, but the aspect class has no member of that name. It's typically caused by a typo or by renaming the template without updating the string.
+        keywords: LAMA0025, template name, template not found, Override, advice, nameof, exactly one member
+      - name: LAMA0027
+        path: content/errors/lama0027.md
+        summary: LAMA0027 is reported when the compile-time code of a referenced assembly depends on another assembly that the current project doesn't reference. It typically happens when a package containing aspects is referenced without one of its dependencies.
+        keywords: LAMA0027, compile-time assembly not found, missing reference, aspect library, package dependency, compile-time code
+      - name: LAMA0032
+        path: content/errors/lama0032.md
+        summary: LAMA0032 is reported when a class defines several templates of the same name, for instance two overloads of a template method. Template names must be unique within a class.
+        keywords: LAMA0032, duplicate template name, template overload, Template attribute, template names must be unique
+      - name: LAMA0033
+        path: content/errors/lama0033.md
+        summary: LAMA0033 is reported when an aspect passes the name of one of its members to an advice method, such as IntroduceMethod or Override, but this member doesn't have the [Template] attribute.
+        keywords: LAMA0033, missing Template attribute, not annotated with Template, template name, IntroduceMethod, Override, nameof template
+      - name: LAMA0035
+        path: content/errors/lama0035.md
+        summary: LAMA0035 is reported when the MetalamaRequireOrderedAspects option is enabled and Metalama executes two aspect layers whose order isn't specified, for instance with an AspectOrder attribute.
+        keywords: LAMA0035, aspect layers not strongly ordered, unordered aspects, AspectOrder, MetalamaRequireOrderedAspects, aspect ordering
+      - name: LAMA0036
+        path: content/errors/lama0036.md
+        summary: LAMA0036 is reported when an aspect class defines a template with the same name as a template of its base class without overriding it, typically by hiding the base template with the new modifier.
+        keywords: LAMA0036, duplicate template name, template already defined in base class, template hiding, new modifier, virtual template, override template
+      - name: LAMA0037
+        path: content/errors/lama0037.md
+        summary: LAMA0037 is reported when an aspect is applied to a declaration that doesn't satisfy the eligibility conditions defined by the aspect, for instance a static method when the aspect requires an instance method.
+        keywords: LAMA0037, aspect not eligible, eligibility, BuildEligibility, MustNotBeStatic, cannot be applied
+      - name: LAMA0038
+        path: content/errors/lama0038.md
+        summary: LAMA0038 is reported when an aspect or a fabric tries to add a child aspect to a declaration that isn't contained in its own type or namespace, for instance when a type fabric adds aspects to the members of the base class.
+        keywords: LAMA0038, child aspect, cannot add child aspect, not contained in, type fabric, namespace fabric, AddAspect, outbound
+      - name: LAMA0039
+        path: content/errors/lama0039.md
+        summary: LAMA0039 is reported when an aspect or a fabric adds a child aspect to a declaration that doesn't satisfy the eligibility conditions of the child aspect, for instance when a fabric adds an aspect that requires instance methods to all methods of a type, including static ones.
+        keywords: LAMA0039, child aspect not eligible, AddAspect, AddAspectIfEligible, fabric, eligibility, cannot add a child aspect
+      - name: LAMA0040
+        path: content/errors/lama0040.md
+        summary: LAMA0040 is reported when Metalama must instantiate a fabric or a compiler plug-in, but the type doesn't have a public parameterless constructor, for instance because its constructor takes parameters.
+        keywords: LAMA0040, default constructor, parameterless constructor, fabric constructor, cannot instantiate fabric, MetalamaPlugIn
+      - name: LAMA0041
+        path: content/errors/lama0041.md
+        summary: LAMA0041 is reported when compile-time code, such as an aspect's BuildAspect method, a template, or a fabric, throws an exception during compilation. The cause is a bug in the aspect or fabric, or a situation that the aspect author didn't anticipate.
+        keywords: LAMA0041, exception in user code, exception thrown while executing BuildAspect, aspect throws exception, MetalamaDebugCompiler, crash report, debug aspect
+      - name: LAMA0042
+        path: content/errors/lama0042.md
+        summary: LAMA0042 is reported when a low-level aspect, implemented with an IAspectWeaver, is ordered between two layers of another aspect, such as a contract aspect. Add an AspectOrder attribute to order the low-level aspect before or after all layers of the other aspect.
+        keywords: LAMA0042, aspect weaver, IAspectWeaver, low-level aspect, aspect layers, AspectOrder, pipeline stages, contract aspect
+      - name: LAMA0043
+        path: content/errors/lama0043.md
+        summary: LAMA0043 is a hidden diagnostic that Metalama reports when an aspect, fabric, or validator suggests a code fix without reporting a visible warning or error. It only carries the code fix to the IDE, and you don't need to do anything about it.
+        keywords: LAMA0043, code fix, Suggest, CodeFixHelper.SuggestionDiagnostic, hidden diagnostic, lightbulb, refactoring suggestion
+      - name: LAMA0044
+        path: content/errors/lama0044.md
+        summary: LAMA0044 is reported when an aspect or a fabric tries to set options, or to add a validator, for a declaration that isn't contained in the type or namespace it targets, for instance when a type fabric configures its containing namespace.
+        keywords: LAMA0044, cannot set options, SetOptions, ConfigureContracts, type fabric, namespace fabric, not contained in, hierarchical options
+      - name: LAMA0045
+        path: content/errors/lama0045.md
+        summary: LAMA0045 is reported when an aspect class marked with [EditorExperience(SuggestAsLiveTemplate = true)] has no parameterless constructor, so the IDE can't instantiate it as a live template.
+        keywords: LAMA0045, live template, SuggestAsLiveTemplate, EditorExperience, default constructor, parameterless constructor
+      - name: LAMA0048
+        path: content/errors/lama0048.md
+        summary: LAMA0048 is a warning reported in the IDE when aspects introduce members into a type that isn't marked as partial, so the introduced members can't be seen or referenced from source code at design time.
+        keywords: LAMA0048, partial, type not partial, make partial, introduced members, design time, IntelliSense
+      - name: LAMA0049
+        path: content/errors/lama0049.md
+        summary: LAMA0049 is reported when Metalama fails with an unexpected exception while generating the source of aspect-introduced declarations for the IDE. The failure is contained, so it's only a warning, but it indicates a bug in Metalama; the message gives the path of a crash report to attach to a bug report.
+        keywords: LAMA0049, unexpected exception, Metalama crash, crash report, design-time, IDE, generated code missing, report a bug
+      - name: LAMA0050
+        path: content/errors/lama0050.md
+        summary: LAMA0050 is reported when an aspect bound to a low-level weaver with [RequireAspectWeaver] is applied in a project where Metalama can't find this weaver, typically because the assembly that defines the weaver isn't referenced or the weaver type isn't annotated with [MetalamaPlugIn].
+        keywords: LAMA0050, aspect weaver, RequireAspectWeaver, MetalamaPlugIn, weaver not found, Metalama SDK, IAspectWeaver
+      - name: LAMA0051
+        path: content/errors/lama0051.md
+        summary: LAMA0051 is reported when a project that uses Metalama is compiled with the 'preview' C# language version, which Metalama doesn't support unless you set the MetalamaAllowPreviewLanguageFeatures property.
+        keywords: LAMA0051, LangVersion preview, C# preview features, language version not supported, MetalamaAllowPreviewLanguageFeatures
+      - name: LAMA0052
+        path: content/errors/lama0052.md
+        summary: LAMA0052 is reported when the C# language version of a project, given by LangVersion, or the template language version, given by MetalamaTemplateLanguageVersion, isn't one of the versions that Metalama supports, for instance C# 8.0.
+        keywords: LAMA0052, LangVersion, C# version not supported, MetalamaTemplateLanguageVersion, latest, latestMajor, language version
+      - name: LAMA0053
+        path: content/errors/lama0053.md
+        summary: LAMA0053 is reported when Metalama is enabled in a project but the METALAMA preprocessor symbol isn't defined. It typically happens when an MSBuild file or target overwrites the DefineConstants property instead of appending to it.
+        keywords: LAMA0053, METALAMA preprocessor symbol, DefineConstants, compilation symbol, Directory.Build.targets, MSBuild
+      - name: LAMA0054
+        path: content/errors/lama0054.md
+        summary: LAMA0054 is reported when a project references several versions of the Metalama.Framework assembly, or a version that's higher than the version of the Metalama engine that compiles the project. It typically happens when Metalama.Framework comes from inconsistent package or assembly references.
+        keywords: LAMA0054, unsupported Metalama version, Metalama.Framework version, version mismatch, several versions, package reference, assembly reference
+      - name: LAMA0055
+        path: content/errors/lama0055.md
+        summary: LAMA0055 is reported when an aspect adds an aspect of its own type to a declaration that has already been processed by aspects of this type, typically when a method-level aspect adds itself to its declaring type.
+        keywords: LAMA0055, child aspect, aspect of the same type, AddAspect, Outbound, declaring type, previous pipeline step
+      - name: LAMA0056
+        path: content/errors/lama0056.md
+        summary: LAMA0056 is reported in the IDE when you apply a code fix suggested by an aspect or validator, but Metalama can't find this code fix again when it runs the aspects to apply it. It typically happens when the logic that suggests the code fix isn't deterministic.
+        keywords: LAMA0056, code fix could no longer be found, code fix not found, non-deterministic code fix, CodeFixFactory, lightbulb menu
+      - name: LAMA0057
+        path: content/errors/lama0057.md
+        summary: LAMA0057 is reported when Metalama starts processing a project in which it isn't enabled, typically because the compilation doesn't reference the Metalama.Framework assembly although the Metalama.Framework package is installed.
+        keywords: LAMA0057, Metalama not enabled, MetalamaEnabled, METALAMA symbol, Metalama.Framework package, ExcludeAssets
+      - name: LAMA0059
+        path: content/errors/lama0059.md
+        summary: LAMA0059 is reported when a non-abstract aspect class is generic. Metalama doesn't support generic aspect types, except as abstract base classes.
+        keywords: LAMA0059, generic aspect, generic attribute, generic aspect type not supported, aspect type parameter, abstract aspect class
+      - name: LAMA0060
+        path: content/errors/lama0060.md
+        summary: LAMA0060 is reported when a template method or property of an aspect returns a reference (ref or ref readonly). Templates that return by reference aren't supported.
+        keywords: LAMA0060, ref return, ref property, ref method, template, introduce, ref readonly
+      - name: LAMA0061
+        path: content/errors/lama0061.md
+        summary: LAMA0061 is reported when a referenced assembly contains compile-time code stored in a format that the current version of Metalama can't read, because the assembly was compiled with an incompatible version of Metalama.
+        keywords: LAMA0061, recompile referenced assembly, incompatible Metalama version, compile-time project, manifest version, package version
+      - name: LAMA0063
+        path: content/errors/lama0063.md
+        summary: LAMA0063 is reported when a template invokes a member of another type on an explicit object with InvokerOptions.Base or InvokerOptions.Current. These options are only allowed for members of the template target type or its base types.
+        keywords: LAMA0063, InvokerOptions.Base, InvokerOptions.Current, invoker, WithObject, WithOptions, template target type
+      - name: LAMA0064
+        path: content/errors/lama0064.md
+        summary: LAMA0064 is reported when Metalama fails to generate the code of the initializer expression of a field, property, or event introduced by an aspect. It usually indicates an internal problem in Metalama.
+        keywords: LAMA0064, initializer, InitializerExpression, introduced field, introduced property, introduced event, cannot generate initializer
+      - name: LAMA0065
+        path: content/errors/lama0065.md
+        summary: LAMA0065 is reported when hierarchical options are set on a declaration that doesn't satisfy the eligibility conditions defined by the options class, for instance on a static type when the options require a non-static type.
+        keywords: LAMA0065, option not eligible, hierarchical options, SetOptions, IEligible, eligibility, cannot be applied
+      - name: LAMA0066
+        path: content/errors/lama0066.md
+        summary: LAMA0066 is reported when the formatting of the code generated by Metalama is enabled, typically by the MetalamaDebugTransformedCode, MetalamaFormatOutput, or MetalamaWriteHtml MSBuild properties. It's a reminder that formatting slows down the build.
+        keywords: LAMA0066, code formatting, MetalamaFormatOutput, MetalamaDebugTransformedCode, MetalamaWriteHtml, build performance, LamaDebug
+      - name: LAMA0067
+        path: content/errors/lama0067.md
+        summary: LAMA0067 is reported when a template tries to generate code that invokes a static constructor, typically by calling Invoke on the IConstructor returned by INamedType.StaticConstructor.
+        keywords: LAMA0067, static constructor, IConstructor.Invoke, constructor invoker, StaticConstructor, cannot be invoked
+      - name: LAMA0068
+        path: content/errors/lama0068.md
+        summary: LAMA0068 is reported when the compile-time code of a project, such as an aspect or a fabric, contains C# errors, so Metalama can't compile it. The C# errors themselves are reported separately.
+        keywords: LAMA0068, compile-time code contains C# errors, compile-time compilation failed, aspect does not compile, fabric does not compile, C# errors
+      - name: LAMA0069
+        path: content/errors/lama0069.md
+        summary: LAMA0069 is reported when an aspect or a fabric tries to report or suppress a diagnostic on a declaration that isn't contained in its own type or namespace, for instance when a type fabric reports warnings on the members of the base class.
+        keywords: LAMA0069, report diagnostic, suppress diagnostic, not contained in, type fabric, ReportDiagnostic, SuppressDiagnostic, outbound
+      - name: LAMA0070
+        path: content/errors/lama0070.md
+        summary: LAMA0070 is reported when Metalama can't load an extension assembly, that is, an assembly registered with the MetalamaExtensionAssembly item, typically by a package that extends Metalama. The message gives the reason for the failure.
+        keywords: LAMA0070, cannot load extension assembly, MetalamaExtensionAssembly, Metalama SDK extension, ExportExtensionAttribute, assembly load failure
+      - name: LAMA0071
+        path: content/errors/lama0071.md
+        summary: LAMA0071 is reported when a template invokes a generic method through the code model without specifying its type arguments, and Metalama can't infer them from the arguments. Supply the type arguments with MakeGenericInstance.
+        keywords: LAMA0071, cannot infer type arguments, generic method, IMethod.Invoke, MakeGenericInstance, invoker, template
+      - name: LAMA0072
+        path: content/errors/lama0072.md
+        summary: LAMA0072 is reported when a referenced assembly contains a transitive aspect whose class Metalama can't find in the current project. It typically happens when the referenced assembly was compiled with a different version of Metalama.
+        keywords: LAMA0072, transitive aspect class, unknown aspect class, different version of Metalama, referenced assembly, constructor parameter pull, initializer
+      - name: LAMA0073
+        path: content/errors/lama0073.md
+        summary: LAMA0073 is reported when the optional verification of the transformed code is enabled and the C# parser throws an exception while parsing the text of a transformed file. It indicates a bug in the code generation.
+        keywords: LAMA0073, failed to parse generated code, MetalamaVerifyOutputCode, transformed code, code generation bug, verify output code
+      - name: LAMA0074
+        path: content/errors/lama0074.md
+        summary: LAMA0074 is reported when the optional verification of the transformed code is enabled and parsing the text of a transformed file again produces a syntax error. It indicates a bug in the code generation.
+        keywords: LAMA0074, syntax error in generated code, MetalamaVerifyOutputCode, transformed code, code generation bug, verify output code, missing whitespace
+      - name: LAMA0075
+        path: content/errors/lama0075.md
+        summary: LAMA0075 is reported when Metalama ignores a metalama.json repository configuration file, either because it isn't located at the repository root or because it can't be read or parsed.
+        keywords: LAMA0075, metalama.json, repository configuration, misplaced metalama.json, malformed metalama.json, telemetry opt-out, repository root
+      - name: LAMA0076
+        path: content/errors/lama0076.md
+        summary: LAMA0076 is reported when Metalama fails with an unexpected exception and then can't write the crash report file, for instance because the crash report directory isn't writable. It always comes with LAMA0001 or LAMA0049.
+        keywords: LAMA0076, crash report, cannot write crash report, CrashReports, METALAMA_TEMP, unexpected exception, access denied
+      - name: LAMA0077
+        path: content/errors/lama0077.md
+        summary: LAMA0077 is reported when two assemblies of different identities provide an aspect weaver with the same full type name, typically because two versions of the same weaver-based aspect library reach the project, for instance through a package and through a project reference.
+        keywords: LAMA0077, duplicate aspect weaver, aspect weaver provided by two assemblies, MetalamaPlugIn, RequireAspectWeaver, Metalama SDK, conflicting references
+      - name: LAMA0078
+        path: content/errors/lama0078.md
+        summary: LAMA0078 is reported when a project references another project of the same solution that was compiled with a version of Metalama older than 2026.1. The build works, but the IDE can't consume the reference, so the aspects inherited from it don't appear in the editor.
+        keywords: LAMA0078, project reference, older version of Metalama, design-time, IDE support, mixed Metalama versions, inherited aspects not visible
+      - name: LAMA0079
+        path: content/errors/lama0079.md
+        summary: 'LAMA0079 is reported when two references of the project provide the same compile-time assembly, typically two versions of an assembly marked with [assembly: CompileTime], such as the public assembly of an aspect library built with the Metalama SDK.'
+        keywords: LAMA0079, duplicate compile-time assembly, two versions of the same assembly, assembly CompileTime, conflicting references, Metalama SDK
+      - name: LAMA0080
+        path: content/errors/lama0080.md
+        summary: LAMA0080 is reported when Metalama processes a project whose compilation doesn't define the METALAMA_PROJECT_* preprocessor symbol that identifies the project. It typically happens when an MSBuild file rebuilds the DefineConstants property from scratch and keeps only the METALAMA symbol.
+        keywords: LAMA0080, METALAMA_PROJECT preprocessor symbol, DefineConstants, design-time experience, project identity, Directory.Build.targets, MSBuild
+      - name: LAMA0081
+        path: content/errors/lama0081.md
+        summary: LAMA0081 is reported when a project references another project of the same solution that was compiled with a different version of Metalama. It typically happens when the Metalama package version isn't aligned across the projects of the solution.
+        keywords: LAMA0081, several versions of Metalama, mixed Metalama versions, project reference, package version, Directory.Packages.props, central package management
+      - name: LAMA0082
+        path: content/errors/lama0082.md
+        summary: LAMA0082 is reported when the build of the internal project that Metalama uses to resolve the compile-time reference assemblies fails. The cause is almost always the build environment, typically the NuGet configuration or the .NET SDK installation.
+        keywords: LAMA0082, reference assemblies, compile-time dependencies, restore failed, nuget.config, packageSourceMapping, global.json, NuGet credentials
+      - name: LAMA0083
+        path: content/errors/lama0083.md
+        summary: LAMA0083 is reported when the build of the internal project that Metalama uses to resolve the compile-time reference assemblies doesn't complete within the timeout, 120 seconds by default. It typically happens when the build must download NuGet packages over a slow network.
+        keywords: LAMA0083, reference assemblies, compile-time dependencies, timeout, MetalamaReferenceAssemblyRestoreTimeout, slow restore, NuGet
+      - name: LAMA0084
+        path: content/errors/lama0084.md
+        summary: LAMA0084 is reported when the MetalamaCompileTimeTargetFrameworks MSBuild property doesn't include netstandard2.0 or a target framework that matches the .NET runtime that hosts the compiler.
+        keywords: LAMA0084, MetalamaCompileTimeTargetFrameworks, compile-time target frameworks, netstandard2.0, MSBuild property, invalid value
+      - name: LAMA0085
+        path: content/errors/lama0085.md
+        summary: LAMA0085 is reported by the memory-leak analysis, enabled by the MetalamaDiagnoseMemoryLeaks MSBuild property, when a field of your compile-time code holds a declaration or another object that keeps a version of the Roslyn compilation in memory at design time.
+        keywords: LAMA0085, memory leak, pins the compilation, MetalamaDiagnoseMemoryLeaks, durable reference, IDurableRef, ToDurableRef, fabric field
+      - name: LAMA0086
+        path: content/errors/lama0086.md
+        summary: LAMA0086 is the summary of the memory-leak analysis enabled by the MetalamaDiagnoseMemoryLeaks MSBuild property. It's reported once per build, gives the number of retentions found in your compile-time code and in Metalama, and gives the path of the full report.
+        keywords: LAMA0086, memory leak analysis, MetalamaDiagnoseMemoryLeaks, retention report, FabricRetentionReports, design-time memory
+      - name: LAMA0087
+        path: content/errors/lama0087.md
+        summary: LAMA0087 is reported when Metalama can't read the transitive aspect manifest embedded in a referenced assembly, typically because the manifest is damaged or because of a defect in Metalama. Aspects inherited from that reference are then not applied.
+        keywords: LAMA0087, transitive aspect manifest, aspect inheritance, referenced assembly, inherited aspects missing, corrupted manifest
+      - name: LAMA0088
+        path: content/errors/lama0088.md
+        summary: LAMA0088 is reported when Metalama can't find, in the current compilation, the type that declares a member introduced by an aspect. It's an internal inconsistency in Metalama, not a problem in your code.
+        keywords: LAMA0088, introduced declaration, declaring type not found, aspect inheritance, internal error, report a bug
+      - name: LAMA0089
+        path: content/errors/lama0089.md
+        summary: LAMA0089 is reported when the Roslyn compiler that builds the project is older than the minimum version supported by Metalama. No aspect is applied to the project. Upgrade the .NET SDK.
+        keywords: LAMA0089, Roslyn version not supported, unsupported compiler, .NET SDK too old, Visual Studio too old, upgrade SDK, no aspect applied
+      - name: LAMA0090
+        path: content/errors/lama0090.md
+        summary: LAMA0090 is reported when a referenced assembly contains compile-time code built with a C# language version that is more recent than the one supported by the Roslyn compiler that builds the current project.
+        keywords: LAMA0090, compile-time code, C# language version, MetalamaTemplateLanguageVersion, Roslyn version, .NET SDK, CS8192, referenced aspect library
+      - name: LAMA0091
+        path: content/errors/lama0091.md
+        summary: LAMA0091 is reported when an aspect that registers an extension contribution, such as an interceptor, executes after an aspect that requires a low-level aspect weaver. Order the aspect before the weaver aspect.
+        keywords: LAMA0091, extension contribution, interceptor registration, low-level aspect weaver, RequireAspectWeaver, AspectOrder, aspect order
+      - name: LAMA0099
+        path: content/errors/lama0099.md
+        summary: LAMA0099 is a reserved diagnostic meaning that a feature isn't supported yet. The current version of Metalama never reports it.
+        keywords: LAMA0099, feature not supported, unsupported feature, not yet supported
+      - name: LAMA0120
+        path: content/errors/lama0120.md
+        summary: LAMA0120 is reported when a class, struct, or interface implements an interface marked with [InternalImplement], such as most interfaces of the Metalama code model, in a project other than the one that declares the interface.
+        keywords: LAMA0120, InternalImplement, cannot implement interface, Metalama interfaces, InternalsVisibleTo, IDeclaration, code model interfaces
+      - name: LAMA0320
+        path: content/errors/lama0320.md
+        summary: LAMA0320 is a warning reported when an aspect attribute is added to a declaration in code produced by a source generator, for instance code generated from a Razor file. Metalama doesn't support aspects on source-generated code.
+        keywords: LAMA0320, source generator, source-generated code, Razor, Blazor, cshtml, aspect not applied, generated code
+      - name: LAMA0401
+        path: content/errors/lama0401.md
+        summary: LAMA0401 is reported when Metalama must instantiate a custom attribute at compile time, for instance when an aspect calls IAttribute.TryConstruct, but the attribute type isn't available at compile time because it isn't annotated with [RunTimeOrCompileTime] or [CompileTime].
+        keywords: LAMA0401, cannot instantiate custom attribute, cannot find compile-time type, TryConstruct, Construct, RunTimeOrCompileTime, run-time-only attribute
+      - name: LAMA0405
+        path: content/errors/lama0405.md
+        summary: LAMA0405 is reported when Metalama instantiates a compile-time custom attribute, for instance an aspect, and can't find the setter of a property assigned in the attribute. It's a safety check that isn't expected to fire in normal code.
+        keywords: LAMA0405, property has no setter, cannot instantiate custom attribute, named argument, override getter, aspect property
+    - name: Templates
+      path: content/errors/errors-templates.md
+      summary: 'Reference of the template errors and warnings of Metalama. Diagnostics about T# templates: compile-time and run-time scopes, unsupported C# constructs, and template parameters.'
+      keywords: Metalama template errors and warnings, LAMA diagnostics, error codes, templates
+      items:
+      - name: LAMA0101
+        path: content/errors/lama0101.md
+        summary: "LAMA0101 is reported when a T# template uses a C# language feature that templates don't support: LINQ query syntax, goto, unsafe code, or a tuple deconstruction that mixes var and non-var declarations."
+        keywords: LAMA0101, language feature not supported, template, LINQ query syntax, goto, unsafe, tuple deconstruction
+      - name: LAMA0104
+        path: content/errors/lama0104.md
+        summary: LAMA0104 is reported when an expression in a T# template is run-time but Metalama expects a compile-time expression, or the opposite, for instance when a run-time variable indexes a compile-time collection.
+        keywords: LAMA0104, scope mismatch, run-time, compile-time, template, meta.CompileTime, T# template
+      - name: LAMA0105
+        path: content/errors/lama0105.md
+        summary: LAMA0105 is reported when a single local variable declaration in a template declares both compile-time and run-time variables, for instance when one variable is initialized with meta.CompileTime and another with a run-time value.
+        keywords: LAMA0105, compile-time local variable, run-time local variable, split variable declaration, template, meta.CompileTime
+      - name: LAMA0108
+        path: content/errors/lama0108.md
+        summary: LAMA0108 is reported when a T# template assigns, increments, or passes as out or ref a compile-time local variable inside a block that runs only under a run-time condition, while the variable is declared outside that block.
+        keywords: LAMA0108, compile-time variable, run-time condition, run-time-conditional block, meta.CompileTime, T# template, assignment
+      - name: LAMA0109
+        path: content/errors/lama0109.md
+        summary: LAMA0109 is reported when the T# template compiler can't find the declaration of a local variable, local function, or lambda parameter referenced by a template. It indicates an invalid compilation or a defect in Metalama.
+        keywords: LAMA0109, undeclared run-time identifier, template compiler, local variable, internal error
+      - name: LAMA0110
+        path: content/errors/lama0110.md
+        summary: LAMA0110 is reported when a T# template contains a compile-time while or do loop inside a block whose execution depends on a run-time condition, such as a run-time if, loop, catch, or finally.
+        keywords: LAMA0110, compile-time loop, while, do, run-time condition, run-time-conditional block, T# template
+      - name: LAMA0113
+        path: content/errors/lama0113.md
+        summary: LAMA0113 is reported when an aspect or template provider type listed in the compile-time metadata of a referenced assembly can't be found in the current compilation, typically because the type name is ambiguous between several referenced assemblies.
+        keywords: LAMA0113, cannot find aspect type, aspect library, referenced assembly, duplicate assembly, compile-time project
+      - name: LAMA0114
+        path: content/errors/lama0114.md
+        summary: LAMA0114 is reported when a template references meta.This, or otherwise needs the current instance, while the advice is applied to a static member, for instance a static method.
+        keywords: LAMA0114, meta.This, static context, static method, cannot reference this, template
+      - name: LAMA0115
+        path: content/errors/lama0115.md
+        summary: LAMA0115 is reported when a template uses a member of meta.Target that isn't available for the current target, for instance meta.Target.Field when the aspect is applied to a property.
+        keywords: LAMA0115, meta.Target, meta member not available, meta.Target.Field, meta.Target.Property, FieldOrProperty, template
+      - name: LAMA0117
+        path: content/errors/lama0117.md
+        summary: LAMA0117 is reported when a run-time or run-time-or-compile-time declaration references a compile-time-only declaration, for instance a code model type like IMethod used in an aspect helper method that isn't marked [CompileTime].
+        keywords: LAMA0117, compile-time-only, CompileTime attribute, run-time-or-compile-time, scope, code model, cannot reference
+      - name: LAMA0118
+        path: content/errors/lama0118.md
+        summary: LAMA0118 is reported in the IDE when you edit compile-time code, like an aspect or a fabric, and Metalama pauses design-time analysis until you build the project again.
+        keywords: LAMA0118, compile-time code modified, rebuild, design-time pipeline paused, resume analysis, IDE
+      - name: LAMA0119
+        path: content/errors/lama0119.md
+        summary: LAMA0119 is reported when a file contains compile-time code, for instance a class marked with [CompileTime], but has no using directive for a Metalama.Framework namespace, typically because Metalama types are referenced by their fully qualified names.
+        keywords: LAMA0119, compile-time code, using directive, namespace import, Metalama.Framework namespace, design-time experience, CompileTime attribute
+      - name: LAMA0220
+        path: content/errors/lama0220.md
+        summary: LAMA0220 is reported when a T# template references another template that isn't a method, for instance a property marked with [Template]. Only template methods can be called from a template.
+        keywords: LAMA0220, auxiliary template, subtemplate, template property, Template attribute, call template from template
+      - name: LAMA0221
+        path: content/errors/lama0221.md
+        summary: LAMA0221 is reported when the this keyword is used in a T# template where a run-time expression is expected. In a template, this refers to the compile-time aspect instance; use meta.This to refer to the target object.
+        keywords: LAMA0221, this keyword, meta.This, template, run-time expression, target instance
+      - name: LAMA0222
+        path: content/errors/lama0222.md
+        summary: LAMA0222 is reported when Metalama can't compile the compile-time project, which contains the aspects, fabrics, and other compile-time code of your project. It usually comes with other errors that point to the actual problem.
+        keywords: LAMA0222, compile-time project, compile-time assembly, CompileTimeTroubleshooting, cannot emit, compile-time code
+      - name: LAMA0223
+        path: content/errors/lama0223.md
+        summary: LAMA0223 is reported when a template calls a specialized Proceed method, such as meta.ProceedAsync or meta.ProceedEnumerable, for a target method whose return type isn't compatible with this method.
+        keywords: LAMA0223, ProceedAsync, ProceedEnumerable, ProceedEnumerator, Proceed variant, return type, OverrideMethodAspect
+      - name: LAMA0224
+        path: content/errors/lama0224.md
+        summary: LAMA0224 is reported when a T# template declares a local variable of type dynamic without an initializer.
+        keywords: LAMA0224, dynamic, uninitialized local variable, initializer, T# template, meta.DefineLocalVariable
+      - name: LAMA0225
+        path: content/errors/lama0225.md
+        summary: LAMA0225 is reported when a T# template initializes a local variable of type dynamic with a target-typed expression such as null or default.
+        keywords: LAMA0225, dynamic, null, default, target-typed expression, local variable, T# template, meta.Default
+      - name: LAMA0226
+        path: content/errors/lama0226.md
+        summary: LAMA0226 is reported when a type, a member, or a template expression combines run-time-only and compile-time-only elements, for instance a generic type whose type arguments mix both scopes.
+        keywords: LAMA0226, scope conflict, run-time, compile-time, generic type, type argument, T# template
+      - name: LAMA0227
+        path: content/errors/lama0227.md
+        summary: LAMA0227 is reported when a T# template uses dynamic to build another type, such as List<dynamic>, dynamic[], a tuple with a dynamic element, or ref dynamic.
+        keywords: LAMA0227, dynamic, generic argument, array of dynamic, List<dynamic>, tuple, ref dynamic, T# template
+      - name: LAMA0229
+        path: content/errors/lama0229.md
+        summary: LAMA0229 is reported when a type that is both run-time and compile-time, such as an aspect class or a type marked with [RunTimeOrCompileTime], is nested in a run-time class.
+        keywords: LAMA0229, nested aspect, RunTimeOrCompileTime, nested type, run-time type, compile-time scope
+      - name: LAMA0230
+        path: content/errors/lama0230.md
+        summary: LAMA0230 is reported when a compile-time class, typically a type fabric, is nested in a run-time type but isn't private.
+        keywords: LAMA0230, type fabric, nested fabric, private, accessibility, compile-time nested type
+      - name: LAMA0231
+        path: content/errors/lama0231.md
+        summary: LAMA0231 is reported when a compile-time type other than a type fabric, for instance a project fabric or a [CompileTime] helper class, is nested in a run-time type.
+        keywords: LAMA0231, nested compile-time type, type fabric, project fabric, CompileTime, nested type, run-time type
+      - name: LAMA0232
+        path: content/errors/lama0232.md
+        summary: LAMA0232 is reported when a T# template uses a C# feature that's newer than the C# version allowed in templates, typically because the MetalamaTemplateLanguageVersion property is set to an older version.
+        keywords: LAMA0232, MetalamaTemplateLanguageVersion, template language version, C# version, LangVersion, T# template
+      - name: LAMA0233
+        path: content/errors/lama0233.md
+        summary: LAMA0233 is reported when compile-time code that isn't a template, such as BuildAspect or a compile-time helper method, uses an API that's only allowed inside templates, for instance meta.This or meta.Proceed.
+        keywords: LAMA0233, template-only, meta.This, meta.Proceed, ExpressionFactory.This, IExpression.Value, compile-time helper
+      - name: LAMA0235
+        path: content/errors/lama0235.md
+        summary: LAMA0235 is reported when a T# template uses a type or member whose signature refers to a type that can't be resolved, for instance because of a typo or a missing reference.
+        keywords: LAMA0235, unresolved type, invalid definition, template, missing reference, CS0246
+      - name: LAMA0236
+        path: content/errors/lama0236.md
+        summary: LAMA0236 is reported when code that can execute at compile time, such as a non-template member of an aspect or a member of a compile-time class, references a run-time-only type or member.
+        keywords: LAMA0236, run-time-only, compile-time, aspect field, CompileTime attribute, Introduce, scope
+      - name: LAMA0237
+        path: content/errors/lama0237.md
+        summary: LAMA0237 is reported when an aspect declares an abstract template property, for instance an abstract property with the [Introduce] attribute, whose type or indexer parameter types are run-time-only.
+        keywords: LAMA0237, abstract template, abstract property, run-time-only type, Introduce, template signature, base aspect
+      - name: LAMA0238
+        path: content/errors/lama0238.md
+        summary: LAMA0238 is reported when a field of an aspect, or of another type that isn't run-time-only, uses the dynamic type although the field isn't a template.
+        keywords: LAMA0238, dynamic, dynamic field, aspect field, template, compile-time type, run-time-only
+      - name: LAMA0241
+        path: content/errors/lama0241.md
+        summary: LAMA0241 is reported when an expression in a T# template combines a sub-expression whose value exists only at compile time with a sub-expression whose value exists only at run time, for instance in a condition joined by &&.
+        keywords: LAMA0241, execution scope mismatch, compile-time expression, run-time expression, T# template, mixed condition, &&
+      - name: LAMA0242
+        path: content/errors/lama0242.md
+        summary: LAMA0242 is reported when, in a T# template, the type of an expression requires a different execution scope than its sub-expressions, for instance when the 'as' operator converts a compile-time object to a run-time-only type.
+        keywords: LAMA0242, execution scope mismatch, compile-time expression, run-time type, as operator, T# template, IParameter
+      - name: LAMA0244
+        path: content/errors/lama0244.md
+        summary: LAMA0244 is reported when the execution scope of a type is incompatible with the scope of its base type or of an interface it implements, for instance when a compile-time class implements a run-time interface.
+        keywords: LAMA0244, execution scope mismatch, base type, interface, CompileTime, RunTimeOrCompileTime, compile-time type
+      - name: LAMA0245
+        path: content/errors/lama0245.md
+        summary: LAMA0245 is reported when a symbol used in a template or in compile-time code combines run-time and compile-time elements and Metalama can't identify which elements conflict, for instance when meta.CompileTime is called with a value of a template type parameter.
+        keywords: LAMA0245, scope conflict, run-time, compile-time, template type parameter, meta.CompileTime, T# template
+      - name: LAMA0246
+        path: content/errors/lama0246.md
+        summary: LAMA0246 is reported when a local function declared in a T# template uses dynamic in its return type or parameter types.
+        keywords: LAMA0246, local function, dynamic, template, signature, T# template
+      - name: LAMA0247
+        path: content/errors/lama0247.md
+        summary: LAMA0247 is reported when a template returns a void expression, typically meta.Proceed() for a void target method, from a local function or method that has a non-void return type.
+        keywords: LAMA0247, meta.Proceed, void, return type, local function, cannot convert, T# template
+      - name: LAMA0248
+        path: content/errors/lama0248.md
+        summary: LAMA0248 is reported when a compile-time or run-time-or-compile-time declaration, such as an aspect class, a fabric, or a class marked with [CompileTime], has the unsafe modifier.
+        keywords: LAMA0248, unsafe code, compile-time code, aspect class, fabric, pointer, unsafe modifier
+      - name: LAMA0249
+        path: content/errors/lama0249.md
+        summary: LAMA0249 is reported when a template member, for instance an OverrideMethod method or a member marked with [Introduce], has the unsafe modifier.
+        keywords: LAMA0249, unsafe code, template, unsafe modifier, pointer, StatementFactory.Parse
+      - name: LAMA0250
+        path: content/errors/lama0250.md
+        summary: LAMA0250 is reported when a T# template uses dynamic where it can't be resolved, for instance in a cast, an is, as, or default expression, a lambda signature, or a type argument of a method.
+        keywords: LAMA0250, dynamic, cast to dynamic, default(dynamic), T# template, meta.Default, lambda
+      - name: LAMA0251
+        path: content/errors/lama0251.md
+        summary: LAMA0251 is reported when a T# template declares a local variable of type dynamic and initializes it with an expression that isn't dynamic, for instance a compile-time value or a literal.
+        keywords: LAMA0251, dynamic variable, non-dynamic value, local variable, foreach, T# template, var
+      - name: LAMA0252
+        path: content/errors/lama0252.md
+        summary: LAMA0252 is reported when a template method, property, or indexer of an aspect is declared with the partial modifier, for instance a method marked with [Introduce] whose declaration and implementation are split into two parts.
+        keywords: LAMA0252, partial template, partial method, partial property, Introduce, Template attribute, T# template
+      - name: LAMA0253
+        path: content/errors/lama0253.md
+        summary: LAMA0253 is reported when a T# template passes a value of a compile-time-only type, such as IMethod or IParameter, as an argument to a run-time method.
+        keywords: LAMA0253, compile-time-only type, run-time method, argument, IMethod, T# template, meta.Target
+      - name: LAMA0254
+        path: content/errors/lama0254.md
+        summary: LAMA0254 is reported when a template calls ConfigureAwait on the result of meta.ProceedAsync() with an argument that isn't the literal true or false, for instance an aspect property.
+        keywords: LAMA0254, ConfigureAwait, ProceedAsync, OverrideAsyncMethod, async template, literal argument
+      - name: LAMA0255
+        path: content/errors/lama0255.md
+        summary: LAMA0255 is reported when a T# template casts a run-time expression, such as the Value of a parameter, to a compile-time-only type like IParameter or IMethod.
+        keywords: LAMA0255, cast, run-time expression, compile-time type, IParameter, Value, T# template
+      - name: LAMA0256
+        path: content/errors/lama0256.md
+        summary: LAMA0256 is reported when a T# template passes a dynamic expression, such as IExpression.Value, as the dynamic argument of a compile-time method that returns a compile-time value, for instance WithObject. The expression must be cast to IExpression.
+        keywords: LAMA0256, dynamic argument, cast to IExpression, WithObject, compile-time method, T# template
+      - name: LAMA0257
+        path: content/errors/lama0257.md
+        summary: LAMA0257 is reported when a custom attribute that applies an aspect sets a member of the aspect that is a template, for instance a property marked with [Introduce]. Template members describe introduced code and can't be configured from the attribute.
+        keywords: LAMA0257, template member, attribute named argument, Introduce property, aspect property, configure aspect
+      - name: LAMA0258
+        path: content/errors/lama0258.md
+        summary: LAMA0258 is reported when a finalizer, operator, conversion operator, or constructor of an aspect is marked as a template, for instance with [Introduce]. These members must be introduced programmatically from a template method.
+        keywords: LAMA0258, invalid template, introduce finalizer, introduce operator, IntroduceFinalizer, declarative introduction
+      - name: LAMA0259
+        path: content/errors/lama0259.md
+        summary: LAMA0259 is reported when a T# template uses the null-conditional operator on a compile-time expression to access a run-time member, for instance field?.Value where field is an IField. Use a compile-time if statement instead.
+        keywords: LAMA0259, null-conditional operator, conditional access, compile-time, run-time, scope mismatch, T# template
+      - name: LAMA0260
+        path: content/errors/lama0260.md
+        summary: LAMA0260 is reported when a type fabric is nested in a compile-time or run-time-or-compile-time type. A type fabric can only amend a run-time type.
+        keywords: LAMA0260, type fabric, nested fabric, compile-time type, RunTimeOrCompileTime, CompileTime
+      - name: LAMA0261
+        path: content/errors/lama0261.md
+        summary: LAMA0261 is reported when a member of an aspect has more than one template or advice attribute, for instance [Template] on an override of OverrideMethod, which already inherits it, or both [Introduce] and [Template].
+        keywords: LAMA0261, multiple template attributes, Introduce and Template, advice attribute, template attribute, duplicate attribute
+      - name: LAMA0262
+        path: content/errors/lama0262.md
+        summary: LAMA0262 is reported when a template or advice attribute, such as [Introduce] or [Template], is applied to a property or event accessor instead of the property or event itself.
+        keywords: LAMA0262, accessor, Introduce on getter, Template on accessor, advice attribute, property template
+      - name: LAMA0263
+        path: content/errors/lama0263.md
+        summary: LAMA0263 is reported when a lambda in a template has an expression body of type dynamic, for instance a lambda that returns the value of a parameter.
+        keywords: LAMA0263, lambda, dynamic, expression-bodied lambda, template, IExpression, LINQ Select
+      - name: LAMA0264
+        path: content/errors/lama0264.md
+        summary: LAMA0264 is reported when a template parameter marked with [CompileTime] has a run-time-only type, for instance a compile-time template type parameter or a type of the target project.
+        keywords: LAMA0264, compile-time template parameter, run-time-only type, CompileTime attribute, template type parameter, template parameters
+      - name: LAMA0265
+        path: content/errors/lama0265.md
+        summary: LAMA0265 is reported when a template accesses a static interface member, such as T.Zero with an INumber<T> constraint, through a compile-time template type parameter.
+        keywords: LAMA0265, static abstract interface member, compile-time template type parameter, generic math, INumber, template type parameters
+      - name: LAMA0267
+        path: content/errors/lama0267.md
+        summary: LAMA0267 is reported when a template converts an extension method to a delegate with a method group conversion, for instance Func<string> f = items.First.
+        keywords: LAMA0267, extension method, method group conversion, delegate, template, lambda expression
+      - name: LAMA0268
+        path: content/errors/lama0268.md
+        summary: LAMA0268 is a warning reported when Metalama can't resolve a template member while reading its template attributes, typically because a type of the member signature is defined in several referenced assemblies.
+        keywords: LAMA0268, could not resolve declaration, template attributes, duplicate type, conflicting references, assembly references
+      - name: LAMA0269
+        path: content/errors/lama0269.md
+        summary: LAMA0269 is reported when a T# template uses the same anonymous type both in run-time code and in compile-time code, for instance when two anonymous objects with the same property names and types are created at run time and in meta.CompileTime.
+        keywords: LAMA0269, anonymous type, anonymous object, run-time and compile-time, meta.CompileTime, T# template
+      - name: LAMA0270
+        path: content/errors/lama0270.md
+        summary: LAMA0270 is reported when a T# template calls an auxiliary template as part of an expression or of another statement, for instance in a return statement or as a method argument, instead of as a stand-alone statement.
+        keywords: LAMA0270, auxiliary template, subtemplate, template call, stand-alone statement, T# template
+      - name: LAMA0271
+        path: content/errors/lama0271.md
+        summary: LAMA0271 is reported when a method marked as a template is a C# extension method. To introduce an extension method, mark the first parameter of the template with the [This] attribute instead.
+        keywords: LAMA0271, extension method, template, This attribute, IsThis, introduce extension method
+      - name: LAMA0272
+        path: content/errors/lama0272.md
+        summary: LAMA0272 is reported when a void T# template contains a return statement that isn't needed, for instance at the end of an auxiliary template or at the end of both branches of an if...else statement.
+        keywords: LAMA0272, redundant return, return statement, auxiliary template, void template, T# template
+      - name: LAMA0273
+        path: content/errors/lama0273.md
+        summary: LAMA0273 is reported when a T# template references another template without calling it directly, for instance by assigning it to a delegate, passing it as an argument, or calling it with the ?. operator.
+        keywords: LAMA0273, auxiliary template, called template, template delegate, directly invoked, conditional access, TemplateInvocation
+      - name: LAMA0274
+        path: content/errors/lama0274.md
+        summary: LAMA0274 is reported when a template, for instance a method marked with [Template], is declared in a type that isn't an aspect, a fabric, or a class implementing ITemplateProvider, typically a static helper class.
+        keywords: LAMA0274, ITemplateProvider, template provider, auxiliary template, static class, Template attribute, helper class
+      - name: LAMA0275
+        path: content/errors/lama0275.md
+        summary: LAMA0275 is reported when a T# template calls a virtual, abstract, or overriding auxiliary template without specifying arguments for all its optional parameters.
+        keywords: LAMA0275, virtual template, optional parameters, default parameter value, auxiliary template, abstract template, template call
+      - name: LAMA0276
+        path: content/errors/lama0276.md
+        summary: LAMA0276 is reported when a T# template directly calls a generic auxiliary template whose type parameters aren't marked with [CompileTime].
+        keywords: LAMA0276, generic template, type parameter, CompileTime, run-time type parameter, auxiliary template, called template
+      - name: LAMA0277
+        path: content/errors/lama0277.md
+        summary: LAMA0277 is reported when a template calls an auxiliary template with a type argument that contains a run-time type parameter, typically a type parameter of an introduced generic method, which isn't known when the template is expanded.
+        keywords: LAMA0277, auxiliary template, called template, compile-time type parameter, run-time type parameter, generic template, type argument
+      - name: LAMA0278
+        path: content/errors/lama0278.md
+        summary: LAMA0278 is reported when a struct implements IAspect. Aspects must be classes.
+        keywords: LAMA0278, aspect struct, value type aspect, IAspect, aspect class
+      - name: LAMA0279
+        path: content/errors/lama0279.md
+        summary: LAMA0279 is reported when a template calls an auxiliary template that's abstract or marked with [Template(IsEmpty = true)], for instance an abstract template of an aspect base class, or base.OverrideAsyncMethod() in an OverrideMethodAspect.
+        keywords: LAMA0279, abstract template, empty template, auxiliary template, IsEmpty, virtual template, OverrideAsyncMethod
+      - name: LAMA0280
+        path: content/errors/lama0280.md
+        summary: LAMA0280 is reported when a T# template assigns or increments a compile-time expression that isn't a local variable, for instance a property of a compile-time object or a tuple, inside a block that runs only under a run-time condition.
+        keywords: LAMA0280, compile-time expression, run-time condition, run-time-conditional block, compile-time object, T# template, assignment
+      - name: LAMA0281
+        path: content/errors/lama0281.md
+        summary: LAMA0281 was reported by earlier versions of Metalama when an attribute that has no effect in compile-time code, such as [InlineArray], was applied to a compile-time declaration. Current versions report LAMA0294 instead.
+        keywords: LAMA0281, attribute not allowed, compile-time code, InlineArray, inline array, LAMA0294
+      - name: LAMA0282
+        path: content/errors/lama0282.md
+        summary: LAMA0282 is reported when a template uses C# features that are newer than the C# version of the project to which the aspect is applied, for instance a raw string literal in a project built with C# 10.
+        keywords: LAMA0282, C# version, LangVersion, MetalamaTemplateLanguageVersion, template language version, aspect library
+      - name: LAMA0283
+        path: content/errors/lama0283.md
+        summary: LAMA0283 is reported when a compile-time class or struct, for instance an aspect, declares a C# 12 primary constructor, which isn't supported in compile-time code.
+        keywords: LAMA0283, primary constructor, compile-time type, aspect constructor, C# 12, parameter list
+      - name: LAMA0284
+        path: content/errors/lama0284.md
+        summary: LAMA0284 is reported when a template contains an anonymous method or a lambda expression with a block body whose scope, compile-time or run-time, Metalama can't infer from its context.
+        keywords: LAMA0284, lambda, anonymous method, block body, scope, meta.RunTime, meta.CompileTime, template
+      - name: LAMA0285
+        path: content/errors/lama0285.md
+        summary: LAMA0285 is reported when a local function declared in a template has a template attribute such as [Template] or [Introduce], or a scope attribute such as [CompileTime] or [RunTime].
+        keywords: LAMA0285, local function, template attribute, scope attribute, auxiliary template, CompileTime on local function
+      - name: LAMA0286
+        path: content/errors/lama0286.md
+        summary: LAMA0286 is reported when a template casts a run-time expression whose type isn't dynamic to IExpression. Use ExpressionFactory.Capture to create an IExpression from such an expression.
+        keywords: LAMA0286, IExpression, cast to IExpression, ExpressionFactory.Capture, run-time expression, template
+      - name: LAMA0287
+        path: content/errors/lama0287.md
+        summary: LAMA0287 is reported when a template uses meta.Receiver, or otherwise needs the receiver of the target member, while the advice is applied to a static member that isn't an extension method.
+        keywords: LAMA0287, meta.Receiver, receiver, static method, extension method, ExpressionFactory.Receiver, HasReceiver
+      - name: LAMA0288
+        path: content/errors/lama0288.md
+        summary: LAMA0288 is reported when a template calls a compile-time method with side effects, such as StringBuilder.Append on a compile-time variable, as a statement inside a block whose execution depends on a run-time condition.
+        keywords: LAMA0288, compile-time side effect, run-time condition, run-time conditional block, meta.CompileTime, StringBuilder, template
+      - name: LAMA0289
+        path: content/errors/lama0289.md
+        summary: LAMA0289 is reported when a T# template applies the null-conditional operator ?. to a compile-time expression to access a member that returns a run-time value, for instance meta.Target.Parameters.FirstOrDefault(...)?.Value.
+        keywords: LAMA0289, null-conditional operator, elvis operator, ?., compile-time expression, run-time value, IParameter.Value, template
+      - name: LAMA0290
+        path: content/errors/lama0290.md
+        summary: LAMA0290 is reported when the same aspect type is found in two different versions of the same referenced assembly, which happens when two versions of an aspect library reach the compilation.
+        keywords: LAMA0290, duplicate aspect type, two versions of the same assembly, conflicting assembly references, aspect library version, package version
+      - name: LAMA0291
+        path: content/errors/lama0291.md
+        summary: LAMA0291 is reported when the MSBuild property MetalamaRoslynIsCompileTimeOnly is true, which is the default with Metalama.Framework.Sdk, and a declaration that isn't compile-time references a Roslyn type such as ISymbol.
+        keywords: LAMA0291, Roslyn, Microsoft.CodeAnalysis, MetalamaRoslynIsCompileTimeOnly, Metalama.Framework.Sdk, compile-time-only, CompileTime attribute
+      - name: LAMA0292
+        path: content/errors/lama0292.md
+        summary: LAMA0292 is reported when the scope of a member isn't compatible with the scope of its declaring type, for instance a method marked [CompileTime] in a type that isn't compile-time.
+        keywords: LAMA0292, execution scope mismatch, CompileTime attribute, RunTimeOrCompileTime, member scope, declaring type, compile-time, run-time
+      - name: LAMA0293
+        path: content/errors/lama0293.md
+        summary: LAMA0293 is reported when a template that wraps meta.Proceed() in a try-catch block is applied to an async iterator method, because the expanded code would contain 'yield return' inside a try block with a catch clause, which C# doesn't allow.
+        keywords: LAMA0293, async iterator, IAsyncEnumerable, try-catch, yield return, OverrideAsyncEnumerableMethod, default template
+      - name: LAMA0294
+        path: content/errors/lama0294.md
+        summary: LAMA0294 is reported when compile-time code uses a C# feature that .NET Standard 2.0, the target of the compile-time assembly, doesn't support. Currently, this applies to inline arrays, that is, types marked with [InlineArray].
+        keywords: LAMA0294, InlineArray, inline array, compile-time code, netstandard2.0, language feature not supported
+      - name: LAMA0295
+        path: content/errors/lama0295.md
+        summary: LAMA0295 is reported when Metalama can't resolve the declaration of a declarative advice member of an aspect, for instance an [Introduce] member, in the compilation that the aspect runs against. The advice is ignored.
+        keywords: LAMA0295, declarative advice, Introduce, unresolved declaration, duplicate type, design time, ambiguous reference
+      - name: LAMA0297
+        path: content/errors/lama0297.md
+        summary: LAMA0297 is reported when a source expression that is only available for inspection is used in generated code, for instance in a template. Such an expression can be read by compile-time code but not emitted.
+        keywords: LAMA0297, inspection-only expression, source expression, ISourceExpression, generated code, template, CreateInspectionOnly
+    - name: Advising
+      path: content/errors/errors-advising.md
+      summary: 'Reference of the advising errors and warnings of Metalama. Diagnostics about advice: overriding and introducing members, implementing interfaces, adding initializers, and conflicts between aspects.'
+      keywords: Metalama advising errors and warnings, LAMA diagnostics, error codes, advising
+      items:
+      - name: LAMA0500
+        path: content/errors/lama0500.md
+        summary: LAMA0500 is reported when an aspect introduces a member that already exists in the target type or in a base type, and the override strategy is Fail, which is the default.
+        keywords: LAMA0500, introduce member, member already exists, OverrideStrategy, WhenExists, whenExists, introduction conflict
+      - name: LAMA0502
+        path: content/errors/lama0502.md
+        summary: LAMA0502 is reported when an aspect uses OverrideStrategy.Override to introduce a member that already exists in a base type, but the base member can't be overridden because it's static, non-virtual or sealed.
+        keywords: LAMA0502, introduce member, OverrideStrategy.Override, non-virtual, sealed, cannot override, WhenExists
+      - name: LAMA0503
+        path: content/errors/lama0503.md
+        summary: LAMA0503 is reported when an aspect introduces a member that already exists in the target type or a base type, but the introduced member has a type or return type that isn't compatible with the existing member.
+        keywords: LAMA0503, introduce member, different return type, different type, OverrideStrategy.Override, introduction conflict
+      - name: LAMA0504
+        path: content/errors/lama0504.md
+        summary: LAMA0504 is reported when an aspect introduces a member that already exists in the target type or a base type, but one of the two members is static and the other isn't.
+        keywords: LAMA0504, introduce member, static, instance, staticity, introduction conflict, IsStatic
+      - name: LAMA0505
+        path: content/errors/lama0505.md
+        summary: LAMA0505 is reported when an aspect tries to introduce an instance member, such as a method or a property, into a static class. Static classes can only contain static members.
+        keywords: LAMA0505, introduce instance member, static class, IntroductionScope, introduce method, static type
+      - name: LAMA0506
+        path: content/errors/lama0506.md
+        summary: LAMA0506 is reported when an aspect introduces a member whose name is already used by a member of a different kind, for instance a property with the same name as an existing field, in the target type or in a base type.
+        keywords: LAMA0506, introduce member, name conflict, member of a different kind, existing member, WhenExists, OverrideStrategy
+      - name: LAMA0507
+        path: content/errors/lama0507.md
+        summary: LAMA0507 is reported when an aspect introduces a member that is both static and virtual into a class or a struct, typically because the introduction scope is static and the build action sets IsVirtual.
+        keywords: LAMA0507, static virtual member, introduce virtual member, IntroductionScope.Static, IsVirtual, introduce method
+      - name: LAMA0508
+        path: content/errors/lama0508.md
+        summary: LAMA0508 is reported when an aspect introduces a member that is both static and sealed, typically because the build action or the Introduce attribute sets IsSealed on a static member.
+        keywords: LAMA0508, static sealed member, introduce sealed member, IsSealed, IntroductionScope.Static, introduce method
+      - name: LAMA0509
+        path: content/errors/lama0509.md
+        summary: LAMA0509 is reported when an aspect introduces a member with OverrideStrategy.New but the target type itself already declares a member with the same signature. OverrideStrategy.New can only hide a member inherited from a base type.
+        keywords: LAMA0509, OverrideStrategy.New, introduce member, member already exists, WhenExists, hide inherited member, new keyword
+      - name: LAMA0511
+        path: content/errors/lama0511.md
+        summary: LAMA0511 is reported when an aspect implements an interface and one of its members marked with [InterfaceMember] has the same name and parameters as an interface member, but a different type or return type.
+        keywords: LAMA0511, InterfaceMember, ImplementInterface, return type mismatch, interface member type, implement interface
+      - name: LAMA0512
+        path: content/errors/lama0512.md
+        summary: LAMA0512 is reported when an aspect implements an interface in a type that already implements it, directly or through a base type, and the advice uses the default OverrideStrategy.Fail.
+        keywords: LAMA0512, ImplementInterface, interface already implemented, OverrideStrategy.Ignore, whenExists, OverrideStrategy.Fail
+      - name: LAMA0513
+        path: content/errors/lama0513.md
+        summary: LAMA0513 is reported when an aspect implements a generic interface without specifying its type arguments, for instance by passing typeof(IEntity<>) to ImplementInterface.
+        keywords: LAMA0513, ImplementInterface, generic interface, open generic type, canonical generic instance, type arguments, MakeGenericInstance
+      - name: LAMA0514
+        path: content/errors/lama0514.md
+        summary: LAMA0514 is reported when an aspect implements an interface implicitly but the target type already contains a member with the same signature as an interface member, and the conflict strategy of the [InterfaceMember] template is to fail.
+        keywords: LAMA0514, ImplementInterface, InterfaceMember, WhenExists, member already exists, same signature, InterfaceMemberOverrideStrategy
+      - name: LAMA0516
+        path: content/errors/lama0516.md
+        summary: LAMA0516 is reported when an aspect calls ImplementInterface with an OverrideStrategy that isn't supported for interfaces, typically OverrideStrategy.New.
+        keywords: LAMA0516, ImplementInterface, OverrideStrategy, whenExists, OverrideStrategy.New, unsupported override strategy
+      - name: LAMA0517
+        path: content/errors/lama0517.md
+        summary: LAMA0517 is reported when an aspect implements an interface property with an [InterfaceMember] template that lacks an accessor required by the interface property, for instance a setter or an init accessor.
+        keywords: LAMA0517, ImplementInterface, InterfaceMember, interface property, missing accessor, missing setter, init accessor
+      - name: LAMA0518
+        path: content/errors/lama0518.md
+        summary: LAMA0518 is reported when an aspect explicitly implements an interface property with an [InterfaceMember] template that has an accessor the interface property doesn't declare, for instance a setter for a read-only property.
+        keywords: LAMA0518, ImplementInterface, InterfaceMember, IsExplicit, explicit interface implementation, unexpected accessor, read-only interface property
+      - name: LAMA0519
+        path: content/errors/lama0519.md
+        summary: LAMA0519 is reported when an aspect implements an interface implicitly with an [InterfaceMember] template that isn't public, or whose property accessors aren't all public.
+        keywords: LAMA0519, implement interface, implicit implementation, InterfaceMember, non-public member, IsExplicit, ImplementInterface
+      - name: LAMA0520
+        path: content/errors/lama0520.md
+        summary: LAMA0520 is defined for the case where an aspect tries to introduce a parameter into a static constructor. In the current version of Metalama, this situation causes an exception in the aspect instead of this diagnostic.
+        keywords: LAMA0520, introduce parameter, static constructor, IntroduceParameter, constructor parameter, advice eligibility
+      - name: LAMA0521
+        path: content/errors/lama0521.md
+        summary: LAMA0521 is reported when an aspect introduces a custom attribute into a declaration that already has an attribute of the same type, and the whenExists parameter is left to its default value or set to OverrideStrategy.Fail.
+        keywords: LAMA0521, introduce attribute, attribute already present, IntroduceAttribute, whenExists, OverrideStrategy, duplicate attribute
+      - name: LAMA0522
+        path: content/errors/lama0522.md
+        summary: LAMA0522 is reported when an aspect introduces a finalizer with OverrideStrategy.New, which isn't supported because a type can have only one finalizer.
+        keywords: LAMA0522, introduce finalizer, IntroduceFinalizer, OverrideStrategy.New, whenExists, destructor
+      - name: LAMA0524
+        path: content/errors/lama0524.md
+        summary: "LAMA0524 was meant to be reported when an aspect adds an initializer to all constructors of a record, because the copy constructor can't be changed. Current versions of Metalama don't report it: they skip the copy constructor instead."
+        keywords: LAMA0524, record initializer, AddInitializer, copy constructor, BeforeInstanceConstructor, records
+      - name: LAMA0526
+        path: content/errors/lama0526.md
+        summary: LAMA0526 is reported when an aspect introduces an indexer without any parameter, typically because it passes an empty list of indices to IntroduceIndexer.
+        keywords: LAMA0526, introduce indexer, IntroduceIndexer, indexer without parameter, empty indices, introducing members
+      - name: LAMA0527
+        path: content/errors/lama0527.md
+        summary: LAMA0527 is reported when an aspect introduces a static indexer, for instance with IntroductionScope.Static or by setting IsStatic in the buildIndexer delegate. C# doesn't support static indexers.
+        keywords: LAMA0527, static indexer, introduce indexer, IntroduceIndexer, IntroductionScope.Static, IsStatic, introducing members
+      - name: LAMA0528
+        path: content/errors/lama0528.md
+        summary: LAMA0528 is reported when an aspect implements an interface with OverrideStrategy.Override and the target type already has a member with the signature of an interface member, but this member isn't public, so it can't be overridden to implement the interface.
+        keywords: LAMA0528, implement interface, ImplementInterface, OverrideStrategy.Override, non-public member, InterfaceMember, IsExplicit
+      - name: LAMA0529
+        path: content/errors/lama0529.md
+        summary: LAMA0529 is reported when an aspect implements an interface with OverrideStrategy.Override and a base type of the target type already has a member with the signature of an interface member, but this member isn't virtual or is sealed, so it can't be overridden.
+        keywords: LAMA0529, implement interface, ImplementInterface, OverrideStrategy.Override, non-virtual member, sealed member, base class, InterfaceMember
+      - name: LAMA0530
+        path: content/errors/lama0530.md
+        summary: LAMA0530 is reported when an aspect introduces a constructor parameter whose name is already used by a parameter that an aspect introduced into the same constructor, typically when an aspect introduces two parameters with the same name.
+        keywords: LAMA0530, IntroduceParameter, constructor parameter, duplicate parameter name, parameter already exists, introduce parameter
+      - name: LAMA0531
+        path: content/errors/lama0531.md
+        summary: LAMA0531 is reported when an aspect introduces a type into a namespace or a type that already contains or inherits a type with the same name and the same number of type parameters, and the override strategy is Fail, the default.
+        keywords: LAMA0531, IntroduceClass, introduce type, nested type, type already exists, name conflict, OverrideStrategy
+      - name: LAMA0532
+        path: content/errors/lama0532.md
+        summary: LAMA0532 is reported when an aspect introduces an abstract member, by setting IsAbstract to true in the build action of the advice, into a type that isn't abstract.
+        keywords: LAMA0532, introduce abstract member, IsAbstract, IntroduceMethod, non-abstract type, abstract class, buildMethod
+      - name: LAMA0533
+        path: content/errors/lama0533.md
+        summary: LAMA0533 is reported when an aspect introduces an abstract member with the override strategy Override or New. An abstract member has no implementation, so it can't override or hide an existing member.
+        keywords: LAMA0533, introduce abstract member, OverrideStrategy.Override, OverrideStrategy.New, whenExists, IntroduceMethod, template without body
+      - name: LAMA0534
+        path: content/errors/lama0534.md
+        summary: LAMA0534 is reported when an aspect tries to introduce a field into an interface, typically because a type-level aspect that introduces a field is applied to an interface.
+        keywords: LAMA0534, introduce field, interface, IntroduceField, Introduce attribute, TypeAspect on interface
+      - name: LAMA0535
+        path: content/errors/lama0535.md
+        summary: LAMA0535 is reported when an aspect introduces a partial member, for example a partial method, into a type that isn't declared as partial.
+        keywords: LAMA0535, partial member, partial method, introduce, non-partial type, IsPartial, partial modifier
+      - name: LAMA0536
+        path: content/errors/lama0536.md
+        summary: LAMA0536 is reported when an aspect introduces a constructor parameter with a forwarding constructor, but the pull strategy returns an action that gives no value for the forwarding constructor to pass, such as PullAction.None.
+        keywords: LAMA0536, forwarding constructor, IntroduceParameter, pull strategy, IPullStrategy, PullAction.None, ForwardSourceConstructors
+      - name: LAMA0540
+        path: content/errors/lama0540.md
+        summary: LAMA0540 is defined for an aspect that introduces an extension block into a type that isn't a static class. In practice, Metalama rejects such a target earlier and reports LAMA0041 instead.
+        keywords: LAMA0540, extension block, IntroduceExtensionBlock, static class, top-level static class, C# 14 extension members
+      - name: LAMA0541
+        path: content/errors/lama0541.md
+        summary: LAMA0541 is defined for an aspect that introduces an extension block into another extension block. In practice, Metalama rejects such a target earlier and reports LAMA0041 instead.
+        keywords: LAMA0541, extension block, nested extension block, IntroduceExtensionBlock, static class, C# 14 extension members
+      - name: LAMA0542
+        path: content/errors/lama0542.md
+        summary: LAMA0542 is reported when an aspect introduces an indexer with an init accessor into an extension block, which the C# language forbids.
+        keywords: LAMA0542, extension block, extension indexer, init accessor, init-only indexer, IntroduceIndexer, Writeability.InitOnly
+      - name: LAMA0543
+        path: content/errors/lama0543.md
+        summary: LAMA0543 is reported when an aspect introduces an indexer into an extension block with a modifier that the C# language forbids for extension members, such as a protected accessor.
+        keywords: LAMA0543, extension block, extension indexer, protected, virtual, abstract, override, sealed, partial, modifier, IntroduceIndexer
+      - name: LAMA0550
+        path: content/errors/lama0550.md
+        summary: LAMA0550 is reported when an aspect adds an AfterObjectInitializer initializer to a non-sealed class whose hand-written Initialize method isn't public and virtual.
+        keywords: LAMA0550, Initialize method, IInitializable, AfterObjectInitializer, AddInitializer, public virtual, non-sealed class
+      - name: LAMA0551
+        path: content/errors/lama0551.md
+        summary: LAMA0551 is reported when an aspect adds an AfterLastInstanceConstructor initializer to a type whose base type defines an OnConstructed(InitializationContext) method but no constructor accepting an InitializationContext.
+        keywords: LAMA0551, OnConstructed, InitializationContext, AfterLastInstanceConstructor, AddInitializer, base constructor, InitializationSlot.OnConstructed
+      - name: LAMA0552
+        path: content/errors/lama0552.md
+        summary: LAMA0552 is reported when an aspect overrides a member that the C# compiler always adds to a record, such as Equals(object) or an equality operator, and that cannot be declared explicitly.
+        keywords: LAMA0552, record, Equals, equality operator, operator ==, override record member, compiler-synthesized, IntroduceMethod, OverrideStrategy.Override
+      - name: LAMA0554
+        path: content/errors/lama0554.md
+        summary: LAMA0554 is reported when an aspect introduces a union that declares no case. The C# language requires at least one case.
+        keywords: LAMA0554, union, union case, AddCase, IntroduceUnion, C# 15, union declaration
+      - name: LAMA0555
+        path: content/errors/lama0555.md
+        summary: LAMA0555 is reported when an aspect introduces an instance field, an automatic property or a field-like event into a union declaration, because C# doesn't allow a union to hold state.
+        keywords: LAMA0555, union, IntroduceUnion, IntroduceField, IntroduceAutomaticProperty, field-like event, introduce into union, C# 15
+      - name: LAMA0556
+        path: content/errors/lama0556.md
+        summary: LAMA0556 is reported when an aspect introduces a custom attribute on a member that the C# compiler synthesizes, such as the PrintMembers method of an introduced record.
+        keywords: LAMA0556, IntroduceAttribute, synthesized member, PrintMembers, IntroduceRecord, positional record, compiler-generated member
+      - name: LAMA0650
+        path: content/errors/lama0650.md
+        summary: LAMA0650 is reported when a template uses an invoker with InvokerOptions.Base to call a member on an instance other than this, which would require a base call that C# can't express.
+        keywords: LAMA0650, InvokerOptions.Base, base call, invoker, WithObject, another instance, base implementation
+      - name: LAMA0652
+        path: content/errors/lama0652.md
+        summary: LAMA0652 is reported when an aspect overrides the Equals or GetHashCode method that the compiler synthesizes for a record, and the record has an overridable automatic property that the original implementation reads differently.
+        keywords: LAMA0652, record, Equals, GetHashCode, synthesized member, virtual property, backing field, automatic property
+      - name: LAMA0653
+        path: content/errors/lama0653.md
+        summary: LAMA0653 is reported when an aspect overrides the Equals or GetHashCode method that the compiler synthesizes for a record, and overrides an automatic property of the record with a template that doesn't call meta.Proceed.
+        keywords: LAMA0653, record, Equals, GetHashCode, synthesized member, override property, meta.Proceed, backing field
+      - name: LAMA0654
+        path: content/errors/lama0654.md
+        summary: LAMA0654 is reported when an aspect overrides the Equals or GetHashCode method that the compiler generates for a record, and the record has a property declared with the field keyword whose getter does more than return the backing field.
+        keywords: LAMA0654, record, Equals, GetHashCode, field keyword, semi-auto property, backing field, synthesized record member
+      - name: LAMA0655
+        path: content/errors/lama0655.md
+        summary: LAMA0655 is reported when an aspect overrides the Equals or GetHashCode method of a record and also overrides a field-like event of the record without calling the original implementation of the event.
+        keywords: LAMA0655, record, Equals, GetHashCode, field-like event, backing field, OverrideAccessors, meta.Proceed
+      - name: LAMA0660
+        path: content/errors/lama0660.md
+        summary: LAMA0660 is reported when the Metalama linker can't redirect a call because it is in a position that the linker doesn't rewrite, typically the initializer of a field that an aspect promotes to a property.
+        keywords: LAMA0660, call site redirection, interceptor, InterceptMethods, field initializer, promoted field, linker
+      - name: LAMA0661
+        path: content/errors/lama0661.md
+        summary: LAMA0661 is reported when the Metalama linker renames a lambda parameter, local variable or local function parameter because it hides a parameter of the calling method that a redirected call must pass.
+        keywords: LAMA0661, renamed variable, hides parameter, call site redirection, interceptor, WithArgs, Caller.Parameters, lambda parameter
+      - name: LAMA0699
+        path: content/errors/lama0699.md
+        summary: LAMA0699 is reported when an aspect overrides a constructor or an indexer and the original implementation can't be inlined, typically because the template calls meta.Proceed() more than once.
+        keywords: LAMA0699, cannot be inlined, inlining, meta.Proceed, constructor override, indexer override, called twice
+      - name: LAMA0700
+        path: content/errors/lama0700.md
+        summary: LAMA0700 is reported when an aspect with declarative introductions ([Introduce] members) is executed on a declaration that is neither a type nor a type member, such as a parameter or a namespace. In practice, eligibility rejects such targets first with LAMA0037, so this diagnostic acts as a safety net.
+        keywords: LAMA0700, Introduce attribute, declarative introduction, neither a type nor a type member, parameter aspect, introduce member
+      - name: LAMA0750
+        path: content/errors/lama0750.md
+        summary: LAMA0750 is reported when an aspect with declarative introductions ([Introduce] members) is applied to an enum, a delegate, or a member of such a type, because members can only be introduced into classes, structs, and interfaces.
+        keywords: LAMA0750, Introduce attribute, enum, delegate, unsupported target type, declarative introduction, TypeAspect
+      - name: LAMA0751
+        path: content/errors/lama0751.md
+        summary: LAMA0751 is a warning about the [InternalImplement] constraint that the current version of Metalama defines but never reports. Implementations that violate [InternalImplement] are reported as LAMA0120.
+        keywords: LAMA0751, InternalImplement, interface cannot be implemented, internal implementation constraint, LAMA0120
+    - name: Serialization
+      path: content/errors/errors-serialization.md
+      summary: Reference of the serialization errors and warnings of Metalama. Diagnostics about converting compile-time values into run-time code, and about the serialization of aspects and fabrics across projects.
+      keywords: Metalama serialization errors and warnings, LAMA diagnostics, error codes, serialization
+      items:
+      - name: LAMA0200
+        path: content/errors/lama0200.md
+        summary: LAMA0200 is reported when a template uses a compile-time value where a run-time value is expected, but Metalama can't convert the value to run-time code because its type, or one of its type arguments, isn't supported.
+        keywords: LAMA0200, compile-time value, run-time value, meta.RunTime, not serializable, IExpressionBuilder, convert compile-time to run-time
+      - name: LAMA0201
+        path: content/errors/lama0201.md
+        summary: LAMA0201 is reported when Metalama converts a compile-time value to run-time code and the value contains a cyclic reference, such as a collection that contains itself, or is nested more than 32 levels deep.
+        keywords: LAMA0201, cyclic reference, collection contains itself, compile-time value, meta.RunTime, nesting depth, convert compile-time to run-time
+      - name: LAMA0202
+        path: content/errors/lama0202.md
+        summary: LAMA0202 is reported when a template converts a compile-time multidimensional array, such as an int[,], to a run-time value. Metalama can only convert one-dimensional arrays, including jagged arrays.
+        keywords: LAMA0202, multidimensional array, jagged array, compile-time array, meta.RunTime, convert compile-time to run-time
+      - name: LAMA0203
+        path: content/errors/lama0203.md
+        summary: LAMA0203 is reported when a template converts a compile-time dictionary to a run-time value, but the dictionary uses a custom equality comparer that Metalama can't reproduce in the generated code.
+        keywords: LAMA0203, dictionary, equality comparer, custom comparer, StringComparer, compile-time dictionary, convert compile-time to run-time
+      - name: LAMA0204
+        path: content/errors/lama0204.md
+        summary: LAMA0204 is reported when Metalama can't generate the serializer of a compile-time serializable type because its serializable base type, declared in a referenced project, has neither an accessible parameterless constructor nor an accessible deserializing constructor.
+        keywords: LAMA0204, compile-time serialization, ICompileTimeSerializable, deserializing constructor, IArgumentsReader, base type in referenced assembly, manual serializer
+      - name: LAMA0205
+        path: content/errors/lama0205.md
+        summary: LAMA0205 is reported when Metalama can't generate the serializer of a compile-time serializable type because its base type isn't serializable and doesn't have a public or protected parameterless constructor.
+        keywords: LAMA0205, compile-time serialization, ICompileTimeSerializable, base type not serializable, parameterless constructor, generated serializer
+      - name: LAMA0207
+        path: content/errors/lama0207.md
+        summary: LAMA0207 is reported when Metalama can't generate the serializer of a compile-time serializable type because the manual serializer of its base type doesn't have a public or protected parameterless constructor.
+        keywords: LAMA0207, compile-time serialization, manual serializer, ReferenceTypeSerializer, parameterless constructor, base serializer
+      - name: LAMA0208
+        path: content/errors/lama0208.md
+        summary: LAMA0208 is reported when a compile-time serializable type declares more than one nested serializer class, so Metalama can't tell which one to use.
+        keywords: LAMA0208, ambiguous manual serializer, ICompileTimeSerializable, ReferenceTypeSerializer, ValueTypeSerializer, ISerializer, nested serializer, compile-time serialization
+      - name: LAMA0209
+        path: content/errors/lama0209.md
+        summary: LAMA0209 is reported when Metalama can't generate a serializer for a type because its base type declares more than one nested serializer. In practice, LAMA0208 is reported on the base type instead.
+        keywords: LAMA0209, ambiguous base serializer, ICompileTimeSerializable, ReferenceTypeSerializer, ISerializer, base type serializer, compile-time serialization
+      - name: LAMA0210
+        path: content/errors/lama0210.md
+        summary: LAMA0210 is reported when a positional record implements ICompileTimeSerializable without a manual serializer, because Metalama can't generate serializers for positional records.
+        keywords: LAMA0210, positional record, record serializer, ICompileTimeSerializable, ReferenceTypeSerializer, ValueTypeSerializer, compile-time serialization
+    - name: Design time
+      path: content/errors/errors-design-time.md
+      summary: Reference of the design-time errors and warnings of Metalama. Diagnostics reported by the IDE integration of Metalama.
+      keywords: Metalama design-time errors and warnings, LAMA diagnostics, error codes, design-time
+      items:
+      - name: LAMA0301
+        path: content/errors/lama0301.md
+        summary: LAMA0301 is reported in the IDE instead of an error defined by an aspect or an aspect library, when the ID of this diagnostic isn't yet registered in the current IDE session. Restarting the IDE shows the diagnostic under its own ID.
+        keywords: LAMA0301, diagnostic not registered, restart IDE, user diagnostic, DiagnosticDefinition, design time, userDiagnostics.json
+      - name: LAMA0302
+        path: content/errors/lama0302.md
+        summary: LAMA0302 is reported in the IDE instead of a warning defined by an aspect or an aspect library, when the ID of this diagnostic isn't yet registered in the current IDE session. Restarting the IDE shows the diagnostic under its own ID.
+        keywords: LAMA0302, diagnostic not registered, restart IDE, user diagnostic, DiagnosticDefinition, design time, userDiagnostics.json
+      - name: LAMA0303
+        path: content/errors/lama0303.md
+        summary: LAMA0303 is reported in the IDE instead of an informational diagnostic defined by an aspect or an aspect library, when the ID of this diagnostic isn't yet registered in the current IDE session. Restarting the IDE shows the diagnostic under its own ID.
+        keywords: LAMA0303, diagnostic not registered, restart IDE, user diagnostic, DiagnosticDefinition, design time, userDiagnostics.json
+      - name: LAMA0304
+        path: content/errors/lama0304.md
+        summary: LAMA0304 is reported in the IDE instead of a hidden diagnostic defined by an aspect or an aspect library, when the ID of this diagnostic isn't yet registered in the current IDE session. Restarting the IDE shows the diagnostic under its own ID.
+        keywords: LAMA0304, diagnostic not registered, restart IDE, user diagnostic, DiagnosticDefinition, design time, userDiagnostics.json
+      - name: LAMA0306
+        path: content/errors/lama0306.md
+        summary: LAMA0306 is reported in the IDE when an aspect suppresses a diagnostic, but the suppression isn't yet registered in the current IDE session, so the IDE still shows the suppressed diagnostic. Restarting the IDE applies the suppression.
+        keywords: LAMA0306, suppression not applied, SuppressionDefinition, suppress warning, restart IDE, design time, userDiagnostics.json
+      - name: LAMA0307
+        path: content/errors/lama0307.md
+        summary: LAMA0307 is reported in the IDE when the project includes the same source file several times, for instance through overlapping Compile items, Link metadata, or a shared project. Metalama then analyzes only one copy of the file at design time.
+        keywords: LAMA0307, duplicate source file, same path, Compile item included twice, CS2002, Link metadata, shared project, design time
+    - name: Licensing
+      path: content/errors/errors-licensing.md
+      summary: Reference of the licensing errors and warnings of Metalama. Diagnostics about the Metalama license and the features it includes.
+      keywords: Metalama licensing errors and warnings, LAMA diagnostics, error codes, licensing
+      items:
+      - name: LAMA0806
+        path: content/errors/lama0806.md
+        summary: LAMA0806 is reported by the build when a project uses a Metalama Premium component, such as Metalama.Extensions.Validation or Metalama.Extensions.CodeFixes, but no license registered for the project covers it. The build fails.
+        keywords: LAMA0806, Metalama license error, component is not licensed, no valid license, Metalama Professional, MetalamaLicense, register license, build server license
+      - name: LAMA0807
+        path: content/errors/lama0807.md
+        summary: LAMA0807 is reported by the build when the license check of a Metalama Premium component finds a problem that doesn't fail the build by itself, typically a license key that is malformed, expired, or bound to another project.
+        keywords: LAMA0807, Metalama license warning, invalid license key, cannot use the license, license key expired, MetalamaLicense, license bound to namespace
+    - name: Architecture verification
+      path: content/errors/errors-architecture.md
+      summary: Reference of the architecture verification errors and warnings of Metalama. Diagnostics reported by Metalama.Extensions.Architecture and Metalama.Extensions.Validation.
+      keywords: Metalama architecture verification errors and warnings, LAMA diagnostics, error codes, architecture
+      items:
+      - name: LAMA0900
+        path: content/errors/lama0900.md
+        summary: LAMA0900 is reported when code uses a declaration marked with the [Experimental] attribute of Metalama.Extensions.Architecture, unless the using code is itself experimental or contained in the experimental declaration.
+        keywords: LAMA0900, experimental API, ExperimentalAttribute, Metalama.Extensions.Architecture, use of experimental code, architecture validation
+      - name: LAMA0901
+        path: content/errors/lama0901.md
+        summary: LAMA0901 is reported when a type implements an interface marked with [InternalOnlyImplement] from a project other than the one that defines the interface, and this project doesn't have access to the internals of the defining project.
+        keywords: LAMA0901, InternalOnlyImplement, InternalOnlyImplementAttribute, cannot implement interface, InternalsVisibleTo, Metalama.Extensions.Architecture
+      - name: LAMA0902
+        path: content/errors/lama0902.md
+        summary: LAMA0902 is reported when the pattern passed to the [DerivedTypesMustRespectRegexNamingConvention] attribute isn't a valid .NET regular expression, often because a star pattern such as *Service is used instead of a regular expression.
+        keywords: LAMA0902, invalid regular expression, DerivedTypesMustRespectRegexNamingConvention, naming convention, regex pattern, Metalama.Extensions.Architecture
+      - name: LAMA0903
+        path: content/errors/lama0903.md
+        summary: LAMA0903 is reported when a type derived from a class or interface that has a naming convention, set with [DerivedTypesMustRespectNamingConvention], [DerivedTypesMustRespectRegexNamingConvention] or a fabric, has a name that doesn't match the pattern.
+        keywords: LAMA0903, naming convention, DerivedTypesMustRespectNamingConvention, DerivedTypesMustRespectRegexNamingConvention, derived type name, Metalama.Extensions.Architecture
+      - name: LAMA0904
+        path: content/errors/lama0904.md
+        summary: LAMA0904 is reported when a usage validation attribute such as [CanOnlyBeUsedFrom] or [CannotBeUsedFrom] doesn't define any scope, because none of its scope properties is set.
+        keywords: LAMA0904, CanOnlyBeUsedFrom, CannotBeUsedFrom, InternalsCanOnlyBeUsedFrom, scope property, at least one property must be set, architecture validation
+      - name: LAMA0905
+        path: content/errors/lama0905.md
+        summary: LAMA0905 is reported when code references a declaration from a context that an architecture rule forbids, for instance a type marked with [CanOnlyBeUsedFrom] used from a type that isn't in the allowed scope.
+        keywords: LAMA0905, cannot be referenced, CanOnlyBeUsedFrom, CannotBeUsedFrom, InternalsCanOnlyBeUsedFrom, architecture constraint, usage validation
+      - name: LAMA0906
+        path: content/errors/lama0906.md
+        summary: LAMA0906 is reported when the name of a declaration doesn't match the naming convention set by a fabric with MustRespectNamingConvention or MustRespectRegexNamingConvention.
+        keywords: LAMA0906, naming convention, MustRespectNamingConvention, MustRespectRegexNamingConvention, fabric, architecture validation
+      - name: LAMA0907
+        path: content/errors/lama0907.md
+        summary: LAMA0907 is reported when the ExclusionPredicateType property of an architecture attribute is set to a type that isn't derived from ReferencePredicate.
+        keywords: LAMA0907, ExclusionPredicateType, ReferencePredicate, exclusion predicate, CanOnlyBeUsedFrom, architecture validation
+      - name: LAMA0908
+        path: content/errors/lama0908.md
+        summary: LAMA0908 is reported when the type assigned to the ExclusionPredicateType property of an architecture attribute doesn't have a public constructor accepting a single ReferencePredicateBuilder parameter.
+        keywords: LAMA0908, ExclusionPredicateType, ReferencePredicateBuilder, ReferencePredicate, public constructor, exclusion predicate, CanOnlyBeUsedFrom, architecture validation
+    - name: Durability and immutability
+      path: content/errors/errors-compile-time-contracts.md
+      summary: Reference of the durability and immutability errors and warnings of Metalama. Diagnostics reported by the analyzers that verify the [Durable] and [ImmutableType] contracts of compile-time code.
+      keywords: Metalama durability and immutability errors and warnings, LAMA diagnostics, error codes, compile-time-contracts
+      items:
+      - name: LAMA0870
+        path: content/errors/lama0870.md
+        summary: LAMA0870 is reported when a field or an automatically implemented property of a type marked [Durable] has a type that isn't durable, typically a syntax tree, a symbol, a compilation, or a delegate.
+        keywords: LAMA0870, Durable attribute, durable type, design-time memory leak, compilation retention, DurableLazy, DurableDangerous, IDurableRef
+      - name: LAMA0871
+        path: content/errors/lama0871.md
+        summary: LAMA0871 is reported when a value that isn't durable is stored in a field or property marked [Durable], through an assignment, an initializer, or an out argument.
+        keywords: LAMA0871, Durable attribute, durable member, assigned value, design-time memory leak, compilation retention, DurableDangerous
+      - name: LAMA0872
+        path: content/errors/lama0872.md
+        summary: LAMA0872 is reported when an argument that isn't durable is passed to a parameter marked [Durable].
+        keywords: LAMA0872, Durable attribute, durable parameter, argument, design-time memory leak, compilation retention, DurableDangerous
+      - name: LAMA0873
+        path: content/errors/lama0873.md
+        summary: LAMA0873 is reported when a type marked [Durable] derives from a base class that isn't durable.
+        keywords: LAMA0873, Durable attribute, durable type, base type, inheritance, design-time memory leak, compilation retention
+      - name: LAMA0874
+        path: content/errors/lama0874.md
+        summary: LAMA0874 is reported when a type is marked [Durable] although it derives from, or implements, a type that is already marked [Durable]. The attribute is redundant because the contract is inherited.
+        keywords: LAMA0874, Durable attribute, redundant attribute, durable contract, inherited contract, design-time memory, analyzer
+      - name: LAMA0875
+        path: content/errors/lama0875.md
+        summary: LAMA0875 is reported when a field or automatically implemented property of a durable type holds a WeakReference, and its name doesn't end in 'Dangerous'.
+        keywords: LAMA0875, WeakReference, Dangerous naming convention, Durable attribute, durable type, design-time memory, analyzer
+      - name: LAMA0876
+        path: content/errors/lama0876.md
+        summary: LAMA0876 is reported when a member of a durable type is declared with an interface or abstract type that isn't marked [Durable]. Mark that type [Durable], which then requires all its implementations to be durable.
+        keywords: LAMA0876, Durable attribute, interface not durable, abstract class not durable, retention path, durable contract, design-time memory
+      - name: LAMA0877
+        path: content/errors/lama0877.md
+        summary: LAMA0877 is reported when a field or property marked [Durable] can be written from outside its declaring type, so the analyzer can't check every value assigned to it. Make the member read-only or private.
+        keywords: LAMA0877, Durable attribute, writable member, readonly field, private setter, init accessor, durable contract, design-time memory
+      - name: LAMA0878
+        path: content/errors/lama0878.md
+        summary: LAMA0878 is reported when a lambda expression or a method group is stored in a [Durable] field or property, or passed to a [Durable] parameter, and captures a value that isn't durable, such as a compilation, a symbol, or the enclosing instance.
+        keywords: LAMA0878, Durable attribute, durable lambda, captured variable, closure, design-time memory, compilation retained, retention path
+      - name: LAMA0879
+        path: content/errors/lama0879.md
+        summary: LAMA0879 is reported when a type name declared in the MetalamaDurableType or MetalamaNonDurableType MSBuild item matches no type of the compilation, typically because of a typo or because a generic type is written without its arity.
+        keywords: LAMA0879, MetalamaDurableType, MetalamaNonDurableType, Durable analyzer, type name not found, generic arity, metadata name
+      - name: LAMA0880
+        path: content/errors/lama0880.md
+        summary: LAMA0880 is reported when an instance field of an aspect, a fabric, a validator, or another type marked [ImmutableType] is neither read-only nor private. The analyzer can't see every assignment to such a field.
+        keywords: LAMA0880, ImmutableType, immutable aspect, readonly field, aspect state, fabric field, public field, mutable aspect
+      - name: LAMA0881
+        path: content/errors/lama0881.md
+        summary: LAMA0881 is reported when an automatic property of an aspect, a fabric, a validator, or another type marked [ImmutableType] has a set accessor that isn't private. The analyzer can't see every assignment to such a property.
+        keywords: LAMA0881, ImmutableType, immutable aspect, automatic property, init accessor, private setter, readonly record struct, aspect state
+      - name: LAMA0882
+        path: content/errors/lama0882.md
+        summary: LAMA0882 is reported when a field or automatic property of a type that must be immutable, such as an aspect, has a mutable type. It typically happens when an aspect stores a List<T>, an array, or an unmarked class.
+        keywords: LAMA0882, ImmutableType, immutable aspect, mutable field type, List field in aspect, ImmutableArray, aspect state, Roslyn analyzer warning
+      - name: LAMA0883
+        path: content/errors/lama0883.md
+        summary: LAMA0883 is reported when a type that must be immutable, such as an aspect, derives from a base class that isn't immutable. It typically happens when an aspect derives from a custom base class that isn't marked with [ImmutableType].
+        keywords: LAMA0883, ImmutableType, immutable aspect, mutable base class, aspect base class, abstract base class, Roslyn analyzer warning
+      - name: LAMA0884
+        path: content/errors/lama0884.md
+        summary: LAMA0884 is reported when a field or automatic property of a type that must be immutable is typed as an interface or abstract class that isn't marked with [ImmutableType], such as IEnumerable<T> or IReadOnlyList<T>.
+        keywords: LAMA0884, ImmutableType, immutable aspect, interface field, IEnumerable field, IReadOnlyList, abstract type, Roslyn analyzer warning
+      - name: LAMA0885
+        path: content/errors/lama0885.md
+        summary: LAMA0885 is reported when a type name declared in a MetalamaImmutableType or MetalamaImmutableContractType item of the project file matches no type in the compilation, typically because of a typo or a generic type written without its arity.
+        keywords: LAMA0885, MetalamaImmutableType, MetalamaImmutableContractType, generic arity, ImmutableArray`1, type name not found, MSBuild item, immutable type list
+      - name: LAMA0886
+        path: content/errors/lama0886.md
+        summary: LAMA0886 is reported when a type carries the [ImmutableType] attribute although it already derives from or implements a type that requires immutability. The attribute has no effect and can be removed.
+        keywords: LAMA0886, ImmutableType attribute, redundant attribute, immutable aspect, immutable fabric, inherited contract, immutability analyzer
+      - name: LAMA0887
+        path: content/errors/lama0887.md
+        summary: LAMA0887 is reported when a field or an automatic property of an aspect, fabric, validator or other type that must be immutable is assigned outside a constructor or an init accessor.
+        keywords: LAMA0887, immutable aspect, aspect state, field assignment, assigned outside constructor, init accessor, ImmutableType, immutability analyzer
+      - name: LAMA0888
+        path: content/errors/lama0888.md
+        summary: LAMA0888 is reported when a field or an automatic property of an aspect, fabric, validator or other type that must be immutable is passed as an out argument, which writes it outside a constructor.
+        keywords: LAMA0888, immutable aspect, aspect state, out argument, out parameter, assigned outside constructor, ImmutableType, immutability analyzer
+    - name: Interceptors
+      path: content/errors/errors-interceptors.md
+      summary: Reference of the interceptor errors and warnings of Metalama. Diagnostics reported by Metalama.Extensions.Interceptors.
+      keywords: Metalama interceptor errors and warnings, LAMA diagnostics, error codes, interceptors
+      items:
+      - name: LAMA1000
+        path: content/errors/lama1000.md
+        summary: LAMA1000 is reported when an aspect or fabric registers an interceptor on a declaration that isn't contained in its target.
+        keywords: LAMA1000, interceptor scope, not contained, InterceptMethods, outside target, IAspectBuilder.With
+      - name: LAMA1001
+        path: content/errors/lama1001.md
+        summary: LAMA1001 is reported when an interception scope is not a namespace, a type, a member or the compilation, or when it comes from a referenced assembly.
+        keywords: LAMA1001, interceptor scope, invalid scope, InterceptMethods, SelectReflectionType, referenced assembly
+      - name: LAMA1002
+        path: content/errors/lama1002.md
+        summary: LAMA1002 is reported when an aspect registers an interceptor on a declaration that it introduces, because introduced declarations have no call sites in the source code.
+        keywords: LAMA1002, interceptor scope, introduced member, IntroduceMethod, InterceptMethods, aspect introduces
+      - name: LAMA1003
+        path: content/errors/lama1003.md
+        summary: LAMA1003 is reported when the type that declares the intercepted methods doesn't exist in the compilation in which the interceptor is applied.
+        keywords: LAMA1003, interceptor, declaring type not found, InterceptMethods, Type method
+      - name: LAMA1004
+        path: content/errors/lama1004.md
+        summary: LAMA1004 is reported when an aspect registers an interceptor for the methods of a type that the aspect itself introduces, because the calls to an introduced type don't exist in the source code.
+        keywords: LAMA1004, interceptor, introduced type, IntroduceClass, InterceptMethods, Type, aspect introduces
+      - name: LAMA1008
+        path: content/errors/lama1008.md
+        summary: LAMA1008 is reported when an interceptor registration selects methods by name on a type, but the type doesn't declare a method of that name, so the registration never intercepts any call.
+        keywords: LAMA1008, interceptor, no matching method, InterceptMethods, Methods, method name, misspelled method name
+      - name: LAMA1010
+        path: content/errors/lama1010.md
+        summary: LAMA1010 is reported when several interceptor registrations return an interceptor for the same call, because a call can have at most one interceptor.
+        keywords: LAMA1010, interceptor, conflict, more than one interceptor, InterceptMethods, ForEachSite, Skip, call site
+      - name: LAMA1011
+        path: content/errors/lama1011.md
+        summary: LAMA1011 is reported when a Metalama interceptor applies to a call that a C# interceptor, typically generated by a source generator, already intercepts.
+        keywords: LAMA1011, interceptor, C# interceptor, InterceptsLocation, source generator, InterceptorsNamespaces, call site
+      - name: LAMA1012
+        path: content/errors/lama1012.md
+        summary: LAMA1012 is reported when Metalama selects a call for interception, but a limitation of the call or of the intercepted method prevents the interception. Metalama leaves the call unchanged.
+        keywords: LAMA1012, interceptor, call site cannot be intercepted, expression tree, ref return, pointer type, InterceptMethods, NonInterceptableReason
+      - name: LAMA1013
+        path: content/errors/lama1013.md
+        summary: LAMA1013 is reported when the existing method that an interceptor registration returns can't replace the intercepted call, for instance because it isn't static or isn't accessible from the call site.
+        keywords: LAMA1013, interceptor, RedirectToExistingMethod, interceptor must be static, interceptor not accessible, incompatible signature, InterceptMethods
+      - name: LAMA1014
+        path: content/errors/lama1014.md
+        summary: LAMA1014 is reported when an interceptor registration returns a result that Metalama can't use, for instance when the configuration of an interceptor generated from a template is inconsistent.
+        keywords: LAMA1014, interceptor, invalid result, RedirectToSynthesizedMethod, Configure, AddTypeParameter, SetTypeArgument, InterceptMethods
+      - name: LAMA1015
+        path: content/errors/lama1015.md
+        summary: LAMA1015 is reported when an interceptor registration selects a call to a partial method that has no implementation, because a source generator that runs after Metalama could implement it later.
+        keywords: LAMA1015, interceptor, partial method, partial method without implementation, source generator, omitted call, InterceptMethods
+      - name: LAMA1016
+        path: content/errors/lama1016.md
+        summary: LAMA1016 is reported when the template that an interceptor uses can't implement the interceptor method generated for a call site, for instance because an added parameter has no value.
+        keywords: LAMA1016, interceptor, RedirectToSynthesizedMethod, template incompatible, AddParameter, WithArgs, SetArgument
+      - name: LAMA1017
+        path: content/errors/lama1017.md
+        summary: LAMA1017 is reported when a generated interceptor method must be more accessible than a type of its signature, for instance a private nested type.
+        keywords: LAMA1017, interceptor, inconsistent accessibility, PlaceInCallingType, generated static class, private type, less accessible
+      - name: LAMA1024
+        path: content/errors/lama1024.md
+        summary: LAMA1024 is reported when the placement requested for a generated interceptor method can't receive the method for a call site, for instance because the configured accessibility is too restrictive.
+        keywords: LAMA1024, interceptor, placement, PlaceInType, PlaceInCallingType, PlaceInStaticClass, accessibility, not admissible
+    - name: Dependency injection
+      path: content/errors/errors-dependency-injection.md
+      summary: Reference of the dependency injection errors and warnings of Metalama. Diagnostics reported by Metalama.Extensions.DependencyInjection.
+      keywords: Metalama dependency injection errors and warnings, LAMA diagnostics, error codes, dependency-injection
+      items:
+      - name: LAMA0701
+        path: content/errors/lama0701.md
+        summary: LAMA0701 is reported when a dependency must be introduced or implemented but no dependency injection framework is registered, typically because a fabric unregistered the built-in frameworks without registering another one.
+        keywords: LAMA0701, no dependency injection framework registered, UnregisterFramework, RegisterFramework, ConfigureDependencyInjection, Dependency attribute, IntroduceDependency
+      - name: LAMA0702
+        path: content/errors/lama0702.md
+        summary: LAMA0702 is reported when none of the registered dependency injection frameworks accepts a dependency, typically because the dependency is static, which the default framework doesn't support.
+        keywords: LAMA0702, no suitable dependency injection framework, static dependency, CanHandleDependency, Dependency attribute, IntroduceDependency
+      - name: LAMA0703
+        path: content/errors/lama0703.md
+        summary: LAMA0703 is reported when an aspect that has a field or property marked with [IntroduceDependency] is applied to a declaration that isn't a type or a type member, such as the assembly.
+        keywords: LAMA0703, IntroduceDependency, compilation aspect, assembly aspect, not a type or a type member, dependency injection
+      - name: LAMA0704
+        path: content/errors/lama0704.md
+        summary: LAMA0704 is reported when a dependency would be pulled from a constructor that is more accessible than the type of the dependency, for instance an internal service type received by a public constructor.
+        keywords: LAMA0704, dependency accessibility, internal dependency type, public constructor, inconsistent accessibility, IntroduceDependency, Dependency attribute
+    - name: Caching
+      path: content/errors/errors-caching.md
+      summary: Reference of the caching errors and warnings of Metalama. Diagnostics reported by Metalama.Patterns.Caching.
+      keywords: Metalama caching errors and warnings, LAMA diagnostics, error codes, caching
+      items:
+      - name: LAMA5100
+        path: content/errors/lama5100.md
+        summary: LAMA5100 is reported when the [InvalidateCache] aspect names a method that doesn't have the [Cache] aspect, so there's no cached value to invalidate.
+        keywords: LAMA5100, InvalidateCache, method is not cached, Cache aspect, cache invalidation, Metalama.Patterns.Caching
+      - name: LAMA5101
+        path: content/errors/lama5101.md
+        summary: LAMA5101 is reported when the [InvalidateCache] aspect can't pass the instance of a cached instance method, typically because the invalidating method is static or belongs to an unrelated type, and the cached method doesn't ignore the 'this' parameter.
+        keywords: LAMA5101, InvalidateCache, this parameter cannot be mapped, IgnoreThisParameter, cache invalidation from another type, static invalidating method
+      - name: LAMA5102
+        path: content/errors/lama5102.md
+        summary: LAMA5102 is reported when a parameter of a method invalidated by the [InvalidateCache] aspect has no parameter of the same name in the invalidating method, so the cache key can't be rebuilt.
+        keywords: LAMA5102, InvalidateCache, missing parameter, parameter name mismatch, NotCacheKey, cache invalidation, cache key
+      - name: LAMA5103
+        path: content/errors/lama5103.md
+        summary: LAMA5103 is reported when a parameter of the invalidating method has the same name as a parameter of the method invalidated by the [InvalidateCache] aspect, but its type can't be converted to the type of the cached method's parameter.
+        keywords: LAMA5103, InvalidateCache, parameter type not compatible, parameter type mismatch, cache invalidation, cache key
+      - name: LAMA5104
+        path: content/errors/lama5104.md
+        summary: LAMA5104 is reported when one of the method names passed to the [InvalidateCache] aspect is null, empty, or contains only whitespace.
+        keywords: LAMA5104, InvalidateCache, empty method name, null method name, whitespace method name, cache invalidation
+      - name: LAMA5105
+        path: content/errors/lama5105.md
+        summary: LAMA5105 is reported when the [InvalidateCache] aspect is applied without the name of any method to invalidate.
+        keywords: LAMA5105, InvalidateCache, no method name, missing method name, cache invalidation
+      - name: LAMA5106
+        path: content/errors/lama5106.md
+        summary: LAMA5106 is reported when the [InvalidateCache] aspect names a method that doesn't exist in the type where the aspect looks for the cached methods, typically because of a typo or a missing type argument.
+        keywords: LAMA5106, InvalidateCache, cached method not found, method does not exist, cache invalidation, declaring type
+      - name: LAMA5107
+        path: content/errors/lama5107.md
+        summary: LAMA5107 is reported when the method name passed to the [InvalidateCache] aspect matches several overloads that the invalidating method could invalidate, and AllowMultipleOverloads isn't set.
+        keywords: LAMA5107, InvalidateCache, multiple overloads, AllowMultipleOverloads, ambiguous method, cache invalidation
+      - name: LAMA5108
+        path: content/errors/lama5108.md
+        summary: LAMA5108 is an informational message reserved by Metalama.Patterns.Caching to indicate that a cached method is invalidated by an [InvalidateCache] method. The current version of Metalama doesn't report it.
+        keywords: LAMA5108, InvalidateCache, cache invalidation, invalidated by, cached method, Metalama.Patterns.Caching
+      - name: LAMA5109
+        path: content/errors/lama5109.md
+        summary: LAMA5109 is an informational message reserved by Metalama.Patterns.Caching to indicate that an [InvalidateCache] method invalidates a cached method. The current version of Metalama doesn't report it.
+        keywords: LAMA5109, InvalidateCache, cache invalidation, invalidates, cached method, Metalama.Patterns.Caching
+      - name: LAMA5110
+        path: content/errors/lama5110.md
+        summary: LAMA5110 is reported by Metalama.Patterns.Caching when a static method is cached or invalidates a cache while caching is configured to use dependency injection, which is the default.
+        keywords: LAMA5110, static method, Cache, dependency injection, UseDependencyInjection, CachingConfiguration, InvalidateCache, Metalama.Patterns.Caching
+      - name: LAMA5111
+        path: content/errors/lama5111.md
+        summary: LAMA5111 is reported by Metalama.Patterns.Caching when a parameter classifier registered with AddParameterClassifier marks a parameter of a [Cache] method as ineligible, so the method can't be cached.
+        keywords: LAMA5111, parameter classifier, ICacheParameterClassifier, ineligible parameter, AddParameterClassifier, Cache, Metalama.Patterns.Caching
+      - name: LAMA5112
+        path: content/errors/lama5112.md
+        summary: LAMA5112 is reported by Metalama.Patterns.Caching when the [Cache] aspect is applied more than once to the same method, for example with a custom attribute and with a fabric.
+        keywords: LAMA5112, Cache, applied more than once, duplicate aspect, fabric, AddAspect, Metalama.Patterns.Caching
+    - name: Contracts
+      path: content/errors/errors-contracts.md
+      summary: Reference of the contracts errors and warnings of Metalama. Diagnostics reported by Metalama.Patterns.Contracts.
+      keywords: Metalama contracts errors and warnings, LAMA diagnostics, error codes, contracts
+      items:
+      - name: LAMA5001
+        path: content/errors/lama5001.md
+        summary: LAMA5001 is reported by Metalama.Patterns.Contracts when a range contract such as [Range] or [GreaterThanOrEqual] is applied to a numeric field, property, or parameter whose type can't hold any value of the range.
+        keywords: LAMA5001, Range contract, range cannot be satisfied, numeric contract, GreaterThanOrEqual, Metalama.Patterns.Contracts
+      - name: LAMA5002
+        path: content/errors/lama5002.md
+        summary: LAMA5002 is a warning reported by Metalama.Patterns.Contracts when a [NotNull] or [Required] contract is applied to a field, property, or parameter whose type is nullable.
+        keywords: LAMA5002, NotNull, Required, nullable type, non-nullable contract, WarnOnNotNullableOnNullable, Metalama.Patterns.Contracts
+      - name: LAMA5003
+        path: content/errors/lama5003.md
+        summary: LAMA5003 is a warning reported by Metalama.Patterns.Contracts when a [NotNull] or [Required] contract is added explicitly to a declaration that the VerifyNotNullableDeclarations fabric method already protects.
+        keywords: LAMA5003, redundant contract, NotNull, Required, VerifyNotNullableDeclarations, fabric, non-nullability
+      - name: LAMA5004
+        path: content/errors/lama5004.md
+        summary: LAMA5004 is reported by Metalama.Patterns.Contracts when the [SuspendInvariants] aspect is applied to a method of a type for which the IsInvariantSuspensionSupported contract option isn't enabled.
+        keywords: LAMA5004, SuspendInvariants, invariant suspension, IsInvariantSuspensionSupported, ContractOptions, invariants
+      - name: LAMA5005
+        path: content/errors/lama5005.md
+        summary: LAMA5005 is a warning reported by Metalama.Patterns.Contracts when the [SuspendInvariants] aspect is applied to a method of a type that doesn't have any invariant, so there's nothing to suspend.
+        keywords: LAMA5005, SuspendInvariants, invariant suspension, redundant, Invariant, IsInvariantSuspensionSupported, Metalama.Patterns.Contracts
+      - name: LAMA5006
+        path: content/errors/lama5006.md
+        summary: LAMA5006 is a warning reported by Metalama.Patterns.Contracts when a range contract such as [NonNegative] or [Range] is applied to a field, property, or parameter whose type already guarantees the range, for instance [NonNegative] on a uint.
+        keywords: LAMA5006, redundant range contract, NonNegative, Range, unsigned type, Metalama.Patterns.Contracts
+      - name: LAMA5007
+        path: content/errors/lama5007.md
+        summary: LAMA5007 is a warning reported by Metalama.Patterns.Contracts when you use [Positive], [Negative], [GreaterThan], or [LessThan] without specifying whether the inequality is strict, because these contracts are interpreted as non-strict inequalities for backward compatibility.
+        keywords: LAMA5007, Positive, Negative, GreaterThan, LessThan, inequality strictness, DefaultInequalityStrictness, ambiguous contract
+    - name: Immutability
+      path: content/errors/errors-immutability.md
+      summary: Reference of the immutability errors and warnings of Metalama. Diagnostics reported by Metalama.Patterns.Immutability.
+      keywords: Metalama immutability errors and warnings, LAMA diagnostics, error codes, immutability
+      items:
+      - name: LAMA5020
+        path: content/errors/lama5020.md
+        summary: LAMA5020 is a warning reported by Metalama.Patterns.Immutability when a type marked with the [Immutable] aspect declares a field that isn't read-only.
+        keywords: LAMA5020, Immutable, immutability, read-only field, readonly, Metalama.Patterns.Immutability
+      - name: LAMA5021
+        path: content/errors/lama5021.md
+        summary: LAMA5021 is a warning reported by Metalama.Patterns.Immutability when a type marked with the [Immutable] aspect declares an automatic property with a set accessor.
+        keywords: LAMA5021, Immutable, immutability, property setter, get-only property, init accessor, Metalama.Patterns.Immutability
+      - name: LAMA5022
+        path: content/errors/lama5022.md
+        summary: LAMA5022 is a warning reported by Metalama.Patterns.Immutability when a type marked with [Immutable(ImmutabilityKind.Deep)] has a read-only field or a get-only or init-only automatic property whose type isn't deeply immutable.
+        keywords: LAMA5022, Immutable, deep immutability, ImmutabilityKind.Deep, deeply immutable type, mutable collection, Metalama.Patterns.Immutability
+    - name: Observability
+      path: content/errors/errors-observability.md
+      summary: Reference of the observability errors and warnings of Metalama. Diagnostics reported by Metalama.Patterns.Observability.
+      keywords: Metalama observability errors and warnings, LAMA diagnostics, error codes, observability
+      items:
+      - name: LAMA5150
+        path: content/errors/lama5150.md
+        summary: LAMA5150 is reported when the [Observable] aspect is applied to a class that already has a PropertyChanged event, typically inherited from a base class, but no overridable OnPropertyChanged method.
+        keywords: LAMA5150, Observable, OnPropertyChanged, virtual OnPropertyChanged, INotifyPropertyChanged base class, NotifyOfPropertyChange, RaisePropertyChanged
+      - name: LAMA5151
+        path: content/errors/lama5151.md
+        summary: LAMA5151 is reported when the InpcDiagnosticCommentVerbosity MSBuild property, which controls the diagnostic comments generated by the [Observable] aspect, has a value that isn't an integer between 0 and 3.
+        keywords: LAMA5151, InpcDiagnosticCommentVerbosity, invalid project property, MSBuild property, Observable, diagnostic comments
+      - name: LAMA5152
+        path: content/errors/lama5152.md
+        summary: LAMA5152 is reported when the [Observable] aspect processes a field or property whose type is a struct that implements INotifyPropertyChanged, which the aspect doesn't support.
+        keywords: LAMA5152, Observable, struct INotifyPropertyChanged, value type, property type, child object
+      - name: LAMA5154
+        path: content/errors/lama5154.md
+        summary: LAMA5154 is reported when a class with the [Observable] aspect has a virtual property that the aspect processes, which the aspect doesn't support.
+        keywords: LAMA5154, Observable, virtual property, NotObservable, INotifyPropertyChanged, unsupported member
+      - name: LAMA5155
+        path: content/errors/lama5155.md
+        summary: LAMA5155 is reported by Metalama.Patterns.Observability when a type to which the [Observable] aspect applies declares a field or property with the new modifier, which hides a member of the base class.
+        keywords: LAMA5155, Observable, new modifier, hidden property, member hiding, INotifyPropertyChanged, Metalama.Patterns.Observability
+      - name: LAMA5156
+        path: content/errors/lama5156.md
+        summary: LAMA5156 is reported by Metalama.Patterns.Observability when the [Observable] aspect is applied to a class that already implements INotifyPropertyChanged but has no OnPropertyChanged(string) method that the aspect can call to raise notifications.
+        keywords: LAMA5156, Observable, OnPropertyChanged, INotifyPropertyChanged, PropertyChangedEventArgs, RaisePropertyChanged, NotifyOfPropertyChange, base class
+      - name: LAMA5161
+        path: content/errors/lama5161.md
+        summary: LAMA5161 is a warning reported by Metalama.Patterns.Observability when a property of a type with the [Observable] aspect depends on a member of a child object whose type doesn't implement INotifyPropertyChanged, so changes of that member can't be observed.
+        keywords: LAMA5161, Observable, child object, INotifyPropertyChanged, computed property, dependency, not observable, Metalama.Patterns.Observability
+      - name: LAMA5162
+        path: content/errors/lama5162.md
+        summary: LAMA5162 is reported by the [Observable] aspect when a computed property calls a method that isn't known to be constant, so the aspect can't determine which changes affect the property's value.
+        keywords: LAMA5162, Observable, method cannot be observed, Constant attribute, ConfigureObservability, observability contract, dependency analysis
+      - name: LAMA5163
+        path: content/errors/lama5163.md
+        summary: LAMA5163 is reported by the [Observable] aspect when a computed property reads a child of another computed property of the same type. Changes to these values can't be observed.
+        keywords: LAMA5163, Observable, child property cannot be observed, non-auto property, computed property, INotifyPropertyChanged
+      - name: LAMA5164
+        path: content/errors/lama5164.md
+        summary: LAMA5164 is reported by the [Observable] aspect when a computed property reads a field that the aspect can't observe, typically a non-private or static field.
+        keywords: LAMA5164, Observable, field cannot be observed, public field, static field, read-only field, INotifyPropertyChanged
+      - name: LAMA5165
+        path: content/errors/lama5165.md
+        summary: LAMA5165 is reported by the [Observable] aspect when the getter of a computed property declares a local variable of a type that isn't immutable, because the aspect can't track dependencies through such a variable.
+        keywords: LAMA5165, Observable, local variable cannot be observed, computed property, immutable type, dependency analysis
+      - name: LAMA5166
+        path: content/errors/lama5166.md
+        summary: LAMA5166 is reported by the [Observable] aspect when a computed property reads a property of a base type that doesn't implement INotifyPropertyChanged. Changes to this property can't be observed.
+        keywords: LAMA5166, Observable, base type, INotifyPropertyChanged, computed property, Constant, ConfigureObservability
+    - name: WPF
+      path: content/errors/errors-wpf.md
+      summary: Reference of the wPF errors and warnings of Metalama. Diagnostics reported by Metalama.Patterns.Wpf.
+      keywords: Metalama wPF errors and warnings, LAMA diagnostics, error codes, wpf
+      items:
+      - name: LAMA5201
+        path: content/errors/lama5201.md
+        summary: LAMA5201 is reported when both the CanExecuteMethod and CanExecuteProperty properties of the [Command] attribute are set on the same method. A command can have only one can-execute member.
+        keywords: LAMA5201, Command attribute, CanExecuteMethod, CanExecuteProperty, WPF command, can-execute, Metalama.Patterns.Wpf
+      - name: LAMA5202
+        path: content/errors/lama5202.md
+        summary: LAMA5202 is reported when the can-execute property of a [Command] method isn't public while INotifyPropertyChanged integration is enabled. The CanExecuteChanged event of the command might then never be raised.
+        keywords: LAMA5202, Command attribute, can-execute property, not public, INotifyPropertyChanged, CanExecuteChanged, EnableINotifyPropertyChangedIntegration, Metalama.Patterns.Wpf
+      - name: LAMA5203
+        path: content/errors/lama5203.md
+        summary: LAMA5203 is reported when the [Command] or [DependencyProperty] aspect can't introduce its command property or registration field because a member with the same name already exists in the type or its base types.
+        keywords: LAMA5203, name conflict, existing member, command property, registration field, DependencyProperty, Command attribute, naming convention, Metalama.Patterns.Wpf
+      - name: LAMA5204
+        path: content/errors/lama5204.md
+        summary: LAMA5204 is reported when a member matches the name of a can-execute member, property-changed method, or validate method expected by a WPF naming convention, but its signature isn't supported.
+        keywords: LAMA5204, invalid signature, can-execute method, can-execute property, property-changed method, validate method, naming convention, Command, DependencyProperty, Metalama.Patterns.Wpf
+      - name: LAMA5205
+        path: content/errors/lama5205.md
+        summary: LAMA5205 is reported when several members match the can-execute member, property-changed method, or validate method expected by a WPF naming convention, so the aspect can't choose one.
+        keywords: LAMA5205, ambiguous match, can-execute method, can-execute property, property-changed method, validate method, overloads, naming convention, Metalama.Patterns.Wpf
+      - name: LAMA5206
+        path: content/errors/lama5206.md
+        summary: LAMA5206 is reported when a required helper member of a WPF aspect, such as a can-execute member, property-changed method, or validate method named explicitly in the attribute, doesn't exist.
+        keywords: LAMA5206, member not found, CanExecuteMethod, CanExecuteProperty, PropertyChangedMethod, ValidateMethod, required member, naming convention, Metalama.Patterns.Wpf
+      - name: LAMA5207
+        path: content/errors/lama5207.md
+        summary: LAMA5207 is reported when none of the configured naming conventions of the [Command] or [DependencyProperty] aspect matches the target. It happens only when the default naming convention has been removed.
+        keywords: LAMA5207, no naming convention matched, RemoveNamingConvention, CommandNamePattern, PropertyNamePattern, custom naming convention, ConfigureCommand, ConfigureDependencyProperty, Metalama.Patterns.Wpf
+      - name: LAMA5208
+        path: content/errors/lama5208.md
+        summary: LAMA5208 is reported when a [Command] method has a CancellationToken parameter but returns void and doesn't set Background to true. Cancellation is supported only by asynchronous and background commands.
+        keywords: LAMA5208, CancellationToken, Command attribute, Background, async command, Task, cancellation, Metalama.Patterns.Wpf
 - name: Commented examples
   items:
   - name: Commented examples

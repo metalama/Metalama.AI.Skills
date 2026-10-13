@@ -34,8 +34,18 @@ items:
     that cannot be reliably serialized to a cache key).</p>
   example: []
   syntax:
-    content: 'public interface ICacheParameterClassifier : ICompileTimeSerializable'
-    content.vb: Public Interface ICacheParameterClassifier Inherits ICompileTimeSerializable
+    content: >-
+      [Durable]
+
+      [ImmutableType]
+
+      public interface ICacheParameterClassifier : ICompileTimeSerializable
+    content.vb: >-
+      <Durable>
+
+      <ImmutableType>
+
+      Public Interface ICacheParameterClassifier Inherits ICompileTimeSerializable
   seealso:
   - linkId: Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
     commentId: T:Metalama.Patterns.Caching.Aspects.Configuration.CacheParameterClassification
@@ -50,6 +60,13 @@ items:
   - Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
+    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
+    arguments: []
 - uid: Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
   commentId: M:Metalama.Patterns.Caching.Aspects.Configuration.ICacheParameterClassifier.GetClassification(Metalama.Framework.Code.IParameter)
   id: GetClassification(Metalama.Framework.Code.IParameter)

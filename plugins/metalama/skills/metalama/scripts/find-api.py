@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Look up Metalama API documentation by type or member name.
+"""Look up the API documentation of the skill by type or member name.
 
 Usage (from the skill root directory, i.e. the directory containing api/):
     python scripts/find-api.py <name-or-uid>
-    python scripts/find-api.py OverrideMethodAspect
-    python scripts/find-api.py Metalama.Framework.Advising.IAdviserExtensions.IntroduceMethod
+    python scripts/find-api.py MyType
+    python scripts/find-api.py MyNamespace.MyType.MyMethod
 
 Prints the matching UIDs and, for the most specific matches, the full
 documentation block (summary, syntax, parameters, remarks) extracted from the

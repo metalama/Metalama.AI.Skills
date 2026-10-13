@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Search the Metalama conceptual documentation index by keyword.
+"""Search the conceptual documentation index of the skill by keyword.
 
 Usage (from the skill root directory, i.e. the directory containing index.yml):
     python scripts/find-doc.py <keyword> [<keyword> ...]
-    python scripts/find-doc.py caching invalidation
-    python scripts/find-doc.py "aspect ordering"
+    python scripts/find-doc.py cache invalidation
+    python scripts/find-doc.py "getting started"
 
 Searches article titles, summaries, keywords, and paths in index.yml and prints
 the matching articles with their file paths, ready to be read.

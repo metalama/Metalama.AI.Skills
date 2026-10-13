@@ -1,0 +1,125 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IExistingMethodInterception
+  commentId: T:Metalama.Extensions.Interceptors.IExistingMethodInterception
+  id: IExistingMethodInterception
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(System.Object)
+  langs:
+  - csharp
+  - vb
+  name: IExistingMethodInterception
+  nameWithType: IExistingMethodInterception
+  fullName: Metalama.Extensions.Interceptors.IExistingMethodInterception
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    A method interception whose calls are redirected to an existing method, created by
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToExistingMethod(Metalama.Framework.Code.IMethod)" data-throw-if-not-resolved="false"></xref>. It is a complete interception, which the delegate given to
+
+    <code>InterceptMethods</code> or to <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref> can return.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IExistingMethodInterception : IMethodInterception
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IExistingMethodInterception Inherits IMethodInterception
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IExistingMethodInterception.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IExistingMethodInterception,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IExistingMethodInterception}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IExistingMethodInterception.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IExistingMethodInterception})
+  - Metalama.Extensions.Interceptors.IExistingMethodInterception.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IExistingMethodInterception.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(System.Object)
+  commentId: M:Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(System.Object)
+  id: WithArgs(System.Object)
+  parent: Metalama.Extensions.Interceptors.IExistingMethodInterception
+  langs:
+  - csharp
+  - vb
+  name: WithArgs(object)
+  nameWithType: IExistingMethodInterception.WithArgs(object)
+  fullName: Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(object)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Sets the arguments that bind parameters and type parameters of the existing method by name.
+  remarks: >-
+    <p>
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToExistingMethod(Metalama.Framework.Code.IMethod)" data-throw-if-not-resolved="false"></xref> describes how the arguments take precedence over the other values. A property
+
+    that binds a parameter accepts these values:
+
+    </p>
+
+    <ul><li>a literal: <code>null</code>, a Boolean, a character, a number, a string or an enumeration value of a run-time-or-compile-time
+
+    enumeration type;</li><li>a <xref href="System.Type" data-throw-if-not-resolved="false"></xref>, which is written as <code>typeof</code>;</li><li>a <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref>, for instance an array or a value of a run-time enumeration type;</li><li>an expression of the site, which is <xref href="Metalama.Extensions.Interceptors.InvocationArgument.Expression" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Extensions.Interceptors.IInvocationReceiver.Expression" data-throw-if-not-resolved="false"></xref>,
+
+    and which passes the source argument or the source receiver, evaluated in the order of the source code;</li><li>another <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>, which is emitted at the site, for instance a parameter of the calling member, given by
+
+    <xref href="Metalama.Extensions.Interceptors.ICaller.Parameters" data-throw-if-not-resolved="false"></xref>, or the instance of the caller, given by
+
+    <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.This" data-throw-if-not-resolved="false"></xref> in the delegate given to <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>
+
+    when <xref href="Metalama.Extensions.Interceptors.ICaller.CanAccessThis" data-throw-if-not-resolved="false"></xref> is <code>true</code>.</li></ul>
+
+    <p>
+
+    A property that binds a type parameter is a <xref href="System.Type" data-throw-if-not-resolved="false"></xref> or an <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref>. A property that names no parameter and no type
+
+    parameter is an error. An argument of the site can be passed to two parameters only when it is passed by value and its evaluation has no
+
+    side effect. For a method group converted to a delegate or to a function pointer, the arguments can bind only type parameters.
+
+    </p>
+  example: []
+  syntax:
+    content: IExistingMethodInterception WithArgs(object args)
+    parameters:
+    - id: args
+      type: System.Object
+      description: >-
+        An anonymous object, an <xref href="System.Collections.Generic.IReadOnlyDictionary%602" data-throw-if-not-resolved="false"></xref> of names and values, or an
+                    <xref href="Metalama.Framework.Aspects.IObjectReader" data-throw-if-not-resolved="false"></xref>.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.IExistingMethodInterception
+    content.vb: Function WithArgs(args As Object) As IExistingMethodInterception
+  overload: Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">args</code> is <code>null</code>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: >-
+      A value of <code class="paramref">args</code> has a type that cannot bind a parameter or a type
+                  parameter.
+  nameWithType.vb: IExistingMethodInterception.WithArgs(Object)
+  fullName.vb: Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(Object)
+  name.vb: WithArgs(Object)

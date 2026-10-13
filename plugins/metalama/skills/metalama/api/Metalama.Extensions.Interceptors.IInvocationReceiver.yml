@@ -1,0 +1,163 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IInvocationReceiver
+  commentId: T:Metalama.Extensions.Interceptors.IInvocationReceiver
+  id: IInvocationReceiver
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Expression
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.IsConditionalAccess
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Kind
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Type
+  langs:
+  - csharp
+  - vb
+  name: IInvocationReceiver
+  nameWithType: IInvocationReceiver
+  fullName: Metalama.Extensions.Interceptors.IInvocationReceiver
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Describes the receiver written at a site: the object on which the method is called or from which the method group is taken.'
+  remarks: >-
+    The object has the lifetime of the <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionContext" data-throw-if-not-resolved="false"></xref> that exposes it, so it must not be stored after
+
+    the delegate that received the context returns.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IInvocationReceiver
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IInvocationReceiver
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IInvocationReceiver,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IInvocationReceiver}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IInvocationReceiver})
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IInvocationReceiver.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IInvocationReceiver.Kind
+  commentId: P:Metalama.Extensions.Interceptors.IInvocationReceiver.Kind
+  id: Kind
+  parent: Metalama.Extensions.Interceptors.IInvocationReceiver
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: IInvocationReceiver.Kind
+  fullName: Metalama.Extensions.Interceptors.IInvocationReceiver.Kind
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the kind of receiver written at the site.
+  example: []
+  syntax:
+    content: InvocationReceiverKind Kind { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.InvocationReceiverKind
+    content.vb: ReadOnly Property Kind As InvocationReceiverKind
+  overload: Metalama.Extensions.Interceptors.IInvocationReceiver.Kind*
+- uid: Metalama.Extensions.Interceptors.IInvocationReceiver.Type
+  commentId: P:Metalama.Extensions.Interceptors.IInvocationReceiver.Type
+  id: Type
+  parent: Metalama.Extensions.Interceptors.IInvocationReceiver
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: IInvocationReceiver.Type
+  fullName: Metalama.Extensions.Interceptors.IInvocationReceiver.Type
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the static type of the receiver, or <code>null</code> when <xref href="Metalama.Extensions.Interceptors.IInvocationReceiver.Kind" data-throw-if-not-resolved="false"></xref> is <xref href="Metalama.Extensions.Interceptors.InvocationReceiverKind.None" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IType? Type { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IType
+    content.vb: ReadOnly Property Type As IType
+  overload: Metalama.Extensions.Interceptors.IInvocationReceiver.Type*
+- uid: Metalama.Extensions.Interceptors.IInvocationReceiver.Expression
+  commentId: P:Metalama.Extensions.Interceptors.IInvocationReceiver.Expression
+  id: Expression
+  parent: Metalama.Extensions.Interceptors.IInvocationReceiver
+  langs:
+  - csharp
+  - vb
+  name: Expression
+  nameWithType: IInvocationReceiver.Expression
+  fullName: Metalama.Extensions.Interceptors.IInvocationReceiver.Expression
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the receiver expression written at the site, for inspection only, or <code>null</code> when the intercepted method is static or the
+
+    receiver is implicit. For a classic extension method called in reduced form, the receiver is the first element of
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments" data-throw-if-not-resolved="false"></xref>, and this property is <code>null</code>. For a conditional access <code>a?.M()</code>, it is the
+
+    expression <code>a</code>. For a method-reference site <code>obj.M</code>, it is <code>obj</code>, which C# evaluates when the delegate is created.
+  remarks: >-
+    The value is an <xref href="Metalama.Framework.Code.ISourceExpression" data-throw-if-not-resolved="false"></xref>. Its type and its constant value can be read. The Roslyn syntax is available through
+
+    the SDK method <code>SourceExpressionExtensions.GetSourceSyntax</code>. The expression cannot be emitted in generated code (LAMA0297), because
+
+    the site already evaluates it. The type of the expression is the type of the written receiver, which differs from <xref href="Metalama.Extensions.Interceptors.IInvocationReceiver.Type" data-throw-if-not-resolved="false"></xref> in a
+
+    conditional access: in <code>a?.M()</code> with a nullable value type, <code>a</code> has the nullable type.
+  example: []
+  syntax:
+    content: IExpression? Expression { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IExpression
+    content.vb: ReadOnly Property Expression As IExpression
+  overload: Metalama.Extensions.Interceptors.IInvocationReceiver.Expression*
+- uid: Metalama.Extensions.Interceptors.IInvocationReceiver.IsConditionalAccess
+  commentId: P:Metalama.Extensions.Interceptors.IInvocationReceiver.IsConditionalAccess
+  id: IsConditionalAccess
+  parent: Metalama.Extensions.Interceptors.IInvocationReceiver
+  langs:
+  - csharp
+  - vb
+  name: IsConditionalAccess
+  nameWithType: IInvocationReceiver.IsConditionalAccess
+  fullName: Metalama.Extensions.Interceptors.IInvocationReceiver.IsConditionalAccess
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets a value indicating whether the call is written with the null-conditional operator <code>?.</code>. It is always <code>false</code> for a
+
+    method-reference site.
+  example: []
+  syntax:
+    content: bool IsConditionalAccess { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsConditionalAccess As Boolean
+  overload: Metalama.Extensions.Interceptors.IInvocationReceiver.IsConditionalAccess*

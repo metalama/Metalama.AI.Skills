@@ -5,7 +5,10 @@ items:
   id: AspectTestFramework
   parent: Metalama.Testing.AspectTesting
   children:
-  - Metalama.Testing.AspectTesting.AspectTestFramework.#ctor(Xunit.Abstractions.IMessageSink)
+  - Metalama.Testing.AspectTesting.AspectTestFramework.#ctor
+  - Metalama.Testing.AspectTesting.AspectTestFramework.CreateDiscoverer(System.Reflection.Assembly)
+  - Metalama.Testing.AspectTesting.AspectTestFramework.CreateExecutor(System.Reflection.Assembly)
+  - Metalama.Testing.AspectTesting.AspectTestFramework.TestFrameworkDisplayName
   langs:
   - csharp
   - vb
@@ -16,22 +19,31 @@ items:
   assemblies:
   - Metalama.Testing.AspectTesting
   namespace: Metalama.Testing.AspectTesting
+  summary: >-
+    The xunit test framework that turns every file of a test project into a test. It is registered in the test project
+
+    by the <code>Xunit.TestFrameworkAttribute</code> that the build of <code>Metalama.Testing.AspectTesting</code> adds.
+  example: []
   syntax:
     content: >-
       [ExcludeFromCodeCoverage]
 
-      public sealed class AspectTestFramework : ITestFramework, ISourceInformationProvider, IDisposable
+      public sealed class AspectTestFramework : TestFramework, ITestFramework, IAsyncDisposable
     content.vb: >-
       <ExcludeFromCodeCoverage>
 
-      Public NotInheritable Class AspectTestFramework Implements ITestFramework, ISourceInformationProvider, IDisposable
+      Public NotInheritable Class AspectTestFramework Inherits TestFramework Implements ITestFramework, IAsyncDisposable
   inheritance:
   - System.Object
+  - Xunit.v3.TestFramework
   implements:
-  - Xunit.Abstractions.ITestFramework
-  - Xunit.Abstractions.ISourceInformationProvider
-  - System.IDisposable
+  - Xunit.v3.ITestFramework
+  - System.IAsyncDisposable
   inheritedMembers:
+  - Xunit.v3.TestFramework.DisposeAsync
+  - Xunit.v3.TestFramework.GetDiscoverer(System.Reflection.Assembly)
+  - Xunit.v3.TestFramework.GetExecutor(System.Reflection.Assembly)
+  - Xunit.v3.TestFramework.SetTestPipelineStartup(Xunit.v3.ITestPipelineStartup)
   - System.Object.GetType
   - System.Object.ToString
   - System.Object.Equals(System.Object)
@@ -48,27 +60,106 @@ items:
   - type: System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute
     ctor: System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute.#ctor
     arguments: []
-- uid: Metalama.Testing.AspectTesting.AspectTestFramework.#ctor(Xunit.Abstractions.IMessageSink)
-  commentId: M:Metalama.Testing.AspectTesting.AspectTestFramework.#ctor(Xunit.Abstractions.IMessageSink)
-  id: '#ctor(Xunit.Abstractions.IMessageSink)'
+- uid: Metalama.Testing.AspectTesting.AspectTestFramework.#ctor
+  commentId: M:Metalama.Testing.AspectTesting.AspectTestFramework.#ctor
+  id: '#ctor'
   parent: Metalama.Testing.AspectTesting.AspectTestFramework
   langs:
   - csharp
   - vb
-  name: AspectTestFramework(IMessageSink)
-  nameWithType: AspectTestFramework.AspectTestFramework(IMessageSink)
-  fullName: Metalama.Testing.AspectTesting.AspectTestFramework.AspectTestFramework(Xunit.Abstractions.IMessageSink)
+  name: AspectTestFramework()
+  nameWithType: AspectTestFramework.AspectTestFramework()
+  fullName: Metalama.Testing.AspectTesting.AspectTestFramework.AspectTestFramework()
   type: Constructor
   assemblies:
   - Metalama.Testing.AspectTesting
   namespace: Metalama.Testing.AspectTesting
+  summary: Initializes a new instance of the <xref href="Metalama.Testing.AspectTesting.AspectTestFramework" data-throw-if-not-resolved="false"></xref> class. This constructor is called by xunit.
+  example: []
   syntax:
-    content: public AspectTestFramework(IMessageSink messageSink)
-    parameters:
-    - id: messageSink
-      type: Xunit.Abstractions.IMessageSink
-    content.vb: Public Sub New(messageSink As IMessageSink)
+    content: public AspectTestFramework()
+    content.vb: Public Sub New()
   overload: Metalama.Testing.AspectTesting.AspectTestFramework.#ctor*
-  nameWithType.vb: AspectTestFramework.New(IMessageSink)
-  fullName.vb: Metalama.Testing.AspectTesting.AspectTestFramework.New(Xunit.Abstractions.IMessageSink)
-  name.vb: New(IMessageSink)
+  nameWithType.vb: AspectTestFramework.New()
+  fullName.vb: Metalama.Testing.AspectTesting.AspectTestFramework.New()
+  name.vb: New()
+- uid: Metalama.Testing.AspectTesting.AspectTestFramework.CreateDiscoverer(System.Reflection.Assembly)
+  commentId: M:Metalama.Testing.AspectTesting.AspectTestFramework.CreateDiscoverer(System.Reflection.Assembly)
+  id: CreateDiscoverer(System.Reflection.Assembly)
+  parent: Metalama.Testing.AspectTesting.AspectTestFramework
+  langs:
+  - csharp
+  - vb
+  name: CreateDiscoverer(Assembly)
+  nameWithType: AspectTestFramework.CreateDiscoverer(Assembly)
+  fullName: Metalama.Testing.AspectTesting.AspectTestFramework.CreateDiscoverer(System.Reflection.Assembly)
+  type: Method
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Override this method to provide the implementation of <xref href="Xunit.v3.ITestFrameworkDiscoverer" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected override ITestFrameworkDiscoverer CreateDiscoverer(Assembly assembly)
+    parameters:
+    - id: assembly
+      type: System.Reflection.Assembly
+      description: The assembly that is being discovered.
+    return:
+      type: Xunit.v3.ITestFrameworkDiscoverer
+      description: Returns the test framework discoverer.
+    content.vb: Protected Overrides Function CreateDiscoverer(assembly As Assembly) As ITestFrameworkDiscoverer
+  overridden: Xunit.v3.TestFramework.CreateDiscoverer(System.Reflection.Assembly)
+  overload: Metalama.Testing.AspectTesting.AspectTestFramework.CreateDiscoverer*
+- uid: Metalama.Testing.AspectTesting.AspectTestFramework.CreateExecutor(System.Reflection.Assembly)
+  commentId: M:Metalama.Testing.AspectTesting.AspectTestFramework.CreateExecutor(System.Reflection.Assembly)
+  id: CreateExecutor(System.Reflection.Assembly)
+  parent: Metalama.Testing.AspectTesting.AspectTestFramework
+  langs:
+  - csharp
+  - vb
+  name: CreateExecutor(Assembly)
+  nameWithType: AspectTestFramework.CreateExecutor(Assembly)
+  fullName: Metalama.Testing.AspectTesting.AspectTestFramework.CreateExecutor(System.Reflection.Assembly)
+  type: Method
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Override this method to provide the implementation of <xref href="Xunit.v3.ITestFrameworkExecutor" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected override ITestFrameworkExecutor CreateExecutor(Assembly assembly)
+    parameters:
+    - id: assembly
+      type: System.Reflection.Assembly
+      description: The assembly that is being executed.
+    return:
+      type: Xunit.v3.ITestFrameworkExecutor
+      description: Returns the test framework executor.
+    content.vb: Protected Overrides Function CreateExecutor(assembly As Assembly) As ITestFrameworkExecutor
+  overridden: Xunit.v3.TestFramework.CreateExecutor(System.Reflection.Assembly)
+  overload: Metalama.Testing.AspectTesting.AspectTestFramework.CreateExecutor*
+- uid: Metalama.Testing.AspectTesting.AspectTestFramework.TestFrameworkDisplayName
+  commentId: P:Metalama.Testing.AspectTesting.AspectTestFramework.TestFrameworkDisplayName
+  id: TestFrameworkDisplayName
+  parent: Metalama.Testing.AspectTesting.AspectTestFramework
+  langs:
+  - csharp
+  - vb
+  name: TestFrameworkDisplayName
+  nameWithType: AspectTestFramework.TestFrameworkDisplayName
+  fullName: Metalama.Testing.AspectTesting.AspectTestFramework.TestFrameworkDisplayName
+  type: Property
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: Returns the display name of the test framework that this discoverer is running tests for.
+  example: []
+  syntax:
+    content: public override string TestFrameworkDisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property TestFrameworkDisplayName As String
+  overridden: Xunit.v3.TestFramework.TestFrameworkDisplayName
+  overload: Metalama.Testing.AspectTesting.AspectTestFramework.TestFrameworkDisplayName*

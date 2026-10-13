@@ -37,11 +37,19 @@ items:
   example: []
   syntax:
     content: >-
+      [Durable]
+
       [RunTimeOrCompileTime]
+
+      [ImmutableType]
 
       public abstract class CachingBaseAttribute : Attribute, IHierarchicalOptionsProvider
     content.vb: >-
+      <Durable>
+
       <RunTimeOrCompileTime>
+
+      <ImmutableType>
 
       Public MustInherit Class CachingBaseAttribute Inherits Attribute Implements IHierarchicalOptionsProvider
   seealso:
@@ -112,8 +120,14 @@ items:
   - Metalama.Patterns.Caching.Aspects.CachingBaseAttribute.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
   attributes:
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
   - type: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute
     ctor: Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
+    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
     arguments: []
 - uid: Metalama.Patterns.Caching.Aspects.CachingBaseAttribute.GetOptions(Metalama.Framework.Options.OptionsProviderContext@)
   commentId: M:Metalama.Patterns.Caching.Aspects.CachingBaseAttribute.GetOptions(Metalama.Framework.Options.OptionsProviderContext@)
@@ -179,7 +193,7 @@ items:
   summary: Gets or sets the name of the <xref href="Metalama.Patterns.Caching.CachingProfile" data-throw-if-not-resolved="false"></xref> that contains the configuration of the cached methods.
   example: []
   syntax:
-    content: public string? ProfileName { get; set; }
+    content: public string? ProfileName { get; init; }
     parameters: []
     return:
       type: System.String
@@ -205,7 +219,7 @@ items:
     when the cache item is removed from the cache.
   example: []
   syntax:
-    content: public bool AutoReload { get; set; }
+    content: public bool AutoReload { get; init; }
     parameters: []
     return:
       type: System.Boolean
@@ -231,7 +245,7 @@ items:
     expiration time is counted from the moment the method is evaluated and cached.
   example: []
   syntax:
-    content: public double AbsoluteExpiration { get; set; }
+    content: public double AbsoluteExpiration { get; init; }
     parameters: []
     return:
       type: System.Double
@@ -257,7 +271,7 @@ items:
     added to or accessed from the cache. The expiration is extended every time the value is accessed from the cache.
   example: []
   syntax:
-    content: public double SlidingExpiration { get; set; }
+    content: public double SlidingExpiration { get; init; }
     parameters: []
     return:
       type: System.Double
@@ -280,7 +294,7 @@ items:
   summary: Gets or sets the priority of the cached method.
   example: []
   syntax:
-    content: public CacheItemPriority Priority { get; set; }
+    content: public CacheItemPriority Priority { get; init; }
     parameters: []
     return:
       type: Metalama.Patterns.Caching.Implementation.CacheItemPriority
@@ -306,7 +320,7 @@ items:
     which means that by default the <code>this</code> instance is a part of the cache key.
   example: []
   syntax:
-    content: public bool IgnoreThisParameter { get; set; }
+    content: public bool IgnoreThisParameter { get; init; }
     parameters: []
     return:
       type: System.Boolean
@@ -338,7 +352,7 @@ items:
     <p>When dependency injection is disabled, static methods can also be cached.</p>
   example: []
   syntax:
-    content: public bool UseDependencyInjection { get; set; }
+    content: public bool UseDependencyInjection { get; init; }
     parameters: []
     return:
       type: System.Boolean

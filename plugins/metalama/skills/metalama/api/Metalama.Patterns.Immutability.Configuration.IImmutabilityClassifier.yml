@@ -30,8 +30,18 @@ items:
     to configure a classifier for specific types or namespaces.</p>
   example: []
   syntax:
-    content: 'public interface IImmutabilityClassifier : ICompileTimeSerializable'
-    content.vb: Public Interface IImmutabilityClassifier Inherits ICompileTimeSerializable
+    content: >-
+      [Durable]
+
+      [ImmutableType]
+
+      public interface IImmutabilityClassifier : ICompileTimeSerializable
+    content.vb: >-
+      <Durable>
+
+      <ImmutableType>
+
+      Public Interface IImmutabilityClassifier Inherits ICompileTimeSerializable
   seealso:
   - linkId: Metalama.Patterns.Immutability.ImmutabilityKind
     commentId: T:Metalama.Patterns.Immutability.ImmutabilityKind
@@ -46,6 +56,13 @@ items:
   - Metalama.Patterns.Immutability.Configuration.IImmutabilityClassifier.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Patterns.Immutability.Configuration.IImmutabilityClassifier.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
+    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
+    arguments: []
 - uid: Metalama.Patterns.Immutability.Configuration.IImmutabilityClassifier.GetImmutabilityKind(Metalama.Framework.Code.INamedType)
   commentId: M:Metalama.Patterns.Immutability.Configuration.IImmutabilityClassifier.GetImmutabilityKind(Metalama.Framework.Code.INamedType)
   id: GetImmutabilityKind(Metalama.Framework.Code.INamedType)

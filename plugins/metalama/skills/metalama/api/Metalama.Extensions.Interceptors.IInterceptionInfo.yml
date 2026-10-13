@@ -1,0 +1,258 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo
+  commentId: T:Metalama.Extensions.Interceptors.IInterceptionInfo
+  id: IInterceptionInfo
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Caller
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.CallingMember
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.CallingType
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Granularity
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Kind
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Method
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Source
+  langs:
+  - csharp
+  - vb
+  name: IInterceptionInfo
+  nameWithType: IInterceptionInfo
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Describes the interception that a template implements. A template reads it through the <code>meta.Interception</code> property.
+  remarks: >-
+    <p>
+
+    The generated method is shared by the call sites that have the same template, arguments, tags, placement, granularity and signature. The
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.Granularity" data-throw-if-not-resolved="false"></xref> property decides which context of the call sites the template can read: the <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.CallingType" data-throw-if-not-resolved="false"></xref>,
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.CallingMember" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.Caller" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.Source" data-throw-if-not-resolved="false"></xref> properties throw an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref> when
+
+    the granularity is too coarse. Information that differs between the call sites that share the method, for instance the line of the call, can also be passed to
+
+    the template as an added parameter, through <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.WithArgs(System.Object)" data-throw-if-not-resolved="false"></xref> or
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter%2cMetalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref>, which does not split the method.
+
+    </p>
+
+    <p>
+
+    The template reads the generated method through the <code>meta.Target.Method</code> property. The generated method and its class are not visible
+
+    through the members of the compilation, because they are added when the code is linked.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IInterceptionInfo : IMetaExtension
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IInterceptionInfo Inherits IMetaExtension
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IInterceptionInfo,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IInterceptionInfo}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IInterceptionInfo})
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IInterceptionInfo.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.Kind
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.Kind
+  id: Kind
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: IInterceptionInfo.Kind
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.Kind
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the kind of interception.
+  example: []
+  syntax:
+    content: InterceptionKind Kind { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptionKind
+    content.vb: ReadOnly Property Kind As InterceptionKind
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.Kind*
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.Method
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.Method
+  id: Method
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: Method
+  nameWithType: IInterceptionInfo.Method
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.Method
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the details of the interception of a method call.
+  example: []
+  syntax:
+    content: IMethodInterceptionInfo Method { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodInterceptionInfo
+    content.vb: ReadOnly Property Method As IMethodInterceptionInfo
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.Method*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.Kind" data-throw-if-not-resolved="false"></xref> property is not <xref href="Metalama.Extensions.Interceptors.InterceptionKind.Method" data-throw-if-not-resolved="false"></xref>.
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.Granularity
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.Granularity
+  id: Granularity
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: Granularity
+  nameWithType: IInterceptionInfo.Granularity
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.Granularity
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the granularity of the interceptor, as <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)" data-throw-if-not-resolved="false"></xref> set it.
+  example: []
+  syntax:
+    content: InterceptorGranularity Granularity { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+    content.vb: ReadOnly Property Granularity As InterceptorGranularity
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.Granularity*
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.CallingType
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.CallingType
+  id: CallingType
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: CallingType
+  nameWithType: IInterceptionInfo.CallingType
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.CallingType
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the type that contains the call sites of the generated method.
+  example: []
+  syntax:
+    content: INamedType CallingType { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.INamedType
+    content.vb: ReadOnly Property CallingType As INamedType
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.CallingType*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The granularity does not include <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Type" data-throw-if-not-resolved="false"></xref>.
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.CallingMember
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.CallingMember
+  id: CallingMember
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: CallingMember
+  nameWithType: IInterceptionInfo.CallingMember
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.CallingMember
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the member that contains the call sites of the generated method, as defined by the <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref> property.
+  example: []
+  syntax:
+    content: IMember CallingMember { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMember
+    content.vb: ReadOnly Property CallingMember As IMember
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.CallingMember*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The granularity does not include <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Member" data-throw-if-not-resolved="false"></xref>.
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.Caller
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.Caller
+  id: Caller
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: Caller
+  nameWithType: IInterceptionInfo.Caller
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.Caller
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Gets the code that contains the call site of the generated method: the member, the kind of code and the function.'
+  remarks: The object is valid during the expansion of the template.
+  example: []
+  syntax:
+    content: ICaller Caller { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.ICaller
+    content.vb: ReadOnly Property Caller As ICaller
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.Caller*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The granularity does not include <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite" data-throw-if-not-resolved="false"></xref>.
+- uid: Metalama.Extensions.Interceptors.IInterceptionInfo.Source
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionInfo.Source
+  id: Source
+  parent: Metalama.Extensions.Interceptors.IInterceptionInfo
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: IInterceptionInfo.Source
+  fullName: Metalama.Extensions.Interceptors.IInterceptionInfo.Source
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Gets the source of the call site of the generated method: the invocation expression or the method group.'
+  example: []
+  syntax:
+    content: SourceReference Source { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.SourceReference
+    content.vb: ReadOnly Property Source As SourceReference
+  overload: Metalama.Extensions.Interceptors.IInterceptionInfo.Source*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The granularity does not include <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite" data-throw-if-not-resolved="false"></xref>.

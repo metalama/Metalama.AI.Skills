@@ -45,8 +45,18 @@ items:
     contract options.
   example: []
   syntax:
-    content: 'public class ContractTemplates : ITemplateProvider, ICompileTimeSerializable'
-    content.vb: Public Class ContractTemplates Implements ITemplateProvider, ICompileTimeSerializable
+    content: >-
+      [Durable]
+
+      [ImmutableType]
+
+      public class ContractTemplates : ITemplateProvider, ICompileTimeSerializable
+    content.vb: >-
+      <Durable>
+
+      <ImmutableType>
+
+      Public Class ContractTemplates Implements ITemplateProvider, ICompileTimeSerializable
   seealso:
   - linkType: HRef
     linkId: '@configuring-contracts'
@@ -70,6 +80,13 @@ items:
   - Metalama.Patterns.Contracts.ContractTemplates.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Patterns.Contracts.ContractTemplates.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
+    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
+    arguments: []
 - uid: Metalama.Patterns.Contracts.ContractTemplates.OnCreditCardContractViolated(System.Object,Metalama.Patterns.Contracts.ContractContext)
   commentId: M:Metalama.Patterns.Contracts.ContractTemplates.OnCreditCardContractViolated(System.Object,Metalama.Patterns.Contracts.ContractContext)
   id: OnCreditCardContractViolated(System.Object,Metalama.Patterns.Contracts.ContractContext)

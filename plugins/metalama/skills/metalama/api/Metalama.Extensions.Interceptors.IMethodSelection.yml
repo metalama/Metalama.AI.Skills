@@ -1,0 +1,199 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IMethodSelection
+  commentId: T:Metalama.Extensions.Interceptors.IMethodSelection
+  id: IMethodSelection
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IMethodSelection.ExcludingOverrides
+  - Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionSite,Metalama.Extensions.Interceptors.IMethodInterception})
+  - Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations
+  - Metalama.Extensions.Interceptors.IMethodSelection.Where(System.Func{Metalama.Framework.Code.IMethod,System.Boolean})
+  langs:
+  - csharp
+  - vb
+  name: IMethodSelection
+  nameWithType: IMethodSelection
+  fullName: Metalama.Extensions.Interceptors.IMethodSelection
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The stage of a method interception at which the intercepted methods are selected. It filters the methods, decides whether the calls bound
+
+    to their overrides and to their interface implementations match, and then chooses how the calls are intercepted.
+  remarks: By default, a call matches a selected method when it is bound to that method or to an override of it.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IMethodSelection : IMethodResultFactory
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IMethodSelection Inherits IMethodResultFactory
+  inheritedMembers:
+  - Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToSynthesizedMethod(System.String)
+  - Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToSynthesizedMethod(Metalama.Framework.Advising.MethodTemplateSelector@)
+  - Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToSynthesizedMethod(Metalama.Framework.Aspects.TemplateInvocation)
+  - Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToExistingMethod(Metalama.Framework.Code.IMethod)
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IMethodSelection.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IMethodSelection,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IMethodSelection}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IMethodSelection.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IMethodSelection})
+  - Metalama.Extensions.Interceptors.IMethodSelection.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IMethodSelection.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IMethodSelection.Where(System.Func{Metalama.Framework.Code.IMethod,System.Boolean})
+  commentId: M:Metalama.Extensions.Interceptors.IMethodSelection.Where(System.Func{Metalama.Framework.Code.IMethod,System.Boolean})
+  id: Where(System.Func{Metalama.Framework.Code.IMethod,System.Boolean})
+  parent: Metalama.Extensions.Interceptors.IMethodSelection
+  langs:
+  - csharp
+  - vb
+  name: Where(Func<IMethod, bool>)
+  nameWithType: IMethodSelection.Where(Func<IMethod, bool>)
+  fullName: Metalama.Extensions.Interceptors.IMethodSelection.Where(System.Func<Metalama.Framework.Code.IMethod, bool>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Keeps only the selected methods that a predicate accepts, for instance one overload of a method name.
+  example: []
+  syntax:
+    content: IMethodSelection Where(Func<IMethod, bool> predicate)
+    parameters:
+    - id: predicate
+      type: System.Func{Metalama.Framework.Code.IMethod,System.Boolean}
+      description: >-
+        The predicate over the method definitions of the selected types. It is stored with the registration, so it must
+                    not capture a declaration or a compilation. It is invoked once for each method definition that has a selected name. Several calls
+                    combine their predicates.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodSelection
+    content.vb: Function Where(predicate As Func(Of IMethod, Boolean)) As IMethodSelection
+  overload: Metalama.Extensions.Interceptors.IMethodSelection.Where*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">predicate</code> is <code>null</code>.
+  nameWithType.vb: IMethodSelection.Where(Func(Of IMethod, Boolean))
+  fullName.vb: Metalama.Extensions.Interceptors.IMethodSelection.Where(System.Func(Of Metalama.Framework.Code.IMethod, Boolean))
+  name.vb: Where(Func(Of IMethod, Boolean))
+- uid: Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations
+  commentId: M:Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations
+  id: IncludingInterfaceImplementations
+  parent: Metalama.Extensions.Interceptors.IMethodSelection
+  langs:
+  - csharp
+  - vb
+  name: IncludingInterfaceImplementations()
+  nameWithType: IMethodSelection.IncludingInterfaceImplementations()
+  fullName: Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Also matches the calls bound to a method that implements a selected interface method, implicitly or explicitly.
+  example: []
+  syntax:
+    content: IMethodSelection IncludingInterfaceImplementations()
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodSelection
+    content.vb: Function IncludingInterfaceImplementations() As IMethodSelection
+  overload: Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations*
+- uid: Metalama.Extensions.Interceptors.IMethodSelection.ExcludingOverrides
+  commentId: M:Metalama.Extensions.Interceptors.IMethodSelection.ExcludingOverrides
+  id: ExcludingOverrides
+  parent: Metalama.Extensions.Interceptors.IMethodSelection
+  langs:
+  - csharp
+  - vb
+  name: ExcludingOverrides()
+  nameWithType: IMethodSelection.ExcludingOverrides()
+  fullName: Metalama.Extensions.Interceptors.IMethodSelection.ExcludingOverrides()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Does not match the calls bound to an override of a selected method. Only the calls bound to the selected method itself match.
+  example: []
+  syntax:
+    content: IMethodSelection ExcludingOverrides()
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodSelection
+    content.vb: Function ExcludingOverrides() As IMethodSelection
+  overload: Metalama.Extensions.Interceptors.IMethodSelection.ExcludingOverrides*
+- uid: Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionSite,Metalama.Extensions.Interceptors.IMethodInterception})
+  commentId: M:Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionSite,Metalama.Extensions.Interceptors.IMethodInterception})
+  id: ForEachSite(System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionSite,Metalama.Extensions.Interceptors.IMethodInterception})
+  parent: Metalama.Extensions.Interceptors.IMethodSelection
+  langs:
+  - csharp
+  - vb
+  name: ForEachSite(Func<IMethodInterceptionSite, IMethodInterception>)
+  nameWithType: IMethodSelection.ForEachSite(Func<IMethodInterceptionSite, IMethodInterception>)
+  fullName: Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func<Metalama.Extensions.Interceptors.IMethodInterceptionSite, Metalama.Extensions.Interceptors.IMethodInterception>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Decides the interception of each call site with a delegate, for instance to skip some call sites or to choose a template per site.
+  remarks: >-
+    <p>
+
+    The delegate can report diagnostics through <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics" data-throw-if-not-resolved="false"></xref>. An exception thrown by the delegate is
+
+    reported as an error on the declaration that contains the site, and the site is not intercepted.
+
+    </p>
+
+    <p>
+
+    The delegate is invoked only for call sites written in the source code. A call that the compiler, the runtime or a library makes on
+
+    behalf of the code is never presented, because no call exists at the site.
+
+    </p>
+  example: []
+  syntax:
+    content: IMethodInterception ForEachSite(Func<IMethodInterceptionSite, IMethodInterception> intercept)
+    parameters:
+    - id: intercept
+      type: System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionSite,Metalama.Extensions.Interceptors.IMethodInterception}
+      description: >-
+        The delegate. It receives the call site, which describes the site and creates its result, and returns a result
+                    created by this site during this invocation, for instance <code>site.Skip()</code> or <code>site.RedirectToSynthesizedMethod( … )</code>. A result
+                    created for another site is refused, so the delegate cannot store a result and return it again. It is stored with the registration,
+                    so it must not capture a declaration or a compilation. It can be invoked concurrently, and several times for the same site.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodInterception
+    content.vb: Function ForEachSite(intercept As Func(Of IMethodInterceptionSite, IMethodInterception)) As IMethodInterception
+  overload: Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">intercept</code> is <code>null</code>.
+  nameWithType.vb: IMethodSelection.ForEachSite(Func(Of IMethodInterceptionSite, IMethodInterception))
+  fullName.vb: Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func(Of Metalama.Extensions.Interceptors.IMethodInterceptionSite, Metalama.Extensions.Interceptors.IMethodInterception))
+  name.vb: ForEachSite(Func(Of IMethodInterceptionSite, IMethodInterception))
