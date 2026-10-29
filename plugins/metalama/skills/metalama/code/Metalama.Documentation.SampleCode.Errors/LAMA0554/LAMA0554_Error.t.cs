@@ -1,1 +1,0 @@
-// Error LAMA0554 on `OrderService`: `The aspect 'IntroduceResult' cannot introduce the union 'Result' because a union declaration must declare at least one case. Call 'AddCase' at least once in the callback that builds the union.`

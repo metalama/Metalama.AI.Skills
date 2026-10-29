@@ -1,1 +1,0 @@
-// Error LAMA0025 on `Add`: `The type 'Log' does not contain any template member named 'LogTemplate'. Check the template name, for instance by using the 'nameof' operator.`

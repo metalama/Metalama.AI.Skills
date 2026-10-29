@@ -1,1 +1,0 @@
-// Error LAMA0508 on `Product`: `The aspect 'Describe' cannot introduce sealed member 'Product.GetTypeDescription()' because it is also static.`

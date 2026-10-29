@@ -1,1 +1,0 @@
-// Error LAMA0233 on `This`: `Cannot use 'meta.This' in 'LogAttribute.GetTarget()' because it is only allowed inside a template. Use ExpressionFactory.This() instead of meta.This.`

@@ -29,7 +29,7 @@ internal class FactoryEagerPullStrategy : DefaultDependencyPullStrategy
         : base( properties, fieldOrProperty )
     {
         _fieldOrProperty = fieldOrProperty;
-        _factoryType = typeof(IServiceFactory<>).AsINamedType()
+        _factoryType = TypeFactory.GetNamedType( typeof(IServiceFactory<>) )
             .WithTypeArguments( properties.DependencyType );
     }
 

@@ -154,6 +154,28 @@ items:
     <p>
         The <code>InitializationContext</code> parameter is pulled into constructors via the constructor parameter
         introduction mechanism (<xref href="Metalama.Framework.Advising.IAdviceFactory.IntroduceParameter(Metalama.Framework.Code.IConstructor%2cSystem.String%2cMetalama.Framework.Code.IType%2cMetalama.Framework.Code.TypedConstant%2cMetalama.Framework.Advising.IPullStrategy%2cSystem.Collections.Immutable.ImmutableArray%7bMetalama.Framework.Code.DeclarationBuilders.AttributeConstruction%7d)?text=IAdviceFactory.IntroduceParameter" data-throw-if-not-resolved="false"></xref>).
+        The parameter is added to every instance constructor of the target type, including an implicit constructor,
+        and to the constructors of derived types, also in other projects. This changes the signature of these constructors.
+        </p>
+    <p>
+        To keep the type constructible, the framework adds a forwarding constructor. The forwarding constructor has the
+        original signature and calls the mutated constructor with <code>: this(...)</code>, passing <code>default</code> for the
+        <code>InitializationContext</code> parameter. Which constructors receive a forwarding constructor is decided by the
+        <xref href="Metalama.Framework.Advising.IConstructorOverloadingStrategy" data-throw-if-not-resolved="false"></xref> passed to the <code>overloadingStrategy</code> parameter of
+        <xref href="Metalama.Framework.Advising.IAdviceFactory.AddInitializer(Metalama.Framework.Code.INamedType%2cSystem.String%2cMetalama.Framework.Advising.InitializerKind%2cSystem.Object%2cSystem.Object%2cSystem.Collections.Generic.IEnumerable%7bMetalama.Framework.Code.IField%7d%2cMetalama.Framework.Advising.IConstructorOverloadingStrategy)?text=IAdviceFactory.AddInitializer" data-throw-if-not-resolved="false"></xref>.
+        The default strategy is <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardDefaultConstructor" data-throw-if-not-resolved="false"></xref>: only the parameterless
+        constructor receives a forwarding constructor, so <xref href="System.Activator.CreateInstance(System.Type)" data-throw-if-not-resolved="false"></xref>,
+        <xref href="System.Activator.CreateInstance%60%601" data-throw-if-not-resolved="false"></xref>, the <code>new()</code> generic constraint and serializers that require a
+        parameterless constructor keep working. Pass <xref href="Metalama.Framework.Advising.ConstructorOverloadingStrategy.ForwardSourceConstructors" data-throw-if-not-resolved="false"></xref>
+        when other code creates instances by reflection with the original argument list of another constructor.
+        </p>
+    <p>
+        A constructor that receives a forwarding constructor gets a required <code>InitializationContext</code> parameter. Therefore,
+        reflection-based activators and dependency injection containers find a single constructor with the original
+        parameter list: the forwarding constructor. A constructor that does not receive a forwarding constructor gets an
+        optional <code>InitializationContext</code> parameter whose default value is <code>default</code>, so that source code can still
+        call it with its original argument list. Its signature in the compiled assembly is nevertheless different from
+        the source signature.
         </p>
   example: []
   syntax:
@@ -210,7 +232,7 @@ items:
         <xref href="Metalama.Framework.RunTime.Initialization.InitializationContext" data-throw-if-not-resolved="false"></xref> parameter to inspect caller intent,
         metadata (e.g. <xref href="Metalama.Framework.RunTime.Initialization.InitializationMetadata.Modify" data-throw-if-not-resolved="false"></xref> for
         <code>with</code> expressions), or coordination slots passed to the <code>slotFields</code> parameter of
-        <xref href="Metalama.Framework.Advising.IAdviceFactory.AddInitializer(Metalama.Framework.Code.INamedType%2cSystem.String%2cMetalama.Framework.Advising.InitializerKind%2cSystem.Object%2cSystem.Object%2cSystem.Collections.Generic.IEnumerable%7bMetalama.Framework.Code.IField%7d)?text=IAdviceFactory.AddInitializer" data-throw-if-not-resolved="false"></xref>.
+        <xref href="Metalama.Framework.Advising.IAdviceFactory.AddInitializer(Metalama.Framework.Code.INamedType%2cSystem.String%2cMetalama.Framework.Advising.InitializerKind%2cSystem.Object%2cSystem.Object%2cSystem.Collections.Generic.IEnumerable%7bMetalama.Framework.Code.IField%7d%2cMetalama.Framework.Advising.IConstructorOverloadingStrategy)?text=IAdviceFactory.AddInitializer" data-throw-if-not-resolved="false"></xref>.
         </p>
   example: []
   syntax:

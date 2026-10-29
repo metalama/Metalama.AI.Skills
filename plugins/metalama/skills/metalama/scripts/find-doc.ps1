@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Searches the conceptual documentation index of the skill by keyword.
+Searches the Metalama conceptual documentation index by keyword.
 
 .DESCRIPTION
 PowerShell fallback for find-doc.py, for environments without Python.
@@ -14,10 +14,10 @@ the matching articles with their file paths, ready to be read. All keywords must
 match (AND semantics).
 
 .EXAMPLE
-powershell -File scripts/find-doc.ps1 cache invalidation
+powershell -File scripts/find-doc.ps1 caching invalidation
 
 .EXAMPLE
-pwsh -File scripts/find-doc.ps1 "getting started"
+pwsh -File scripts/find-doc.ps1 "aspect ordering"
 #>
 [CmdletBinding()]
 param(

@@ -1,1 +1,0 @@
-// Error LAMA0284 on `=>`: `The scope of the anonymous method or lambda expression with a block body cannot be determined. Use 'meta.RunTime' or 'meta.CompileTime' to resolve the ambiguity.`

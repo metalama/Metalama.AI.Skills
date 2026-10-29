@@ -18,7 +18,7 @@ public class ValidateAttribute : TypeAspect
 {
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        var slotField = typeof(InitializerSlots).AsINamedType()
+        var slotField = TypeFactory.GetNamedType( typeof(InitializerSlots) )
             .Fields.OfName( nameof(InitializerSlots.Validate) ).Single();
 
         builder.AddInitializer(
@@ -42,7 +42,7 @@ public class PublishAttribute : TypeAspect
 {
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        var slotField = typeof(InitializerSlots).AsINamedType()
+        var slotField = TypeFactory.GetNamedType( typeof(InitializerSlots) )
             .Fields.OfName( nameof(InitializerSlots.Publish) ).Single();
 
         builder.AddInitializer(

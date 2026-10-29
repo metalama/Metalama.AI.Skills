@@ -1,1 +1,0 @@
-// Error LAMA0904 on `Order`: `The 'CanOnlyBeUsedFromAttribute' custom attribute does not define any scope. Set at least one of the following properties: Namespaces, NamespaceOfTypes, Types, TypeNames, CurrentNamespace, or CurrentAssembly.`

@@ -6,6 +6,7 @@ items:
   parent: Metalama.Framework.Code
   children:
   - Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
+  - Metalama.Framework.Code.SerializableDeclarationId.CompareTo(Metalama.Framework.Code.SerializableDeclarationId)
   - Metalama.Framework.Code.SerializableDeclarationId.Equals(Metalama.Framework.Code.SerializableDeclarationId)
   - Metalama.Framework.Code.SerializableDeclarationId.Equals(System.Object)
   - Metalama.Framework.Code.SerializableDeclarationId.GetHashCode
@@ -56,15 +57,11 @@ items:
     content: >-
       [CompileTime]
 
-      [Durable]
-
-      public readonly struct SerializableDeclarationId : IEquatable<SerializableDeclarationId>
+      public readonly struct SerializableDeclarationId : IEquatable<SerializableDeclarationId>, IComparable<SerializableDeclarationId>
     content.vb: >-
       <CompileTime>
 
-      <Durable>
-
-      Public Structure SerializableDeclarationId Implements IEquatable(Of SerializableDeclarationId)
+      Public Structure SerializableDeclarationId Implements IEquatable(Of SerializableDeclarationId), IComparable(Of SerializableDeclarationId)
   seealso:
   - linkId: Metalama.Framework.Code.SerializableTypeId
     commentId: T:Metalama.Framework.Code.SerializableTypeId
@@ -77,6 +74,7 @@ items:
     altText: '@aspect-serialization'
   implements:
   - System.IEquatable{Metalama.Framework.Code.SerializableDeclarationId}
+  - System.IComparable{Metalama.Framework.Code.SerializableDeclarationId}
   inheritedMembers:
   - System.Object.GetType
   - System.Object.Equals(System.Object,System.Object)
@@ -84,9 +82,6 @@ items:
   attributes:
   - type: Metalama.Framework.Aspects.CompileTimeAttribute
     ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
-    arguments: []
-  - type: Metalama.Framework.Utilities.DurableAttribute
-    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
     arguments: []
 - uid: Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
   commentId: M:Metalama.Framework.Code.SerializableDeclarationId.#ctor(System.String)
@@ -191,6 +186,35 @@ items:
     content.vb: Public Overrides Function GetHashCode() As Integer
   overridden: System.ValueType.GetHashCode
   overload: Metalama.Framework.Code.SerializableDeclarationId.GetHashCode*
+- uid: Metalama.Framework.Code.SerializableDeclarationId.CompareTo(Metalama.Framework.Code.SerializableDeclarationId)
+  commentId: M:Metalama.Framework.Code.SerializableDeclarationId.CompareTo(Metalama.Framework.Code.SerializableDeclarationId)
+  id: CompareTo(Metalama.Framework.Code.SerializableDeclarationId)
+  parent: Metalama.Framework.Code.SerializableDeclarationId
+  langs:
+  - csharp
+  - vb
+  name: CompareTo(SerializableDeclarationId)
+  nameWithType: SerializableDeclarationId.CompareTo(SerializableDeclarationId)
+  fullName: Metalama.Framework.Code.SerializableDeclarationId.CompareTo(Metalama.Framework.Code.SerializableDeclarationId)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: Compares this identifier with another one by the ordinal value of their <xref href="Metalama.Framework.Code.SerializableDeclarationId.Id" data-throw-if-not-resolved="false"></xref> strings.
+  example: []
+  syntax:
+    content: public int CompareTo(SerializableDeclarationId other)
+    parameters:
+    - id: other
+      type: Metalama.Framework.Code.SerializableDeclarationId
+      description: The identifier to compare with this identifier.
+    return:
+      type: System.Int32
+      description: A negative number if this identifier precedes <code class="paramref">other</code>, zero if both are equal, and a positive number otherwise.
+    content.vb: Public Function CompareTo(other As SerializableDeclarationId) As Integer
+  overload: Metalama.Framework.Code.SerializableDeclarationId.CompareTo*
+  implements:
+  - System.IComparable{Metalama.Framework.Code.SerializableDeclarationId}.CompareTo(Metalama.Framework.Code.SerializableDeclarationId)
 - uid: Metalama.Framework.Code.SerializableDeclarationId.op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
   commentId: M:Metalama.Framework.Code.SerializableDeclarationId.op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)
   id: op_Equality(Metalama.Framework.Code.SerializableDeclarationId,Metalama.Framework.Code.SerializableDeclarationId)

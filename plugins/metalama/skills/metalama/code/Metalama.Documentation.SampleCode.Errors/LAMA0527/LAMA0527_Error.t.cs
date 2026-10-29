@@ -1,1 +1,0 @@
-// Error LAMA0527 on `ProductCatalog`: `The aspect 'Indexer' cannot introduce the indexer 'ProductCatalog.this[int]' into the type 'ProductCatalog' because the indexer is static. C# does not support static indexers.`
