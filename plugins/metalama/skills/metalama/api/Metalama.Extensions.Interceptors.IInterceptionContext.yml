@@ -1,0 +1,357 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext
+  commentId: T:Metalama.Extensions.Interceptors.IInterceptionContext
+  id: IInterceptionContext
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IInterceptionContext.AspectState
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Caller
+  - Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType
+  - Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType(Metalama.Framework.Code.INamedType)
+  - Metalama.Extensions.Interceptors.IInterceptionContext.CancellationToken
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics
+  - Metalama.Extensions.Interceptors.IInterceptionContext.NonInterceptableReason
+  - Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration
+  - Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Source
+  langs:
+  - csharp
+  - vb
+  name: IInterceptionContext
+  nameWithType: IInterceptionContext
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The base interface of the contexts of a call site. It describes one site. <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionSite" data-throw-if-not-resolved="false"></xref> and
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context" data-throw-if-not-resolved="false"></xref> implement or expose it.
+  remarks: >-
+    <p>
+
+    Declarations exposed by this interface belong to the source compilation, before any aspect transformation. The aspect repository of the
+
+    compilation is the final one, so <code>Enhancements().HasAspect</code> reports the aspects of the whole pipeline. Declarations introduced by
+
+    aspects are not visible.
+
+    </p>
+
+    <p>
+
+    All information in this interface is specific to one site. It is not available to templates, because a generated interceptor method can be
+
+    shared by several sites. To pass site information to a template, pass it as a template argument.
+
+    </p>
+
+    <p>
+
+    This object must not be stored after the delegate that received it returns.
+
+    </p>
+
+    <p>
+
+    Source expressions exposed by the derived interfaces, such as the receiver and the arguments, are available for inspection only. They
+
+    cannot be emitted in generated code, because the site already evaluates them.
+
+    </p>
+
+    <p>
+
+    The sub-objects of the context, such as <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.Caller" data-throw-if-not-resolved="false"></xref>, have the lifetime of the context.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IInterceptionContext
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IInterceptionContext
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IInterceptionContext,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IInterceptionContext}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IInterceptionContext})
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType(Metalama.Framework.Code.INamedType)
+  id: CanPlaceInType(Metalama.Framework.Code.INamedType)
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: CanPlaceInType(INamedType)
+  nameWithType: IInterceptionContext.CanPlaceInType(INamedType)
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType(Metalama.Framework.Code.INamedType)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Determines whether a method synthesized with <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.PlaceInType(Metalama.Framework.Code.INamedType)" data-throw-if-not-resolved="false"></xref> in a given type can intercept
+
+    the site.
+  remarks: The method does not check the signature of the synthesized method.
+  example: []
+  syntax:
+    content: bool CanPlaceInType(INamedType type)
+    parameters:
+    - id: type
+      type: Metalama.Framework.Code.INamedType
+      description: The type.
+    return:
+      type: System.Boolean
+      description: <code>true</code> when the type belongs to the current project and is accessible from the site; otherwise <code>false</code>.
+    content.vb: Function CanPlaceInType(type As INamedType) As Boolean
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">type</code> is <code>null</code>.
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration
+  id: ScopeDeclaration
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: ScopeDeclaration
+  nameWithType: IInterceptionContext.ScopeDeclaration
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the declaration selected at registration whose scope contains the site.
+  example: []
+  syntax:
+    content: IDeclaration ScopeDeclaration { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IDeclaration
+    content.vb: ReadOnly Property ScopeDeclaration As IDeclaration
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag
+  id: ScopeTag
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: ScopeTag
+  nameWithType: IInterceptionContext.ScopeTag
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the tag of <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration" data-throw-if-not-resolved="false"></xref> when the registration was made through a tagged query, or <code>null</code> otherwise.
+  example: []
+  syntax:
+    content: object? ScopeTag { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: ReadOnly Property ScopeTag As Object
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.Caller
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.Caller
+  id: Caller
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: Caller
+  nameWithType: IInterceptionContext.Caller
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.Caller
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Gets the code that contains the site: the member, the kind of code and the function.'
+  example: []
+  syntax:
+    content: ICaller Caller { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.ICaller
+    content.vb: ReadOnly Property Caller As ICaller
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.Caller*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.Source
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.Source
+  id: Source
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: IInterceptionContext.Source
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.Source
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Gets the source of the site: the invocation expression or the method group.'
+  example: []
+  syntax:
+    content: SourceReference Source { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.SourceReference
+    content.vb: ReadOnly Property Source As SourceReference
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.Source*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics
+  id: Diagnostics
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: Diagnostics
+  nameWithType: IInterceptionContext.Diagnostics
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets a sink that reports diagnostics, by default, on the name of the invoked or referenced method, and suppresses diagnostics in the
+
+    <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref> of <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.Caller" data-throw-if-not-resolved="false"></xref>. Diagnostics are attributed to the aspect or fabric that registered the
+
+    interceptor.
+  example: []
+  syntax:
+    content: ScopedDiagnosticSink Diagnostics { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Diagnostics.ScopedDiagnosticSink
+    content.vb: ReadOnly Property Diagnostics As ScopedDiagnosticSink
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.AspectState
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.AspectState
+  id: AspectState
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: AspectState
+  nameWithType: IInterceptionContext.AspectState
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.AspectState
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the state of the aspect instance that registered the interceptor, as it is when <xref href="Metalama.Framework.Aspects.IAspect%601.BuildAspect(Metalama.Framework.Aspects.IAspectBuilder%7b%600%7d)" data-throw-if-not-resolved="false"></xref> exits, or
+
+    <code>null</code> when a fabric registered the interceptor.
+  example: []
+  syntax:
+    content: IAspectState? AspectState { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Aspects.IAspectState
+    content.vb: ReadOnly Property AspectState As IAspectState
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.AspectState*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.NonInterceptableReason
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.NonInterceptableReason
+  id: NonInterceptableReason
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: NonInterceptableReason
+  nameWithType: IInterceptionContext.NonInterceptableReason
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.NonInterceptableReason
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the reason why the site cannot be intercepted, or <xref href="Metalama.Extensions.Interceptors.NonInterceptableReason.None" data-throw-if-not-resolved="false"></xref> when it can be
+
+    intercepted. When this property is not <xref href="Metalama.Extensions.Interceptors.NonInterceptableReason.None" data-throw-if-not-resolved="false"></xref>, any result other than
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionSite.Skip" data-throw-if-not-resolved="false"></xref> produces a warning and the site is left unchanged.
+  example: []
+  syntax:
+    content: NonInterceptableReason NonInterceptableReason { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.NonInterceptableReason
+    content.vb: ReadOnly Property NonInterceptableReason As NonInterceptableReason
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.NonInterceptableReason*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.CancellationToken
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.CancellationToken
+  id: CancellationToken
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: CancellationToken
+  nameWithType: IInterceptionContext.CancellationToken
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.CancellationToken
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets a cancellation token that the provider should pass to long operations.
+  example: []
+  syntax:
+    content: CancellationToken CancellationToken { get; }
+    parameters: []
+    return:
+      type: System.Threading.CancellationToken
+    content.vb: ReadOnly Property CancellationToken As CancellationToken
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.CancellationToken*
+- uid: Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType
+  id: CanPlaceInCallingType
+  parent: Metalama.Extensions.Interceptors.IInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: CanPlaceInCallingType
+  nameWithType: IInterceptionContext.CanPlaceInCallingType
+  fullName: Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets a value indicating whether a method synthesized with <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.PlaceInCallingType" data-throw-if-not-resolved="false"></xref> can intercept the site.
+  remarks: >-
+    The value is <code>false</code> for instance when the site is in top-level statements, because the type that contains them is implicit. A
+
+    delegate given to <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref> can then keep the default placement, which is a generated static class. The
+
+    property does not check the signature of the synthesized method.
+  example: []
+  syntax:
+    content: bool CanPlaceInCallingType { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CanPlaceInCallingType As Boolean
+  overload: Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType*

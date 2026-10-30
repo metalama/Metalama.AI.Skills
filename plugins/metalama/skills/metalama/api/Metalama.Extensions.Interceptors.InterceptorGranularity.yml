@@ -1,0 +1,225 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity
+  commentId: T:Metalama.Extensions.Interceptors.InterceptorGranularity
+  id: InterceptorGranularity
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite
+  - Metalama.Extensions.Interceptors.InterceptorGranularity.Default
+  - Metalama.Extensions.Interceptors.InterceptorGranularity.Global
+  - Metalama.Extensions.Interceptors.InterceptorGranularity.Member
+  - Metalama.Extensions.Interceptors.InterceptorGranularity.Owner
+  - Metalama.Extensions.Interceptors.InterceptorGranularity.Type
+  langs:
+  - csharp
+  - vb
+  name: InterceptorGranularity
+  nameWithType: InterceptorGranularity
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity
+  type: Enum
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Declares what the template of a synthesized interceptor depends on, and therefore which call sites share one synthesized method. Set it with
+
+    the <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)" data-throw-if-not-resolved="false"></xref> method.
+  remarks: >-
+    <p>
+
+    The enumeration has two independent dimensions:
+
+    </p>
+
+    <ul><li>The site levels <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Type" data-throw-if-not-resolved="false"></xref>, <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Member" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite" data-throw-if-not-resolved="false"></xref> nest: each level includes the coarser
+
+    ones. Their values are cumulative, so the combination of two levels is the finer one, and
+
+    <code>granularity.HasFlag( InterceptorGranularity.Type )</code> means "at least <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Type" data-throw-if-not-resolved="false"></xref>". A granularity without a site level is
+
+    global: the template does not depend on the call site.</li><li><xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Owner" data-throw-if-not-resolved="false"></xref> can be combined with any site level, for instance
+
+    <code>InterceptorGranularity.Member | InterceptorGranularity.Owner</code>.</li></ul>
+
+    <p>
+
+    The default granularity is <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Global" data-throw-if-not-resolved="false"></xref>. The engine does not detect what the template depends on: neither the tags, nor the aspect
+
+    state, nor the fields of the aspect. When several call sites share a generated method, the template is expanded once, for the representative
+
+    call site, which is the first in the order of the file paths and the positions, and with the aspect instance that registered the interceptor
+
+    for that call site. This is the same rule as when several instances of an aspect target the same declaration, where the
+
+    <code>BuildAspect</code> method must summarize them. A template that depends on the state of its aspect instance must therefore include
+
+    <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Owner" data-throw-if-not-resolved="false"></xref> in the granularity. The tags of the result are compared by value, so the call sites whose results have different tags
+
+    never share a method.
+
+    </p>
+
+    <p>
+
+    The template reads the context through the <code>meta.Interception</code> property. A property that requires a finer granularity than the
+
+    granularity of the interceptor throws an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref> that names the granularity to set.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [Flags]
+
+      public enum InterceptorGranularity
+    content.vb: >-
+      <CompileTime>
+
+      <Flags>
+
+      Public Enum InterceptorGranularity
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity.Default
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorGranularity.Default
+  id: Default
+  parent: Metalama.Extensions.Interceptors.InterceptorGranularity
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: InterceptorGranularity.Default
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity.Default
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: The default granularity, which is <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Global" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity.Type
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorGranularity.Type
+  id: Type
+  parent: Metalama.Extensions.Interceptors.InterceptorGranularity
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: InterceptorGranularity.Type
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity.Type
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The template can read the calling type through the <code>meta.Interception.CallingType</code> property. The method is shared by the call sites
+
+    of the same type.
+  example: []
+  syntax:
+    content: Type = 1
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity.Member
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorGranularity.Member
+  id: Member
+  parent: Metalama.Extensions.Interceptors.InterceptorGranularity
+  langs:
+  - csharp
+  - vb
+  name: Member
+  nameWithType: InterceptorGranularity.Member
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity.Member
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The template can read the calling member through the <code>meta.Interception.CallingMember</code> property, and the calling type. The method is
+
+    shared by the call sites of the same member.
+  example: []
+  syntax:
+    content: Member = 3
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite
+  id: CallSite
+  parent: Metalama.Extensions.Interceptors.InterceptorGranularity
+  langs:
+  - csharp
+  - vb
+  name: CallSite
+  nameWithType: InterceptorGranularity.CallSite
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity.CallSite
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The template can read the call site through the <code>meta.Interception.Caller</code> and <code>meta.Interception.Source</code> properties, and
+
+    it can read the calling member and the calling type. Each call site has its own method.
+  example: []
+  syntax:
+    content: CallSite = 7
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity.Owner
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorGranularity.Owner
+  id: Owner
+  parent: Metalama.Extensions.Interceptors.InterceptorGranularity
+  langs:
+  - csharp
+  - vb
+  name: Owner
+  nameWithType: InterceptorGranularity.Owner
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity.Owner
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The template can depend on the aspect instance or the fabric that registered the interceptor, and on its aspect state. The method is
+
+    shared only by the call sites of the same registration.
+  example: []
+  syntax:
+    content: Owner = 8
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+- uid: Metalama.Extensions.Interceptors.InterceptorGranularity.Global
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorGranularity.Global
+  id: Global
+  parent: Metalama.Extensions.Interceptors.InterceptorGranularity
+  langs:
+  - csharp
+  - vb
+  name: Global
+  nameWithType: InterceptorGranularity.Global
+  fullName: Metalama.Extensions.Interceptors.InterceptorGranularity.Global
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The template depends neither on the call site nor on the aspect instance that registered the interceptor. The method is shared by all
+
+    the call sites that have the same template, arguments, tags, placement and signature. This is the default granularity.
+  example: []
+  syntax:
+    content: Global = 0
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity

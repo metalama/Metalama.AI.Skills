@@ -22,6 +22,7 @@ items:
   - Metalama.Framework.Aspects.meta.DefineLocalVariable(System.String,System.Type)
   - Metalama.Framework.Aspects.meta.DefineLocalVariable(System.String,System.Type,Metalama.Framework.Code.IExpression)
   - Metalama.Framework.Aspects.meta.DefineLocalVariable(System.String,System.Type,System.Object)
+  - Metalama.Framework.Aspects.meta.GetExtension``1
   - Metalama.Framework.Aspects.meta.InsertComment(System.String[])
   - Metalama.Framework.Aspects.meta.InsertStatement(Metalama.Framework.Code.IExpression)
   - Metalama.Framework.Aspects.meta.InsertStatement(Metalama.Framework.Code.SyntaxBuilders.IStatement)
@@ -43,6 +44,7 @@ items:
   - Metalama.Framework.Aspects.meta.Target
   - Metalama.Framework.Aspects.meta.This
   - Metalama.Framework.Aspects.meta.ThisType
+  - Metalama.Framework.Aspects.meta.TryGetExtension``1(``0@)
   langs:
   - csharp
   - vb
@@ -518,6 +520,88 @@ items:
   nameWithType.vb: meta.RunTime(Of T)(T)
   fullName.vb: Metalama.Framework.Aspects.meta.RunTime(Of T)(T)
   name.vb: RunTime(Of T)(T)
+- uid: Metalama.Framework.Aspects.meta.GetExtension``1
+  commentId: M:Metalama.Framework.Aspects.meta.GetExtension``1
+  id: GetExtension``1
+  parent: Metalama.Framework.Aspects.meta
+  langs:
+  - csharp
+  - vb
+  name: GetExtension<T>()
+  nameWithType: meta.GetExtension<T>()
+  fullName: Metalama.Framework.Aspects.meta.GetExtension<T>()
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the object of a given type that a Metalama extension makes available to the current template.
+  example: []
+  syntax:
+    content: 'public static T GetExtension<T>() where T : class, IMetaExtension'
+    typeParameters:
+    - id: T
+      description: The type of the object.
+    return:
+      type: '{T}'
+      description: The object of type <code class="typeparamref">T</code>.
+    content.vb: Public Shared Function GetExtension(Of T As {Class, IMetaExtension})() As T
+  overload: Metalama.Framework.Aspects.meta.GetExtension*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current template has no object of type <code class="typeparamref">T</code>.
+  seealso:
+  - linkId: Metalama.Framework.Aspects.meta.TryGetExtension``1(``0@)
+    commentId: M:Metalama.Framework.Aspects.meta.TryGetExtension``1(``0@)
+  - linkId: Metalama.Framework.Aspects.IMetaExtension
+    commentId: T:Metalama.Framework.Aspects.IMetaExtension
+  nameWithType.vb: meta.GetExtension(Of T)()
+  fullName.vb: Metalama.Framework.Aspects.meta.GetExtension(Of T)()
+  name.vb: GetExtension(Of T)()
+- uid: Metalama.Framework.Aspects.meta.TryGetExtension``1(``0@)
+  commentId: M:Metalama.Framework.Aspects.meta.TryGetExtension``1(``0@)
+  id: TryGetExtension``1(``0@)
+  parent: Metalama.Framework.Aspects.meta
+  langs:
+  - csharp
+  - vb
+  name: TryGetExtension<T>(out T?)
+  nameWithType: meta.TryGetExtension<T>(out T?)
+  fullName: Metalama.Framework.Aspects.meta.TryGetExtension<T>(out T?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the object of a given type that a Metalama extension makes available to the current template, if there is one.
+  example: []
+  syntax:
+    content: 'public static bool TryGetExtension<T>(out T? extension) where T : class, IMetaExtension'
+    parameters:
+    - id: extension
+      type: '{T}'
+      description: The object of type <code class="typeparamref">T</code>, or <code>null</code> when there is none.
+      attributes:
+      - type: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+        ctor: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)
+        arguments:
+        - type: System.Boolean
+          value: true
+    typeParameters:
+    - id: T
+      description: The type of the object.
+    return:
+      type: System.Boolean
+      description: <code>true</code> when the current template has an object of type <code class="typeparamref">T</code>; otherwise <code>false</code>.
+    content.vb: Public Shared Function TryGetExtension(Of T As {Class, IMetaExtension})(extension As T) As Boolean
+  overload: Metalama.Framework.Aspects.meta.TryGetExtension*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.meta.GetExtension``1
+    commentId: M:Metalama.Framework.Aspects.meta.GetExtension``1
+  - linkId: Metalama.Framework.Aspects.IMetaExtension
+    commentId: T:Metalama.Framework.Aspects.IMetaExtension
+  nameWithType.vb: meta.TryGetExtension(Of T)(T)
+  fullName.vb: Metalama.Framework.Aspects.meta.TryGetExtension(Of T)(T)
+  name.vb: TryGetExtension(Of T)(T)
 - uid: Metalama.Framework.Aspects.meta.Cast(Metalama.Framework.Code.IType,System.Object)
   commentId: M:Metalama.Framework.Aspects.meta.Cast(Metalama.Framework.Code.IType,System.Object)
   id: Cast(Metalama.Framework.Code.IType,System.Object)

@@ -1,0 +1,161 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Code.Types.IUnionFacet
+  commentId: T:Metalama.Framework.Code.Types.IUnionFacet
+  id: IUnionFacet
+  parent: Metalama.Framework.Code.Types
+  children:
+  - Metalama.Framework.Code.Types.IUnionFacet.Cases
+  - Metalama.Framework.Code.Types.IUnionFacet.UnionKind
+  - Metalama.Framework.Code.Types.IUnionFacet.ValueProperty
+  langs:
+  - csharp
+  - vb
+  name: IUnionFacet
+  nameWithType: IUnionFacet
+  fullName: Metalama.Framework.Code.Types.IUnionFacet
+  type: Interface
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Types
+  summary: 'Represents the structure of a union of C# 15: its authoring form, its cases and its <code>Value</code> property.'
+  remarks: >-
+    <p>
+        The facet is reached through <xref href="Metalama.Framework.Code.Collections.ITypeFacetCollection.Union" data-throw-if-not-resolved="false"></xref>, as in <code>type.Facets.Union?.Cases</code>. It is
+        <code>null</code> for a type that <xref href="Metalama.Framework.Code.INamedType.IsUnion" data-throw-if-not-resolved="false"></xref> reports as not being a union.
+        </p>
+    <p>
+        A union is not a kind of its own in the code model. The compiler reports a union declaration as a struct, and the
+        attribute form keeps the kind of the class or the struct that carries the attribute, so
+        <xref href="Metalama.Framework.Code.INamedType.IsUnion" data-throw-if-not-resolved="false"></xref> is the property that tells a union from an ordinary type and this facet is the
+        structure behind it.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IUnionFacet : ITypeFacet
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IUnionFacet Inherits ITypeFacet
+  seealso:
+  - linkId: Metalama.Framework.Code.INamedType.IsUnion
+    commentId: P:Metalama.Framework.Code.INamedType.IsUnion
+  - linkId: Metalama.Framework.Code.INamedType.Facets
+    commentId: P:Metalama.Framework.Code.INamedType.Facets
+  inheritedMembers:
+  - Metalama.Framework.Code.Types.ITypeFacet.FacetKind
+  - Metalama.Framework.Code.Types.ITypeFacet.Type
+  extensionMethods:
+  - Metalama.Framework.Code.Types.IUnionFacet.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Code.Types.IUnionFacet,System.Collections.Generic.IEnumerable{Metalama.Framework.Code.Types.IUnionFacet}},System.Boolean)
+  - Metalama.Framework.Code.Types.IUnionFacet.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Code.Types.IUnionFacet})
+  - Metalama.Framework.Code.Types.IUnionFacet.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.Code.Types.IUnionFacet.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Code.Types.IUnionFacet.UnionKind
+  commentId: P:Metalama.Framework.Code.Types.IUnionFacet.UnionKind
+  id: UnionKind
+  parent: Metalama.Framework.Code.Types.IUnionFacet
+  langs:
+  - csharp
+  - vb
+  name: UnionKind
+  nameWithType: IUnionFacet.UnionKind
+  fullName: Metalama.Framework.Code.Types.IUnionFacet.UnionKind
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Types
+  summary: Gets the authoring form of the union.
+  example: []
+  syntax:
+    content: UnionKind UnionKind { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.Types.UnionKind
+    content.vb: ReadOnly Property UnionKind As UnionKind
+  overload: Metalama.Framework.Code.Types.IUnionFacet.UnionKind*
+- uid: Metalama.Framework.Code.Types.IUnionFacet.Cases
+  commentId: P:Metalama.Framework.Code.Types.IUnionFacet.Cases
+  id: Cases
+  parent: Metalama.Framework.Code.Types.IUnionFacet
+  langs:
+  - csharp
+  - vb
+  name: Cases
+  nameWithType: IUnionFacet.Cases
+  fullName: Metalama.Framework.Code.Types.IUnionFacet.Cases
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Types
+  summary: >-
+    Gets the cases of the union, in the order in which the creation members of the union declare them, which is the
+
+    order of the union header for a union declaration.
+  remarks: >-
+    <p>
+        The list is never empty for a well-formed union, because the language requires a union to have at least one
+        case.
+        </p>
+    <p>
+        A type occurs once in the list, as it does in the case set of the compiler. Two creation members that take the
+        same type therefore declare one case, whose <xref href="Metalama.Framework.Code.Types.IUnionCase.CreationMember" data-throw-if-not-resolved="false"></xref> is the first of the two.
+        </p>
+  example: []
+  syntax:
+    content: IReadOnlyList<IUnionCase> Cases { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Metalama.Framework.Code.Types.IUnionCase}
+    content.vb: ReadOnly Property Cases As IReadOnlyList(Of IUnionCase)
+  overload: Metalama.Framework.Code.Types.IUnionFacet.Cases*
+- uid: Metalama.Framework.Code.Types.IUnionFacet.ValueProperty
+  commentId: P:Metalama.Framework.Code.Types.IUnionFacet.ValueProperty
+  id: ValueProperty
+  parent: Metalama.Framework.Code.Types.IUnionFacet
+  langs:
+  - csharp
+  - vb
+  name: ValueProperty
+  nameWithType: IUnionFacet.ValueProperty
+  fullName: Metalama.Framework.Code.Types.IUnionFacet.ValueProperty
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.Types
+  summary: >-
+    Gets the <code>Value</code> property, which holds the value of the case that the union currently carries, or
+
+    <code>null</code> when the union has no such property. The compiler synthesizes the property for a union
+
+    declaration, and the language requires the attribute form to have one, so the value is <code>null</code> only for a
+
+    union that the compiler reports as ill-formed, which the code model of a design-time session does see.
+  remarks: >-
+    The property is the one that the compiler resolves, which is not necessarily declared by the union itself: the
+
+    attribute form may inherit it from a base type, and a union that has a union member provider interface
+
+    declares it on that interface.
+  example: []
+  syntax:
+    content: IProperty? ValueProperty { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IProperty
+    content.vb: ReadOnly Property ValueProperty As IProperty
+  overload: Metalama.Framework.Code.Types.IUnionFacet.ValueProperty*
