@@ -1,1 +1,0 @@
-// Error LAMA1000 on `Checkout`: `The aspect [RedirectLoggingAttribute] applied to 'Checkout' cannot add an interceptor to 'OrderService' because 'OrderService' is not contained in 'Checkout'.`

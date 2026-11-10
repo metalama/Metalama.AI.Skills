@@ -1,1 +1,0 @@
-// Error LAMA5154 on `Email`: `The 'Customer.Email' property is virtual, which is not supported by the [Observable] aspect. Remove the 'virtual' modifier, or exclude the property from the aspect with the [NotObservable] attribute.`

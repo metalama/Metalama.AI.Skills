@@ -13,11 +13,11 @@ internal class RegisterInstanceAttribute : ConstructorAspect
     {
         builder.IntroduceParameter(
             "instanceRegistry",
-            typeof(IInstanceRegistry).AsINamedType().ToNullable(),
+            TypeFactory.GetNamedType( typeof(IInstanceRegistry) ).ToNullable(),
             TypedConstant.Default( typeof(IInstanceRegistry) ),
             pullStrategy: PullStrategy.IntroduceParameterAndPull(
                 "instanceRegistry",
-                typeof(IInstanceRegistry).AsIType(),
+                TypeFactory.GetType( typeof(IInstanceRegistry) ),
                 TypedConstant.Default( typeof(IInstanceRegistry) ) ) );
 
         builder.AddInitializer( StatementFactory.Parse( "instanceRegistry.Register( this );" ) );

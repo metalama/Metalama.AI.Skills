@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Looks up the API documentation of the skill by type or member name.
+Looks up Metalama API documentation by type or member name.
 
 .DESCRIPTION
 PowerShell fallback for find-api.py, for environments without Python.
@@ -14,10 +14,10 @@ documentation block (summary, syntax, parameters, remarks) extracted from the
 DocFx YML — so you don't need to read the whole YML file.
 
 .EXAMPLE
-powershell -File scripts/find-api.ps1 MyType
+powershell -File scripts/find-api.ps1 OverrideMethodAspect
 
 .EXAMPLE
-pwsh -File scripts/find-api.ps1 MyNamespace.MyType.MyMethod
+pwsh -File scripts/find-api.ps1 Metalama.Framework.Advising.AdviceKind
 #>
 [CmdletBinding()]
 param(
@@ -80,9 +80,6 @@ $root = Find-SkillRoot
 $manifestPath = Join-Path (Join-Path $root 'api') '.manifest'
 $manifest = [System.IO.File]::ReadAllText($manifestPath) | ConvertFrom-Json
 $entries = @($manifest.PSObject.Properties)
-
-# A trailing '*' denotes all the overloads in a docfx xref; the manifest has no entry for it.
-$Query = $Query.TrimEnd('*')
 
 # Exact UID match first; otherwise case-insensitive substring match.
 $found = @($entries | Where-Object { $_.Name -ceq $Query })

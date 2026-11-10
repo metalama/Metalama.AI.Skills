@@ -1,1 +1,0 @@
-// Error LAMA0526 on `ProductCatalog`: `The aspect 'Indexer' cannot introduce the indexer 'ProductCatalog.this[]' into the type 'ProductCatalog' because the indexer has no parameter. An indexer must have at least one parameter.`

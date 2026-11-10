@@ -17,7 +17,7 @@ internal partial class FactoryLazyDependencyInjectionStrategy : DefaultDependenc
 
     public FactoryLazyDependencyInjectionStrategy( DependencyProperties properties ) : base( properties )
     {
-        _factoryType = typeof(IServiceFactory<>).AsINamedType()
+        _factoryType = TypeFactory.GetNamedType( typeof(IServiceFactory<>) )
             .WithTypeArguments( properties.DependencyType );
     }
 
@@ -61,7 +61,7 @@ internal partial class FactoryLazyDependencyInjectionStrategy : DefaultDependenc
     private bool TryAddFields( IAdviser<INamedType> adviser, IProperty property, TemplateArgs templateArgs )
     {
         // Introduce a field that stores the Func<IServiceFactory<T>>
-        var funcType = typeof(Func<>).AsINamedType().WithTypeArguments( _factoryType );
+        var funcType = ((INamedType) TypeFactory.GetType( typeof(Func<>) )).WithTypeArguments( _factoryType );
 
         var introduceFuncFieldResult = adviser.IntroduceField(
             property.Name + "Func",
@@ -115,7 +115,7 @@ internal partial class FactoryLazyDependencyInjectionStrategy : DefaultDependenc
             : base( properties, mainProperty )
         {
             this._funcField = funcField;
-            this._funcType = typeof(Func<>).AsINamedType().WithTypeArguments( factoryType ).ToNullable();
+            this._funcType = ((INamedType) TypeFactory.GetType( typeof(Func<>) )).WithTypeArguments( factoryType ).ToNullable();
         }
 
         protected override IFieldOrProperty AssignedFieldOrProperty => this._funcField;

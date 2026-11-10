@@ -257,21 +257,13 @@ items:
   - Metalama.Extensions.DependencyInjection
   namespace: Metalama.Extensions.DependencyInjection.Implementation
   summary: Gets the type of the constructor parameter.
-  remarks: >-
-    Typed <xref href="Metalama.Framework.Code.IDurableRef%601" data-throw-if-not-resolved="false"></xref> rather than <xref href="Metalama.Framework.Code.IRef%601" data-throw-if-not-resolved="false"></xref> so that the requirement is stated in the
-
-    type rather than left to the constructor, which already performed the conversion. A pull strategy is reachable
-
-    from a transitive aspect instance that the design-time pipeline stores per document, so a compilation-bound
-
-    reference here would pin the version it was created in for the whole editing session. See issue #1797.
   example: []
   syntax:
-    content: public IDurableRef<IType> ParameterType { get; }
+    content: public IRef<IType> ParameterType { get; }
     parameters: []
     return:
-      type: Metalama.Framework.Code.IDurableRef{Metalama.Framework.Code.IType}
-    content.vb: Public ReadOnly Property ParameterType As IDurableRef(Of IType)
+      type: Metalama.Framework.Code.IRef{Metalama.Framework.Code.IType}
+    content.vb: Public ReadOnly Property ParameterType As IRef(Of IType)
   overload: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.ParameterType*
 - uid: Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName
   commentId: P:Metalama.Extensions.DependencyInjection.Implementation.DefaultParameterPullStrategy.DependencyName

@@ -1,1 +1,0 @@
-// Error LAMA5208 on `Search`: `The 'SearchViewModel.Search(CancellationToken)' method has a CancellationToken parameter, but it does not return a Task and the Background property of the [Command] attribute is not set to true.`

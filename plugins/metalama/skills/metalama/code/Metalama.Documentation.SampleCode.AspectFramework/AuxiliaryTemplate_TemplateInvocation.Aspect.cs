@@ -44,7 +44,7 @@ public class CacheAttribute : OverrideMethodAspect
 
 public class CacheAndRetryAttribute : CacheAttribute
 {
-    public bool IncludeRetry { get; init; }
+    public bool IncludeRetry { get; set; }
 
     protected override void AroundCaching( TemplateInvocation templateInvocation )
     {

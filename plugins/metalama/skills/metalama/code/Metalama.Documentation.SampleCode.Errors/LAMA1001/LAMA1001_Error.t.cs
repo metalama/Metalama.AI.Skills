@@ -1,1 +1,0 @@
-// Error LAMA1001 on `Fabric`: `The interceptor method 'Logger.Write(string)' registered by the fabric Doc.LAMA1001.Error.Fabric cannot use the type 'Console' as an interception scope. A scope must be a namespace, a type, a member or the compilation, and it must be declared in the source code of the current project.`
