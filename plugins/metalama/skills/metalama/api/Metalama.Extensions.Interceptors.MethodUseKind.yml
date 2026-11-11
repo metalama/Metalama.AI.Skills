@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.MethodUseKind
+  commentId: T:Metalama.Extensions.Interceptors.MethodUseKind
+  id: MethodUseKind
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.MethodUseKind.Call
+  - Metalama.Extensions.Interceptors.MethodUseKind.DelegateCreation
+  - Metalama.Extensions.Interceptors.MethodUseKind.EventSubscription
+  - Metalama.Extensions.Interceptors.MethodUseKind.EventUnsubscription
+  - Metalama.Extensions.Interceptors.MethodUseKind.FunctionPointer
+  - Metalama.Extensions.Interceptors.MethodUseKind.None
+  langs:
+  - csharp
+  - vb
+  name: MethodUseKind
+  nameWithType: MethodUseKind
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind
+  type: Enum
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Kinds of use of a method at a site.
+  remarks: Later versions can add values. A new kind is presented to existing registrations.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum MethodUseKind
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum MethodUseKind
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.MethodUseKind.None
+  commentId: F:Metalama.Extensions.Interceptors.MethodUseKind.None
+  id: None
+  parent: Metalama.Extensions.Interceptors.MethodUseKind
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: MethodUseKind.None
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind.None
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: The default value, which is not a valid use of a method.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind
+- uid: Metalama.Extensions.Interceptors.MethodUseKind.Call
+  commentId: F:Metalama.Extensions.Interceptors.MethodUseKind.Call
+  id: Call
+  parent: Metalama.Extensions.Interceptors.MethodUseKind
+  langs:
+  - csharp
+  - vb
+  name: Call
+  nameWithType: MethodUseKind.Call
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind.Call
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: An invocation, for example <code>x.M(a)</code> or <code>E.M(x, a)</code>.
+  example: []
+  syntax:
+    content: Call = 1
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind
+- uid: Metalama.Extensions.Interceptors.MethodUseKind.DelegateCreation
+  commentId: F:Metalama.Extensions.Interceptors.MethodUseKind.DelegateCreation
+  id: DelegateCreation
+  parent: Metalama.Extensions.Interceptors.MethodUseKind
+  langs:
+  - csharp
+  - vb
+  name: DelegateCreation
+  nameWithType: MethodUseKind.DelegateCreation
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind.DelegateCreation
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    A method group converted to a delegate, for example <code>list.Select( Transform )</code>, <code>new Action( M )</code> or <code>var d = M;</code>. A
+
+    method group added to an event is an <xref href="Metalama.Extensions.Interceptors.MethodUseKind.EventSubscription" data-throw-if-not-resolved="false"></xref>, and a method group removed from an event is an
+
+    <xref href="Metalama.Extensions.Interceptors.MethodUseKind.EventUnsubscription" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: DelegateCreation = 2
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind
+- uid: Metalama.Extensions.Interceptors.MethodUseKind.FunctionPointer
+  commentId: F:Metalama.Extensions.Interceptors.MethodUseKind.FunctionPointer
+  id: FunctionPointer
+  parent: Metalama.Extensions.Interceptors.MethodUseKind
+  langs:
+  - csharp
+  - vb
+  name: FunctionPointer
+  nameWithType: MethodUseKind.FunctionPointer
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind.FunctionPointer
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: A method group converted to a function pointer, for example <code>&amp;Square</code>.
+  example: []
+  syntax:
+    content: FunctionPointer = 3
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind
+- uid: Metalama.Extensions.Interceptors.MethodUseKind.EventSubscription
+  commentId: F:Metalama.Extensions.Interceptors.MethodUseKind.EventSubscription
+  id: EventSubscription
+  parent: Metalama.Extensions.Interceptors.MethodUseKind
+  langs:
+  - csharp
+  - vb
+  name: EventSubscription
+  nameWithType: MethodUseKind.EventSubscription
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind.EventSubscription
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: A method group added to an event, for example <code>button.Click += OnClick;</code>.
+  remarks: >-
+    Intercepting the method group changes the identity of the handler. A handler added in the scope of the registration is therefore not
+
+    removed by an <xref href="Metalama.Extensions.Interceptors.MethodUseKind.EventUnsubscription" data-throw-if-not-resolved="false"></xref> outside the scope, and the reverse. A provider that does not intercept every
+
+    subscription and unsubscription of the handler returns <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionSite.Skip" data-throw-if-not-resolved="false"></xref> for this kind.
+  example: []
+  syntax:
+    content: EventSubscription = 4
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind
+- uid: Metalama.Extensions.Interceptors.MethodUseKind.EventUnsubscription
+  commentId: F:Metalama.Extensions.Interceptors.MethodUseKind.EventUnsubscription
+  id: EventUnsubscription
+  parent: Metalama.Extensions.Interceptors.MethodUseKind
+  langs:
+  - csharp
+  - vb
+  name: EventUnsubscription
+  nameWithType: MethodUseKind.EventUnsubscription
+  fullName: Metalama.Extensions.Interceptors.MethodUseKind.EventUnsubscription
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: A method group removed from an event, for example <code>button.Click -= OnClick;</code>.
+  remarks: >-
+    Intercepting the method group changes the identity of the handler, so the unsubscription removes the handler only when the matching
+
+    <xref href="Metalama.Extensions.Interceptors.MethodUseKind.EventSubscription" data-throw-if-not-resolved="false"></xref> is intercepted in the same way. A provider that does not intercept every subscription and unsubscription
+
+    of the handler returns <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionSite.Skip" data-throw-if-not-resolved="false"></xref> for this kind.
+  example: []
+  syntax:
+    content: EventUnsubscription = 5
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind

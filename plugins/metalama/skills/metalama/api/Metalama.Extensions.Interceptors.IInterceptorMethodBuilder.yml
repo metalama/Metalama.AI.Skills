@@ -1,0 +1,407 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  commentId: T:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  id: IInterceptorMethodBuilder
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverEligibility
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IExpression)
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.TypedConstant)
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetTypeArgument(Metalama.Framework.Code.ITypeParameter,Metalama.Framework.Code.IType)
+  langs:
+  - csharp
+  - vb
+  name: IInterceptorMethodBuilder
+  nameWithType: IInterceptorMethodBuilder
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Lets the delegate given to <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.Configure(System.Action%7bMetalama.Extensions.Interceptors.IInterceptorMethodBuilder%7d)" data-throw-if-not-resolved="false"></xref> shape the interceptor method that a template generates for a method
+
+    call.
+  remarks: >-
+    <p>
+
+    The <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> property is the builder of the generated method. It is created when it is first read, or after the delegates given
+
+    to <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.Configure(System.Action%7bMetalama.Extensions.Interceptors.IInterceptorMethodBuilder%7d)" data-throw-if-not-resolved="false"></xref> return. It then holds the signature that the engine derives from the intercepted method for
+
+    the placement given by the methods of <xref href="Metalama.Extensions.Interceptors.ITemplateInterception" data-throw-if-not-resolved="false"></xref> whose name starts with <code>PlaceIn</code>:
+
+    </p>
+
+    <ul><li>a receiver parameter, when the intercepted method has a receiver (see <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping" data-throw-if-not-resolved="false"></xref>);</li><li>the parameters of the intercepted method, without default values and without <code>params</code>;</li><li>the parameters that the template adds, which are its run-time parameters whose names are properties of the arguments
+
+    given by <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.WithArgs(System.Object)" data-throw-if-not-resolved="false"></xref>.</li></ul>
+
+    <p>
+
+    The delegate can change the name, the accessibility, the names and the types of the parameters, and the
+
+    attributes, and it can add parameters. The value of an added parameter is given by the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter%2cMetalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref>
+
+    method or by the property of the arguments that has its name, and it is passed at each call site. The reference kinds and the positions of
+
+    the receiver and argument parameters and the return type cannot change, and the derived type parameters cannot be renamed and can only gain
+
+    constraints: an attempt to do otherwise throws an <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref>. A type of a parameter can change to a type to
+
+    which the argument converts implicitly, and <code>meta.Proceed()</code> casts it back. A parameter passed by reference keeps its type. The
+
+    delegate can also add type parameters after the derived ones, and give their type arguments with the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetTypeArgument(Metalama.Framework.Code.ITypeParameter%2cMetalama.Framework.Code.IType)" data-throw-if-not-resolved="false"></xref> method.
+
+    </p>
+
+    <p>
+
+    The call sites whose generated methods have the same final signature, template, template arguments, tags, placement and granularity share
+
+    one generated method. The values of the added parameters and the type arguments of the added type parameters are not part of this
+
+    comparison.
+
+    </p>
+
+    <p>
+
+    The generated method is not visible in the code model to aspects, in any stage of the pipeline, and it is not in the code that the IDE
+
+    generates. <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> is a detached builder: its declaring type does not list it.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IInterceptorMethodBuilder
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IInterceptorMethodBuilder
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder})
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetTypeArgument(Metalama.Framework.Code.ITypeParameter,Metalama.Framework.Code.IType)
+  commentId: M:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetTypeArgument(Metalama.Framework.Code.ITypeParameter,Metalama.Framework.Code.IType)
+  id: SetTypeArgument(Metalama.Framework.Code.ITypeParameter,Metalama.Framework.Code.IType)
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: SetTypeArgument(ITypeParameter, IType)
+  nameWithType: IInterceptorMethodBuilder.SetTypeArgument(ITypeParameter, IType)
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetTypeArgument(Metalama.Framework.Code.ITypeParameter, Metalama.Framework.Code.IType)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Sets the type argument that the call site passes to a type parameter that the delegate added to the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> method builder.
+  remarks: >-
+    <p>
+
+    The derived type parameters of the interceptor method, which come from the intercepted method or from the calling type, are locked, and
+
+    the engine passes their type arguments. The delegate can add type parameters after them, for instance to make a parameter generic so
+
+    that the call sites whose arguments have different types share one interceptor method. Each added type parameter must receive a type
+
+    argument with this method. Otherwise, the site is not intercepted and LAMA1014 is reported.
+
+    </p>
+
+    <p>
+
+    The type arguments are not part of the key that deduplicates the interceptor methods, but the type parameters are. Two call sites whose
+
+    builders differ only by the type arguments therefore share one method. The template reads an added type parameter through the
+
+    <code>meta.Target.Method.TypeParameters</code> property. The <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter%2cMetalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref> method does the same for the
+
+    value of an added parameter.
+
+    </p>
+  example: []
+  syntax:
+    content: void SetTypeArgument(ITypeParameter typeParameter, IType typeArgument)
+    parameters:
+    - id: typeParameter
+      type: Metalama.Framework.Code.ITypeParameter
+      description: A type parameter that the delegate added to the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> method builder.
+    - id: typeArgument
+      type: Metalama.Framework.Code.IType
+      description: >-
+        The type argument at this call site, for instance the type of an argument given by the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context" data-throw-if-not-resolved="false"></xref>
+                    property.
+    content.vb: Sub SetTypeArgument(typeParameter As ITypeParameter, typeArgument As IType)
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetTypeArgument*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: >-
+      <code class="paramref">typeParameter</code> is not a type parameter that the delegate added to the interceptor
+                  method.
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IExpression)
+  id: SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.IExpression)
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: SetArgument(IParameter, IExpression)
+  nameWithType: IInterceptorMethodBuilder.SetArgument(IParameter, IExpression)
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter, Metalama.Framework.Code.IExpression)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Sets the value that the call site passes to a parameter that was added to the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> method builder, either by the template
+
+    or by the delegate.
+  remarks: >-
+    <p>
+
+    This method is an alternative to the property of the arguments that has the name of the parameter. Unlike the arguments, which are given
+
+    once by <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.WithArgs(System.Object)" data-throw-if-not-resolved="false"></xref>, it can use the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context" data-throw-if-not-resolved="false"></xref> property of the call site. A parameter cannot
+
+    receive a value from both: the site is then not intercepted and LAMA1014 is reported.
+
+    </p>
+
+    <p>
+
+    The values are not part of the key that deduplicates the interceptor methods, so the call sites that pass different values share one
+
+    method.
+
+    </p>
+  example: []
+  syntax:
+    content: void SetArgument(IParameter parameter, IExpression value)
+    parameters:
+    - id: parameter
+      type: Metalama.Framework.Code.IParameter
+      description: >-
+        An added parameter of the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> method builder, which follows the receiver and argument
+                    parameters.
+    - id: value
+      type: Metalama.Framework.Code.IExpression
+      description: >-
+        The value at this call site. It takes any form that the arguments of
+                    <xref href="Metalama.Extensions.Interceptors.IMethodResultFactory.RedirectToExistingMethod(Metalama.Framework.Code.IMethod)" data-throw-if-not-resolved="false"></xref> accept for a parameter, for instance a <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref> or a
+                    parameter of the calling member given by the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context" data-throw-if-not-resolved="false"></xref> property.
+    content.vb: Sub SetArgument(parameter As IParameter, value As IExpression)
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code class="paramref">parameter</code> is not an added parameter of the interceptor method.
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.TypedConstant)
+  commentId: M:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.TypedConstant)
+  id: SetArgument(Metalama.Framework.Code.IParameter,Metalama.Framework.Code.TypedConstant)
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: SetArgument(IParameter, TypedConstant)
+  nameWithType: IInterceptorMethodBuilder.SetArgument(IParameter, TypedConstant)
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter, Metalama.Framework.Code.TypedConstant)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gives the value of a parameter added to the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> method at this call site, as a constant.
+  remarks: >-
+    This method is equivalent to <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument(Metalama.Framework.Code.IParameter%2cMetalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref>, and exists because C# does not apply a user-defined
+
+    conversion to an interface type such as <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: void SetArgument(IParameter parameter, TypedConstant value)
+    parameters:
+    - id: parameter
+      type: Metalama.Framework.Code.IParameter
+      description: An added parameter of the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> method builder.
+    - id: value
+      type: Metalama.Framework.Code.TypedConstant
+      description: >-
+        The constant value at this call site. A value of a numeric type, of <xref href="System.Boolean" data-throw-if-not-resolved="false"></xref> or of <xref href="System.Char" data-throw-if-not-resolved="false"></xref> is
+                    converted implicitly to a <xref href="Metalama.Framework.Code.TypedConstant" data-throw-if-not-resolved="false"></xref>, for instance in <code>SetArgument( parameter, 42 )</code>, and a <xref href="System.String" data-throw-if-not-resolved="false"></xref> is
+                    converted explicitly, as in <code>SetArgument( parameter, (TypedConstant) name )</code>.
+    content.vb: Sub SetArgument(parameter As IParameter, value As TypedConstant)
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.SetArgument*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code class="paramref">parameter</code> is not an added parameter of the interceptor method.
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method
+  id: Method
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: Method
+  nameWithType: IInterceptorMethodBuilder.Method
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the builder of the generated interceptor method, pre-filled with the signature that the engine derives from the intercepted method.
+  example: []
+  syntax:
+    content: IMethodBuilder Method { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
+    content.vb: ReadOnly Property Method As IMethodBuilder
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method*
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping
+  id: ReceiverMapping
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: ReceiverMapping
+  nameWithType: IInterceptorMethodBuilder.ReceiverMapping
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets or sets how the receiver of the call is passed to the generated method. When it is <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter" data-throw-if-not-resolved="false"></xref>,
+
+    the first parameter of <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> receives the receiver. When it is <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref>,
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> is an instance method without a receiver parameter.
+  remarks: >-
+    <p>
+
+    The generated method is static by default: the value is <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter" data-throw-if-not-resolved="false"></xref> when the intercepted method has
+
+    a receiver, and <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.None" data-throw-if-not-resolved="false"></xref> when it is static. The only exception is a protected method of a base type of
+
+    the calling type, which a static method cannot call through a receiver parameter. <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisRequired" data-throw-if-not-resolved="false"></xref>
+
+    is then <code>true</code>, the value is <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref>, and it cannot change.
+
+    </p>
+
+    <p>
+
+    A delegate can change the value from <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter" data-throw-if-not-resolved="false"></xref> to <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref>,
+
+    and back, when <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisEligible" data-throw-if-not-resolved="false"></xref> is <code>true</code> and
+
+    <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisRequired" data-throw-if-not-resolved="false"></xref> is <code>false</code> (see <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverEligibility" data-throw-if-not-resolved="false"></xref>). It must do so before it
+
+    reads <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref>, because the mapping determines the signature of the method builder. The
+
+    <xref href="Metalama.Framework.Code.IMemberOrNamedType.IsStatic" data-throw-if-not-resolved="false"></xref> property of <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> then follows the mapping and cannot be changed: the method is an
+
+    instance method if and only if the mapping is <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+  example: []
+  syntax:
+    content: InterceptorReceiverMapping ReceiverMapping { get; set; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+    content.vb: Property ReceiverMapping As InterceptorReceiverMapping
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: >-
+      The value is set after <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> was read, it is set to
+                  <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref> when <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisEligible" data-throw-if-not-resolved="false"></xref> is <code>false</code>, it is set to
+                  <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter" data-throw-if-not-resolved="false"></xref> when <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisRequired" data-throw-if-not-resolved="false"></xref> is <code>true</code>, or it is
+                  set to <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.None" data-throw-if-not-resolved="false"></xref>.
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverEligibility
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverEligibility
+  id: ReceiverEligibility
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: ReceiverEligibility
+  nameWithType: IInterceptorMethodBuilder.ReceiverEligibility
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverEligibility
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets whether the receiver of the call can or must be mapped to the <code>this</code> of the generated method, at the current call site and at
+
+    every call site of its group.
+  remarks: >-
+    A delegate that maps the receiver to <code>this</code> when <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisEligibleForAllSites" data-throw-if-not-resolved="false"></xref> is
+
+    <code>true</code> generates one method for each group, either an instance method or a static method. When
+
+    <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisEligible" data-throw-if-not-resolved="false"></xref> is <code>false</code>, setting <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping" data-throw-if-not-resolved="false"></xref> to
+
+    <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref> or making <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Method" data-throw-if-not-resolved="false"></xref> an instance method throws an
+
+    <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref>. A protected method of a base type whose receiver cannot be mapped to <code>this</code> is not
+
+    intercepted, and the delegates do not run for it.
+  example: []
+  syntax:
+    content: InterceptorReceiverEligibility ReceiverEligibility { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorReceiverEligibility
+    content.vb: ReadOnly Property ReceiverEligibility As InterceptorReceiverEligibility
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverEligibility*
+- uid: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context
+  commentId: P:Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context
+  id: Context
+  parent: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: Context
+  nameWithType: IInterceptorMethodBuilder.Context
+  fullName: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the context of the call site for which the signature is built.
+  example: []
+  syntax:
+    content: IMethodInterceptionContext Context { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+    content.vb: ReadOnly Property Context As IMethodInterceptionContext
+  overload: Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.Context*

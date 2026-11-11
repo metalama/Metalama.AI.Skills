@@ -765,13 +765,11 @@ items:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
   summary: >-
-    Gets or sets the number of tasks over which the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend" data-throw-if-not-resolved="false"></xref> notifies its state as overloaded
+    Gets or sets the number of queued background tasks above which the Redis caching backend is in an overloaded state.
 
-    through the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloaded" data-throw-if-not-resolved="false"></xref> property and the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged" data-throw-if-not-resolved="false"></xref>
+    The default value is 125. While the backend is in the overloaded state, the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref> component
 
-    event. The default value is 125. The <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref> component stops processing real-time eviction and expiration
-
-    notifications when the component is overloaded.
+    stops processing real-time eviction and expiration notifications.
   example: []
   syntax:
     content: public int BackgroundTasksOverloadedThreshold { get; init; }

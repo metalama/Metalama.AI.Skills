@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions
+  commentId: T:Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions
+  id: SourceExpressionExtensions
+  parent: Metalama.Framework.Engine.CodeModel
+  children:
+  - Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions.GetSourceSyntax(Metalama.Framework.Code.IExpression)
+  langs:
+  - csharp
+  - vb
+  name: SourceExpressionExtensions
+  nameWithType: SourceExpressionExtensions
+  fullName: Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions
+  type: Class
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: Extension methods that give access to the Roslyn syntax of expressions of the code model.
+  example: []
+  syntax:
+    content: public static class SourceExpressionExtensions
+    content.vb: Public Module SourceExpressionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions.GetSourceSyntax(Metalama.Framework.Code.IExpression)
+  commentId: M:Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions.GetSourceSyntax(Metalama.Framework.Code.IExpression)
+  id: GetSourceSyntax(Metalama.Framework.Code.IExpression)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSourceSyntax(IExpression)
+  nameWithType: SourceExpressionExtensions.GetSourceSyntax(IExpression)
+  fullName: Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions.GetSourceSyntax(Metalama.Framework.Code.IExpression)
+  type: Method
+  assemblies:
+  - Metalama.Framework.Sdk
+  namespace: Metalama.Framework.Engine.CodeModel
+  summary: >-
+    Gets the source <xref href="Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax" data-throw-if-not-resolved="false"></xref> of an expression that wraps source syntax, or <code>null</code> when the expression does not wrap
+
+    source syntax, for example a generated expression or a parameter.
+  remarks: >-
+    <p>
+        The method is a typed view of <xref href="Metalama.Framework.Code.ISourceExpression.AsSyntaxNode" data-throw-if-not-resolved="false"></xref>. It returns the node of the source syntax tree, without the cast
+        that the code generation can add.
+        </p>
+    <p>
+        The public API of <code>Metalama.Framework</code> does not reference Roslyn, so <xref href="Metalama.Framework.Code.ISourceExpression.AsSyntaxNode" data-throw-if-not-resolved="false"></xref> is typed
+        <xref href="System.Object" data-throw-if-not-resolved="false"></xref>, and a <xref href="Metalama.Framework.Code.ISourceExpression" data-throw-if-not-resolved="false"></xref> is not always a source expression whose node is an
+        <xref href="Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax" data-throw-if-not-resolved="false"></xref>. This method gives code that references the SDK, for instance an extension or the provider of an
+        interceptor, the syntax of a source expression that the code model exposes: the initializer of a field, a property or an event, or an
+        inspection-only expression created by <code>SourceExpressionFactory.CreateInspectionOnly</code>, such as an argument of an intercepted call.
+        The caller can then inspect the syntax, for instance to recognize a lambda, an interpolated string or a <code>nameof</code> expression, which
+        <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> does not describe.
+        </p>
+  example: []
+  syntax:
+    content: public static ExpressionSyntax? GetSourceSyntax(this IExpression expression)
+    parameters:
+    - id: expression
+      type: Metalama.Framework.Code.IExpression
+      description: The expression.
+    return:
+      type: Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax
+    content.vb: Public Shared Function GetSourceSyntax(expression As IExpression) As ExpressionSyntax
+  overload: Metalama.Framework.Engine.CodeModel.SourceExpressionExtensions.GetSourceSyntax*

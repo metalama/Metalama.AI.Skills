@@ -1,0 +1,227 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  commentId: T:Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  id: IMethodInterceptionBuilder
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.ExcludingLambdas
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.IncludingNestedTypes
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(Metalama.Framework.Code.INamedType)
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(System.Type)
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Types(System.Func{Metalama.Framework.Code.INamedType,System.Boolean})
+  langs:
+  - csharp
+  - vb
+  name: IMethodInterceptionBuilder
+  nameWithType: IMethodInterceptionBuilder
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The first stage of the description of a method interception, which the delegate given to <code>InterceptMethods</code> receives. It sets where
+
+    the call sites are, and then selects the type that declares the intercepted methods.
+  remarks: >-
+    <p>
+
+    A description is a chain of immutable values: each method returns a new value, and the value on which it is called is unchanged. The
+
+    delegate returns the last value of the chain, and every value that the delegate creates must be part of the returned chain. A value that is
+
+    created and then not used, for instance <code>interception.WithGranularity( … );</code> without an assignment, is an error, which is reported when
+
+    the delegate returns. A chain can contain at most 64 values.
+
+    </p>
+
+    <p>
+
+    The stages are, in order: where the call sites are (this interface), what is called (<xref href="Metalama.Extensions.Interceptors.ITypeSelection" data-throw-if-not-resolved="false"></xref> and
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodSelection" data-throw-if-not-resolved="false"></xref>), how the call is intercepted (<xref href="Metalama.Extensions.Interceptors.IMethodResultFactory" data-throw-if-not-resolved="false"></xref>), and how the interceptor method is
+
+    generated (<xref href="Metalama.Extensions.Interceptors.ITemplateInterception" data-throw-if-not-resolved="false"></xref>).
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IMethodInterceptionBuilder
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IMethodInterceptionBuilder
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder})
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.IncludingNestedTypes
+  commentId: M:Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.IncludingNestedTypes
+  id: IncludingNestedTypes
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  langs:
+  - csharp
+  - vb
+  name: IncludingNestedTypes()
+  nameWithType: IMethodInterceptionBuilder.IncludingNestedTypes()
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.IncludingNestedTypes()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Includes the call sites in the types nested in the scope type. By default, a type scope contains only the members that the type itself
+
+    declares.
+  example: []
+  syntax:
+    content: IMethodInterceptionBuilder IncludingNestedTypes()
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+    content.vb: Function IncludingNestedTypes() As IMethodInterceptionBuilder
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.IncludingNestedTypes*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.ExcludingLambdas
+  commentId: M:Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.ExcludingLambdas
+  id: ExcludingLambdas
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  langs:
+  - csharp
+  - vb
+  name: ExcludingLambdas()
+  nameWithType: IMethodInterceptionBuilder.ExcludingLambdas()
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.ExcludingLambdas()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Excludes the call sites in lambda expressions, anonymous methods and local functions.
+  example: []
+  syntax:
+    content: IMethodInterceptionBuilder ExcludingLambdas()
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+    content.vb: Function ExcludingLambdas() As IMethodInterceptionBuilder
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.ExcludingLambdas*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(System.Type)
+  commentId: M:Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(System.Type)
+  id: Type(System.Type)
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  langs:
+  - csharp
+  - vb
+  name: Type(Type)
+  nameWithType: IMethodInterceptionBuilder.Type(Type)
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Selects the type, given as a reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref>, that declares the intercepted methods.
+  example: []
+  syntax:
+    content: ITypeSelection Type(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: >-
+        The type. A generic type definition, for instance <code>typeof(List&lt;&gt;)</code>, selects the methods of all its
+                    constructions.
+    return:
+      type: Metalama.Extensions.Interceptors.ITypeSelection
+    content.vb: Function Type(type As Type) As ITypeSelection
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">type</code> is <code>null</code>.
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(Metalama.Framework.Code.INamedType)
+  id: Type(Metalama.Framework.Code.INamedType)
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  langs:
+  - csharp
+  - vb
+  name: Type(INamedType)
+  nameWithType: IMethodInterceptionBuilder.Type(INamedType)
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type(Metalama.Framework.Code.INamedType)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Selects the type of the code model that declares the intercepted methods.
+  example: []
+  syntax:
+    content: ITypeSelection Type(INamedType type)
+    parameters:
+    - id: type
+      type: Metalama.Framework.Code.INamedType
+      description: The type. Its definition is selected, so the methods of all its constructions are selected.
+    return:
+      type: Metalama.Extensions.Interceptors.ITypeSelection
+    content.vb: Function Type(type As INamedType) As ITypeSelection
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Type*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">type</code> is <code>null</code>.
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Types(System.Func{Metalama.Framework.Code.INamedType,System.Boolean})
+  commentId: M:Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Types(System.Func{Metalama.Framework.Code.INamedType,System.Boolean})
+  id: Types(System.Func{Metalama.Framework.Code.INamedType,System.Boolean})
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder
+  langs:
+  - csharp
+  - vb
+  name: Types(Func<INamedType, bool>)
+  nameWithType: IMethodInterceptionBuilder.Types(Func<INamedType, bool>)
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Types(System.Func<Metalama.Framework.Code.INamedType, bool>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Selects the types that declare the intercepted methods with a predicate over type definitions.
+  remarks: >-
+    The methods must then be given by name with <xref href="Metalama.Extensions.Interceptors.ITypeFilterSelection.Methods(System.String%5b%5d)" data-throw-if-not-resolved="false"></xref>, because the engine finds the call sites by the
+
+    name of the called method.
+  example: []
+  syntax:
+    content: ITypeFilterSelection Types(Func<INamedType, bool> predicate)
+    parameters:
+    - id: predicate
+      type: System.Func{Metalama.Framework.Code.INamedType,System.Boolean}
+      description: >-
+        The predicate. It is stored with the registration, so it must not capture a declaration or a compilation. It is
+                    invoked once for each type definition that declares a method of a selected name.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.ITypeFilterSelection
+    content.vb: Function Types(predicate As Func(Of INamedType, Boolean)) As ITypeFilterSelection
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Types*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">predicate</code> is <code>null</code>.
+  nameWithType.vb: IMethodInterceptionBuilder.Types(Func(Of INamedType, Boolean))
+  fullName.vb: Metalama.Extensions.Interceptors.IMethodInterceptionBuilder.Types(System.Func(Of Metalama.Framework.Code.INamedType, Boolean))
+  name.vb: Types(Func(Of INamedType, Boolean))

@@ -1,0 +1,193 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.InterceptionQueryExtensions
+  commentId: T:Metalama.Extensions.Interceptors.InterceptionQueryExtensions
+  id: InterceptionQueryExtensions
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  - Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  langs:
+  - csharp
+  - vb
+  name: InterceptionQueryExtensions
+  nameWithType: InterceptionQueryExtensions
+  fullName: Metalama.Extensions.Interceptors.InterceptionQueryExtensions
+  type: Class
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Provides extension methods that register interceptors through a query. Each declaration selected by the query is a scope: the uses of
+
+    the selected methods located in its code are intercepted.
+  remarks: >-
+    <p>
+
+    Fabrics call these methods on their amender, and aspects can call them on <xref href="Metalama.Framework.Aspects.IAspectBuilder%601.Outbound" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+
+    <p>
+
+    Registration only records the interception. Sites are found later, in the source compilation, after all aspects and fabrics have run.
+
+    Sites in code introduced by aspects are never intercepted.
+
+    </p>
+
+    <p>
+
+    At most one interceptor can apply to a site. When several registrations match the same site, each one is evaluated, and it is an error
+
+    when more than one of them returns a result other than <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionSite.Skip" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+
+    <p>
+
+    The selected methods are the same for every scope declaration. A result that depends on the scope declaration is chosen per site with
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>, which reads <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration" data-throw-if-not-resolved="false"></xref> and, for a tagged query,
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+
+    <p>
+
+    Only call sites written in the source code are intercepted. A call that the compiler, the runtime or a library makes on behalf of the
+
+    code is not intercepted, because no call exists at the site. For instance, <code>ToString</code> cannot be intercepted reliably: an interpolated
+
+    string, a string concatenation, <code>Console.WriteLine( object )</code> and <code>StringBuilder.Append( object )</code> call it inside the runtime.
+
+    The same applies to <code>Equals</code> and <code>GetHashCode</code> called by collections, to <code>Dispose</code> called by a <code>using</code> statement, and
+
+    to <code>GetEnumerator</code> called by a <code>foreach</code> statement.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public static class InterceptionQueryExtensions
+    content.vb: >-
+      <CompileTime>
+
+      Public Module InterceptionQueryExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  commentId: M:Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  id: InterceptMethods``1(Metalama.Framework.Fabrics.IQuery{``0},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  isExtensionMethod: true
+  parent: Metalama.Extensions.Interceptors.InterceptionQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: InterceptMethods<TScope>(IQuery<TScope>, Func<IMethodInterceptionBuilder, IMethodInterception>)
+  nameWithType: InterceptionQueryExtensions.InterceptMethods<TScope>(IQuery<TScope>, Func<IMethodInterceptionBuilder, IMethodInterception>)
+  fullName: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods<TScope>(Metalama.Framework.Fabrics.IQuery<TScope>, System.Func<Metalama.Extensions.Interceptors.IMethodInterceptionBuilder, Metalama.Extensions.Interceptors.IMethodInterception>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Registers the interception of the uses of methods in the declarations selected by a query, described by a delegate.
+  example: []
+  syntax:
+    content: 'public static void InterceptMethods<TScope>(this IQuery<TScope> query, Func<IMethodInterceptionBuilder, IMethodInterception> build) where TScope : class, IDeclaration'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.IQuery{{TScope}}
+      description: A query that selects the scope declarations.
+    - id: build
+      type: System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception}
+      description: >-
+        A delegate that describes the interception, as in
+                    <xref href="Metalama.Extensions.Interceptors.InterceptionAdviserExtensions.InterceptMethods%60%601(Metalama.Framework.Aspects.IAdviser%7b%60%600%7d%2cSystem.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionBuilder%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>.
+                    It is invoked once, before this method returns.
+    typeParameters:
+    - id: TScope
+    content.vb: Public Shared Sub InterceptMethods(Of TScope As {Class, IDeclaration})(query As IQuery(Of TScope), build As Func(Of IMethodInterceptionBuilder, IMethodInterception))
+  overload: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">build</code> is <code>null</code>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The delegate returned <code>null</code>, or a value that does not describe a complete interception.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: >-
+      The delegate discarded a value that it created, or the project that executes the registration
+                  does not reference the <code>Metalama.Extensions.Interceptors</code> package.
+  nameWithType.vb: InterceptionQueryExtensions.InterceptMethods(Of TScope)(IQuery(Of TScope), Func(Of IMethodInterceptionBuilder, IMethodInterception))
+  fullName.vb: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods(Of TScope)(Metalama.Framework.Fabrics.IQuery(Of TScope), System.Func(Of Metalama.Extensions.Interceptors.IMethodInterceptionBuilder, Metalama.Extensions.Interceptors.IMethodInterception))
+  name.vb: InterceptMethods(Of TScope)(IQuery(Of TScope), Func(Of IMethodInterceptionBuilder, IMethodInterception))
+- uid: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  commentId: M:Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  id: InterceptMethods``2(Metalama.Framework.Fabrics.ITaggedQuery{``0,``1},System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception})
+  isExtensionMethod: true
+  parent: Metalama.Extensions.Interceptors.InterceptionQueryExtensions
+  langs:
+  - csharp
+  - vb
+  name: InterceptMethods<TScope, TTag>(ITaggedQuery<TScope, TTag>, Func<IMethodInterceptionBuilder, IMethodInterception>)
+  nameWithType: InterceptionQueryExtensions.InterceptMethods<TScope, TTag>(ITaggedQuery<TScope, TTag>, Func<IMethodInterceptionBuilder, IMethodInterception>)
+  fullName: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods<TScope, TTag>(Metalama.Framework.Fabrics.ITaggedQuery<TScope, TTag>, System.Func<Metalama.Extensions.Interceptors.IMethodInterceptionBuilder, Metalama.Extensions.Interceptors.IMethodInterception>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Registers the interception of the uses of methods in the declarations selected by a tagged query, described by a delegate. The tag of
+
+    each declaration is available to <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref> through <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public static void InterceptMethods<TScope, TTag>(this ITaggedQuery<TScope, TTag> query, Func<IMethodInterceptionBuilder, IMethodInterception> build) where TScope : class, IDeclaration'
+    parameters:
+    - id: query
+      type: Metalama.Framework.Fabrics.ITaggedQuery{{TScope},{TTag}}
+      description: A tagged query that selects the scope declarations.
+    - id: build
+      type: System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionBuilder,Metalama.Extensions.Interceptors.IMethodInterception}
+      description: >-
+        A delegate that describes the interception, as in
+                    <xref href="Metalama.Extensions.Interceptors.InterceptionAdviserExtensions.InterceptMethods%60%601(Metalama.Framework.Aspects.IAdviser%7b%60%600%7d%2cSystem.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionBuilder%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>.
+                    It is invoked once, before this method returns.
+    typeParameters:
+    - id: TScope
+    - id: TTag
+    content.vb: Public Shared Sub InterceptMethods(Of TScope As {Class, IDeclaration}, TTag)(query As ITaggedQuery(Of TScope, TTag), build As Func(Of IMethodInterceptionBuilder, IMethodInterception))
+  overload: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">build</code> is <code>null</code>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The delegate returned <code>null</code>, or a value that does not describe a complete interception.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: >-
+      The delegate discarded a value that it created, or the project that executes the registration
+                  does not reference the <code>Metalama.Extensions.Interceptors</code> package.
+  nameWithType.vb: InterceptionQueryExtensions.InterceptMethods(Of TScope, TTag)(ITaggedQuery(Of TScope, TTag), Func(Of IMethodInterceptionBuilder, IMethodInterception))
+  fullName.vb: Metalama.Extensions.Interceptors.InterceptionQueryExtensions.InterceptMethods(Of TScope, TTag)(Metalama.Framework.Fabrics.ITaggedQuery(Of TScope, TTag), System.Func(Of Metalama.Extensions.Interceptors.IMethodInterceptionBuilder, Metalama.Extensions.Interceptors.IMethodInterception))
+  name.vb: InterceptMethods(Of TScope, TTag)(ITaggedQuery(Of TScope, TTag), Func(Of IMethodInterceptionBuilder, IMethodInterception))

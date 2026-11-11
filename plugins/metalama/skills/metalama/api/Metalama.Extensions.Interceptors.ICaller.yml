@@ -1,0 +1,308 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.ICaller
+  commentId: T:Metalama.Extensions.Interceptors.ICaller
+  id: ICaller
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.ICaller.CanAccessThis
+  - Metalama.Extensions.Interceptors.ICaller.IsInAsyncFunction
+  - Metalama.Extensions.Interceptors.ICaller.IsInNestedFunction
+  - Metalama.Extensions.Interceptors.ICaller.IsInStaticFunction
+  - Metalama.Extensions.Interceptors.ICaller.Kind
+  - Metalama.Extensions.Interceptors.ICaller.Member
+  - Metalama.Extensions.Interceptors.ICaller.Method
+  - Metalama.Extensions.Interceptors.ICaller.Parameters
+  langs:
+  - csharp
+  - vb
+  name: ICaller
+  nameWithType: ICaller
+  fullName: Metalama.Extensions.Interceptors.ICaller
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Describes the code that contains a site: the member, the kind of code and the function.'
+  remarks: >-
+    The object has the lifetime of the object that exposes it. An object exposed by an <xref href="Metalama.Extensions.Interceptors.IInterceptionContext" data-throw-if-not-resolved="false"></xref> must not be stored
+
+    after the delegate that received the context returns. An object exposed by <xref href="Metalama.Extensions.Interceptors.IInterceptionInfo.Caller" data-throw-if-not-resolved="false"></xref> is valid
+
+    during the expansion of the template.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface ICaller
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface ICaller
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.ICaller.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.ICaller,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.ICaller}},System.Boolean)
+  - Metalama.Extensions.Interceptors.ICaller.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.ICaller})
+  - Metalama.Extensions.Interceptors.ICaller.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.ICaller.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.ICaller.Kind
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.Kind
+  id: Kind
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: ICaller.Kind
+  fullName: Metalama.Extensions.Interceptors.ICaller.Kind
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the kind of code that immediately contains the site.
+  example: []
+  syntax:
+    content: CallerKind Kind { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.CallerKind
+    content.vb: ReadOnly Property Kind As CallerKind
+  overload: Metalama.Extensions.Interceptors.ICaller.Kind*
+- uid: Metalama.Extensions.Interceptors.ICaller.Member
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.Member
+  id: Member
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: Member
+  nameWithType: ICaller.Member
+  fullName: Metalama.Extensions.Interceptors.ICaller.Member
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the innermost member of the code model that contains the site: a method, a constructor, an operator or an accessor, the field,
+
+    property or event of an initializer, the entry point for top-level statements, or the primary constructor for primary-constructor base
+
+    arguments. Lambdas and local functions are attributed to their enclosing member.
+  remarks: The type that contains the site is the <xref href="Metalama.Framework.Code.IMemberOrNamedType.DeclaringType" data-throw-if-not-resolved="false"></xref> of this member.
+  example: []
+  syntax:
+    content: IMember Member { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMember
+    content.vb: ReadOnly Property Member As IMember
+  overload: Metalama.Extensions.Interceptors.ICaller.Member*
+- uid: Metalama.Extensions.Interceptors.ICaller.Method
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.Method
+  id: Method
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: Method
+  nameWithType: ICaller.Method
+  fullName: Metalama.Extensions.Interceptors.ICaller.Method
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: 'Gets <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref> as a method: an ordinary method, an operator, an accessor, or the entry point for top-level statements.'
+  remarks: >-
+    The parameters of the method can be passed to an existing interceptor through <xref href="Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(System.Object)" data-throw-if-not-resolved="false"></xref>, because
+
+    an <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref> is an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IMethod Method { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMethod
+    content.vb: ReadOnly Property Method As IMethod
+  overload: Metalama.Extensions.Interceptors.ICaller.Method*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: >-
+      <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref> is not a method, for instance a constructor, or the field, property
+                  or event of an initializer.
+- uid: Metalama.Extensions.Interceptors.ICaller.Parameters
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.Parameters
+  id: Parameters
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: Parameters
+  nameWithType: ICaller.Parameters
+  fullName: Metalama.Extensions.Interceptors.ICaller.Parameters
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the parameters of <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref> when it is a method, a constructor or an indexer. The parameters of a lambda or a local
+
+    function that contains the site are not included.
+  remarks: >-
+    <p>
+
+    A parameter can be passed to an existing interceptor through <xref href="Metalama.Extensions.Interceptors.IExistingMethodInterception.WithArgs(System.Object)" data-throw-if-not-resolved="false"></xref>, because an
+
+    <xref href="Metalama.Framework.Code.IParameter" data-throw-if-not-resolved="false"></xref> is an <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref>. It is written at the site as its name.
+
+    </p>
+
+    <p>
+
+    When a lambda or a local function that contains the site declares a parameter or a local variable with the same name, the linker renames
+
+    this variable in the compiled code, so that the name designates the parameter of the member, and reports the warning LAMA0661.
+
+    </p>
+
+    <p>
+
+    The generated code does not compile when a lambda or a local function that contains the site cannot capture the parameter. Before passing
+
+    the parameter, check that <xref href="Metalama.Extensions.Interceptors.ICaller.IsInNestedFunction" data-throw-if-not-resolved="false"></xref> is <code>false</code>, or that <xref href="Metalama.Extensions.Interceptors.ICaller.IsInStaticFunction" data-throw-if-not-resolved="false"></xref> is <code>false</code>, that
+
+    the <xref href="Metalama.Framework.Code.IHasType.RefKind" data-throw-if-not-resolved="false"></xref> of the parameter is <xref href="Metalama.Framework.Code.RefKind.None" data-throw-if-not-resolved="false"></xref>, and that its type is not a <code>ref struct</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: IParameterList Parameters { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.Collections.IParameterList
+    content.vb: ReadOnly Property Parameters As IParameterList
+  overload: Metalama.Extensions.Interceptors.ICaller.Parameters*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: >-
+      <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref> has no parameters, because it is a field, a property or an
+                  event.
+- uid: Metalama.Extensions.Interceptors.ICaller.IsInAsyncFunction
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.IsInAsyncFunction
+  id: IsInAsyncFunction
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: IsInAsyncFunction
+  nameWithType: ICaller.IsInAsyncFunction
+  fullName: Metalama.Extensions.Interceptors.ICaller.IsInAsyncFunction
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets a value indicating whether the innermost enclosing method, local function or lambda is <code>async</code>.
+  example: []
+  syntax:
+    content: bool IsInAsyncFunction { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsInAsyncFunction As Boolean
+  overload: Metalama.Extensions.Interceptors.ICaller.IsInAsyncFunction*
+- uid: Metalama.Extensions.Interceptors.ICaller.IsInNestedFunction
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.IsInNestedFunction
+  id: IsInNestedFunction
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: IsInNestedFunction
+  nameWithType: ICaller.IsInNestedFunction
+  fullName: Metalama.Extensions.Interceptors.ICaller.IsInNestedFunction
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets a value indicating whether the site is inside a lambda, an anonymous method or a local function of the member.
+  example: []
+  syntax:
+    content: bool IsInNestedFunction { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsInNestedFunction As Boolean
+  overload: Metalama.Extensions.Interceptors.ICaller.IsInNestedFunction*
+- uid: Metalama.Extensions.Interceptors.ICaller.IsInStaticFunction
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.IsInStaticFunction
+  id: IsInStaticFunction
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: IsInStaticFunction
+  nameWithType: ICaller.IsInStaticFunction
+  fullName: Metalama.Extensions.Interceptors.ICaller.IsInStaticFunction
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets a value indicating whether a <code>static</code> lambda, anonymous method or local function contains the site. Such a function cannot
+
+    reference <code>this</code> or the parameters and local variables of the functions that contain it.
+  example: []
+  syntax:
+    content: bool IsInStaticFunction { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsInStaticFunction As Boolean
+  overload: Metalama.Extensions.Interceptors.ICaller.IsInStaticFunction*
+- uid: Metalama.Extensions.Interceptors.ICaller.CanAccessThis
+  commentId: P:Metalama.Extensions.Interceptors.ICaller.CanAccessThis
+  id: CanAccessThis
+  parent: Metalama.Extensions.Interceptors.ICaller
+  langs:
+  - csharp
+  - vb
+  name: CanAccessThis
+  nameWithType: ICaller.CanAccessThis
+  fullName: Metalama.Extensions.Interceptors.ICaller.CanAccessThis
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets a value indicating whether code at the site can reference <code>this</code>. The value is <code>false</code> in static members, static
+
+    lambdas, static local functions, field initializers, constructor initializers, and lambdas or local functions of struct members.
+  remarks: >-
+    When the value is <code>true</code>, a delegate that runs for the site, such as the delegate given to <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>,
+
+    gets the instance of the caller with <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.This" data-throw-if-not-resolved="false"></xref>, whose type is the declaring type
+
+    of <xref href="Metalama.Extensions.Interceptors.ICaller.Member" data-throw-if-not-resolved="false"></xref>. When the value is <code>false</code>, <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.This" data-throw-if-not-resolved="false"></xref> throws an
+
+    <xref href="System.InvalidOperationException" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: bool CanAccessThis { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CanAccessThis As Boolean
+  overload: Metalama.Extensions.Interceptors.ICaller.CanAccessThis*
