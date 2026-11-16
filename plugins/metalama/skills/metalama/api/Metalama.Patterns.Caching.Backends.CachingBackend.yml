@@ -62,7 +62,6 @@ items:
   - Metalama.Patterns.Caching.Backends.CachingBackend.SetItemAsync(System.String,Metalama.Patterns.Caching.Implementation.CacheItem,System.Threading.CancellationToken)
   - Metalama.Patterns.Caching.Backends.CachingBackend.SetItemAsyncCore(System.String,Metalama.Patterns.Caching.Implementation.CacheItem,System.Threading.CancellationToken)
   - Metalama.Patterns.Caching.Backends.CachingBackend.SetItemCore(System.String,Metalama.Patterns.Caching.Implementation.CacheItem)
-  - Metalama.Patterns.Caching.Backends.CachingBackend.ShouldWaitForDisposalInProgress
   - Metalama.Patterns.Caching.Backends.CachingBackend.Status
   - Metalama.Patterns.Caching.Backends.CachingBackend.SupportedFeatures
   - Metalama.Patterns.Caching.Backends.CachingBackend.TimeProvider
@@ -1507,40 +1506,6 @@ items:
   nameWithType.vb: CachingBackend.Dispose(Boolean, CancellationToken)
   fullName.vb: Metalama.Patterns.Caching.Backends.CachingBackend.Dispose(Boolean, System.Threading.CancellationToken)
   name.vb: Dispose(Boolean, CancellationToken)
-- uid: Metalama.Patterns.Caching.Backends.CachingBackend.ShouldWaitForDisposalInProgress
-  commentId: M:Metalama.Patterns.Caching.Backends.CachingBackend.ShouldWaitForDisposalInProgress
-  id: ShouldWaitForDisposalInProgress
-  parent: Metalama.Patterns.Caching.Backends.CachingBackend
-  langs:
-  - csharp
-  - vb
-  name: ShouldWaitForDisposalInProgress()
-  nameWithType: CachingBackend.ShouldWaitForDisposalInProgress()
-  fullName: Metalama.Patterns.Caching.Backends.CachingBackend.ShouldWaitForDisposalInProgress()
-  type: Method
-  assemblies:
-  - Metalama.Patterns.Caching.Backend
-  namespace: Metalama.Patterns.Caching.Backends
-  summary: >-
-    Determines whether a call to <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.Dispose" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.DisposeAsync" data-throw-if-not-resolved="false"></xref> waits for the completion of another disposal
-
-    that is already in progress. This protected method is part of the implementation API and is meant to be overridden in user code, not invoked.
-  remarks: >-
-    Override this method when the disposal in progress waits for code that can itself call <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.Dispose" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.DisposeAsync" data-throw-if-not-resolved="false"></xref>,
-
-    for instance the processing of a message by a background receive loop. When this method is called from such code, return <code>false</code>,
-
-    because the wait for the disposal in progress would cause a deadlock.
-  example: []
-  syntax:
-    content: protected virtual bool ShouldWaitForDisposalInProgress()
-    return:
-      type: System.Boolean
-      description: >-
-        <code>true</code> if the call waits for the disposal in progress, or <code>false</code> if the call returns before the disposal in progress completes.
-                    The default implementation returns <code>true</code>.
-    content.vb: Protected Overridable Function ShouldWaitForDisposalInProgress() As Boolean
-  overload: Metalama.Patterns.Caching.Backends.CachingBackend.ShouldWaitForDisposalInProgress*
 - uid: Metalama.Patterns.Caching.Backends.CachingBackend.DisposeCore(System.Boolean,System.Threading.CancellationToken)
   commentId: M:Metalama.Patterns.Caching.Backends.CachingBackend.DisposeCore(System.Boolean,System.Threading.CancellationToken)
   id: DisposeCore(System.Boolean,System.Threading.CancellationToken)

@@ -1,1 +1,0 @@
-// Error LAMA0114 on `Multiply`: `Cannot reference 'this' in an advice applied to method 'Calculator.Multiply(int, int)' because the target method is static.`

@@ -1,1 +1,0 @@
-// Error LAMA0507 on `Product`: `The aspect 'Describe' cannot introduce virtual member 'Product.GetDescription()' because it is also static.`

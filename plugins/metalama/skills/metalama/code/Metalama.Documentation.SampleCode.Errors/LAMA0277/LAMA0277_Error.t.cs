@@ -1,1 +1,0 @@
-// Error LAMA0277 on `T`: `The template 'TypeLoggerAttribute.WriteTypeName<T>()' cannot be called with the type argument 'T' because this type argument contains a run-time type parameter of the calling template.`

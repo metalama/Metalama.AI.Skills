@@ -1,1 +1,0 @@
-// Error LAMA0513 on `Product`: `The aspect 'Entity' cannot implement interface type 'IEntity<T>' in the type 'Product' because it is a canonical generic instance. Specify all type arguments of the generic interface type. If needed, use type parameters of the target type.`

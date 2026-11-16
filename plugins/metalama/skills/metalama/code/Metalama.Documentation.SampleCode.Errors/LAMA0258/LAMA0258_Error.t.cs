@@ -1,1 +1,0 @@
-// Error LAMA0258 on `TrackFinalizationAttribute`: `'TrackFinalizationAttribute.~TrackFinalizationAttribute()' cannot be a template because constructors, finalizers, operators, and conversion operators are not supported as templates. Introduce the member programmatically from a template method instead.`

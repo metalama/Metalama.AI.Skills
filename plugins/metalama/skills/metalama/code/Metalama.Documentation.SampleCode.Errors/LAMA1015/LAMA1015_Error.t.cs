@@ -1,1 +1,0 @@
-// Error LAMA1015 on `OnPriceChanged`: `The call to 'Checkout.OnPriceChanged(decimal)' cannot be intercepted because 'Checkout.OnPriceChanged(decimal)' is a partial method without implementation. A source generator that runs after Metalama could implement it, and the call would then run without the interceptor.`

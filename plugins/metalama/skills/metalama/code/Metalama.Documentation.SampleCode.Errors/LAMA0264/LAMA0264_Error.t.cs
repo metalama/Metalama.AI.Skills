@@ -1,1 +1,0 @@
-// Error LAMA0264 on `[CompileTime] T message`: `The compile-time template parameter 'message' cannot have the run-time-only type 'T'.`

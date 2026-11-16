@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Look up the API documentation of the skill by type or member name.
+"""Look up Metalama API documentation by type or member name.
 
 Usage (from the skill root directory, i.e. the directory containing api/):
     python scripts/find-api.py <name-or-uid>
-    python scripts/find-api.py MyType
-    python scripts/find-api.py MyNamespace.MyType.MyMethod
+    python scripts/find-api.py OverrideMethodAspect
+    python scripts/find-api.py Metalama.Framework.Advising.IAdviserExtensions.IntroduceMethod
 
 Prints the matching UIDs and, for the most specific matches, the full
 documentation block (summary, syntax, parameters, remarks) extracted from the
@@ -52,8 +52,7 @@ def main() -> int:
         print(__doc__)
         return 1
 
-    # A trailing '*' denotes all the overloads in a docfx xref; the manifest has no entry for it.
-    query = args[0].rstrip("*")
+    query = args[0]
     root = find_skill_root()
     manifest = json.loads((root / "api" / ".manifest").read_text(encoding="utf-8"))
 

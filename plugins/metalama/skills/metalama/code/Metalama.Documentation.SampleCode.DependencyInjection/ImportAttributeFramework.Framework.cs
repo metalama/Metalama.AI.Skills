@@ -24,7 +24,7 @@ public class ImportAttributeFramework : IDependencyInjectionFramework
     // Called when the programmatic IntroduceDependency adviser extension method is used.
     public IntroduceDependencyResult IntroduceDependency( DependencyProperties properties, IAdviser<INamedType> adviser )
     {
-        var importType = typeof(ImportAttribute).AsINamedType();
+        var importType = (INamedType) TypeFactory.GetType( typeof(ImportAttribute) );
 
         // Introduce the property with the [Import] attribute.
         var result = adviser.IntroduceAutomaticProperty(
@@ -50,7 +50,7 @@ public class ImportAttributeFramework : IDependencyInjectionFramework
     public bool TryImplementDependency( DependencyProperties properties, IAdviser<IFieldOrProperty> adviser )
     {
         // Add [Import] via the adviser.
-        var importType = typeof(ImportAttribute).AsINamedType();
+        var importType = (INamedType) TypeFactory.GetType( typeof(ImportAttribute) );
 
         if ( !adviser.Target.Attributes.Any( importType ) )
         {

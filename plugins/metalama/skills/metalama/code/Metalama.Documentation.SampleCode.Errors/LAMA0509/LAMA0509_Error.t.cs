@@ -1,1 +1,0 @@
-// Error LAMA0509 on `Product`: `The aspect 'Describe' cannot introduce member 'Product.Describe()' into type 'Product' with OverrideStrategy.New because the member is already declared in the type.`

@@ -1,1 +1,0 @@
-// Error LAMA0039 on `Fabric`: `The project fabric 'Fabric' cannot add a child aspect of type 'Log' to 'Calculator.Multiply(int, int)' because 'Calculator.Multiply(int, int)' must not be static.`

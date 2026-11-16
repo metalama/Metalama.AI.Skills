@@ -7,7 +7,7 @@ namespace Doc.ConsumingProperty;
 
 public class Log : OverrideMethodAspect
 {
-    public string? Category { get; init; }
+    public string? Category { get; set; }
 
     public override dynamic? OverrideMethod()
     {

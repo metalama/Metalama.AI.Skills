@@ -1,1 +1,0 @@
-// Error LAMA0278 on `LogAspect`: `The aspect 'LogAspect' cannot be a value type. Declare it as a class.`

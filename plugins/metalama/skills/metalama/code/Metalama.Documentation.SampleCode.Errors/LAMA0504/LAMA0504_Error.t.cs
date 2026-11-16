@@ -1,1 +1,0 @@
-// Error LAMA0504 on `Product`: `The aspect 'Describable' cannot introduce member 'Product.Describe()' into type 'Product' because it is already defined in type 'Product', and one of the two members is static while the other is not.`

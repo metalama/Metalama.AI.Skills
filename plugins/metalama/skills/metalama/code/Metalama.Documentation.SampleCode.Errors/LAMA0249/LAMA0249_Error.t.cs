@@ -1,1 +1,0 @@
-// Error LAMA0249 on `unsafe`: `'LogAttribute.OverrideMethod()' cannot contain unsafe code because it is a template.`

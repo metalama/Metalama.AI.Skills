@@ -1,1 +1,0 @@
-// Error LAMA0067 on `Create`: `Constructor 'Counter.Counter()' cannot be invoked because it is static.`

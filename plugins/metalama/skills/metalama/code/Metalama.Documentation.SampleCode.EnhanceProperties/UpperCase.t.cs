@@ -29,7 +29,7 @@ public class Shipment
     }
   }
 }
-public class Program
+public class UpperCase
 {
   public static void Main()
   {
