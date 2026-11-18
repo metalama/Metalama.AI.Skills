@@ -1,0 +1,100 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.ITypeSelection
+  commentId: T:Metalama.Extensions.Interceptors.ITypeSelection
+  id: ITypeSelection
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.ITypeSelection.AllMethods
+  langs:
+  - csharp
+  - vb
+  name: ITypeSelection
+  nameWithType: ITypeSelection
+  fullName: Metalama.Extensions.Interceptors.ITypeSelection
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: The stage of a method interception at which one type that declares the intercepted methods is selected.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface ITypeSelection : ITypeFilterSelection
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface ITypeSelection Inherits ITypeFilterSelection
+  inheritedMembers:
+  - Metalama.Extensions.Interceptors.ITypeFilterSelection.Methods(System.String[])
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.ITypeSelection.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.ITypeSelection,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.ITypeSelection}},System.Boolean)
+  - Metalama.Extensions.Interceptors.ITypeSelection.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.ITypeSelection})
+  - Metalama.Extensions.Interceptors.ITypeSelection.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.ITypeSelection.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.ITypeSelection.AllMethods
+  commentId: M:Metalama.Extensions.Interceptors.ITypeSelection.AllMethods
+  id: AllMethods
+  parent: Metalama.Extensions.Interceptors.ITypeSelection
+  langs:
+  - csharp
+  - vb
+  name: AllMethods()
+  nameWithType: ITypeSelection.AllMethods()
+  fullName: Metalama.Extensions.Interceptors.ITypeSelection.AllMethods()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Selects all the methods that the type declares.
+  remarks: >-
+    <p>
+
+    The selected methods are the ordinary methods that the type definition itself declares, static and instance. Operators, conversions,
+
+    explicit interface implementations, accessors, constructors and finalizers are not selected. An explicit interface implementation is
+
+    reached through a selection of the interface with <xref href="Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+
+    <p>
+
+    The methods that the type inherits are not selected. A call to an inherited method binds to the method of the base type, so selecting
+
+    it would also intercept the calls on other types that inherit it.
+
+    </p>
+
+    <p>
+
+    The names of the methods are listed when the description is created. In the IDE, a registration made by a fabric does not select a
+
+    method that is added to the type later, until the fabric executes again.
+
+    </p>
+  example: []
+  syntax:
+    content: IMethodSelection AllMethods()
+    return:
+      type: Metalama.Extensions.Interceptors.IMethodSelection
+    content.vb: Function AllMethods() As IMethodSelection
+  overload: Metalama.Extensions.Interceptors.ITypeSelection.AllMethods*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The type declares no method that can be intercepted.

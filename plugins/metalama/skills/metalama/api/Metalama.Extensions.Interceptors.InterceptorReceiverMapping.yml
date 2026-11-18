@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+  commentId: T:Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+  id: InterceptorReceiverMapping
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.InterceptorReceiverMapping.None
+  - Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter
+  - Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This
+  langs:
+  - csharp
+  - vb
+  name: InterceptorReceiverMapping
+  nameWithType: InterceptorReceiverMapping
+  fullName: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+  type: Enum
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Kinds of mapping of the receiver of an intercepted call to the parameters of a generated interceptor method.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      public enum InterceptorReceiverMapping
+    content.vb: >-
+      <CompileTime>
+
+      Public Enum InterceptorReceiverMapping
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.InterceptorReceiverMapping.None
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorReceiverMapping.None
+  id: None
+  parent: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: InterceptorReceiverMapping.None
+  fullName: Metalama.Extensions.Interceptors.InterceptorReceiverMapping.None
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: The intercepted method has no receiver, because it is static.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+- uid: Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter
+  id: Parameter
+  parent: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+  langs:
+  - csharp
+  - vb
+  name: Parameter
+  nameWithType: InterceptorReceiverMapping.Parameter
+  fullName: Metalama.Extensions.Interceptors.InterceptorReceiverMapping.Parameter
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The receiver of the call is passed as the first parameter of the generated method. In a call that can modify a struct receiver, the
+
+    parameter is passed by reference.
+  example: []
+  syntax:
+    content: Parameter = 1
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+- uid: Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This
+  commentId: F:Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This
+  id: This
+  parent: Metalama.Extensions.Interceptors.InterceptorReceiverMapping
+  langs:
+  - csharp
+  - vb
+  name: This
+  nameWithType: InterceptorReceiverMapping.This
+  fullName: Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This
+  type: Field
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    The receiver of the call is the <code>this</code> instance of the generated method, which is an instance method without a receiver parameter.
+
+    The call site calls the generated method on its receiver, and <code>meta.Proceed()</code> calls the intercepted method on <code>this</code>. This
+
+    makes it possible to intercept a call to a protected method of a base type.
+  remarks: >-
+    <p>
+
+    The mapping is possible when all the following conditions are true, which <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisEligible" data-throw-if-not-resolved="false"></xref>
+
+    reports:
+
+    </p>
+
+    <ul><li>the generated method is placed in the calling type or in one of its base types, for instance with
+
+    <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.PlaceInCallingType" data-throw-if-not-resolved="false"></xref>, and the placement type is the declaring type of the intercepted method or a type
+
+    derived from it;</li><li>the intercepted method is an instance method, and not an extension method;</li><li>the receiver of the call is not <code>base</code>, and its static type is the calling type or a type derived from
+
+    it.</li></ul>
+
+    <p>
+
+    The receiver can therefore be an implicit or explicit <code>this</code>, or any other expression of the calling type, also in a static member
+
+    or in a conditional access. For instance, <code>p.M(x)</code> and <code>p?.M(x)</code> become <code>p.Interceptor(x)</code> and <code>p?.Interceptor(x)</code>
+
+    when <code>p</code> is of the calling type. The receiver is evaluated as in the original call, so a receiver of a value type that is a variable
+
+    is modified in place. When the calling type is generic, the static type of the receiver must be the type of <code>this</code>, with the type
+
+    parameters of the calling type as type arguments.
+
+    </p>
+
+    <p>
+
+    The accessibility of the intercepted method does not matter. The generated method calls the intercepted method on <code>this</code> with
+
+    arguments of the types of its parameters, so the call binds to the intercepted method even when the calling type declares an overload.
+
+    </p>
+
+    <p>
+
+    The engine chooses this mapping by default only for a protected method of a base type of the calling type, which a static method cannot
+
+    call through a receiver parameter. <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverEligibility.IsThisRequired" data-throw-if-not-resolved="false"></xref> then reports that the mapping cannot
+
+    change. For any other method, the generated method is static by default, and a delegate given to
+
+    <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.Configure(System.Action%7bMetalama.Extensions.Interceptors.IInterceptorMethodBuilder%7d)" data-throw-if-not-resolved="false"></xref> can choose this mapping with the <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder.ReceiverMapping" data-throw-if-not-resolved="false"></xref>
+
+    property.
+
+    </p>
+  example: []
+  syntax:
+    content: This = 2
+    return:
+      type: Metalama.Extensions.Interceptors.InterceptorReceiverMapping

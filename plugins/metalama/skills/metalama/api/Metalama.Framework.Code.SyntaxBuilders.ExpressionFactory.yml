@@ -784,7 +784,11 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code.SyntaxBuilders
-  summary: Gets a <code>this</code> expression for the current type when inside a template.
+  summary: Gets a <code>this</code> expression for the type of <code>this</code> that the current context defines.
+  remarks: >-
+    In a template, the type is the declaring type of the target declaration, given by <code>meta.Target.Type</code>. A context that executes user
+
+    code outside of a template can define another type, for instance the type that contains a call site.
   example: []
   syntax:
     content: public static IExpression This()
@@ -792,6 +796,10 @@ items:
       type: Metalama.Framework.Code.IExpression
     content.vb: Public Shared Function This() As IExpression
   overload: Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.This*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current context defines no type of <code>this</code>.
   seealso:
   - linkId: Metalama.Framework.Aspects.meta.This
     commentId: P:Metalama.Framework.Aspects.meta.This

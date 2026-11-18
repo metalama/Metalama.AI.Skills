@@ -6,7 +6,9 @@ items:
   parent: Metalama.Framework.Diagnostics
   children:
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String)
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Category
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.HelpLinkUri
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Id
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.MessageFormat
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Severity
@@ -51,13 +53,23 @@ items:
 
     builder.Diagnostics.Report(_fieldNotFoundError.WithArguments("_logger"));</code></pre>
   syntax:
-    content: 'public class DiagnosticDefinition<T> : IDiagnosticDefinition where T : notnull'
+    content: >-
+      [ImmutableType]
+
+      [Durable]
+
+      public class DiagnosticDefinition<T> : IDiagnosticDefinition where T : notnull
     typeParameters:
     - id: T
       description: >-
         The type of arguments: a single type for one parameter, or a tuple type for multiple parameters.
                      Alternatively, you can use <code>object[]</code> for weakly-typed parameters.
-    content.vb: Public Class DiagnosticDefinition(Of T) Implements IDiagnosticDefinition
+    content.vb: >-
+      <ImmutableType>
+
+      <Durable>
+
+      Public Class DiagnosticDefinition(Of T) Implements IDiagnosticDefinition
   seealso:
   - linkId: Metalama.Framework.Diagnostics.DiagnosticDefinition
     commentId: T:Metalama.Framework.Diagnostics.DiagnosticDefinition
@@ -89,6 +101,13 @@ items:
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Framework.Diagnostics.DiagnosticDefinition`1.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.ImmutableTypeAttribute
+    ctor: Metalama.Framework.Utilities.ImmutableTypeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
   nameWithType.vb: DiagnosticDefinition(Of T)
   fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T)
   name.vb: DiagnosticDefinition(Of T)
@@ -131,6 +150,51 @@ items:
   nameWithType.vb: DiagnosticDefinition(Of T).New(String, Severity, String, String, String)
   fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).New(String, Metalama.Framework.Diagnostics.Severity, String, String, String)
   name.vb: New(String, Severity, String, String, String)
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)
+  id: '#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)'
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+  langs:
+  - csharp
+  - vb
+  name: DiagnosticDefinition(string, Severity, string, string?, string?, string?)
+  nameWithType: DiagnosticDefinition<T>.DiagnosticDefinition(string, Severity, string, string?, string?, string?)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.DiagnosticDefinition(string, Metalama.Framework.Diagnostics.Severity, string, string?, string?, string?)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Diagnostics.DiagnosticDefinition%601" data-throw-if-not-resolved="false"></xref> class and specifies the URL of the documentation page of the diagnostic.
+  example: []
+  syntax:
+    content: public DiagnosticDefinition(string id, Severity severity, string messageFormat, string? title, string? category, string? helpLinkUri)
+    parameters:
+    - id: id
+      type: System.String
+      description: An unique identifier for the diagnostic (e.g. <code>MY001</code>).
+    - id: severity
+      type: Metalama.Framework.Diagnostics.Severity
+      description: The severity of the diagnostic.
+    - id: messageFormat
+      type: System.String
+      description: The formatting string of the diagnostic message.
+    - id: title
+      type: System.String
+      description: A short title for the diagnostic. If the value is <code>null</code>, <code class="paramref">messageFormat</code> is used.
+    - id: category
+      type: System.String
+      description: The category to which this diagnostic belong. If the value is <code>null</code>, <code>Metalama.User</code> is used.
+    - id: helpLinkUri
+      type: System.String
+      description: >-
+        The URL of the documentation page of the diagnostic, or <code>null</code>. If the URL contains the <code>{0}</code> placeholder,
+                    the placeholder is replaced by the lower-case value of <code class="paramref">id</code>. For instance, <code>https://example.com/errors/{0}</code> becomes
+                    <code>https://example.com/errors/my001</code>.
+    content.vb: Public Sub New(id As String, severity As Severity, messageFormat As String, title As String, category As String, helpLinkUri As String)
+  overload: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.#ctor*
+  nameWithType.vb: DiagnosticDefinition(Of T).New(String, Severity, String, String, String, String)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).New(String, Metalama.Framework.Diagnostics.Severity, String, String, String, String)
+  name.vb: New(String, Severity, String, String, String, String)
 - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
   commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments(`0)
   id: WithArguments(`0)
@@ -322,3 +386,33 @@ items:
   - Metalama.Framework.Diagnostics.IDiagnosticDefinition.Title
   nameWithType.vb: DiagnosticDefinition(Of T).Title
   fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).Title
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.HelpLinkUri
+  commentId: P:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.HelpLinkUri
+  id: HelpLinkUri
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition`1
+  langs:
+  - csharp
+  - vb
+  name: HelpLinkUri
+  nameWithType: DiagnosticDefinition<T>.HelpLinkUri
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition<T>.HelpLinkUri
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: >-
+    Gets the URL of the documentation page of the diagnostic, or <code>null</code> if the diagnostic has no documentation page.
+
+    The IDE displays this URL as a hyperlink on the diagnostic identifier, for instance in the error list.
+  example: []
+  syntax:
+    content: public string? HelpLinkUri { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property HelpLinkUri As String
+  overload: Metalama.Framework.Diagnostics.DiagnosticDefinition`1.HelpLinkUri*
+  implements:
+  - Metalama.Framework.Diagnostics.IDiagnosticDefinition.HelpLinkUri
+  nameWithType.vb: DiagnosticDefinition(Of T).HelpLinkUri
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition(Of T).HelpLinkUri

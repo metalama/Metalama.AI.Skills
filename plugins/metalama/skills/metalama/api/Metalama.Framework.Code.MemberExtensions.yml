@@ -5,6 +5,7 @@ items:
   id: MemberExtensions
   parent: Metalama.Framework.Code
   children:
+  - Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly(Metalama.Framework.Code.IMember)
   - Metalama.Framework.Code.MemberExtensions.CanBeImplementedFromOutsideAssembly(Metalama.Framework.Code.IDeclaration,System.Boolean)
   - Metalama.Framework.Code.MemberExtensions.HasReceiver(Metalama.Framework.Code.IMember)
   - Metalama.Framework.Code.MemberExtensions.IsAccessibleFrom(Metalama.Framework.Code.IMemberOrNamedType,Metalama.Framework.Code.INamedType)
@@ -70,6 +71,56 @@ items:
       description: <code>true</code> if the member can be overridden; otherwise, <code>false</code>.
     content.vb: Public Shared Function IsOverridable(member As IMember) As Boolean
   overload: Metalama.Framework.Code.MemberExtensions.IsOverridable*
+- uid: Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly(Metalama.Framework.Code.IMember)
+  commentId: M:Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly(Metalama.Framework.Code.IMember)
+  id: CanBeDeclaredExplicitly(Metalama.Framework.Code.IMember)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.MemberExtensions
+  langs:
+  - csharp
+  - vb
+  name: CanBeDeclaredExplicitly(IMember)
+  nameWithType: MemberExtensions.CanBeDeclaredExplicitly(IMember)
+  fullName: Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly(Metalama.Framework.Code.IMember)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Determines whether an explicit declaration of a member can be written in source code, which is a condition for
+
+    an aspect to override the member.
+  remarks: >-
+    <p>
+        The method returns <code>false</code> in two cases. The first case is a member that the C# compiler adds to a record
+        even when the record declares this member itself: <code>Equals(object)</code>, the <code>Equals</code> overload whose
+        parameter is a base record, and the <code>==</code> and <code>!=</code> operators. A declaration of one of these members is
+        a duplicate, which the C# compiler reports as an error. The second case is a compiler-generated field, such as
+        the backing field of an auto-property or the field that captures a primary constructor parameter, because the
+        name of such a field is not a valid C# identifier. For an accessor, the method returns the same value as for
+        the property or the event that contains the accessor.
+        </p>
+    <p>
+        The method returns <code>true</code> for any other member. In particular, it returns <code>true</code> for the record
+        members that the C# compiler generates only when the record does not declare them: the <code>Equals</code> overload
+        whose parameter is the declaring record, <code>GetHashCode</code>, <code>ToString</code>, <code>PrintMembers</code>,
+        <code>Deconstruct</code>, <code>EqualityContract</code> and the copy constructor. When an aspect overrides one of these
+        members, <xref href="Metalama.Framework.Aspects.meta.Proceed" data-throw-if-not-resolved="false"></xref> runs the implementation that the C# compiler would have generated. The copy
+        constructor is the exception: no advice can target it, because <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeRecordCopyConstructor(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IConstructor%7d)" data-throw-if-not-resolved="false"></xref>
+        excludes it from every advice that could.
+        </p>
+  example: []
+  syntax:
+    content: public static bool CanBeDeclaredExplicitly(this IMember member)
+    parameters:
+    - id: member
+      type: Metalama.Framework.Code.IMember
+      description: The member to check.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if an explicit declaration of the member can be written in source code; otherwise, <code>false</code>.
+    content.vb: Public Shared Function CanBeDeclaredExplicitly(member As IMember) As Boolean
+  overload: Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly*
 - uid: Metalama.Framework.Code.MemberExtensions.IsAccessibleFrom(Metalama.Framework.Code.IMemberOrNamedType,Metalama.Framework.Code.INamedType)
   commentId: M:Metalama.Framework.Code.MemberExtensions.IsAccessibleFrom(Metalama.Framework.Code.IMemberOrNamedType,Metalama.Framework.Code.INamedType)
   id: IsAccessibleFrom(Metalama.Framework.Code.IMemberOrNamedType,Metalama.Framework.Code.INamedType)

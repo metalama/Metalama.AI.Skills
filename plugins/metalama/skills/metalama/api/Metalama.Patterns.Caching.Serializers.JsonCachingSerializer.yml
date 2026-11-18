@@ -29,6 +29,12 @@ items:
     <p>To customize type name resolution (for example, for type forwarding scenarios),
 
     override the <xref href="Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.GetTypeName(System.Type)" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Patterns.Caching.Serializers.JsonCachingSerializer.ResolveTypeName(System.String)" data-throw-if-not-resolved="false"></xref> methods.</p>
+
+    <p>A union of C# 15 is serialized by a converter of this class rather than by the default object
+
+    conversion of <xref href="System.Text.Json.JsonSerializer" data-throw-if-not-resolved="false"></xref>. The <code>Value</code> property of a union has no setter, so the default
+
+    conversion writes the value of the current case and deserializes the default value of the union.</p>
   example: []
   syntax:
     content: 'public class JsonCachingSerializer : ICachingSerializer'
@@ -69,6 +75,14 @@ items:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Serializers
   summary: Initializes a new instance of the <xref href="Metalama.Patterns.Caching.Serializers.JsonCachingSerializer" data-throw-if-not-resolved="false"></xref> class.
+  remarks: >-
+    The options given by the caller are copied, because this constructor adds the converter of the unions of
+
+    C# 15 to them, and modifying the instance of the caller would change the behaviour of every other use of it.
+
+    A modification that the caller makes to its own instance after this constructor returns has no effect on this
+
+    serializer.
   example: []
   syntax:
     content: public JsonCachingSerializer(JsonSerializerOptions? options = null)

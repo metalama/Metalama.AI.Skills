@@ -1,0 +1,485 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration
+  commentId: T:Metalama.Extensions.Interceptors.ITemplateRegistration
+  id: ITemplateRegistration
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder})
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInCallingType
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInStaticClass(System.String)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(Metalama.Framework.Code.INamedType)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(System.Type)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.WithArgs(System.Object)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.WithTags(System.Object)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider(Metalama.Framework.Aspects.ITemplateProvider)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider``1
+  langs:
+  - csharp
+  - vb
+  name: ITemplateRegistration
+  nameWithType: ITemplateRegistration
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    A registration whose calls are redirected to a method synthesized from a template. Its methods set the options of the synthesized method. It
+
+    is a complete interception, which the delegate given to <code>InterceptMethods</code> can return. It is the counterpart of
+
+    <xref href="Metalama.Extensions.Interceptors.ITemplateInterception" data-throw-if-not-resolved="false"></xref> for a result that applies to every call site.
+  remarks: >-
+    <p>
+
+    The registration is kept across compilations, so its arguments, its tags, its template provider and its <xref href="Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action%7bMetalama.Extensions.Interceptors.IInterceptorMethodBuilder%7d)" data-throw-if-not-resolved="false"></xref> delegates
+
+    must be durable. The arguments are resolved in the compilation of each call site.
+
+    </p>
+
+    <p>
+
+    The call sites whose synthesized methods have the same final signature, template, arguments, tags, placement and granularity share one
+
+    synthesized method.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface ITemplateRegistration : IMethodInterception
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface ITemplateRegistration Inherits IMethodInterception
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.ITemplateRegistration,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.ITemplateRegistration}},System.Boolean)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.ITemplateRegistration})
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.ITemplateRegistration.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.WithArgs(System.Object)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.WithArgs(System.Object)
+  id: WithArgs(System.Object)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: WithArgs(object)
+  nameWithType: ITemplateRegistration.WithArgs(object)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.WithArgs(object)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Sets the arguments of the template.
+  remarks: >-
+    <p>
+
+    A declaration or a type is passed as an <xref href="Metalama.Framework.Code.IDurableRef%601" data-throw-if-not-resolved="false"></xref>, created by <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref>, and an
+
+    expression is passed as an <xref href="Metalama.Framework.Code.IDurableExpression" data-throw-if-not-resolved="false"></xref>, created by <xref href="Metalama.Framework.Code.ExpressionExtensions.ToDurable(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref>. They are resolved in
+
+    the compilation of each call site, so the template receives the declaration, the type or the <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> of that
+
+    compilation.
+
+    </p>
+
+    <p>
+
+    The arguments are compared by value, after this resolution, to decide which call sites share the synthesized method.
+
+    </p>
+  example: []
+  syntax:
+    content: ITemplateRegistration WithArgs(object args)
+    parameters:
+    - id: args
+      type: System.Object
+      description: >-
+        An anonymous object, an <xref href="System.Collections.Generic.IReadOnlyDictionary%602" data-throw-if-not-resolved="false"></xref> of names and values, or an
+                    <xref href="Metalama.Framework.Aspects.IObjectReader" data-throw-if-not-resolved="false"></xref>. Its values must be durable. A property whose name is a compile-time parameter or type parameter of the
+                    template gives the value of that parameter. A property whose name is a run-time parameter of the template adds a parameter of that name
+                    and type to the synthesized method, and gives the value that each call site passes to it. A property whose name is a parameter that a
+                    <xref href="Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action%7bMetalama.Extensions.Interceptors.IInterceptorMethodBuilder%7d)" data-throw-if-not-resolved="false"></xref> delegate adds gives the value of that parameter. Such a value takes any form that
+                    <xref href="Metalama.Extensions.Interceptors.IExistingMethodRegistration.WithArgs(System.Object)" data-throw-if-not-resolved="false"></xref> accepts.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function WithArgs(args As Object) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.WithArgs*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">args</code> is <code>null</code>.
+  nameWithType.vb: ITemplateRegistration.WithArgs(Object)
+  fullName.vb: Metalama.Extensions.Interceptors.ITemplateRegistration.WithArgs(Object)
+  name.vb: WithArgs(Object)
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTags(System.Object)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.WithTags(System.Object)
+  id: WithTags(System.Object)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: WithTags(object)
+  nameWithType: ITemplateRegistration.WithTags(object)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTags(object)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Sets the object exposed to the template through <code>meta.Tags</code>.
+  example: []
+  syntax:
+    content: ITemplateRegistration WithTags(object tags)
+    parameters:
+    - id: tags
+      type: System.Object
+      description: >-
+        The tags, which are compared by value to decide which call sites share the synthesized method. They are not
+                    resolved: a template that reads a durable value from its tags resolves it.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function WithTags(tags As Object) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTags*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">tags</code> is <code>null</code>.
+  nameWithType.vb: ITemplateRegistration.WithTags(Object)
+  fullName.vb: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTags(Object)
+  name.vb: WithTags(Object)
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider(Metalama.Framework.Aspects.ITemplateProvider)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider(Metalama.Framework.Aspects.ITemplateProvider)
+  id: WithTemplateProvider(Metalama.Framework.Aspects.ITemplateProvider)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: WithTemplateProvider(ITemplateProvider)
+  nameWithType: ITemplateRegistration.WithTemplateProvider(ITemplateProvider)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider(Metalama.Framework.Aspects.ITemplateProvider)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Sets the object that declares the template. By default, it is the aspect or the fabric that makes the registration.
+  example: []
+  syntax:
+    content: ITemplateRegistration WithTemplateProvider(ITemplateProvider templateProvider)
+    parameters:
+    - id: templateProvider
+      type: Metalama.Framework.Aspects.ITemplateProvider
+      description: The object that declares the template. It is kept with the registration, so it must be durable.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function WithTemplateProvider(templateProvider As ITemplateProvider) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">templateProvider</code> is <code>null</code>.
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider``1
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider``1
+  id: WithTemplateProvider``1
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: WithTemplateProvider<T>()
+  nameWithType: ITemplateRegistration.WithTemplateProvider<T>()
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider<T>()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Sets the type that declares the template, which is then a static method.
+  example: []
+  syntax:
+    content: 'ITemplateRegistration WithTemplateProvider<T>() where T : ITemplateProvider'
+    typeParameters:
+    - id: T
+      description: The type that declares the template.
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function WithTemplateProvider(Of T As ITemplateProvider)() As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.TemplateProvider.FromType``1
+    commentId: M:Metalama.Framework.Aspects.TemplateProvider.FromType``1
+  nameWithType.vb: ITemplateRegistration.WithTemplateProvider(Of T)()
+  fullName.vb: Metalama.Extensions.Interceptors.ITemplateRegistration.WithTemplateProvider(Of T)()
+  name.vb: WithTemplateProvider(Of T)()
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInStaticClass(System.String)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInStaticClass(System.String)
+  id: PlaceInStaticClass(System.String)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: PlaceInStaticClass(string?)
+  nameWithType: ITemplateRegistration.PlaceInStaticClass(string?)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInStaticClass(string?)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Synthesizes the method in an internal static class that Metalama generates in the project. It is the default placement, with the class
+
+    <code>MetalamaInterceptors</code> of the global namespace.
+  remarks: The method is internal. The generated class is not in the types of the compilation. A full name that is not valid is reported as LAMA1024.
+  example: []
+  syntax:
+    content: ITemplateRegistration PlaceInStaticClass(string? fullName = null)
+    parameters:
+    - id: fullName
+      type: System.String
+      description: >-
+        The full name of the class, including its namespace, or <code>null</code> for the class <code>MetalamaInterceptors</code> of
+                    the global namespace. The interceptions that give the same full name synthesize their methods in the same class. The namespace is created
+                    when it does not exist, and a numeric suffix is added to the name of the class when a type of that name already exists.
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function PlaceInStaticClass(fullName As String = Nothing) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInStaticClass*
+  nameWithType.vb: ITemplateRegistration.PlaceInStaticClass(String)
+  fullName.vb: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInStaticClass(String)
+  name.vb: PlaceInStaticClass(String)
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInCallingType
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInCallingType
+  id: PlaceInCallingType
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: PlaceInCallingType()
+  nameWithType: ITemplateRegistration.PlaceInCallingType()
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInCallingType()
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Synthesizes the method in the innermost type that contains the call site.
+  remarks: >-
+    <p>
+
+    The method is private. The type does not need to be <code>partial</code>.
+
+    </p>
+
+    <p>
+
+    The method is static by default. When the intercepted method is a protected method of a base type of the calling type, the method is an
+
+    instance method without a receiver parameter: the call site calls it on its receiver, and <code>meta.Proceed()</code> calls the intercepted
+
+    method on <code>this</code>. A delegate given to <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.Configure(System.Action%7bMetalama.Extensions.Interceptors.IInterceptorMethodBuilder%7d)" data-throw-if-not-resolved="false"></xref> can choose this form for other methods. See
+
+    <xref href="Metalama.Extensions.Interceptors.InterceptorReceiverMapping.This" data-throw-if-not-resolved="false"></xref>.
+
+    </p>
+
+    <p>
+
+    A call site in top-level statements cannot use this placement, because the type that contains it is implicit. A call site that cannot use
+
+    it is reported as LAMA1024. In <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>, use <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType" data-throw-if-not-resolved="false"></xref> to
+
+    choose another placement for such a site.
+
+    </p>
+  example: []
+  syntax:
+    content: ITemplateRegistration PlaceInCallingType()
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function PlaceInCallingType() As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInCallingType*
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(Metalama.Framework.Code.INamedType)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(Metalama.Framework.Code.INamedType)
+  id: PlaceInType(Metalama.Framework.Code.INamedType)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: PlaceInType(INamedType)
+  nameWithType: ITemplateRegistration.PlaceInType(INamedType)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(Metalama.Framework.Code.INamedType)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Synthesizes the method in a given type of the current project.
+  remarks: >-
+    <p>
+
+    The method is private when the type contains the call site, private protected when the type is a base type of the calling type, and
+
+    internal otherwise. The type does not need to be <code>partial</code>.
+
+    </p>
+
+    <p>
+
+    A call site that cannot use the type is reported as LAMA1024. In <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>, use
+
+    <xref href="Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType(Metalama.Framework.Code.INamedType)" data-throw-if-not-resolved="false"></xref> to choose another placement for such a site.
+
+    </p>
+  example: []
+  syntax:
+    content: ITemplateRegistration PlaceInType(INamedType type)
+    parameters:
+    - id: type
+      type: Metalama.Framework.Code.INamedType
+      description: The type. It must be accessible from the call sites.
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function PlaceInType(type As INamedType) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">type</code> is <code>null</code>.
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(System.Type)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(System.Type)
+  id: PlaceInType(System.Type)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: PlaceInType(Type)
+  nameWithType: ITemplateRegistration.PlaceInType(Type)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Synthesizes the method in a given type of the current project.
+  remarks: See <xref href="Metalama.Extensions.Interceptors.ITemplateInterception.PlaceInType(Metalama.Framework.Code.INamedType)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: ITemplateRegistration PlaceInType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type. It must be accessible from the call sites.
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function PlaceInType(type As Type) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.PlaceInType*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">type</code> is <code>null</code>.
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)
+  id: WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: WithGranularity(InterceptorGranularity)
+  nameWithType: ITemplateRegistration.WithGranularity(InterceptorGranularity)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.WithGranularity(Metalama.Extensions.Interceptors.InterceptorGranularity)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Sets what the template depends on, and therefore which call sites share the synthesized method. The default value is
+
+    <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Global" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    The engine does not detect what the template depends on. When several call sites share the method, the template is expanded once, for
+
+    the representative call site and with its aspect instance, as described in <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity" data-throw-if-not-resolved="false"></xref>. A template that depends
+
+    on the state of its aspect instance must include <xref href="Metalama.Extensions.Interceptors.InterceptorGranularity.Owner" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: ITemplateRegistration WithGranularity(InterceptorGranularity granularity)
+    parameters:
+    - id: granularity
+      type: Metalama.Extensions.Interceptors.InterceptorGranularity
+      description: The granularity.
+    return:
+      type: Metalama.Extensions.Interceptors.ITemplateRegistration
+    content.vb: Function WithGranularity(granularity As InterceptorGranularity) As ITemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.WithGranularity*
+- uid: Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder})
+  commentId: M:Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder})
+  id: Configure(System.Action{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder})
+  parent: Metalama.Extensions.Interceptors.ITemplateRegistration
+  langs:
+  - csharp
+  - vb
+  name: Configure(Action<IInterceptorMethodBuilder>)
+  nameWithType: ITemplateRegistration.Configure(Action<IInterceptorMethodBuilder>)
+  fullName: Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action<Metalama.Extensions.Interceptors.IInterceptorMethodBuilder>)
+  type: Method
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Adds a delegate that shapes the synthesized method for each call site, for instance to rename it, to change the type of a parameter, or to
+
+    add a parameter and give its value at the call site.
+  example: []
+  syntax:
+    content: IConfiguredTemplateRegistration Configure(Action<IInterceptorMethodBuilder> configure)
+    parameters:
+    - id: configure
+      type: System.Action{Metalama.Extensions.Interceptors.IInterceptorMethodBuilder}
+      description: >-
+        The delegate. It receives an <xref href="Metalama.Extensions.Interceptors.IInterceptorMethodBuilder" data-throw-if-not-resolved="false"></xref>, whose rules it describes. It is stored with
+                    the registration, so it must not capture a declaration or a compilation. The delegates given by several calls run in the order of the
+                    calls.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    return:
+      type: Metalama.Extensions.Interceptors.IConfiguredTemplateRegistration
+      description: >-
+        An <xref href="Metalama.Extensions.Interceptors.IConfiguredTemplateRegistration" data-throw-if-not-resolved="false"></xref>, which only allows further calls of <code>Configure</code>. The other methods of this
+                    interface must therefore be called before this method, because they determine the signature that the delegate receives.
+    content.vb: Function Configure(configure As Action(Of IInterceptorMethodBuilder)) As IConfiguredTemplateRegistration
+  overload: Metalama.Extensions.Interceptors.ITemplateRegistration.Configure*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">configure</code> is <code>null</code>.
+  nameWithType.vb: ITemplateRegistration.Configure(Action(Of IInterceptorMethodBuilder))
+  fullName.vb: Metalama.Extensions.Interceptors.ITemplateRegistration.Configure(System.Action(Of Metalama.Extensions.Interceptors.IInterceptorMethodBuilder))
+  name.vb: Configure(Action(Of IInterceptorMethodBuilder))

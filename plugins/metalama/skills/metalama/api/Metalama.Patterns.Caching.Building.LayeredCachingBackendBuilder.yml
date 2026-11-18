@@ -63,7 +63,10 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backend
   namespace: Metalama.Patterns.Caching.Building
-  summary: Specifies the <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref> to use for the L1 layer.
+  summary: >-
+    Specifies the <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref> to use for the L1 layer. The caller owns it: the backend does not dispose
+
+    it, and it clears only its own items.
   example: []
   syntax:
     content: public LayeredCachingBackendBuilder WithMemoryCache(IMemoryCache memoryCache)

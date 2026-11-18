@@ -1,0 +1,252 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  commentId: T:Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  id: IMethodInterceptionContext
+  parent: Metalama.Extensions.Interceptors
+  children:
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.DispatchKind
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.IsResultUsed
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.MatchedMethod
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.Receiver
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.UseKind
+  langs:
+  - csharp
+  - vb
+  name: IMethodInterceptionContext
+  nameWithType: IMethodInterceptionContext
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  type: Interface
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Describes one use of a method that a method registration selects: a call, or a method group converted to a delegate, added to or removed
+
+    from an event, or converted to a function pointer.
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [InternalImplement]
+
+      public interface IMethodInterceptionContext : IInterceptionContext
+    content.vb: >-
+      <CompileTime>
+
+      <InternalImplement>
+
+      Public Interface IMethodInterceptionContext Inherits IInterceptionContext
+  inheritedMembers:
+  - Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInType(Metalama.Framework.Code.INamedType)
+  - Metalama.Extensions.Interceptors.IInterceptionContext.ScopeDeclaration
+  - Metalama.Extensions.Interceptors.IInterceptionContext.ScopeTag
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Caller
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Source
+  - Metalama.Extensions.Interceptors.IInterceptionContext.Diagnostics
+  - Metalama.Extensions.Interceptors.IInterceptionContext.AspectState
+  - Metalama.Extensions.Interceptors.IInterceptionContext.NonInterceptableReason
+  - Metalama.Extensions.Interceptors.IInterceptionContext.CancellationToken
+  - Metalama.Extensions.Interceptors.IInterceptionContext.CanPlaceInCallingType
+  extensionMethods:
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Extensions.Interceptors.IMethodInterceptionContext,System.Collections.Generic.IEnumerable{Metalama.Extensions.Interceptors.IMethodInterceptionContext}},System.Boolean)
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Extensions.Interceptors.IMethodInterceptionContext})
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Extensions.Interceptors.IMethodInterceptionContext.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.InternalImplementAttribute
+    ctor: Metalama.Framework.Utilities.InternalImplementAttribute.#ctor
+    arguments: []
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.UseKind
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.UseKind
+  id: UseKind
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: UseKind
+  nameWithType: IMethodInterceptionContext.UseKind
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.UseKind
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the kind of use at the site. Every registration receives every kind. A delegate given to <xref href="Metalama.Extensions.Interceptors.IMethodSelection.ForEachSite(System.Func%7bMetalama.Extensions.Interceptors.IMethodInterceptionSite%2cMetalama.Extensions.Interceptors.IMethodInterception%7d)" data-throw-if-not-resolved="false"></xref>
+
+    that does not support a kind returns <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionSite.Skip" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    Later versions can add values to <xref href="Metalama.Extensions.Interceptors.MethodUseKind" data-throw-if-not-resolved="false"></xref>. A provider that depends on the kind tests for the kinds that it supports
+
+    and skips the others.
+  example: []
+  syntax:
+    content: MethodUseKind UseKind { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.MethodUseKind
+    content.vb: ReadOnly Property UseKind As MethodUseKind
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.UseKind*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod
+  id: InterceptedMethod
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: InterceptedMethod
+  nameWithType: IMethodInterceptionContext.InterceptedMethod
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the method to which the C# compiler binds the call, or that the method-group conversion selects, constructed with the type
+
+    arguments of the site. A classic extension method called in reduced form is represented in its static form, and its receiver is the
+
+    first element of <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments" data-throw-if-not-resolved="false"></xref>. Its definition, without the type arguments of the site, is <xref href="Metalama.Framework.Code.IMethod.Definition" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IMethod InterceptedMethod { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMethod
+    content.vb: ReadOnly Property InterceptedMethod As IMethod
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.MatchedMethod
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.MatchedMethod
+  id: MatchedMethod
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: MatchedMethod
+  nameWithType: IMethodInterceptionContext.MatchedMethod
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.MatchedMethod
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets the method definition that the registration matched by its declaring type and its name. It differs from the definition of
+
+    <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod" data-throw-if-not-resolved="false"></xref> when the site is bound to an override or to an interface implementation, which the registration matches
+
+    by default and with <xref href="Metalama.Extensions.Interceptors.IMethodSelection.IncludingInterfaceImplementations" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: IMethod MatchedMethod { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.IMethod
+    content.vb: ReadOnly Property MatchedMethod As IMethod
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.MatchedMethod*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.DispatchKind
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.DispatchKind
+  id: DispatchKind
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: DispatchKind
+  nameWithType: IMethodInterceptionContext.DispatchKind
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.DispatchKind
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets how the call dispatches to the intercepted method.
+  example: []
+  syntax:
+    content: InvocationDispatchKind DispatchKind { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.InvocationDispatchKind
+    content.vb: ReadOnly Property DispatchKind As InvocationDispatchKind
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.DispatchKind*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.Receiver
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.Receiver
+  id: Receiver
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: Receiver
+  nameWithType: IMethodInterceptionContext.Receiver
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.Receiver
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: Gets the receiver written at the site.
+  example: []
+  syntax:
+    content: IInvocationReceiver Receiver { get; }
+    parameters: []
+    return:
+      type: Metalama.Extensions.Interceptors.IInvocationReceiver
+    content.vb: ReadOnly Property Receiver As IInvocationReceiver
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.Receiver*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.IsResultUsed
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.IsResultUsed
+  id: IsResultUsed
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: IsResultUsed
+  nameWithType: IMethodInterceptionContext.IsResultUsed
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.IsResultUsed
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets a value indicating whether the value returned by the call is used. It is always <code>false</code> for a method-reference site, because
+
+    the value is used by the code that invokes the delegate.
+  example: []
+  syntax:
+    content: bool IsResultUsed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsResultUsed As Boolean
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.IsResultUsed*
+- uid: Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments
+  commentId: P:Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments
+  id: Arguments
+  parent: Metalama.Extensions.Interceptors.IMethodInterceptionContext
+  langs:
+  - csharp
+  - vb
+  name: Arguments
+  nameWithType: IMethodInterceptionContext.Arguments
+  fullName: Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments
+  type: Property
+  assemblies:
+  - Metalama.Extensions.Interceptors
+  namespace: Metalama.Extensions.Interceptors
+  summary: >-
+    Gets one element for each parameter of <xref href="Metalama.Extensions.Interceptors.IMethodInterceptionContext.InterceptedMethod" data-throw-if-not-resolved="false"></xref>, in parameter order, including parameters that receive default
+
+    values. The list is empty for a method-reference site, because the arguments are passed when the delegate or the function pointer is
+
+    invoked.
+  example: []
+  syntax:
+    content: IReadOnlyList<InvocationArgument> Arguments { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Metalama.Extensions.Interceptors.InvocationArgument}
+    content.vb: ReadOnly Property Arguments As IReadOnlyList(Of InvocationArgument)
+  overload: Metalama.Extensions.Interceptors.IMethodInterceptionContext.Arguments*

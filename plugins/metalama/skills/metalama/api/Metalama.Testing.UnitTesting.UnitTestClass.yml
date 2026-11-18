@@ -5,7 +5,7 @@ items:
   id: UnitTestClass
   parent: Metalama.Testing.UnitTesting
   children:
-  - Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)
+  - Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.ITestOutputHelper,System.Boolean)
   - Metalama.Testing.UnitTesting.UnitTestClass.AddExceptionHandler(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
   - Metalama.Testing.UnitTesting.UnitTestClass.AddSyntaxGenerationOptions(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
   - Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
@@ -13,9 +13,9 @@ items:
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateAdditionalServiceCollection(Metalama.Framework.Services.IService[])
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
-  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String,System.String)
-  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.Threading.CancellationToken)
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector
   - Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider
   - Metalama.Testing.UnitTesting.UnitTestClass.Dispose
@@ -35,12 +35,12 @@ items:
     <p>
         This class provides the infrastructure for writing unit tests of compile-time logic used by aspects,
         without executing the aspects themselves. Test methods should call <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref>
-        to obtain a <xref href="Metalama.Testing.UnitTesting.TestContext" data-throw-if-not-resolved="false"></xref> that provides access to Metalama services.
+        to obtain a <xref href="Metalama.Testing.UnitTesting.MetalamaTestContext" data-throw-if-not-resolved="false"></xref> that provides access to Metalama services.
         </p>
     <p>
         A typical test workflow is:
 
-        <ol><li>Create a test context using <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref></li><li>Create a compilation using <xref href="Metalama.Testing.UnitTesting.TestContext.CreateCompilation(System.String%2cSystem.String%2cSystem.Boolean%2cSystem.Collections.Generic.IEnumerable%7bMicrosoft.CodeAnalysis.MetadataReference%7d%2cSystem.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref></li><li>Optionally switch execution context using <xref href="Metalama.Testing.UnitTesting.TestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation%2cSystem.String)" data-throw-if-not-resolved="false"></xref> if your code uses <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory" data-throw-if-not-resolved="false"></xref></li><li>Query the code model or call your compile-time helper classes</li><li>Assert expected results</li></ol></p>
+        <ol><li>Create a test context using <xref href="Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(System.String%2cSystem.String)" data-throw-if-not-resolved="false"></xref></li><li>Create a compilation using <xref href="Metalama.Testing.UnitTesting.MetalamaTestContext.CreateCompilation(System.String%2cSystem.String%2cSystem.Boolean%2cSystem.Collections.Generic.IEnumerable%7bMicrosoft.CodeAnalysis.MetadataReference%7d%2cSystem.String%2cSystem.Boolean)" data-throw-if-not-resolved="false"></xref></li><li>Optionally switch execution context using <xref href="Metalama.Testing.UnitTesting.MetalamaTestContext.WithExecutionContext(Metalama.Framework.Code.ICompilation%2cSystem.String)" data-throw-if-not-resolved="false"></xref> if your code uses <xref href="Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory" data-throw-if-not-resolved="false"></xref></li><li>Query the code model or call your compile-time helper classes</li><li>Assert expected results</li></ol></p>
     <p>
         The test context must be disposed at the end of each test method.
         </p>
@@ -49,10 +49,10 @@ items:
     content: 'public abstract class UnitTestClass : IDisposable'
     content.vb: Public MustInherit Class UnitTestClass Implements IDisposable
   seealso:
-  - linkId: Metalama.Testing.UnitTesting.TestContext
-    commentId: T:Metalama.Testing.UnitTesting.TestContext
-  - linkId: Metalama.Testing.UnitTesting.TestContextOptions
-    commentId: T:Metalama.Testing.UnitTesting.TestContextOptions
+  - linkId: Metalama.Testing.UnitTesting.MetalamaTestContext
+    commentId: T:Metalama.Testing.UnitTesting.MetalamaTestContext
+  - linkId: Metalama.Testing.UnitTesting.MetalamaTestContextOptions
+    commentId: T:Metalama.Testing.UnitTesting.MetalamaTestContextOptions
   - linkType: HRef
     linkId: '@compile-time-testing'
     altText: '@compile-time-testing'
@@ -74,16 +74,16 @@ items:
   - Metalama.Testing.UnitTesting.UnitTestClass.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
   - Metalama.Testing.UnitTesting.UnitTestClass.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
   - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
-- uid: Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)
-  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)
-  id: '#ctor(Xunit.Abstractions.ITestOutputHelper,System.Boolean)'
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.ITestOutputHelper,System.Boolean)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.#ctor(Xunit.ITestOutputHelper,System.Boolean)
+  id: '#ctor(Xunit.ITestOutputHelper,System.Boolean)'
   parent: Metalama.Testing.UnitTesting.UnitTestClass
   langs:
   - csharp
   - vb
   name: UnitTestClass(ITestOutputHelper?, bool)
   nameWithType: UnitTestClass.UnitTestClass(ITestOutputHelper?, bool)
-  fullName: Metalama.Testing.UnitTesting.UnitTestClass.UnitTestClass(Xunit.Abstractions.ITestOutputHelper?, bool)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.UnitTestClass(Xunit.ITestOutputHelper?, bool)
   type: Constructor
   assemblies:
   - Metalama.Testing.UnitTesting
@@ -94,14 +94,14 @@ items:
     content: protected UnitTestClass(ITestOutputHelper? logger = null, bool injectLoggingService = true)
     parameters:
     - id: logger
-      type: Xunit.Abstractions.ITestOutputHelper
+      type: Xunit.ITestOutputHelper
       description: ''
     - id: injectLoggingService
       type: System.Boolean
     content.vb: Protected Sub New(logger As ITestOutputHelper = Nothing, injectLoggingService As Boolean = True)
   overload: Metalama.Testing.UnitTesting.UnitTestClass.#ctor*
   nameWithType.vb: UnitTestClass.New(ITestOutputHelper, Boolean)
-  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.New(Xunit.Abstractions.ITestOutputHelper, Boolean)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.New(Xunit.ITestOutputHelper, Boolean)
   name.vb: New(ITestOutputHelper, Boolean)
 - uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
   commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.ConfigureServices(Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
@@ -148,14 +148,14 @@ items:
   - Metalama.Testing.UnitTesting
   namespace: Metalama.Testing.UnitTesting
   summary: >-
-    Creates the <xref href="Metalama.Testing.Hooks.TestSynchronizationProvider" data-throw-if-not-resolved="false"></xref> of each test context created by this class. A derived
+    Creates the <xref href="SharpCrafters.Common.Testing.Hooks.TestSynchronizationProvider" data-throw-if-not-resolved="false"></xref> of each test context created by this class. A derived
 
     class can override this method to supply a differently configured provider.
   example: []
   syntax:
     content: protected virtual TestSynchronizationProvider CreateTestSynchronizationProvider()
     return:
-      type: Metalama.Testing.Hooks.TestSynchronizationProvider
+      type: SharpCrafters.Common.Testing.Hooks.TestSynchronizationProvider
     content.vb: Protected Overridable Function CreateTestSynchronizationProvider() As TestSynchronizationProvider
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestSynchronizationProvider*
 - uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector
@@ -173,14 +173,14 @@ items:
   - Metalama.Testing.UnitTesting
   namespace: Metalama.Testing.UnitTesting
   summary: >-
-    Creates the <xref href="Metalama.Testing.Hooks.TestFaultInjector" data-throw-if-not-resolved="false"></xref> of each test context created by this class. A derived class can
+    Creates the <xref href="SharpCrafters.Common.Testing.Hooks.TestFaultInjector" data-throw-if-not-resolved="false"></xref> of each test context created by this class. A derived class can
 
     override this method to supply a differently configured injector, for instance one with a fault already armed.
   example: []
   syntax:
     content: protected virtual TestFaultInjector CreateTestFaultInjector()
     return:
-      type: Metalama.Testing.Hooks.TestFaultInjector
+      type: SharpCrafters.Common.Testing.Hooks.TestFaultInjector
     content.vb: Protected Overridable Function CreateTestFaultInjector() As TestFaultInjector
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestFaultInjector*
 - uid: Metalama.Testing.UnitTesting.UnitTestClass.ConfigureExtensions(Metalama.Framework.Engine.Extensibility.ITestExtensionCollector)
@@ -289,15 +289,15 @@ items:
   - Metalama.Testing.UnitTesting
   namespace: Metalama.Testing.UnitTesting
   syntax:
-    content: protected TestContext CreateTestContext(string? callerFile = null, string? callerMemberName = null)
+    content: protected MetalamaTestContext CreateTestContext(string? callerFile = null, string? callerMemberName = null)
     parameters:
     - id: callerFile
       type: System.String
     - id: callerMemberName
       type: System.String
     return:
-      type: Metalama.Testing.UnitTesting.TestContext
-    content.vb: Protected Function CreateTestContext(callerFile As String = Nothing, callerMemberName As String = Nothing) As TestContext
+      type: Metalama.Testing.UnitTesting.MetalamaTestContext
+    content.vb: Protected Function CreateTestContext(callerFile As String = Nothing, callerMemberName As String = Nothing) As MetalamaTestContext
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
   nameWithType.vb: UnitTestClass.CreateTestContext(String, String)
   fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(String, String)
@@ -319,7 +319,7 @@ items:
   summary: Creates a test context with a collection of additional services or mocks.
   example: []
   syntax:
-    content: protected TestContext CreateTestContext(IAdditionalServiceCollection service, string? callerFile = null, string? callerMemberName = null)
+    content: protected MetalamaTestContext CreateTestContext(IAdditionalServiceCollection service, string? callerFile = null, string? callerMemberName = null)
     parameters:
     - id: service
       type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
@@ -328,33 +328,33 @@ items:
     - id: callerMemberName
       type: System.String
     return:
-      type: Metalama.Testing.UnitTesting.TestContext
-    content.vb: Protected Function CreateTestContext(service As IAdditionalServiceCollection, callerFile As String = Nothing, callerMemberName As String = Nothing) As TestContext
+      type: Metalama.Testing.UnitTesting.MetalamaTestContext
+    content.vb: Protected Function CreateTestContext(service As IAdditionalServiceCollection, callerFile As String = Nothing, callerMemberName As String = Nothing) As MetalamaTestContext
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
   nameWithType.vb: UnitTestClass.CreateTestContext(IAdditionalServiceCollection, String, String)
   fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Framework.Engine.Services.IAdditionalServiceCollection, String, String)
   name.vb: CreateTestContext(IAdditionalServiceCollection, String, String)
-- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
-  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
-  id: CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
+  id: CreateTestContext(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.String,System.String)
   parent: Metalama.Testing.UnitTesting.UnitTestClass
   langs:
   - csharp
   - vb
-  name: CreateTestContext(TestContextOptions?, IAdditionalServiceCollection?, string?, string?)
-  nameWithType: UnitTestClass.CreateTestContext(TestContextOptions?, IAdditionalServiceCollection?, string?, string?)
-  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions?, Metalama.Framework.Engine.Services.IAdditionalServiceCollection?, string?, string?)
+  name: CreateTestContext(MetalamaTestContextOptions?, IAdditionalServiceCollection?, string?, string?)
+  nameWithType: UnitTestClass.CreateTestContext(MetalamaTestContextOptions?, IAdditionalServiceCollection?, string?, string?)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.MetalamaTestContextOptions?, Metalama.Framework.Engine.Services.IAdditionalServiceCollection?, string?, string?)
   type: Method
   assemblies:
   - Metalama.Testing.UnitTesting
   namespace: Metalama.Testing.UnitTesting
-  summary: Creates a test context, optionally with a non-default <xref href="Metalama.Testing.UnitTesting.TestContextOptions" data-throw-if-not-resolved="false"></xref> or a collection of additional services or mocks.
+  summary: Creates a test context, optionally with a non-default <xref href="Metalama.Testing.UnitTesting.MetalamaTestContextOptions" data-throw-if-not-resolved="false"></xref> or a collection of additional services or mocks.
   example: []
   syntax:
-    content: protected TestContext CreateTestContext(TestContextOptions? contextOptions, IAdditionalServiceCollection? services = null, string? callerFile = null, string? callerMemberName = null)
+    content: protected MetalamaTestContext CreateTestContext(MetalamaTestContextOptions? contextOptions, IAdditionalServiceCollection? services = null, string? callerFile = null, string? callerMemberName = null)
     parameters:
     - id: contextOptions
-      type: Metalama.Testing.UnitTesting.TestContextOptions
+      type: Metalama.Testing.UnitTesting.MetalamaTestContextOptions
     - id: services
       type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
     - id: callerFile
@@ -362,36 +362,48 @@ items:
     - id: callerMemberName
       type: System.String
     return:
-      type: Metalama.Testing.UnitTesting.TestContext
-    content.vb: Protected Function CreateTestContext(contextOptions As TestContextOptions, services As IAdditionalServiceCollection = Nothing, callerFile As String = Nothing, callerMemberName As String = Nothing) As TestContext
+      type: Metalama.Testing.UnitTesting.MetalamaTestContext
+    content.vb: Protected Function CreateTestContext(contextOptions As MetalamaTestContextOptions, services As IAdditionalServiceCollection = Nothing, callerFile As String = Nothing, callerMemberName As String = Nothing) As MetalamaTestContext
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext*
-  nameWithType.vb: UnitTestClass.CreateTestContext(TestContextOptions, IAdditionalServiceCollection, String, String)
-  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.TestContextOptions, Metalama.Framework.Engine.Services.IAdditionalServiceCollection, String, String)
-  name.vb: CreateTestContext(TestContextOptions, IAdditionalServiceCollection, String, String)
-- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
-  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
-  id: CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  nameWithType.vb: UnitTestClass.CreateTestContext(MetalamaTestContextOptions, IAdditionalServiceCollection, String, String)
+  fullName.vb: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext(Metalama.Testing.UnitTesting.MetalamaTestContextOptions, Metalama.Framework.Engine.Services.IAdditionalServiceCollection, String, String)
+  name.vb: CreateTestContext(MetalamaTestContextOptions, IAdditionalServiceCollection, String, String)
+- uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.Threading.CancellationToken)
+  commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.Threading.CancellationToken)
+  id: CreateTestContextCore(Metalama.Testing.UnitTesting.MetalamaTestContextOptions,Metalama.Framework.Engine.Services.IAdditionalServiceCollection,System.Threading.CancellationToken)
   parent: Metalama.Testing.UnitTesting.UnitTestClass
   langs:
   - csharp
   - vb
-  name: CreateTestContextCore(TestContextOptions, IAdditionalServiceCollection)
-  nameWithType: UnitTestClass.CreateTestContextCore(TestContextOptions, IAdditionalServiceCollection)
-  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.TestContextOptions, Metalama.Framework.Engine.Services.IAdditionalServiceCollection)
+  name: CreateTestContextCore(MetalamaTestContextOptions, IAdditionalServiceCollection, CancellationToken)
+  nameWithType: UnitTestClass.CreateTestContextCore(MetalamaTestContextOptions, IAdditionalServiceCollection, CancellationToken)
+  fullName: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore(Metalama.Testing.UnitTesting.MetalamaTestContextOptions, Metalama.Framework.Engine.Services.IAdditionalServiceCollection, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - Metalama.Testing.UnitTesting
   namespace: Metalama.Testing.UnitTesting
+  summary: >-
+    Creates the <xref href="Metalama.Testing.UnitTesting.MetalamaTestContext" data-throw-if-not-resolved="false"></xref>. A derived class can override this method to create a derived
+
+    context or to change the options.
+  example: []
   syntax:
-    content: protected virtual TestContext CreateTestContextCore(TestContextOptions contextOptions, IAdditionalServiceCollection services)
+    content: protected virtual MetalamaTestContext CreateTestContextCore(MetalamaTestContextOptions contextOptions, IAdditionalServiceCollection services, CancellationToken cancellationToken)
     parameters:
     - id: contextOptions
-      type: Metalama.Testing.UnitTesting.TestContextOptions
+      type: Metalama.Testing.UnitTesting.MetalamaTestContextOptions
+      description: The options of the context.
     - id: services
       type: Metalama.Framework.Engine.Services.IAdditionalServiceCollection
+      description: The additional services of the context.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: >-
+        The token that xunit signals when it cancels the test. An override must pass it
+                    to the constructor of <xref href="Metalama.Testing.UnitTesting.MetalamaTestContext" data-throw-if-not-resolved="false"></xref>, which links it to <xref href="Metalama.Testing.UnitTesting.MetalamaTestContext.CancellationToken" data-throw-if-not-resolved="false"></xref>.
     return:
-      type: Metalama.Testing.UnitTesting.TestContext
-    content.vb: Protected Overridable Function CreateTestContextCore(contextOptions As TestContextOptions, services As IAdditionalServiceCollection) As TestContext
+      type: Metalama.Testing.UnitTesting.MetalamaTestContext
+    content.vb: Protected Overridable Function CreateTestContextCore(contextOptions As MetalamaTestContextOptions, services As IAdditionalServiceCollection, cancellationToken As CancellationToken) As MetalamaTestContext
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContextCore*
 - uid: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
   commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions
@@ -408,10 +420,10 @@ items:
   - Metalama.Testing.UnitTesting
   namespace: Metalama.Testing.UnitTesting
   syntax:
-    content: protected virtual TestContextOptions CreateDefaultTestContextOptions()
+    content: protected virtual MetalamaTestContextOptions CreateDefaultTestContextOptions()
     return:
-      type: Metalama.Testing.UnitTesting.TestContextOptions
-    content.vb: Protected Overridable Function CreateDefaultTestContextOptions() As TestContextOptions
+      type: Metalama.Testing.UnitTesting.MetalamaTestContextOptions
+    content.vb: Protected Overridable Function CreateDefaultTestContextOptions() As MetalamaTestContextOptions
   overload: Metalama.Testing.UnitTesting.UnitTestClass.CreateDefaultTestContextOptions*
 - uid: Metalama.Testing.UnitTesting.UnitTestClass.Dispose
   commentId: M:Metalama.Testing.UnitTesting.UnitTestClass.Dispose
@@ -454,6 +466,6 @@ items:
     content: protected ITestOutputHelper TestOutput { get; }
     parameters: []
     return:
-      type: Xunit.Abstractions.ITestOutputHelper
+      type: Xunit.ITestOutputHelper
     content.vb: Protected ReadOnly Property TestOutput As ITestOutputHelper
   overload: Metalama.Testing.UnitTesting.UnitTestClass.TestOutput*

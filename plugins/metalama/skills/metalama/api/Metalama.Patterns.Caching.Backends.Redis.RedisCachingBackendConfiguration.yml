@@ -765,13 +765,11 @@ items:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
   summary: >-
-    Gets or sets the number of tasks over which the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend" data-throw-if-not-resolved="false"></xref> notifies its state as overloaded
+    Gets or sets the number of queued background tasks above which the Redis caching backend is in an overloaded state.
 
-    through the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloaded" data-throw-if-not-resolved="false"></xref> property and the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend.IsBackgroundTaskQueueOverloadedChanged" data-throw-if-not-resolved="false"></xref>
+    The default value is 125. While the backend is in the overloaded state, the <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref> component
 
-    event. The default value is 125. The <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref> component stops processing real-time eviction and expiration
-
-    notifications when the component is overloaded.
+    stops processing real-time eviction and expiration notifications.
   example: []
   syntax:
     content: public int BackgroundTasksOverloadedThreshold { get; init; }
@@ -1013,14 +1011,63 @@ items:
   assemblies:
   - Metalama.Patterns.Caching.Backends.Redis
   namespace: Metalama.Patterns.Caching.Backends.Redis
-  summary: Gets or sets the Redis <xref href="StackExchange.Redis.CommandFlags" data-throw-if-not-resolved="false"></xref> for read-only operations. The default value is <xref href="StackExchange.Redis.CommandFlags.PreferReplica" data-throw-if-not-resolved="false"></xref>.
+  summary: >-
+    Gets or sets the Redis <xref href="StackExchange.Redis.CommandFlags" data-throw-if-not-resolved="false"></xref> for read-only operations. The default value is <code>null</code>,
+
+    which means <xref href="StackExchange.Redis.CommandFlags.PreferMaster" data-throw-if-not-resolved="false"></xref> when the Redis backend has an in-memory L1 layer, and
+
+    <xref href="StackExchange.Redis.CommandFlags.PreferReplica" data-throw-if-not-resolved="false"></xref> otherwise.
+  remarks: >-
+    <p>
+
+    A Redis replica receives the write operations of the master asynchronously. A read operation that is sent to a
+
+    replica can therefore return an item that has just been removed or invalidated, and it can fail to return an item
+
+    that has just been stored. Without an L1 layer, this inconsistency ends when the replica has received the write
+
+    operation, so read operations are sent to a replica by default.
+
+    </p>
+
+    <p>
+
+    With an L1 layer, which is added by the
+
+    <xref href="Metalama.Patterns.Caching.Building.CachingBackendFactory.WithL1(Metalama.Patterns.Caching.Building.OutOfProcessCachingBackendBuilder%2cMetalama.Patterns.Caching.Backends.LayeredCachingBackendConfiguration)" data-throw-if-not-resolved="false"></xref>
+
+    method, the item that a read operation returns is copied into the in-memory cache of the application instance.
+
+    An item that is read from a replica after its removal would stay in the in-memory cache until it expires there or
+
+    until it is removed or invalidated again. Read operations are therefore sent to the master by default.
+
+    </p>
+
+    <p>
+
+    Setting this property to <xref href="StackExchange.Redis.CommandFlags.PreferReplica" data-throw-if-not-resolved="false"></xref> for a backend with an L1 layer is supported.
+
+    The application must then tolerate that an application instance returns a removed or invalidated item for as long
+
+    as that item stays in the in-memory cache of the instance.
+
+    </p>
+
+    <p>
+
+    A stand-alone <xref href="Metalama.Patterns.Caching.Backends.Redis.RedisCacheDependencyGarbageCollector" data-throw-if-not-resolved="false"></xref> has no L1 layer, so it uses
+
+    <xref href="StackExchange.Redis.CommandFlags.PreferReplica" data-throw-if-not-resolved="false"></xref> when this property is <code>null</code>.
+
+    </p>
   example: []
   syntax:
-    content: public CommandFlags ReadCommandFlags { get; init; }
+    content: public CommandFlags? ReadCommandFlags { get; init; }
     parameters: []
     return:
-      type: StackExchange.Redis.CommandFlags
-    content.vb: Public Property ReadCommandFlags As CommandFlags
+      type: System.Nullable{StackExchange.Redis.CommandFlags}
+    content.vb: Public Property ReadCommandFlags As CommandFlags?
   overload: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.ReadCommandFlags*
 - uid: Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.WriteCommandFlags
   commentId: P:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.WriteCommandFlags

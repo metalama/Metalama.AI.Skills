@@ -6,6 +6,7 @@ items:
   parent: Metalama.Framework.Diagnostics
   children:
   - Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String)
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)
   - Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
   langs:
   - csharp
@@ -69,6 +70,7 @@ items:
   - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.MessageFormat
   - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Category
   - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.Title
+  - Metalama.Framework.Diagnostics.DiagnosticDefinition{Metalama.Framework.None}.HelpLinkUri
   - System.Object.GetType
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -94,24 +96,76 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Diagnostics
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Diagnostics.DiagnosticDefinition" data-throw-if-not-resolved="false"></xref> class.
+  example: []
   syntax:
     content: public DiagnosticDefinition(string id, Severity severity, string messageFormat, string? title = null, string? category = null)
     parameters:
     - id: id
       type: System.String
+      description: An unique identifier for the diagnostic (e.g. <code>MY001</code>).
     - id: severity
       type: Metalama.Framework.Diagnostics.Severity
+      description: The severity of the diagnostic.
     - id: messageFormat
       type: System.String
+      description: The formatting string of the diagnostic message.
     - id: title
       type: System.String
+      description: An optional short title for the diagnostic. If no value is provided for this parameter, <code class="paramref">messageFormat</code> is used.
     - id: category
       type: System.String
+      description: An optional category to which this diagnostic belong. The default value is <code>Metalama.User</code>.
     content.vb: Public Sub New(id As String, severity As Severity, messageFormat As String, title As String = Nothing, category As String = Nothing)
   overload: Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor*
   nameWithType.vb: DiagnosticDefinition.New(String, Severity, String, String, String)
   fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition.New(String, Metalama.Framework.Diagnostics.Severity, String, String, String)
   name.vb: New(String, Severity, String, String, String)
+- uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)
+  commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)
+  id: '#ctor(System.String,Metalama.Framework.Diagnostics.Severity,System.String,System.String,System.String,System.String)'
+  parent: Metalama.Framework.Diagnostics.DiagnosticDefinition
+  langs:
+  - csharp
+  - vb
+  name: DiagnosticDefinition(string, Severity, string, string?, string?, string?)
+  nameWithType: DiagnosticDefinition.DiagnosticDefinition(string, Severity, string, string?, string?, string?)
+  fullName: Metalama.Framework.Diagnostics.DiagnosticDefinition.DiagnosticDefinition(string, Metalama.Framework.Diagnostics.Severity, string, string?, string?, string?)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Diagnostics
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Diagnostics.DiagnosticDefinition" data-throw-if-not-resolved="false"></xref> class and specifies the URL of the documentation page of the diagnostic.
+  example: []
+  syntax:
+    content: public DiagnosticDefinition(string id, Severity severity, string messageFormat, string? title, string? category, string? helpLinkUri)
+    parameters:
+    - id: id
+      type: System.String
+      description: An unique identifier for the diagnostic (e.g. <code>MY001</code>).
+    - id: severity
+      type: Metalama.Framework.Diagnostics.Severity
+      description: The severity of the diagnostic.
+    - id: messageFormat
+      type: System.String
+      description: The formatting string of the diagnostic message.
+    - id: title
+      type: System.String
+      description: A short title for the diagnostic. If the value is <code>null</code>, <code class="paramref">messageFormat</code> is used.
+    - id: category
+      type: System.String
+      description: The category to which this diagnostic belong. If the value is <code>null</code>, <code>Metalama.User</code> is used.
+    - id: helpLinkUri
+      type: System.String
+      description: >-
+        The URL of the documentation page of the diagnostic, or <code>null</code>. If the URL contains the <code>{0}</code> placeholder,
+                    the placeholder is replaced by the lower-case value of <code class="paramref">id</code>. For instance, <code>https://example.com/errors/{0}</code> becomes
+                    <code>https://example.com/errors/my001</code>.
+    content.vb: Public Sub New(id As String, severity As Severity, messageFormat As String, title As String, category As String, helpLinkUri As String)
+  overload: Metalama.Framework.Diagnostics.DiagnosticDefinition.#ctor*
+  nameWithType.vb: DiagnosticDefinition.New(String, Severity, String, String, String, String)
+  fullName.vb: Metalama.Framework.Diagnostics.DiagnosticDefinition.New(String, Metalama.Framework.Diagnostics.Severity, String, String, String, String)
+  name.vb: New(String, Severity, String, String, String, String)
 - uid: Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
   commentId: M:Metalama.Framework.Diagnostics.DiagnosticDefinition.WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})
   id: WithExtensions(System.Collections.Immutable.ImmutableArray{Metalama.Framework.Diagnostics.IDiagnosticExtension})

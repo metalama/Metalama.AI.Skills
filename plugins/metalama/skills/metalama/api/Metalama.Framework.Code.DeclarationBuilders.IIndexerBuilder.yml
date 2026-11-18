@@ -5,6 +5,7 @@ items:
   id: IIndexerBuilder
   parent: Metalama.Framework.Code.DeclarationBuilders
   children:
+  - Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(Metalama.Framework.Code.IParameter,System.Boolean,System.Boolean)
   - Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   - Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   langs:
@@ -17,7 +18,7 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code.DeclarationBuilders
-  summary: Allows to complete the construction of an indexer that has been created by an advice.
+  summary: Allows to complete the construction of an indexer that has been created by the <xref href="Metalama.Framework.Aspects.AdviserExtensions.IntroduceIndexer(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cMetalama.Framework.Code.IType%2cSystem.String%2cSystem.String%2cMetalama.Framework.Aspects.IntroductionScope%2cMetalama.Framework.Aspects.OverrideStrategy%2cSystem.Action%7bMetalama.Framework.Code.DeclarationBuilders.IIndexerBuilder%7d%2cSystem.Object%2cSystem.Object)" data-throw-if-not-resolved="false"></xref> advice.
   example: []
   syntax:
     content: 'public interface IIndexerBuilder : IPropertyOrIndexerBuilder, IFieldOrPropertyOrIndexerBuilder, IHasTypeBuilder, IIndexer, IPropertyOrIndexer, IFieldOrPropertyOrIndexer, IHasAccessors, IHasType, IIndexerInvoker, IHasParametersBuilder, IMemberBuilder, IMemberOrNamedTypeBuilder, IDeclarationBuilder, IHasParameters, IMember, IMemberOrNamedType, INamedDeclaration, IDeclaration, IDisplayable, IDiagnosticLocation, ICompilationElement, IMeasurable, IEquatable<IDeclaration>'
@@ -118,6 +119,7 @@ items:
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsContractAdviceEligible(Metalama.Framework.Aspects.ContractDirection)
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
+  - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.HasReceiver
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.IsOverridable
   - Metalama.Framework.Code.IMemberOrNamedType.Metalama.Framework.Code.GenericExtensions.ForTypeInstance(Metalama.Framework.Code.INamedType)
@@ -205,3 +207,50 @@ items:
   nameWithType.vb: IIndexerBuilder.AddParameter(String, Type, RefKind, TypedConstant?)
   fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(String, System.Type, Metalama.Framework.Code.RefKind, Metalama.Framework.Code.TypedConstant?)
   name.vb: AddParameter(String, Type, RefKind, TypedConstant?)
+- uid: Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(Metalama.Framework.Code.IParameter,System.Boolean,System.Boolean)
+  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(Metalama.Framework.Code.IParameter,System.Boolean,System.Boolean)
+  id: AddParameter(Metalama.Framework.Code.IParameter,System.Boolean,System.Boolean)
+  parent: Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddParameter(IParameter, bool, bool)
+  nameWithType: IIndexerBuilder.AddParameter(IParameter, bool, bool)
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(Metalama.Framework.Code.IParameter, bool, bool)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.DeclarationBuilders
+  summary: 'Appends a parameter that copies an existing parameter: its name, its type and its reference kind.'
+  remarks: >-
+    <p>
+        In the type of the copy, a reference to a type parameter that was copied with <code>AddTypeParameter(ITypeParameter, bool)</code> is replaced
+        by a reference to its copy. The <code>this</code> modifier is never copied.
+        </p>
+  example: []
+  syntax:
+    content: IParameterBuilder AddParameter(IParameter prototype, bool includeCustomAttributes = false, bool includeDefaultValues = false)
+    parameters:
+    - id: prototype
+      type: Metalama.Framework.Code.IParameter
+      description: The parameter to copy, typically a parameter of another method.
+    - id: includeCustomAttributes
+      type: System.Boolean
+      description: A value indicating whether the custom attributes of <code class="paramref">prototype</code> are copied.
+    - id: includeDefaultValues
+      type: System.Boolean
+      description: >-
+        A value indicating whether the default value and the <code>params</code> modifier of
+                    <code class="paramref">prototype</code> are copied.
+    return:
+      type: Metalama.Framework.Code.DeclarationBuilders.IParameterBuilder
+      description: An <xref href="Metalama.Framework.Code.DeclarationBuilders.IParameterBuilder" data-throw-if-not-resolved="false"></xref> that allows you to change the copy.
+    content.vb: Function AddParameter(prototype As IParameter, includeCustomAttributes As Boolean = False, includeDefaultValues As Boolean = False) As IParameterBuilder
+  overload: Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: A parameter of the same name already exists.
+  nameWithType.vb: IIndexerBuilder.AddParameter(IParameter, Boolean, Boolean)
+  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IIndexerBuilder.AddParameter(Metalama.Framework.Code.IParameter, Boolean, Boolean)
+  name.vb: AddParameter(IParameter, Boolean, Boolean)

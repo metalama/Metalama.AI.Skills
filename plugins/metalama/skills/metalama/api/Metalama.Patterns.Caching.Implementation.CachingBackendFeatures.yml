@@ -127,6 +127,54 @@ items:
     Gets a value indicating whether methods that modify the cache content run to completion before the control is given back to the calling method.
 
     If <code>false</code>, methods may run in the background, and the calling thread may not have a consistent view of the cache.
+  remarks: >-
+    <p>
+
+    When a backend that returns <code>false</code> is used behind an in-memory L1 cache, added with
+
+    <xref href="Metalama.Patterns.Caching.Building.CachingBackendFactory.WithL1(Metalama.Patterns.Caching.Building.OutOfProcessCachingBackendBuilder%2cMetalama.Patterns.Caching.Backends.LayeredCachingBackendConfiguration)" data-throw-if-not-resolved="false"></xref>,
+
+    the L1 cache cannot know when a removal or an invalidation has reached the backend. It records the removal in memory
+
+    for one minute, with a timestamp taken from the wall clock of the current machine. During that minute, a value read
+
+    from the backend for the same key is returned only if its own timestamp, taken from the wall clock of the machine
+
+    that wrote the value, is strictly greater than the timestamp of the removal. Otherwise the item is reported as absent.
+
+    </p>
+
+    <p>
+
+    This rule assumes that the clocks of all machines sharing the backend are synchronized. A clock difference does not
+
+    corrupt the cache, but it changes what a read returns. If the clock of the writing machine is behind the clock of the
+
+    removing machine by some offset, a value written within that offset after the removal receives a timestamp that is not
+
+    greater than the timestamp of the removal, and is reported as absent until the record expires. If the clock of the
+
+    writing machine is ahead by some offset, a value written within that offset before the removal receives a greater
+
+    timestamp, and is returned and stored in the L1 cache although the pending removal is about to delete it from the
+
+    backend. That value then stays in the L1 cache until it expires under its own expiration policy, or until the L1 cache
+
+    receives an <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.ItemRemoved" data-throw-if-not-resolved="false"></xref> or <xref href="Metalama.Patterns.Caching.Backends.CachingBackend.DependencyInvalidated" data-throw-if-not-resolved="false"></xref> event for it.
+
+    Two timestamps that are equal count as a removal. On .NET Framework, <xref href="System.DateTimeOffset.UtcNow" data-throw-if-not-resolved="false"></xref> has a
+
+    resolution of about fifteen milliseconds, so a value written by another machine shortly after the removal
+
+    can receive the same timestamp as the removal, in which case it is reported as absent.
+
+    </p>
+
+    <p>
+
+    Backends shipped with Metalama return <code>true</code>, so this rule applies only to custom backends.
+
+    </p>
   example: []
   syntax:
     content: public virtual bool Blocking { get; }

@@ -23,7 +23,7 @@ items:
   remarks: >-
     <p>Extension blocks have the following restrictions compared to regular named types:</p>
 
-    <ul><li>Cannot have a base type (always throws on <xref href="Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.BaseType" data-throw-if-not-resolved="false"></xref> setter).</li><li>The <xref href="Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.Name" data-throw-if-not-resolved="false"></xref> property is used internally to generate deterministic file names for the design-time syntax tree. It is automatically assigned if not set.</li><li>Cannot set accessibility (extension blocks don't have access modifiers).</li><li>Cannot be abstract, sealed, or partial.</li><li>Cannot contain fields (will fail at advice execution time).</li><li>Cannot contain auto-properties (will fail at advice execution time).</li><li>Cannot contain nested types (will fail at advice execution time).</li><li>Cannot contain constructors (will fail at advice execution time).</li></ul>
+    <ul><li>Cannot have a base type (always throws on <xref href="Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.BaseType" data-throw-if-not-resolved="false"></xref> setter).</li><li>The <xref href="Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.Name" data-throw-if-not-resolved="false"></xref> property is used internally to generate deterministic file names for the design-time syntax tree. It is automatically assigned if not set.</li><li>Cannot set accessibility (extension blocks don't have access modifiers).</li><li>Cannot be abstract, sealed, partial, or closed. The setter of <xref href="Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed" data-throw-if-not-resolved="false"></xref> throws a <xref href="System.NotSupportedException" data-throw-if-not-resolved="false"></xref> for both values, because an extension block is not a class.</li><li>Cannot contain fields (will fail at advice execution time).</li><li>Cannot contain auto-properties (will fail at advice execution time).</li><li>Cannot contain nested types (will fail at advice execution time).</li><li>Cannot contain constructors (will fail at advice execution time).</li></ul>
   example: []
   syntax:
     content: >-
@@ -41,8 +41,13 @@ items:
     commentId: T:Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder
   inheritedMembers:
   - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.AddTypeParameter(System.String)
+  - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.AddTypeParameter(Metalama.Framework.Code.ITypeParameter,System.Boolean)
   - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsPartial
+  - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsClosed
+  - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsReadOnly
+  - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.IsRef
   - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.BaseType
+  - Metalama.Framework.Code.DeclarationBuilders.INamedTypeBuilder.TypeParameters
   - Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.Accessibility
   - Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.Name
   - Metalama.Framework.Code.DeclarationBuilders.IMemberOrNamedTypeBuilder.IsStatic
@@ -86,9 +91,11 @@ items:
   - Metalama.Framework.Code.INamedType.StaticConstructor
   - Metalama.Framework.Code.INamedType.Finalizer
   - Metalama.Framework.Code.INamedType.ExtensionBlocks
-  - Metalama.Framework.Code.INamedType.IsReadOnly
-  - Metalama.Framework.Code.INamedType.IsRef
+  - Metalama.Framework.Code.INamedType.Facets
   - Metalama.Framework.Code.INamedType.IsRecord
+  - Metalama.Framework.Code.INamedType.IsDelegate
+  - Metalama.Framework.Code.INamedType.IsEnum
+  - Metalama.Framework.Code.INamedType.IsUnion
   - Metalama.Framework.Code.INamedType.IsFileLocal
   - Metalama.Framework.Code.INamedType.TypeDefinition
   - Metalama.Framework.Code.INamedType.Definition
@@ -105,7 +112,6 @@ items:
   - Metalama.Framework.Code.IType.IsReferenceType
   - Metalama.Framework.Code.IType.IsNullable
   - System.IEquatable{Metalama.Framework.Code.IType}.Equals(Metalama.Framework.Code.IType)
-  - Metalama.Framework.Code.IGeneric.TypeParameters
   - Metalama.Framework.Code.IGeneric.TypeArguments
   - Metalama.Framework.Code.IGeneric.IsGeneric
   - Metalama.Framework.Code.IGeneric.IsCanonicalGenericInstance

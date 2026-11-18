@@ -22,6 +22,7 @@ items:
   - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeConvertibleTo(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IType},Metalama.Framework.Code.IType,Metalama.Framework.Code.ConversionKind)
   - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeConvertibleTo(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IType},System.Type,Metalama.Framework.Code.ConversionKind)
   - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeConvertibleTo``1(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IType},Metalama.Framework.Code.ConversionKind)
+  - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeDeclarableExplicitly(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMember})
   - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeExplicitlyDeclared(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IDeclaration})
   - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeInstanceOfAnyType``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},System.Type[])
   - Metalama.Framework.Eligibility.EligibilityExtensions.MustBeInstanceOfType``1(Metalama.Framework.Eligibility.IEligibilityBuilder{``0},System.Type)
@@ -782,6 +783,10 @@ items:
       description: >-
         A predicate that determines whether the following rules should be evaluated.
                     If this returns <code>false</code>, the rules are ignored and the declaration is considered eligible (for those rules).
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
     typeParameters:
     - id: T
       description: The type of declaration being validated.
@@ -833,12 +838,20 @@ items:
     - id: predicate
       type: System.Predicate{{T}}
       description: A predicate that returns <code>true</code> if the declaration is eligible for the aspect.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
     - id: getJustification
       type: System.Func{Metalama.Framework.Eligibility.IDescribedObject{{T}},System.FormattableString}
       description: >-
         A delegate called when the <code class="paramref">predicate</code> returns <code>false</code> and an
                     error message is needed. This delegate must return a <xref href="System.FormattableString" data-throw-if-not-resolved="false"></xref> (a C# interpolated string like <code>$"like {this}"</code>)
                     explaining what the declaration <em>must</em> be to satisfy the condition.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
     typeParameters:
     - id: T
     content.vb: Public Shared Sub MustSatisfy(Of T As Class)(eligibilityBuilder As IEligibilityBuilder(Of T), predicate As Predicate(Of T), getJustification As Func(Of IDescribedObject(Of T), FormattableString))
@@ -1288,6 +1301,39 @@ items:
   nameWithType.vb: EligibilityExtensions.MustBeExplicitlyDeclared(IEligibilityBuilder(Of IDeclaration))
   fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.MustBeExplicitlyDeclared(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IDeclaration))
   name.vb: MustBeExplicitlyDeclared(IEligibilityBuilder(Of IDeclaration))
+- uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustBeDeclarableExplicitly(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMember})
+  commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.MustBeDeclarableExplicitly(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMember})
+  id: MustBeDeclarableExplicitly(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMember})
+  isExtensionMethod: true
+  parent: Metalama.Framework.Eligibility.EligibilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: MustBeDeclarableExplicitly(IEligibilityBuilder<IMember>)
+  nameWithType: EligibilityExtensions.MustBeDeclarableExplicitly(IEligibilityBuilder<IMember>)
+  fullName: Metalama.Framework.Eligibility.EligibilityExtensions.MustBeDeclarableExplicitly(Metalama.Framework.Eligibility.IEligibilityBuilder<Metalama.Framework.Code.IMember>)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Eligibility
+  summary: >-
+    Requires the target member to be one whose explicit declaration can be written in source code, as determined by
+
+    <xref href="Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly(Metalama.Framework.Code.IMember)" data-throw-if-not-resolved="false"></xref>. Unlike <xref href="Metalama.Framework.Eligibility.EligibilityExtensions.MustBeExplicitlyDeclared(Metalama.Framework.Eligibility.IEligibilityBuilder%7bMetalama.Framework.Code.IDeclaration%7d)" data-throw-if-not-resolved="false"></xref>, this rule
+
+    accepts a compiler-generated member as long as the same member could have been declared in source code.
+  example: []
+  syntax:
+    content: public static void MustBeDeclarableExplicitly(this IEligibilityBuilder<IMember> eligibilityBuilder)
+    parameters:
+    - id: eligibilityBuilder
+      type: Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IMember}
+      description: The eligibility builder for a member.
+    content.vb: Public Shared Sub MustBeDeclarableExplicitly(eligibilityBuilder As IEligibilityBuilder(Of IMember))
+  overload: Metalama.Framework.Eligibility.EligibilityExtensions.MustBeDeclarableExplicitly*
+  nameWithType.vb: EligibilityExtensions.MustBeDeclarableExplicitly(IEligibilityBuilder(Of IMember))
+  fullName.vb: Metalama.Framework.Eligibility.EligibilityExtensions.MustBeDeclarableExplicitly(Metalama.Framework.Eligibility.IEligibilityBuilder(Of Metalama.Framework.Code.IMember))
+  name.vb: MustBeDeclarableExplicitly(IEligibilityBuilder(Of IMember))
 - uid: Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeRef(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IFieldOrPropertyOrIndexer})
   commentId: M:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeRef(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IFieldOrPropertyOrIndexer})
   id: MustNotBeRef(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.IFieldOrPropertyOrIndexer})

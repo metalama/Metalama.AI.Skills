@@ -19,13 +19,25 @@ items:
   namespace: Metalama.Patterns.Caching.Implementation
   summary: An <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref> that can remove all of its entries.
   remarks: >-
+    <p>
+
     <xref href="Microsoft.Extensions.Caching.Memory.MemoryCache" data-throw-if-not-resolved="false"></xref> exposes these two operations, but
 
-    <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref> does not declare them. An implementation of <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref> that also
+    <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref> does not declare them.
 
-    implements this interface supports the <code>Clear</code> feature of
+    </p>
 
-    <xref href="Metalama.Patterns.Caching.Backends.MemoryCachingBackend" data-throw-if-not-resolved="false"></xref>.
+    <p>
+
+    <xref href="Metalama.Patterns.Caching.Backends.MemoryCachingBackend" data-throw-if-not-resolved="false"></xref> calls <xref href="Metalama.Patterns.Caching.Implementation.IClearableMemoryCache.Compact(System.Double)" data-throw-if-not-resolved="false"></xref> when a cache that it
+
+    owns is cleared with <xref href="Metalama.Patterns.Caching.Backends.ClearCacheOptions.Compact" data-throw-if-not-resolved="false"></xref>. It does not call
+
+    <xref href="Metalama.Patterns.Caching.Implementation.IClearableMemoryCache.Clear" data-throw-if-not-resolved="false"></xref>: it clears its own items one key at a time, on any <xref href="Microsoft.Extensions.Caching.Memory.IMemoryCache" data-throw-if-not-resolved="false"></xref>, so that the
+
+    other entries of a shared cache are kept.
+
+    </p>
   example: []
   syntax:
     content: 'public interface IClearableMemoryCache : IMemoryCache, IDisposable'

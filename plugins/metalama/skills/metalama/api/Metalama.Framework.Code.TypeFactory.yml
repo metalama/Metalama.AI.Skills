@@ -5,6 +5,8 @@ items:
   id: TypeFactory
   parent: Metalama.Framework.Code
   children:
+  - Metalama.Framework.Code.TypeFactory.AsINamedType(System.Type)
+  - Metalama.Framework.Code.TypeFactory.AsIType(System.Type)
   - Metalama.Framework.Code.TypeFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IParameter})
   - Metalama.Framework.Code.TypeFactory.CreateTupleType(System.Collections.Generic.IEnumerable{Metalama.Framework.Code.IType})
   - Metalama.Framework.Code.TypeFactory.CreateTupleType(System.Collections.Generic.IEnumerable{System.Type})
@@ -136,6 +138,72 @@ items:
       type: Metalama.Framework.Code.INamedType
     content.vb: Public Shared Function GetNamedType(type As Type) As INamedType
   overload: Metalama.Framework.Code.TypeFactory.GetNamedType*
+- uid: Metalama.Framework.Code.TypeFactory.AsIType(System.Type)
+  commentId: M:Metalama.Framework.Code.TypeFactory.AsIType(System.Type)
+  id: AsIType(System.Type)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.TypeFactory
+  langs:
+  - csharp
+  - vb
+  name: AsIType(Type)
+  nameWithType: TypeFactory.AsIType(Type)
+  fullName: Metalama.Framework.Code.TypeFactory.AsIType(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the <xref href="Metalama.Framework.Code.IType" data-throw-if-not-resolved="false"></xref> that represents a reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref> in the current compilation. This method is equivalent to
+
+    <xref href="Metalama.Framework.Code.TypeFactory.GetType(System.Type)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static IType AsIType(this Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The reflection type, for instance <code>typeof(int[])</code>.
+    return:
+      type: Metalama.Framework.Code.IType
+    content.vb: Public Shared Function AsIType(type As Type) As IType
+  overload: Metalama.Framework.Code.TypeFactory.AsIType*
+- uid: Metalama.Framework.Code.TypeFactory.AsINamedType(System.Type)
+  commentId: M:Metalama.Framework.Code.TypeFactory.AsINamedType(System.Type)
+  id: AsINamedType(System.Type)
+  isExtensionMethod: true
+  parent: Metalama.Framework.Code.TypeFactory
+  langs:
+  - csharp
+  - vb
+  name: AsINamedType(Type)
+  nameWithType: TypeFactory.AsINamedType(Type)
+  fullName: Metalama.Framework.Code.TypeFactory.AsINamedType(System.Type)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code
+  summary: >-
+    Gets the <xref href="Metalama.Framework.Code.INamedType" data-throw-if-not-resolved="false"></xref> that represents a reflection <xref href="System.Type" data-throw-if-not-resolved="false"></xref> in the current compilation. This method is equivalent
+
+    to <xref href="Metalama.Framework.Code.TypeFactory.GetNamedType(System.Type)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static INamedType AsINamedType(this Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The reflection type, for instance <code>typeof(Console)</code>.
+    return:
+      type: Metalama.Framework.Code.INamedType
+    content.vb: Public Shared Function AsINamedType(type As Type) As INamedType
+  overload: Metalama.Framework.Code.TypeFactory.AsINamedType*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: >-
+      <code class="paramref">type</code> is not a named type, for instance an array type or a pointer
+          type.
 - uid: Metalama.Framework.Code.TypeFactory.GetType(System.String)
   commentId: M:Metalama.Framework.Code.TypeFactory.GetType(System.String)
   id: GetType(System.String)

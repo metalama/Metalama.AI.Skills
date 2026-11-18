@@ -49,11 +49,11 @@ items:
     content: >-
       [AttributeUsage(AttributeTargets.Method)]
 
-      public sealed class CommandAttribute : Attribute, IAspect<IMethod>, IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible<IMethod>
+      public sealed class CommandAttribute : Attribute, IAspect<IMethod>, IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible<IMethod>, IHierarchicalOptionsProvider
     content.vb: >-
       <AttributeUsage(AttributeTargets.Method)>
 
-      Public NotInheritable Class CommandAttribute Inherits Attribute Implements IAspect(Of IMethod), IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible(Of IMethod)
+      Public NotInheritable Class CommandAttribute Inherits Attribute Implements IAspect(Of IMethod), IAspect, ICompileTimeSerializable, ITemplateProvider, IEligible(Of IMethod), IHierarchicalOptionsProvider
   seealso:
   - linkId: Metalama.Patterns.Wpf.DelegateCommand
     commentId: T:Metalama.Patterns.Wpf.DelegateCommand
@@ -75,6 +75,7 @@ items:
   - Metalama.Framework.Serialization.ICompileTimeSerializable
   - Metalama.Framework.Aspects.ITemplateProvider
   - Metalama.Framework.Eligibility.IEligible{Metalama.Framework.Code.IMethod}
+  - Metalama.Framework.Options.IHierarchicalOptionsProvider
   inheritedMembers:
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
   - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
@@ -167,7 +168,7 @@ items:
   summary: Gets or sets the name of the <xref href="System.Windows.Input.ICommand" data-throw-if-not-resolved="false"></xref> property that is introduced.
   example: []
   syntax:
-    content: public string? CommandPropertyName { get; set; }
+    content: public string? CommandPropertyName { get; init; }
     parameters: []
     return:
       type: System.String
@@ -211,7 +212,7 @@ items:
     </p>
   example: []
   syntax:
-    content: public string? CanExecuteMethod { get; set; }
+    content: public string? CanExecuteMethod { get; init; }
     parameters: []
     return:
       type: System.String
@@ -255,7 +256,7 @@ items:
     </p>
   example: []
   syntax:
-    content: public string? CanExecuteProperty { get; set; }
+    content: public string? CanExecuteProperty { get; init; }
     parameters: []
     return:
       type: System.String
@@ -288,13 +289,19 @@ items:
     implementations typically only notify changes to public properties.
 
     </p>
+
+    <p>
+
+    When this property is not set, the value configured with the <xref href="Metalama.Patterns.Wpf.Configuration.CommandExtensions.ConfigureCommand(Metalama.Framework.Fabrics.IQuery%7bMetalama.Framework.Code.ICompilation%7d%2cSystem.Action%7bMetalama.Patterns.Wpf.Configuration.CommandOptionsBuilder%7d)" data-throw-if-not-resolved="false"></xref> method or its overloads applies.
+
+    </p>
   example: []
   syntax:
-    content: public bool? EnableINotifyPropertyChangedIntegration { get; set; }
+    content: public bool EnableINotifyPropertyChangedIntegration { get; init; }
     parameters: []
     return:
-      type: System.Nullable{System.Boolean}
-    content.vb: Public Property EnableINotifyPropertyChangedIntegration As Boolean?
+      type: System.Boolean
+    content.vb: Public Property EnableINotifyPropertyChangedIntegration As Boolean
   overload: Metalama.Patterns.Wpf.CommandAttribute.EnableINotifyPropertyChangedIntegration*
 - uid: Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution
   commentId: P:Metalama.Patterns.Wpf.CommandAttribute.SupportsConcurrentExecution
@@ -324,7 +331,7 @@ items:
     use the <xref href="Metalama.Patterns.Wpf.DelegateCommandExecution" data-throw-if-not-resolved="false"></xref> returned by the <xref href="Metalama.Patterns.Wpf.AsyncDelegateCommand.Execute" data-throw-if-not-resolved="false"></xref> method.</p>
   example: []
   syntax:
-    content: public bool SupportsConcurrentExecution { get; set; }
+    content: public bool SupportsConcurrentExecution { get; init; }
     parameters: []
     return:
       type: System.Boolean
@@ -352,7 +359,7 @@ items:
     even for non-<xref href="System.Threading.Tasks.Task" data-throw-if-not-resolved="false"></xref> execution methods.
   example: []
   syntax:
-    content: public bool Background { get; set; }
+    content: public bool Background { get; init; }
     parameters: []
     return:
       type: System.Boolean

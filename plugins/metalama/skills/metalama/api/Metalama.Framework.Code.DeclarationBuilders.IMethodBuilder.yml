@@ -5,11 +5,13 @@ items:
   id: IMethodBuilder
   parent: Metalama.Framework.Code.DeclarationBuilders
   children:
+  - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(Metalama.Framework.Code.ITypeParameter,System.Boolean)
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(System.String)
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.IsReadOnly
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.OperatorKind
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.ReturnParameter
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.ReturnType
+  - Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.TypeParameters
   langs:
   - csharp
   - vb
@@ -20,7 +22,7 @@ items:
   assemblies:
   - Metalama.Framework
   namespace: Metalama.Framework.Code.DeclarationBuilders
-  summary: Allows to complete the construction of a method that has been created by an advice.
+  summary: Allows to complete the construction of a method that has been created by the <xref href="Metalama.Framework.Aspects.AdviserExtensions.IntroduceMethod(Metalama.Framework.Aspects.IAdviser%7bMetalama.Framework.Code.INamedType%7d%2cSystem.String%2cMetalama.Framework.Aspects.IntroductionScope%2cMetalama.Framework.Aspects.OverrideStrategy%2cSystem.Action%7bMetalama.Framework.Code.DeclarationBuilders.IMethodBuilder%7d%2cSystem.Object%2cSystem.Object)" data-throw-if-not-resolved="false"></xref> advice.
   example: []
   syntax:
     content: 'public interface IMethodBuilder : IMethod, IGeneric, IMethodInvoker, IMethodBaseBuilder, IMethodBase, IHasParametersBuilder, IHasParameters, IMemberBuilder, IMember, IMemberOrNamedTypeBuilder, IMemberOrNamedType, INamedDeclaration, IDeclarationBuilder, IDeclaration, IDisplayable, IDiagnosticLocation, ICompilationElement, IMeasurable, IEquatable<IDeclaration>'
@@ -45,7 +47,6 @@ items:
   - Metalama.Framework.Code.IMethod.DeclaringMember
   - Metalama.Framework.Code.IMethod.ExtensionImplementationMethod
   - Metalama.Framework.Code.IMethod.Definition
-  - Metalama.Framework.Code.IGeneric.TypeParameters
   - Metalama.Framework.Code.IGeneric.TypeArguments
   - Metalama.Framework.Code.IGeneric.IsGeneric
   - Metalama.Framework.Code.IGeneric.IsCanonicalGenericInstance
@@ -61,6 +62,7 @@ items:
   - Metalama.Framework.Code.Invokers.IMethodInvoker.With(System.Object,Metalama.Framework.Code.Invokers.InvokerOptions)
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.AddParameter(System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.AddParameter(System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
+  - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.AddParameter(Metalama.Framework.Code.IParameter,System.Boolean,System.Boolean)
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,Metalama.Framework.Code.IType,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   - Metalama.Framework.Code.DeclarationBuilders.IMethodBaseBuilder.InsertParameter(System.Int32,System.String,System.Type,Metalama.Framework.Code.RefKind,System.Nullable{Metalama.Framework.Code.TypedConstant})
   - Metalama.Framework.Code.IMethodBase.ToMethodBase
@@ -131,6 +133,7 @@ items:
   - Metalama.Framework.Code.IDeclaration.Metalama.Framework.Eligibility.EligibilityExtensions.IsContractAdviceEligible(Metalama.Framework.Aspects.ContractDirection)
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.DeclarationExtensions.GetEffectiveAccessibility
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.GenericExtensions.GetOriginalDefinition
+  - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.CanBeDeclaredExplicitly
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.HasReceiver
   - Metalama.Framework.Code.IMember.Metalama.Framework.Code.MemberExtensions.IsOverridable
   - Metalama.Framework.Code.IMemberOrNamedType.Metalama.Framework.Code.GenericExtensions.ForTypeInstance(Metalama.Framework.Code.INamedType)
@@ -182,6 +185,72 @@ items:
   nameWithType.vb: IMethodBuilder.AddTypeParameter(String)
   fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(String)
   name.vb: AddTypeParameter(String)
+- uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(Metalama.Framework.Code.ITypeParameter,System.Boolean)
+  commentId: M:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(Metalama.Framework.Code.ITypeParameter,System.Boolean)
+  id: AddTypeParameter(Metalama.Framework.Code.ITypeParameter,System.Boolean)
+  parent: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddTypeParameter(ITypeParameter, bool)
+  nameWithType: IMethodBuilder.AddTypeParameter(ITypeParameter, bool)
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(Metalama.Framework.Code.ITypeParameter, bool)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.DeclarationBuilders
+  summary: 'Adds a type parameter that copies an existing type parameter: its name, its variance, its kind constraints and its type constraints.'
+  remarks: >-
+    <p>
+        The builder records the copy. In the type constraints of the copy, and in the types of the type parameters and parameters that are
+        copied afterwards, a reference to <code class="paramref">prototype</code> is replaced by a reference to the copy. Copy the type parameters
+        before the parameters that use them.
+        </p>
+  example: []
+  syntax:
+    content: ITypeParameterBuilder AddTypeParameter(ITypeParameter prototype, bool includeCustomAttributes = false)
+    parameters:
+    - id: prototype
+      type: Metalama.Framework.Code.ITypeParameter
+      description: The type parameter to copy, typically a type parameter of another method or type.
+    - id: includeCustomAttributes
+      type: System.Boolean
+      description: A value indicating whether the custom attributes of <code class="paramref">prototype</code> are copied.
+    return:
+      type: Metalama.Framework.Code.DeclarationBuilders.ITypeParameterBuilder
+      description: An <xref href="Metalama.Framework.Code.DeclarationBuilders.ITypeParameterBuilder" data-throw-if-not-resolved="false"></xref> that allows you to change the copy.
+    content.vb: Function AddTypeParameter(prototype As ITypeParameter, includeCustomAttributes As Boolean = False) As ITypeParameterBuilder
+  overload: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: A type parameter of the same name already exists.
+  nameWithType.vb: IMethodBuilder.AddTypeParameter(ITypeParameter, Boolean)
+  fullName.vb: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.AddTypeParameter(Metalama.Framework.Code.ITypeParameter, Boolean)
+  name.vb: AddTypeParameter(ITypeParameter, Boolean)
+- uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.TypeParameters
+  commentId: P:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.TypeParameters
+  id: TypeParameters
+  parent: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder
+  langs:
+  - csharp
+  - vb
+  name: TypeParameters
+  nameWithType: IMethodBuilder.TypeParameters
+  fullName: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.TypeParameters
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Code.DeclarationBuilders
+  summary: Gets the type parameters of the method, as builders that can be changed.
+  example: []
+  syntax:
+    content: ITypeParameterBuilderList TypeParameters { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Code.DeclarationBuilders.ITypeParameterBuilderList
+    content.vb: ReadOnly Property TypeParameters As ITypeParameterBuilderList
+  overload: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.TypeParameters*
 - uid: Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.ReturnParameter
   commentId: P:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder.ReturnParameter
   id: ReturnParameter

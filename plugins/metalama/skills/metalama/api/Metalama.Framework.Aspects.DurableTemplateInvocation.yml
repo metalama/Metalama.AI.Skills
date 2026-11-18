@@ -1,0 +1,290 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation
+  commentId: T:Metalama.Framework.Aspects.DurableTemplateInvocation
+  id: DurableTemplateInvocation
+  parent: Metalama.Framework.Aspects
+  children:
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor(System.String,Metalama.Framework.Aspects.ITemplateProvider,System.Object)
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor(System.String,System.Object)
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.Arguments
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.FromType``1(System.String,System.Object)
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateName
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider
+  langs:
+  - csharp
+  - vb
+  name: DurableTemplateInvocation
+  nameWithType: DurableTemplateInvocation
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation
+  type: Class
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Represents an invocation of a template method that can be kept across compilations. It is the durable counterpart of
+
+    <xref href="Metalama.Framework.Aspects.TemplateInvocation" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    <p>
+        Use this type where an API keeps a template invocation after the compilation in which it was created, for instance a
+        registration that is evaluated again in each new compilation. Use <xref href="Metalama.Framework.Aspects.TemplateInvocation" data-throw-if-not-resolved="false"></xref> everywhere else.
+        </p>
+    <p>
+        The values of <xref href="Metalama.Framework.Aspects.DurableTemplateInvocation.Arguments" data-throw-if-not-resolved="false"></xref> must be durable. A declaration or a type must be passed as a durable reference
+        (see <xref href="Metalama.Framework.Code.RefExtensions.ToDurableRef%60%601(%60%600)" data-throw-if-not-resolved="false"></xref>), and an expression must be passed as a durable expression (see
+        <xref href="Metalama.Framework.Code.ExpressionExtensions.ToDurable(Metalama.Framework.Code.IExpression)" data-throw-if-not-resolved="false"></xref>). Literals, enumeration values and <xref href="System.Type" data-throw-if-not-resolved="false"></xref> values are
+        durable. A durable reference or a durable expression is resolved in the compilation in which the template is expanded,
+        so that the template receives the declaration, the type or the <xref href="Metalama.Framework.Code.IExpression" data-throw-if-not-resolved="false"></xref> of that compilation.
+        </p>
+  example: []
+  syntax:
+    content: >-
+      [CompileTime]
+
+      [Durable]
+
+      public sealed class DurableTemplateInvocation
+    content.vb: >-
+      <CompileTime>
+
+      <Durable>
+
+      Public NotInheritable Class DurableTemplateInvocation
+  seealso:
+  - linkId: Metalama.Framework.Aspects.TemplateInvocation
+    commentId: T:Metalama.Framework.Aspects.TemplateInvocation
+  - linkId: Metalama.Framework.Aspects.TemplateAttribute
+    commentId: T:Metalama.Framework.Aspects.TemplateAttribute
+  - linkId: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider
+    commentId: P:Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider
+  - linkType: HRef
+    linkId: '@templates'
+    altText: '@templates'
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  extensionMethods:
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Aspects.DurableTemplateInvocation,System.Collections.Generic.IEnumerable{Metalama.Framework.Aspects.DurableTemplateInvocation}},System.Boolean)
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Aspects.DurableTemplateInvocation})
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.Aspects.DurableTemplateInvocation.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Aspects.CompileTimeAttribute
+    ctor: Metalama.Framework.Aspects.CompileTimeAttribute.#ctor
+    arguments: []
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor(System.String,System.Object)
+  commentId: M:Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor(System.String,System.Object)
+  id: '#ctor(System.String,System.Object)'
+  parent: Metalama.Framework.Aspects.DurableTemplateInvocation
+  langs:
+  - csharp
+  - vb
+  name: DurableTemplateInvocation(string, object?)
+  nameWithType: DurableTemplateInvocation.DurableTemplateInvocation(string, object?)
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation.DurableTemplateInvocation(string, object?)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Aspects.DurableTemplateInvocation" data-throw-if-not-resolved="false"></xref> class for a template of the current template provider.
+  example: []
+  syntax:
+    content: public DurableTemplateInvocation(string templateName, object? arguments = null)
+    parameters:
+    - id: templateName
+      type: System.String
+      description: The name of the called template method. This method must be annotated with <xref href="Metalama.Framework.Aspects.TemplateAttribute" data-throw-if-not-resolved="false"></xref>.
+    - id: arguments
+      type: System.Object
+      description: >-
+        An object (typically of anonymous type) whose properties map to parameters or type parameters of the template.
+                    Its values must be durable.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    content.vb: Public Sub New(templateName As String, arguments As Object = Nothing)
+  overload: Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor*
+  nameWithType.vb: DurableTemplateInvocation.New(String, Object)
+  fullName.vb: Metalama.Framework.Aspects.DurableTemplateInvocation.New(String, Object)
+  name.vb: New(String, Object)
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor(System.String,Metalama.Framework.Aspects.ITemplateProvider,System.Object)
+  commentId: M:Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor(System.String,Metalama.Framework.Aspects.ITemplateProvider,System.Object)
+  id: '#ctor(System.String,Metalama.Framework.Aspects.ITemplateProvider,System.Object)'
+  parent: Metalama.Framework.Aspects.DurableTemplateInvocation
+  langs:
+  - csharp
+  - vb
+  name: DurableTemplateInvocation(string, ITemplateProvider, object?)
+  nameWithType: DurableTemplateInvocation.DurableTemplateInvocation(string, ITemplateProvider, object?)
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation.DurableTemplateInvocation(string, Metalama.Framework.Aspects.ITemplateProvider, object?)
+  type: Constructor
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Initializes a new instance of the <xref href="Metalama.Framework.Aspects.DurableTemplateInvocation" data-throw-if-not-resolved="false"></xref> class for a template of a given <xref href="Metalama.Framework.Aspects.ITemplateProvider" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public DurableTemplateInvocation(string templateName, ITemplateProvider templateProvider, object? arguments = null)
+    parameters:
+    - id: templateName
+      type: System.String
+      description: The name of the called template method. This method must be annotated with <xref href="Metalama.Framework.Aspects.TemplateAttribute" data-throw-if-not-resolved="false"></xref>.
+    - id: templateProvider
+      type: Metalama.Framework.Aspects.ITemplateProvider
+      description: The object that provides the template. It must be durable.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    - id: arguments
+      type: System.Object
+      description: >-
+        An object (typically of anonymous type) whose properties map to parameters or type parameters of the template.
+                    Its values must be durable.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    content.vb: Public Sub New(templateName As String, templateProvider As ITemplateProvider, arguments As Object = Nothing)
+  overload: Metalama.Framework.Aspects.DurableTemplateInvocation.#ctor*
+  nameWithType.vb: DurableTemplateInvocation.New(String, ITemplateProvider, Object)
+  fullName.vb: Metalama.Framework.Aspects.DurableTemplateInvocation.New(String, Metalama.Framework.Aspects.ITemplateProvider, Object)
+  name.vb: New(String, ITemplateProvider, Object)
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation.FromType``1(System.String,System.Object)
+  commentId: M:Metalama.Framework.Aspects.DurableTemplateInvocation.FromType``1(System.String,System.Object)
+  id: FromType``1(System.String,System.Object)
+  parent: Metalama.Framework.Aspects.DurableTemplateInvocation
+  langs:
+  - csharp
+  - vb
+  name: FromType<T>(string, object?)
+  nameWithType: DurableTemplateInvocation.FromType<T>(string, object?)
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation.FromType<T>(string, object?)
+  type: Method
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Creates a <xref href="Metalama.Framework.Aspects.DurableTemplateInvocation" data-throw-if-not-resolved="false"></xref> for a static template declared by a given type.
+  example: []
+  syntax:
+    content: 'public static DurableTemplateInvocation FromType<T>(string templateName, object? arguments = null) where T : ITemplateProvider'
+    parameters:
+    - id: templateName
+      type: System.String
+      description: The name of the called template method. This method must be static and annotated with <xref href="Metalama.Framework.Aspects.TemplateAttribute" data-throw-if-not-resolved="false"></xref>.
+    - id: arguments
+      type: System.Object
+      description: >-
+        An object (typically of anonymous type) whose properties map to parameters or type parameters of the template.
+                    Its values must be durable.
+      attributes:
+      - type: Metalama.Framework.Utilities.DurableAttribute
+        ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+        arguments: []
+    typeParameters:
+    - id: T
+      description: The type that declares the template.
+    return:
+      type: Metalama.Framework.Aspects.DurableTemplateInvocation
+    content.vb: Public Shared Function FromType(Of T As ITemplateProvider)(templateName As String, arguments As Object = Nothing) As DurableTemplateInvocation
+  overload: Metalama.Framework.Aspects.DurableTemplateInvocation.FromType*
+  seealso:
+  - linkId: Metalama.Framework.Aspects.TemplateProvider.FromType``1
+    commentId: M:Metalama.Framework.Aspects.TemplateProvider.FromType``1
+  nameWithType.vb: DurableTemplateInvocation.FromType(Of T)(String, Object)
+  fullName.vb: Metalama.Framework.Aspects.DurableTemplateInvocation.FromType(Of T)(String, Object)
+  name.vb: FromType(Of T)(String, Object)
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateName
+  commentId: P:Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateName
+  id: TemplateName
+  parent: Metalama.Framework.Aspects.DurableTemplateInvocation
+  langs:
+  - csharp
+  - vb
+  name: TemplateName
+  nameWithType: DurableTemplateInvocation.TemplateName
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateName
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the name of the called template method.
+  example: []
+  syntax:
+    content: public string TemplateName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property TemplateName As String
+  overload: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateName*
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider
+  commentId: P:Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider
+  id: TemplateProvider
+  parent: Metalama.Framework.Aspects.DurableTemplateInvocation
+  langs:
+  - csharp
+  - vb
+  name: TemplateProvider
+  nameWithType: DurableTemplateInvocation.TemplateProvider
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: >-
+    Gets the <xref href="Metalama.Framework.Aspects.TemplateProvider" data-throw-if-not-resolved="false"></xref> where the template is found, or <code>default</code> for the
+
+    current template provider.
+  example: []
+  syntax:
+    content: public TemplateProvider TemplateProvider { get; }
+    parameters: []
+    return:
+      type: Metalama.Framework.Aspects.TemplateProvider
+    content.vb: Public ReadOnly Property TemplateProvider As TemplateProvider
+  overload: Metalama.Framework.Aspects.DurableTemplateInvocation.TemplateProvider*
+- uid: Metalama.Framework.Aspects.DurableTemplateInvocation.Arguments
+  commentId: P:Metalama.Framework.Aspects.DurableTemplateInvocation.Arguments
+  id: Arguments
+  parent: Metalama.Framework.Aspects.DurableTemplateInvocation
+  langs:
+  - csharp
+  - vb
+  name: Arguments
+  nameWithType: DurableTemplateInvocation.Arguments
+  fullName: Metalama.Framework.Aspects.DurableTemplateInvocation.Arguments
+  type: Property
+  assemblies:
+  - Metalama.Framework
+  namespace: Metalama.Framework.Aspects
+  summary: Gets the object whose properties map to parameters or type parameters of the template, or <code>null</code>.
+  example: []
+  syntax:
+    content: >-
+      [Durable]
+
+      public object? Arguments { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: >-
+      <Durable>
+
+      Public ReadOnly Property Arguments As Object
+  overload: Metalama.Framework.Aspects.DurableTemplateInvocation.Arguments*
+  attributes:
+  - type: Metalama.Framework.Utilities.DurableAttribute
+    ctor: Metalama.Framework.Utilities.DurableAttribute.#ctor
+    arguments: []
