@@ -25,8 +25,8 @@
       - name: Metalama 2027.0
         uid: release-notes-2027.0
         path: content/conceptual/release-notes/release-notes-2027.0.md
-        summary: Metalama 2027.0 adds C# 15 and .NET 11 support, call-site interceptors, the introduction of structs, records, enums, delegates and unions, type facets in the code model, and analyzers that verify immutable and durable aspect code.
-        keywords: Metalama 2027.0, release notes, C# 15, .NET 11, unions, closed classes, extension indexers, interceptors, type introduction, type facets, immutable aspects
+        summary: Metalama 2027.0 adds C# 15 and .NET 11 support, tools that make Metalama usable by AI coding agents, call-site interceptors, the introduction of structs, records, enums, delegates and unions, type facets in the code model, and analyzers that verify immutable and durable aspect code.
+        keywords: Metalama 2027.0, release notes, C# 15, .NET 11, AI coding agents, MCP server, metalama preview, metalama introspect, unions, closed classes, extension indexers, interceptors, type introduction, type facets, immutable aspects
       - name: Metalama 2026.1
         uid: release-notes-2026.1
         path: content/conceptual/release-notes/release-notes-2026.1.md
@@ -138,8 +138,8 @@
         - name: AI agents
           uid: ai-agents
           path: content/conceptual/using/ide/ai-agents.md
-          summary: Install the Metalama plugin for AI coding agents such as Claude Code and OpenAI Codex to get AI-assisted aspect development.
-          keywords: Claude Code, OpenAI Codex, Metalama AI, AI coding agent, Claude plugin, Codex plugin, aspect development
+          summary: Install the Metalama plugin for AI coding agents such as Claude Code and OpenAI Codex, and give the agent the tools to preview generated code, query aspects, and explore the code model through the Metalama MCP server.
+          keywords: Claude Code, OpenAI Codex, MCP server, metalama preview, metalama introspect, Metalama AI, AI coding agent, Claude plugin, Codex plugin, aspect development
       - name: Getting aspects
         uid: getting-aspects
         path: content/conceptual/using/getting-aspects.md
@@ -489,6 +489,11 @@
           path: content/conceptual/aspects/advising/sharing-state.md
           summary: The document provides strategies for sharing compile-time state between different pieces of advice or the BuildAspect method and the advice. It discusses sharing state with compile-time template parameters, the Tags property, and the AspectState property.
           keywords: compile-time state, BuildAspect method, template parameters, Tags property, AspectState property, sharing state, advice methods, .NET, annotations, IAspectBuilder
+      - name: Compile-time coding rules
+        uid: compile-time-rules
+        path: content/conceptual/aspects/compile-time-rules.md
+        summary: This article explains the two rules that compile-time code must follow, immutability and durability, why Metalama enforces them, and how to fix the warnings that its analyzers report.
+        keywords: compile-time code, immutability, durability, ImmutableType, Durable, aspect state, static fields, memory leaks, design time, IDurableRef, DurableLazy, DurableDangerous, LAMA0870, LAMA0880, LAMA0889
       - name: Reporting and suppressing diagnostics
         uid: diagnostics
         path: content/conceptual/aspects/diagnostics.md
@@ -623,7 +628,7 @@
         uid: decoupling-aspects-from-attributes
         path: content/conceptual/aspects/decoupling-from-attributes.md
         summary: This article explains how to separate the aspect implementation from its custom attribute contract, enabling scenarios like using third-party attributes, preparing for migration away from Metalama, or having different implementations per project.
-        keywords: aspect decoupling, custom attribute, IAspect interface, aspect contract, aspect implementation, fabric binding, IRef, IAttribute, Metalama separation
+        keywords: aspect decoupling, custom attribute, IAspect interface, aspect contract, aspect implementation, fabric binding, IAttribute, Metalama separation
       - name: Distributing projects that use aspects
         uid: distributing
         path: content/conceptual/aspects/distributing.md
@@ -1237,7 +1242,7 @@
       - name: LAMA0099
         uid: lama0099
         path: content/errors/lama0099.md
-        summary: LAMA0099 is a reserved diagnostic meaning that a feature isn't supported yet. The current version of Metalama never reports it.
+        summary: LAMA0099 is a reserved diagnostic meaning that a feature isn't supported yet. The current version of Metalama never reports it. Metalama 2027.0 no longer defines LAMA0099.
         keywords: LAMA0099, feature not supported, unsupported feature, not yet supported
       - name: LAMA0120
         uid: lama0120
@@ -1268,8 +1273,8 @@
       - name: LAMA0101
         uid: lama0101
         path: content/errors/lama0101.md
-        summary: "LAMA0101 is reported when a T# template uses a C# language feature that templates don't support: LINQ query syntax, goto, unsafe code, or a tuple deconstruction that mixes var and non-var declarations."
-        keywords: LAMA0101, language feature not supported, template, LINQ query syntax, goto, unsafe, tuple deconstruction
+        summary: "LAMA0101 is reported when a T# template uses a C# language feature that templates don't support: LINQ query syntax, goto, labels, unsafe code, or a tuple deconstruction that mixes var and non-var declarations."
+        keywords: LAMA0101, language feature not supported, template, LINQ query syntax, goto, label, labeled break, labeled continue, unsafe, tuple deconstruction
       - name: LAMA0104
         uid: lama0104
         path: content/errors/lama0104.md
@@ -1774,7 +1779,7 @@
       - name: LAMA0520
         uid: lama0520
         path: content/errors/lama0520.md
-        summary: LAMA0520 is defined for the case where an aspect tries to introduce a parameter into a static constructor. In the current version of Metalama, this situation causes an exception in the aspect instead of this diagnostic.
+        summary: LAMA0520 is defined for the case where an aspect tries to introduce a parameter into a static constructor. In the current version of Metalama, this situation causes an exception in the aspect instead of this diagnostic. Metalama 2027.0 no longer defines LAMA0520.
         keywords: LAMA0520, introduce parameter, static constructor, IntroduceParameter, constructor parameter, advice eligibility
       - name: LAMA0521
         uid: lama0521
@@ -1789,7 +1794,7 @@
       - name: LAMA0524
         uid: lama0524
         path: content/errors/lama0524.md
-        summary: "LAMA0524 was meant to be reported when an aspect adds an initializer to all constructors of a record, because the copy constructor can't be changed. Current versions of Metalama don't report it: they skip the copy constructor instead."
+        summary: "LAMA0524 was meant to be reported when an aspect adds an initializer to all constructors of a record, because the copy constructor can't be changed. Current versions of Metalama don't report it: they skip the copy constructor instead. Metalama 2027.0 no longer defines LAMA0524."
         keywords: LAMA0524, record initializer, AddInitializer, copy constructor, BeforeInstanceConstructor, records
       - name: LAMA0526
         uid: lama0526
@@ -1849,12 +1854,12 @@
       - name: LAMA0540
         uid: lama0540
         path: content/errors/lama0540.md
-        summary: LAMA0540 is defined for an aspect that introduces an extension block into a type that isn't a static class. In practice, Metalama rejects such a target earlier and reports LAMA0041 instead.
+        summary: LAMA0540 is defined for an aspect that introduces an extension block into a type that isn't a static class. In practice, Metalama rejects such a target earlier and reports LAMA0041 instead. Metalama 2027.0 no longer defines LAMA0540.
         keywords: LAMA0540, extension block, IntroduceExtensionBlock, static class, top-level static class, C# 14 extension members
       - name: LAMA0541
         uid: lama0541
         path: content/errors/lama0541.md
-        summary: LAMA0541 is defined for an aspect that introduces an extension block into another extension block. In practice, Metalama rejects such a target earlier and reports LAMA0041 instead.
+        summary: LAMA0541 is defined for an aspect that introduces an extension block into another extension block. In practice, Metalama rejects such a target earlier and reports LAMA0041 instead. Metalama 2027.0 no longer defines LAMA0541.
         keywords: LAMA0541, extension block, nested extension block, IntroduceExtensionBlock, static class, C# 14 extension members
       - name: LAMA0542
         uid: lama0542
@@ -1944,7 +1949,7 @@
       - name: LAMA0700
         uid: lama0700
         path: content/errors/lama0700.md
-        summary: LAMA0700 is reported when an aspect with declarative introductions ([Introduce] members) is executed on a declaration that is neither a type nor a type member, such as a parameter or a namespace. In practice, eligibility rejects such targets first with LAMA0037, so this diagnostic acts as a safety net.
+        summary: LAMA0700 is reported when an aspect with declarative introductions ([Introduce] members) is executed on a declaration that is neither a type nor a type member, such as a parameter or a namespace. In practice, eligibility rejects such targets first with LAMA0037, so this diagnostic acts as a safety net. Metalama 2027.0 no longer defines LAMA0700.
         keywords: LAMA0700, Introduce attribute, declarative introduction, neither a type nor a type member, parameter aspect, introduce member
       - name: LAMA0750
         uid: lama0750
@@ -1954,7 +1959,7 @@
       - name: LAMA0751
         uid: lama0751
         path: content/errors/lama0751.md
-        summary: LAMA0751 is a warning about the [InternalImplement] constraint that the current version of Metalama defines but never reports. Implementations that violate [InternalImplement] are reported as LAMA0120.
+        summary: LAMA0751 is a warning about the [InternalImplement] constraint that the current version of Metalama defines but never reports. Implementations that violate [InternalImplement] are reported as LAMA0120. Metalama 2027.0 no longer defines LAMA0751.
         keywords: LAMA0751, InternalImplement, interface cannot be implemented, internal implementation constraint, LAMA0120
     - name: Serialization
       uid: errors-serialization
@@ -2005,7 +2010,7 @@
       - name: LAMA0209
         uid: lama0209
         path: content/errors/lama0209.md
-        summary: LAMA0209 is reported when Metalama can't generate a serializer for a type because its base type declares more than one nested serializer. In practice, LAMA0208 is reported on the base type instead.
+        summary: LAMA0209 is reported when Metalama can't generate a serializer for a type because its base type declares more than one nested serializer. During a build, Metalama reports LAMA0208 on the base type instead. In the IDE, Metalama reports both diagnostics.
         keywords: LAMA0209, ambiguous base serializer, ICompileTimeSerializable, ReferenceTypeSerializer, ISerializer, base type serializer, compile-time serialization
       - name: LAMA0210
         uid: lama0210
@@ -2174,28 +2179,28 @@
       - name: LAMA0880
         uid: lama0880
         path: content/errors/lama0880.md
-        summary: LAMA0880 is reported when an instance field of an aspect, a fabric, a validator, or another type marked [ImmutableType] is neither read-only nor private. The analyzer can't see every assignment to such a field.
+        summary: LAMA0880 is reported when an instance field of an aspect, a fabric, a validator, or another type marked [ImmutableType] is neither read-only nor private, so Metalama can't see every assignment to it.
         keywords: LAMA0880, ImmutableType, immutable aspect, readonly field, aspect state, fabric field, public field, mutable aspect
       - name: LAMA0881
         uid: lama0881
         path: content/errors/lama0881.md
-        summary: LAMA0881 is reported when an automatic property of an aspect, a fabric, a validator, or another type marked [ImmutableType] has a set accessor that isn't private. The analyzer can't see every assignment to such a property.
+        summary: LAMA0881 is reported when an automatic property of an aspect, a fabric, a validator, or another type marked [ImmutableType] has a set accessor that isn't private, so Metalama can't see every assignment to it.
         keywords: LAMA0881, ImmutableType, immutable aspect, automatic property, init accessor, private setter, readonly record struct, aspect state
       - name: LAMA0882
         uid: lama0882
         path: content/errors/lama0882.md
-        summary: LAMA0882 is reported when a field or automatic property of a type that must be immutable, such as an aspect, has a mutable type. It typically happens when an aspect stores a List<T>, an array, or an unmarked class.
-        keywords: LAMA0882, ImmutableType, immutable aspect, mutable field type, List field in aspect, ImmutableArray, aspect state, Roslyn analyzer warning
+        summary: LAMA0882 is reported when a field or automatic property of a type that must be immutable, such as an aspect, has a mutable type. It typically happens when an aspect stores a List<T>, a dictionary, or an unmarked class.
+        keywords: LAMA0882, ImmutableType, immutable aspect, mutable field type, List field in aspect, ImmutableArray, aspect state, immutability contract
       - name: LAMA0883
         uid: lama0883
         path: content/errors/lama0883.md
         summary: LAMA0883 is reported when a type that must be immutable, such as an aspect, derives from a base class that isn't immutable. It typically happens when an aspect derives from a custom base class that isn't marked with [ImmutableType].
-        keywords: LAMA0883, ImmutableType, immutable aspect, mutable base class, aspect base class, abstract base class, Roslyn analyzer warning
+        keywords: LAMA0883, ImmutableType, immutable aspect, mutable base class, aspect base class, abstract base class, immutability contract
       - name: LAMA0884
         uid: lama0884
         path: content/errors/lama0884.md
         summary: LAMA0884 is reported when a field or automatic property of a type that must be immutable is typed as an interface or abstract class that isn't marked with [ImmutableType], such as IEnumerable<T> or IReadOnlyList<T>.
-        keywords: LAMA0884, ImmutableType, immutable aspect, interface field, IEnumerable field, IReadOnlyList, abstract type, Roslyn analyzer warning
+        keywords: LAMA0884, ImmutableType, immutable aspect, interface field, IEnumerable field, IReadOnlyList, abstract type, immutability contract
       - name: LAMA0885
         uid: lama0885
         path: content/errors/lama0885.md
@@ -2205,17 +2210,37 @@
         uid: lama0886
         path: content/errors/lama0886.md
         summary: LAMA0886 is reported when a type carries the [ImmutableType] attribute although it already derives from or implements a type that requires immutability. The attribute has no effect and can be removed.
-        keywords: LAMA0886, ImmutableType attribute, redundant attribute, immutable aspect, immutable fabric, inherited contract, immutability analyzer
+        keywords: LAMA0886, ImmutableType attribute, redundant attribute, immutable aspect, immutable fabric, inherited contract, immutability contract
       - name: LAMA0887
         uid: lama0887
         path: content/errors/lama0887.md
-        summary: LAMA0887 is reported when a field or an automatic property of an aspect, fabric, validator or other type that must be immutable is assigned outside a constructor or an init accessor.
-        keywords: LAMA0887, immutable aspect, aspect state, field assignment, assigned outside constructor, init accessor, ImmutableType, immutability analyzer
+        summary: LAMA0887 is reported when a field or an automatic property of an aspect, fabric, validator or other type that must be immutable is assigned outside a constructor or an init accessor, for example in BuildAspect.
+        keywords: LAMA0887, immutable aspect, aspect state, field assignment, assigned outside constructor, BuildAspect, init accessor, ImmutableType
       - name: LAMA0888
         uid: lama0888
         path: content/errors/lama0888.md
         summary: LAMA0888 is reported when a field or an automatic property of an aspect, fabric, validator or other type that must be immutable is passed as an out argument, which writes it outside a constructor.
-        keywords: LAMA0888, immutable aspect, aspect state, out argument, out parameter, assigned outside constructor, ImmutableType, immutability analyzer
+        keywords: LAMA0888, immutable aspect, aspect state, out argument, out parameter, assigned outside constructor, TryGetProperty, ImmutableType
+      - name: LAMA0889
+        uid: lama0889
+        path: content/errors/lama0889.md
+        summary: LAMA0889 is reported when a static field, a static automatic property, or a static field-like event of a compile-time type, such as a [CompileTime] class or a fabric, isn't read-only.
+        keywords: LAMA0889, static field, compile-time type, readonly, static state, CompileTime, fabric, mutable static
+      - name: LAMA0890
+        uid: lama0890
+        path: content/errors/lama0890.md
+        summary: LAMA0890 is reported when a read-only static field or static automatic property of a compile-time type, such as a [CompileTime] class or a fabric, is of a mutable type, for instance List<T>, Dictionary<TKey, TValue>, or an array.
+        keywords: LAMA0890, static field, compile-time type, mutable type, ImmutableArray, static collection, CompileTime, shared state
+      - name: LAMA0891
+        uid: lama0891
+        path: content/errors/lama0891.md
+        summary: LAMA0891 is reported when a static field, a static automatic property, or a static field-like event of a run-time-or-compile-time type, typically an aspect, isn't read-only or is of a mutable type, and isn't marked [RunTime].
+        keywords: LAMA0891, static field, aspect static field, RunTimeOrCompileTime, RunTime attribute, mutable static, shared state
+      - name: LAMA0892
+        uid: lama0892
+        path: content/errors/lama0892.md
+        summary: LAMA0892 is reported when a static read-only field or automatic property of compile-time code has an immutable type that isn't durable, so that at design time it can keep an old compilation alive.
+        keywords: LAMA0892, static field, Durable attribute, durable type, compile-time code, design-time memory leak, aspect static field, compilation retention
     - name: Interceptors
       uid: errors-interceptors
       path: content/errors/errors-interceptors.md
@@ -2372,12 +2397,12 @@
       - name: LAMA5108
         uid: lama5108
         path: content/errors/lama5108.md
-        summary: LAMA5108 is an informational message reserved by Metalama.Patterns.Caching to indicate that a cached method is invalidated by an [InvalidateCache] method. The current version of Metalama doesn't report it.
+        summary: LAMA5108 is an informational message reserved by Metalama.Patterns.Caching to indicate that a cached method is invalidated by an [InvalidateCache] method. The current version of Metalama doesn't report it. Metalama 2027.0 no longer defines LAMA5108.
         keywords: LAMA5108, InvalidateCache, cache invalidation, invalidated by, cached method, Metalama.Patterns.Caching
       - name: LAMA5109
         uid: lama5109
         path: content/errors/lama5109.md
-        summary: LAMA5109 is an informational message reserved by Metalama.Patterns.Caching to indicate that an [InvalidateCache] method invalidates a cached method. The current version of Metalama doesn't report it.
+        summary: LAMA5109 is an informational message reserved by Metalama.Patterns.Caching to indicate that an [InvalidateCache] method invalidates a cached method. The current version of Metalama doesn't report it. Metalama 2027.0 no longer defines LAMA5109.
         keywords: LAMA5109, InvalidateCache, cache invalidation, invalidates, cached method, Metalama.Patterns.Caching
       - name: LAMA5110
         uid: lama5110

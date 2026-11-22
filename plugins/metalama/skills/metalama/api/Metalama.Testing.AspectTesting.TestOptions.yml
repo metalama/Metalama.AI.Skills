@@ -52,6 +52,7 @@ items:
   - Metalama.Testing.AspectTesting.TestOptions.RequireOrderedAspects
   - Metalama.Testing.AspectTesting.TestOptions.RequiredConstants
   - Metalama.Testing.AspectTesting.TestOptions.RoslynIsCompileTimeOnly
+  - Metalama.Testing.AspectTesting.TestOptions.RunAnalyzers
   - Metalama.Testing.AspectTesting.TestOptions.SkipAddingSystemFiles
   - Metalama.Testing.AspectTesting.TestOptions.SkipDiffTool
   - Metalama.Testing.AspectTesting.TestOptions.SkipReason
@@ -242,6 +243,52 @@ items:
       type: System.Nullable{System.Boolean}
     content.vb: Public Property IncludeAllSeverities As Boolean?
   overload: Metalama.Testing.AspectTesting.TestOptions.IncludeAllSeverities*
+- uid: Metalama.Testing.AspectTesting.TestOptions.RunAnalyzers
+  commentId: P:Metalama.Testing.AspectTesting.TestOptions.RunAnalyzers
+  id: RunAnalyzers
+  parent: Metalama.Testing.AspectTesting.TestOptions
+  langs:
+  - csharp
+  - vb
+  name: RunAnalyzers
+  nameWithType: TestOptions.RunAnalyzers
+  fullName: Metalama.Testing.AspectTesting.TestOptions.RunAnalyzers
+  type: Property
+  assemblies:
+  - Metalama.Testing.AspectTesting
+  namespace: Metalama.Testing.AspectTesting
+  summary: >-
+    Gets or sets a value indicating whether the Roslyn analyzers of the <code>Metalama.Framework.Analyzers</code> assembly must run on the
+
+    source compilation of the test, so that their diagnostics are included in the test result. These analyzers are shipped in the
+
+    <code>Metalama.Framework</code> package. For instance, they report the diagnostics LAMA0870 to LAMA0878 of the <code>[Durable]</code> contract.
+
+    When the option is not set, the analyzers run, so that a test reports the same diagnostics as a build.
+
+    To disable the analyzers in a test, add this comment to your test file: <code>// @RunAnalyzers(false)</code>. To disable them in a
+
+    directory, set <code>"RunAnalyzers": false</code> in the <code>metalamaTests.json</code> file. To enable them again in a test of such a directory,
+
+    add this comment: <code>// @RunAnalyzers</code>.
+  remarks: >-
+    The analyzers run on the compilation of the test input, before any transformation, as in a build. Their diagnostics are reported
+
+    with the diagnostics of the Metalama pipeline: in the comments of the expected output file and in the HTML of the input file.
+
+    Other analyzers, such as the analyzers referenced by the test project, are not run.
+
+    Running the analyzers increases the duration of every test. For this reason, the test suites of the Metalama repository disable the
+
+    option in a <code>metalamaTests.json</code> file.
+  example: []
+  syntax:
+    content: public bool? RunAnalyzers { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property RunAnalyzers As Boolean?
+  overload: Metalama.Testing.AspectTesting.TestOptions.RunAnalyzers*
 - uid: Metalama.Testing.AspectTesting.TestOptions.TestRunnerFactoryType
   commentId: P:Metalama.Testing.AspectTesting.TestOptions.TestRunnerFactoryType
   id: TestRunnerFactoryType
@@ -1148,9 +1195,9 @@ items:
   summary: >-
     Gets or sets the semicolon-separated list of all target frameworks for the project,
 
-    for instance <code>net8.0;net472</code>. Used to test behavior that depends on target runtime capabilities.
+    for instance <code>net10.0;net472</code>. Used to test behavior that depends on target runtime capabilities.
 
-    To set this option in a test, add this comment to your test file: <code>// @TargetFrameworks(net8.0;net472)</code>.
+    To set this option in a test, add this comment to your test file: <code>// @TargetFrameworks(net10.0;net472)</code>.
   example: []
   syntax:
     content: public string? TargetFrameworks { get; set; }

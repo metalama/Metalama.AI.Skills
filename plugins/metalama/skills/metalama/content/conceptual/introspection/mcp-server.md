@@ -4,7 +4,7 @@ level: 300
 summary: "This article explains how to let coding agents query your source code with the Metalama MCP server, a local Model Context Protocol server that runs C# queries over the Metalama code model."
 keywords: "MCP, Model Context Protocol, coding agent, AI agent, Claude Code, code queries, introspection, Metalama.Mcp"
 created-date: 2026-11-13
-modified-date: 2026-11-18
+modified-date: 2026-11-19
 ---
 
 # Using the MCP server
@@ -62,13 +62,17 @@ The server runs arbitrary C# code by design, with the privileges of the user who
 * **Loading a project runs its build logic.** Like a build, loading a workspace runs the MSBuild targets of the project and its Metalama aspects and fabrics. Only load code that you trust.
 * **The analyzed code is data.** String literals and comments in the analyzed code can contain text aimed at the agent. This is the same risk as when the agent reads the files with its other tools.
 
+## Telemetry
+
+The server sends an anonymous usage report at most once a day for each workspace that it loads, and lets you review a report of an unexpected failure before it is sent. The reports never contain paths, names of your code, source code or query text. The server follows the telemetry settings of Metalama, so the same methods disable it. For the content of the reports and the opt-out methods, see <xref:telemetry>.
+
 ## Tools
 
 The server exposes five tools to the agent.
 
 | Tool | Description |
 |------|-------------|
-| `load_workspace` | Loads one or more projects, solutions or solution filters (`.csproj`, `.sln`, `.slnf`) and keeps them loaded for the session. Returns the projects, their target frameworks, and the load diagnostics. |
+| `load_workspace` | Loads one or more projects, solutions or solution filters (`.csproj`, `.sln`, `.slnx`, `.slnf`) and keeps them loaded for the session. Returns the projects, their target frameworks, and the load diagnostics. |
 | `reload_workspace` | Reloads a workspace from disk after its files were edited. |
 | `unload_workspace` | Frees the memory used by a workspace. |
 | `query` | Runs a C# query and renders its result. |
