@@ -65,7 +65,11 @@ items:
   assemblies:
   - Metalama.Framework.Workspaces
   namespace: Metalama.Framework.Workspaces
-  summary: Clears the <xref href="Metalama.Framework.Workspaces.DiagnosticReporter.ReportedWarnings" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Workspaces.DiagnosticReporter.ReportedErrors" data-throw-if-not-resolved="false"></xref> counters.
+  summary: Clears the <xref href="Metalama.Framework.Workspaces.DiagnosticReporter.ReportedWarnings" data-throw-if-not-resolved="false"></xref> and <xref href="Metalama.Framework.Workspaces.DiagnosticReporter.ReportedErrors" data-throw-if-not-resolved="false"></xref> counters, and starts a new reporting scope.
+  remarks: >-
+    A host calls this method at the start of each request or query. The diagnostics of an incomplete reference index are
+
+    reported at most once per scope, so that each response that depends on the index lists them once.
   example: []
   syntax:
     content: public static void ClearCounters()

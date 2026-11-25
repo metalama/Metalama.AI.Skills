@@ -1,0 +1,115 @@
+### YamlMime:ManagedReference
+items:
+- uid: Metalama.Framework.Workspaces.IWorkspaceHostInfo
+  commentId: T:Metalama.Framework.Workspaces.IWorkspaceHostInfo
+  id: IWorkspaceHostInfo
+  parent: Metalama.Framework.Workspaces
+  children:
+  - Metalama.Framework.Workspaces.IWorkspaceHostInfo.Key
+  - Metalama.Framework.Workspaces.IWorkspaceHostInfo.TelemetryContext
+  langs:
+  - csharp
+  - vb
+  name: IWorkspaceHostInfo
+  nameWithType: IWorkspaceHostInfo
+  fullName: Metalama.Framework.Workspaces.IWorkspaceHostInfo
+  type: Interface
+  assemblies:
+  - Metalama.Framework.Workspaces
+  namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Exposes the information that a host of the introspection API, such as Metalama.LinqPad or Metalama.Mcp, needs to report
+
+    the usage and the exceptions of a <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>. The members are not meant for queries, so <xref href="Metalama.Framework.Workspaces.Workspace" data-throw-if-not-resolved="false"></xref>
+
+    implements this interface explicitly.
+  example: []
+  syntax:
+    content: >-
+      [Hidden]
+
+      public interface IWorkspaceHostInfo
+    content.vb: >-
+      <Hidden>
+
+      Public Interface IWorkspaceHostInfo
+  seealso:
+  - linkId: Metalama.Framework.Workspaces.Workspace
+    commentId: T:Metalama.Framework.Workspaces.Workspace
+  - linkId: Metalama.Framework.Workspaces.WorkspaceCollection.WorkspaceLoaded
+    commentId: E:Metalama.Framework.Workspaces.WorkspaceCollection.WorkspaceLoaded
+  derivedClasses:
+  - Metalama.Framework.Workspaces.Workspace
+  extensionMethods:
+  - Metalama.Framework.Workspaces.IWorkspaceHostInfo.Metalama.Framework.Code.Collections.EnumerableExtensions.SelectManyRecursiveDistinct``1(System.Func{Metalama.Framework.Workspaces.IWorkspaceHostInfo,System.Collections.Generic.IEnumerable{Metalama.Framework.Workspaces.IWorkspaceHostInfo}},System.Boolean)
+  - Metalama.Framework.Workspaces.IWorkspaceHostInfo.Metalama.Framework.Engine.Invariant.Assert``1(System.Predicate{Metalama.Framework.Workspaces.IWorkspaceHostInfo})
+  - Metalama.Framework.Workspaces.IWorkspaceHostInfo.Metalama.Framework.Engine.Invariant.AssertNotNull``1(System.String)
+  - Metalama.Framework.Workspaces.IWorkspaceHostInfo.Metalama.Framework.Engine.Invariant.CanBeNull``1(System.String)
+  - System.Object.Metalama.Framework.Engine.Invariant.AssertCast``1
+  attributes:
+  - type: Metalama.Framework.Utilities.HiddenAttribute
+    ctor: Metalama.Framework.Utilities.HiddenAttribute.#ctor
+    arguments: []
+- uid: Metalama.Framework.Workspaces.IWorkspaceHostInfo.Key
+  commentId: P:Metalama.Framework.Workspaces.IWorkspaceHostInfo.Key
+  id: Key
+  parent: Metalama.Framework.Workspaces.IWorkspaceHostInfo
+  langs:
+  - csharp
+  - vb
+  name: Key
+  nameWithType: IWorkspaceHostInfo.Key
+  fullName: Metalama.Framework.Workspaces.IWorkspaceHostInfo.Key
+  type: Property
+  assemblies:
+  - Metalama.Framework.Workspaces
+  namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Gets a key that identifies the workspace in its <xref href="Metalama.Framework.Workspaces.WorkspaceCollection" data-throw-if-not-resolved="false"></xref>. The key is derived from the loaded
+
+    paths and the MSBuild properties.
+  example: []
+  syntax:
+    content: string Key { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Key As String
+  overload: Metalama.Framework.Workspaces.IWorkspaceHostInfo.Key*
+- uid: Metalama.Framework.Workspaces.IWorkspaceHostInfo.TelemetryContext
+  commentId: P:Metalama.Framework.Workspaces.IWorkspaceHostInfo.TelemetryContext
+  id: TelemetryContext
+  parent: Metalama.Framework.Workspaces.IWorkspaceHostInfo
+  langs:
+  - csharp
+  - vb
+  name: TelemetryContext
+  nameWithType: IWorkspaceHostInfo.TelemetryContext
+  fullName: Metalama.Framework.Workspaces.IWorkspaceHostInfo.TelemetryContext
+  type: Property
+  assemblies:
+  - Metalama.Framework.Workspaces
+  namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Gets the telemetry context that the workspace opened when it was loaded, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> when the telemetry
+
+    service is not available.
+  remarks: >-
+    <p>
+        The context decides whether telemetry is collected: the consent of the user, the opt-out of the repository
+        (<code>metalama.json</code>), and the gates of the process. A host uses it for the usage session of the workspace and for the
+        exceptions of the workspace. The service provider of each project of the workspace exposes the same context to the
+        engine. A reload of the workspace opens a new context.
+        </p>
+    <p>
+        The policy of the context is resolved from the directory of the first loaded path. When the workspace contains a
+        project of another repository, the <code>metalama.json</code> file of that repository is not consulted.
+        </p>
+  example: []
+  syntax:
+    content: ITelemetryContext? TelemetryContext { get; }
+    parameters: []
+    return:
+      type: SharpCrafters.Backstage.Telemetry.ITelemetryContext
+    content.vb: ReadOnly Property TelemetryContext As ITelemetryContext
+  overload: Metalama.Framework.Workspaces.IWorkspaceHostInfo.TelemetryContext*

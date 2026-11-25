@@ -15,6 +15,7 @@ items:
   - Metalama.Framework.Workspaces.WorkspaceCollection.ServiceBuilder
   - Metalama.Framework.Workspaces.WorkspaceCollection.TryFindProject(Microsoft.CodeAnalysis.Compilation,Metalama.Framework.Workspaces.Workspace@,Metalama.Framework.Workspaces.Project@,System.Boolean@)
   - Metalama.Framework.Workspaces.WorkspaceCollection.WithServices(System.Action{Metalama.Framework.Workspaces.ServiceBuilder})
+  - Metalama.Framework.Workspaces.WorkspaceCollection.WorkspaceLoaded
   langs:
   - csharp
   - vb
@@ -411,3 +412,36 @@ items:
     arguments:
     - type: System.String
       value: Errors are now always ignored.
+- uid: Metalama.Framework.Workspaces.WorkspaceCollection.WorkspaceLoaded
+  commentId: E:Metalama.Framework.Workspaces.WorkspaceCollection.WorkspaceLoaded
+  id: WorkspaceLoaded
+  parent: Metalama.Framework.Workspaces.WorkspaceCollection
+  langs:
+  - csharp
+  - vb
+  name: WorkspaceLoaded
+  nameWithType: WorkspaceCollection.WorkspaceLoaded
+  fullName: Metalama.Framework.Workspaces.WorkspaceCollection.WorkspaceLoaded
+  type: Event
+  assemblies:
+  - Metalama.Framework.Workspaces
+  namespace: Metalama.Framework.Workspaces
+  summary: >-
+    Occurs when a workspace has been loaded, with the time the load took. The event is not raised when a load
+
+    returns a workspace that the collection already holds.
+  remarks: >-
+    A host of the introspection API can handle this event to report its usage telemetry. Metalama.LinqPad does so, because
+
+    the queries of the user load the workspaces themselves. An exception thrown by a handler is ignored and does not fail
+
+    the load.
+  example: []
+  syntax:
+    content: public event Action<Workspace, TimeSpan>? WorkspaceLoaded
+    return:
+      type: System.Action{Metalama.Framework.Workspaces.Workspace,System.TimeSpan}
+    content.vb: Public Event WorkspaceLoaded As Action(Of Workspace, TimeSpan)
+  seealso:
+  - linkId: Metalama.Framework.Workspaces.IWorkspaceHostInfo
+    commentId: T:Metalama.Framework.Workspaces.IWorkspaceHostInfo
